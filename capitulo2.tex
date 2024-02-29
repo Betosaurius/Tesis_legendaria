@@ -1,49 +1,71 @@
 \chapter{Polic\'ias y ladrones sobre gr\'aficas de fichas de \'arboles}
 \label{cap:resultados}
 
+\section{Estrellas}
+
 \begin{lema}
 \label{lem:isomorfismo}
     Sean $k$ y $n$ enteros positivos. Si $G$ una gr\'afica de orden $n$ y $k <
     n$, entonces $\t{k}{G} \cong \t{n-k}{G}$
 \end{lema}
 
-En virtud del Lema \ref{lem:isomorfismo}, dado que $S_n$ tiene orden $n+1$ para
+En virtud d\cref{lem:isomorfismo}, dado que $S_n$ tiene orden $n+1$ para
 cada $n$ entero positivo, entonces para cada $k$ en los enteros positivos basta
 analizar las gr\'aficas $S_n$ con $n\geq 2k-1$, pues si $n<2k-1$, v\'ease que
-    $$2\c{\p{n+1}-k}-1 = 2n - (2k-1),$$ y como $n<2k-1$, entonces
-    $$2\c{\p{n+1}-k}-1 < 2n - n = n,$$ por lo que en este caso, si
-$r=\p{n+1}-k$, se tiene que $n\geq 2r-1$, de manera que basta determinar
-$C\p{\t{r}{S_n}}$ pues $\t{k}{S_n}\cong\t{\p{n+1}-k}{S_n} = \t{r}{S_n}$.
-
+\[
+    2\c{\paren{n+1}-k}-1 = 2n - (2k-1),
+\]
+y como $n<2k-1$, entonces
+\[
+    2\c{\paren{n+1}-k}-1 < 2n - n = n,
+\]
+por lo que en este caso, si $r=\paren{n+1}-k$, se tiene que $n\geq 2r-1$, de
+manera que basta determinar $C\paren{\t{r}{S_n}}$ pues
+$\t{k}{S_n}\cong\t{\paren{n+1}-k}{S_n} = \t{r}{S_n}$.
 
 \begin{lema}
 \label{lem:desigualdad}
-    Para cualquier $k\geq 2$, $\ds\binom{2k-1}{k-1} > k\p{k-1}$.
+    Para cualquier $k\geq 2$, $\ds\binom{2k-1}{k-1} > k\paren{k-1}$.
 \end{lema}
+
 \begin{proof}
     Desarrollando de la formula del binomio,
     \begin{align*}
-        \binom{2k-1}{k-1} - k\p{k-1} &= \frac{\p{2k-1}!}{\p{k-1}!\p{2k-1-\p{k-1}}!} - k\p{k-1} \\
-        &= \frac{\p{2k-1}!}{\p{k-1}!\p{k}!} - k\p{k-1} \\
-        &= \frac{\p{2k-1}\cdots \p{k+1}}{\p{k-1}!} - \frac{k\p{k-1}\p{k-1}!}{\p{k-1}!} \\
-        &= \frac{\p{2k-1}\cdots \p{k+1} - k\p{k-1}\p{k-1}!}{\p{k-1}!}.
+           \binom{2k-1}{k-1} - k\paren{k-1}
+        &= \frac{\paren{2k-1}!}{\paren{k-1}!\paren{2k-1-\paren{k-1}}!} -
+           k\paren{k-1} \\
+        &= \frac{\paren{2k-1}!}{\paren{k-1}!\paren{k}!} - k\paren{k-1} \\
+        &= \frac{\paren{2k-1}\cdots \paren{k+1}}{\paren{k-1}!} - \frac{k
+           \paren{k-1}\paren{k-1}!}{\paren{k-1}!} \\
+        &= \frac{\paren{2k-1}\cdots \paren{k+1} - k\paren{k-1}
+           \paren{k-1}!}{\paren{k-1}!}.
     \end{align*}
 
     Por tanto, es suficiente demostrar que el numerador de la \'ultima igualdad
     es mayor que cero. As\'i pues, v\'ease que
-        $$k\p{k-1}\p{k-1}! = \p{2k-2}\cdot \underbrace{\p{k \cdot \p{k-1}\cdots
-    4 \cdot 3}}_{k-2 \text{ t\'erminos}}.$$ Luego, como $k\geq 2$ se tiene que
-    $k+r \geq 2+r$ para cualquier $r\in\n$, de manera que los \'ultimos $k-2$
-    t\'erminos de la expresi\'on 
-        $$\p{2k-1}\cdots \p{k+1}$$ son mayores o iguales a los \'ultimos $k-2$
-    t\'erminos de $k\p{k-1}\p{k-1}!$. M\'as a\'un, $2k-1 > 2k-2$, de modo que
-        $$\p{2k-1}\cdots \p{k+1} > k\p{k-1}\p{k-1},$$ concluyendo as\'i que
-        $$\binom{2k-1}{k-1} - k\p{k-1} > 0.$$
+    \[
+        k\paren{k-1}\paren{k-1}! = \paren{2k-2}\cdot \underbrace{\paren{k \cdot
+        \paren{k-1}\cdots 4 \cdot 3}}_{k-2 \text{ t\'erminos}}.
+    \]
+    Luego, como $k\geq 2$ se tiene que $k+r \geq 2+r$ para cualquier $r\in\n$,
+    de manera que los \'ultimos $k-2$ t\'erminos de la expresi\'on 
+    \[
+        \paren{2k-1}\cdots \paren{k+1}
+    \]
+    son mayores o iguales a los \'ultimos $k-2$ t\'erminos de
+    $k\paren{k-1}\paren{k-1}!$. M\'as a\'un, $2k-1 > 2k-2$, de modo que
+    \[
+        \paren{2k-1}\cdots \paren{k+1} > k\paren{k-1}\paren{k-1},
+    \]
+    concluyendo as\'i que
+    \[
+        \binom{2k-1}{k-1} - k\paren{k-1} > 0.
+    \]
 \end{proof}
 
 \begin{teorema}
 \label{teo:cota_estrella}
-    Para $k\geq 2$ y $n\geq 2k-1$, $c\p{\t{k}{S_n}} \geq k$.
+    Para $k\geq 2$ y $n\geq 2k-1$, $c\paren{\t{k}{S_n}} \geq k$.
 \end{teorema}
 
 % Definiciones necesarias: estrategia de escape, configuración inicial,
@@ -60,15 +82,15 @@ $C\p{\t{r}{S_n}}$ pues $\t{k}{S_n}\cong\t{\p{n+1}-k}{S_n} = \t{r}{S_n}$.
     los $k-1$ polic\'ias, el ladr\'on siempre puede escoger v\'ertices para
     posicionar sus fichas de manera que ning\'un polic\'ia le captura $k-1$
     fichas en las hojas. En efecto, n\'otese que el n\'umero de
-    $\p{k-1}-$conjuntos formados \'unicamente por hojas de $S_{2k-1}$ es
+    $\paren{k-1}$-conjuntos formados \'unicamente por hojas de $S_{2k-1}$ es
     $\binom{2k-1}{k-1}$. Por otra parte, si un polic\'ia coloca sus $k$ fichas
-    sobre las hojas, este domina $\binom{k}{k-1}$ de estos $\p{k-1}-$conjuntos.
-    En este orden de ideas, los $k-1$ polic\'ias pueden dominar en su totalidad
-    $k\p{k-1}$ de los $\p{k-1}-$conjuntos formados por hojas, de manera que, por
-    \cref{lem:desigualdad}, el ladr\'on siempre puede escoger una
-    configuraci\'on de $k-1$ hojas que no est\'e dominada en su totalidad por un
-    polic\'ia, escogiendo el v\'ertice $0$ para posicionar su \'ultima ficha y
-    sobreviviendo su primer turno. 
+    sobre las hojas, este domina $\binom{k}{k-1}$ de estos
+    $\paren{k-1}$-conjuntos. En este orden de ideas, los $k-1$ polic\'ias pueden
+    dominar en su totalidad $k\paren{k-1}$ de los $\paren{k-1}$-conjuntos
+    formados por hojas, de manera que, por \cref{lem:desigualdad}, el ladr\'on
+    siempre puede escoger una configuraci\'on de $k-1$ hojas que no est\'e
+    dominada en su totalidad por un polic\'ia, escogiendo el v\'ertice $0$ para
+    posicionar su \'ultima ficha y sobreviviendo su primer turno. 
 
     \begin{figure}[h]
         \centering
@@ -105,25 +127,25 @@ $C\p{\t{r}{S_n}}$ pues $\t{k}{S_n}\cong\t{\p{n+1}-k}{S_n} = \t{r}{S_n}$.
     Sea $m$ el n\'umero de polic\'ias que capturan $k-1$ y sup\'ongase sin
     p\'erdida de generalidad que $c_{1},\dots, c_{m}$ son los polic\'ias que han
     capturado las $k-1$ fichas de $r$ en las hojas. Dado que cada $c_{i}$ pas\'o
-    de no estar capturando a capturar las $k-1$ fichas de $r$ en hojas, entonces
+    de no estar capturando a capturar las $k-1$ fichas de $R$ en hojas, entonces
     necesariamente en esta nueva instancia dichos polic\'ias no tienen una ficha
     en $0$ (pues una de sus fichas se movi\'o de ah\'i para capturar la hoja que
-    les faltaba, respectivamente). As\'i, por cada uno de estos polic\'ias, $r$
+    les faltaba, respectivamente). As\'i, por cada uno de estos polic\'ias, $R$
     tiene una hoja menos a la cual puede mover su ficha en $0$, pues perder\'ia
     el juego inmediatamente. De este modo, en el peor de los casos, hay $m+k-1$
     hojas no disponibles de las $2k-1$, donde las $k-1$ corresponden a las hojas
-    en las que $r$ ya tiene una ficha.
+    en las que $R$ ya tiene una ficha.
 
    Luego, el resto de hojas disponibles pueden estar ocupadas por alguna ficha
    de  $c_{{m+1}},\dots,c_{{k-1}}$, quienes al final de su turno no estaban
-   capturando las $k-1$ fichas en hojas de $r$. Si alguno de estos polic\'ias
+   capturando las $k-1$ fichas en hojas de $R$. Si alguno de estos polic\'ias
    tiene una de sus fichas en $0$ y est\'a capturando $k-2$ de las $k-1$ fichas
-   en hojas de $r$, entonces el ladr\'on tiene una hoja menos a la cual puede
+   en hojas de $R$, entonces el ladr\'on tiene una hoja menos a la cual puede
    moverse, pues de hacerlo, este provocar\'ia que tal polic\'ia le capture
    $k-1$ fichas en hojas y bastar\'ia con mover su ficha en $0$ a la hoja que le
    falta capturar. Nuevamente el peor de los casos implicar\'ia que hay otras
-   $k-1-m$ hojas no disponibles para $r$ (una correspondiente a cada $c_i$ con
-   $i>m$). As\'i, $r$ tiene a lo m\'as $m+k-1+k-1-m=2k-2$ hojas no disponibles
+   $k-1-m$ hojas no disponibles para $R$ (una correspondiente a cada $c_i$ con
+   $i>m$). As\'i, $R$ tiene a lo m\'as $m+k-1+k-1-m=2k-2$ hojas no disponibles
    de las $2k-1$, por lo que este siempre tendr\'a al menos una hoja a la cual
    se puede mover de manera que no incremente la cantidad de polic\'ias que se
    encuentran capturando $k-1$ fichas en sus hojas.
@@ -137,23 +159,24 @@ $C\p{\t{r}{S_n}}$ pues $\t{k}{S_n}\cong\t{\p{n+1}-k}{S_n} = \t{r}{S_n}$.
     disminuya) y haya que realizar un reetiquetado de los polic\'ias para
     identificar qui\'enes de estos son los m\'as cercanos a capturar. M\'as
     a\'un, en caso de que $m$ aumente, cada polic\'ia que se encuentran
-    capturando $k-1$ fichas de $r$ en las hojas no tiene una ficha en $0$, pues
-    debi\'o haber usado esa para capturar, asegurando que $r$ puede sobrevivir
+    capturando $k-1$ fichas de $R$ en las hojas no tiene una ficha en $0$, pues
+    debi\'o haber usado esa para capturar, asegurando que $R$ puede sobrevivir
     un turno m\'as.
 
     En el peor caso, los polic\'ias $c_1,\dots, c_m$ mueven su ficha que no
-    est\'a capturando a $0$. Se afirma entonces que $r$ tiene una ficha que
+    est\'a capturando a $0$. Se afirma entonces que $R$ tiene una ficha que
     est\'a siendo simult\'aneamente capturada por cada $c_{i}$ con $i\in
     \seg{1}{m}$. En efecto, al ser $k-1$ polic\'ias y al estar capturando $k-1$
     fichas de las $k$ del ladr\'on, en el peor caso se tiene que a cada
     polic\'ia le falta una ficha distinta por capturar, de manera que, sin
     p\'erdida de generalidad, a $c_{i}$ le falta capturar la ficha $r_i$.
     Finalmente, como $m\leq k-1$, entonces al menos cada $c_{i}$ siempre
-    estar\'a capturando la ficha $r_k$, de manera que $r$ procede a mover a la
-    ficha $r_k$ a $0$. De este modo, $r$ vuelve a la situaci\'on inicial en la
+    estar\'a capturando la ficha $r_k$, de manera que $R$ procede a mover a la
+    ficha $r_k$ a $0$. De este modo, $R$ vuelve a la situaci\'on inicial en la
     que ning\'un polic\'ia le est\'e capturando $k-1$ fichas en las hojas, por
     lo que el ladr\'on puede iterar este algoritmo para nunca ser capturado por
-    ning\'un polic\'ia. Se concluye entonces que $c\p{\t{k}{S_{2k-1}}}$.
+    alg\'un polic\'ia. Se concluye entonces que $c\paren{\t{k}{S_{2k-1}}} \ge
+    k$.
     
 \end{proof}
 
@@ -161,38 +184,39 @@ $C\p{\t{r}{S_n}}$ pues $\t{k}{S_n}\cong\t{\p{n+1}-k}{S_n} = \t{r}{S_n}$.
 %fichas de c, [r(i)]=el conjunto de fichas de r. Revisar cómo llamar a los
 %vértices en los que se encuentra una ficha en dicho momento.
 Dado este resultado, nuestra nueva meta es determinar con exactitud el n\'umero
-polici\'aco para las gr\'aficas de fichas de las estrellas. En las
+polic\'iaco para las gr\'aficas de fichas de las estrellas. En las
 demostraciones que siguen se utilizar\'a recurrentemente la estrategia descrita
 a continuaci\'on. Consid\'erese una instancia del juego de polic\'ias y ladrones
-sobre la gr\'afica de $k$ fichas de una \'arbol $T$. Dado $c$ un polic\'ia,
-sup\'ongase que existe una funci\'on objetivo, $t:\c{c(i)}\to \c{r(i)}$, tal que
-$c(i)\mapsto r(i)$ para cada $i\in\seg{1}{k}$; llamamos a $r(i)$ el
+sobre la gr\'afica de $k$ fichas de un \'arbol $T$. Dado $c$ un polic\'ia,
+sup\'ongase que existe una funci\'on objetivo, $t \colon \c{c(i)}\to \c{r(i)}$,
+tal que $c(i)\mapsto r(i)$ para cada $i\in\seg{1}{k}$; llamamos a $r(i)$ el
 \textit{objetivo} de $c(i)$. Se dice que una ficha $c(i)$ est\'a
-\textbf{obstruida} si no se encuentra capturando a su objetivo (i.e. $c(i)$ y
+\textbf{obstruida} si no se encuentra capturando a su objetivo (i.e., $c(i)$ y
 $r(i)$ est\'an en distintos v\'ertices de $T$) y existe $c(j)$ adyacente a
-$c(i)$ en \'esta instancia tal que el v\'ertice en el que se encuentra $c(j)$
+$c(i)$ en esta instancia tal que el v\'ertice en el que se encuentra $c(j)$
 est\'a en la \'unica $c(i)r(i)$-trayectoria dirigida en $T$.
 
 \begin{teorema}
 \label{teo:numero-de-policia-estrella}
-    Para $k\geq 2$ y $n\geq 2k-1$, $c\p{\t{k}{S_{n}}}=k$.
+    Para $k\geq 2$ y $n\geq 2k-1$, $c\paren{\t{k}{S_{n}}}=k$.
 \end{teorema}
 
 \begin{proof}
     Sean $C_1,\dots, C_k$ los $k$ polic\'ias. N\'otese que, al haber
-    $\binom{k}{k-1}=k$ posibles $\p{k-1}$-conjuntos de $\p{C_1,\dots, C_k}$, es
-    posible biyectar dichos $\p{k-1}$-conjuntos con las $k$ fichas de $R$. M\'as
-    a\'un, dado que cada polic\'ia tiene $k$ fichas, es posible que a cada uno
-    de estos $\p{k-1}$-conjuntos se les asignen, sin repetir, $k-1$ fichas, una
-    por cada $C_i$ que aparezca en tal conjunto. En este sentido, a cada ficha
-    de $R$, $R_i$, se le puede asociar un conjunto de $k-1$ fichas de polic\'ias
-    distintos, $\overline{C_i}=\l{C_1,\dots,C_k}\setminus\l{C_i}$. De este modo,
-    como cada $C_i$ aparece en todos los $\overline{C_j}$ salvo para el $j=i$,
-    entonces posterior a la asignaci\'on existe exactamente una ficha por cada
-    polic\'ia a la que no se le asoci\'o ninguna ficha de $R$. En la estrategia
-    descrita a continuaci\'on, cada polic\'ia $C_i$ ignora a $R_i$ y se dedica a
-    mover sus fichas para capturar a los $R_j$ con $j\neq i$, mientras que una
-    de sus fichas se etiquetar\'a como libre y no se mover\'a hasta que cada
+    $\binom{k}{k-1}=k$ posibles $\paren{k-1}$-conjuntos de $\paren{C_1,\dots,
+    C_k}$, es posible biyectar dichos $\paren{k-1}$-conjuntos con las $k$ fichas
+    de $R$. M\'as a\'un, dado que cada polic\'ia tiene $k$ fichas, es posible
+    que a cada uno de estos $\paren{k-1}$-conjuntos se les asignen, sin repetir,
+    $k-1$ fichas, una por cada $C_i$ que aparezca en tal conjunto. En este
+    sentido, a cada ficha de $R$, $R_i$, se le puede asociar un conjunto de
+    $k-1$ fichas de polic\'ias distintos,
+    $\overline{C_i}=\l{C_1,\dots,C_k}\setminus\l{C_i}$. De este modo, como cada
+    $C_i$ aparece en todos los $\overline{C_j}$ salvo para el $j=i$, entonces
+    posterior a la asignaci\'on existe exactamente una ficha por cada polic\'ia
+    a la que no se le asoci\'o ninguna ficha de $R$. En la estrategia descrita a
+    continuaci\'on, cada polic\'ia $C_i$ ignora a $R_i$ y se dedica a mover sus
+    fichas para capturar a los $R_j$ con $j\neq i$, mientras que una de sus
+    fichas se etiquetar\'a como libre y no se mover\'a hasta que cada
     $\overline{C_j}$ est\'e capturando a $R_j$ (esto es, cada polic\'ia distinto
     de $C_j$ est\'a capturando a la ficha $R_j$).
 
@@ -241,7 +265,7 @@ est\'a en la \'unica $c(i)r(i)$-trayectoria dirigida en $T$.
     generalidad que es $R_2$. En este momento, en $0$ a lo mucho se encuentra
     una ficha del polic\'ia $C_1$ (en camino a capturar alg\'un $R_j$ con $j\neq
     1$), por lo que cada polic\'ia en $\overline{C_2}$ (salvo quiz\'as $C_1$)
-    procede a mover a $0$ su ficha asignada para el $\p{k-1}$-conjunto
+    procede a mover a $0$ su ficha asignada para el $\paren{k-1}$-conjunto
     $\overline{C_2}$ (v\'ease que si $C_1$ ya ten\'ia una ficha en $0$ y esta no
     era la asignada al conjunto $\overline{C_2}$, entonces simplemente esta
     ficha y la asignada a capturar $R_2$ intercambian objetivos). As\'i, $C_2$
@@ -274,7 +298,7 @@ est\'a en la \'unica $c(i)r(i)$-trayectoria dirigida en $T$.
         \begin{enumerate}[(a)]
             \item $R$ tiene una ficha en $0$, $R_i$, entonces $C_i$ es tal que
             este no tiene una ficha capturando a $R_i$. Como este es el \'unico
-            $\p{k-1}$-conjunto que no tiene a $C_i$, se tiene que dicho
+            $\paren{k-1}$-conjunto que no tiene a $C_i$, se tiene que dicho
             polic\'ia est\'a capturando las dem\'as $k-1$ fichas de $R$ en
             hojas. M\'as a\'un, la ficha libre de $C_i$ se encuentra en una
             hoja, por lo que basta con mover su ficha libre a $0$ para capturar
@@ -314,7 +338,7 @@ est\'a en la \'unica $c(i)r(i)$-trayectoria dirigida en $T$.
             2(a).
         \end{enumerate}
     \end{enumerate}
-    Se concluye pues que $C\p{F_k\p{S_n}}=k$ para todo $k\geq 2$ y $n\geq 2k-1$.
+    Se concluye pues que $C\paren{F_k\paren{S_n}}=k$ para todo $k\geq 2$ y $n\geq 2k-1$.
     
     
 \end{proof}
@@ -331,21 +355,21 @@ este preliminar es posible enunciar el siguiente resultado.
 
 \begin{teorema}
 \label{teo:numero-de-policia-estrella-subdivisiones}
-    $C\p{F_k\p{S_{n,m}}}=C\p{F_k\p{S_{n,0}}}=k$ para toda $k\geq 2$, $n\geq
+    $C\paren{F_k\paren{S_{n,m}}}=C\paren{F_k\paren{S_{n,0}}}=k$ para toda $k\geq 2$, $n\geq
     2k-1$ y $m\geq 0$.
 \end{teorema}
 \begin{proof}
     N\'otese primero que en  el ladr\'on puede escoger jugar \'unicamente sobre
     los v\'ertices del $S_n$ original, de manera que, tal como se demostr\'o en
-    un resultado anterior, se tiene que $C\p{F_k\p{S_{n,m}}}\geq k$.
+    un resultado anterior, se tiene que $C\paren{F_k\paren{S_{n,m}}}\geq k$.
 
-    M\'as a\'un, se afirma que $C\p{F_k\p{S_{n,m}}}=k$. En efecto, consid\'erese
+    M\'as a\'un, se afirma que $C\paren{F_k\paren{S_{n,m}}}=k$. En efecto, consid\'erese
     sin p\'erdida de generalidad que los $k$ polic\'ias, $C_1,\dots, C_k$
     comienzan con la misma configuraci\'on inicial dada en el teorema anterior,
     esto es, todas sus fichas se encuentran en ramas del $S_n$ inducido de
     $S_{n,m}$ (i.e. en v\'ertices de la forma $i$) salvo una de cada polic\'ia,
     las cuales comienzan en $0$. La estrategia de captura ahora se divide en dos
-    fases: la captura de sombras sobre el $S_n$ inducido con $\p{k-1}$-conjuntos
+    fases: la captura de sombras sobre el $S_n$ inducido con $\paren{k-1}$-conjuntos
     $\overline{C_i}$, y la captura completa del ladr\'on sobre las ramas de
     $S_{n,m}$.
 
@@ -362,7 +386,7 @@ este preliminar es posible enunciar el siguiente resultado.
             son tales que $i\neq j$. En esta situaci\'on las sombras de las
             fichas de $R$ juegan sobre el mismo $S_n$ y nunca se traslapan sobre
             un mismo $i$, de modo que las fichas de los polic\'ias pueden
-            capturarlas con los $\p{k-1}$-conjuntos de la misma manera en la que
+            capturarlas con los $\paren{k-1}$-conjuntos de la misma manera en la que
             capturaban para el caso $m=0$.
             
             Una vez hecho esto, se puede ver que los polic\'ias logran capturar
@@ -370,7 +394,7 @@ este preliminar es posible enunciar el siguiente resultado.
             mueve una ficha $R_i$ que a\'un no est\'a capturada por
             $\overline{C_i}$, entonces $R$ tuvo que haber movido una ficha sobre
             el interior de una de las ramas, i.e. en un v\'ertice $j_r$ con
-            $r\neq 0$, pues todos los $\p{k-1}$-conjuntos se encuentran o en un
+            $r\neq 0$, pues todos los $\paren{k-1}$-conjuntos se encuentran o en un
             $i_0$ o en $0$. En este caso, o la ficha se acerc\'o a
             $\overline{C_i}$ o se alej\'o de este, lo cual puede ser
             contrarrestado al hacer que $\overline{C_i}$ lo persiga, manteniendo
@@ -412,7 +436,7 @@ este preliminar es posible enunciar el siguiente resultado.
             Se ver\'a que esto no representa un problema pues, a\'un cuando se
             est\'an separando las fichas que conforman el $\overline{C_i}$, tan
             pronto como sea posible cada una de estas se ir\'a integrando a la
-            respectiva rama para reagrupar el $\p{k-1}$-conjunto en tanto $R_i$
+            respectiva rama para reagrupar el $\paren{k-1}$-conjunto en tanto $R_i$
             no salga de ah\'i. Esto se debe a que si en su siguiente turno $R$
             mueve a la ficha $R_s$, esta se pudo haber movido sobre el interior
             de una rama o lleg\'o a $0$ (pues en el turno anterior $R_i$ pas\'o
@@ -435,7 +459,7 @@ este preliminar es posible enunciar el siguiente resultado.
             
             De esta manera se evidencia que en un cierto n\'umero de turnos, los
             polic\'ias incrementan la cantidad de fichas del ladr\'on capturadas
-            por sus respectivos $\p{k-1}$-conjuntos, por lo que eventualmente
+            por sus respectivos $\paren{k-1}$-conjuntos, por lo que eventualmente
             cada $R_i$ es capturada por el $\overline{C_i}$ correspondiente.
 
             \item $R$ juega en alg\'un momento de la partida con sus fichas
@@ -443,7 +467,7 @@ este preliminar es posible enunciar el siguiente resultado.
             jugar en $S_n$ con estrictamente menos de $k$ fichas del ladr\'on,
             pues las sombras de al menos dos de sus fichas se traslapar\'ian
             sobre un mismo $i$. En tanto esta sea la situaci\'on, los polic\'ias
-            solo se limitan a hacer una captura con $\p{k-1}$-conjuntos en los
+            solo se limitan a hacer una captura con $\paren{k-1}$-conjuntos en los
             $i$'s donde haya al menos una ficha en dicha rama, hasta que capture
             a todas de este tipo, lo cual se consigue siguiendo la misma
             estrategia para el caso anterior.
@@ -460,36 +484,36 @@ este preliminar es posible enunciar el siguiente resultado.
             se mantiene igual.
 
             Una vez conseguido esto, se afirma que $R$ en alg\'un momento
-            termina con todas su fichas capturadas por los $\p{k-1}$-conjuntos
+            termina con todas su fichas capturadas por los $\paren{k-1}$-conjuntos
             asignados. En efecto, si $R_i$ y $R_j$ se encuentran sobre una misma
             rama (con $i\neq j$) y $R_i$ en alg\'un momento llega a $0$ entonces
-            los polic\'ias proceden a capturar $R_i$ con su $\p{k-1}$-conjunto,
+            los polic\'ias proceden a capturar $R_i$ con su $\paren{k-1}$-conjunto,
             $\overline{C_i}$, lo cual pueden pues, al estar $R_i$ m\'as cerca
-            del v\'ertice $0$ que $R_j$, entonces el $\p{k-1}$-conjunto que
+            del v\'ertice $0$ que $R_j$, entonces el $\paren{k-1}$-conjunto que
             est\'a cubriendo esa rama es justo $\overline{C_j}$. Adem\'as, los
             polic\'ias siempre tendr\'an fichas suficientes en los v\'ertices
-            $i_0$ para formar estos $\p{k-1}$-conjuntos hasta que hayan
+            $i_0$ para formar estos $\paren{k-1}$-conjuntos hasta que hayan
             capturado a cada una de las fichas de $R$ con su respectivo
-            $\p{k-1}$-conjuntos.
+            $\paren{k-1}$-conjuntos.
             
             Obs\'ervese adem\'as que si $R$ ya nunca mueve a sus fichas sobre
             una misma rama hacia afuera, entonces es posible ir metiendo los
-            $\p{k-1}$-conjuntos a las ramas, uno por uno, de manera que
+            $\paren{k-1}$-conjuntos a las ramas, uno por uno, de manera que
             nuevamente se tendr\'ia que cada $\overline{C_i}$ capturar\'ia a su
             respectivo $R_i$
         \end{enumerate}
 
-        Dado que $R$ tiene todas sus fichas capturadas por $\p{k-1}$-conjuntos,
+        Dado que $R$ tiene todas sus fichas capturadas por $\paren{k-1}$-conjuntos,
         si alg\'un $R_i$ se mueve a $0$, entonces el polic\'ia $C_i$ termina por
         capturar con su ficha libre. As\'i, $R$ no puede llevar ninguna ficha a
         $0$. En este caso resta que los polic\'ias introduzcan a cada rama la
-        ficha del polic\'ia que falte en el $\p{k-1}$-conjunto de la ficha del
+        ficha del polic\'ia que falte en el $\paren{k-1}$-conjunto de la ficha del
         ladr\'on m\'as cercana a $0$ en cada rama con fichas de $R$. Esto
         asegura que $R$ no puede sacar ninguna de sus fichas de la ramas y, al
         tener las ramas un n\'umero finito de subdivisiones, entonces siempre
         sucede que por cada movimiento de una ficha $R_j$, $\overline{C_j}$ le
         recaptura y $C_j$ procede a avanzar sobre la rama en la que se encuentra
         $R_j$. Se sigue que $C$ siempre logra capturar a $R$ en su totalidad
-        sobre las ramas, probando que $C\p{F_k\p{S_{n,m}}}=k$.
+        sobre las ramas, probando que $C\paren{F_k\paren{S_{n,m}}}=k$.
         
         \end{proof}
