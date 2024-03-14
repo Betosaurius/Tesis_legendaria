@@ -104,7 +104,10 @@ $\t{k}{S_n}\cong\t{\paren{n+1}-k}{S_n} = \t{r}{S_n}$.
             [fill=LightSkyBlue] at ({360/5 * (\s - 1)}:2.5cm) {}; } \foreach \s
             in {1,...,5} { \draw [edge] (\s) to (0); }
         \end{tikzpicture}
-        \caption{Una posible elecci\'on de configuraci\'on inicial de $R$ para $k=3$. N\'otese que ninguno de los $k-1$ polic\'ias, cuyas posiciones de fichas est\'an representadas por los colores azul y rojo, est\'an capturando dos fichas de $R$ en las hojas.}
+        \caption{Una posible elecci\'on de configuraci\'on inicial de $R$ para
+        $k=3$. N\'otese que ninguno de los $k-1$ polic\'ias, cuyas posiciones de
+        fichas est\'an representadas por los colores azul y rojo, est\'an
+        capturando dos fichas de $R$ en las hojas.}
         \label{fig:Configuracion_inicial}
     \end{figure}
 
@@ -137,19 +140,19 @@ $\t{k}{S_n}\cong\t{\paren{n+1}-k}{S_n} = \t{r}{S_n}$.
     disponibles de las $2k-1$, donde las $k-1$ corresponden a las hojas en las
     que $R$ ya tiene una ficha.
 
-   Luego, el resto de hojas disponibles pueden estar ocupadas por alguna ficha
-   de  $c_{{m+1}},\dots,c_{{k-1}}$, quienes al final de su turno no estaban
-   capturando las $k-1$ fichas en hojas de $R$. Si alguno de estos polic\'ias
-   tiene una de sus fichas en $0$ y est\'a capturando $k-2$ de las $k-1$ fichas
-   en hojas de $R$, entonces el ladr\'on tiene una hoja menos a la cual puede
-   moverse, pues de hacerlo, este provocar\'ia que tal polic\'ia le capture
-   $k-1$ fichas en hojas y bastar\'ia con mover su ficha en $0$ a la hoja que le
-   falta capturar. Nuevamente el peor de los casos implicar\'ia que hay otras
-   $k-1-m$ hojas no disponibles para $R$ (una correspondiente a cada $c_i$ con
-   $i>m$). As\'i, $R$ tiene a lo m\'as $m+k-1+k-1-m=2k-2$ hojas no disponibles
-   de las $2k-1$, por lo que este siempre tendr\'a al menos una hoja a la cual
-   se puede mover de manera que no incremente la cantidad de polic\'ias que se
-   encuentran capturando $k-1$ fichas en sus hojas.
+    Luego, el resto de hojas disponibles pueden estar ocupadas por alguna ficha
+    de  $c_{{m+1}},\dots,c_{{k-1}}$, quienes al final de su turno no estaban
+    capturando las $k-1$ fichas en hojas de $R$. Si alguno de estos polic\'ias
+    tiene una de sus fichas en $0$ y est\'a capturando $k-2$ de las $k-1$ fichas
+    en hojas de $R$, entonces el ladr\'on tiene una hoja menos a la cual puede
+    moverse, pues de hacerlo, este provocar\'ia que tal polic\'ia le capture
+    $k-1$ fichas en hojas y bastar\'ia con mover su ficha en $0$ a la hoja que
+    le falta capturar. Nuevamente el peor de los casos implicar\'ia que hay
+    otras $k-1-m$ hojas no disponibles para $R$ (una correspondiente a cada
+    $c_i$ con $i>m$). As\'i, $R$ tiene a lo m\'as $m+k-1+k-1-m=2k-2$ hojas no
+    disponibles de las $2k-1$, por lo que este siempre tendr\'a al menos una
+    hoja a la cual se puede mover de manera que no incremente la cantidad de
+    polic\'ias que se encuentran capturando $k-1$ fichas en sus hojas.
 
     En el siguiente turno, si ninguno de los $c_{i}$ con $i\in\seg{1}{m}$ mueve
     su \'ultima ficha que no est\'a capturando a $0$, entonces $R$ pasa.
@@ -177,8 +180,7 @@ $\t{k}{S_n}\cong\t{\paren{n+1}-k}{S_n} = \t{r}{S_n}$.
     que ning\'un polic\'ia le est\'e capturando $k-1$ fichas en las hojas, por
     lo que el ladr\'on puede iterar este algoritmo para nunca ser capturado por
     alg\'un polic\'ia. Se concluye entonces que $c\paren{\t{k}{S_{2k-1}}} \ge
-    k$.
-    
+    k$.   
 \end{proof}
 
 %definir instancia de un juego de policías y ladrones y como se obtiene
@@ -186,18 +188,18 @@ $\t{k}{S_n}\cong\t{\paren{n+1}-k}{S_n} = \t{r}{S_n}$.
 %fichas de c, [r_k]=el conjunto de fichas de r. c_{i,j}(t) representa la
 %posición (vertice) de la j-ésima ficha del i-ésimo policía en el turno t.
 Dado este resultado, nuestra nueva meta es determinar con exactitud el n\'umero
-polic\'iaco para las gr\'aficas de fichas de las estrellas. En las
-demostraciones que siguen se utilizar\'a recurrentemente la estrategia descrita
-a continuaci\'on. Consid\'erese una instancia $I$ del juego de polic\'ias y
+policiaco para las gr\'aficas de fichas de las estrellas. En las demostraciones
+que siguen se utilizar\'a recurrentemente la estrategia descrita a
+continuaci\'on. Consid\'erese una instancia $I$ del juego de polic\'ias y
 ladrones sobre la gr\'afica de $k$ fichas de un \'arbol $T$. Dado $c$ un
 polic\'ia, sup\'ongase que existe una funci\'on objetivo, $o \colon \c{c_k}\to
 \c{r_k}$, tal que $c_i\mapsto r_i$ para cada $i\in\seg{1}{k}$; llamamos a $r_i$
 el \textit{objetivo} de $c_i$. Se dice que una ficha $c_i$ est\'a
 \textbf{obstruida} si no se encuentra capturando a su objetivo en el turno $t$
-(i.e., $c_i(t)\neq r_i(t)$) y existe $c_j$ tal que $c_j(t)$ es el primer
+(i.e., $c_i(t)\neq r_i(t)$) y existe $c_j$ tal que $c_j(t)$ es el segundo
 v\'ertice de la \'unica $c_i(t)r_i(t)$-trayectoria en $T$. En este caso se dice
-que $c_j$ es una obstrucci\'on de $c_i$ en la instancia $I(t)$ (ver
-\cref{fig:obstruccion}). Si adem\'as $c_i$ es una obstrucci\'on de $c_j$, se
+que $c_j$ es una obstrucci\'on para $c_i$ en la instancia $I(t)$ (ver
+\cref{fig:obstruccion}). Si adem\'as $c_i$ es una obstrucci\'on para $c_j$, se
 dice que $c_i$ y $c_j$ se obstruyen mutuamente.
 
 \begin{figure}[h]
@@ -218,7 +220,6 @@ $i$-\'esima ficha a $r_i$ sin antes remover $c_j$ del v\'ertice $c_j(t)$. As\'i,
 que la suma de las distancias de las fichas de $c$ a sus objetivos disminuye
 (cuando el polic\'ia $c$ a\'un no se encuentra capturando a $R$).
 
-\pagebreak
 %Mencionar que la suma de las distancias de las fichas a sus objetivos es mayor
 %o igual a la distancia de c a R en la gráfica de fichas. El lema reduce la suma
 %de distancias de fichas a sus objetivos, y la estrategia del teorema asegura
@@ -231,29 +232,34 @@ que la suma de las distancias de las fichas de $c$ a sus objetivos disminuye
       \SetKwFunction{New}{new}\SetKwFunction{End}{end}\SetKwFunction{Used}{used}
       \SetKwInOut{Input}{input}\SetKwInOut{Output}{output}
     
-      \KwIn{Un entero positivo $k$, un \'arbol $T$, una instancia $I(t)$ de un juego de un polic\'ias y
-      ladrones con $k$ fichas sobre un \'arbol $T$ y $c_j$ una obstrucci\'on
-      de $c_i$ en la instancia $I(t)$.}
-      \KwOut{Una instancia $I(t+1)$ obtenida legalmente de $I(t)$ tal que la suma
-      de las distancias de cada ficha de los polic\'ias a sus objetivos es
+      \KwIn{Un entero positivo $k$, un \'arbol $T$, una instancia $I(t)$ de un
+      juego de un polic\'ias y ladrones con $k$ fichas sobre un \'arbol $T$ y
+      $c_j$ una obstrucci\'on de $c_i$ en la instancia $I(t)$.} \KwOut{Una
+      instancia $I(t+1)$ obtenida legalmente de $I(t)$ tal que la suma de las
+      distancias de cada ficha de los polic\'ias a sus objetivos es
       estrictamente menor que en $I(t)$.}
       \BlankLine
       \If{$c_i$ y $c_j$ se obstruyen mutuamente}{
       define $I(t+1)$ como la instancia $I(t)$ con las etiquetas de $c_i$ y $c_j$ intercambiadas\;
       }\Else{
-            \If{$c_j(t)=r_i(t)$}{
+            \If{$c_j(t)=r_i(t)$ \label{line:c-sobre-r}}{
                 \If{$c_j$ est\'a obstruido por alg\'un $c_s$}{
-                    define $I(t+1)=$\textsc{Desobstrucci\'on}$(k,T,I(t),c_s,c_j)$\;
+                    define $I(t+1) = \textsc{Desobstrucci\'on}
+                    (k,T,I(t),c_s,c_j)$\;
                 }\Else{
-                    define $I(t+1)$ como la instancia $I(t)$ con la ficha $c_j$ en el segundo v\'ertice de la $c_j(t)r_j(t)$-trayectoria\;
+                    define $I(t+1)$ como la instancia $I(t)$ con la ficha $c_j$
+                    en el segundo v\'ertice de la $c_j(t)r_j(t)$-trayectoria\;
                 }
             }\Else{
-                redefine $I(t)$ como la instancia $I(t)$ con las etiquetas de $c_i$ y $c_j$
-                intercambiadas\;
+                redefine $I(t)$ como la instancia $I(t)$ con las etiquetas de
+                $c_i$ y $c_j$ intercambiadas\;
                 \If{$c_i$ est\'a obstruido por alg\'un $c_s$}{
-                    define $I(t+1)=$\textsc{Desobstrucci\'on}$(k,T,I(t),c_s,c_i)$\;
+                    define $I(t+1) = \textsc{Desobstrucci\'on}
+                    (k,T,I(t),c_s,c_i)$\; \label{line:llamada2}
                 }\Else{
-                    define $I(t+1)$ como la instancia $I(t)$ con la ficha $c_i$ en el segundo v\'ertice de la $c_i(t)r_i(t)$-trayectoria\;
+                    define $I(t+1)$ como la instancia $I(t)$ con la ficha $c_i$
+                    en el segundo v\'ertice de la $c_i(t)r_i(t)$-trayectoria\;
+                    \label{line:movimiento2}
                 }
             }
         }
@@ -263,7 +269,8 @@ que la suma de las distancias de las fichas de $c$ a sus objetivos disminuye
     \DecMargin{1em}
     \end{algorithm}
 
-En este orden de ideas, el siguiente lema demuestra la validez d\cref{alg:desob}.
+En este orden de ideas, el siguiente lema demuestra la validez
+d\cref{alg:desob}.
 
 \begin{lema}
 \label{lem:obstruccion}
@@ -279,15 +286,17 @@ En este orden de ideas, el siguiente lema demuestra la validez d\cref{alg:desob}
         fichas a sus respectivos objetivos se reduzca en $1$ y $c_i$ y $c_j$
         dejan de obstruirse una a la otra. 
     
-        \begin{figure}[ht]
-            \begin{tcbitemize}[raster columns=2,raster equal height, enhanced, colback=Black!5!white,colframe=Grey!75!black, raster every box/.style={minimum for current equal height group=2.5cm, valign=center, halign=center}, boxsep=0mm]
+        \begin{figure}[ht!]
+            \begin{tcbitemize}[raster columns=2,raster equal height, enhanced,
+                colback=Black!5!white,colframe=Grey!75!black, raster every
+                box/.style={minimum for current equal height group=2.5cm,
+                valign=center, halign=center}, boxsep=0mm]
                 \tcbitem 
-                \begin{tikzpicture}[every node/.style = {draw, circle, minimum
-                    size=1cm, line width=0.75pt, inner sep=0pt, outer sep=0pt}]
-                    \node (i) [fill=Crimson] {$c_i$};
-                    \node (j) [fill=Crimson, right=0.5cm of i] {$c_j$};
-                    \node (1) [right=1cm of j] {$r_i$};
-                    \node (2) [left=1cm of i] {$r_j$};
+                \begin{tikzpicture}
+                    \node (i) [bola,fill=Crimson] {$c_i$};
+                    \node (j) [bola,fill=Crimson, right=0.5cm of i] {$c_j$};
+                    \node (1) [bola,right=1cm of j] {$r_i$};
+                    \node (2) [bola,left=1cm of i] {$r_j$};
                     \draw[edge] (i) -- (j);
                     \draw[dashed,edge] (j) .. controls (2.25,1) and (2.75,-1) ..
                     (1);
@@ -297,10 +306,10 @@ En este orden de ideas, el siguiente lema demuestra la validez d\cref{alg:desob}
                 \tcbitem
                 \begin{tikzpicture}[every node/.style = {draw, circle, minimum
                     size=1cm, line width=0.75pt, inner sep=0pt, outer sep=0pt}]
-                    \node (i) [fill=Crimson] {$c_j$};
-                    \node (j) [fill=Crimson, right=0.5cm of i] {$c_i$};
-                    \node (1) [right=1cm of j] {$r_i$};
-                    \node (2) [left=1cm of i] {$r_j$};
+                    \node (i) [bola,fill=Crimson] {$c_j$};
+                    \node (j) [bola,fill=Crimson, right=0.5cm of i] {$c_i$};
+                    \node (1) [bola,right=1cm of j] {$r_i$};
+                    \node (2) [bola,left=1cm of i] {$r_j$};
                     \draw[edge] (i) -- (j);
                     \draw[dashed,edge] (j) .. controls (2.25,1) and (2.75,-1) ..
                     (1);
@@ -308,11 +317,14 @@ En este orden de ideas, el siguiente lema demuestra la validez d\cref{alg:desob}
                     .. (2);
                 \end{tikzpicture}
             \end{tcbitemize}
+            \caption{Si $c_i$ y $c_j$ se obstruyen mutuamente, entonces las
+            fichas de $c$ reciben un reetiquetado, de manera que todas conservan
+            sus objetivos salvo $c_i$ y $c_j$, que los intercambian.}
             \label{fig:obsmutua}
-            \caption{Si $c_i$ y $c_j$ se obstruyen mutuamente, entonces las fichas de $c$ reciben un reetiquetado, de manera que todas conservan sus objetivos salvo $c_i$ y $c_j$, que los intercambian.}
         \end{figure}
 
-        \item Si $c_i$ y $c_j$ no se obstruyen mutuamente, se generan dos subcasos:
+        \item Si $c_i$ y $c_j$ no se obstruyen mutuamente, se generan dos
+            subcasos:
         \begin{enumerate}
             \item Si $r_i(t)=c_j(t)$, entonces $c_j$ a\'un no se se encuentra
             capturando su respectivo $r_j$ y la $c_j(t)r_j(t)$-trayectoria, $P$,
@@ -324,64 +336,71 @@ En este orden de ideas, el siguiente lema demuestra la validez d\cref{alg:desob}
             contrario, el algoritmo se llama a s\'i mismo para resolver la nueva
             obstrucci\'on entre $c_j$ y $c_s$ (ver \cref{fig:obsad2}).
 
-            \begin{figure}[ht]
-                \begin{tcbitemize}[raster columns=2,raster equal height, enhanced, colback=Black!5!white,colframe=Grey!75!black, raster every box/.style={minimum for current equal height group=2.5cm, valign=center, halign=center}, boxsep=0mm]
+            \begin{figure}[ht!]
+                \begin{tcbitemize}[raster columns=2,raster equal height,
+                    enhanced, colback=Black!5!white,colframe=Grey!75!black,
+                    raster every box/.style={minimum for current equal height
+                    group=2.5cm, valign=center, halign=center}, boxsep=0mm]
                     \tcbitem 
-                    \begin{tikzpicture}[every node/.style = {draw, circle, minimum
-                        size=1cm, line width=0.75pt, inner sep=0pt, outer sep=0pt}]
-                        \node (i) [fill=Crimson] {$c_i$};
-                        \node (j) [fill=Crimson,right=0.5cm of i] {$c_j, r_i$};
-                        \node (1) [right=0.5cm of j] {};
-                        \node (2) [right=1.5cm of 1] {$r_j$};
+                    \begin{tikzpicture}
+                        \node (i) [bola,fill=Crimson] {$c_i$};
+                        \node (j) [bola,fill=Crimson,right=0.5cm of i] {$c_j,
+                        r_i$};
+                        \node (1) [bola,right=0.5cm of j] {};
+                        \node (2) [bola,right=1.5cm of 1] {$r_j$};
                         \draw[edge] (i) -- (j);
                         \draw[edge] (j) -- (1);
-                        \draw[dashed,edge] (1) .. controls (3.875,1) and (4.625,-1) ..
-                        (2);
+                        \draw[dashed,edge] (1) .. controls (3.875,1) and
+                        (4.625,-1) .. (2);
                     \end{tikzpicture}
                     \tcbitem
-                    \begin{tikzpicture}[every node/.style = {draw, circle, minimum
-                        size=1cm, line width=0.75pt, inner sep=0pt, outer sep=0pt}]
-                        \node (i) [fill=Crimson] {$c_i$};
-                        \node (j) [right=0.5cm of i] {$r_i$};
-                        \node (1) [fill=Crimson, right=0.5cm of j] {$c_j$};
-                        \node (2) [right=1.5cm of 1] {$r_j$};
+                    \begin{tikzpicture}
+                        \node (i) [bola,fill=Crimson] {$c_i$};
+                        \node (j) [bola,right=0.5cm of i] {$r_i$};
+                        \node (1) [bola,fill=Crimson, right=0.5cm of j] {$c_j$};
+                        \node (2) [bola,right=1.5cm of 1] {$r_j$};
                         \draw[edge] (i) -- (j);
                         \draw[edge] (j) -- (1);
-                        \draw[dashed,edge] (1) .. controls (3.875,1) and (4.625,-1) ..
-                        (2);
+                        \draw[dashed,edge] (1) .. controls (3.875,1) and
+                        (4.625,-1) .. (2);
                     \end{tikzpicture}
                 \end{tcbitemize}
+                \caption{Al no haber obstrucci\'on mutua entre $c_i$ y $c_j$,
+                $c_j$ debe avanzar (de ser posible) siguiendo la $c_j(t)r_j(t)
+                $-trayectoria.}
                 \label{fig:obsad1}
-                \caption{Al no haber obstrucci\'on mutua entre $c_i$ y $c_j$, $c_j$ debe avanzar (de ser posible) siguiendo la $c_j(t)r_j(t)$-trayectoria.}
             \end{figure}
 
-            \begin{figure}[ht]
-                \begin{tcbitemize}[raster columns=2,raster equal height, enhanced, colback=Black!5!white,colframe=Grey!75!black, raster every box/.style={minimum for current equal height group=2.5cm, valign=center, halign=center}, boxsep=0mm]
+            \begin{figure}[ht!]
+                \begin{tcbitemize}[raster columns=2,raster equal height,
+                    enhanced, colback=Black!5!white,colframe=Grey!75!black,
+                    raster every box/.style={minimum for current equal height
+                    group=2.5cm, valign=center, halign=center}, boxsep=0mm]
                     \tcbitem 
-                    \begin{tikzpicture}[every node/.style = {draw, circle, minimum
-                        size=1cm, line width=0.75pt, inner sep=0pt, outer sep=0pt}]
-                        \node (i) [fill=Crimson] {$c_i$};
-                        \node (j) [fill=Crimson,right=0.5cm of i] {$c_j, r_i$};
-                        \node (s) [fill=Crimson,right=0.5cm of j] {$c_s$};
-                        \node (2) [right=1.5cm of s] {$r_j$};
+                    \begin{tikzpicture}
+                        \node (i) [bola,fill=Crimson] {$c_i$};
+                        \node (j) [bola,fill=Crimson,right=0.5cm of i] {$c_j,
+                        r_i$};
+                        \node (s) [bola,fill=Crimson,right=0.5cm of j] {$c_s$};
+                        \node (2) [bola,right=1.5cm of s] {$r_j$};
                         \draw[edge] (i) -- (j);
                         \draw[edge] (j) -- (s);
-                        \draw[dashed,edge] (s) .. controls (3.875,1) and (4.625,-1) ..
-                        (2);
+                        \draw[dashed,edge] (s) .. controls (3.875,1) and
+                        (4.625,-1) .. (2);
                     \end{tikzpicture}
                     \tcbitem
-                    \begin{tikzpicture}[every node/.style = {draw, circle, minimum
-                        size=1cm, line width=0.75pt, inner sep=0pt, outer sep=0pt}]
-                        \node (j) [fill=Crimson] {$c_j$};
-                        \node (s) [fill=Crimson, right=0.5cm of j] {$c_s$};
-                        \node (2) [right=3cm of s] {$r_j$};
+                    \begin{tikzpicture}
+                        \node (j) [bola,fill=Crimson] {$c_j$};
+                        \node (s) [bola,fill=Crimson, right=0.5cm of j] {$c_s$};
+                        \node (2) [bola,right=3cm of s] {$r_j$};
                         \draw[edge] (j) -- (s);
-                        \draw[dashed,edge] (s) .. controls (2.75,1) and (4.25,-1) ..
-                        (2);
+                        \draw[dashed,edge] (s) .. controls (2.75,1) and
+                        (4.25,-1) .. (2);
                     \end{tikzpicture}
                 \end{tcbitemize}
+                \caption{Como $c_j$ est\'a obstruido, el algoritmo pasa a
+                enfocarse a resolver la obstrucci\'on para $c_j$, $c_s$.}
                 \label{fig:obsad2}
-                \caption{Como $c_j$ est\'a obstruido, el algoritmo pasa a enfocarse a resolver la obstrucci\'on de $c_j$, $c_s$.}
             \end{figure}
 
             \item Si $r_i(t)\neq c_j(t)$, $c_i$ y $c_j$ intercambian sus
@@ -395,76 +414,80 @@ En este orden de ideas, el siguiente lema demuestra la validez d\cref{alg:desob}
             unidad adicional. De lo contrario, el algoritmo se llama a s\'i
             mismo para resolver la nueva obstrucci\'on entre $c_i$ y $c_s$.
 
-            \begin{figure}[ht]
-                \begin{tcbitemize}[raster columns=2,raster equal height, enhanced, colback=Black!5!white,colframe=Grey!75!black, raster every box/.style={minimum for current equal height group=2.5cm, valign=center, halign=center}, boxsep=0mm]
+            \begin{figure}[ht!]
+                \begin{tcbitemize}[raster columns=2,raster equal height,
+                                   enhanced,
+                                   colback=Black!5!white,colframe=Grey!75!black,
+                                   raster every box/.style={minimum for current
+                                   equal height group=2.5cm, valign=center,
+                                   halign=center}, boxsep=0mm]
                     \tcbitem 
-                    \begin{tikzpicture}[every node/.style = {draw, circle, minimum
-                        size=1cm, line width=0.75pt, inner sep=0pt, outer sep=0pt}]
-                        \node (i) [fill=Crimson] {$c_i$};
-                        \node (j) [fill=Crimson, right=0.5cm of i] {$c_j$};
-                        \node (1) [right=1cm of j] {$r_i$};
-                        \node (2) [right=1cm of 1] {$r_j$};
+                    \begin{tikzpicture}
+                        \node (i) [bola,fill=Crimson] {$c_i$};
+                        \node (j) [bola,fill=Crimson, right=0.5cm of i] {$c_j$};
+                        \node (1) [bola,right=1cm of j] {$r_i$};
+                        \node (2) [bola,right=1cm of 1] {$r_j$};
                         \draw[edge] (i) -- (j);
-                        \draw[dashed,edge] (j) .. controls (2.25,1) and (2.75,-1) ..
-                        (1);
-                        \draw[dashed,edge] (1) .. controls (4.25,1) and (4.75,-1) ..
-                        (2);
+                        \draw[dashed,edge] (j) .. controls (2.25,1) and
+                        (2.75,-1) .. (1);
+                        \draw[dashed,edge] (1) .. controls (4.25,1) and
+                        (4.75,-1) .. (2);
                     \end{tikzpicture}
                     \tcbitem
-                    \begin{tikzpicture}[every node/.style = {draw, circle, minimum
-                        size=1cm, line width=0.75pt, inner sep=0pt, outer sep=0pt}]
-                        \node (i) [fill=Crimson] {$c_j$};
-                        \node (j) [fill=Crimson, right=0.5cm of i] {$c_i$};
-                        \node (1) [right=1cm of j] {$r_i$};
-                        \node (2) [right=1cm of 1] {$r_j$};
+                    \begin{tikzpicture}
+                        \node (i) [bola,fill=Crimson] {$c_j$};
+                        \node (j) [bola,fill=Crimson, right=0.5cm of i] {$c_i$};
+                        \node (1) [bola,right=1cm of j] {$r_i$};
+                        \node (2) [bola,right=1cm of 1] {$r_j$};
                         \draw[edge] (i) -- (j);
-                        \draw[dashed,edge] (j) .. controls (2.25,1) and (2.75,-1) ..
-                        (1);
-                        \draw[dashed,edge] (1) .. controls (4.25,1) and (4.75,-1) ..
-                        (2);
+                        \draw[dashed,edge] (j) .. controls (2.25,1) and
+                        (2.75,-1) .. (1);
+                        \draw[dashed,edge] (1) .. controls (4.25,1) and
+                        (4.75,-1) .. (2);
                     \end{tikzpicture}
                 \end{tcbitemize}
-                \label{fig:obsnoad1}
                 \caption{$c_i$ y $c_j$ intercambian sus etiquetas, de manera que
                 $c_i$ se acerca en uno a su objetivo, pero $c_j$ se aleja en uno
                 (not\'ando que lo mismo sucede si $r_j$ aparece antes de $r_i$
-                en la trayectoria). De aqu\'i el algoritmo decide qu\'e hacer
+                en la trayectoria). De aqu\'i, el algoritmo decide qu\'e hacer
                 con $c_i$ dependiendo de si esta se encuentra obstruida o no
                 siguiendo la estrategia mostrada en \cref{fig:obsad1} o en
                 \cref{fig:obsad2} (sustituyendo $c_j$ por $c_i$).}
+                \label{fig:obsnoad1}
             \end{figure}
         \end{enumerate}
     \end{enumerate}
 
     V\'ease que el algoritmo tiene una ejecucci\'on finita pues las llamadas
-        recursivas de la l\'inea $16$ generan nuevas instancias en las que $c_i$
-        recorre la $c_i(t)r_i(t)$-trayectoria inicial a trav\'es de
+        recursivas de la \cref{line:llamada2} generan nuevas instancias en las
+        que $c_i$ recorre la $c_i(t)r_i(t)$-trayectoria inicial a trav\'es de
         reetiquetados de fichas, de manera que en cada uno de esos pasos la suma
         de las distancias de las fichas a sus respectivos objetivos se mantiene
-        constante. Si en alguna de las recursiones sucede que $c_i$ deja de
-        estar obstruida, entonces esta podr\'a ejecutar la instrucci\'on de la
-        l\'inea $19$, reduciendo su distancia a $r_i$ en $1$ y, por tanto,
-        reduciendo la suma de distancias de las fichas del polic\'ia a sus
-        objetivos en $1$.
+        constante. Si en alguna de las llamadas recursivas sucede que $c_i$ deja
+        de estar obstruida, entonces esta podr\'a ejecutar la instrucci\'on de
+        la \cref{line:movimiento2}, reduciendo su distancia a $r_i$ en $1$ y,
+        por tanto, reduciendo la suma de distancias de las fichas del polic\'ia
+        a sus objetivos en $1$.
         
         De lo contrario, se tiene que $c_i$ llega a trav\'es de reetiquetados
-        hasta estar a distancia $1$ de $r_i$, por lo que o $c_i$ y $c_j$ se
+        hasta estar a distancia $1$ de $r_i$, por lo que, o $c_i$ y $c_j$ se
         obstruyen mutuamente, en cuyo caso ya se vio que la suma de las
         distancias de las fichas de los polic\'ias a sus objetivos se reduce en
         $2$, o no se obstruyen mutuamente, de manera que en la siguiente llamada
-        recursiva la ejecuci\'on entra al \textbf{if} de la l\'inea $5$.
+        recursiva la ejecuci\'on entra al \texttt{if} de la
+        \cref{line:c-sobre-r}.
         
         Al igual que en el caso anterior, si $c_j$ no est\'a obstruida, entonces
         esta puede avanzar al siguiente v\'ertice de la
         $c_j(t)r_j(t)$-trayectoria, reduciendo la distancia a su objetivo en $1$
-        y a su vez reduciendo la suma de distancias de las fichas del polic\'ia
-        a sus objetivos e $1$. Por otra parte, si $c_j$ est\'a obstruida,
-        entonces esta ficha toma el lugar de $c_i$ en el algoritmo, de manera
-        que la nueva meta es acercar a $c_j$ a su objetivo $r_j$, ya sea a
-        trav\'es de reetiquetados o avanzando la ficha una posici\'on sobre la
-        $c_j(t)r_j(t)$-trayectoria. Como en la \'ultima pasada recursiva no se
-        entr\'o al \textbf{if} de la primer instrucci\'on, la
-        $c_j(t)r_j(t)$-trayectoria no tiene a ning\'un v\'ertice de la
+        y, a su vez, reduciendo la suma de distancias de las fichas del
+        polic\'ia a sus objetivos en $1$. Por otra parte, si $c_j$ est\'a
+        obstruida, entonces esta ficha toma el lugar de $c_i$ en el algoritmo,
+        de manera que la nueva meta es acercar a $c_j$ a su objetivo $r_j$, ya
+        sea a trav\'es de reetiquetados o avanzando la ficha una posici\'on
+        sobre la $c_j(t)r_j(t)$-trayectoria. Como en la \'ultima pasada
+        recursiva no se entr\'o al \texttt{if} de la primera l\'inea, la
+        $c_j(t)r_j(t)$-trayectoria no tiene a v\'ertice alguno de la
         $c_i(t)r_i(t)$-trayectoria salvo $c_j(t)=r_i(t)$, por lo que el
         algoritmo no vuelve a encontrarse con obstrucciones que ya ha
         reetiquetado. Esto implica que existe un momento en el que el algoritmo
@@ -633,20 +656,19 @@ policiaco para las gr\'aficas de $k$ fichas de las estrellas.
 
 \section{Estrellas con subdivisiones}
 
-En busca de que el resultado anterior de informaci\'on acerca de una familia de
-gr\'aficas m\'as grande, se define para cada $m\in \n$, \textbf{la
-estrella de $n$ ramas con $m$ subdivisiones}, $S_{n,m}$, que consiste tomar la
-gr\'afica $S_n$ y subdividir cada una de sus aristas de manera que estas
-contengan $m+1$ v\'ertices cada una sin contar el v\'ertice $0$. V\'ease que
-para $m=0$, $S_{n,0}=S_n$. M\'as concisamente, si $n,m > 0$ se define
-$S_{n,m}=(V,E)$, donde
+En busca de que el resultado anterior d\'e informaci\'on acerca de una familia
+de gr\'aficas m\'as grande, se define para cada $m\in \n$, \textbf{la estrella
+de $n$ ramas con $m$ subdivisiones}, $S_{n,m}$, que consiste tomar la gr\'afica
+$S_n$ y subdividir cada una de sus aristas de manera que estas contengan $m+1$
+v\'ertices cada una, sin contar el v\'ertice $0$. V\'ease que para $m=0$,
+$S_{n,0}=S_n$. M\'as concisamente, si $n,m > 0$ se define $S_{n,m}=(V,E)$, donde
 \begin{align*}
     V &=\c{n}\cup\l{i_j: i\in\c{n}\setminus \l{0} , j\in \l{0,\dots, m}} \\
-    E &=\l{0i : i\in \c{n}\setminus\l{0}} \cup \l{i_ji_{j+1}:j\in\c{m}\setminus\l{m}},
+    E &=\l{0i : i\in \c{n}\setminus\l{0}} \cup \l{i_ji_{j+1} \colon j \in \c{m}
+    \setminus\l{m}},
 \end{align*}
-identificando $i_0=i$. Con este preliminar es posible enunciar el siguiente
-resultado. Con este preeliminar nos es posible enunciar una generalizaci\'on de
-\cref{teo:numero-de-policia-estrella}.
+identificando $i_0=i$. Con este preeliminar es posible enunciar una
+generalizaci\'on de \cref{teo:numero-de-policia-estrella}.
 
 \begin{teorema}
 \label{teo:numero-de-policia-estrella-subdivisiones}
