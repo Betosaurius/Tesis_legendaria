@@ -649,7 +649,7 @@ policiaco para las gr\'aficas de $k$ fichas de las estrellas.
             2(a).
         \end{enumerate}
     \end{enumerate}
-    Se concluye pues que $C\paren{F_k\paren{S_n}}=k$ para todo $k\geq 2$ y
+    Se concluye pues que $c\paren{F_k\paren{S_n}}=k$ para todo $k\geq 2$ y
     $n\geq 2k-1$.
     
 \end{proof}
@@ -667,8 +667,11 @@ $S_{n,0}=S_n$. M\'as concisamente, si $n,m > 0$ se define $S_{n,m}=(V,E)$, donde
     E &=\l{0i : i\in \c{n}\setminus\l{0}} \cup \l{i_ji_{j+1} \colon j \in \c{m}
     \setminus\l{m}},
 \end{align*}
-identificando $i_0=i$. Con este preeliminar es posible enunciar una
-generalizaci\'on de \cref{teo:numero-de-policia-estrella}.
+identificando $i_0=i$; a estos v\'ertices les llamaremos \textbf{v\'ertices
+soporte}. Con este preeliminar es posible enunciar una generalizaci\'on de
+\cref{teo:numero-de-policia-estrella}.
+
+%Definir sombra sobre estrella
 
 \begin{teorema}
 \label{teo:numero-de-policia-estrella-subdivisiones}
@@ -676,25 +679,31 @@ generalizaci\'on de \cref{teo:numero-de-policia-estrella}.
     $c\paren{\t{k}{S_{n,m}}}=c\paren{\t{k}{S_{n,0}}}=k$.
 \end{teorema}
 \begin{proof}
-    N\'otese primero que en  el ladr\'on puede escoger jugar \'unicamente sobre
-    los v\'ertices del $S_{n,0}$ inducido en $S_{n,m}$, de manera que, tal como
-    se demostr\'o en un resultado anterior, $c\paren{\t{k}{S_{n,m}}}\geq k$.
+    N\'otese primero que en  el ladr\'on puede escoger jugar
+    \'unicamente sobre los v\'ertices del $S_{n,0}$ inducido
+    en $S_{n,m}$, de manera que, tal como se demostr\'o en
+    \cref{teo:cota_estrella}, $c\paren{\t{k}{S_{n,m}}}\geq
+    k$.
 
     M\'as a\'un, se afirma que $c\paren{\t{k}{S_{n,m}}} = k$. En efecto,
     consid\'erese sin p\'erdida de generalidad que los $k$ polic\'ias,
-    $c_1,\dots, c_k$ comienzan con la misma configuraci\'on inicial dada en el
-    teorema anterior, esto es, todas sus fichas se encuentran en ramas del
-    $S_{n,0}$ inducido de $S_{n,m}$ (i.e., en v\'ertices de la forma $i$) salvo
-    una de cada polic\'ia, las cuales comienzan en $0$. La estrategia de captura
-    ahora se divide en dos fases: la captura de sombras sobre el $S_{n,0}$
-    inducido con $\paren{k-1}$-conjuntos $\overline{c_i}$, y la captura del
-    ladr\'on sobre las ramas de $S_{n,m}$.
+    $c_1,\dots, c_k$ comienzan con la misma configuraci\'on inicial dada en
+    \cref{teo:numero-de-policia-estrella}, esto es, todas sus fichas se
+    encuentran en ramas del $S_{n,0}$ inducido de $S_{n,m}$ (i.e., en v\'ertices
+    soporte) salvo una de cada polic\'ia, las cuales comienzan en $0$. La
+    estrategia de captura ahora se divide en dos fases: la captura de sombras
+    sobre el $S_{n,0}$ inducido con $\paren{k-1}$-conjuntos $\overline{c_i}$, y
+    la captura del ladr\'on sobre las ramas de $S_{n,m}$.
 
     En la primer fase las fichas de los polic\'ias se limitan a moverse sobre el
     $S_n$ inducido en $S_{n,m}$ con el objetivo de capturar no a una ficha de
-    $R$, sino de posicionarse sobre los v\'ertice $i$'s tales que haya al menos
-    una ficha de $R$ en alguno de los v\'ertices $i_j$'s. En esta situaci\'on se
-    pueden dar dos casos:
+    $R$, sino de posicionar los $\overline{c_i}$ sobre los v\'ertices soporte (o
+    sobre $0$) de manera que $\overline{c_i}$ se encuentre en el v\'ertice
+    soporte de la rama en la que se encuentra $r_i$ (o que $\overline{c_i}$
+    est\'e en $0$ si $r_i$ est\'a en $0$). Si en alg\'un momento $R$ introduce
+    una ficha $r_i$ a una rama en la que ya ten\'ia otra, $r_j$, y si $c_{s}$
+    tiene una ficha en ambos $\overline{c_j}$ y $\overline{c_i}$, puede ser que
+    $c_{s,j}$ sea una obstrucci\'on .
         \begin{enumerate}
             \item $R$ siempre juega con sus fichas sobre ramas distintas, i.e.
             para cada $r,s\in \seg{1}{k}$ distintos, si $R_r$ y $R_s$ est\'an
