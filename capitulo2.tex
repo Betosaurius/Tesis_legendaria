@@ -499,44 +499,49 @@ d\cref{alg:desob}.
 
 \end{proof}
 
-Con esta estrategia auxiliar estamos listos para determinar el n\'umero
-policiaco para las gr\'aficas de $k$ fichas de las estrellas.
+Finalmente, en aras de la demostraci\'on del teorema principal del cap\'itulo,
+introducimos la siguiente definici\'on junto con un lema auxiliar. Consid\'erese
+un juego de $k$ polic\'ias contra un ladr\'on en $\t{k}{S_{n}}$ y sean
+$c_1,\dots, c_k$ los $k$ polic\'ias. N\'otese que, al haber $\binom{k}{k-1}=k$
+posibles $\paren{k-1}$-conjuntos de $\paren{c_1,\dots, c_k}$, es posible
+biyectar dichos $\paren{k-1}$-conjuntos con las $k$ fichas de $R$. M\'as a\'un,
+dado que cada polic\'ia tiene $k$ fichas, es posible que a cada uno de estos
+$\paren{k-1}$-conjuntos se les asignen, sin repetir, $k-1$ fichas, una por cada
+$c_i$ que aparezca en tal conjunto. En este sentido, a cada ficha de $R$, $r_i$,
+se le puede asociar un conjunto de $k-1$ fichas de polic\'ias distintos,
+$\overline{c_i}=\l{c_{1,i},\dots,c_{k,i}}\setminus\l{c_{i,i}}$. De este modo,
+como cada $c_i$ tiene una ficha en todos los $\overline{c_j}$ salvo para el
+$j=i$, entonces existe exactamente una ficha por cada polic\'ia, $c_{i,i}$ a la
+que no se le asoci\'o ninguna ficha de $R$. As\'i, $c_{i,i}$ es la \textbf{ficha
+libre} del polic\'ia $c_i$. Obs\'ervese que esta asignaci\'on induce por cada
+polic\'ia una funci\'on objetivo dada por las etiquetas de las fichas de
+$c_i$ y $r_i$ (el objetivo de $c_{i,j}$ es $r_j$), la cual ser\'a utilizada
+cuando sea necesario resolver obstrucciones. En las siguientes demostraciones
+utilizaremos este etiquetado y asignaciones de objetivos.
 
-%Definir c_{i,j} es la j-esima ficha del i-esimo policia, perseguir.
+%Definir que una ficha de un policía capture a una ficha del ladrón.
 
-\begin{teorema}
-\label{teo:numero-de-policia-estrella}
-    Para $k\geq 2$ y $n\geq 2k-1$, $c\paren{\t{k}{S_{n}}}=k$.
-\end{teorema}
+Diremos que la $i$-\'esima ficha de $R$, $r_i$, est\'a \textbf{bajo asedio} en
+el turno $t$ si cada ficha de su $k-1$ conjunto asociado, $\overline{c_i}$,
+est\'a capturando la ficha $r_i$ (en el turno $t$), es decir, $c_{1,i}, \dots,
+c_{i-1,i}, c_{i+1,i}, \dots, c_{k,i}$ capturan a $r_i$. De forma similar,
+decimos que $R$ est\'a \textbf{bajo asedio} en el turno $t$ si cada una de sus
+fichas lo est\'a (en el mismo turno $t$).
+
+\begin{lema}
+\label{lem:Instancia_capturas}
+    Para $k\geq 2$ y $n\geq 2k-1$, si el ladr\'on juega de forma \'optima,
+    entonces $C$ logra poner a $R$ bajo asedio en un n\'umero finito de turnos.
+\end{lema}
 
 \begin{proof}
-    Sean $c_1,\dots, c_k$ los $k$ polic\'ias. N\'otese que, al haber
-    $\binom{k}{k-1}=k$ posibles $\paren{k-1}$-conjuntos de $\paren{c_1,\dots,
-    c_k}$, es posible biyectar dichos $\paren{k-1}$-conjuntos con las $k$ fichas
-    de $R$. M\'as a\'un, dado que cada polic\'ia tiene $k$ fichas, es posible
-    que a cada uno de estos $\paren{k-1}$-conjuntos se les asignen, sin repetir,
-    $k-1$ fichas, una por cada $c_i$ que aparezca en tal conjunto. En este
-    sentido, a cada ficha de $R$, $r_i$, se le puede asociar un conjunto de
-    $k-1$ fichas de polic\'ias distintos,
-    $\overline{c_i}=\l{c_{1,i},\dots,c_{k,i}}\setminus\l{c_{i,i}}$. De este
-    modo, como cada $c_i$ tiene una ficha en todos los $\overline{c_j}$ salvo
-    para el $j=i$, entonces posterior a la asignaci\'on existe exactamente una
-    ficha por cada polic\'ia a la que no se le asoci\'o ninguna ficha de $R$. En
-    la estrategia descrita a continuaci\'on, cada polic\'ia $c_i$ ignora a $r_i$
-    y se dedica a mover sus fichas para capturar a los $r_j$ con $j\neq i$,
-    mientras que una de sus fichas, $c_{i,i}$, se le llamar\'a libre y no se
-    mover\'a hasta que cada $\overline{c_j}$ est\'e capturando a $r_j$ (esto es,
-    cada polic\'ia distinto de $c_j$ est\'a capturando a la ficha $r_j$ con sus
-    $j$-\'esimas fichas). Obs\'ervese que esta asignaci\'on induce por cada
-    polic\'ia una funci\'on objetivo dada por las etiquetas de las fichas de
-    $c_i$ y $r_i$ (el objetivo de $c_{i,j}$ es $r_j$), la cual ser\'a utilizada
-    cuando sea necesario resolver obstrucciones.
-
-    Se afirma que es posible capturar cada $r_j$ con su correspondiente
-    $\overline{c_j}$. Se ver\'a que en cada turno los polic\'ias son capaces de
-    mantener el n\'umero de fichas del ladr\'on capturadas por un
-    $\overline{c_i}$, y que despu\'es de un cierto n\'umero de turnos pueden
-    aumentar la cantidad de fichas de $R$ capturadas por $\overline{c_i}$'s.
+    En la estrategia descrita a continuaci\'on, cada polic\'ia $c_i$ ignora a
+    $r_i$ y se dedica a mover sus fichas para capturar a los $r_j$ con $j\neq
+    i$, mientras que su ficha libre no se mover\'a. Se ver\'a que en cada turno
+    los polic\'ias son capaces de mantener el n\'umero de fichas del ladr\'on
+    capturadas por un $\overline{c_i}$, y que despu\'es de un cierto n\'umero de
+    turnos pueden aumentar la cantidad de fichas de $R$ capturadas por
+    $\overline{c_i}$'s.
 
     Para la primera afirmaci\'on, si $R$ mueve $r_i$ tal que ya est\'a capturada
     por su correspondiente $\overline{c_i}$, entonces estas fichas proceden a
@@ -604,9 +609,19 @@ policiaco para las gr\'aficas de $k$ fichas de las estrellas.
     recursivamente para evidenciar que en un n\'umero finito de pasos los
     polic\'ias siempre logran capturar con otro $\overline{c_i}$ a una nueva
     ficha de $R$ hasta que eventualmente logran capturar a todas de esta manera.
+\end{proof}
 
-    Una vez completadas las capturas con todos los $\overline{c_i}$ se tienen
-    los siguientes casos:
+%Definir c_{i,j} es la j-esima ficha del i-esimo policia, perseguir.
+
+\begin{teorema}
+\label{teo:numero-de-policia-estrella}
+    Para $k\geq 2$ y $n\geq 2k-1$, $c\paren{\t{k}{S_{n}}}=k$.
+\end{teorema}
+
+\begin{proof}
+    Por \cref{lem:Instancia_capturas}, podemos asumir sin p\'erdida de
+    generalidad que $R$ se encuentra bajo asedio. Se consideran los siguientes
+    casos:
     \begin{enumerate}
         \item Si es turno de $C$ y
         \begin{enumerate}[(a)]
@@ -649,9 +664,8 @@ policiaco para las gr\'aficas de $k$ fichas de las estrellas.
             2(a).
         \end{enumerate}
     \end{enumerate}
-    Se concluye pues que $c\paren{F_k\paren{S_n}}=k$ para todo $k\geq 2$ y
-    $n\geq 2k-1$.
-    
+    Se concluye pues que $c\paren{F_k\paren{S_n}}=k$.
+
 \end{proof}
 
 \section{Estrellas con subdivisiones}
