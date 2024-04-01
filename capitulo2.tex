@@ -512,12 +512,12 @@ se le puede asociar un conjunto de $k-1$ fichas de polic\'ias distintos,
 $\overline{c_i}=\l{c_{1,i},\dots,c_{k,i}}\setminus\l{c_{i,i}}$. De este modo,
 como cada $c_i$ tiene una ficha en todos los $\overline{c_j}$ salvo para el
 $j=i$, entonces existe exactamente una ficha por cada polic\'ia, $c_{i,i}$ a la
-que no se le asoci\'o ninguna ficha de $R$. As\'i, $c_{i,i}$ es la \textbf{ficha
-libre} del polic\'ia $c_i$. Obs\'ervese que esta asignaci\'on induce por cada
-polic\'ia una funci\'on objetivo dada por las etiquetas de las fichas de
-$c_i$ y $r_i$ (el objetivo de $c_{i,j}$ es $r_j$), la cual ser\'a utilizada
-cuando sea necesario resolver obstrucciones. En las siguientes demostraciones
-utilizaremos este etiquetado y asignaciones de objetivos.
+que no se le asoci\'o ficha alguna de $R$. As\'i, $c_{i,i}$ es la \textbf{ficha
+libre} del polic\'ia $c_i$. Obs\'ervese que esta asignaci\'on induce, por cada
+polic\'ia, una funci\'on objetivo dada por las etiquetas de las fichas de $c_i$
+y $r_i$ (el objetivo de $c_{i,j}$ es $r_j$), la cual ser\'a utilizada cuando sea
+necesario resolver obstrucciones. En las siguientes demostraciones utilizaremos
+este etiquetado y asignaciones de objetivos.
 
 %Definir que una ficha de un policía capture a una ficha del ladrón.
 
@@ -537,39 +537,41 @@ fichas lo est\'a (en el mismo turno $t$).
 \begin{proof}
     En la estrategia descrita a continuaci\'on, cada polic\'ia $c_i$ ignora a
     $r_i$ y se dedica a mover sus fichas para capturar a los $r_j$ con $j\neq
-    i$, mientras que su ficha libre no se mover\'a. Se ver\'a que en cada turno
-    los polic\'ias son capaces de mantener el n\'umero de fichas del ladr\'on
-    capturadas por un $\overline{c_i}$, y que despu\'es de un cierto n\'umero de
-    turnos pueden aumentar la cantidad de fichas de $R$ capturadas por
-    $\overline{c_i}$'s.
+    i$, mientras que su ficha libre no se mover\'a (salvo por aplicaciones
+    d\cref{alg:desob}) hasta que todas las dem\'as fichas de $c_i$ capturen a
+    sus objetivos. Se ver\'a que, en cada turno, $C$ puede mantener el n\'umero
+    de fichas del ladr\'on bajo asedio y, despu\'es de un cierto n\'umero de
+    turnos, puede aumentar la cantidad de fichas de $R$ bajo asedio.
 
-    Para la primera afirmaci\'on, si $R$ mueve $r_i$ tal que ya est\'a capturada
-    por su correspondiente $\overline{c_i}$, entonces estas fichas proceden a
-    perseguir al ladr\'on a donde sea que se mueva. Puede suceder que en la
-    nueva posici\'on de $r_i$ se encuentren algunas de las fichas (posiblemente
-    todas) de los polic\'ias que tienen una ficha en $\overline{c_i}$. En este
-    caso, solo las fichas que no esten obstruidas se mueven a la nueva
-    posici\'on de $r_i$, de manera que para el resto se ejecuta
-    \cref{alg:desob}, por lo que para cada polic\'ia sucede que la suma de las
-    distancias de sus fichas a sus objetivos se reduce y $\overline{c_i}$ vuelve
-    a capturar a $r_i$.
+    Para la primera afirmaci\'on, si $R$ mueve una ficha bajo asedio $r_i$,
+    entonces las fichas en $\overline{c_i}$ proceden a perseguir al ladr\'on a
+    donde sea que se mueva. Puede suceder que en la nueva posici\'on de $r_i$ se
+    encuentren algunas de las fichas (posiblemente todas) de los polic\'ias que
+    tienen una ficha en $\overline{c_i}$. En este caso, solo las fichas que no
+    esten obstruidas se mueven a la nueva posici\'on de $r_i$, de manera que
+    para el resto se ejecuta \cref{alg:desob}, por lo que, para cada polic\'ia,
+    sucede que la suma de las distancias de sus fichas a sus objetivos se reduce
+    y $r_i$ vuelve a estar bajo asedio.
     
-    N\'otese adem\'as que recapturar con $\overline{c_i}$ y ejecutar
-    \cref{alg:desob} representa un movimiento de a lo m\'as $k-1$ polic\'ias
+    N\'otese adem\'as que, recapturar con $\overline{c_i}$ y ejecutar
+    \cref{alg:desob}, representa un movimiento de a lo m\'as $k-1$ polic\'ias
     pues $c_i$ no tiene una ficha en $\overline{c_i}$, de manera que se puede
     acercar una ficha de $c_i$ en busca de completar otra captura con un
-    $\overline{c_j}$ tal que $j\neq i$. V\'ease que esto siempre se puede hacer
+    $\overline{c_j}$ para $j\neq i$. V\'ease que esto siempre se puede hacer
     pues \cref{lem:obstruccion} implica que se pueden mover o reetiquetar fichas
     de $c_i$ para que la suma de las distancias a sus objetivos se reduzca.
     As\'i, si $c_i$ no puede mover ninguna de sus fichas hacia sus objetivos
     debido a obstrucciones, entonces es posible ejecutar \cref{alg:desob} para
     un par de fichas de $c_i$ que representen una obstrucci\'on, obteniendo como
     resultado una instancia en la que la suma de las distancias de sus fichas a
-    sus objetivos se redujo \'unicamente con reetiquetados. Esto podr\'ia
-    hacerse tantas veces como sea necesario hasta que la suma de las distancias
-    sea igual a $0$ sin necesidad de hacer un solo movimiento de fichas de
-    $c_i$, de manera que inicialmente $c_i$ ya estaba capturando a $R$ (pero sus
-    fichas no capturaban a sus correspondientes objetivos).
+    sus objetivos se redujo \'unicamente con reetiquetados. Es posible que
+    \cref{alg:desob} se ejecute varias veces en un mismo turno sin mover fichas
+    de $c_i$.   En tal caso, \cref{alg:desob} \'unicamente realiza una
+    sucesi\'on de reetiquetaciones que puede culminar en el movimiento de alguna
+    ficha de $c_i$, o en el caso en que cada ficha de $c_i$ captura a su
+    objetivo.  El \'ultimo caso s\'olo sucede cuando inicialmente $c_i$ ya
+    estaba capturando a $R$ (pero sus fichas no capturaban a sus
+    correspondientes objetivos), por lo que $R$ no jug\'o \'optimamente.
     
     Por otra parte, para la segunda afirmaci\'on, consid\'erese que la
     configuraci\'on inicial de todos los polic\'ias es la misma y consiste en
