@@ -537,17 +537,17 @@ fichas lo est\'a (en el mismo turno $t$).
 \begin{proof}
     En la estrategia descrita a continuaci\'on, cada polic\'ia $c_i$ ignora a
     $r_i$ y se dedica a mover sus fichas para capturar a los $r_j$ con $j\neq
-    i$, mientras que su ficha libre no se mover\'a (salvo por aplicaciones
-    d\cref{alg:desob}) hasta que el resto de sus fichas se encuentre capturando
-    a su objetivo y esta no est\'e obstruida.
+    i$, mientras que su ficha libre solo se mover\'a (salvo por aplicaciones
+    d\cref{alg:desob}) si no est\'a obstruida y hasta que el resto de sus fichas
+    se encuentren capturando a su objetivo.
 
     As\'i pues, dada una instancia $I(t)$ y para cada $i\in\seg{1}{k}$, si $c_i$
-    tiene al menos una ficha distinta de su ficha libre, $c_{i,j}$, tal que esta
-    no se encuentra capturando a su objetivo $r_j$, entonces $c_i$ procede a
-    mover la ficha de este tipo cuyo \'indice $j$-\'esimo sea m\'inimo,
-    resolviendo obstrucciones con \cref{alg:desob} en caso de ser necesario.
-    Esto implica que, en su turno, cada uno de los polic\'ias redujo la suma de
-    las distancias de sus fichas a sus objetivos en al menos $1$. Luego, si $R$
+    tiene al menos una ficha distinta de su ficha libre, $c_{i,j}$, que no se
+    encuentra capturando a su objetivo $r_j$, entonces $c_i$ procede a mover la
+    ficha de este tipo cuyo \'indice $j$-\'esimo sea m\'inimo, resolviendo
+    obstrucciones con \cref{alg:desob} en caso de ser necesario. Esto implica
+    que, en su turno, cada uno de los polic\'ias redujo la suma de las
+    distancias de sus fichas a sus objetivos en al menos $1$. Luego, si $R$
     mueve su ficha $r_j$ (o pasa), esta se aleja a lo m\'as $1$ de distancia de
     las $k-1$ fichas que buscan capturarla (todas las $c_{i,j}$ con $j\neq i$),
     mientras que, como $c_j$ ignora a $r_j$, posterior al turno de $R$ se tiene
@@ -646,55 +646,59 @@ las $j$-\'esimas fichas de todos los polic\'ias inician en mismo v\'ertice para
 cada $j\in\seg{1}{k}$ (las fichas en el centro de la estrella son las $c_{i,1}$
 para cada $i\in\seg{1}{k}$).
 
-\begin{algorithm}[h!]
+\begin{algorithm}[htb!]
     \SetAlgorithmName{Algoritmo}{}
       \DontPrintSemicolon
       \SetKwData{False}{false}\SetKwData{True}{true}
       \SetKwFunction{New}{new}\SetKwFunction{End}{end}\SetKwFunction{Used}{used}
       \SetKwInOut{Input}{input}\SetKwInOut{Output}{output}
+      \SetKw{Continue}{continue}
     
       \KwIn{Dos enteros positivos $k$ y $n$ tales que $n\geq 2k-1$, una
       configuraci\'on inicial para el ladr\'on en un juego de polic\'ias y
       ladrones sobre la gr\'afica de $k$ fichas de $S_n$ junto con un etiquetado
       de sus fichas.} \KwOut{Una instancia $I(t)$ en la que $C$ captura a $R$.}
       \BlankLine
-      define $I(0)$ como la instancia en la que $C$ y $R$ se encuentran en su
+      $I(0) \gets$ la instancia en la que $C$ y $R$ se encuentran en su
       configuraci\'on inicial\;
       $t\leftarrow 0$\;
       \While{$C$ no est\'e capturando a $R$ en $I(t)$}{
         \ForEach{$1\leq i\leq k$}{
-            \If{existe $j\neq i$ tal que $c_{i,j}$ no est\'a capturando a $r_j$}{
-                define $j$ como el m\'inimo \'indice tal que $c_{i,j}$ no est\'a 
+            \If{existe $j\ne i$ tal que $c_{i,j}$ no est\'a capturando a $r_j$}{
+                $j \gets$ el m\'inimo \'indice tal que $c_{i,j}$ no est\'a 
                 capturando a $r_j$\;
-                define $v_{i,j}$ como el segundo v\'ertice en la
+                $v_{i,j} \gets$ el segundo v\'ertice en la
                 $c_{i,j}(t)r_j(t)$-trayectoria\;
                 \If{existe $s$ tal que $c_{i,s}(t) = v_{i,j}$}{
                     \If{$s=i$ y $v_{i,j}=r_j(t)$}{
-                        define $c_{i}(t+1)$ como la configuraci\'on $c_i(t)$ intercambiando las
-                        etiquetas de $c_{i,s}$ y $c_{i,j}$\;
+                        $c_{i}(t+1) \gets$ la configuraci\'on $c_i(t)$
+                        intercambiando las etiquetas de $c_{i,s}$ y $c_{i,j}$\;
                     }\Else{
-                        $\textsc{Desobstrucci\'on}
-                        \paren{k,S_n,I(t),c_{i,s},c_{i,j}}\leftarrow c_{i}(t+1)$\;
+                        $c_{i}(t+1) \gets \textsc{Desobstrucci\'on}
+                        \paren{k,S_n,I(t),c_{i,s},c_{i,j}}$\;
                     }
                 }\Else{
-                    define $c_i(t+1)$ como la configuraci\'on $c_i(t)$ cambiando el 
-                    elemento $(c_{i,j},c_{i,j}(t))$ por $(c_{i,j},v_{i,j})$\;
+                    $c_i(t+1) \gets (c_i(t) \setminus \{(c_{i,j},c_{i,j}(t))\})
+                    \cup \{ (c_{i,j},v_{i,j}) \}$\;
                 }
             }\Else{
-                define $v_{i,i}$ como el segundo v\'ertice en la
+                $v_{i,i} \gets$ el segundo v\'ertice en la
                 $c_{i,i}(t)r_i(t)$-trayectoria\;
                 \If{existe $s$ tal que $c_{i,s}(t) = v_{i,i}$}{
-                    define $c_{i}(t+1)$ como la misma configuraci\'on $c_i(t)$\;
+                    $c_{i}(t+1) \gets c_i(t)$\;
                 }\Else{
-                    define $c_i(t+1)$ como la configuraci\'on $c_i(t)$ cambiando el 
-                    elemento $(c_{i,i},c_{i,i}(t))$ por $(c_{i,i},v_{i,i})$\;
+                    $c_i(t+1) \gets (c_i(t) \setminus \{(c_{i,i},c_{i,i}(t))\})
+                    \cup \{ (c_{i,i},v_{i,i}) \}$\;
                 }
             }
         }
-        define $I(t+1)$ como la uni\'on de los $c_i(t+1)$ y los $R(t+1)$, donde
-        este \'ultimo es una configuraci\'on de $R$ obtenida legalmente de
-        $R(t)\subseteq I(t)$\;
-        $t+1\leftarrow t$\;
+        $t \leftarrow t+1$\;
+        $I(t) \gets R(t-1) \cup \bigcup_{i=1}^k c_i(t)$\;
+        \If{$C$ est\'a capturando a $R$ en $I(t)$}{
+            \Continue\;
+        }\Else{
+            $I(t) \gets (I(t) \setminus R(t-1)) \cup R(t)$\;
+        }
       }
       {\Return $I(t)$}
       \caption{\textsc{Captura}}
