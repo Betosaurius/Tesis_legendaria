@@ -187,18 +187,16 @@ $\t{k}{S_n}\cong\t{\paren{n+1}-k}{S_n} = \t{r}{S_n}$.
 Dado este resultado, nuestra nueva meta es determinar con exactitud el n\'umero
 policiaco para las gr\'aficas de fichas de las estrellas. Para ello, es de
 nuestro inter\'es definir un objeto matem\'atico que recupere toda la
-informaci\'on escencial respecto a las posiciones de $C$ y $R$ en un juego de
-polic\'ias y ladrones.
-
-As\'i, dada una gr\'afica $G$ y un juego de polic\'ias y ladrones sobre la
-gr\'afica de $k$ fichas de $G$ contra $r$ polic\'ias, para cada $i\in
-\seg{1}{r}$ y $j\in\seg{1}{k}$ denotamos por $c_{i,j}$ a la $j$-\'esima ficha
-del $i$-\'esimo polic\'ia. Esto \'ultimo implica que las fichas de cada uno de
-los polic\'ias recibir\'an un etiquetado (arbitrario) al inicio de la partida,
-pues ser\'a importante que podamos diferenciar entre dos fichas de un mismo
-polic\'ia para dar instrucciones de movimiento acorde a ese etiquetado.
-Adicionalmente, denotamos por $\c{c_i}$ al conjunto de todas las fichas de
-$c_i$, es decir,
+informaci\'on esencial respecto a las posiciones de $C$ y $R$ en un juego de
+polic\'ias y ladrones.   As\'i, dada una gr\'afica $G$ y un juego de polic\'ias y
+ladrones sobre la gr\'afica de $k$ fichas de $G$ contra $r$ polic\'ias, para
+cada $i\in \seg{1}{r}$ y $j\in\seg{1}{k}$ denotamos por $c_{i,j}$ a la
+$j$-\'esima ficha del $i$-\'esimo polic\'ia. Esto \'ultimo implica que las
+fichas de cada uno de los polic\'ias recibir\'an un etiquetado (arbitrario) al
+inicio de la partida, pues ser\'a importante que podamos diferenciar entre dos
+fichas de un mismo polic\'ia para dar instrucciones de movimiento acorde a ese
+etiquetado. Adicionalmente, denotamos por $\c{c_i}$ al conjunto de todas las
+fichas de $c_i$, es decir,
 \[
     \c{c_i} = \seg{c_{i,1}}{c_{i,k}}.
 \]
@@ -207,35 +205,39 @@ $\c{R}=\seg{r_1}{r_k}$ (las fichas de $R$ tambi\'en recibir\'an un etiquetado
 arbitrario). Luego, dado un turno $t$ del juego, denotamos por $c_{i,j}(t)$ al
 v\'ertice de $G$ en el que la $j$-\'esima ficha del $i$-\'esimo polic\'ia se
 encuentra al turno $t$. Con esto podemos definir la posici\'on de $c_i$ al turno
-$t$ como el conjunto
+$t$ como el subconjunto $c_i(t)$ de $[c_i] \times V_G$ dado por
 \[
     c_{i}(t) = \l{\paren{c_{i,1},c_{i,1}(t)},\dots,\paren{c_{i,k},c_{i,k}(t)}}.
 \]
-De la misma manera se define $R(t)$ para la posici\'on del ladr\'on al turno
-$t$. As\'i pues, definimos una \textbf{instancia} al turno $t$, $I(t)$, como la
-uni\'on de las posiciones de todos los polic\'ias y el ladr\'on, es decir,
+De forma similar se define $R(t)$ para la posici\'on del ladr\'on al turno $t$.
+As\'i pues, definimos \textbf{el turno} $t$ \textbf{de una instancia} $I$ del
+juego, $I(t)$, como la uni\'on de las posiciones de todos los polic\'ias y el
+ladr\'on, es decir,
 \[
     I(t) = \bigcup_{i=1}^k c_{i}(t) \cup R(t).
 \]
-Notemos que las instancias describen toda la informaci\'on relevante entre los
-polic\'ias y el ladr\'on en $F_k(G)$ pues el conjunto de las segundas entradas
-de cada elemento en $c_{i}(t)$ es un conjunto de v\'ertices de cardinalidad $k$,
-donde esto \'ultimo se debe a que dos fichas del mismo polic\'ia no pueden
-ocupar un mismo v\'ertice en $G$. Si denotamos por $\pi_2\paren{c_i(t)}$ a dicho
-$k$-conjunto de $V_G$, entonces este conjunto determina la posici\'on del
-$i$-\'esimo polic\'ia en la gr\'afica de $k$ fichas de $G$. Decimos que una
-instancia $I(t+1)$ \textit{se obtiene legalmente de} $I(t)$ si, para cada
-$i\in\seg{1}{r}$ (y respectivamente para $R$), la diferencia sim\'etrica de
-$\pi_2\paren{c_i(t)}$ y $\pi_2\paren{c_i(t+1)}$ tiene cardinalidad $0$ o tiene
-cardinailidad $2$, donde los v\'ertices en su diferencia sim\'etrica son
-adyacentes en $G$. Cabe mencionar que de la misma manera definimos que
-$c_i(t+1)$ se obtiene legalmente de $c_i(t)$, restringiendo la condici\'on
-anterior unicamente al polic\'ia $c_i$.
+La \textbf{instancia} $I$ se define como la sucesi\'on, posiblemente infinita,
+$(I(0), I(1), \dots)$.   Notemos que las instancias describen toda la
+informaci\'on relevante entre los polic\'ias y el ladr\'on en $F_k(G)$ pues el
+conjunto de las segundas entradas de cada elemento en $c_{i}(t)$ es un conjunto
+de v\'ertices de cardinalidad $k$, donde esto \'ultimo se debe a que dos fichas
+del mismo polic\'ia no pueden ocupar un mismo v\'ertice en $G$. Si denotamos por
+$\pi_2\c{c_i(t)}$ a dicho $k$-conjunto de $V_G$, entonces este conjunto
+determina la posici\'on del $i$-\'esimo polic\'ia en la gr\'afica de $k$ fichas
+de $G$.   Para $i \in \seg{1}{r}$ y $t \in \n$, decimos que la posici\'on
+$c_i(t+1)$ \textbf{se obtiene legalmente} de $c_i(t)$, o que $c_i$ hace
+\textbf{un movimiento legal en el turno \textit{t}}, si la diferencia
+sim\'etrica de $\pi_2\c{c_i(t)}$ y $\pi_2\c{c_i(t+1)}$ es una arista de $G$ o es
+vac\'ia. An\'alogamente se define un movimiento legal en el turno $t$ para $R$.
+Para alguna instancia $I$, decimos que un turno $I(t+1)$ \textbf{se obtiene
+legalmente de} $I(t)$ si $R$ y cada $c_i$ hacen un movimiento legal en el turno
+$t$.
+
 
 Finalmente, dado $c_i$ un polic\'ia (fijo, pero arbitrario), se puede considerar
-la funci\'on $o \colon \c{c_i}\to \c{R}$, tal que $c_{i,j}\mapsto r_j$ para cada
-$j\in\seg{1}{k}$; llamamos a $r_j$ el \textit{objetivo} de $c_{i,j}$ y $o$ es la
-funci\'on objetivo de $c_i$. Observ\'emos que se pueden considerar dos
+la funci\'on $o_i \colon \c{c_i}\to \c{R}$, tal que $c_{i,j}\mapsto r_j$ para
+cada $j\in\seg{1}{k}$; llamamos a $r_j$ el \textit{objetivo} de $c_{i,j}$ y
+$o_i$ es la funci\'on objetivo de $c_i$. Observemos que se pueden considerar dos
 distancias del $i$-\'esimo polic\'ia al ladr\'on en el turno $t$ a trav\'es de
 su funci\'on objetivo y dependiendo de la gr\'afica en la que se analiza el
 juego. Definimos $d_G \paren{c_i,R}$ como la suma de las distancias en $G$ entre
@@ -253,19 +255,20 @@ Resulta sencillo ver que
 pues $c_i$ al turno $t$ necesita al menos $d_G \paren{c_i(t),R(t)}$ movimientos
 para que sus fichas capturen a sus respectivos objetivos en $G$, de manera que,
 despu\'es de esos movimientos, la distancia en $F_k(G)$ entre la posici\'on de
-$c_i$ y $R$ es $0$.
+$c_i$ y $R$ es $0$.  Notemos que la igualdad en \ref{eq:suma} siempre se cumple
+si reetiquetamos a las fichas de $c_i$ para minimizar $d_G (c_i(t), R(t))$.
 
 Con estos preliminares, procedemos a describir una estrategia que ser\'a
-utilizada recurrentemente en las siguientes demostraciones. Consid\'erese una
-instancia $I(t)$ del juego de polic\'ias y ladrones sobre la gr\'afica de $k$
-fichas de un \'arbol $T$. Se dice que una ficha $c_{i,j}$ est\'a
-\textbf{obstruida} si no se encuentra capturando a su objetivo en el turno $t$
-(i.e., $c_{i,j}(t)\neq r_j(t)$) y existe $c_{i,s}$ tal que $c_{i,s}(t)$ es el
-segundo v\'ertice de la \'unica $c_{i,j}(t)r_j(t)$-trayectoria en $T$. En este
-caso se dice que $c_{i,s}$ es una obstrucci\'on para $c_{i,j}$ en la instancia
-$I(t)$ (ver \cref{fig:obstruccion}). Si adem\'as $c_{i,j}$ es una obstrucci\'on
-para $c_{i,s}$ en la instancia $I(t)$, se dice que $c_{i,j}$ y $c_{i,s}$ se
-obstruyen mutuamente.
+utilizada recurrentemente en las siguientes demostraciones. Consid\'erese un
+turno $I(t)$ del juego de polic\'ias y ladrones sobre la gr\'afica de $k$ fichas
+de un \'arbol $T$. Se dice que una ficha $c_{i,j}$ est\'a \textbf{obstruida} si
+no se encuentra capturando a su objetivo en el turno $t$ (i.e., $c_{i,j}(t)\neq
+r_j(t)$) y existe $s \in \seg{1}{k}$ tal que $c_{i,s}(t)$ es el segundo
+v\'ertice de la \'unica $c_{i,j}(t)r_j(t)$-trayectoria en $T$. En este caso se
+dice que $c_{i,s}$ es una obstrucci\'on para $c_{i,j}$ en el turno $I(t)$ (ver
+\cref{fig:obstruccion}). Si adem\'as $c_{i,j}$ es una obstrucci\'on para
+$c_{i,s}$ en el turno $I(t)$, se dice que $c_{i,j}$ y $c_{i,s}$ se obstruyen
+mutuamente.
 
 \begin{figure}[ht]
     \centering
@@ -279,8 +282,8 @@ obstruyen mutuamente.
     \label{fig:obstruccion}
 \end{figure}
 
-En caso de tener esta obstrucci\'on, n\'otese que $c_i$ es incapaz de acercar su
-$j$-\'esima ficha a $r_j$ sin antes remover $c_{i,s}$ del v\'ertice
+En caso de que $c_{i,j}$ est\'e obstruida, entonces $c_i$ es incapaz de acercar
+su $j$-\'esima ficha a $r_j$ sin antes remover $c_{i,s}$ del v\'ertice
 $c_{i,s}(t)$. As\'i, \cref{alg:desob} da una respuesta a c\'omo atender esta
 situaci\'on de manera que la suma de las distancias de las fichas de $c_i$ a sus
 objetivos, $d_{G} \paren{c_i(t),R(t)}$, disminuye (cuando el polic\'ia $c_i$
@@ -293,11 +296,11 @@ a\'un no se encuentra capturando a $R$).
       \SetKwFunction{New}{new}\SetKwFunction{End}{end}\SetKwFunction{Used}{used}
       \SetKwInOut{Input}{input}\SetKwInOut{Output}{output}
     
-      \KwIn{Un entero positivo $k$, un \'arbol $T$, una instancia $I(t)$ de un
+      \KwIn{Un entero positivo $k$, un \'arbol $T$, un turno $I(t)$ de un
       juego de polic\'ias y ladrones con $k$ fichas sobre un \'arbol $T$ y
-      $c_{i,s}$ una obstrucci\'on para $c_{i,j}$ en la instancia $I(t)$.} \KwOut{Una
-      posici\'on $c_i(t+1)$ obtenida legalmente de $c_i(t)$ tal que $d_{G}
-      \paren{c_i(t+1),R(t)}< d_{G} \paren{c_i(t),R(t)}$.}
+      $c_{i,s}$ una obstrucci\'on para $c_{i,j}$ en el turno $I(t)$.}
+      \KwOut{Una posici\'on $c_i(t+1)$ obtenida legalmente de $c_i(t)$ tal que
+      $d_{G} \paren{c_i(t+1),R(t)}< d_{G} \paren{c_i(t),R(t)}$.}
       \BlankLine
       \If{$c_{i,j}$ y $c_{i,s}$ se obstruyen mutuamente}{
       $c_{i}(t+1) \gets \paren{c_i(t)\setminus
@@ -386,24 +389,25 @@ d\cref{alg:desob}.
                     .. (2);
                 \end{tikzpicture}
             \end{tcbitemize}
-            \caption{Si $c_i$ y $c_j$ se obstruyen mutuamente, entonces las
-            fichas de $c_i$ reciben un reetiquetado, de manera que todas conservan
-            sus objetivos salvo $c_i$ y $c_j$, que los intercambian.}
+            \caption{Si $c_{i,j}$ y $c_{i,s}$ se obstruyen mutuamente, entonces
+            intercambian etiquetas (y por lo tanto objetivos). Las dem\'as
+            fichas se mantienen sin cambio.}
             \label{fig:obsmutua}
         \end{figure}
 
         \item Si $c_{i,j}$ y $c_{i,s}$ no se obstruyen mutuamente, se generan dos
             subcasos:
         \begin{enumerate}
-            \item Si $r_j(t)=c_{i,s}(t)$, entonces $c_{i,s}$ a\'un no se se encuentra
-            capturando su respectivo $r_s$ y la $c_{i,s}(t)r_s(t)$-trayectoria, $P$,
-            no contiene a $c_{i,j}(t)$, de manera que $c_i$ puede mover su $s$-\'esima
-            ficha al segundo v\'ertice de $P$. Si $c_{i,s}$ no se encuentra
-            obstruida, entonces avanza a dicho v\'ertice, reduciendo la
-            distancia a su objetivo y dejando libre el paso para $c_{i,j}$ tal como
-            se muestra en \cref{fig:obsad1}. De lo
-            contrario, el algoritmo se llama a s\'i mismo para resolver la nueva
-            obstrucci\'on entre $c_{i,s}$ y $c_{i,u}$ (ver \cref{fig:obsad2}).
+            \item Si $r_j(t)=c_{i,s}(t)$, entonces $c_{i,s}$ a\'un no se se
+            encuentra capturando su respectivo $r_s$ y la
+            $c_{i,s}(t)r_s(t)$-trayectoria, $P$, no contiene a $c_{i,j}(t)$, de
+            manera que $c_i$ puede mover su $s$-\'esima ficha al segundo
+            v\'ertice de $P$. Si $c_{i,s}$ no se encuentra obstruida, entonces
+            avanza a dicho v\'ertice, reduciendo la distancia a su objetivo y
+            dejando libre el paso para $c_{i,j}$ tal como se muestra en
+            \cref{fig:obsad1}. De lo contrario, la nueva obstrucci\'on entre
+            $c_{i,s}$ y $c_{i,u}$ se resuelve con una llamada recursiva (ver
+            \cref{fig:obsad2}).
 
             \begin{figure}[ht!]
                 \begin{tcbitemize}[raster columns=2,raster equal height,
@@ -478,10 +482,10 @@ d\cref{alg:desob}.
             encuentra obstruida, entonces esta ficha se mueve al segundo
             v\'ertice de la $c_{i,s}(t)r_j(t)$-trayectoria (que coincide con el
             tercer v\'ertice de la $c_{i,j}(t)r_j(t)$-trayectoria que se ten\'ia
-            de la instancia $I(t)$), reduciendo la distancia a su objetivo otra
-            unidad adicional. De lo contrario, el algoritmo se llama a s\'i
-            mismo para resolver la nueva obstrucci\'on entre $c_{i,j}$ y
-            $c_{i,u}$.
+            en el turno $I(t)$), reduciendo la distancia a su objetivo otra
+            unidad adicional. De lo contrario, el algoritmo se llama
+            recursivamente para resolver la nueva obstrucci\'on entre $c_{i,j}$
+            y $c_{i,u}$.
 
             \begin{figure}[ht!]
                 \begin{tcbitemize}[raster columns=2,raster equal height,
@@ -515,12 +519,13 @@ d\cref{alg:desob}.
                         (4.75,-1) .. (2);
                     \end{tikzpicture}
                 \end{tcbitemize}
-                \caption{$c_{i,j}$ y $c_{i,s}$ intercambian sus etiquetas, de manera que
-                $c_{i,j}$ se acerca en uno a su objetivo, pero $c_{i,s}$ se aleja en uno
-                (not\'ando que lo mismo sucede si $r_s$ aparece antes de $r_j$
-                en la trayectoria). De aqu\'i, el algoritmo decide qu\'e hacer
-                con $c_{i,j}$ dependiendo de si esta se encuentra obstruida o no
-                siguiendo la estrategia mostrada en \cref{fig:obsad1} o en
+                \caption{Las fichas $c_{i,j}$ y $c_{i,s}$ intercambian sus
+                etiquetas, de manera que $c_{i,j}$ se acerca en uno a su
+                objetivo, pero $c_{i,s}$ se aleja en uno (not\'ando que lo mismo
+                sucede si $r_s$ aparece antes de $r_j$ en la trayectoria). De
+                aqu\'i, el algoritmo decide qu\'e hacer con $c_{i,j}$
+                dependiendo de si \'esta se encuentra obstruida o no siguiendo
+                la estrategia mostrada en \cref{fig:obsad1} o en
                 \cref{fig:obsad2} (sustituyendo $c_{i,s}$ por $c_{i,j}$).}
                 \label{fig:obsnoad1}
             \end{figure}
