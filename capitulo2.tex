@@ -595,9 +595,10 @@ Diremos que la ficha $c_{i,j}$ \textit{captura a su objetivo al turno $t$} si
 $c_{i,j}(t)=r_j(t)$. As\'i, la $i$-\'esima ficha de $R$, $r_i$, est\'a
 \textbf{bajo asedio} en el turno $t$ si cada ficha de su $k-1$ conjunto
 asociado, $\overline{c_i}$, est\'a capturando a su objetivo al turno $t$, es
-decir, $c_{1,i}, \dots, c_{i-1,i}, c_{i+1,i}, \dots, c_{k,i}$ capturan a $r_i$
-al turno $t$. De forma similar, decimos que $R$ est\'a \textbf{bajo asedio} en
-el turno $t$ si cada una de sus fichas lo est\'a (en el mismo turno $t$).
+decir, $c_{j,i}(t)=r_i(t)$ para cada $j \neq i$; esto \'ultimo lo denotamos por
+$\overline{c_i}(t)=r_i(t)$. De forma similar, decimos que $R$ est\'a
+\textbf{bajo asedio} en el turno $t$ si cada una de sus fichas lo est\'a (en el
+mismo turno $t$).
 
 \begin{lema}
 \label{lem:Instancia_capturas}
@@ -707,14 +708,10 @@ el turno $t$ si cada una de sus fichas lo est\'a (en el mismo turno $t$).
 
 \end{proof}
 
-%Definir centro de la estrella, notar que el obstructor da una nueva instancia
-%I(t+1) para cada c_i, llamarla c_i(t+1) (es el conjunto de parejas ordenadas
-%(c_{i,j},c_{i,j}(t))).
-
 Se presenta a continuaci\'on \cref{alg:captura} para que $C$ capture a $R$ el
 cual es tal que la configuraci\'on inicial de cada uno de los polic\'ias es la
 misma y corresponde a tener una ficha en el centro y el resto en las hojas de
-$S_n$. Adem\'as, estas inician con un etiquetado ya establecido, de manera que
+$S_n$; llamaremos $C_0$ a dicha configuraci\'on. Adem\'as, estas inician con un etiquetado ya establecido, de manera que
 las $j$-\'esimas fichas de todos los polic\'ias inician en mismo v\'ertice para
 cada $j\in\seg{1}{k}$ (las fichas en el centro de la estrella son las $c_{i,1}$
 para cada $i\in\seg{1}{k}$).
@@ -795,181 +792,102 @@ $S_{n,0}=S_n$. M\'as concisamente, si $n,m > 0$ se define $S_{n,m}=(V,E)$, donde
     \setminus\l{m}},
 \end{align*}
 identificando $i_0=i$; a estos v\'ertices les llamaremos \textbf{v\'ertices
-soporte}. Con este preeliminar es posible enunciar una generalizaci\'on de
-\cref{teo:numero-de-policia-estrella}.
+soporte}.
 
-%Definir sombra sobre estrella
+Adicionalmente, definimos la funci\'on $p:V_{S_{n,m}}\to V_{S_{n,0}}$ como la
+funci\'on tal que $p(i_j)=i_0$ para cualquier $i\in\seg{1}{n}$ y $j\in
+\seg{0}{m}$, mientras que $p(0)=0$. N\'otese que dicha funci\'on induce una
+proyecci\'on de la estrella de $n$ ramas con $m$ subdivisiones a la estrella con
+$n$ picos. As\'i, para cada ficha $r_i$ del ladr\'on, denotamos por $p(r_i(t))$
+a \textbf{la sombra de $r_i$ al turno $t$}. Con este preeliminar es posible
+enunciar una generalizaci\'on d\cref{teo:numero-de-policia-estrella}.
+
 
 \begin{teorema}
 \label{teo:numero-de-policia-estrella-subdivisiones}
     Para toda $k\geq 2$, $n\geq 2k-1$ y $m\geq 0$,
     $c\paren{\t{k}{S_{n,m}}}=c\paren{\t{k}{S_{n,0}}}=k$.
 \end{teorema}
-% \begin{proof}
-%     N\'otese primero que en  el ladr\'on puede escoger jugar
-%     \'unicamente sobre los v\'ertices del $S_{n,0}$ inducido
-%     en $S_{n,m}$, de manera que, tal como se demostr\'o en
-%     \cref{teo:cota_estrella}, $c\paren{\t{k}{S_{n,m}}}\geq
-%     k$.
+\begin{proof}
+    N\'otese primero que en  el ladr\'on puede escoger jugar
+    \'unicamente sobre los v\'ertices del $S_{n,0}$ inducido
+    en $S_{n,m}$, de manera que, tal como se demostr\'o en
+    \cref{teo:cota_estrella}, $c\paren{\t{k}{S_{n,m}}}\geq
+    k$.
 
-%     M\'as a\'un, se afirma que $c\paren{\t{k}{S_{n,m}}} = k$. En efecto,
-%     consid\'erese sin p\'erdida de generalidad que los $k$ polic\'ias,
-%     $c_1,\dots, c_k$ comienzan con la misma configuraci\'on inicial dada en
-%     \cref{teo:numero-de-policia-estrella}, esto es, todas sus fichas se
-%     encuentran en ramas del $S_{n,0}$ inducido de $S_{n,m}$ (i.e., en v\'ertices
-%     soporte) salvo una de cada polic\'ia, las cuales comienzan en $0$. La
-%     estrategia de captura ahora se divide en dos fases: la captura de sombras
-%     sobre el $S_{n,0}$ inducido con $\paren{k-1}$-conjuntos $\overline{c_i}$, y
-%     la captura del ladr\'on sobre las ramas de $S_{n,m}$.
+    M\'as a\'un, se afirma que $c\paren{\t{k}{S_{n,m}}} = k$. En efecto,
+    consid\'erese sin p\'erdida de generalidad que los $k$ polic\'ias,
+    $c_1,\dots, c_k$ comienzan con la configuraci\'on $C_0$ descrita
+    anteriormente. La estrategia de captura se divide en tres fases: el
+    posicionamiento bajo asedio de las sombras de $R$, el posicionamiento bajo
+    asedio de $R$, y la captura de $R$ sobre las ramas de $S_{n,m}$.
 
-%     En la primer fase las fichas de los polic\'ias se limitan a moverse sobre el
-%     $S_n$ inducido en $S_{n,m}$ con el objetivo de capturar no a una ficha de
-%     $R$, sino de posicionar los $\overline{c_i}$ sobre los v\'ertices soporte (o
-%     sobre $0$) de manera que $\overline{c_i}$ se encuentre en el v\'ertice
-%     soporte de la rama en la que se encuentra $r_i$ (o que $\overline{c_i}$
-%     est\'e en $0$ si $r_i$ est\'a en $0$). Si en alg\'un momento $R$ introduce
-%     una ficha $r_i$ a una rama en la que ya ten\'ia otra, $r_j$, y si $c_{s}$
-%     tiene una ficha en ambos $\overline{c_j}$ y $\overline{c_i}$, puede ser que
-%     $c_{s,j}$ sea una obstrucci\'on .
-%         \begin{enumerate}
-%             \item $R$ siempre juega con sus fichas sobre ramas distintas, i.e.
-%             para cada $r,s\in \seg{1}{k}$ distintos, si $R_r$ y $R_s$ est\'an
-%             sobre alguna rama, entonces $R_r$ est\'a en una $i_{x}$ y $R_s$
-%             est\'a en una $j_{y}$ con $x,y\in \seg{0}{m}$ y $j,i\in \seg{1}{n}$
-%             son tales que $i\neq j$. En esta situaci\'on las sombras de las
-%             fichas de $R$ juegan sobre el mismo $S_n$ y nunca se traslapan sobre
-%             un mismo $i$, de modo que las fichas de los polic\'ias pueden
-%             capturarlas con los $\paren{k-1}$-conjuntos de la misma manera en la
-%             que capturaban para el caso $m=0$.
+    En la primer fase, las fichas de los polic\'ias se limitan a moverse (salvo
+    por obstrucciones) sobre el $S_n$ inducido en $S_{n,m}$ con el objetivo de
+    capturar no a una ficha de $R$, sino de posicionar los $\overline{c_i}$
+    sobre las im\'agenes de los $r_i(t)$ bajo la proyecci\'on $p$, es decir, que
+    $\overline{c_i}$ est\'e en el v\'ertice soporte de la rama en la que se
+    encuentra $r_i$, o que $\overline{c_i}$ est\'e en $0$ si $r_i$ est\'a en
+    $0$. As\'i, $C$ se dedica a ejecutar la misma estrategia enunciada en
+    \cref{lem:Instancia_capturas} para poner bajo asedio a las sombras de $R$.
+    
+    Si al turno $t$ $R$ introduce una ficha $r_i$ a una rama en la que ya
+    ten\'ia otra, $r_j$, entonces la proyecci\'on $p$ mapea $r_i(t)$ y $r_j(t)$
+    al mismo v\'ertice de $S_n$. Esto representa un problema para las fichas en
+    $c\overline{c_j}$, las cuales potencialmente estar\'ian obstruidas por
+    fichas de $\overline{c_i}$. En este caso, los polic\'ias no obstruidos en
+    $\overline{c_i}$ avanzaran para acercarse a su objetivo, mientras que el
+    resto resolver\'a obstrucciones de la manera usual. N\'otese que esto no
+    afecta a la estrategia general pues \cref{alg:desob} resuelve las
+    obstrucciones de manera que se reduce $d_{S_{n,m}}\paren{c_i(t),R(t)}$. No
+    obstante, una condici\'on extra que se pedir\'a para la captura de sombras
+    es que las fichas de cada $\overline{c_i}$ se encuentren siempre en
+    v\'ertices cuya distancia a $0$ sea menor o igual que la distancia de
+    $r_i(t)$ a $0$. Esta condici\'on asegurar\'a que si alguna ficha de $R$ sale
+    de una rama, entonces todo su $\overline{c_i}$ correspondiente le puede
+    recapturar.
+    
+    As\'i, el objetivo de esta fase no es que $\overline{c_i}(t) =
+    p\paren{r_i(t)}$, sino que $p\paren{c_{j,i}(t)} = p\paren{r_i(t)}$ y que
+    $d_{S_{n,m}}\paren{c_{j,i}(t),0}\leq d_{S_{n,m}}\paren{r_i(t),0}$ para cada
+    $j\neq i$ y para cada $i\in\seg{1}{k}$. Al igual que en la demostraci\'on
+    d\cref{lem:Instancia_capturas}, se afirma que esta situaci\'on es alcanzable
+    bajo un juego \'optimo de $R$. Esto es sencillo de ver pues cada movimiento
+    de una ficha $r_i$ sobre una misma rama deja fija la posici\'on de la sombra
+    de $r_i$. Adem\'as, a lo m\'as ser\'an necesarios los movimientos
+    de los $k-1$ polic\'ias en $\overline{c_i}$ para que se mantenga la
+    condic\'ion de las distancias al centro de la estrella, por lo que al menos
+    un polic\'ia podr\'ia acercarse a capturar una ficha de $R$. El resto de
+    casos queda cubierto por lo mencionado en \cref{lem:Instancia_capturas} y
+    por el algoritmo de desobstrucci\'on.
             
-%             Una vez hecho esto, se puede ver que los polic\'ias logran capturar
-%             cada $R_i$ con sus respectivos $\overline{C_i}$. En efecto, si $R$
-%             mueve una ficha $R_i$ que a\'un no est\'a capturada por
-%             $\overline{C_i}$, entonces $R$ tuvo que haber movido una ficha sobre
-%             el interior de una de las ramas, i.e. en un v\'ertice $j_r$ con
-%             $r\neq 0$, pues todos los $\paren{k-1}$-conjuntos se encuentran o en
-%             un $i_0$ o en $0$. En este caso, o la ficha se acerc\'o a
-%             $\overline{C_i}$ o se alej\'o de este, lo cual puede ser
-%             contrarrestado al hacer que $\overline{C_i}$ lo persiga, manteniendo
-%             igual su distancia a $R_i$ y notando que esto a lo m\'as se puede
-%             hacer una cantidad finita de veces pues la estrella tiene $m$
-%             subdivisiones.
-            
-%             Por otra parte, si $R$ mueve una ficha $R_i$ que ya estaba capturada
-%             en su totalidad a $0$ o a una rama vac\'ia (i.e. sin ficha de $R$),
-%             entonces $\overline{C_i}$ recaptura, mientras que $C_i$ tiene dos
-%             posibles estrategias:
-%             \begin{enumerate}[(a)]
-%                 \item Si el polic\'ia $C_i$ ya est\'a capturando a todos los
-%                 $R_j$ con $j\neq i$, entonces procede a acercar su ficha libre
-%                 para capturar a $R_i$, de forma que, en la gr\'afica de fichas
-%                 de $S_{n,m}$, $C_i$ reduce la distancia a la que se encuentra de
-%                 $R$ en $1$.
-%                 \item Si el polic\'ia $C_i$ a\'un no est\'a capturando todos los
-%                 $R_j$ con $j\neq i$, entonces procede a temporalmente mover la
-%                 ficha de $C_i$ en el $\overline{C_j}$ correspondiente para
-%                 reducir su distancia en uno de la ficha $R_j$. V\'ease que como
-%                 $C_i$ no est\'a capturando a $R_j$, pero $\overline{C_j}$ si
-%                 est\'a capturando la sombra de $R_j$, esto implica que $R_j$ se
-%                 encuentra sobre una rama, de modo que, sin importar a donde se
-%                 mueva $R_j$ en su pr\'oximo movimiento, este seguir\'a teniendo
-%                 su sombra capturada, ahora no por $\overline{C_j}$, sino por la
-%                 sombra de $\overline{C_j}$.
-%             \end{enumerate}
-            
-%             Por otro lado, si $R$ introduce $R_i$ a una rama sobre la que se
-%             encuentra $R_j$ ($j\neq i$), esto implicar\'ia que $R_i$ estaba,
-%             hasta antes de su movimiento, capturada por su respectivo
-%             $\overline{C_i}$. Al igual que en casos anteriores, $\overline{C_i}$
-%             recaptura a $R_i$ moviendo las fichas de su conjunto que tengan la
-%             posibilidad de seguir a $R_i$, pues puede que en la nueva posici\'on
-%             de $R_i$ ya hubiera algunas fichas del $\overline{C_j}$ que ya se
-%             encontraba en esa rama. 
-            
-%             Se ver\'a que esto no representa un problema pues, a\'un cuando se
-%             est\'an separando las fichas que conforman el $\overline{C_i}$, tan
-%             pronto como sea posible cada una de estas se ir\'a integrando a la
-%             respectiva rama para reagrupar el $\paren{k-1}$-conjunto en tanto
-%             $R_i$ no salga de ah\'i. Esto se debe a que si en su siguiente turno
-%             $R$ mueve a la ficha $R_s$, esta se pudo haber movido sobre el
-%             interior de una rama o lleg\'o a $0$ (pues en el turno anterior
-%             $R_i$ pas\'o de $0$ a una rama), por lo que $\overline{C_s}$ puede
-%             recapturar o acercarse a $R_s$ y $C_s$, dependiendo del caso,
-%             ejecuta la estrategia (a) o (b) enunciadas anteriormente. Si ejecuta
-%             (a), esto implica que una ficha de $C_s$ ya est\'a en
-%             $\overline{C_j}$ y $\overline{C_i}$, por lo que este no ser\'ia un
-%             polic\'ia que falte de reagruparse con su $\overline{C_i}$. No
-%             obstante, la ficha libre de $C_s$ podr\'ia reducir su distancia a
-%             $R_s$ en $1$, de manera que eventualmente $R$ tendr\'a que mover
-%             otro $R_j$. Esto se puede realizar tantas veces como sea necesario
-%             de manera que en alg\'un punto $R$ ser\'a forzado a mover sus fichas
-%             indexadas con los polic\'ias que impiden que se reagrupe el
-%             $\overline{C_i}$, de manera que estas fichas se acercar\'an a su
-%             $\overline{C_j}$ y dejaran libre el paso para que $\overline{C_i}$
-%             se reconstruya.
+    Una vez hecho esto, en la segunda fase los polic\'ias se dedican a avanzar
+    sobre las ramas para poner bajo asedio a $R$. Si $R$ mueve una ficha $r_i$,
+    como se mencion\'o anterioremente se tiene que a lo m\'as $k-1$ fichas en
+    $\overline{c_i}$ se mueven para mantener su distancia a $r_i$, resolviendo
+    obstrucciones en caso de ser necesario. As\'i, al menos un polic\'ia $c_i$
+    puede acercarse a capturar a alguno de sus objetivos, nuevamente resolviendo
+    obstrucciones en caso de ser necesario. Esto implica que en alg\'un turno se
+    tendr\'a que un polic\'ia $c_i$ es tal que todas sus fichas salvo su ficha
+    libre se encuentran capturando a sus objetivos. Adem\'as, su ficha libre,
+    $c_{i,i}$ puede acercarse tanto como sea necesario a sus objetivo para
+    obligar a $R$ a mover una ficha $r_j$ con $j\neq i$ que permita al polic\'ia
+    $c_j$ acercar alguna de sus fichas a su objetivo. Por tanto, eventualmente
+    los polic\'ias logran poner a $R$ bajo asedio.
 
-%             % Falta agregar la justificaci\'on del reetiquetado para las fichas
-%             % que se obstruyen en $0$.
-            
-%             De esta manera se evidencia que en un cierto n\'umero de turnos, los
-%             polic\'ias incrementan la cantidad de fichas del ladr\'on capturadas
-%             por sus respectivos $\paren{k-1}$-conjuntos, por lo que
-%             eventualmente cada $R_i$ es capturada por el $\overline{C_i}$
-%             correspondiente.
-
-%             \item $R$ juega en alg\'un momento de la partida con sus fichas
-%             sobre la misma rama. V\'ease que este caso ser\'ia equivalente a
-%             jugar en $S_n$ con estrictamente menos de $k$ fichas del ladr\'on,
-%             pues las sombras de al menos dos de sus fichas se traslapar\'ian
-%             sobre un mismo $i$. En tanto esta sea la situaci\'on, los polic\'ias
-%             solo se limitan a hacer una captura con $\paren{k-1}$-conjuntos en
-%             los $i$'s donde haya al menos una ficha en dicha rama, hasta que
-%             capture a todas de este tipo, lo cual se consigue siguiendo la misma
-%             estrategia para el caso anterior.
-            
-%             Si en alg\'un momento durante la ejecuci\'on de la estrategia una
-%             ficha de $R$ de las que viven sobre una misma rama sale de esta
-%             (i.e. se mueve a $0$), si la rama ya estaba capturada, entonces el
-%             n\'umero de sombras capturadas permanece constante (pues los
-%             polic\'ias ignoran cuando las sombras de traslapan), y lo mismo
-%             sucede si dicha rama no estaba capturada. Por otra parte, si en
-%             alg\'un momento de la ejecuci\'on una ficha de $R$ se mueve a una
-%             rama que ya tenga otra ficha de $R$, entonces el n\'umero de sombras
-%             a capturar se reduce, mientras que el n\'umero de sombras capturadas
-%             se mantiene igual.
-
-%             Una vez conseguido esto, se afirma que $R$ en alg\'un momento
-%             termina con todas su fichas capturadas por los
-%             $\paren{k-1}$-conjuntos asignados. En efecto, si $R_i$ y $R_j$ se
-%             encuentran sobre una misma rama (con $i\neq j$) y $R_i$ en alg\'un
-%             momento llega a $0$ entonces los polic\'ias proceden a capturar
-%             $R_i$ con su $\paren{k-1}$-conjunto, $\overline{C_i}$, lo cual
-%             pueden pues, al estar $R_i$ m\'as cerca del v\'ertice $0$ que $R_j$,
-%             entonces el $\paren{k-1}$-conjunto que est\'a cubriendo esa rama es
-%             justo $\overline{C_j}$. Adem\'as, los polic\'ias siempre tendr\'an
-%             fichas suficientes en los v\'ertices $i_0$ para formar estos
-%             $\paren{k-1}$-conjuntos hasta que hayan capturado a cada una de las
-%             fichas de $R$ con su respectivo $\paren{k-1}$-conjuntos.
-            
-%             Obs\'ervese adem\'as que si $R$ ya nunca mueve a sus fichas sobre
-%             una misma rama hacia afuera, entonces es posible ir metiendo los
-%             $\paren{k-1}$-conjuntos a las ramas, uno por uno, de manera que
-%             nuevamente se tendr\'ia que cada $\overline{C_i}$ capturar\'ia a su
-%             respectivo $R_i$
-%         \end{enumerate}
-
-%         Dado que $R$ tiene todas sus fichas capturadas por
-%         $\paren{k-1}$-conjuntos, si alg\'un $R_i$ se mueve a $0$, entonces el
-%         polic\'ia $C_i$ termina por capturar con su ficha libre. As\'i, $R$ no
-%         puede llevar ninguna ficha a $0$. En este caso resta que los polic\'ias
-%         introduzcan a cada rama la ficha del polic\'ia que falte en el
-%         $\paren{k-1}$-conjunto de la ficha del ladr\'on m\'as cercana a $0$ en
-%         cada rama con fichas de $R$. Esto asegura que $R$ no puede sacar ninguna
-%         de sus fichas de la ramas y, al tener las ramas un n\'umero finito de
-%         subdivisiones, entonces siempre sucede que por cada movimiento de una
-%         ficha $R_j$, $\overline{C_j}$ le recaptura y $C_j$ procede a avanzar
-%         sobre la rama en la que se encuentra $R_j$. Se sigue que $C$ siempre
-%         logra capturar a $R$ en su totalidad sobre las ramas, probando que
-%         $C\paren{F_k\paren{S_{n,m}}}=k$.
+    Finalmente, al inicio de la tercer fase se tiene que todas las fichas de $R$
+    est\'an capturadas por $\paren{k-1}$-conjuntos, por lo que si alg\'un $r_i$
+    se mueve a $0$, entonces el polic\'ia $c_i$ termina por capturar con su
+    ficha libre $c_{i,i}$ (la cual siempre se encuentra en $0$ o en la rama
+    donde est\'a $r_i$, ). As\'i, $R$ no puede llevar ninguna ficha a $0$. En
+    este caso resta que los polic\'ias introduzcan a cada rama la ficha del
+    polic\'ia que falte en el $\paren{k-1}$-conjunto de la ficha del ladr\'on
+    m\'as cercana a $0$ en cada rama con fichas de $R$. Esto asegura que $R$ no
+    puede sacar ninguna de sus fichas de la ramas y, al tener las ramas un
+    n\'umero finito de subdivisiones, entonces siempre sucede que por cada
+    movimiento de una ficha $R_j$, $\overline{C_j}$ le recaptura y $C_j$ procede
+    a avanzar sobre la rama en la que se encuentra $R_j$. Se sigue que $C$
+    siempre logra capturar a $R$ en su totalidad sobre las ramas, probando que
+    $C\paren{F_k\paren{S_{n,m}}}=k$.
         
-%         \end{proof}
+\end{proof}
