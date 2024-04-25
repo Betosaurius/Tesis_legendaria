@@ -187,6 +187,19 @@
 \textbf{#2}\index{#1!#2}%
 }
 
+\newcommand{\polarshift}[2]{
+    xshift ={#1*cos(#2)},
+    yshift ={#1*sin(#2)}
+}
+
+\newcommand{\tresc}[2]{%
+\begin{scope}[style/.expanded=\polarshift{#1}{#2}]
+  \node (SG5) [cuadro,fill=verdeOscuro] at (90:0.25) {};
+  \node (SB5) [cuadro,fill=blue] at ({90 + (360/3)*1}:0.25) {};
+  \node (SR5) [cuadro,fill=red] at ({90 + (360/3)*2}:0.25) {};
+\end{scope}
+}
+
 \newcommand{\n}{\mathbb{N}}
 
 \newcommand{\seg}[2]{\{#1,\dots, #2\}}
