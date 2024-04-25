@@ -78,7 +78,7 @@
 
 % Generacion de dibujos con TeX
 \usepackage{tikz}
-\usetikzlibrary{arrows,shapes,matrix,decorations,calc,positioning}
+\usetikzlibrary{arrows,shapes,matrix,decorations,calc,positioning, shapes.geometric}
 \tikzstyle{arc}   =[->,shorten <=3pt, shorten >=3pt,
                    >=stealth, line width=1.1pt]
 \tikzstyle{edge}  =[shorten <=2pt, shorten >=2pt,
@@ -86,6 +86,12 @@
 \tikzstyle{myloop}=[style={},shorten <=1pt, shorten >=1pt,
                     >=stealth, line width=1.1pt, loop]
 \tikzstyle{vertex}=[circle, draw, minimum size=6pt,
+                    line width=0.75pt, inner sep=0pt,
+                    outer sep=0pt]
+\tikzstyle{punto}=[circle, draw, minimum size=10pt,
+                    line width=0.75pt, inner sep=0pt,
+                    outer sep=0pt]
+\tikzstyle{cuadro}=[regular polygon, regular polygon sides = 4, draw, minimum size=10pt,
                     line width=0.75pt, inner sep=0pt,
                     outer sep=0pt]
 \tikzstyle{bola}=[draw, circle, minimum size=1cm, line width=0.75pt,

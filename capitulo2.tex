@@ -622,7 +622,7 @@ mismo turno $t$).
     distancias de sus fichas a sus objetivos en al menos $1$, es decir, para
     cada $i\in\seg{1}{k}$,
     \[
-        \paren{c_i(t+1),R(t)}< d_{G} \paren{c_i(t),R(t)}.
+        d_{G}\paren{c_i(t+1),R(t)}< d_{G} \paren{c_i(t),R(t)}.
     \]
     Luego, si $R$ mueve su ficha $r_j$ (o pasa), esta se aleja a lo m\'as $1$ de
     distancia de las $k-1$ fichas que buscan capturarla (todas las $c_{i,j}$ con
@@ -708,7 +708,7 @@ mismo turno $t$).
 
 \end{proof}
 
-Se presenta a continuaci\'on \cref{alg:captura} para que $C$ capture a $R$ el
+Presentamos a continuaci\'on \cref{alg:captura} para que $C$ capture a $R$, el
 cual es tal que la configuraci\'on inicial de cada uno de los polic\'ias es la
 misma y corresponde a tener una ficha en el centro y el resto en las hojas de
 $S_n$ --- llamaremos $C_0$ a dicha configuraci\'on. Adem\'as, las fichas inician
@@ -780,6 +780,45 @@ en el centro de la estrella son las $c_{i,1}$ para cada $i\in\seg{1}{k}$).
     }
 \end{algorithm}
 
+Finalmente, anexamos una partida desarrollada en la que $C$ utiliza la
+estrategia dada por \cref{alg:captura}.
+
+\begin{figure}[ht!]
+    \begin{tcbitemize}[raster columns=2,raster equal height,
+                       enhanced,
+                       colback=Black!5!white,colframe=Grey!75!black,
+                       raster every box/.style={minimum for current
+                       equal height group=5cm, valign=center,
+                       halign=center}, boxsep=0mm]
+        \tcbitem 
+        \begin{tikzpicture}
+            \node (0) [bola] at (0,0) {};
+            \foreach \i in {1,...,5}
+            \node (\i) [bola] at ({90+(360/5)*\i}:2) {};
+
+            \foreach \i in {1,...,5}
+            \draw[edge] (\i) to (0);
+            
+            \begin{scope}[yshift = 2cm]
+                \node (SG5) [cuadro,fill=green] at (90:0.25) {};
+                \node (SB5) [cuadro,fill=blue] at ({90 + (360/3)*1}:0.25) {};
+                \node (SR5) [cuadro,fill=red] at ({90 + (360/3)*2}:0.25) {};
+            \end{scope}
+        \end{tikzpicture}
+        \tcbitem
+        \begin{tikzpicture}
+            \node (0) [bola] at (0,0){};
+            \foreach \i in {1,...,5}
+            \node (\i) [bola] at ({90+(360/5)*\i}:2) {};
+
+            \foreach \i in {1,...,5}
+            \draw[edge] (\i) to (0);
+        \end{tikzpicture}
+    \end{tcbitemize}
+    \caption{S\'i}
+    \label{fig:partida1}
+\end{figure}
+
 \section{Estrellas con subdivisiones}
 
 En busca de que el resultado anterior d\'e informaci\'on acerca de una familia
@@ -811,11 +850,9 @@ enunciar una generalizaci\'on d\cref{teo:numero-de-policia-estrella}.
     $c\paren{\t{k}{S_{n,m}}}=c\paren{\t{k}{S_{n,0}}}=k$.
 \end{teorema}
 \begin{proof}
-    N\'otese primero que en  el ladr\'on puede escoger jugar
-    \'unicamente sobre los v\'ertices del $S_{n,0}$ inducido
-    en $S_{n,m}$, de manera que, tal como se demostr\'o en
-    \cref{teo:cota_estrella}, $c\paren{\t{k}{S_{n,m}}}\geq
-    k$.
+    N\'otese primero que en  el ladr\'on puede escoger jugar \'unicamente sobre
+    los v\'ertices del $S_{n,0}$ inducido en $S_{n,m}$, de manera que, tal como
+    se demostr\'o en \cref{teo:cota_estrella}, $c\paren{\t{k}{S_{n,m}}}\geq k$.
 
     M\'as a\'un, se afirma que $c\paren{\t{k}{S_{n,m}}} = k$. En efecto,
     consid\'erese sin p\'erdida de generalidad que los $k$ polic\'ias,
@@ -842,12 +879,7 @@ enunciar una generalizaci\'on d\cref{teo:numero-de-policia-estrella}.
     objetivo, mientras que el resto resuelve obstrucciones de la manera usual.
     N\'otese que esto no afecta a la estrategia general pues \cref{alg:desob}
     resuelve las obstrucciones de manera que se reduce
-    $d_{S_{n,m}}\paren{c_i(t),R(t)}$. No obstante, una condici\'on extra que se
-    pedir\'a para la captura de sombras es que las fichas de cada
-    $\overline{c_i}$ se encuentren siempre en v\'ertices cuya distancia a $0$
-    sea menor o igual que la distancia de $r_i(t)$ a $0$. Esta condici\'on
-    asegurar\'a que si alguna ficha de $R$ sale de una rama, entonces todo su
-    $\overline{c_i}$ correspondiente le puede recapturar.
+    $d_{S_{n,m}}\paren{c_i(t),R(t)}$
     
     As\'i, el objetivo de esta fase no es que $\overline{c_i}(t) =
     p\paren{r_i(t)}$, sino que $p\paren{c_{j,i}(t)} = p\paren{r_i(t)}$ y que
@@ -856,14 +888,54 @@ enunciar una generalizaci\'on d\cref{teo:numero-de-policia-estrella}.
     d\cref{lem:Instancia_capturas}, se afirma que esta situaci\'on es alcanzable
     bajo un juego \'optimo de $R$. Esto es sencillo de ver pues cada movimiento
     de una ficha $r_i$ sobre una misma rama deja fija la posici\'on de la sombra
-    de $r_i$. M\'as a\'un, en el peor de los casos ser\'an necesarios los
+    de $r_i$. Adem\'as, si alg\'un $c_{j,i}$ tuviera que perseguir a $r_i$ para
+    que este siga cumpliendo la condici\'on de las distancias al centro de la
+    estrella, se generan dos casos dependiendo de si $c_{j,i}$ est\'a obstruida:
+    % \begin{enumerate}[(a)]
+    %     \item Si no lo est\'a, entonces basta con que el polic\'ia $c_j$ mueva
+    %     su $i$-ésima ficha a la nueva posici\'on de $r_i$, cumpliendo nuevamente
+    %     las condiciones que se buscan, ver %\cref{fig:no-obsram}).
+
+    %     % \begin{figure}[ht!]
+    %     %     \begin{tcbitemize}[raster columns=2,raster equal height,
+    %     %         enhanced, colback=Black!5!white,colframe=Grey!75!black,
+    %     %         raster every box/.style={minimum for current equal height
+    %     %         group=2.5cm, valign=center, halign=center}, boxsep=0mm]
+    %     %         \tcbitem 
+    %     %         \begin{tikzpicture}
+    %     %             \node (i) [bola,fill=Crimson] {$c_{j,i}$};
+    %     %             \node (j) [bola,right=0.5cm of i] {$r_i$};
+    %     %             \node (2) [bola,right=3cm of j] {$0$};
+    %     %             \draw[edge] (i) -- (j);
+    %     %             \draw[dashed,edge] (j) .. controls (3.375,1) and
+    %     %             (3.875,-1) .. (2);
+    %     %         \end{tikzpicture}
+    %     %         \tcbitem
+    %     %         \begin{tikzpicture}
+    %     %             \node (i) [bola] {};
+    %     %             \node (j) [bola,right=0.5cm of i,fill=Crimson] {$c_{j,i},r_i$};
+    %     %             \node (2) [bola,right=3cm of j] {$0$};
+    %     %             \draw[edge] (i) -- (j);
+    %     %             \draw[dashed,edge] (j) .. controls (3.375,1) and
+    %     %             (3.875,-1) .. (2);
+    %     %         \end{tikzpicture}
+    %     %     \end{tcbitemize}
+    %     %     \caption{Al no estar obstruida, $c_{j,i}$ puede moverse a la nueva
+    %     %             posici\'on de $r_i$, de manera que $p\paren{c_{j,i}(t+1)} =
+    %     %             p\paren{r_i(t+1)}$ y $d_{S_{n,m}}\paren{c_{j,i}(t+1),0} \leq
+    %     %             d_{S_{n,m}}\paren{r_i(t+1),0}$.}
+    %     %     \label{fig:no-obsram}
+    %     % \end{figure}
+
+    %     \item En caso de estar obstruida, 
+    % \end{enumerate}
+
+    M\'as a\'un, en el peor de los casos ser\'an necesarios los
     movimientos de los $k-1$ polic\'ias en $\overline{c_i}$ para que se mantenga
-    la condici\'on de
-    %TODO: Justificar que no hay obstrucciones saliendo de la rama
-    las distancias al centro de la estrella, por lo que al menos un polic\'ia
-    podr\'ia acercarse a capturar una ficha de $R$. El resto de casos queda
-    cubierto por lo mencionado en \cref{lem:Instancia_capturas} y por el
-    algoritmo de desobstrucci\'on.
+    la condici\'on de las distancias al centro de la estrella, por lo que al
+    menos un polic\'ia podr\'ia acercarse a capturar una ficha de $R$. El resto
+    de casos queda cubierto por lo mencionado en \cref{lem:Instancia_capturas} y
+    por el algoritmo de desobstrucci\'on.
             
     Una vez hecho esto, en la segunda fase los polic\'ias se dedican a avanzar
     sobre las ramas para poner bajo asedio a $R$. Si $R$ mueve una ficha $r_i$,
