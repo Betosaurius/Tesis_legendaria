@@ -184,6 +184,101 @@ $\t{k}{S_n}\cong\t{\paren{n+1}-k}{S_n} = \t{r}{S_n}$.
 
 \end{proof}
 
+Anexamos a continuaci\'on el desarrollo de una partida en la que $R$ utiliza la
+estretegia descrita en \cref{teo:cota_estrella}.
+
+% \begin{figure}[H]
+%     \begin{tcbitemize}[raster columns=2,raster equal height,
+%                        enhanced,
+%                        colback=Black!5!white,colframe=Grey!75!black,
+%                        raster every box/.style={minimum for current
+%                        equal height group=4.5cm, valign=center,
+%                        halign=center}, boxsep=0mm]
+%         \tcbitem 
+%         \begin{tikzpicture}
+%             \begin{scope}[scale=1]
+%                 \estrella
+                
+%                 \Rrdos{2.25cm}{90}
+%                 \B{2.25cm}{90+(360/5)*1}
+%                 \R{2.25cm}{90+(360/5)*2}
+%                 \B{2.25cm}{90+(360/5)*3}
+%                 \Bruno{2.25cm}{90+(360/5)*4}
+%                 \Rrcero{0cm}{0}
+%             \end{scope}
+
+%         \end{tikzpicture}
+%         \tcbitem
+%         \begin{tikzpicture}
+%             \begin{scope}[scale=1]
+%                 \estrella
+
+%                 \Rrdos{2.25cm}{90}
+%                 \B{2.25cm}{90+(360/5)*1}
+%                 \R{2.25cm}{90+(360/5)*2}
+%                 \RBruno{2.25cm}{90+(360/5)*4}
+%                 \Brcero{0cm}{0}
+%             \end{scope}
+%         \end{tikzpicture}
+%     \end{tcbitemize}
+%     \begin{tcbitemize}[raster columns=2,raster equal height,
+%                        enhanced,
+%                        colback=Black!5!white,colframe=Grey!75!black,
+%                        raster every box/.style={minimum for current
+%                        equal height group=4.5cm, valign=center,
+%                        halign=center}, boxsep=0mm]
+%         \tcbitem 
+%         \begin{tikzpicture}
+%             \begin{scope}[scale=1]
+%                 \estrella
+                
+%                 \Rrdos{2.25cm}{90}
+%                 \B{2.25cm}{90+(360/5)*1}
+%                 \R{2.25cm}{90+(360/5)*2}
+%                 \RBruno{2.25cm}{90+(360/5)*4}
+%                 \B{0cm}{0}
+%                 \rcero{2.25cm}{90+(360/5)*3}
+%             \end{scope}
+            
+%         \end{tikzpicture}
+%         \tcbitem
+%         \begin{tikzpicture}
+%             \begin{scope}[scale=1]
+%                 \estrella
+
+%                 \Rrdos{2.25cm}{90}
+%                 \B{2.25cm}{90+(360/5)*1}
+%                 \RBruno{2.25cm}{90+(360/5)*4}
+%                 \R{0cm}{0}
+%                 \Brcero{2.25cm}{90+(360/5)*3}
+%             \end{scope}
+            
+%         \end{tikzpicture}
+%     \end{tcbitemize}
+%     \begin{tcbitemize}[raster columns=1,raster equal height,
+%                        enhanced,
+%                        colback=Black!5!white,colframe=Grey!75!black,
+%                        raster every box/.style={minimum for current
+%                        equal height group=4.5cm, valign=center,
+%                        halign=center}, boxsep=0mm]
+%         \tcbitem 
+%         \begin{tikzpicture}
+%             \begin{scope}[scale=1]
+%                 \estrella
+%                 \Rrdos{2.25cm}{90}
+%                 \B{2.25cm}{90+(360/5)*1}
+%                 \RB{2.25cm}{90+(360/5)*4}
+%                 \Rruno{0cm}{0}
+%                 \Brcero{2.25cm}{90+(360/5)*3}
+                
+%             \end{scope}
+            
+%         \end{tikzpicture}
+%     \end{tcbitemize}
+%     \caption{\footnotesize{S\'i.}}
+%     \label{fig:gana-R}
+% \end{figure}
+
 Dado este resultado, nuestra nueva meta es determinar con exactitud el n\'umero
 policiaco para las gr\'aficas de fichas de las estrellas. Para ello, es de
 nuestro inter\'es definir un objeto matem\'atico que recupere toda la
@@ -783,36 +878,230 @@ en el centro de la estrella son las $c_{i,1}$ para cada $i\in\seg{1}{k}$).
 Finalmente, anexamos una partida desarrollada en la que $C$ utiliza la
 estrategia dada por \cref{alg:captura}.
 
-\begin{figure}[ht!]
+\begin{figure}[H]
     \begin{tcbitemize}[raster columns=2,raster equal height,
                        enhanced,
                        colback=Black!5!white,colframe=Grey!75!black,
                        raster every box/.style={minimum for current
-                       equal height group=5cm, valign=center,
+                       equal height group=4.5cm, valign=center,
                        halign=center}, boxsep=0mm]
         \tcbitem 
         \begin{tikzpicture}
-            \node (0) [bola] at (0,0) {};
-            \foreach \i in {1,...,5}
-            \node (\i) [bola] at ({90+(360/5)*\i}:2) {};
+            \begin{scope}[scale=1]
+                \estrella
+                
+                \tresc{2.25cm}{90+(360/5)*3}
+                \tresp{0cm}{0}
+                \trest{2.25cm}{90+(360/5)*2}
+                \punto{2.25cm}{90}
+                \tri{2.25cm}{90+(360/5)*4}
+                \cuadro{2.25cm}{90+(360/5)*1}
+            \end{scope}
 
-            \foreach \i in {1,...,5}
-            \draw[edge] (\i) to (0);
-            
-            \tresc{2cm}{90}
         \end{tikzpicture}
         \tcbitem
         \begin{tikzpicture}
-            \node (0) [bola] at (0,0){};
-            \foreach \i in {1,...,5}
-            \node (\i) [bola] at ({90+(360/5)*\i}:2) {};
+            \begin{scope}[scale=1]
+                \estrella
 
-            \foreach \i in {1,...,5}
-            \draw[edge] (\i) to (0);
+                \tresc{2.25cm}{90+(360/5)*3}
+                \unotBt{2.25cm}{90+(360/5)*4}
+                \cuadro{2.25cm}{90+(360/5)*1}
+                \dospRGp{2.25cm}{90}
+                \unopBdost{2.25cm}{90+(360/5)*2}
+            \end{scope}
         \end{tikzpicture}
     \end{tcbitemize}
-    \caption{S\'i}
+    \begin{tcbitemize}[raster columns=2,raster equal height,
+                       enhanced,
+                       colback=Black!5!white,colframe=Grey!75!black,
+                       raster every box/.style={minimum for current
+                       equal height group=4.5cm, valign=center,
+                       halign=center}, boxsep=0mm]
+        \tcbitem 
+        \begin{tikzpicture}
+            \begin{scope}[scale=1]
+                \estrella
+                
+                \tresc{2.25cm}{90+(360/5)*3}
+                \unotBt{2.25cm}{90+(360/5)*4}
+                \cuadro{2.25cm}{90+(360/5)*1}
+                \dospRG{2.25cm}{90}
+                \punto{0cm}{0}
+                \unopBdost{2.25cm}{90+(360/5)*2}
+            \end{scope}
+            
+        \end{tikzpicture}
+        \tcbitem
+        \begin{tikzpicture}
+            \begin{scope}[scale=1]
+                \estrella
+
+                \doscRG{2.25cm}{90+(360/5)*3}
+                \unotBt{2.25cm}{90+(360/5)*4}
+                \cuadro{2.25cm}{90+(360/5)*1}
+                \unocBdospp{0cm}{0}
+                \unopBdost{2.25cm}{90+(360/5)*2}
+            \end{scope}
+            
+        \end{tikzpicture}
+    \end{tcbitemize}
+    \begin{tcbitemize}[raster columns=2,raster equal height,
+                       enhanced,
+                       colback=Black!5!white,colframe=Grey!75!black,
+                       raster every box/.style={minimum for current
+                       equal height group=4.5cm, valign=center,
+                       halign=center}, boxsep=0mm]
+        \tcbitem 
+        \begin{tikzpicture}
+            \begin{scope}[scale=1]
+                \estrella
+                
+                \doscRGp{2.25cm}{90+(360/5)*3}
+                \unotBt{2.25cm}{90+(360/5)*4}
+                \cuadro{2.25cm}{90+(360/5)*1}
+                \unocBdosp{0cm}{0}
+                \unopBdost{2.25cm}{90+(360/5)*2}
+            \end{scope}
+            
+        \end{tikzpicture}
+        \tcbitem
+        \begin{tikzpicture}
+            \begin{scope}[scale=1]
+                \estrella
+
+                \dospRGp{2.25cm}{90+(360/5)*3}
+                \unotBt{2.25cm}{90+(360/5)*4}
+                \unocBc{2.25cm}{90+(360/5)*1}
+                \doscRG{0cm}{0}
+                \unopBdost{2.25cm}{90+(360/5)*2}
+            \end{scope}
+            
+        \end{tikzpicture}
+    \end{tcbitemize}
+    \caption{\footnotesize{Se muestra una partida de polic\'ias y ladrones sobre
+    $S_5$ con $3$ fichas, de manera que, por
+    \cref{teo:numero-de-policia-estrella}, son necesarios $3$ polic\'ias para
+    que $C$ tenga una estrategia ganadora. Cada polic\'ia, representado por un
+    color (azul, verde o rojo) tiene sus 3 fichas distinguidas por figuras
+    (c\'irculo, tri\'angulo o cuadrado), mientras que $R$ controla las fichas
+    negras. Las figuras funcionan como etiquetado, de manera que las fichas de
+    $C$ de figura $x$ deben capturar a la ficha de $R$ de figura $x$. Adem\'as,
+    el c\'irculo azul es la ficha libre del polic\'ia azul, el tri\'angulo verde
+    es la ficha libre del polic\'ia verde, y el cuadrado rojo es la ficha libre
+    del polic\'ia rojo. Las escenas se leen de izquierda a derecha, de manera
+    que las im\'agenes en la columna de la izquierda representan la situaci\'on
+    del juego despu\'es del turno de $R$, mientras que las de la columna derecha
+    representan la situaci\'on despu\'es del turno de $C$.}}
     \label{fig:partida1}
+\end{figure}
+
+\begin{figure}[H]
+    \ContinuedFloat
+    \begin{tcbitemize}[raster columns=2,raster equal height,
+                       enhanced,
+                       colback=Black!5!white,colframe=Grey!75!black,
+                       raster every box/.style={minimum for current
+                       equal height group=4.5cm, valign=center,
+                       halign=center}, boxsep=0mm]
+        \tcbitem 
+        \begin{tikzpicture}
+            \begin{scope}[scale=1]
+                \estrella
+                
+                \dospRGp{2.25cm}{90+(360/5)*3}
+                \unotBt{2.25cm}{90+(360/5)*4}
+                \unocB{2.25cm}{90+(360/5)*1}
+                \doscRGc{0cm}{0}
+                \unopBdost{2.25cm}{90+(360/5)*2}
+            \end{scope}
+            
+        \end{tikzpicture}
+        \tcbitem
+        \begin{tikzpicture}
+            \begin{scope}[scale=1]
+                \estrella
+
+                \dospRGp{2.25cm}{90+(360/5)*3}
+                \dostRBt{2.25cm}{90+(360/5)*4}
+                \doscBGc{0cm}{0}
+                \unopBunotGc{2.25cm}{90+(360/5)*2}
+            \end{scope}
+            
+        \end{tikzpicture}
+    \end{tcbitemize}
+    \begin{tcbitemize}[raster columns=2,raster equal height,
+                       enhanced,
+                       colback=Black!5!white,colframe=Grey!75!black,
+                       raster every box/.style={minimum for current
+                       equal height group=4.5cm, valign=center,
+                       halign=center}, boxsep=0mm]
+        \tcbitem 
+        \begin{tikzpicture}
+            \begin{scope}[scale=1]
+                \estrella
+                
+                \dospRGp{2.25cm}{90+(360/5)*3}
+                \dostRBt{2.25cm}{90+(360/5)*4}
+                \doscBG{0cm}{0}
+                \unopBunotGc{2.25cm}{90+(360/5)*2}
+                \cuadro{2.25cm}{90}
+            \end{scope}
+            
+        \end{tikzpicture}
+        \tcbitem
+        \begin{tikzpicture}
+            \begin{scope}[scale=1]
+                \estrella
+
+                \dospRGp{2.25cm}{90+(360/5)*3}
+                \dostRBt{2.25cm}{90+(360/5)*4}
+                \doscBGc{2.25cm}{90}
+                \unocR{0cm}{0}
+                \unopBunotG{2.25cm}{90+(360/5)*2}
+                
+            \end{scope}
+            
+        \end{tikzpicture}
+    \end{tcbitemize}
+    \begin{tcbitemize}[raster columns=2,raster equal height,
+                       enhanced,
+                       colback=Black!5!white,colframe=Grey!75!black,
+                       raster every box/.style={minimum for current
+                       equal height group=4.5cm, valign=center,
+                       halign=center}, boxsep=0mm]
+        \tcbitem 
+        \begin{tikzpicture}
+            \begin{scope}[scale=1]
+                \estrella
+                
+                \dospRG{2.25cm}{90+(360/5)*3}
+                \dostRBt{2.25cm}{90+(360/5)*4}
+                \doscBGc{2.25cm}{90}
+                \unocRp{0cm}{0}
+                \unopBunotG{2.25cm}{90+(360/5)*2}
+            \end{scope}
+            
+        \end{tikzpicture}
+        \tcbitem
+        \begin{tikzpicture}
+            \begin{scope}[scale=1]
+                \estrella
+
+                \dospRG{2.25cm}{90+(360/5)*3}
+                \dostRBt{2.25cm}{90+(360/5)*4}
+                \doscBGc{2.25cm}{90}
+                \unopBunocRp{0cm}{0}
+                \unotG{2.25cm}{90+(360/5)*2}
+            \end{scope}
+            
+        \end{tikzpicture}
+    \end{tcbitemize}
+    \caption{\footnotesize{Despu\'es del cuarto turno de $C$ y antes de que su
+    contrincante mueva (la primer escena en la columna derecha), $R$ se
+    encuentra bajo asedio (todas las fichas salvo las libres de cada polic\'ia
+    se encuentran capturando a sus respectivos objetivos). Finalmente, $C$
+    termina por capturar dos turnos despu\'es con su polic\'ia azul.}}
 \end{figure}
 
 \section{Estrellas con subdivisiones}
@@ -836,8 +1125,10 @@ funci\'on tal que $p(i_j)=i_0$ para cualquier $i\in\seg{1}{n}$ y $j\in
 \seg{0}{m}$, mientras que $p(0)=0$. N\'otese que dicha funci\'on induce una
 proyecci\'on de la estrella de $n$ ramas con $m$ subdivisiones a la estrella con
 $n$ picos. As\'i, para cada ficha $r_i$ del ladr\'on, denotamos por $p(r_i(t))$
-a \textbf{la sombra de $r_i$ al turno $t$}. Con este preeliminar es posible
-enunciar una generalizaci\'on d\cref{teo:numero-de-policia-estrella}.
+a \textbf{la sombra de $r_i$ al turno $t$}. Diremos que la ficha $c_{i,j}$
+\textbf{acecha a su objetivo al turno $t$} si $c_{i,j}(t) = p\paren{r_j(t)}$ y
+$c_{i,j}(t)$ es un v\'ertice soporte. Con este preeliminar es posible enunciar
+una generalizaci\'on d\cref{teo:numero-de-policia-estrella}.
 
 
 \begin{teorema}
@@ -864,15 +1155,55 @@ enunciar una generalizaci\'on d\cref{teo:numero-de-policia-estrella}.
     $\overline{c_i}$ est\'e en el v\'ertice soporte de la rama en la que se
     encuentra $r_i$, o que $\overline{c_i}$ est\'e en $0$ si $r_i$ est\'a en
     $0$. As\'i, $C$ se dedica a ejecutar la misma estrategia enunciada en
-    \cref{lem:Instancia_capturas} para poner bajo asedio a las sombras de $R$.
+    \cref{lem:Instancia_capturas} para poner bajo asedio a las sombras de $R$,
+    es decir, cada $c_i$ mueve su ficha no libres de menor \'indice que no se
+    encuentre capturando la sombra de su ficha objetivo.
     
     Si $R$, al turno $t$, introduce una ficha $r_i$ a una rama en la que ya
     ten\'ia otra, $r_j$, entonces las im\'agenes de $r_i(t)$ y $r_j(t)$ bajo la
     proyecci\'on $p$ son el mismo v\'ertice de $S_{n,0}$. Esto representa un
     problema para las fichas en $\overline{c_i}$, las cuales potencialmente
-    estar\'ian obstruidas por fichas de $\overline{c_j}$. En este caso, los
-    polic\'ias no obstruidos en $\overline{c_i}$ avanzan para acercarse a su
-    objetivo, mientras que el resto resuelve obstrucciones de la manera usual.
+    estar\'ian obstruidas por fichas de $\overline{c_j}$. En este caso, cada
+    $c_s$ con $s\neq i$ comprueba si su ficha $c_{s,i}$ est\'a obstruida por una
+    ficha que acecha a su objetivo:
+    \begin{enumerate}[(a)]
+        \item Si $c_{s,\ell}$ es una obstrucci\'on para $c_{s,i}$ y $c_{s,\ell}$
+        acecha a su objetivo, entonces $c_{j,i}$ se encuentra en $0$ (pues la
+        ficha acechando est\'a en un v\'ertice soporte e inicialmente ning\'un
+        par de fichas de $c_s$ est\'a sobre la misma rama), por lo que procede a
+        moverse a un v\'ertice soporte en el que no se encuentre otra ficha de
+        $c_j$. V\'ease que esto se puede hacer pues, como $n\geq 2k-1$,
+        $S_{n,m}$ tiene al menos tantas ramas como fichas cada polic\'ia ($k$).
+        As\'i, las fichas de los polic\'ias que no puedan entrar a una rama
+        debido a una obstrucci\'on se posicionan en los v\'ertices soporte, de
+        manera que si su ficha objetivo sale de la rama, entonces esta le
+        capturar\'ia al siguiente turno. A las fichas del $i$-\'esimo polic\'ia
+        que se encuentren en esta situaci\'on les llamaremos \textit{fichas en
+        espera} de $c_i$, de manera que $E_i(t)$ es el conjunto de las fichas en
+        espera de $c_i$ al turno $t$.
+
+        \item Si $c_{s,i}$ no est\'a obstruida por una ficha que acecha,
+        entonces mueve como en la estrategia descrita en
+        \cref{lem:Instancia_capturas}.
+    \end{enumerate}
+    
+    As\'i, para cada polic\'ia $c_i$ se puede considerar la suma de las
+    distancias de las sombras de sus fichas no libres y no en espera a las
+    sombras de sus objetivos,
+    \[
+        \sum_{c_{i,j}\notin E_i(t)\cup {c_{i,i}}} d_{S_{n,m}}\paren{
+            p\paren{c_{i,j}(t)},p\paren{r_{j}(t)}}.
+    \]
+    Se afirma que en cada turno esta suma disminuye para al menos un
+    polic\'ia. En efecto, si $R$ mueve una ficha $r_i$ sobre una rama,
+    entonces las posiciones de las sombras de $R$ son las mismas que al turno
+    anterior, de manera que cada una de las sumas anteriores se mantiene
+    constante y $C$ logra reducirla para cada uno de los polic\'ias tales que
+    dicha suma a\'un no es $0$ (resolviendo obstrucciones en caso de ser
+    necesario). Por otra parte, si $r_i$ entra a una rama en la que ya hubiera
+    otra ficha de $R$, entonces al igual que en el caso anterior todos los
+    polic\'ias podr\'ian acercarse a 
+
     N\'otese que esto no afecta a la estrategia general pues \cref{alg:desob}
     resuelve las obstrucciones de manera que se reduce
     $d_{S_{n,m}}\paren{c_i(t),R(t)}$
