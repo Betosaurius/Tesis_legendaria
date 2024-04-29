@@ -187,97 +187,97 @@ $\t{k}{S_n}\cong\t{\paren{n+1}-k}{S_n} = \t{r}{S_n}$.
 Anexamos a continuaci\'on el desarrollo de una partida en la que $R$ utiliza la
 estretegia descrita en \cref{teo:cota_estrella}.
 
-% \begin{figure}[H]
-%     \begin{tcbitemize}[raster columns=2,raster equal height,
-%                        enhanced,
-%                        colback=Black!5!white,colframe=Grey!75!black,
-%                        raster every box/.style={minimum for current
-%                        equal height group=4.5cm, valign=center,
-%                        halign=center}, boxsep=0mm]
-%         \tcbitem 
-%         \begin{tikzpicture}
-%             \begin{scope}[scale=1]
-%                 \estrella
+\begin{figure}[H]
+    \begin{tcbitemize}[raster columns=2,raster equal height,
+                       enhanced,
+                       colback=Black!5!white,colframe=Grey!75!black,
+                       raster every box/.style={minimum for current
+                       equal height group=4.5cm, valign=center,
+                       halign=center}, boxsep=0mm]
+        \tcbitem 
+        \begin{tikzpicture}
+            \begin{scope}[scale=1]
+                \estrella
                 
-%                 \Rrdos{2.25cm}{90}
-%                 \B{2.25cm}{90+(360/5)*1}
-%                 \R{2.25cm}{90+(360/5)*2}
-%                 \B{2.25cm}{90+(360/5)*3}
-%                 \Bruno{2.25cm}{90+(360/5)*4}
-%                 \Rrcero{0cm}{0}
-%             \end{scope}
+                \Rrdos{2.25cm}{90}
+                \B{2.25cm}{90+(360/5)*1}
+                \R{2.25cm}{90+(360/5)*2}
+                \B{2.25cm}{90+(360/5)*3}
+                \Bruno{2.25cm}{90+(360/5)*4}
+                \Rrcero{0cm}{0}
+            \end{scope}
 
-%         \end{tikzpicture}
-%         \tcbitem
-%         \begin{tikzpicture}
-%             \begin{scope}[scale=1]
-%                 \estrella
+        \end{tikzpicture}
+        \tcbitem
+        \begin{tikzpicture}
+            \begin{scope}[scale=1]
+                \estrella
 
-%                 \Rrdos{2.25cm}{90}
-%                 \B{2.25cm}{90+(360/5)*1}
-%                 \R{2.25cm}{90+(360/5)*2}
-%                 \RBruno{2.25cm}{90+(360/5)*4}
-%                 \Brcero{0cm}{0}
-%             \end{scope}
-%         \end{tikzpicture}
-%     \end{tcbitemize}
-%     \begin{tcbitemize}[raster columns=2,raster equal height,
-%                        enhanced,
-%                        colback=Black!5!white,colframe=Grey!75!black,
-%                        raster every box/.style={minimum for current
-%                        equal height group=4.5cm, valign=center,
-%                        halign=center}, boxsep=0mm]
-%         \tcbitem 
-%         \begin{tikzpicture}
-%             \begin{scope}[scale=1]
-%                 \estrella
+                \Rrdos{2.25cm}{90}
+                \B{2.25cm}{90+(360/5)*1}
+                \R{2.25cm}{90+(360/5)*2}
+                \RBruno{2.25cm}{90+(360/5)*4}
+                \Brcero{0cm}{0}
+            \end{scope}
+        \end{tikzpicture}
+    \end{tcbitemize}
+    \begin{tcbitemize}[raster columns=2,raster equal height,
+                       enhanced,
+                       colback=Black!5!white,colframe=Grey!75!black,
+                       raster every box/.style={minimum for current
+                       equal height group=4.5cm, valign=center,
+                       halign=center}, boxsep=0mm]
+        \tcbitem 
+        \begin{tikzpicture}
+            \begin{scope}[scale=1]
+                \estrella
                 
-%                 \Rrdos{2.25cm}{90}
-%                 \B{2.25cm}{90+(360/5)*1}
-%                 \R{2.25cm}{90+(360/5)*2}
-%                 \RBruno{2.25cm}{90+(360/5)*4}
-%                 \B{0cm}{0}
-%                 \rcero{2.25cm}{90+(360/5)*3}
-%             \end{scope}
+                \Rrdos{2.25cm}{90}
+                \B{2.25cm}{90+(360/5)*1}
+                \R{2.25cm}{90+(360/5)*2}
+                \RBruno{2.25cm}{90+(360/5)*4}
+                \B{0cm}{0}
+                \rcero{2.25cm}{90+(360/5)*3}
+            \end{scope}
             
-%         \end{tikzpicture}
-%         \tcbitem
-%         \begin{tikzpicture}
-%             \begin{scope}[scale=1]
-%                 \estrella
+        \end{tikzpicture}
+        \tcbitem
+        \begin{tikzpicture}
+            \begin{scope}[scale=1]
+                \estrella
 
-%                 \Rrdos{2.25cm}{90}
-%                 \B{2.25cm}{90+(360/5)*1}
-%                 \RBruno{2.25cm}{90+(360/5)*4}
-%                 \R{0cm}{0}
-%                 \Brcero{2.25cm}{90+(360/5)*3}
-%             \end{scope}
+                \Rrdos{2.25cm}{90}
+                \B{2.25cm}{90+(360/5)*1}
+                \RBruno{2.25cm}{90+(360/5)*4}
+                \R{0cm}{0}
+                \Brcero{2.25cm}{90+(360/5)*3}
+            \end{scope}
             
-%         \end{tikzpicture}
-%     \end{tcbitemize}
-%     \begin{tcbitemize}[raster columns=1,raster equal height,
-%                        enhanced,
-%                        colback=Black!5!white,colframe=Grey!75!black,
-%                        raster every box/.style={minimum for current
-%                        equal height group=4.5cm, valign=center,
-%                        halign=center}, boxsep=0mm]
-%         \tcbitem 
-%         \begin{tikzpicture}
-%             \begin{scope}[scale=1]
-%                 \estrella
-%                 \Rrdos{2.25cm}{90}
-%                 \B{2.25cm}{90+(360/5)*1}
-%                 \RB{2.25cm}{90+(360/5)*4}
-%                 \Rruno{0cm}{0}
-%                 \Brcero{2.25cm}{90+(360/5)*3}
+        \end{tikzpicture}
+    \end{tcbitemize}
+    \begin{tcbitemize}[raster columns=1,raster equal height,
+                       enhanced,
+                       colback=Black!5!white,colframe=Grey!75!black,
+                       raster every box/.style={minimum for current
+                       equal height group=4.5cm, valign=center,
+                       halign=center}, boxsep=0mm]
+        \tcbitem 
+        \begin{tikzpicture}
+            \begin{scope}[scale=1]
+                \estrella
+                \Rrdos{2.25cm}{90}
+                \B{2.25cm}{90+(360/5)*1}
+                \RB{2.25cm}{90+(360/5)*4}
+                \Rruno{0cm}{0}
+                \Brcero{2.25cm}{90+(360/5)*3}
                 
-%             \end{scope}
+            \end{scope}
             
-%         \end{tikzpicture}
-%     \end{tcbitemize}
-%     \caption{\footnotesize{S\'i.}}
-%     \label{fig:gana-R}
-% \end{figure}
+        \end{tikzpicture}
+    \end{tcbitemize}
+    \caption{\footnotesize{S\'i.}}
+    \label{fig:gana-R}
+\end{figure}
 
 Dado este resultado, nuestra nueva meta es determinar con exactitud el n\'umero
 policiaco para las gr\'aficas de fichas de las estrellas. Para ello, es de
@@ -1098,7 +1098,7 @@ estrategia dada por \cref{alg:captura}.
         \end{tikzpicture}
     \end{tcbitemize}
     \caption{\footnotesize{Despu\'es del cuarto turno de $C$ y antes de que su
-    contrincante mueva (la primer escena en la columna derecha), $R$ se
+    contrincante mueva (la primera escena en la columna derecha), $R$ se
     encuentra bajo asedio (todas las fichas salvo las libres de cada polic\'ia
     se encuentran capturando a sus respectivos objetivos). Finalmente, $C$
     termina por capturar dos turnos despu\'es con su polic\'ia azul.}}
@@ -1108,10 +1108,11 @@ estrategia dada por \cref{alg:captura}.
 
 En busca de que el resultado anterior d\'e informaci\'on acerca de una familia
 de gr\'aficas m\'as grande, se define para cada $m\in \n$, \textbf{la estrella
-de $n$ ramas con $m$ subdivisiones}, $S_{n,m}$, que consiste tomar la gr\'afica
-$S_n$ y subdividir cada una de sus aristas de manera que estas contengan $m+1$
-v\'ertices cada una, sin contar el v\'ertice $0$. V\'ease que para $m=0$,
-$S_{n,0}=S_n$. M\'as concisamente, si $n,m > 0$ se define $S_{n,m}=(V,E)$, donde
+de $n$ ramas con $m$ subdivisiones}, $S_{n,m}$, que consiste en tomar la
+gr\'afica $S_n$ y subdividir cada una de sus aristas de manera que estas
+contengan $m+1$ v\'ertices cada una, sin contar el v\'ertice $0$. V\'ease que
+para $m=0$, $S_{n,0}=S_n$. M\'as concisamente, si $n,m > 0$ se define
+$S_{n,m}=(V,E)$, donde
 \begin{align*}
     V &=\c{n}\cup\l{i_j: i\in\c{n}\setminus \l{0} , j\in \l{0,\dots, m}} \\
     E &=\l{0i : i\in \c{n}\setminus\l{0}} \cup \l{i_ji_{j+1} \colon j \in \c{m}
