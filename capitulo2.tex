@@ -197,13 +197,13 @@ estretegia descrita en \cref{teo:cota_estrella}.
         \tcbitem 
         \begin{tikzpicture}
             \begin{scope}[scale=1]
-                \estrella
+                \estrellauno
                 
-                \Rrdos{2.25cm}{90}
-                \B{2.25cm}{90+(360/5)*1}
-                \R{2.25cm}{90+(360/5)*2}
-                \B{2.25cm}{90+(360/5)*3}
-                \Bruno{2.25cm}{90+(360/5)*4}
+                \Rrdos{1.5cm}{90}
+                \B{1.5cm}{90+(360/5)*1}
+                \R{1.5cm}{90+(360/5)*2}
+                \B{1.5cm}{90+(360/5)*3}
+                \Bruno{1.5cm}{90+(360/5)*4}
                 \Rrcero{0cm}{0}
             \end{scope}
 
@@ -211,12 +211,12 @@ estretegia descrita en \cref{teo:cota_estrella}.
         \tcbitem
         \begin{tikzpicture}
             \begin{scope}[scale=1]
-                \estrella
+                \estrellauno
 
-                \Rrdos{2.25cm}{90}
-                \B{2.25cm}{90+(360/5)*1}
-                \R{2.25cm}{90+(360/5)*2}
-                \RBruno{2.25cm}{90+(360/5)*4}
+                \Rrdos{1.5cm}{90}
+                \B{1.5cm}{90+(360/5)*1}
+                \R{1.5cm}{90+(360/5)*2}
+                \RBruno{1.5cm}{90+(360/5)*4}
                 \Brcero{0cm}{0}
             \end{scope}
         \end{tikzpicture}
@@ -230,31 +230,51 @@ estretegia descrita en \cref{teo:cota_estrella}.
         \tcbitem 
         \begin{tikzpicture}
             \begin{scope}[scale=1]
-                \estrella
+                \estrellauno
                 
-                \Rrdos{2.25cm}{90}
-                \B{2.25cm}{90+(360/5)*1}
-                \R{2.25cm}{90+(360/5)*2}
-                \RBruno{2.25cm}{90+(360/5)*4}
+                \Rrdos{1.5cm}{90}
+                \B{1.5cm}{90+(360/5)*1}
+                \R{1.5cm}{90+(360/5)*2}
+                \RBruno{1.5cm}{90+(360/5)*4}
                 \B{0cm}{0}
-                \rcero{2.25cm}{90+(360/5)*3}
+                \rcero{1.5cm}{90+(360/5)*3}
             \end{scope}
             
         \end{tikzpicture}
         \tcbitem
         \begin{tikzpicture}
             \begin{scope}[scale=1]
-                \estrella
+                \estrellauno
 
-                \Rrdos{2.25cm}{90}
-                \B{2.25cm}{90+(360/5)*1}
-                \RBruno{2.25cm}{90+(360/5)*4}
+                \Rrdos{1.5cm}{90}
+                \B{1.5cm}{90+(360/5)*1}
+                \RBruno{1.5cm}{90+(360/5)*4}
                 \R{0cm}{0}
-                \Brcero{2.25cm}{90+(360/5)*3}
+                \Brcero{1.5cm}{90+(360/5)*3}
             \end{scope}
             
         \end{tikzpicture}
     \end{tcbitemize}
+    \caption{Se presenta una partida de polic\'ias y ladrones sobre $S_5$ con
+    $3$ fichas. Acorde a \cref{teo:cota_estrella}, $R$ tiene una estrategia
+    ganadora contra menos de tres polic\'ias (2 en este caso, representados por
+    el color azul y el rojo). Las escenas se leen de izquierda a derecha y cada
+    par de escenas representa un turno completo, de manera que las im\'agenes en
+    la columna derecha muestran las situaciones posteriores al turno de $C$,
+    mientras que las de la columna izquierda representan las situaciones
+    despu\'es del turno de $R$. \\ La primera escena exhibe la configuraci\'on inicial, donde $R$ logra escoger
+    de manera que ning\'un polc\'ia le captura dos fichas en las hojas. En la
+    segunda escena $R$ tiene dos de sus fichas capturadas en las hojas, de
+    manera que se ve obligado a mover su ficha del centro a una de las hojas
+    disponibles, cuya existencia qeuda demostrada en \cref{teo:cota_estrella}.
+    En la escena $4$, $R$ se ve forzado a mover una vez m\'as, lo cual puede
+    hacer pues existe al menos una de sus fichas que es capturada por los dos
+    polic\'ias.}
+    \label{fig:gana-R}
+\end{figure}
+
+\begin{figure}[H]
+    \ContinuedFloat
     \begin{tcbitemize}[raster columns=1,raster equal height,
                        enhanced,
                        colback=Black!5!white,colframe=Grey!75!black,
@@ -264,19 +284,20 @@ estretegia descrita en \cref{teo:cota_estrella}.
         \tcbitem 
         \begin{tikzpicture}
             \begin{scope}[scale=1]
-                \estrella
-                \Rrdos{2.25cm}{90}
-                \B{2.25cm}{90+(360/5)*1}
-                \RB{2.25cm}{90+(360/5)*4}
+                \estrellauno
+                \Rrdos{1.5cm}{90}
+                \B{1.5cm}{90+(360/5)*1}
+                \RB{1.5cm}{90+(360/5)*4}
                 \Rruno{0cm}{0}
-                \Brcero{2.25cm}{90+(360/5)*3}
+                \Brcero{1.5cm}{90+(360/5)*3}
                 
             \end{scope}
             
         \end{tikzpicture}
     \end{tcbitemize}
-    \caption{\footnotesize{S\'i.}}
-    \label{fig:gana-R}
+    \caption{En esta instancia se tiene que $R$ regresa a una posici\'on en la
+    que no existe un polic\'ia que le capture dos fichas en las hojas, que es
+    justo el objetivo de la estrategia.}
 \end{figure}
 
 Dado este resultado, nuestra nueva meta es determinar con exactitud el n\'umero
@@ -383,8 +404,10 @@ $c_{i,s}(t)$. As\'i, \cref{alg:desob} da una respuesta a c\'omo atender esta
 situaci\'on de manera que la suma de las distancias de las fichas de $c_i$ a sus
 objetivos, $d_{G} \paren{c_i(t),R(t)}$, disminuye (cuando el polic\'ia $c_i$
 a\'un no se encuentra capturando a $R$).
+\\
 
-\begin{algorithm}[ht!]
+\begin{algorithm}[H]
+    \footnotesize{
     \SetAlgorithmName{Algoritmo}{}
       \DontPrintSemicolon
       \SetKwData{False}{false}\SetKwData{True}{true}
@@ -434,6 +457,7 @@ a\'un no se encuentra capturando a $R$).
       \caption{\textsc{Desobstrucci\'on}}
       \label{alg:desob}
     \DecMargin{1em}
+    }
     \end{algorithm}
 
 En este orden de ideas, el siguiente lema demuestra la validez
@@ -687,13 +711,11 @@ necesario resolver obstrucciones. En las siguientes demostraciones utilizaremos
 este etiquetado y asignaciones de objetivos.
 
 Diremos que la ficha $c_{i,j}$ \textit{captura a su objetivo al turno $t$} si
-$c_{i,j}(t)=r_j(t)$. As\'i, la $i$-\'esima ficha de $R$, $r_i$, est\'a
-\textbf{bajo asedio} en el turno $t$ si cada ficha de su $k-1$ conjunto
-asociado, $\overline{c_i}$, est\'a capturando a su objetivo al turno $t$, es
-decir, $c_{j,i}(t)=r_i(t)$ para cada $j \neq i$; esto \'ultimo lo denotamos por
-$\overline{c_i}(t)=r_i(t)$. De forma similar, decimos que $R$ est\'a
-\textbf{bajo asedio} en el turno $t$ si cada una de sus fichas lo est\'a (en el
-mismo turno $t$).
+$c_{i,j}(t)=r_j(t)$. As\'i, el $i$-\'esimo polic\'ia \textbf{tiene bajo asedio a
+$R$} en el turno $t$ si cada ficha de $c_i$ distinta de su ficha libre est\'a
+capturando a su objetivo al turno $t$, es decir, $c_{i,j}(t)=r_j(t)$ para cada
+$j \neq i$. De forma similar, decimos que $R$ est\'a \textbf{bajo asedio} en el
+turno $t$ si cada polic\'ia tiene bajo asedio a $R$ (en el mismo turno $t$).
 
 \begin{lema}
 \label{lem:Instancia_capturas}
@@ -734,17 +756,18 @@ mismo turno $t$).
 
     Siguiendo esta estrtegia es claro que existe un momento a partir del cual
     las fichas de un polic\'ia $c_i$ (salvo su ficha libre) ya est\'an
-    capturando a sus correspondientes objetivos. Si en este caso $R$ se limita a
-    mover $r_i$, entonces el resto de polic\'ias no podr\'ia reducir en cada
-    turno la distancia de sus fichas no libres a sus objetivos (pues $r_i$ es el
-    objetivo de sus $i$-\'esimas fichas). No obstante, $c_i$ podr\'ia mover su
-    ficha libre a $0$ (pues si $R$ est\'a moviendo \'unicamente a $r_i$,
-    entonces en el centro de la estrella no hay una ficha que obstruya a
-    $c_{i,i}$), de manera que $c_i$ captura en a lo m\'as en un turno,
-    contradiciendo que $R$ juega de forma \'optima. Este razonamiento puede
-    utilizarse de forma recursiva para ver que si $R$ juega de forma \'optima,
-    entonces todos los polic\'ias logran que sus fichas no libres capturen a sus
-    correspondientes objetivos, lo que implica que $R$ est\'a bajo asedio.
+    capturando a sus correspondientes objetivos, i.e., $c_i$ tiene bajo asedior
+    a $R$. Si en este caso $R$ se limita a mover $r_i$, entonces el resto de
+    polic\'ias no podr\'ia reducir en cada turno la distancia de sus fichas no
+    libres a sus objetivos (pues $r_i$ es el objetivo de sus $i$-\'esimas
+    fichas). No obstante, $c_i$ podr\'ia mover su ficha libre a $0$ (pues si $R$
+    est\'a moviendo \'unicamente a $r_i$, entonces en el centro de la estrella
+    no hay una ficha que obstruya a $c_{i,i}$), de manera que $c_i$ captura en a
+    lo m\'as en un turno, contradiciendo que $R$ juega de forma \'optima. Este
+    razonamiento puede utilizarse de forma recursiva para ver que si $R$ juega
+    de forma \'optima, entonces todos los polic\'ias logran que sus fichas no
+    libres capturen a sus correspondientes objetivos, lo que implica que $R$
+    est\'a bajo asedio.
 
 \end{proof}
 
@@ -810,8 +833,9 @@ $S_n$ --- llamaremos $C_0$ a dicha configuraci\'on. Adem\'as, las fichas inician
 con un etiquetado ya establecido, de manera que las $j$-\'esimas fichas de todos
 los polic\'ias inician en mismo v\'ertice para cada $j\in\seg{1}{k}$ (las fichas
 en el centro de la estrella son las $c_{i,1}$ para cada $i\in\seg{1}{k}$).
+\\
 
-\begin{algorithm}[ht!]
+\begin{algorithm}[H]
     \footnotesize{
     \SetAlgorithmName{Algoritmo}{}
       \DontPrintSemicolon
@@ -875,7 +899,7 @@ en el centro de la estrella son las $c_{i,1}$ para cada $i\in\seg{1}{k}$).
     }
 \end{algorithm}
 
-Finalmente, anexamos una partida desarrollada en la que $C$ utiliza la
+Anexamos una partida en la que $C$ utiliza la
 estrategia dada por \cref{alg:captura}.
 
 \begin{figure}[H]
@@ -1119,179 +1143,151 @@ $S_{n,m}=(V,E)$, donde
     \setminus\l{m}},
 \end{align*}
 identificando $i_0=i$; a estos v\'ertices les llamaremos \textbf{v\'ertices
-soporte}.
+soporte de la ramas}.
 
-Adicionalmente, definimos la funci\'on $p:V_{S_{n,m}}\to V_{S_{n,0}}$ como la
-funci\'on tal que $p(i_j)=i_0$ para cualquier $i\in\seg{1}{n}$ y $j\in
-\seg{0}{m}$, mientras que $p(0)=0$. N\'otese que dicha funci\'on induce una
-proyecci\'on de la estrella de $n$ ramas con $m$ subdivisiones a la estrella con
-$n$ picos. As\'i, para cada ficha $r_i$ del ladr\'on, denotamos por $p(r_i(t))$
-a \textbf{la sombra de $r_i$ al turno $t$}. Diremos que la ficha $c_{i,j}$
-\textbf{acecha a su objetivo al turno $t$} si $c_{i,j}(t) = p\paren{r_j(t)}$ y
-$c_{i,j}(t)$ es un v\'ertice soporte. Con este preeliminar es posible enunciar
-una generalizaci\'on d\cref{teo:numero-de-policia-estrella}.
+Adem\'as, introducimos una nueva definici\'on respecto a las condiciones en las
+que un polic\'ia tiene bajo asedio a $R$. Diremos que el $i$-\'esimo polic\'ia
+\textbf{tiene bajo asedio d\'ebil a $R$} al turno $t$ si cada ficha no libre de
+$c_i$ est\'a a distancia a lo m\'as $1$ de su objetivo (ver
+\cref{fig:asedio-debil}).
 
+\begin{figure}[ht]
+    \centering
+    \begin{tikzpicture}
+        \begin{scope}[scale=0.9]
+            \estrellasubdiv
+            \unotBc[0.2cm]{0cm}{0}
+            \tri{1.5cm}{90}
+            \unocB{1.5cm}{90+(360/5)*4}
+            \punto{4.5cm}{90+(360/5)*4}
+            \unopB{1.5cm}{90+(360/5)*2}
+        \end{scope}
+
+    \end{tikzpicture}
+    \caption{Ejemplo de instancia en la que el polic\'ia azul tiene bajo asedio
+    d\'ebil a $R$. Obs\'ervese que no es necesario que la ficha libre del
+    polic\'ia (c\'irculo azul) se encuentre cerca de su objetivo.}
+    \label{fig:asedio-debil}
+\end{figure}
+
+Con este preeliminar es posible enunciar una generalizaci\'on
+d\cref{teo:numero-de-policia-estrella}.
 
 \begin{teorema}
 \label{teo:numero-de-policia-estrella-subdivisiones}
     Para toda $k\geq 2$, $n\geq 2k-1$ y $m\geq 0$,
-    $c\paren{\t{k}{S_{n,m}}}=c\paren{\t{k}{S_{n,0}}}=k$.
+    $c\paren{\t{k}{S_{n,m}}}=k$.
 \end{teorema}
 \begin{proof}
     N\'otese primero que en  el ladr\'on puede escoger jugar \'unicamente sobre
     los v\'ertices del $S_{n,0}$ inducido en $S_{n,m}$, de manera que, tal como
     se demostr\'o en \cref{teo:cota_estrella}, $c\paren{\t{k}{S_{n,m}}}\geq k$.
 
-    M\'as a\'un, se afirma que $c\paren{\t{k}{S_{n,m}}} = k$. En efecto,
-    consid\'erese sin p\'erdida de generalidad que los $k$ polic\'ias,
-    $c_1,\dots, c_k$ comienzan con la configuraci\'on $C_0$ descrita
-    anteriormente. La estrategia de captura se divide en tres fases: el
-    posicionamiento bajo asedio de las sombras de $R$, el posicionamiento bajo
-    asedio de $R$, y la captura de $R$ sobre las ramas de $S_{n,m}$.
+    Se ver\'a que $c\paren{\t{k}{S_{n,m}}} = k$. As\'i pues, consid\'erese sin
+    p\'erdida de generalidad que los $k$ polic\'ias, $c_1,\dots, c_k$, comienzan
+    con la configuraci\'on $C_0$ descrita anteriormente. La estrategia de
+    captura se divide en dos fases: el posicionamiento de los polic\'ias para
+    poner bajo asedio d\'ebil a $R$ y la captura de $R$ sobre las ramas de
+    $S_{n,m}$.
 
-    En la primera fase, las fichas de los polic\'ias se limitan a moverse (salvo
-    por obstrucciones) sobre el $S_{n,0}$ inducido en $S_{n,m}$ con el objetivo
-    de capturar no a una ficha de $R$, sino de posicionar los $\overline{c_i}$
-    sobre las im\'agenes de los $r_i(t)$ bajo la proyecci\'on $p$, es decir, que
-    $\overline{c_i}$ est\'e en el v\'ertice soporte de la rama en la que se
-    encuentra $r_i$, o que $\overline{c_i}$ est\'e en $0$ si $r_i$ est\'a en
-    $0$. As\'i, $C$ se dedica a ejecutar la misma estrategia enunciada en
-    \cref{lem:Instancia_capturas} para poner bajo asedio a las sombras de $R$,
-    es decir, cada $c_i$ mueve su ficha no libres de menor \'indice que no se
-    encuentre capturando la sombra de su ficha objetivo.
-    
-    Si $R$, al turno $t$, introduce una ficha $r_i$ a una rama en la que ya
-    ten\'ia otra, $r_j$, entonces las im\'agenes de $r_i(t)$ y $r_j(t)$ bajo la
-    proyecci\'on $p$ son el mismo v\'ertice de $S_{n,0}$. Esto representa un
-    problema para las fichas en $\overline{c_i}$, las cuales potencialmente
-    estar\'ian obstruidas por fichas de $\overline{c_j}$. En este caso, cada
-    $c_s$ con $s\neq i$ comprueba si su ficha $c_{s,i}$ est\'a obstruida por una
-    ficha que acecha a su objetivo:
+    En la primera fase, las fichas de los polic\'ias ejecutan la misma
+    estrategia dada por \cref{alg:captura}. Por los mismos argumentos expuestos
+    en \cref{teo:numero-de-policia-estrella}, despu\'es de un cierto n\'umero de
+    turnos un polic\'ia $c_i$ pone bajo asedio a $R$ (recordando que
+    \cref{alg:desob} resuelve obstrucciones sin importar el \'arbol sobre el que
+    se juega). El problema surge una vez que $c_i$ asedia a $R$ pues, si su
+    ficha libre est\'a obstruida, \cref{alg:captura} indica que $c_i$ pasa.
+    As\'i, si $m\geq 1$, $r_i$ puede moverse sobre una misma rama, de modo que,
+    en alg\'un momento, el algoritmo hace que todos los polic\'ias distintos de
+    $c_i$ recapturen (pues $\overline{c_i}$ recaptura) y $c_i$ seguir\'ia con su
+    ficha libre obstruida. As\'i, $R$ tendr\'ia una forma de ciclar el juego
+    contra la estrategia dada por \cref{alg:captura} pues, en cada turno,
+    ning\'un polic\'ia $c_j$ reducir\'ia el par\'ametro
+    $d_{S_{n,m}}\paren{c_j(t),R(t)}$.
+
+    Para atender esta situaci\'on, $C$ modifica su estrategia dependiendo de
+    d\'onde est\'a $r_i$ y en qu\'e v\'ertice est\'a la ficha que obstruye a
+    $c_{i,i}$:
     \begin{enumerate}[(a)]
-        \item Si $c_{s,\ell}$ es una obstrucci\'on para $c_{s,i}$ y $c_{s,\ell}$
-        acecha a su objetivo, entonces $c_{j,i}$ se encuentra en $0$ (pues la
-        ficha acechando est\'a en un v\'ertice soporte e inicialmente ning\'un
-        par de fichas de $c_s$ est\'a sobre la misma rama), por lo que procede a
-        moverse a un v\'ertice soporte en el que no se encuentre otra ficha de
-        $c_j$. V\'ease que esto se puede hacer pues, como $n\geq 2k-1$,
-        $S_{n,m}$ tiene al menos tantas ramas como fichas cada polic\'ia ($k$).
-        As\'i, las fichas de los polic\'ias que no puedan entrar a una rama
-        debido a una obstrucci\'on se posicionan en los v\'ertices soporte, de
-        manera que si su ficha objetivo sale de la rama, entonces esta le
-        capturar\'ia al siguiente turno. A las fichas del $i$-\'esimo polic\'ia
-        que se encuentren en esta situaci\'on les llamaremos \textit{fichas en
-        espera} de $c_i$, de manera que $E_i(t)$ es el conjunto de las fichas en
-        espera de $c_i$ al turno $t$.
+        \item Si la ficha que obstruye a $c_{i,i}$ est\'a en un v\'ertice
+        distinto de $0$ (i.e., en el v\'ertice de una rama), entonces $C$
+        resuelve la obstrucci\'on como es usual.
 
-        \item Si $c_{s,i}$ no est\'a obstruida por una ficha que acecha,
-        entonces mueve como en la estrategia descrita en
-        \cref{lem:Instancia_capturas}.
+        \item \label{inciso:obs} Si la ficha que obstruye a $c_{i,i}$ est\'a en
+        $0$, $c_i$ verifica si $r_i$ se encuentra a distancia al menos $3$. De
+        ser as\'i, $C$ resuelve la obstrucci\'on de $c_{i,i}$ de forma usual. En
+        caso contrario, $c_i$ pasa.
     \end{enumerate}
     
-    As\'i, para cada polic\'ia $c_i$ se puede considerar la suma de las
-    distancias de las sombras de sus fichas no libres y no en espera a las
-    sombras de sus objetivos,
-    \[
-        \sum_{c_{i,j}\notin E_i(t)\cup {c_{i,i}}} d_{S_{n,m}}\paren{
-            p\paren{c_{i,j}(t)},p\paren{r_{j}(t)}}.
-    \]
-    Se afirma que en cada turno esta suma disminuye para al menos un
-    polic\'ia. En efecto, si $R$ mueve una ficha $r_i$ sobre una rama,
-    entonces las posiciones de las sombras de $R$ son las mismas que al turno
-    anterior, de manera que cada una de las sumas anteriores se mantiene
-    constante y $C$ logra reducirla para cada uno de los polic\'ias tales que
-    dicha suma a\'un no es $0$ (resolviendo obstrucciones en caso de ser
-    necesario). Por otra parte, si $r_i$ entra a una rama en la que ya hubiera
-    otra ficha de $R$, entonces al igual que en el caso anterior todos los
-    polic\'ias podr\'ian acercarse a 
-
-    N\'otese que esto no afecta a la estrategia general pues \cref{alg:desob}
-    resuelve las obstrucciones de manera que se reduce
-    $d_{S_{n,m}}\paren{c_i(t),R(t)}$
+    Se afirma que esta nueva estrategia propicia que, en alg\'un turno, un
+    polic\'ia $c_j$ con $j\neq i$ logra reducir la suma de las distancias de sus
+    fichas a sus objetivos (sin considerar su ficha libre). En efecto, si $c_i$
+    tiene bajo asedio a $R$ y $R$ mueve una ficha $r_j$ con $j\neq i$, entonces,
+    dado que el $j$-\'esimo polic\'ia ignora a $r_j$, este puede avanzar o
+    resolver obstrucciones con \cref{alg:desob} para reducir
+    $d_{S_{n,m}}\paren{c_j(t),R(t)}$. An\'alogamente, si $R$ pasa, entonces
+    todos los polic\'ias (salvo quiz\'as $c_i$) reducen la suma de las
+    distancias de sus fichas a sus objetivos sin considerar su ficha libre.
     
-    As\'i, el objetivo de esta fase no es que $\overline{c_i}(t) =
-    p\paren{r_i(t)}$, sino que $p\paren{c_{j,i}(t)} = p\paren{r_i(t)}$ y que
-    $d_{S_{n,m}}\paren{c_{j,i}(t),0}\leq d_{S_{n,m}}\paren{r_i(t),0}$ para cada
-    $j\neq i$ y para cada $i\in\seg{1}{k}$. Al igual que en la demostraci\'on
-    d\cref{lem:Instancia_capturas}, se afirma que esta situaci\'on es alcanzable
-    bajo un juego \'optimo de $R$. Esto es sencillo de ver pues cada movimiento
-    de una ficha $r_i$ sobre una misma rama deja fija la posici\'on de la sombra
-    de $r_i$. Adem\'as, si alg\'un $c_{j,i}$ tuviera que perseguir a $r_i$ para
-    que este siga cumpliendo la condici\'on de las distancias al centro de la
-    estrella, se generan dos casos dependiendo de si $c_{j,i}$ est\'a obstruida:
-    % \begin{enumerate}[(a)]
-    %     \item Si no lo est\'a, entonces basta con que el polic\'ia $c_j$ mueva
-    %     su $i$-ésima ficha a la nueva posici\'on de $r_i$, cumpliendo nuevamente
-    %     las condiciones que se buscan, ver %\cref{fig:no-obsram}).
+    Por otra parte, si $R$ mueve su ficha $r_i$ indefinidamente para que lo
+    anterior no suceda, basta demostrar que $c_{i,i}$ puede acercarse a ella en
+    cada turno hasta que $R$ se vea obligado a mover alguna otra ficha $r_j$.
+    Claramente cada movimiento de $r_i$ debe ser tal que la distancia entre
+    $r_i(t)$ y $c_{i,i}(t)$ sea al menos $2$ (de lo contrario, $c_{i,i}$ captura
+    al siguiente turno pues no habr\'ia obstrucci\'on alguna dado que $c_i$
+    tiene bajo asedio a $R$). As\'i, como $R$ mueve a $r_i$, en alg\'un momento
+    sucede que la distancia entre $r_i(t)$ y $c_{i,i}(t)$ es al menos $3$, por
+    lo que si la ficha libre de $c_i$ se encuentra obstruida en $0$, esta puede
+    resolver la obstrucci\'on de la forma usual acorde al \cref{inciso:obs},
+    reduciendo la distancia de $c_{i,i}$ a $r_i$ por $\ell+1$ unidades, donde
+    $\ell$ es el n\'umero de obstrucciones que se resuelven en la ejecuci\'on
+    del algoritmo. N\'otese que esta acci\'on propicia que $c_i$ deje de poner
+    bajo asedio a $R$. No obstante, esto no representa un problema pues resolver
+    la obstrucci\'on hacen que cada una de las $\ell$ fichas de $c_i$
+    reetiquetadas por \cref{alg:desob} se posicione a distancia $1$ de su
+    objetivo correspondiente, de modo que $c_i$ tiene bajo asedio d\'ebil a $R$.
+    En los siguientes turnos, $c_i$ se dedica a ejecutar \cref{alg:captura}
+    hasta que nuevamente cada una de sus fichas distintas de la libre capturen a
+    sus objetivos, situaci\'on que se alcanza despu\'es de $\ell$ turnos pues
+    $R$ solo mueve a la ficha $r_i$. Esto implica que en esos $\ell$ turnos
+    $r_i$ se aleja de $c_{i,i}$ en a lo m\'as $\ell$ unidades, de manera que,
+    cuando $c_i$ vuelve a poner bajo asedio a $R$, la distancia entre $c_{i,i}$
+    y $r_i$ se redujo al menos en una unidad. As\'i, $c_i$ logra reducir la
+    distancia entre su ficha libre y su objetivo, de manera que este algoritmo
+    se puede iterar las veces que sean necesarias para que $c_i$ termine por
+    capturar a $R$.
 
-    %     % \begin{figure}[ht!]
-    %     %     \begin{tcbitemize}[raster columns=2,raster equal height,
-    %     %         enhanced, colback=Black!5!white,colframe=Grey!75!black,
-    %     %         raster every box/.style={minimum for current equal height
-    %     %         group=2.5cm, valign=center, halign=center}, boxsep=0mm]
-    %     %         \tcbitem 
-    %     %         \begin{tikzpicture}
-    %     %             \node (i) [bola,fill=Crimson] {$c_{j,i}$};
-    %     %             \node (j) [bola,right=0.5cm of i] {$r_i$};
-    %     %             \node (2) [bola,right=3cm of j] {$0$};
-    %     %             \draw[edge] (i) -- (j);
-    %     %             \draw[dashed,edge] (j) .. controls (3.375,1) and
-    %     %             (3.875,-1) .. (2);
-    %     %         \end{tikzpicture}
-    %     %         \tcbitem
-    %     %         \begin{tikzpicture}
-    %     %             \node (i) [bola] {};
-    %     %             \node (j) [bola,right=0.5cm of i,fill=Crimson] {$c_{j,i},r_i$};
-    %     %             \node (2) [bola,right=3cm of j] {$0$};
-    %     %             \draw[edge] (i) -- (j);
-    %     %             \draw[dashed,edge] (j) .. controls (3.375,1) and
-    %     %             (3.875,-1) .. (2);
-    %     %         \end{tikzpicture}
-    %     %     \end{tcbitemize}
-    %     %     \caption{Al no estar obstruida, $c_{j,i}$ puede moverse a la nueva
-    %     %             posici\'on de $r_i$, de manera que $p\paren{c_{j,i}(t+1)} =
-    %     %             p\paren{r_i(t+1)}$ y $d_{S_{n,m}}\paren{c_{j,i}(t+1),0} \leq
-    %     %             d_{S_{n,m}}\paren{r_i(t+1),0}$.}
-    %     %     \label{fig:no-obsram}
-    %     % \end{figure}
+    Por tanto, $R$ est\'a obligado a mover una ficha distinta de $r_i$, que es
+    justo lo que se buscaba. Adem\'as, $c_i$ mantiene bajo asedio d\'ebil a $R$
+    en todo momento. Por tanto, aplicar la estrategia mencionada propicia que
+    eventualmente todos los polic\'ias tengan bajo asedio d\'ebil a $R$.
 
-    %     \item En caso de estar obstruida, 
-    % \end{enumerate}
+    Para la segunda fase, cada que $R$ mueva su ficha $r_i$, el polic\'ia $c_i$
+    prioriza que sus fichas distintas de su libre capturen a su objetivo,
+    acercando su ficha libre hacia $r_i$ una vez que lo anterior suceda y
+    resolviendo obstrucciones de la forma usual. Este proceso se intercala para
+    cada polic\'ia, y cada movimiento de ladr\'on, de manera que eventualmente
+    un polic\'ia logra posicionar su ficha libre en el mismo v\'ertice que su
+    objetivo mientas poner bajo asedio a $R$, i.e., $R$ es capturado.
 
-    M\'as a\'un, en el peor de los casos ser\'an necesarios los
-    movimientos de los $k-1$ polic\'ias en $\overline{c_i}$ para que se mantenga
-    la condici\'on de las distancias al centro de la estrella, por lo que al
-    menos un polic\'ia podr\'ia acercarse a capturar una ficha de $R$. El resto
-    de casos queda cubierto por lo mencionado en \cref{lem:Instancia_capturas} y
-    por el algoritmo de desobstrucci\'on.
-            
-    Una vez hecho esto, en la segunda fase los polic\'ias se dedican a avanzar
-    sobre las ramas para poner bajo asedio a $R$. Si $R$ mueve una ficha $r_i$,
-    como se mencion\'o anterioremente se tiene que a lo m\'as $k-1$ fichas en
-    $\overline{c_i}$ se mueven para mantener su distancia a $r_i$, resolviendo
-    obstrucciones en caso de ser necesario. As\'i, al menos un polic\'ia $c_i$
-    puede acercarse a capturar a alguno de sus objetivos, nuevamente resolviendo
-    obstrucciones en caso de ser necesario. Esto implica que en alg\'un turno se
-    tendr\'a que un polic\'ia $c_i$ es tal que todas sus fichas salvo su ficha
-    libre se encuentran capturando a sus objetivos. Adem\'as, su ficha libre,
-    $c_{i,i}$ puede acercarse tanto como sea necesario a su objetivo para
-    obligar a $R$ a mover una ficha $r_j$ con $j\neq i$ que permita al polic\'ia
-    $c_j$ acercar alguna de sus fichas a su objetivo. Por tanto, eventualmente
-    los polic\'ias logran poner a $R$ bajo asedio.
-
-    Finalmente, al inicio de la tercera fase se tiene que todas las fichas de
-    $R$ est\'an capturadas por $\paren{k-1}$-conjuntos, por lo que si alg\'un
-    $r_i$ se mueve a $0$, entonces el polic\'ia $c_i$ termina por capturar con
-    su ficha libre $c_{i,i}$ (la cual siempre se encuentra en $0$ o en la rama
-    donde est\'a $r_i$). As\'i, $R$ no puede llevar ninguna ficha a $0$. En este
-    caso resta que los polic\'ias introduzcan a cada rama la ficha del polic\'ia
-    que falte en el $\paren{k-1}$-conjunto de la ficha del ladr\'on m\'as
-    cercana a $0$ en cada rama con fichas de $R$. Esto asegura que $R$ no puede
-    sacar ninguna de sus fichas de la ramas y, al tener las ramas un n\'umero
-    finito de subdivisiones, entonces siempre sucede que por cada movimiento de
-    una ficha $R_j$, $\overline{C_j}$ le recaptura y $C_j$ procede a avanzar
-    sobre la rama en la que se encuentra $R_j$. Se sigue que $C$ siempre logra
-    capturar a $R$ en su totalidad sobre las ramas, probando que
-    $C\paren{F_k\paren{S_{n,m}}}=k$.
-        
 \end{proof}
+
+Observemos que el resultado anterior no depende de el n\'umero de subdivisiones
+que tiene cada rama de $S_{n,m}$, por lo que es posible enunciar un resultado
+ligeramente m\'as general.
+
+\begin{corolario}
+    Sean $k\geq 2$, $n\geq 2k-1$ y $m\geq 0$. Si $S$ es una subgr\'afica
+    inducida conexa de $S_{n,m}$ tal que $S_{n,0}\leq S$, entonces
+    $c\paren{\t{k}{S}}=k$.
+\end{corolario}
+
+En resumidas cuentas, el n\'umero policiaco de la gr\'afica de $k$ fichas de una
+estrella con $n$ ramas subdivididas inequitativamente (i.e., no todas las ramas
+tienen el mismo n\'umero de v\'ertices) es $k$. Es importante notar que en este
+caso no podemos concluir algo acerca del n\'umero policiaco de las gr\'aficas de
+$k$ fichas de las estrellas con subdivisiones con $n$ ramas si $n<2k-1$, pues si
+$m\geq 1$, el orden de $S_{n,m}$ es $n\paren{m+1} + 1$, de manera que
+\[
+    2\paren{n\paren{m+1} + 1 - k}-1 
+\]

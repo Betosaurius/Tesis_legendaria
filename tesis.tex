@@ -102,6 +102,8 @@
                     outer sep=0pt]
 \tikzstyle{bola}=[draw, circle, minimum size=1cm, line width=0.75pt,
                   inner sep=0pt, outer sep=0pt]
+\tikzstyle{bola1}=[draw, circle, minimum size=0.5cm, line width=0.75pt,
+                  inner sep=0pt, outer sep=0pt]
 \tikzstyle{bola2}=[draw, circle, minimum size=1.4cm, line width=0.75pt,
                   inner sep=0pt, outer sep=0pt]
 
@@ -165,6 +167,7 @@
 \crefname{algorithm}{el Algoritmo}{los Algoritmos}
 \crefname{section}{la Secci\'on}{las Secciones}
 \crefname{figure}{la Figura}{las Figuras}
+\crefname{inciso}{al inciso}{a los incisos}
 
 % Redefinicion para que las demostraciones terminen con cuadrito negro
 \renewenvironment{proof}[1][\proofname.]{\par
@@ -210,6 +213,34 @@
 \draw[edge] (\i) to (0);
 }
 
+\newcommand{\estrellauno}{%
+\node (0) [bola] at (0,0) {};
+\foreach \i in {1,...,5}
+\node (\i) [bola] at ({90+(360/5)*\i}:1.5) {};
+
+\foreach \i in {1,...,5}
+\draw[edge] (\i) to (0);
+}
+
+\newcommand{\estrellasubdiv}{%
+\node (0) [bola] at (0,0){};
+\foreach \i in {1,...,5}{
+    \node (\i_0) [bola] at ({90+(360/5)*\i}:1.5){};
+    \foreach \j in {1}{
+        \node (\i_\j) [bola] at ({90+(360/5)*\i}:\j+2){};
+    }
+    \foreach \j in {2}{
+        \node (\i_\j) [bola] at ({90+(360/5)*\i}:\j+2.5){};
+    }
+}
+
+\foreach \i in {1,...,5}{
+  \draw [edge] (\i_0) to (0);
+  \draw [edge] (\i_1) to (\i_0);
+  \draw [edge] (\i_2) to (\i_1);
+}
+}
+
 %%%%% vértices multicolor
 \tikzset{
         node split radius/.initial=1,
@@ -234,79 +265,79 @@
 
 \newcommand{\RB}[2]{%
 \begin{scope}[style/.expanded=\polarshift{#1}{#2}]
-  \node (RB) [bola2, node split half=0] {};
+  \node (RB) [bola, node split half=0] {};
 \end{scope}
 }
 
 \newcommand{\RBruno}[2]{%
 \begin{scope}[style/.expanded=\polarshift{#1}{#2}]
-  \node (RBr1) [bola2, node split half=0] {$r_1$};
+  \node (RBr1) [bola, node split half=0] {$r_1$};
 \end{scope}
 }
 
 \newcommand{\RBrcero}[2]{%
 \begin{scope}[style/.expanded=\polarshift{#1}{#2}]
-  \node (RBr0) [bola2, node split half=0] {$r_0$};
+  \node (RBr0) [bola, node split half=0] {$r_0$};
 \end{scope}
 }
 
 \newcommand{\RBrdos}[2]{%
 \begin{scope}[style/.expanded=\polarshift{#1}{#2}]
-  \node (RBr2) [bola2, node split half=0] {$r_2$};
+  \node (RBr2) [bola, node split half=0] {$r_2$};
 \end{scope}
 }
 
 \newcommand{\rcero}[2]{%
 \begin{scope}[style/.expanded=\polarshift{#1}{#2}]
-  \node (r0) [bola2] {$r_0$};
+  \node (r0) [bola] {$r_0$};
 \end{scope}
 }
 
 \newcommand{\R}[2]{%
 \begin{scope}[style/.expanded=\polarshift{#1}{#2}]
-  \node (R) [bola2, fill=Crimson] {};
+  \node (R) [bola, fill=Crimson] {};
 \end{scope}
 }
 
 \newcommand{\Rruno}[2]{%
 \begin{scope}[style/.expanded=\polarshift{#1}{#2}]
-  \node (Rr1) [bola2, fill=Crimson] {$r_1$};
+  \node (Rr1) [bola, fill=Crimson] {$r_1$};
 \end{scope}
 }
 
 \newcommand{\Rrdos}[2]{%
 \begin{scope}[style/.expanded=\polarshift{#1}{#2}]
-  \node (Rr2) [bola2, fill=Crimson] {$r_2$};
+  \node (Rr2) [bola, fill=Crimson] {$r_2$};
 \end{scope}
 }
 
 \newcommand{\Rrcero}[2]{%
 \begin{scope}[style/.expanded=\polarshift{#1}{#2}]
-  \node (Rr0) [bola2, fill=Crimson] {$r_0$};
+  \node (Rr0) [bola, fill=Crimson] {$r_0$};
 \end{scope}
 }
 
 \newcommand{\B}[2]{%
 \begin{scope}[style/.expanded=\polarshift{#1}{#2}]
-  \node (B) [bola2, fill=LightSkyBlue] {};
+  \node (B) [bola, fill=LightSkyBlue] {};
 \end{scope}
 }
 
 \newcommand{\Brcero}[2]{%
 \begin{scope}[style/.expanded=\polarshift{#1}{#2}]
-  \node (Br0) [bola2, fill=LightSkyBlue] {$r_0$};
+  \node (Br0) [bola, fill=LightSkyBlue] {$r_0$};
 \end{scope}
 }
 
 \newcommand{\Bruno}[2]{%
 \begin{scope}[style/.expanded=\polarshift{#1}{#2}]
-  \node (Br1) [bola2, fill=LightSkyBlue] {$r_1$};
+  \node (Br1) [bola, fill=LightSkyBlue] {$r_1$};
 \end{scope}
 }
 
 \newcommand{\Brdos}[2]{%
 \begin{scope}[style/.expanded=\polarshift{#1}{#2}]
-  \node (Br2) [bola2, fill=LightSkyBlue] {$r_2$};
+  \node (Br2) [bola, fill=LightSkyBlue] {$r_2$};
 \end{scope}
 }
 
@@ -813,24 +844,24 @@
 \end{scope}
 }
 
-\newcommand{\unocBc}[2]{%
-\begin{scope}[style/.expanded=\polarshift{#1}{#2}]
-  \node (CB) [cuadro,fill=blue] at (90:0.4) {};
-  \node (Cr) [cuadro,fill=black] at ({90 + (360/2)*1}:0.4) {};
+\newcommand{\unocBc}[3][0.4]{%
+\begin{scope}[style/.expanded=\polarshift{#2}{#3}]
+  \node (CB) [cuadro,fill=blue] at (90:#1) {};
+  \node (Cr) [cuadro,fill=black] at ({90 + (360/2)*1}:#1) {};
 \end{scope}
 }
 
-\newcommand{\unocBp}[2]{%
-\begin{scope}[style/.expanded=\polarshift{#1}{#2}]
-  \node (CB) [cuadro,fill=blue] at (90:0.4) {};
-  \node (Pr) [punto,fill=black] at ({90 + (360/2)*1}:0.4) {};
+\newcommand{\unocBp}[3][0.4]{%
+\begin{scope}[style/.expanded=\polarshift{#2}{#3}]
+  \node (CB) [cuadro,fill=blue] at (90:#1) {};
+  \node (Pr) [punto,fill=black] at ({90 + (360/2)*1}:#1) {};
 \end{scope}
 }
 
-\newcommand{\unocBt}[2]{%
-\begin{scope}[style/.expanded=\polarshift{#1}{#2}]
-  \node (CB) [cuadro,fill=blue] at (90:0.4) {};
-  \node (Tr) [tri,fill=black] at ({90 + (360/2)*1}:0.4) {};
+\newcommand{\unocBt}[3][0.4]{%
+\begin{scope}[style/.expanded=\polarshift{#2}{#3}]
+  \node (CB) [cuadro,fill=blue] at (90:#1) {};
+  \node (Tr) [tri,fill=black] at ({90 + (360/2)*1}:#1) {};
 \end{scope}
 }
 
@@ -876,24 +907,24 @@
 \end{scope}
 }
 
-\newcommand{\unopBc}[2]{%
-\begin{scope}[style/.expanded=\polarshift{#1}{#2}]
-  \node (PB) [punto,fill=blue] at (90:0.4) {};
-  \node (Cr) [cuadro,fill=black] at ({90 + (360/2)*1}:0.4) {};
+\newcommand{\unopBc}[3][0.4]{%
+\begin{scope}[style/.expanded=\polarshift{#2}{#3}]
+  \node (PB) [punto,fill=blue] at (90:#1) {};
+  \node (Cr) [cuadro,fill=black] at ({90 + (360/2)*1}:#1) {};
 \end{scope}
 }
 
-\newcommand{\unopBp}[2]{%
-\begin{scope}[style/.expanded=\polarshift{#1}{#2}]
-  \node (PB) [punto,fill=blue] at (90:0.4) {};
-  \node (Pr) [punto,fill=black] at ({90 + (360/2)*1}:0.4) {};
+\newcommand{\unopBp}[3][0.4]{%
+\begin{scope}[style/.expanded=\polarshift{#2}{#3}]
+  \node (PB) [punto,fill=blue] at (90:#1) {};
+  \node (Pr) [punto,fill=black] at ({90 + (360/2)*1}:#1) {};
 \end{scope}
 }
 
-\newcommand{\unopBt}[2]{%
-\begin{scope}[style/.expanded=\polarshift{#1}{#2}]
-  \node (PB) [punto,fill=blue] at (90:0.4) {};
-  \node (Tr) [tri,fill=black] at ({90 + (360/2)*1}:0.4) {};
+\newcommand{\unopBt}[3][0.4]{%
+\begin{scope}[style/.expanded=\polarshift{#2}{#3}]
+  \node (PB) [punto,fill=blue] at (90:#1) {};
+  \node (Tr) [tri,fill=black] at ({90 + (360/2)*1}:#1) {};
 \end{scope}
 }
 
@@ -939,24 +970,24 @@
 \end{scope}
 }
 
-\newcommand{\unotBc}[2]{%
-\begin{scope}[style/.expanded=\polarshift{#1}{#2}]
-  \node (TB) [tri,fill=blue] at (90:0.4) {};
-  \node (Cr) [cuadro,fill=black] at ({90 + (360/2)*1}:0.4) {};
+\newcommand{\unotBc}[3][0.4]{%
+\begin{scope}[style/.expanded=\polarshift{#2}{#3}]
+  \node (TB) [tri,fill=blue] at (90:#1) {};
+  \node (Cr) [cuadro,fill=black] at ({90 + (360/2)*1}:#1) {};
 \end{scope}
 }
 
-\newcommand{\unotBp}[2]{%
-\begin{scope}[style/.expanded=\polarshift{#1}{#2}]
-  \node (TB) [tri,fill=blue] at (90:0.4) {};
-  \node (Pr) [punto,fill=black] at ({90 + (360/2)*1}:0.4) {};
+\newcommand{\unotBp}[3][0.4]{%
+\begin{scope}[style/.expanded=\polarshift{#2}{#3}]
+  \node (TB) [tri,fill=blue] at (90:#1) {};
+  \node (Pr) [punto,fill=black] at ({90 + (360/2)*1}:#1) {};
 \end{scope}
 }
 
-\newcommand{\unotBt}[2]{%
-\begin{scope}[style/.expanded=\polarshift{#1}{#2}]
-  \node (TB) [tri,fill=blue] at (90:0.4) {};
-  \node (Tr) [tri,fill=black] at ({90 + (360/2)*1}:0.4) {};
+\newcommand{\unotBt}[3][0.4]{%
+\begin{scope}[style/.expanded=\polarshift{#2}{#3}]
+  \node (TB) [tri,fill=blue] at (90:#1) {};
+  \node (Tr) [tri,fill=black] at ({90 + (360/2)*1}:#1) {};
 \end{scope}
 }
 
