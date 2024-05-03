@@ -1179,21 +1179,21 @@ d\cref{teo:numero-de-policia-estrella}.
     $c\paren{\t{k}{S_{n,m}}}=k$.
 \end{teorema}
 \begin{proof}
-    N\'otese primero que en  el ladr\'on puede escoger jugar \'unicamente sobre
-    los v\'ertices del $S_{n,0}$ inducido en $S_{n,m}$, de manera que, tal como
-    se demostr\'o en \cref{teo:cota_estrella}, $c\paren{\t{k}{S_{n,m}}}\geq k$.
+    N\'otese primero que  el ladr\'on puede escoger jugar \'unicamente sobre los
+    v\'ertices de la $S_{n,0}$ inducida en $S_{n,m}$, de manera que, tal como se
+    demostr\'o en \cref{teo:cota_estrella}, $c\paren{\t{k}{S_{n,m}}}\geq k$.
 
     Se ver\'a que $c\paren{\t{k}{S_{n,m}}} = k$. As\'i pues, consid\'erese sin
     p\'erdida de generalidad que los $k$ polic\'ias, $c_1,\dots, c_k$, comienzan
-    con la configuraci\'on $C_0$ descrita anteriormente. La estrategia de
-    captura se divide en dos fases: el posicionamiento de los polic\'ias para
+    con la configuraci\'on $C_0$ descrita en \cref{fig:partida1}. La estrategia
+    de captura se divide en dos fases: el posicionamiento de los polic\'ias para
     poner bajo asedio d\'ebil a $R$ y la captura de $R$ sobre las ramas de
     $S_{n,m}$.
 
     En la primera fase, las fichas de los polic\'ias ejecutan la misma
     estrategia dada por \cref{alg:captura}. Por los mismos argumentos expuestos
     en \cref{teo:numero-de-policia-estrella}, despu\'es de un cierto n\'umero de
-    turnos un polic\'ia $c_i$ pone bajo asedio a $R$ (recordando que
+    turnos, un polic\'ia $c_i$ pone bajo asedio a $R$ (recordando que
     \cref{alg:desob} resuelve obstrucciones sin importar el \'arbol sobre el que
     se juega). El problema surge una vez que $c_i$ asedia a $R$ pues, si su
     ficha libre est\'a obstruida, \cref{alg:captura} indica que $c_i$ pasa.
@@ -1243,7 +1243,7 @@ d\cref{teo:numero-de-policia-estrella}.
     $\ell$ es el n\'umero de obstrucciones que se resuelven en la ejecuci\'on
     del algoritmo. N\'otese que esta acci\'on propicia que $c_i$ deje de poner
     bajo asedio a $R$. No obstante, esto no representa un problema pues resolver
-    la obstrucci\'on hacen que cada una de las $\ell$ fichas de $c_i$
+    la obstrucci\'on hace que cada una de las $\ell$ fichas de $c_i$
     reetiquetadas por \cref{alg:desob} se posicione a distancia $1$ de su
     objetivo correspondiente, de modo que $c_i$ tiene bajo asedio d\'ebil a $R$.
     En los siguientes turnos, $c_i$ se dedica a ejecutar \cref{alg:captura}
@@ -1255,20 +1255,25 @@ d\cref{teo:numero-de-policia-estrella}.
     y $r_i$ se redujo al menos en una unidad. As\'i, $c_i$ logra reducir la
     distancia entre su ficha libre y su objetivo, de manera que este algoritmo
     se puede iterar las veces que sean necesarias para que $c_i$ termine por
-    capturar a $R$.
+    capturar a $R$.  En caso de que $c_i$ no resuelva una obstrucci\'on al
+    perseguir a $r_i$, estas dos fichas no necesariamente reducen su distancia
+    ($r_i$ podr\'ia alejarse de $c_i$ sobre una rama).   Sin embargo, $r_i$ no
+    puede alejarse indefinidamente de $r_i$, pues cada rama tiene un n\'umero
+    finito de subdivisiones.
 
     Por tanto, $R$ est\'a obligado a mover una ficha distinta de $r_i$, que es
     justo lo que se buscaba. Adem\'as, $c_i$ mantiene bajo asedio d\'ebil a $R$
     en todo momento. Por tanto, aplicar la estrategia mencionada propicia que
     eventualmente todos los polic\'ias tengan bajo asedio d\'ebil a $R$.
 
-    Para la segunda fase, cada que $R$ mueva su ficha $r_i$, el polic\'ia $c_i$
-    prioriza que sus fichas distintas de su libre capturen a su objetivo,
-    acercando su ficha libre hacia $r_i$ una vez que lo anterior suceda y
-    resolviendo obstrucciones de la forma usual. Este proceso se intercala para
-    cada polic\'ia, y cada movimiento de ladr\'on, de manera que eventualmente
-    un polic\'ia logra posicionar su ficha libre en el mismo v\'ertice que su
-    objetivo mientas poner bajo asedio a $R$, i.e., $R$ es capturado.
+    Para la segunda fase, cada que $R$ mueva su ficha $r_i$, si el polic\'ia
+    $c_i$ tiene bajo asedio d\'ebil a $R$, entonces prioriza que las fichas
+    distintas de su ficha libre capturen a su objetivo; de otro modo, acerca su
+    ficha libre hacia $r_i$, resolviendo obstrucciones de la forma usual. Este
+    proceso se intercala para cada polic\'ia, y cada movimiento de ladr\'on, de
+    manera que eventualmente un polic\'ia logra posicionar su ficha libre en el
+    mismo v\'ertice que su objetivo mientas tiene asedio a $R$, i.e., $R$ es
+    capturado.
 
 \end{proof}
 
