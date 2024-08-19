@@ -1,4 +1,4 @@
-\chapter{Polic\'ias y ladrones sobre gr\'aficas de fichas gr\'aficas de inter\'es}
+\chapter[Algo corto]{Polic\'ias y ladrones sobre gr\'aficas de fichas gr\'aficas de inter\'es}
 \label{cap:resultados2}
 
 \section{Petersen}
@@ -64,7 +64,7 @@
         green to $c_2$, red to $c_3$ and yellow to $c_4$. In a similar fashion,
         figures indicate the number of token of the corresponding cop, implying
         that the blue dot referes to cop $c_{1,1}$, while the green triangle
-        represents cop $c_{2,2}$. In (b) is shown the worst case scenario after
+        represents cop $c_{2,2}$. In (b) the worst case scenario is shown after
         all cops have moved and before $R$ does its first move.}
         \label{fig:initial}
     \end{figure}
@@ -76,27 +76,29 @@
     $r_1$ in the same turn (and the same would happen for $c_{4,2}$).
     Nevetheless, per cop, there is one vertex in the dominating set where no
     token of such cop is, meaning $c_{3,1}$ and $c_{4,2}$ might not capture
-    their objectives. Despite this, since the diameter in $P$ is $2$, in the
-    worst case both $c_{3,1}$ and $c_{4,2}$ end their turns at distance $1$ from
-    $r_1$ and $r_2$ respectively (see (b) from Figure \ref{fig:initial}).
+    their objectives in the current turn. Despite this fact, since the diameter
+    in $P$ is $2$, in the worst case both $c_{3,1}$ and $c_{4,2}$ end their
+    turns at distance $1$ from $r_1$ and $r_2$ respectively (see (b) from Figure
+    \ref{fig:initial}).
 
-    Given the current situation, if $R$ passes, then both $c_{3,1}$ and $c_{4,2}$
-    achieve their goal. Otherwise, assume without loss of generality that $R_1$
-    has moved. This yields to $c_{4,2}$ capturing $r_2$, while $c_{1,1}$
-    recaptures $r_1$ and $c_{3,1}$ follows the shortest path leading to $r_1$,
-    which is unique and will leave it at distance one from its objective. At the
-    moment, if $R$ wants to avoid both $c_{4,2}$ and $c_{3,1}$ to capture their
-    objectives, he needs to keep moving $r_1$ indefinitely. Moreover, it has to
-    so avoiding the vertices in the closed neighborhood of $c_{3,2}$, since
-    entering to one of those would make $c_3$ to relabel their tokens, capturing
-    $r_1$ with $c_{3,1}$ in that same turn. Notice that $R$ would have to move
-    $r_1$ over an induced $C_6$ (not able to move back since $c_{3,1}$ is always
-    following him). Therefore, either $c_2$ or $c_4$ could positionate their
-    first token in a vertex of such cycle so that, eventually, $r_1$ could not
-    move forward in the cycle (since both $c_2$ and $c_4$ are already capturing
-    $r_2$), leaving it to pass, move backwards to $c_{3,1}$, or move into the
-    neighborhood of $c_{3,2}$. Then, both $c_{3,1}$ and $c_{4,2}$ would be
-    capturing their objectives (see Figure \ref{fig:cycle}).
+    Given the current situation, if $R$ passes, then both $c_{3,1}$ and
+    $c_{4,2}$ achieve their goal. Otherwise, assume without loss of generality
+    that $r_1$ has moved. This yields to $c_{4,2}$ capturing $r_2$, while
+    $c_{1,1}$ recaptures $r_1$ and $c_{3,1}$ follows the shortest path leading
+    to $r_1$, which is unique and will leave it at distance one from its
+    objective. At the moment, if $R$ wants to avoid both $c_{4,2}$ and $c_{3,1}$
+    to capture their objectives, he needs to keep moving $r_1$ indefinitely.
+    Moreover, it has to do so by avoiding the vertices in the closed
+    neighborhood of $c_{3,2}$, since entering to one of those would make $c_3$
+    to relabel their tokens, capturing $r_1$ with $c_{3,1}$ in that same turn.
+    Notice that $R$ would have to move $r_1$ on an induced copy of $C_6$ (not
+    able to move back since $c_{3,1}$ is always following him). Therefore,
+    either $c_2$ or $c_4$ could positionate their first token in a vertex of
+    such cycle so that, eventually, $r_1$ could not move forward in the cycle,
+    since both $c_2$ and $c_4$ are already capturing $r_2$. Hence, $R$ can only
+    pass, move $r_1$ backwards to $c_{3,1}$, or move $r_1$ into the neighborhood
+    of $c_{3,2}$. Then, both $c_{3,1}$ and $c_{4,2}$ would be capturing their
+    objectives (see Figure \ref{fig:cycle}).
 
     \begin{figure}[h!]
         \centering
@@ -166,7 +168,7 @@
                 }
         \end{tcbitemize}
         \caption{Each scene depicts a configuration of the game where $R$ is to
-        play its turn. Notices thar $r_1$ avoids the neighborhood of $c_{3,2}$
+        play its turn. Notice thar $r_1$ avoids the neighborhood of $c_{3,2}$
         and escapes from $c_{3,1}$ moving along the purple cycle. After $3$
         turns, if $r_1$ wants to move, it either gets captured by $c_{3,1}$ or
         gets at distance $1$ from $c_{3,2}$. Whenever there is an obstruction,
@@ -188,25 +190,26 @@
     fix $r_1$ in its position or to get it near to $r_2$, $c_{2,1}$ and
     $c_{4,1}$ move their tokens to be adjacent to $u_1$ and $u_2$ respectively.
     Notice that this can be attained since, from any possible vertex in which
-    they could be, one can move one to the neighborhood of $u_1$ and the other
+    they could be, $C$ can move one to the neighborhood of $u_1$ and the other
     to the neighborhood of $u_2$ (see )
 
-    Observe that $r_1$ cannot be moved to neither $u_1$ nor $u_2$ since it will
-    get $R$ to lose in the next turn. Therefore, either $R$ passes or moves
-    $r_2$. In the first case, both $c_{2,1}$ and $c_{4,1}$ get to $w_1$ and
-    $w_2$ respectively to force $R$ to move $r_1$ closer to $r_2$ or to move
-    $r_2$ itself. Assume without loss of generality that it moves to $w_1$,
-    noting that any obstruction could be solved with a relabel of tokens,
-    leading to the new $c_{2,1}$ or $c_{4,1}$ to be in the neighborhood of the
-    new vertex to which $r_1$ could move (see ). Once more, let $N(w_1)=\l{u_1,
-    r_2(t),y}$. Notice that one of $u_1$ and $u_2$ (without loss of generality
-    $u_1$) is the new unique vertex in both the neighborhood of $r_1(t+1)$ and
-    $r_2(t+1)$. Therefore, $c_{2,1}$ is freed of his duty to guard such vertex,
-    fact that it will be fundamental later. Due to the same reason of the last
-    paragraph, $c_{1,2}$ and $c_{3,2}$ can be positioned on the neighborhood of
-    $r_2(t)$ and $y$ respectively. Then, if $R$ passes, just as before,
-    $c_{1,2}$ and $c_{3,2}$ get to $r_2(t)$ and $y$ respectively, forcing $r_2$
-    or $r_1$ to move.
+    Observe that $r_1$ can be moved to neither $u_1$ nor $u_2$ since it will get
+    $R$ to lose in the next turn. Therefore, either $R$ passes or moves $r_2$.
+    In the first case, both $c_{2,1}$ and $c_{4,1}$ get to $w_1$ and $w_2$
+    respectively to force $R$ to move $r_1$ closer to $r_2$ or to move $r_2$
+    itself. Thus, in either case $R$ moves $r_2$ and we can assume without loss
+    of generality that its new position is $w_1$, noting that any obstruction
+    could be solved with a relabel of tokens, leading to the new $c_{2,1}$ or
+    $c_{4,1}$ to be in the neighborhood of the new vertex to which $r_1$ could
+    move (see ). Once more, let $N(w_1)=\l{u_1, r_2(t),y}$. Notice that one of
+    %TODO: explicación reetiquetamiento
+    $u_1$ and $u_2$, without loss of generality $u_1$, is the new unique vertex
+    in both the neighborhoods of $r_1(t+1)$ and $r_2(t+1)$. Therefore, $c_{2,1}$
+    is freed of his duty to guard such vertex, fact that will be fundamental
+    later. Due to the same reason of the last paragraph, $c_{1,2}$ and $c_{3,2}$
+    can be positioned on the neighborhood of $r_2(t)$ and $y$ respectively.
+    Then, if $R$ passes, just as before, $c_{1,2}$ and $c_{3,2}$ get to $r_2(t)$
+    and $y$ respectively, forcing $r_2$ or $r_1$ to move.
 
     Notice that $R$ is able to place $r_1$ on $v$ since such vertex is not in
     the neighborhood of $r_2(t+1)$.
