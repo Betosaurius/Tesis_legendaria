@@ -28,6 +28,9 @@
 \usepackage{amssymb}
 \usepackage{mathrsfs}
 
+%Counter
+\newcounter{myrasternum}
+
 % Colores
 \usepackage[table,svgnames]{xcolor}
 
@@ -211,6 +214,50 @@
 
 \foreach \i in {1,...,5}
 \draw[edge] (\i) to (0);
+}
+
+\newcommand{\petersen}{%
+
+\foreach \i in {0,...,4}
+  \node (\i) [bola2]  at ({(360/5)*\i + 90}:5){};
+\foreach \i in {5,...,9}
+  \node (\i) [bola2] at ({(360/5)*\i + 90}:2.5){};
+
+\foreach \i in {0,...,4}
+  \draw [edge] let \n1={int(mod(\i+1,5))} in (\i) to (\n1);
+
+\foreach \i in {5,...,9}
+  \draw [edge] let \n1={int(mod(\i+2,5)+5)} in (\i) to (\n1);
+
+\foreach \i in {0,...,4}
+  \draw [edge] let \n1={int(\i+5)} in (\i) to (\n1);
+}
+
+\newcommand{\petersendos}{%
+
+\foreach \i in {1,...,3}
+  \node (\i) [bola2]  at ({(360/5)*\i + 90}:5){};
+\foreach \i in {0,4}
+  \node (\i) [bola2, malva, line width=2pt]  at ({(360/5)*\i + 90}:5){};
+\foreach \i in {7}
+  \node (\i) [bola2] at ({(360/5)*\i + 90}:2.5){};
+\foreach \i in {5,6,8,9}
+  \node (\i) [bola2, malva, line width=2pt] at ({(360/5)*\i + 90}:2.5){};
+
+\foreach \i in {0,...,3}
+  \draw [edge] let \n1={int(mod(\i+1,5))} in (\i) to (\n1);
+\foreach \i in {4}
+  \draw [edge,malva, line width=2pt] let \n1={int(mod(\i+1,5))} in (\i) to (\n1);
+
+\foreach \i in {5,7}
+  \draw [edge] let \n1={int(mod(\i+2,5)+5)} in (\i) to (\n1);
+\foreach \i in {6,8,9}
+  \draw [edge, malva, line width=2pt] let \n1={int(mod(\i+2,5)+5)} in (\i) to (\n1);
+
+\foreach \i in {1,...,3}
+  \draw [edge] let \n1={int(\i+5)} in (\i) to (\n1);
+\foreach \i in {0,4}
+  \draw [edge, malva, line width=2pt] let \n1={int(\i+5)} in (\i) to (\n1);
 }
 
 \newcommand{\estrellauno}{%
@@ -1039,6 +1086,79 @@
 \end{scope}
 }
 
+%petersen
+
+\newcommand{\unopBunopYunotR}[2]{%
+\begin{scope}[style/.expanded=\polarshift{#1}{#2}]
+  \node (PY) [punto,fill=yellow] at ({90 + (360/3)*2}:0.4) {};
+  \node (PB) [punto,fill=blue] at ({90}:0.4) {};
+  \node (TR) [tri,fill=red] at ({90 + (360/3)*1}:0.4) {};
+\end{scope}
+}
+
+\newcommand{\unotBunotYunopG}[2]{%
+\begin{scope}[style/.expanded=\polarshift{#1}{#2}]
+  \node (TY) [tri,fill=yellow] at ({90 + (360/3)*2}:0.4) {};
+  \node (TB) [tri,fill=blue] at ({90}:0.4) {};
+  \node (PG) [punto,fill=verdeOscuro] at ({90 + (360/3)*1}:0.4) {};
+\end{scope}
+}
+
+\newcommand{\unotGunopR}[2]{%
+\begin{scope}[style/.expanded=\polarshift{#1}{#2}]
+  \node (PR) [punto,fill=red] at ({90 + 180}:0.4) {};
+  \node (TG) [tri,fill=verdeOscuro] at ({90}:0.4) {};
+\end{scope}
+}
+
+\newcommand{\unotY}[2]{%
+\begin{scope}[style/.expanded=\polarshift{#1}{#2}]
+  \node (TY) [tri,fill=yellow] at (0,0) {};
+\end{scope}
+}
+
+\newcommand{\unotBunopG}[2]{%
+\begin{scope}[style/.expanded=\polarshift{#1}{#2}]
+  \node (TB) [tri,fill=blue] at ({90}:0.4) {};
+  \node (PG) [punto,fill=verdeOscuro] at ({90 + (360/2)*1}:0.4) {};
+\end{scope}
+}
+
+\newcommand{\unotRunopY}[2]{%
+\begin{scope}[style/.expanded=\polarshift{#1}{#2}]
+  \node (PY) [punto,fill=yellow] at ({90 + (360/2)*1}:0.4) {};
+  \node (TR) [tri,fill=red] at ({90}:0.4) {};
+\end{scope}
+}
+
+\newcommand{\unotGunotYt}[2]{%
+\begin{scope}[style/.expanded=\polarshift{#1}{#2}]
+  \node (TY) [tri,fill=yellow] at ({90 + (360/3)*1}:0.4) {};
+  \node (TG) [tri,fill=verdeOscuro] at ({90}:0.4) {};
+  \node (t)  [tri, fill=black] at ({90 + (360/3)*2}:0.4) {};
+\end{scope}
+}
+
+\newcommand{\unotBunopR}[2]{%
+\begin{scope}[style/.expanded=\polarshift{#1}{#2}]
+  \node (PR) [punto,fill=red] at ({90 + (360/2)*1}:0.4) {};
+  \node (TB) [tri,fill=blue] at ({90}:0.4) {};
+\end{scope}
+}
+
+\newcommand{\unopBunopRp}[2]{%
+\begin{scope}[style/.expanded=\polarshift{#1}{#2}]
+  \node (PR) [punto,fill=red] at ({90 + (360/3)*1}:0.4) {};
+  \node (PB) [punto,fill=blue] at ({90}:0.4) {};
+  \node (p) [punto,fill=black] at ({90 + (360/3)*2}:0.4) {};
+\end{scope}
+}
+
+\newcommand{\unopY}[2]{%
+\begin{scope}[style/.expanded=\polarshift{#1}{#2}]
+  \node (PY) [punto,fill=yellow] at (0,0) {};
+\end{scope}
+}
 
 \newcommand{\n}{\mathbb{N}}
 
@@ -1071,6 +1191,7 @@
 \include{introduccion}
 \include{capitulo1}
 \include{capitulo2}
+\include{capitulo3}
 
 
 \backmatter

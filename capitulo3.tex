@@ -1,0 +1,289 @@
+\chapter{Polic\'ias y ladrones sobre gr\'aficas de fichas gr\'aficas de inter\'es}
+\label{cap:resultados2}
+
+\section{Petersen}
+\label{sec:petersen}
+
+% Cosas a usar: diam(P)=2, existe una \'unica geod\'esica entre cualesquiera par
+% de v\'ertices, existe un conjunto dominante de 3 v\'ertices
+
+\begin{teorema}
+\label{teo:cotasup_petersen}
+    If $P$ denotes the Petersen graph, then $c\paren{\t{2}{P}} \leq 4$.
+\end{teorema}
+
+\begin{proof}
+    Recall that $\gamma(P)=3$, so that one may choose the initial configuration
+    of the cops to be one in which they, individually, ocuppy a permutation of
+    the $3$ vertices of a dominating set (see (a) in Figure \ref{fig:initial}). We
+    claim that, in their first turn after choosing an initial configuration,
+    cops $c_1$ and $c_2$ can capture $r_1$ and $r_2$ with their first and second
+    tokens respectively. This can easily be seen from Figure \ref{fig:initial}
+    since there are at least two colors in each vertex, so in case $c_{1,1}$ and
+    $c_{2,2}$ were not at distance one from their respective targets, they would
+    just exchange their colors (and the shapes within their new color if
+    needed).
+
+    \begin{figure}[h!]
+        \centering
+        \begin{tcbitemize}[raster columns=2,raster equal height, enhanced,
+            colback=Black!5!white,colframe=Grey!75!black,
+            phantom={\setcounter{myrasternum}{\thetcbrasternum}},
+            title={(\alph{myrasternum})\enspace}, boxsep=0mm, right=0.65mm,
+            left=0.65mm, fonttitle=\bfseries, coltitle=black, raster
+            column skip=1mm, detach title,before upper=\tcbtitle\\, raster halign=center]
+
+            \tcbitem
+                \scalebox{0.65}{
+                    \centering
+                    \begin{tikzpicture}
+                            \petersen
+                            \unopBunopYunotR{5cm}{90 + (360/5)*2}
+                            \unotBunotYunopG{2.5cm}{90 + (360/5)*4}
+                            \unotGunopR{2.5cm}{90}
+                    \end{tikzpicture}
+                }
+            
+            \tcbitem
+                \scalebox{0.65}{
+                    \centering
+                    \begin{tikzpicture}
+                        \petersen
+                        \unopBp{5cm}{90 + (360/5)*3}
+                        \unopR{2.5cm}{90 + (360/5)*3}
+                        \unotGt{5cm}{90}
+                        \unotY{5cm}{90 + (360/5)*4}
+                        \unotBunopG{2.5cm}{90 + (360/5)*4}
+                        \unotRunopY{5cm}{90 + (360/5)*2}
+                    \end{tikzpicture}
+                }
+                \end{tcbitemize}
+        \caption{A possible initial configuration is shown in (a), where all
+        tokens lie in one of the three vertices of a dominating set. We will fix
+        colors to represent different cops, so that blue corresponds to $c_1$,
+        green to $c_2$, red to $c_3$ and yellow to $c_4$. In a similar fashion,
+        figures indicate the number of token of the corresponding cop, implying
+        that the blue dot referes to cop $c_{1,1}$, while the green triangle
+        represents cop $c_{2,2}$. In (b) is shown the worst case scenario after
+        all cops have moved and before $R$ does its first move.}
+        \label{fig:initial}
+    \end{figure}
+
+    Once the latter has happened, cops $3$ and $4$ move to capture $r_1$ and
+    $r_2$ respectively, emphasizing that token $c_{i,j}$ always move towards
+    token $r_j$. Thus, if $c_3$ had any of his tokens at distance $1$ from
+    $r_1$, it would possibly relabel it to put $c_{3,1}$ in position to capture
+    $r_1$ in the same turn (and the same would happen for $c_{4,2}$).
+    Nevetheless, per cop, there is one vertex in the dominating set where no
+    token of such cop is, meaning $c_{3,1}$ and $c_{4,2}$ might not capture
+    their objectives. Despite this, since the diameter in $P$ is $2$, in the
+    worst case both $c_{3,1}$ and $c_{4,2}$ end their turns at distance $1$ from
+    $r_1$ and $r_2$ respectively (see (b) from Figure \ref{fig:initial}).
+
+    Given the current situation, if $R$ passes, then both $c_{3,1}$ and $c_{4,2}$
+    achieve their goal. Otherwise, assume without loss of generality that $R_1$
+    has moved. This yields to $c_{4,2}$ capturing $r_2$, while $c_{1,1}$
+    recaptures $r_1$ and $c_{3,1}$ follows the shortest path leading to $r_1$,
+    which is unique and will leave it at distance one from its objective. At the
+    moment, if $R$ wants to avoid both $c_{4,2}$ and $c_{3,1}$ to capture their
+    objectives, he needs to keep moving $r_1$ indefinitely. Moreover, it has to
+    so avoiding the vertices in the closed neighborhood of $c_{3,2}$, since
+    entering to one of those would make $c_3$ to relabel their tokens, capturing
+    $r_1$ with $c_{3,1}$ in that same turn. Notice that $R$ would have to move
+    $r_1$ over an induced $C_6$ (not able to move back since $c_{3,1}$ is always
+    following him). Therefore, either $c_2$ or $c_4$ could positionate their
+    first token in a vertex of such cycle so that, eventually, $r_1$ could not
+    move forward in the cycle (since both $c_2$ and $c_4$ are already capturing
+    $r_2$), leaving it to pass, move backwards to $c_{3,1}$, or move into the
+    neighborhood of $c_{3,2}$. Then, both $c_{3,1}$ and $c_{4,2}$ would be
+    capturing their objectives (see Figure \ref{fig:cycle}).
+
+    \begin{figure}[h!]
+        \centering
+        \begin{tcbitemize}[raster columns=2,raster equal height, enhanced,
+            colback=Black!5!white,colframe=Grey!75!black,
+            phantom={\setcounter{myrasternum}{\thetcbrasternum}},
+            title={(\alph{myrasternum})\enspace}, boxsep=0mm, right=0.55mm,
+            left=0.55mm, fonttitle=\bfseries, coltitle=black, raster
+            column skip=1mm, detach title,before upper=\tcbtitle\\, raster halign=center]
+
+            \tcbitem
+                \scalebox{0.65}{
+                    \centering
+                    \begin{tikzpicture}
+                            \petersendos
+                            \unotGunotYt{5cm}{90 + (360/5)}
+                            \unopBp{2.5cm}{90 + (360/5)*4}
+                            \unopR{5cm}{90 + (360/5)*4}
+                            \unotRunopY{5cm}{90 + (360/5)*2}
+                            \unopG{5cm}{90}
+                            \unotB{2.5cm}{90 + (360/5)}
+
+                    \end{tikzpicture}
+                }
+            
+            \tcbitem
+                \scalebox{0.65}{
+                    \centering
+                    \begin{tikzpicture}
+                        \petersendos
+                        \unotGunotYt{5cm}{90 + (360/5)}
+                        \unopBp{2.5cm}{90 + (360/5)}
+                        \unotBunopR{2.5cm}{90 + (360/5)*4}
+                        \unotRunopY{5cm}{90 + (360/5)*2}
+                        \unopG{5cm}{90}
+                        
+                    \end{tikzpicture}
+                }
+            \tcbitem
+                \scalebox{0.65}{
+                    \centering
+                    \begin{tikzpicture}
+                        \petersendos
+                        \unotGunotYt{5cm}{90 + (360/5)}
+                        \unopBp{2.5cm}{90 + (360/5)*3}
+                        \unotB{2.5cm}{90 + (360/5)*4}
+                        \unopR{2.5cm}{90 + (360/5)}
+                        \unotRunopY{5cm}{90 + (360/5)*2}
+                        \unopG{5cm}{90}
+                        
+                    \end{tikzpicture}
+                }
+            
+                \tcbitem
+                \scalebox{0.65}{
+                    \centering
+                    \begin{tikzpicture}
+                        \petersendos
+                        \unotGunotYt{5cm}{90 + (360/5)}
+                        \unopBp{2.5cm}{90}
+                        \unotB{2.5cm}{90 + (360/5)*4}
+                        \unopR{2.5cm}{90 + (360/5)*3}
+                        \unotRunopY{5cm}{90 + (360/5)*2}
+                        \unopG{5cm}{90}
+                        
+                    \end{tikzpicture}
+                }
+        \end{tcbitemize}
+        \caption{Each scene depicts a configuration of the game where $R$ is to
+        play its turn. Notices thar $r_1$ avoids the neighborhood of $c_{3,2}$
+        and escapes from $c_{3,1}$ moving along the purple cycle. After $3$
+        turns, if $r_1$ wants to move, it either gets captured by $c_{3,1}$ or
+        gets at distance $1$ from $c_{3,2}$. Whenever there is an obstruction,
+        the cops relabel their tokens and pass since they no longer need to
+        recapture.}
+        \label{fig:cycle}
+    \end{figure}
+
+    In the following steps, $c_{1,1}$ and $c_{3,1}$ will move to recapture $r_1$
+    if such token were to be moved by $R$. In the same manner, $c_{2,2}$ and
+    $c_{4,2}$ will recapture whenever $R$ moves $r_2$. Now we claim that it is
+    possible to carry both $r_1$ and $r_2$ to be in adjacent vertices. Indeed,
+    let $N(r_1(t))=\l{u_1,v,u_2}$ and $N(r_2(t))=\l{w_1,v,w_2}$, noting that the
+    intersection of both sets is equal to $\l{v}$ since the diameter of Petersen
+    is $2$ and, between any pair of vertices, there is a unique path of shortest
+    lenght. Without loss of generality, assume the last token moved by $R$ is
+    $r_1$. Hence, $c_1$ and $c_3$ exhausted their movement by recapturing as
+    said at the beginning of the paragraph. Then, in an attempt to force $R$ to
+    fix $r_1$ in its position or to get it near to $r_2$, $c_{2,1}$ and
+    $c_{4,1}$ move their tokens to be adjacent to $u_1$ and $u_2$ respectively.
+    Notice that this can be attained since, from any possible vertex in which
+    they could be, one can move one to the neighborhood of $u_1$ and the other
+    to the neighborhood of $u_2$ (see )
+
+    Observe that $r_1$ cannot be moved to neither $u_1$ nor $u_2$ since it will
+    get $R$ to lose in the next turn. Therefore, either $R$ passes or moves
+    $r_2$. In the first case, both $c_{2,1}$ and $c_{4,1}$ get to $w_1$ and
+    $w_2$ respectively to force $R$ to move $r_1$ closer to $r_2$ or to move
+    $r_2$ itself. Assume without loss of generality that it moves to $w_1$,
+    noting that any obstruction could be solved with a relabel of tokens,
+    leading to the new $c_{2,1}$ or $c_{4,1}$ to be in the neighborhood of the
+    new vertex to which $r_1$ could move (see ). Once more, let $N(w_1)=\l{u_1,
+    r_2(t),y}$. Notice that one of $u_1$ and $u_2$ (without loss of generality
+    $u_1$) is the new unique vertex in both the neighborhood of $r_1(t+1)$ and
+    $r_2(t+1)$. Therefore, $c_{2,1}$ is freed of his duty to guard such vertex,
+    fact that it will be fundamental later. Due to the same reason of the last
+    paragraph, $c_{1,2}$ and $c_{3,2}$ can be positioned on the neighborhood of
+    $r_2(t)$ and $y$ respectively. Then, if $R$ passes, just as before,
+    $c_{1,2}$ and $c_{3,2}$ get to $r_2(t)$ and $y$ respectively, forcing $r_2$
+    or $r_1$ to move.
+
+    Notice that $R$ is able to place $r_1$ on $v$ since such vertex is not in
+    the neighborhood of $r_2(t+1)$.
+
+    \begin{figure}[h!]
+        \centering
+        \begin{tcbitemize}[raster columns=2,raster equal height, enhanced,
+            colback=Black!5!white,colframe=Grey!75!black,
+            phantom={\setcounter{myrasternum}{\thetcbrasternum}},
+            title={(\alph{myrasternum})\enspace}, boxsep=0mm, right=0.55mm,
+            left=0.55mm, fonttitle=\bfseries, coltitle=black, raster
+            column skip=1mm, detach title,before upper=\tcbtitle\\, raster halign=center]
+
+            \tcbitem
+                \scalebox{0.65}{
+                    \centering
+                    \begin{tikzpicture}
+                        \petersen
+                        \unopBunopRp{2.5cm}{90 + (360/5)*2}
+                        \unotGunotYt{5cm}{90 + (360/5)}
+                        \unotB{2.5cm}{90 + (360/5)*4}
+                        \unotR{2.5cm}{90 + (360/5)*3}
+                        \unopG{5cm}{90}
+                        \unopY{5cm}{90 + (360/5)*4}
+
+                    \end{tikzpicture}
+                }
+            
+            \tcbitem
+                \scalebox{0.65}{
+                    \centering
+                    \begin{tikzpicture}
+                        \petersen
+                        \unopBunopRp{2.5cm}{90 + (360/5)*2}
+                        \unotGunotYt{5cm}{90 + (360/5)}
+                        \unotB{2.5cm}{90 + (360/5)*4}
+                        \unotR{2.5cm}{90 + (360/5)*3}
+                        \unopG{5cm}{90}
+                        
+                    \end{tikzpicture}
+                }
+            \tcbitem
+                \scalebox{0.65}{
+                    \centering
+                    \begin{tikzpicture}
+                        \petersen
+                        \unopBunopRp{2.5cm}{90 + (360/5)*2}
+                        \unotGunotYt{5cm}{90 + (360/5)}
+                        \unotB{2.5cm}{90 + (360/5)*4}
+                        \unotR{2.5cm}{90 + (360/5)*3}
+                        \unopG{5cm}{90}
+                        
+                    \end{tikzpicture}
+                }
+            
+                \tcbitem
+                \scalebox{0.65}{
+                    \centering
+                    \begin{tikzpicture}
+                        \petersen
+                        \unopBunopRp{2.5cm}{90 + (360/5)*2}
+                        \unotGunotYt{5cm}{90 + (360/5)}
+                        \unotB{2.5cm}{90 + (360/5)*4}
+                        \unotR{2.5cm}{90 + (360/5)*3}
+                        \unopG{5cm}{90}
+                        
+                    \end{tikzpicture}
+                }
+        \end{tcbitemize}
+        \caption{Each scene depicts a configuration of the game where $R$ is to
+        play its turn. Notices thar $r_1$ avoids the neighborhood of $c_{3,2}$
+        and escapes from $c_{3,1}$ moving along the purple cycle. After $3$
+        turns, if $r_1$ wants to move, it either gets captured by $c_{3,1}$ or
+        gets at distance $1$ from $c_{3,2}$.}
+        \label{fig:guarding}
+    \end{figure}
+
+
+
+\end{proof}

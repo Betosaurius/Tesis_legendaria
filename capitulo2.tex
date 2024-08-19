@@ -2,11 +2,12 @@
 \label{cap:resultados}
 
 \section{Estrellas}
+\label{sec:estrellas}
 
 \begin{lema}
 \label{lem:isomorfismo}
     Sean $k$ y $n$ enteros positivos. Si $G$ una gr\'afica de orden $n$ y $k <
-    n$, entonces $\t{k}{G} \cong \t{n-k}{G}$
+    n$, entonces $\t{k}{G} \cong \t{n-k}{G}$.
 \end{lema}
 
 En virtud d\cref{lem:isomorfismo}, dado que $S_n$ tiene orden $n+1$ para cada
@@ -266,7 +267,7 @@ estretegia descrita en \cref{teo:cota_estrella}.
     de manera que ning\'un polc\'ia le captura dos fichas en las hojas. En la
     segunda escena $R$ tiene dos de sus fichas capturadas en las hojas, de
     manera que se ve obligado a mover su ficha del centro a una de las hojas
-    disponibles, cuya existencia qeuda demostrada en \cref{teo:cota_estrella}.
+    disponibles, cuya existencia queda demostrada en \cref{teo:cota_estrella}.
     En la escena $4$, $R$ se ve forzado a mover una vez m\'as, lo cual puede
     hacer pues existe al menos una de sus fichas que es capturada por los dos
     polic\'ias.}
@@ -1205,19 +1206,8 @@ d\cref{teo:numero-de-policia-estrella}.
     ning\'un polic\'ia $c_j$ reducir\'ia el par\'ametro
     $d_{S_{n,m}}\paren{c_j(t),R(t)}$.
 
-    Para atender esta situaci\'on, $C$ modifica su estrategia dependiendo de
-    d\'onde est\'a $r_i$ y en qu\'e v\'ertice est\'a la ficha que obstruye a
-    $c_{i,i}$:
-    \begin{enumerate}[(a)]
-        \item Si la ficha que obstruye a $c_{i,i}$ est\'a en un v\'ertice
-        distinto de $0$ (i.e., en el v\'ertice de una rama), entonces $C$
-        resuelve la obstrucci\'on como es usual.
-
-        \item \label{inciso:obs} Si la ficha que obstruye a $c_{i,i}$ est\'a en
-        $0$, $c_i$ verifica si $r_i$ se encuentra a distancia al menos $3$. De
-        ser as\'i, $C$ resuelve la obstrucci\'on de $c_{i,i}$ de forma usual. En
-        caso contrario, $c_i$ pasa.
-    \end{enumerate}
+    Para atender esta situaci\'on, $C$ modifica su estrategia ligeramente,
+    resolviendo la obstrucci\'on de la ficha libre de $c_i$ en lugar de pasar.
     
     Se afirma que esta nueva estrategia propicia que, en alg\'un turno, un
     polic\'ia $c_j$ con $j\neq i$ logra reducir la suma de las distancias de sus
@@ -1231,35 +1221,29 @@ d\cref{teo:numero-de-policia-estrella}.
     
     Por otra parte, si $R$ mueve su ficha $r_i$ indefinidamente para que lo
     anterior no suceda, basta demostrar que $c_{i,i}$ puede acercarse a ella en
-    cada turno hasta que $R$ se vea obligado a mover alguna otra ficha $r_j$.
-    Claramente cada movimiento de $r_i$ debe ser tal que la distancia entre
-    $r_i(t)$ y $c_{i,i}(t)$ sea al menos $2$ (de lo contrario, $c_{i,i}$ captura
-    al siguiente turno pues no habr\'ia obstrucci\'on alguna dado que $c_i$
-    tiene bajo asedio a $R$). As\'i, como $R$ mueve a $r_i$, en alg\'un momento
-    sucede que la distancia entre $r_i(t)$ y $c_{i,i}(t)$ es al menos $3$, por
-    lo que si la ficha libre de $c_i$ se encuentra obstruida en $0$, esta puede
-    resolver la obstrucci\'on de la forma usual acorde al \cref{inciso:obs},
-    reduciendo la distancia de $c_{i,i}$ a $r_i$ por $\ell+1$ unidades, donde
-    $\ell$ es el n\'umero de obstrucciones que se resuelven en la ejecuci\'on
-    del algoritmo. N\'otese que esta acci\'on propicia que $c_i$ deje de poner
-    bajo asedio a $R$. No obstante, esto no representa un problema pues resolver
-    la obstrucci\'on hace que cada una de las $\ell$ fichas de $c_i$
-    reetiquetadas por \cref{alg:desob} se posicione a distancia $1$ de su
-    objetivo correspondiente, de modo que $c_i$ tiene bajo asedio d\'ebil a $R$.
-    En los siguientes turnos, $c_i$ se dedica a ejecutar \cref{alg:captura}
-    hasta que nuevamente cada una de sus fichas distintas de la libre capturen a
-    sus objetivos, situaci\'on que se alcanza despu\'es de $\ell$ turnos pues
-    $R$ solo mueve a la ficha $r_i$. Esto implica que en esos $\ell$ turnos
-    $r_i$ se aleja de $c_{i,i}$ en a lo m\'as $\ell$ unidades, de manera que,
-    cuando $c_i$ vuelve a poner bajo asedio a $R$, la distancia entre $c_{i,i}$
-    y $r_i$ se redujo al menos en una unidad. As\'i, $c_i$ logra reducir la
-    distancia entre su ficha libre y su objetivo, de manera que este algoritmo
-    se puede iterar las veces que sean necesarias para que $c_i$ termine por
-    capturar a $R$.  En caso de que $c_i$ no resuelva una obstrucci\'on al
-    perseguir a $r_i$, estas dos fichas no necesariamente reducen su distancia
-    ($r_i$ podr\'ia alejarse de $c_i$ sobre una rama).   Sin embargo, $r_i$ no
-    puede alejarse indefinidamente de $r_i$, pues cada rama tiene un n\'umero
-    finito de subdivisiones.
+    cada turno hasta que $R$ se vea obligado a mover alguna otra ficha $r_j$. Si
+    la ficha libre de $c_i$ se encuentra obstruida, esta puede resolver la
+    obstrucci\'on de la forma usual, reduciendo la distancia de $c_{i,i}$ a
+    $r_i$ por $\ell+1$ unidades, donde $\ell$ es el n\'umero de obstrucciones
+    que se resuelven en la ejecuci\'on del algoritmo. N\'otese que esta acci\'on
+    propicia que $c_i$ deje de poner bajo asedio a $R$. No obstante, esto no
+    representa un problema pues resolver la obstrucci\'on hace que cada una de
+    las $\ell$ fichas de $c_i$ reetiquetadas por \cref{alg:desob} se posicione a
+    distancia $1$ de su objetivo correspondiente, de modo que $c_i$ tiene bajo
+    asedio d\'ebil a $R$. En los siguientes turnos, $c_i$ se dedica a ejecutar
+    \cref{alg:captura} hasta que nuevamente cada una de sus fichas distintas de
+    la libre capturen a sus objetivos, situaci\'on que se alcanza despu\'es de
+    $\ell$ turnos pues $R$ solo mueve a la ficha $r_i$. Esto implica que en esos
+    $\ell$ turnos $r_i$ se aleja de $c_{i,i}$ en a lo m\'as $\ell$ unidades, de
+    manera que, cuando $c_i$ vuelve a poner bajo asedio a $R$, la distancia
+    entre $c_{i,i}$ y $r_i$ se redujo al menos en una unidad. As\'i, $c_i$ logra
+    reducir la distancia entre su ficha libre y su objetivo, de manera que este
+    algoritmo se puede iterar las veces que sean necesarias para que $c_i$
+    termine por capturar a $R$.  En caso de que $c_i$ no resuelva una
+    obstrucci\'on al perseguir a $r_i$, estas dos fichas no necesariamente
+    reducen su distancia ($r_i$ podr\'ia alejarse de $c_i$ sobre una rama). Sin
+    embargo, $r_i$ no puede alejarse indefinidamente de $r_i$, pues cada rama
+    tiene un n\'umero finito de subdivisiones.
 
     Por tanto, $R$ est\'a obligado a mover una ficha distinta de $r_i$, que es
     justo lo que se buscaba. Adem\'as, $c_i$ mantiene bajo asedio d\'ebil a $R$
@@ -1289,10 +1273,61 @@ ligeramente m\'as general.
 
 En resumidas cuentas, el n\'umero policiaco de la gr\'afica de $k$ fichas de una
 estrella con $n$ ramas subdivididas inequitativamente (i.e., no todas las ramas
-tienen el mismo n\'umero de v\'ertices) es $k$. Es importante notar que en este
-caso no podemos concluir algo acerca del n\'umero policiaco de las gr\'aficas de
-$k$ fichas de las estrellas con subdivisiones con $n$ ramas si $n<2k-1$, pues si
-$m\geq 1$, el orden de $S_{n,m}$ es $n\paren{m+1} + 1$, de manera que
+tienen el mismo n\'umero de v\'ertices) es $k$. Adem\'as, este nuevo algoritmo
+generalizado tambi\'en resuelve la instancia en la que $m=0$. Es importante
+notar que de lo anterior no podemos concluir algo acerca del n\'umero policiaco
+de las gr\'aficas de $k$ fichas de las estrellas con $n$ ramas subdivididas si
+$n<2k-1$. Para ver esto, consideramos $n$ un entero fijo y $k_n$ el m\'inimo
+entero tal que $n < 2k_n -1$. Al ser este un m\'inimo, sucede que
 \[
-    2\paren{n\paren{m+1} + 1 - k}-1 
+    2\paren{k_n-1} - 1 \leq n < 2k_n - 1,
 \]
+de manera que
+\[
+    k_n\leq \frac{n + 1}{2} + 1 = \frac{n+3}{2} \leq k_n.
+\]
+Adem\'as, si $k_n=\left \lceil \frac{n+3}{2} \right \rceil$, entonces para $n$
+par sucede que
+\[
+    2\paren{k_n-1} - 1 = 2\paren{\frac{n+4}{2}-1} - 1 = n + 1,
+\]
+lo que contradice que $2\paren{k_n-1} - 1 \leq n$, concluyendo as\'i que
+$k_n=\left \lfloor \frac{n+3}{2} \right \rfloor$.
+
+En este orden de ideas, para cualquier entero positivo $n$, si $m=0$,
+$\abs{V_{S_{n,m}}} = n(m+1) + 1 = n + 1$, de modo que, tal como se expuso al
+inicio de \cref{sec:estrellas}, $n\geq 2\paren{\abs{V_{S_{n,m}}} - k} - 1$ para
+cualquier $k\geq k_n$, por lo que su n\'umero policiaco, acorde al Teorema
+\ref{teo:numero-de-policia-estrella}, es $n+1-k$. No obstante, si $m\geq1$, y
+recordando que $k\leq \frac{\abs{V_{S_{n,m}}}}{2}$ debido al Lema
+\ref{lem:isomorfismo}:
+\begin{align*}
+    2\paren{\abs{V_{S_{n,m}}} - k} - 1 
+        &= 2\paren{n(m+1) + 1 - k} - 1\\
+        &\geq 2\paren{n(m+1) + 1 - \frac{n(m+1) + 1}{2}} -1\\
+        &= n(m+1) + 1 -1\\
+        &\geq 2n > n.
+\end{align*}
+
+Por tanto, no es posible utilizar el corolario anterior para resolver este caso
+(pues no habr\'ia al menos el doble menos uno de ramas que de fichas). M\'as
+a\'un, podemos enunciar el siguiente teorema para cubrir los casos restantes.
+
+\begin{teorema}
+\label{teo:cota-estrella-grado-bajo}
+Para toda $k\geq 2$, $0<n<2k-1$ y $m\geq 1$ suficientemente grande para que
+$k\leq \frac{\abs{V_{S_{n,m}}}}{2}$, $\t{k}{S_{n,m}}\geq k_n$.
+\end{teorema}
+
+% \begin{proof}
+%     Basta ver que $R$ tiene una estrategia de escape contra $k_n-1$ polic\'ias
+%     en $F_k(S_{n,m})$. Para su configuraci\'on inicial, $R$ prioriza el
+%     posicionaminto se sus fichas de manera que estas se encuentren lo m\'as
+%     cercanas al v\'ertice $0$. As\'i, $R$ comienza colocando una ficha en el
+%     v\'ertice $0$ y procede a colocar sus siguientes $n$ fichas en alguno de los
+%     v\'ertices a distancia $1$ de $0$. Este proceso sigue hasta que $R$ termina
+%     de colocar todas sus fichas. Por tanto, $R$ tiene
+%     \[
+%        \binom{n}{\left\lfloor \frac{k-1}{n}\right\rfloor}
+%     \]
+% \end{proof}
