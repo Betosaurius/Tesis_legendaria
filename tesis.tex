@@ -84,7 +84,7 @@
 
 % Generacion de dibujos con TeX
 \usepackage{tikz}
-\usetikzlibrary{arrows,shapes,matrix,decorations,shapes.geometric,calc,automata,positioning, backgrounds}
+\usetikzlibrary{arrows,shapes,matrix,decorations,shapes.geometric,calc,automata,positioning, backgrounds, patterns}
 \tikzstyle{arc}   =[->,shorten <=3pt, shorten >=3pt,
                    >=stealth, line width=1.1pt]
 \tikzstyle{edge}  =[shorten <=2pt, shorten >=2pt,
@@ -260,6 +260,130 @@
   \draw [edge, malva, line width=2pt] let \n1={int(\i+5)} in (\i) to (\n1);
 }
 
+\newcommand{\petersentres}{%
+
+\foreach \i in {1}
+  \node (\i) [bola2, line width=2pt, pattern=north east lines]  at ({(360/5)*\i
+  + 90}:5){};
+\foreach \i in {3}
+  \node (\i) [bola2]  at ({(360/5)*\i + 90}:5){};
+\foreach \i in {2}
+  \node (\i) [bola2, line width=2pt, pattern=north east lines]  at ({(360/5)*\i + 90}:5){};
+\foreach \i in {7}
+  \node (\i) [bola2, line width=2pt, pattern=north east lines] at ({(360/5)*\i + 90}:2.5){};
+\foreach \i in {0}
+  \node (\i) [bola2, Navy, line width=2pt, pattern=crosshatch, pattern
+  color= Navy] at ({(360/5)*\i + 90}:5){};
+\foreach \i in {8}
+  \node (\i) [bola2, Navy, line width=2pt, pattern=crosshatch, pattern
+  color= Navy] at ({(360/5)*\i + 90}:2.5){};
+\foreach \i in {6}
+  \node (\i) [bola2, SeaGreen, line width=2pt, pattern=crosshatch, pattern
+  color= SeaGreen] at ({(360/5)*\i + 90}:2.5){};
+\foreach \i in {4}
+  \node (\i) [bola2, SeaGreen, line width=2pt, pattern=crosshatch, pattern
+  color= SeaGreen] at ({(360/5)*\i + 90}:5){};
+\foreach \i in {5}
+  \node (\i) [bola2, Navy, line width=2pt] at ({(360/5)*\i + 90}:2.5){};
+\foreach \i in {9}
+  \node (\i) [bola2, SeaGreen, line width=2pt] at ({(360/5)*\i + 90}:2.5){};
+
+\foreach \i in {0,...,4}
+  \draw [edge] let \n1={int(mod(\i+1,5))} in (\i) to (\n1);
+
+\foreach \i in {5,...,9}
+  \draw [edge] let \n1={int(mod(\i+2,5)+5)} in (\i) to (\n1);
+
+\foreach \i in {0,...,4}
+  \draw [edge] let \n1={int(\i+5)} in (\i) to (\n1);
+}
+
+\newcommand{\petersencuatro}{%
+
+\foreach \i in {0,...,3}
+  \node (\i) [bola2]  at ({(360/5)*\i + 90}:5){};
+\foreach \i in {5,6,7,9}
+  \node (\i) [bola2]  at ({(360/5)*\i + 90}:2.5){};
+\foreach \i in {8}
+  \node (\i) [bola2, Navy, line width=2pt, pattern=crosshatch, pattern
+  color= Navy] at ({(360/5)*\i + 90}:2.5){};
+\foreach \i in {4}
+  \node (\i) [bola2, SeaGreen, line width=2pt, pattern=crosshatch, pattern
+  color= SeaGreen] at ({(360/5)*\i + 90}:5){};
+
+\foreach \i in {0,...,4}
+  \draw [edge] let \n1={int(mod(\i+1,5))} in (\i) to (\n1);
+
+\foreach \i in {5,...,9}
+  \draw [edge] let \n1={int(mod(\i+2,5)+5)} in (\i) to (\n1);
+
+\foreach \i in {0,...,4}
+  \draw [edge] let \n1={int(\i+5)} in (\i) to (\n1);
+}
+
+\newcommand{\petersencinco}{%
+
+\foreach \i in {0}
+  \node (\i) [bola2]  at ({(360/5)*\i + 90}:5){};
+\foreach \i in {5,7,8}
+  \node (\i) [bola2]  at ({(360/5)*\i + 90}:2.5){};
+\foreach \i in {1}
+  \node (\i) [bola2, Navy, line width=2pt] at ({(360/5)*\i + 90}:5){};
+\foreach \i in {6}
+  \node (\i) [bola2, Navy, line width=2pt, pattern=crosshatch, pattern
+  color= Navy] at ({(360/5)*\i + 90}:2.5){};
+\foreach \i in {2}
+  \node (\i) [bola2, Navy, line width=2pt, pattern=crosshatch, pattern
+  color= Navy] at ({(360/5)*\i + 90}:5){};
+\foreach \i in {4}
+  \node (\i) [bola2, SeaGreen, line width=2pt] at ({(360/5)*\i + 90}:5){};
+\foreach \i in {3}
+  \node (\i) [bola2, SeaGreen, line width=2pt, pattern=crosshatch, pattern
+  color= SeaGreen] at ({(360/5)*\i + 90}:5){};
+\foreach \i in {9}
+  \node (\i) [bola2, SeaGreen, line width=2pt, pattern=crosshatch, pattern
+  color= SeaGreen] at ({(360/5)*\i + 90}:2.5){};
+
+\foreach \i in {0,...,4}
+  \draw [edge] let \n1={int(mod(\i+1,5))} in (\i) to (\n1);
+
+\foreach \i in {5,...,9}
+  \draw [edge] let \n1={int(mod(\i+2,5)+5)} in (\i) to (\n1);
+
+\foreach \i in {0,...,4}
+  \draw [edge] let \n1={int(\i+5)} in (\i) to (\n1);
+}
+
+\newcommand{\petersenseis}{%
+
+\foreach \i in {0,1,2}
+  \node (\i) [bola2]  at ({(360/5)*\i + 90}:5){};
+\foreach \i in {6,7}
+  \node (\i) [bola2]  at ({(360/5)*\i + 90}:2.5){};
+\foreach \i in {5}
+  \node (\i) [bola2, Navy, line width=2pt] at ({(360/5)*\i + 90}:2.5){};
+\foreach \i in {8}
+  \node (\i) [bola2, Navy, line width=2pt, pattern=crosshatch, pattern
+  color= Navy] at ({(360/5)*\i + 90}:2.5){};
+\foreach \i in {4}
+  \node (\i) [bola2, SeaGreen, line width=2pt] at ({(360/5)*\i + 90}:5){};
+\foreach \i in {3}
+  \node (\i) [bola2, SeaGreen, line width=2pt, pattern=crosshatch, pattern
+  color= SeaGreen] at ({(360/5)*\i + 90}:5){};
+\foreach \i in {9}
+  \node (\i) [bola2, SeaGreen, line width=2pt, pattern=crosshatch, pattern
+  color= SeaGreen] at ({(360/5)*\i + 90}:2.5){};
+
+\foreach \i in {0,...,4}
+  \draw [edge] let \n1={int(mod(\i+1,5))} in (\i) to (\n1);
+
+\foreach \i in {5,...,9}
+  \draw [edge] let \n1={int(mod(\i+2,5)+5)} in (\i) to (\n1);
+
+\foreach \i in {0,...,4}
+  \draw [edge] let \n1={int(\i+5)} in (\i) to (\n1);
+}
+
 \newcommand{\estrellauno}{%
 \node (0) [bola] at (0,0) {};
 \foreach \i in {1,...,5}
@@ -287,6 +411,7 @@
   \draw [edge] (\i_2) to (\i_1);
 }
 }
+
 
 %%%%% vértices multicolor
 \tikzset{
@@ -1086,8 +1211,6 @@
 \end{scope}
 }
 
-%petersen
-
 \newcommand{\unopBunopYunotR}[2]{%
 \begin{scope}[style/.expanded=\polarshift{#1}{#2}]
   \node (PY) [punto,fill=yellow] at ({90 + (360/3)*2}:0.4) {};
@@ -1139,6 +1262,13 @@
 \end{scope}
 }
 
+\newcommand{\unotGunotY}[2]{%
+\begin{scope}[style/.expanded=\polarshift{#1}{#2}]
+  \node (TY) [tri,fill=yellow] at ({90 + (360/2)*1}:0.4) {};
+  \node (TG) [tri,fill=verdeOscuro] at ({90}:0.4) {};
+\end{scope}
+}
+
 \newcommand{\unotBunopR}[2]{%
 \begin{scope}[style/.expanded=\polarshift{#1}{#2}]
   \node (PR) [punto,fill=red] at ({90 + (360/2)*1}:0.4) {};
@@ -1154,9 +1284,51 @@
 \end{scope}
 }
 
+\newcommand{\unopBunopR}[2]{%
+\begin{scope}[style/.expanded=\polarshift{#1}{#2}]
+  \node (PR) [punto,fill=red] at ({90 + (360/2)*1}:0.4) {};
+  \node (PB) [punto,fill=blue] at ({90}:0.4) {};
+\end{scope}
+}
+
 \newcommand{\unopY}[2]{%
 \begin{scope}[style/.expanded=\polarshift{#1}{#2}]
   \node (PY) [punto,fill=yellow] at (0,0) {};
+\end{scope}
+}
+
+\newcommand{\unopGunopY}[2]{%
+\begin{scope}[style/.expanded=\polarshift{#1}{#2}]
+  \node (PY) [punto,fill=yellow] at ({90 + (360/2)*1}:0.4) {};
+  \node (PG) [punto,fill=verdeOscuro] at ({90}:0.4) {};
+\end{scope}
+}
+
+\newcommand{\unopGunotR}[2]{%
+\begin{scope}[style/.expanded=\polarshift{#1}{#2}]
+  \node (TR) [tri,fill=red] at ({90 + (360/2)*1}:0.4) {};
+  \node (PG) [punto,fill=verdeOscuro] at ({90}:0.4) {};
+\end{scope}
+}
+
+\newcommand{\unotBunotR}[2]{%
+\begin{scope}[style/.expanded=\polarshift{#1}{#2}]
+  \node (TR) [tri,fill=red] at ({90 + (360/2)*1}:0.4) {};
+  \node (TB) [tri,fill=blue] at ({90}:0.4) {};
+\end{scope}
+}
+
+\newcommand{\unotBunopY}[2]{%
+\begin{scope}[style/.expanded=\polarshift{#1}{#2}]
+  \node (PY) [punto,fill=yellow] at ({90 + (360/2)*1}:0.4) {};
+  \node (TB) [tri,fill=blue] at ({90}:0.4) {};
+\end{scope}
+}
+
+\newcommand{\unopBunopG}[2]{%
+\begin{scope}[style/.expanded=\polarshift{#1}{#2}]
+  \node (PG) [punto,fill=verdeOscuro] at ({90 + (360/2)*1}:0.4) {};
+  \node (PB) [punto,fill=blue] at ({90}:0.4) {};
 \end{scope}
 }
 

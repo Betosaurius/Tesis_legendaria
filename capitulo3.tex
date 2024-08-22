@@ -7,35 +7,227 @@
 % Cosas a usar: diam(P)=2, existe una \'unica geod\'esica entre cualesquiera par
 % de v\'ertices, existe un conjunto dominante de 3 v\'ertices
 
+\begin{lema}
+    \label{bound}
+      If $P$ denotes the Petersen graph, then $c\paren{\t{2}{P}} > 3$.
+\end{lema}
+    
+\begin{proof}
+    It suffices to show that $R$ has an escape strategy against $3$ cops. It will
+    be shown that $R$ is able to keep his tokens in non-adjacent vertices while
+    $C$ is at least two turns away from capturing him, or that $R$ can return to
+    the first situation were his tokens to be in adjacent vertices.
+
+    First, notice that $C$ can ocuppy up to $6$ vertices, one per token per cop.
+    Since $P$ has order $10$, $R$ may positionate his tokens so that no cop is
+    capturing any of them, hence $C$ is at least $2$ turns away from capturing him
+    (see Figure \ref{fig:initial0}). Moreover, since $P$ does not have $4$-cycles, in particular it does
+    not contain a $K_4$, meaning that at least two of such vertices are
+    non-adjacent.
+
+    \begin{figure}[ht]
+    \centering
+    \begin{tcbitemize}[raster columns=2,raster equal height, enhanced,
+        colback=Black!5!white,colframe=Grey!75!black,
+        phantom={\setcounter{myrasternum}{\thetcbrasternum}},
+        title={(\alph{myrasternum})\enspace}, boxsep=0mm, right=0.5mm,
+        left=0.5mm, fonttitle=\bfseries, coltitle=black, raster
+        column skip=1mm, detach title,before upper=\tcbtitle, raster
+        halign=center, raster row skip=1mm]
+
+        \tcbitem
+
+            \centering
+            \scalebox{0.5}{
+                \begin{tikzpicture}
+                        \petersen
+                        \unopB{5cm}{90}
+                        \unopG{5cm}{90 + (360/5)*1}
+                        \unopR{5cm}{90 + (360/5)*2}
+                        \unopB{5cm}{90 + (360/5)*3}
+                        \unopG{5cm}{90 + (360/5)*4}
+                        \unopR{2.5cm}{90}
+                \end{tikzpicture}
+            }
+        
+        \tcbitem
+
+            \centering
+            \scalebox{0.5}{
+                \begin{tikzpicture}
+                    \petersen
+                    \unopB{5cm}{90}
+                    \unopG{5cm}{90 + (360/5)*1}
+                    \unopR{5cm}{90 + (360/5)*2}
+                    \unopB{5cm}{90 + (360/5)*3}
+                    \unopG{5cm}{90 + (360/5)*4}
+                    \unopR{2.5cm}{90}
+                    \punto{2.5cm}{90 + (360/5)}
+                    \punto{2.5cm}{90 + (360/5)*2}
+                \end{tikzpicture}
+            }
+            \end{tcbitemize}
+    \caption{In (a), $C$ has chosen his initial position to be one that occupies
+            the most vertices of $P$. Nonetheless, $R$ can still position his
+            tokens as in (b) on the remaining vertices, fulfilling the condition
+            he seeks. Notice that all tokens have the same shape since no
+            labeling will be used in the proof.}
+    \label{fig:initial0}
+    \end{figure}
+
+    In the following turns, $R$ will pass whenever no cop is one movement away
+    from capturing him. When such thing happens, notice that $R$ has $6$ possible
+    moves, two of them which will result in their cops being in adjacent vertices
+    since Petersen graph is $3$-regular, has diamater $2$ and there is a unique
+    path of shortest length between any pair of vertices (see Figure
+    \ref{fig:possible}). Suppose without loss of generality that $c_1$ is a cop
+    which is one turn away from capturing $R$, implying that it has one of his
+    tokens capturing a token of $R$, while the remaining one is at distance $1$
+    from the other token of $R$. This implies that one of the tokens of $R$ has
+    one of their possible movements ruled out. Furthermore, if another cop is two
+    turns away from capturing, then the best way to guard as much vertices to
+    which $R$ could move is to have a token in a vertex adjacent to one of the
+    tokens of $C$, while the other is in a vertex adjacent to the remaining token
+    of $R$. Both $c_2$ and $c_3$ could do this to cover $4$ of the $6$ possible
+    moves of $R$. Then $R$ would just have one movement: move the captured token
+    to be adjacent to the uncaptured one. Thus, $R$ survives the next turn since
+    no cop is one turn away from capturing him (see (b) of Figure
+    \ref{fig:possible}).
+
+    \begin{figure}[ht]
+    \centering
+    \begin{tcbitemize}[raster columns=2,raster equal height, enhanced,
+        colback=Black!5!white,colframe=Grey!75!black,
+        phantom={\setcounter{myrasternum}{\thetcbrasternum}},
+        title={(\alph{myrasternum})\enspace}, boxsep=0mm, right=0.5mm,
+        left=0.5mm, fonttitle=\bfseries, coltitle=black, raster
+        column skip=1mm, detach title,before upper=\tcbtitle, raster
+        halign=center, raster row skip=1mm]
+
+        \tcbitem
+
+            \centering
+            \scalebox{0.5}{
+                \begin{tikzpicture}
+                \petersen
+                \unopB{2.5cm}{90 + (360/5)*4}
+                \unopG{5cm}{90 + (360/5)*1}
+                \unopG{5cm}{90 + (360/5)*2}
+                \unopR{2.5cm}{90 + (360/5)*3}
+                \unopR{2.5cm}{90}
+                \unopBp{2.5cm}{90 + (360/5)}
+                \punto{2.5cm}{90 + (360/5)*2}
+                \end{tikzpicture}
+            }
+        
+        \tcbitem
+
+            \centering
+            \scalebox{0.5}{
+                \begin{tikzpicture}
+                \petersen
+                \unopBp{2.5cm}{90 + (360/5)*4}
+                \unopG{5cm}{90 + (360/5)*1}
+                \unopG{5cm}{90 + (360/5)*2}
+                \unopR{2.5cm}{90 + (360/5)*3}
+                \unopR{2.5cm}{90}
+                \unopB{2.5cm}{90 + (360/5)}
+                \punto{2.5cm}{90 + (360/5)*2}
+                \end{tikzpicture}
+            }
+
+        \tcbitem
+
+            \centering
+            \scalebox{0.5}{
+                \begin{tikzpicture}
+                \petersen
+                \unopB{5cm}{90 + (360/5)*4}
+                \unopG{5cm}{90 + (360/5)*2}
+                \unopR{2.5cm}{90 + (360/5)*3}
+                \unopR{2.5cm}{90}
+                \unopBunopG{2.5cm}{90 + (360/5)}
+                \unopRp{2.5cm}{90 + (360/5)*2}
+                \punto{2.5cm}{90 + (360/5)*4}
+                \end{tikzpicture}
+            }
+        
+        \tcbitem
+
+            \centering
+            \scalebox{0.5}{
+                \begin{tikzpicture}
+                \petersen
+                \unopBp{5cm}{90 + (360/5)*4}
+                \unopG{5cm}{90 + (360/5)*2}
+                \unopR{2.5cm}{90 + (360/5)*3}
+                \unopR{2.5cm}{90}
+                \unopBunopG{2.5cm}{90 + (360/5)}
+                \unopRp{2.5cm}{90 + (360/5)*2}
+                \end{tikzpicture}
+            }
+    \end{tcbitemize}
+    \caption{In (a) is shown the best way $C$ can guard the exits of $R$ to
+            prevent him from doing a movement different from puting their tokens
+            next to each other. Notice that the movement of $R$ shown in (b)
+            ensures such token moved to have an additional exit (the one vertex
+            whose other two neighbors have no tokens in it). In (c), cops move
+            in an effort to get near to the tokens of $R$ while still covering
+            the exits, but $R$ can still move as in (d) without getting near to
+            the tokens of $C$.}
+    \label{fig:possible}
+    \end{figure}
+
+    We claim that, whatever $C$ does, it will not stop $R$ from carrying the last
+    moved token to a new vertex $u$ (not the one it was before). Such vertex is at
+    distance two from the current position of his other token, so proving this
+    fact will imply that $R$ was able to keep his token in non-adjacent vertices
+    while no cop is one turn away from capturing him. Indeed, note that $u$ cannot
+    be ocuppied by a token of $C$ aside from one of $c_1$, which is no threat to
+    $R$ since the remaining token of $c_1$ is at distance $2$ from the other token
+    of $R$. Moreover, since $c_2$ and $c_3$ are $3$ turns away from capturing $R$
+    after his move (as in (b) of Figure \ref{fig:possible}), then in $C$'s turn
+    they can get themselves to be $2$ turns away from capturing $R$. Nonetheless,
+    when $R$ moves his captured token $u$, it is either preserving its distance to
+    $c_2$ in $F_2(P)$ or is increasing it in $1$ unit (see (c) and (d) in Figure
+    \ref{fig:possible}). Therefore, $R$ gets back to the same initial situation
+    where no cop is one turn away from capturing him and their tokens are in
+    non-adjacent vertices, ensuring that he has a strategy to keep the going
+    forever. Thus, $c\paren{\t{2}{P}}>3$.
+
+\end{proof}
+    
 \begin{teorema}
-\label{teo:cotasup_petersen}
-    If $P$ denotes the Petersen graph, then $c\paren{\t{2}{P}} \leq 4$.
+    If $P$ denotes the Petersen graph, then $c\paren{\t{2}{P}}=4$.
 \end{teorema}
 
 \begin{proof}
-    Recall that $\gamma(P)=3$, so that one may choose the initial configuration
-    of the cops to be one in which they, individually, ocuppy a permutation of
-    the $3$ vertices of a dominating set (see (a) in Figure \ref{fig:initial}). We
-    claim that, in their first turn after choosing an initial configuration,
-    cops $c_1$ and $c_2$ can capture $r_1$ and $r_2$ with their first and second
-    tokens respectively. This can easily be seen from Figure \ref{fig:initial}
-    since there are at least two colors in each vertex, so in case $c_{1,1}$ and
-    $c_{2,2}$ were not at distance one from their respective targets, they would
-    just exchange their colors (and the shapes within their new color if
-    needed).
+    From Lemma \ref{bound} we already know that $c\paren{\t{2}{P}}\geq 4$. It
+    suffices to show that $c\paren{\t{2}{P}}\leq 4$. Recall that $\gamma(P)=3$, so
+    that one may choose the initial configuration of the cops to be one in which
+    they, individually, ocuppy a permutation of the $3$ vertices of a dominating
+    set (see (a) in Figure \ref{fig:initial}). We claim that, in their first turn
+    after choosing an initial configuration, cops $c_1$ and $c_2$ can capture
+    $r_1$ and $r_2$ with their first and second tokens respectively. This can
+    easily be seen from Figure \ref{fig:initial} since there are at least two
+    colors in each vertex, so in case $c_{1,1}$ and $c_{2,2}$ were not at distance
+    one from their respective targets, they would just exchange their colors (and
+    the shapes within their new color if needed).
 
-    \begin{figure}[h!]
+    \begin{figure}[ht]
         \centering
         \begin{tcbitemize}[raster columns=2,raster equal height, enhanced,
             colback=Black!5!white,colframe=Grey!75!black,
             phantom={\setcounter{myrasternum}{\thetcbrasternum}},
-            title={(\alph{myrasternum})\enspace}, boxsep=0mm, right=0.65mm,
-            left=0.65mm, fonttitle=\bfseries, coltitle=black, raster
-            column skip=1mm, detach title,before upper=\tcbtitle\\, raster halign=center]
+            title={(\alph{myrasternum})\enspace}, boxsep=0mm, right=0.5mm,
+            left=0.5mm, fonttitle=\bfseries, coltitle=black, raster
+            column skip=1mm, detach title,before upper=\tcbtitle, raster
+            halign=center, raster row skip=1mm]
 
             \tcbitem
-                \scalebox{0.65}{
-                    \centering
+
+                \centering
+                \scalebox{0.5}{
                     \begin{tikzpicture}
                             \petersen
                             \unopBunopYunotR{5cm}{90 + (360/5)*2}
@@ -45,8 +237,9 @@
                 }
             
             \tcbitem
-                \scalebox{0.65}{
-                    \centering
+
+                \centering
+                \scalebox{0.5}{
                     \begin{tikzpicture}
                         \petersen
                         \unopBp{5cm}{90 + (360/5)*3}
@@ -74,7 +267,7 @@
     token $r_j$. Thus, if $c_3$ had any of his tokens at distance $1$ from
     $r_1$, it would possibly relabel it to put $c_{3,1}$ in position to capture
     $r_1$ in the same turn (and the same would happen for $c_{4,2}$).
-    Nevetheless, per cop, there is one vertex in the dominating set where no
+    Nevertheless, per cop, there is one vertex in the dominating set where no
     token of such cop is, meaning $c_{3,1}$ and $c_{4,2}$ might not capture
     their objectives in the current turn. Despite this fact, since the diameter
     in $P$ is $2$, in the worst case both $c_{3,1}$ and $c_{4,2}$ end their
@@ -100,18 +293,20 @@
     of $c_{3,2}$. Then, both $c_{3,1}$ and $c_{4,2}$ would be capturing their
     objectives (see Figure \ref{fig:cycle}).
 
-    \begin{figure}[h!]
+    \begin{figure}[ht]
         \centering
         \begin{tcbitemize}[raster columns=2,raster equal height, enhanced,
             colback=Black!5!white,colframe=Grey!75!black,
             phantom={\setcounter{myrasternum}{\thetcbrasternum}},
-            title={(\alph{myrasternum})\enspace}, boxsep=0mm, right=0.55mm,
-            left=0.55mm, fonttitle=\bfseries, coltitle=black, raster
-            column skip=1mm, detach title,before upper=\tcbtitle\\, raster halign=center]
+            title={(\alph{myrasternum})\enspace}, boxsep=0mm, right=0.5mm,
+            left=0.5mm, fonttitle=\bfseries, coltitle=black, raster column
+            skip=1mm, detach title,before upper=\tcbtitle\\, raster
+            halign=center, raster row skip=1mm]
 
             \tcbitem
-                \scalebox{0.65}{
-                    \centering
+                
+                \centering
+                \scalebox{0.5}{
                     \begin{tikzpicture}
                             \petersendos
                             \unotGunotYt{5cm}{90 + (360/5)}
@@ -125,8 +320,9 @@
                 }
             
             \tcbitem
-                \scalebox{0.65}{
-                    \centering
+
+                \centering
+                \scalebox{0.5}{
                     \begin{tikzpicture}
                         \petersendos
                         \unotGunotYt{5cm}{90 + (360/5)}
@@ -138,8 +334,9 @@
                     \end{tikzpicture}
                 }
             \tcbitem
-                \scalebox{0.65}{
-                    \centering
+
+                \centering
+                \scalebox{0.5}{
                     \begin{tikzpicture}
                         \petersendos
                         \unotGunotYt{5cm}{90 + (360/5)}
@@ -153,19 +350,20 @@
                 }
             
                 \tcbitem
-                \scalebox{0.65}{
+
                     \centering
-                    \begin{tikzpicture}
-                        \petersendos
-                        \unotGunotYt{5cm}{90 + (360/5)}
-                        \unopBp{2.5cm}{90}
-                        \unotB{2.5cm}{90 + (360/5)*4}
-                        \unopR{2.5cm}{90 + (360/5)*3}
-                        \unotRunopY{5cm}{90 + (360/5)*2}
-                        \unopG{5cm}{90}
-                        
-                    \end{tikzpicture}
-                }
+                    \scalebox{0.5}{
+                        \begin{tikzpicture}
+                            \petersendos
+                            \unotGunotYt{5cm}{90 + (360/5)}
+                            \unopBp{2.5cm}{90}
+                            \unotB{2.5cm}{90 + (360/5)*4}
+                            \unopR{2.5cm}{90 + (360/5)*3}
+                            \unotRunopY{5cm}{90 + (360/5)*2}
+                            \unopG{5cm}{90}
+                            
+                        \end{tikzpicture}
+                    }
         \end{tcbitemize}
         \caption{Each scene depicts a configuration of the game where $R$ is to
         play its turn. Notice thar $r_1$ avoids the neighborhood of $c_{3,2}$
@@ -187,106 +385,411 @@
     lenght. Without loss of generality, assume the last token moved by $R$ is
     $r_1$. Hence, $c_1$ and $c_3$ exhausted their movement by recapturing as
     said at the beginning of the paragraph. Then, in an attempt to force $R$ to
-    fix $r_1$ in its position or to get it near to $r_2$, $c_{2,1}$ and
-    $c_{4,1}$ move their tokens to be adjacent to $u_1$ and $u_2$ respectively.
-    Notice that this can be attained since, from any possible vertex in which
-    they could be, $C$ can move one to the neighborhood of $u_1$ and the other
-    to the neighborhood of $u_2$ (see )
+    fix $r_1$ in its position or to get it near to $r_2$, without loss of
+    generality $c_{2,1}$ and $c_{4,1}$ move their tokens to be adjacent to $u_1$
+    and $u_2$ respectively. Notice that this can be attained since, from any
+    possible vertex in which they could be, $C$ can move one to the neighborhood
+    of $u_1$ and the other to the neighborhood of $u_2$ (see Figure
+    \ref{fig:guarding0}).
 
-    Observe that $r_1$ can be moved to neither $u_1$ nor $u_2$ since it will get
-    $R$ to lose in the next turn. Therefore, either $R$ passes or moves $r_2$.
-    In the first case, both $c_{2,1}$ and $c_{4,1}$ get to $w_1$ and $w_2$
-    respectively to force $R$ to move $r_1$ closer to $r_2$ or to move $r_2$
-    itself. Thus, in either case $R$ moves $r_2$ and we can assume without loss
-    of generality that its new position is $w_1$, noting that any obstruction
-    could be solved with a relabel of tokens, leading to the new $c_{2,1}$ or
-    $c_{4,1}$ to be in the neighborhood of the new vertex to which $r_1$ could
-    move (see ). Once more, let $N(w_1)=\l{u_1, r_2(t),y}$. Notice that one of
-    %TODO: explicación reetiquetamiento
-    $u_1$ and $u_2$, without loss of generality $u_1$, is the new unique vertex
-    in both the neighborhoods of $r_1(t+1)$ and $r_2(t+1)$. Therefore, $c_{2,1}$
-    is freed of his duty to guard such vertex, fact that will be fundamental
-    later. Due to the same reason of the last paragraph, $c_{1,2}$ and $c_{3,2}$
-    can be positioned on the neighborhood of $r_2(t)$ and $y$ respectively.
-    Then, if $R$ passes, just as before, $c_{1,2}$ and $c_{3,2}$ get to $r_2(t)$
-    and $y$ respectively, forcing $r_2$ or $r_1$ to move.
-
-    Notice that $R$ is able to place $r_1$ on $v$ since such vertex is not in
-    the neighborhood of $r_2(t+1)$.
-
-    \begin{figure}[h!]
+    \begin{figure}[ht]
         \centering
         \begin{tcbitemize}[raster columns=2,raster equal height, enhanced,
             colback=Black!5!white,colframe=Grey!75!black,
             phantom={\setcounter{myrasternum}{\thetcbrasternum}},
-            title={(\alph{myrasternum})\enspace}, boxsep=0mm, right=0.55mm,
-            left=0.55mm, fonttitle=\bfseries, coltitle=black, raster
-            column skip=1mm, detach title,before upper=\tcbtitle\\, raster halign=center]
+            title={(\alph{myrasternum})\enspace}, boxsep=0mm, right=0.5mm,
+            left=0.5mm, fonttitle=\bfseries, coltitle=black, raster column
+            skip=1mm, detach title,before upper=\tcbtitle\\, raster
+            halign=center, raster row skip=1mm]
 
             \tcbitem
-                \scalebox{0.65}{
-                    \centering
+
+                \centering
+                \scalebox{0.5}{
+                    \begin{tikzpicture}
+                        \petersentres
+                        \unopBunopRp{2.5cm}{90 + (360/5)*2}
+                        \unotGunotYt{5cm}{90 + (360/5)}
+
+                    \end{tikzpicture}
+                }
+            
+            \tcbitem
+
+                \centering
+                \scalebox{0.5}{
+                    \begin{tikzpicture}
+                        \petersencuatro
+                        \unopBunopRp{2.5cm}{90 + (360/5)*2}
+                        \unotGunotYt{5cm}{90 + (360/5)}
+                        \unopGunopY{5cm}{90 + (360/5)*3}
+                        
+                    \end{tikzpicture}
+                }
+            \tcbitem
+
+                \centering
+                \scalebox{0.5}{
                     \begin{tikzpicture}
                         \petersen
                         \unopBunopRp{2.5cm}{90 + (360/5)*2}
                         \unotGunotYt{5cm}{90 + (360/5)}
+                        \unopG{2.5cm}{90 + (360/5)*3}
+                        \unopY{5cm}{90 + (360/5)*4}
+                        
+                    \end{tikzpicture}
+                }
+        \end{tcbitemize}
+        \caption{In the following diagrams, $c_{1,2}$ and $c_{3,2}$ have been
+        excluded since they do not play a role in the current step. In picture
+        (a) $R$ has moved $r_1$, so $c_{1,1}$ and $c_{3,1}$ have recaptured him.
+        Then, $c_{2,1}$ and $c_{4,1}$ want to guard both the blue and green
+        vertices that are adjacent to the current vertex of $r_1$. Notice that
+        black-shaded vertices are ignored since if either $c_{2,1}$ or $c_{4,1}$
+        were there, then $C$ would win in his turn or that a cop would have two
+        of their tokens in the same vertex (which is not allowed). In a similar
+        way, if any of those two tokens were in the blue or green unshaded
+        regions, then $C$ would win in his turn by capturing $r_1$ with such
+        token due to $c_{2,2}$ and $c_{4,2}$ already capturing $r_2$. Finally,
+        for any of the remaining vertices, crosshatched or not, there is a blue
+        crosshatched vertex and a green crosshatched vertex in its closed
+        neighborhood, determining the move of both $c_{2,1}$ and $c_{4,1}$ as
+        per picture (b) and (c), ending $C$'s turn.}
+        \label{fig:guarding0}
+    \end{figure}
+
+    Observe that $r_1$ can be moved to neither $u_1$ nor $u_2$ since it will get
+    $R$ to lose in the next turn. Therefore, either $R$ passes or moves $r_2$.
+    In the first case, both $c_{2,1}$ and $c_{4,1}$ get to $u_1$ and $u_2$
+    respectively to force $R$ to move $r_1$ closer to $r_2$ or to move $r_2$
+    itself. Thus, in either case $R$ moves $r_2$ and we can assume without loss
+    of generality that its new position is $w_1$. As mentioned before, $c_{2,2}$
+    and $c_{4,2}$ would have to recapture $r_2$. If any obstruction were to
+    exist, notice that it could be solved with a relabel of tokens, preserving
+    the condition of $r_1$ not being able to move unless it gets near to $r_2$,
+    leading to $R$ being forced to get $r_1$ and $r_2$ in adjacent vertices (see
+    Figure \ref{fig:guarding}).
+
+    \begin{figure}[ht]
+        \centering
+        \begin{tcbitemize}[raster columns=2,raster equal height, enhanced,
+            colback=Black!5!white,colframe=Grey!75!black,
+            phantom={\setcounter{myrasternum}{\thetcbrasternum}},
+            title={(\alph{myrasternum})\enspace}, boxsep=0mm, right=0.5mm,
+            left=0.5mm, fonttitle=\bfseries, coltitle=black, raster column
+            skip=1mm, detach title,before upper=\tcbtitle\\, raster
+            halign=center, raster row skip=1mm]
+
+            \tcbitem
+
+                \centering
+                \scalebox{0.5}{
+                    \begin{tikzpicture}
+                        \petersen
+                        \unopBunopRp{2.5cm}{90 + (360/5)*2}
+                        \unotGunotY{5cm}{90 + (360/5)}
+                        \unopGt{5cm}{90}
                         \unotB{2.5cm}{90 + (360/5)*4}
                         \unotR{2.5cm}{90 + (360/5)*3}
-                        \unopG{5cm}{90}
                         \unopY{5cm}{90 + (360/5)*4}
 
                     \end{tikzpicture}
                 }
             
             \tcbitem
-                \scalebox{0.65}{
-                    \centering
+
+                \centering
+                \scalebox{0.5}{
                     \begin{tikzpicture}
-                        \petersen
+                        \petersencinco
                         \unopBunopRp{2.5cm}{90 + (360/5)*2}
-                        \unotGunotYt{5cm}{90 + (360/5)}
+                        \unopG{5cm}{90 + (360/5)}
+                        \unotGunotYt{5cm}{90}
                         \unotB{2.5cm}{90 + (360/5)*4}
                         \unotR{2.5cm}{90 + (360/5)*3}
-                        \unopG{5cm}{90}
+                        \unopY{5cm}{90 + (360/5)*4}
                         
                     \end{tikzpicture}
                 }
             \tcbitem
-                \scalebox{0.65}{
-                    \centering
+
+                \centering
+                \scalebox{0.5}{
                     \begin{tikzpicture}
                         \petersen
                         \unopBunopRp{2.5cm}{90 + (360/5)*2}
-                        \unotGunotYt{5cm}{90 + (360/5)}
+                        \unopG{5cm}{90 + (360/5)}
+                        \unotGunotYt{5cm}{90}
                         \unotB{2.5cm}{90 + (360/5)*4}
-                        \unotR{2.5cm}{90 + (360/5)*3}
-                        \unopG{5cm}{90}
+                        \unotR{2.5cm}{90 + (360/5)*1}
+                        \unopY{5cm}{90 + (360/5)*4}
                         
                     \end{tikzpicture}
                 }
-            
-                \tcbitem
-                \scalebox{0.65}{
-                    \centering
+            \tcbitem
+
+                \centering
+                \scalebox{0.5}{
                     \begin{tikzpicture}
                         \petersen
                         \unopBunopRp{2.5cm}{90 + (360/5)*2}
-                        \unotGunotYt{5cm}{90 + (360/5)}
-                        \unotB{2.5cm}{90 + (360/5)*4}
-                        \unotR{2.5cm}{90 + (360/5)*3}
-                        \unopG{5cm}{90}
+                        \unopG{5cm}{90 + (360/5)*2}
+                        \unotGunotYt{5cm}{90}
+                        \unotB{5cm}{90 + (360/5)*4}
+                        \unotR{5cm}{90 + (360/5)*1}
+                        \unopY{2.5cm}{90 + (360/5)*4}
                         
                     \end{tikzpicture}
                 }
         \end{tcbitemize}
-        \caption{Each scene depicts a configuration of the game where $R$ is to
-        play its turn. Notices thar $r_1$ avoids the neighborhood of $c_{3,2}$
-        and escapes from $c_{3,1}$ moving along the purple cycle. After $3$
-        turns, if $r_1$ wants to move, it either gets captured by $c_{3,1}$ or
-        gets at distance $1$ from $c_{3,2}$.}
+        \caption{In picture (a), $R$ just moved $r_2$, to which $C$ answers by
+        recapturing with $c_{4,2}$ and relabeling the tokens of $c_2$ as per
+        picture (b). Notice that the relabel causes $c_{2,1}$ to guard the new
+        neighbor of $r_1(t+1)$ which is not in the shortest path between
+        $r_1(t+1)$ and $r_2(t+1)$, still fulfilling his duty of the previous
+        step. Meanwhile, $c_{1,2}$ and $c_{3,2}$ are moved as in (c) to guard
+        the neighbors of $r_2(t+1)$ which are not in the shortest path between
+        $r_1(t+1)$ and $r_2(t+1)$. Notice that $R$ can only pass if he wants to
+        avoid getting $r_1$ and $r_2$ to be in adjacent vertices. Nonetheless,
+        $C$ move their cops as in (d), forcing $R$ to finally put $r_1$ and
+        $r_2$ at distance $1$.}
         \label{fig:guarding}
     \end{figure}
 
+    Once more, let $N(w_1)=\l{u_1, r_2(t),y}$. Notice that one of $u_1$ and
+    $u_2$, without loss of generality $u_1$, is the new unique vertex in both
+    the neighborhoods of $r_1(t+1)$ and $r_2(t+1)$. Then, $c_{1,2}$ and
+    $c_{3,2}$ can be positioned on the neighborhood of $u_1$ and $y$
+    respectively, wanting to force $r_2$ to go back to $r_2(t)$. Note that for
+    that to happen, either $c_{1,1}$ or $c_{3,1}$ may relabel their tokens and
+    move from capturing their target as shown in Figure \ref{fig:guarding1}, not
+    representing a major problem since they would remain at distance $1$ from
+    $r_{1}$. Then, if $R$ passes, $c_{1,2}$ and $c_{3,2}$ get to $r_2(t)$ and
+    $y$ respectively unless one of $c_{1,1}$ and $c_{3,1}$ is not capturing
+    $r_1$, case in which such token recaptures $r_1$. Meanwhile $c_{2,1}$ gets
+    positioned so that it guards $v$ instead of $u_1$, whereas $c_{4,1}$ advances
+    to $u_2$, being left at distance $1$ from $r_1$ (see (d) in Figure
+    \ref{fig:guarding1}).
 
+    \begin{figure}[ht]
+        \centering
+        \begin{tcbitemize}[raster columns=2,raster equal height, enhanced,
+            colback=Black!5!white,colframe=Grey!75!black,
+            phantom={\setcounter{myrasternum}{\thetcbrasternum}},
+            title={(\alph{myrasternum})\enspace}, boxsep=0mm, right=0.5mm,
+            left=0.5mm, fonttitle=\bfseries, coltitle=black, raster column
+            skip=1mm, detach title,before upper=\tcbtitle\\, raster
+            halign=center, raster row skip=1mm]
 
+            \tcbitem
+
+                \centering
+                \scalebox{0.5}{
+                    \begin{tikzpicture}
+                        \petersen
+                        \unopBunopRp{2.5cm}{90 + (360/5)*2}
+                        \unotGunotY{5cm}{90 + (360/5)}
+                        \tri{5cm}{90}
+                        \unotBunotR{2.5cm}{90 + (360/5)*4}
+                        \unopG{2.5cm}{90 + (360/5)*3}
+                        \unopY{5cm}{90 + (360/5)*4}
+
+                    \end{tikzpicture}
+                }
+            
+            \tcbitem
+
+                \centering
+                \scalebox{0.5}{
+                    \begin{tikzpicture}
+                        \petersenseis
+                        \unopBunopRp{2.5cm}{90 + (360/5)*2}
+                        \unotGunotYt{5cm}{90}
+                        \unotBunotR{2.5cm}{90 + (360/5)*4}
+                        \unopG{2.5cm}{90 + (360/5)*3}
+                        \unopY{5cm}{90 + (360/5)*4}
+                        
+                    \end{tikzpicture}
+                }
+            \tcbitem
+
+                \centering
+                \scalebox{0.5}{
+                    \begin{tikzpicture}
+                        \petersen
+                        \unopBp{2.5cm}{90 + (360/5)*2}
+                        \unotR{2.5cm}{90}
+                        \unotGunotYt{5cm}{90}
+                        \unotBunopR{2.5cm}{90 + (360/5)*4}
+                        \unopG{2.5cm}{90 + (360/5)*3}
+                        \unopY{5cm}{90 + (360/5)*4}
+                        
+                    \end{tikzpicture}
+                }
+            \tcbitem
+
+                \centering
+                \scalebox{0.5}{
+                    \begin{tikzpicture}
+                        \petersen
+                        \unopBunopRp{2.5cm}{90 + (360/5)*2}
+                        \unotR{2.5cm}{90}
+                        \unotGunotYt{5cm}{90}
+                        \unopG{5cm}{90 + (360/5)*3}
+                        \unopY{2.5cm}{90 + (360/5)*4}
+                        \unotB{5cm}{90 + (360/5)*4}
+                        
+                    \end{tikzpicture}
+                }
+        \end{tcbitemize}
+        \caption{When the movement of $r_2$ does not propiciate an obstruction
+        of cop $c_2$ or $c_4$, both cops recapture as usual, whereas $c_{1,2}$
+        and $c_{3,2}$ try to guard the blue and green unshaded vertices. Observe
+        that only two vertices - the neighbors of $r_1(t+1)$ different from the
+        blue one- are such that they do not have a blue crosshatched neighbor.
+        For such cases as the one presented in (b), $C$ chooses one cop between
+        $c_{1,1}$ and $c_{3,1}$ to relabel with his second token and proceeds to
+        get it in the blue unshaded vertex as shown in (c). Even though
+        $c_{3,1}$ is not capturing $r_1$, if $r_2$ were to enter the vertex in
+        wich $r_{3,2}$ is, $C$ would win in the next turn since $c_{3,1}$ was
+        left at distance $1$ from $r_1$. Therefore, if $R$ wants to avoid having
+        $r_1$ by $r_2$, it will either pass, move $r_1$ to $v$, or move $r_2$
+        back into $r_2(t)$. If $R$ were to pass, then $C$ move their cops as
+        shown in (d), forcing the move of either $r_2$ to $r_2(t)$ or $r_1$ to
+        $v$.}
+        \label{fig:guarding1}
+    \end{figure}
+
+    Thus, $R$ is forced to move either $r_1$ to $v$ or $r_2$ to $r_2(t)$.
+    Without loss of generality, suppose that $R$ moves $r_1$ to $v$. Just as before,
+    $c_{1,1}$ and $c_{3,1}$ move towards $r_1$, while $c_{2,1}$ and $c_{4,1}$
+    are positioned to guard the vertices in the neighborhood of $v$ aside from
+    $r_2(t)$. At this position, either $R$ passes or gets $r_1$ to be adjacent
+    to $r_2$. Moreover, if it passes, $C$ can move his cops as shown in
+    (a)-(d) of Figure \ref{fig:guarding2} to force $R$ to put $r_1$ by $r_2$.
+
+    \begin{figure}[ht]
+        \centering
+        \begin{tcbitemize}[raster columns=2,raster equal height, enhanced,
+            colback=Black!5!white,colframe=Grey!75!black,
+            phantom={\setcounter{myrasternum}{\thetcbrasternum}},
+            title={(\alph{myrasternum})\enspace}, boxsep=0mm, right=0.5mm,
+            left=0.5mm, fonttitle=\bfseries, coltitle=black, raster column
+            skip=1mm, detach title,before upper=\tcbtitle\\, raster
+            halign=center, raster row skip=1mm]
+
+            \tcbitem
+
+                \centering
+                \scalebox{0.5}{
+                    \begin{tikzpicture}
+                        \petersen
+                        \unopB{2.5cm}{90 + (360/5)*2}
+                        \punto{5cm}{90 + (360/5)*2}
+                        \unotR{2.5cm}{90}
+                        \unotGunotYt{5cm}{90}
+                        \unotBunopR{2.5cm}{90 + (360/5)*4}
+                        \unopG{2.5cm}{90 + (360/5)*3}
+                        \unopY{5cm}{90 + (360/5)*4}
+                        
+                    \end{tikzpicture}
+                }
+            
+            \tcbitem
+
+                \centering
+                \scalebox{0.5}{
+                    \begin{tikzpicture}
+                        \petersen
+                        \unopBp{5cm}{90 + (360/5)*2}
+                        \unopR{2.5cm}{90 + (360/5)*2}
+                        \unotR{2.5cm}{90}
+                        \unotGunotYt{5cm}{90}
+                        \unotBunopY{2.5cm}{90 + (360/5)*4}
+                        \unopG{2.5cm}{90 + (360/5)*3}
+                        
+                    \end{tikzpicture}
+                }
+            \tcbitem
+
+                \centering
+                \scalebox{0.5}{
+                    \begin{tikzpicture}
+                        \petersen
+                        \unopBunopRp{5cm}{90 + (360/5)*2}
+                        \unotR{2.5cm}{90}
+                        \unotGunotYt{5cm}{90}
+                        \unotB{5cm}{90 + (360/5)*4}
+                        \unopY{2.5cm}{90 + (360/5)*2}
+                        \unopG{5cm}{90 + (360/5)*3}
+                        
+                    \end{tikzpicture}
+                }
+            \tcbitem
+
+                \centering
+                \scalebox{0.5}{
+                    \begin{tikzpicture}
+                        \petersen
+                        \unopBunopR{5cm}{90 + (360/5)*2}
+                        \punto{5cm}{90 + (360/5)*1}
+                        \unotR{2.5cm}{90}
+                        \unotGunotYt{5cm}{90}
+                        \unotB{5cm}{90 + (360/5)*4}
+                        \unopY{2.5cm}{90 + (360/5)*2}
+                        \unopG{5cm}{90 + (360/5)*3}
+                        
+                    \end{tikzpicture}
+                }
+            
+            \tcbitem
+
+                \centering
+                \scalebox{0.5}{
+                    \begin{tikzpicture}
+                        \petersen
+                        \unopBunopRp{5cm}{90 + (360/5)}
+                        \unotR{2.5cm}{90}
+                        \unotGunotYt{5cm}{90}
+                        \unotB{5cm}{90 + (360/5)*4}
+                        \unopY{2.5cm}{90 + (360/5)*4}
+                        \unopG{5cm}{90 + (360/5)*3}
+                        
+                    \end{tikzpicture}
+                }
+            
+            \tcbitem
+
+                \centering
+                \scalebox{0.5}{
+                    \begin{tikzpicture}
+                        \petersen
+                        \unopBp{5cm}{90 + (360/5)}
+                        \unotBt{5cm}{90}
+                    \end{tikzpicture}
+                }
+        \end{tcbitemize}
+        \caption{In (a) $R$ just moved $r_1$, movement to which $C$ answers as
+        per (b) by guarding the neighborhood of $r_1$ with $c_{2,1}$ and
+        $c_{4,1}$ and by moving $c_{1,1}$ and $c_{3,1}$ towards $r_1$. $R$
+        proceeds to pass, causing $C$ to move their tokens as in (c) to force
+        him to move either $r_1$ or $r_2$ to the unique vertex they can do so as
+        shown in (d) without loss of generality. Finally, $C$ follows the
+        strategy to block the exit escapes of both $r_1$ and $r_2$, being able
+        to capture $R$ in at most two turns as shown in (e) and (f).}
+        \label{fig:guarding2}
+    \end{figure}
+
+    This concludes the proof to the claim that $r_1$ and $r_2$ are eventually in
+    adjacent vertices. Finally, notice that when this happens, two cops use their
+    free tokens to cover the two vertices $r_1$ could go, while the two other cops
+    use their free tokens to prevent $r_2$ to escape through the two vertices it
+    could go, noting that there are only two possible vertices for each token
+    since they are mutually blocking one vertex. Furthermore, one pair between
+    $c_{1,1}$ with $c_{3,1}$ and $c_{2,2}$ with $c_{4,2}$ are capturing their
+    targets, while the other is at distance $1$ from it. Therefore, $R$ is forced
+    to pass during his turn, losing to $C$ in his turn (see (e) and (f) of Figure
+    \ref{fig:guarding2}). Hence, $c\paren{\t{2}{P}}\leq 4$ and, consequently,
+    $c\paren{\t{2}{P}}= 4$.
+    
 \end{proof}
