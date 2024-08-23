@@ -76,23 +76,23 @@
     \end{figure}
 
     In the following turns, $R$ will pass whenever no cop is one movement away
-    from capturing him. When such thing happens, notice that $R$ has $6$ possible
-    moves, two of them which will result in their cops being in adjacent vertices
-    since Petersen graph is $3$-regular, has diamater $2$ and there is a unique
-    path of shortest length between any pair of vertices (see Figure
-    \ref{fig:possible}). Suppose without loss of generality that $c_1$ is a cop
-    which is one turn away from capturing $R$, implying that it has one of his
-    tokens capturing a token of $R$, while the remaining one is at distance $1$
-    from the other token of $R$. This implies that one of the tokens of $R$ has
-    one of their possible movements ruled out. Furthermore, if another cop is two
-    turns away from capturing, then the best way to guard as much vertices to
-    which $R$ could move is to have a token in a vertex adjacent to one of the
-    tokens of $C$, while the other is in a vertex adjacent to the remaining token
-    of $R$. Both $c_2$ and $c_3$ could do this to cover $4$ of the $6$ possible
-    moves of $R$. Then $R$ would just have one movement: move the captured token
-    to be adjacent to the uncaptured one. Thus, $R$ survives the next turn since
-    no cop is one turn away from capturing him (see (b) of Figure
-    \ref{fig:possible}).
+    from capturing him. When such thing happens, notice that $R$ has $6$
+    possible moves, two of them which will result in his tokens being in
+    adjacent vertices since Petersen graph is $3$-regular, has diameter $2$ and
+    there is a unique path of shortest length between any pair of vertices (see
+    Figure \ref{fig:possible}). Suppose without loss of generality that $c_1$ is
+    a cop which is one turn away from capturing $R$, implying that it has one of
+    his tokens capturing a token of $R$, while the remaining one is at distance
+    $1$ from the other token of $R$. This implies that one of the tokens of $R$
+    has one of his possible movements ruled out. Furthermore, if another cop is
+    two turns away from capturing, then the best way to guard as much vertices
+    to which $R$ could move is to have a token in a vertex adjacent to one of
+    the tokens of $R$, while the other is in a vertex adjacent to the remaining
+    token of $R$. Both $c_2$ and $c_3$ could do this to cover $4$ of the $6$
+    possible moves of $R$. Then $R$ would just have one movement: move the
+    captured token to be adjacent to the uncaptured one. Thus, $R$ survives the
+    next turn since no cop is one turn away from capturing him (see (b) of
+    Figure \ref{fig:possible}).
 
     \begin{figure}[ht]
     \centering
@@ -145,7 +145,6 @@
                 \unopB{5cm}{90 + (360/5)*4}
                 \unopG{5cm}{90 + (360/5)*2}
                 \unopR{2.5cm}{90 + (360/5)*3}
-                \unopR{2.5cm}{90}
                 \unopBunopG{2.5cm}{90 + (360/5)}
                 \unopRp{2.5cm}{90 + (360/5)*2}
                 \punto{2.5cm}{90 + (360/5)*4}
@@ -161,7 +160,6 @@
                 \unopBp{5cm}{90 + (360/5)*4}
                 \unopG{5cm}{90 + (360/5)*2}
                 \unopR{2.5cm}{90 + (360/5)*3}
-                \unopR{2.5cm}{90}
                 \unopBunopG{2.5cm}{90 + (360/5)}
                 \unopRp{2.5cm}{90 + (360/5)*2}
                 \end{tikzpicture}
@@ -170,7 +168,7 @@
     \caption{In (a) is shown the best way $C$ can guard the exits of $R$ to
             prevent him from doing a movement different from puting their tokens
             next to each other. Notice that the movement of $R$ shown in (b)
-            ensures such token moved to have an additional exit (the one vertex
+            ensures the token moved to have an additional exit (the one vertex
             whose other two neighbors have no tokens in it). In (c), cops move
             in an effort to get near to the tokens of $R$ while still covering
             the exits, but $R$ can still move as in (d) without getting near to
@@ -178,23 +176,23 @@
     \label{fig:possible}
     \end{figure}
 
-    We claim that, whatever $C$ does, it will not stop $R$ from carrying the last
-    moved token to a new vertex $u$ (not the one it was before). Such vertex is at
-    distance two from the current position of his other token, so proving this
-    fact will imply that $R$ was able to keep his token in non-adjacent vertices
-    while no cop is one turn away from capturing him. Indeed, note that $u$ cannot
-    be ocuppied by a token of $C$ aside from one of $c_1$, which is no threat to
-    $R$ since the remaining token of $c_1$ is at distance $2$ from the other token
-    of $R$. Moreover, since $c_2$ and $c_3$ are $3$ turns away from capturing $R$
-    after his move (as in (b) of Figure \ref{fig:possible}), then in $C$'s turn
-    they can get themselves to be $2$ turns away from capturing $R$. Nonetheless,
-    when $R$ moves his captured token $u$, it is either preserving its distance to
-    $c_2$ in $F_2(P)$ or is increasing it in $1$ unit (see (c) and (d) in Figure
-    \ref{fig:possible}). Therefore, $R$ gets back to the same initial situation
-    where no cop is one turn away from capturing him and their tokens are in
-    non-adjacent vertices, ensuring that he has a strategy to keep the going
-    forever. Thus, $c\paren{\t{2}{P}}>3$.
-
+    We claim that, whatever $C$ does, it will not stop $R$ from carrying the
+    last moved token to a new vertex $u$ (not the one it was before). Such a
+    vertex is at distance two from the current position of his other token, so
+    proving the aformentioned fact will imply that $R$ was able to keep his
+    tokens in non-adjacent vertices while no cop is one turn away from capturing
+    him. Indeed, note that $u$ cannot be ocuppied by a token of $C$ aside from
+    one of $c_1$, which is no threat to $R$ since the remaining token of $c_1$
+    is at distance $2$ from the other token of $R$. Moreover, since $c_2$ and
+    $c_3$ are $3$ turns away from capturing $R$ after his move (as in (b) of
+    Figure \ref{fig:possible}), then in $C$'s turn they can get themselves to be
+    $2$ turns away from capturing $R$. Nonetheless, when $R$ moves his captured
+    token $u$, it is either preserving its distance to $c_2$ in $F_2(P)$ or is
+    increasing it in $1$ unit (see (c) and (d) in Figure \ref{fig:possible}).
+    Therefore, $R$ gets back to the same initial situation where no cop is one
+    turn away from capturing him and his tokens are in non-adjacent vertices,
+    ensuring that he has a strategy to keep the game going forever. Thus,
+    $c\paren{\t{2}{P}}>3$.
 \end{proof}
     
 \begin{teorema}
@@ -203,16 +201,17 @@
 
 \begin{proof}
     From Lemma \ref{bound} we already know that $c\paren{\t{2}{P}}\geq 4$. It
-    suffices to show that $c\paren{\t{2}{P}}\leq 4$. Recall that $\gamma(P)=3$, so
-    that one may choose the initial configuration of the cops to be one in which
-    they, individually, ocuppy a permutation of the $3$ vertices of a dominating
-    set (see (a) in Figure \ref{fig:initial}). We claim that, in their first turn
-    after choosing an initial configuration, cops $c_1$ and $c_2$ can capture
-    $r_1$ and $r_2$ with their first and second tokens respectively. This can
-    easily be seen from Figure \ref{fig:initial} since there are at least two
-    colors in each vertex, so in case $c_{1,1}$ and $c_{2,2}$ were not at distance
-    one from their respective targets, they would just exchange their colors (and
-    the shapes within their new color if needed).
+    suffices to show that $c\paren{\t{2}{P}}\leq 4$. Recall that $\gamma(P)=3$,
+    so that one may choose the initial configuration of the cops to be one in
+    which they, individually, ocuppy a permutation of the $3$ vertices of a
+    dominating set (see (a) in Figure \ref{fig:initial}). We claim that, in
+    their first turn after choosing an initial configuration, cops $c_1$ and
+    $c_2$ can capture $r_1$ and $r_2$ with their first and second tokens
+    respectively. This can easily be seen from Figure \ref{fig:initial} since
+    there are at least two colors in each vertex, so in case $c_{1,1}$ and
+    $c_{2,2}$ were not at distance one from their respective targets, they would
+    just exchange their colors (and the shapes within their new color if
+    needed).
 
     \begin{figure}[ht]
         \centering
