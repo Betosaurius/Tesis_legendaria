@@ -77,22 +77,245 @@
 
     In the following turns, $R$ will pass whenever no cop is one movement away
     from capturing him. When such thing happens, notice that $R$ has $6$
-    possible moves, two of them which will result in his tokens being in
-    adjacent vertices since Petersen graph is $3$-regular, has diameter $2$ and
-    there is a unique path of shortest length between any pair of vertices (see
-    Figure \ref{fig:possible}). Suppose without loss of generality that $c_1$ is
-    a cop which is one turn away from capturing $R$, implying that it has one of
-    his tokens capturing a token of $R$, while the remaining one is at distance
-    $1$ from the other token of $R$. This implies that one of the tokens of $R$
-    has one of his possible movements ruled out. Furthermore, if another cop is
-    two turns away from capturing, then the best way to guard as much vertices
-    to which $R$ could move is to have a token in a vertex adjacent to one of
-    the tokens of $R$, while the other is in a vertex adjacent to the remaining
-    token of $R$. Both $c_2$ and $c_3$ could do this to cover $4$ of the $6$
-    possible moves of $R$. Then $R$ would just have one movement: move the
-    captured token to be adjacent to the uncaptured one. Thus, $R$ survives the
-    next turn since no cop is one turn away from capturing him (see (b) of
-    Figure \ref{fig:possible}).
+    possible moves, two of them which will result in their cops being in
+    adjacent vertices since Petersen graph is $3$-regular, has diamater $2$ and
+    there is a unique path of shortest length between any pair of vertices.
+    Suppose without loss of generality that $c_1$ is a cop which is one turn
+    away from capturing $R$, implying that it has one of his tokens capturing a
+    token of $R$, while the remaining one is at distance $1$ from the other
+    token of $R$. This implies that one of the tokens of $R$ has one of their
+    possible movements ruled out. Moreover, observe that cops that are at least
+    $3$ turns from capturing $R$ can be neglected since, whatever $R$ does in
+    its turn, it will not get him close enough to one of such cops so that it
+    can capture him in his turn. Therefore, we only need to look at cops which
+    are one or two turns away from capturing $R$. If $c_1$ were the only cop
+    which is less than $3$ turns away from capturing, then $R$ can easily move
+    any of his tokens to a vertex not adjacent to his other token, achieving his
+    goal (see (a) and (b) in Figure \ref{fig:best_cover1}).
+
+    \begin{figure}[ht]
+        \centering
+        \begin{tcbitemize}[raster columns=2,raster equal height, enhanced,
+            colback=Black!5!white,colframe=Grey!75!black,
+            phantom={\setcounter{myrasternum}{\thetcbrasternum}},
+            title={(\alph{myrasternum})\enspace}, boxsep=0mm, right=0.5mm,
+            left=0.5mm, fonttitle=\bfseries, coltitle=black, raster
+            column skip=1mm, detach title,before upper=\tcbtitle, raster
+            halign=center, raster row skip=1mm]
+    
+            \tcbitem
+    
+                \centering
+                \scalebox{0.5}{
+                    \begin{tikzpicture}
+                        \localpetersen
+                        \begin{scope}[xshift=2.5cm]
+                            \unopB{2.5cm}{(360/3)*2+180}
+                        \end{scope}
+                        \unopBp{2.5cm}{180}
+                        \punto{2.5cm}{0}
+                    \end{tikzpicture}
+                }
+            
+            \tcbitem
+    
+                \centering
+                \scalebox{0.5}{
+                    \begin{tikzpicture}
+                        \localpetersen
+                        \begin{scope}[xshift=2.5cm]
+                            \unopB{2.5cm}{(360/3)*2 + 180}
+                        \end{scope}
+                        \unopB{2.5cm}{180}
+                        \begin{scope}[xshift=-2.5cm]
+                            \punto{2.5cm}{(360/3)*1}
+                        \end{scope}
+                        \punto{2.5cm}{0}
+                    \end{tikzpicture}
+                }
+        \end{tcbitemize}
+        \caption{In (a) are shown the vertices to which $R$ could move their
+                tokens after $C$'s turn. Besides that, cop $c_1$ is the only one
+                which is less than $3$ turns away from capturing $R$. Even if
+                $c_2$ and $c_3$ had some of their tokens (not shown) in the
+                current neighbors of $r_1$ and $r_2$, $R$ moving one token into
+                such vertices would not get him close enough to such cops so
+                that they could capture $R$ in the next turn. Therefore, $R$ has
+                $3$ moves that will make him not get captured in the next turn
+                and keep the distance between his tokens to be greater than $2$
+                since, in fact, the graph shown is induced. One of such
+                movements is shown in (b).}
+        \label{fig:best_cover1}
+    \end{figure}
+    
+    Similarly and without loss of generality, if $c_1$ and $c_2$ were the only
+    cops less than $3$ turns away from capturing $R$, several cases arise
+    depending on the current distance from $c_2$'s tokens to $r_1$ and $r_2$. If
+    $c_2$ was also one turn away from capturing $R$, then it could, at most,
+    cover one more exit of the aformentioned $3$ vertices to which $R$ can move
+    his tokens in Figure \ref{fig:best_cover1} (see (a) and (b) in Figure
+    \ref{fig:best_cover2}). Otherwise, $c_2$ is $2$ turns away from capturing
+    $R$. In such situation, two additional cases arise: either $c_2$ is
+    capturing a token of $R$ ($r_1$ without loss of generality) and $r_2$ is at
+    distance two from the free token of $c_2$, or both $c_{2,1}$ and $c_{2,2}$
+    are, without loss of generality, at distance $1$ from $r_1$ and $r_2$
+    respectively. Do notice that these are the only two cases since the only
+    other way in which $c_2$ could be at distance $2$ from $R$ is to be
+    capturing one token of $R$ and have his other token obstructed by the one
+    that is capturing. Nonetheless, since Petersen has diameter $2$, this would
+    imply that both tokens of $R$ are in adjacent vertices, which is not the
+    case. Then, for the first case, as in (a) of Figure \ref{fig:best_cover2},
+    $c_2$ can at most guard one additional exit of $R$ since, otherwise, there
+    would be a vertex which is adjacent to $2$ neighbors of $r_2$, which is
+    impossible since there are no $C_3$'s in $P$ (see (c) and (d) in Figure
+    \ref{fig:best_cover2}). For the second case, $c_2$ would guard at most two
+    more exits, one of each token of $R$. Therefore, out of the $3$ possible
+    exits in Figure \ref{fig:best_cover1}, at least one of the will be available
+    for one of them tokens to move into (see (e) and (f) in Figure
+    \ref{fig:best_cover2}).
+    
+    \begin{figure}[ht]
+        \centering
+        \begin{tcbitemize}[raster columns=2,raster equal height, enhanced,
+            colback=Black!5!white,colframe=Grey!75!black,
+            phantom={\setcounter{myrasternum}{\thetcbrasternum}},
+            title={(\alph{myrasternum})\enspace}, boxsep=0mm, right=0.5mm,
+            left=0.5mm, fonttitle=\bfseries, coltitle=black, raster
+            column skip=1mm, detach title,before upper=\tcbtitle, raster
+            halign=center, raster row skip=1mm]
+    
+            \tcbitem
+    
+                \centering
+                \scalebox{0.5}{
+                    \begin{tikzpicture}
+                        \localpetersen
+                        \begin{scope}[xshift=2.5cm]
+                            \unopB{2.5cm}{(360/3)*2 + 180}
+                        \end{scope}
+                        \unopBp{2.5cm}{180}
+                        \unopGp{2.5cm}{0}
+                        \begin{scope}[xshift=-2.5cm]
+                            \unopG{2.5cm}{(360/3)*1}
+                        \end{scope}
+                    \end{tikzpicture}
+                }
+            
+            \tcbitem
+    
+                \centering
+                \scalebox{0.5}{
+                    \begin{tikzpicture}
+                        \localpetersen
+                        \begin{scope}[xshift=2.5cm]
+                            \unopB{2.5cm}{(360/3)*2 + 180}
+                        \end{scope}
+                        \unopB{2.5cm}{180}
+                        \unopGp{2.5cm}{0}
+                        \begin{scope}[xshift=-2.5cm]
+                            \unopG{2.5cm}{(360/3)*1}
+                            \punto{2.5cm}{(360/3)*2}
+                        \end{scope}
+                    \end{tikzpicture}
+                }
+            
+            \tcbitem
+    
+                \centering
+                \scalebox{0.5}{
+                    \begin{tikzpicture}
+                        \localpetersen
+                        \begin{scope}[xshift=2.5cm]
+                            \unopB{2.5cm}{(360/3)*2 + 180}
+                            \unopG{2.5cm}{(360/3)*1 + 180}
+                        \end{scope}
+                        \unopBp{2.5cm}{180}
+                        \unopGp{2.5cm}{0}
+                    \end{tikzpicture}
+                }
+            
+            \tcbitem
+    
+                \centering
+                \scalebox{0.5}{
+                    \begin{tikzpicture}
+                        \localpetersen
+                        \begin{scope}[xshift=2.5cm]
+                            \unopB{2.5cm}{(360/3)*2 + 180}
+                            \unopG{2.5cm}{(360/3)*1 + 180}
+                        \end{scope}
+                        \unopB{2.5cm}{180}
+                        \unopGp{2.5cm}{0}
+                        \begin{scope}[xshift=-2.5cm]
+                            \punto{2.5cm}{(360/3)}
+                        \end{scope}
+                    \end{tikzpicture}
+                }
+        
+            \tcbitem
+    
+                \centering
+                \scalebox{0.5}{
+                    \begin{tikzpicture}
+                        \localpetersen
+                        \begin{scope}[xshift=2.5cm]
+                            \unopB{2.5cm}{(360/3)*2 + 180}
+                            \unopG{2.5cm}{(360/3)*1 + 180}
+                        \end{scope}
+                        \begin{scope}[xshift=-2.5cm]
+                            \unopG{2.5cm}{(360/3)*1}
+                        \end{scope}
+                        \unopBp{2.5cm}{180}
+                        \punto{2.5cm}{0}
+                    \end{tikzpicture}
+                }
+            
+            \tcbitem
+    
+                \centering
+                \scalebox{0.5}{
+                    \begin{tikzpicture}
+                        \localpetersen
+                        \begin{scope}[xshift=2.5cm]
+                            \unopB{2.5cm}{(360/3)*2 + 180}
+                            \unopG{2.5cm}{(360/3)*1 + 180}
+                        \end{scope}
+                        \begin{scope}[xshift=-2.5cm]
+                            \unopG{2.5cm}{(360/3)*1}
+                            \punto{2.5cm}{(360/3)*2}
+                        \end{scope}
+                        \unopB{2.5cm}{180}
+                        \punto{2.5cm}{0}
+                    \end{tikzpicture}
+                }
+        \end{tcbitemize}
+        \caption{In (a), even though $c_1$ and $c_2$ are close to capture $R$,
+        he can move as in (b) to escape from both of them and remain in a
+        desired position, noticing that $c_3$ is neglected since he is not close
+        enough to capture $R$. For (c), $R$ still has two possible moves (one
+        shown in (d)) that do not put his tokens in adjacent vertices, while for
+        (e), it has exactly one movement that leaves him in a desired position.}
+        \label{fig:best_cover2}
+    \end{figure}
+
+    Thus, we arrive to the case were all $3$ cops are at most $2$ turns away
+    from capturing $R$. Then, using what we have proven so far, if all three
+    cops are one turn away from capturing $R$, then they can guard up to $3$
+    vertices of the $4$ that $R$ can move one of his tokens into to keep him in
+    a desired position. In a similar fashion, if all but one cop were one turn
+    away from capturing $R$ and the remaining one was already capturing one of
+    the token of $R$, then they would also guard at most $3$ of the $4$ exits of
+    $R$. Therefore, there are only two cases which need to be assessed: two cops
+    are one turn away from capturing $R$ (capturing different tokens) while the
+    remaining one is not capturing any token of $R$; or there is exactly one cop
+    capturing one token of $R$ while the other two guard the neighors of $r_1$
+    and $r_2$ (each cop has a token guarding $r_1$ and the other guarding
+    $r_2$). We will cover the second case as it may produce forced movements of
+    $R$, while the first one is a more simple version of the latter. At any
+    rate, $R$ is forced to move one of its tokens to the vertex in the
+    neighborhood of his other token, surviving the next turn since no cop is one
+    turn away from capturing him (see (b) of Figure \ref{fig:possible}).
+
 
     \begin{figure}[ht]
     \centering
@@ -191,8 +414,86 @@
     increasing it in $1$ unit (see (c) and (d) in Figure \ref{fig:possible}).
     Therefore, $R$ gets back to the same initial situation where no cop is one
     turn away from capturing him and his tokens are in non-adjacent vertices,
-    ensuring that he has a strategy to keep the game going forever. Thus,
-    $c\paren{\t{2}{P}}>3$.
+    ensuring that he has a strategy to keep the game going forever. We append in
+    Figure \ref{fig:possible2} the other case following a similar argument to ensure
+    the escape of $R$. Thus, $c\paren{\t{2}{P}}>3$.
+
+    \begin{figure}[ht]
+        \centering
+        \begin{tcbitemize}[raster columns=2,raster equal height, enhanced,
+            colback=Black!5!white,colframe=Grey!75!black,
+            phantom={\setcounter{myrasternum}{\thetcbrasternum}},
+            title={(\alph{myrasternum})\enspace}, boxsep=0mm, right=0.5mm,
+            left=0.5mm, fonttitle=\bfseries, coltitle=black, raster
+            column skip=1mm, detach title,before upper=\tcbtitle, raster
+            halign=center, raster row skip=1mm]
+    
+            \tcbitem
+    
+                \centering
+                \scalebox{0.5}{
+                    \begin{tikzpicture}
+                        \petersen
+                        \unopG{5cm}{90 + (360/5)*1}
+                        \unopB{5cm}{90 + (360/5)*2}
+                        \unopR{2.5cm}{90 + (360/5)*3}
+                        \unopR{2.5cm}{90}
+                        \unopBp{2.5cm}{90 + (360/5)}
+                    \unopGp{2.5cm}{90 + (360/5)*2}
+                    \end{tikzpicture}
+                }
+            
+            \tcbitem
+    
+                \centering
+                \scalebox{0.5}{
+                    \begin{tikzpicture}
+                        \petersen
+                        \unopG{5cm}{90 + (360/5)*1}
+                        \unopB{5cm}{90 + (360/5)*2}
+                        \unopR{2.5cm}{90 + (360/5)*3}
+                        \unopR{2.5cm}{90}
+                        \unopBp{2.5cm}{90 + (360/5)}
+                        \unopG{2.5cm}{90 + (360/5)*2}
+                        \punto{2.5cm}{90 + (360/5)*4}
+                    \end{tikzpicture}
+                }
+    
+            \tcbitem
+    
+                \centering
+                \scalebox{0.5}{
+                    \begin{tikzpicture}
+                        \petersen
+                        \unopG{5cm}{90 + (360/5)*1}
+                        \unopB{5cm}{90 + (360/5)*3}
+                        \unopR{2.5cm}{90 + (360/5)*3}
+                        \unopBp{2.5cm}{90 + (360/5)}
+                        \unopGunopR{2.5cm}{90 + (360/5)*2}
+                        \punto{2.5cm}{90 + (360/5)*4}
+                    \end{tikzpicture}
+                }
+            
+            \tcbitem
+    
+                \centering
+                \scalebox{0.5}{
+                    \begin{tikzpicture}
+                        \petersen
+                        \unopG{5cm}{90 + (360/5)*1}
+                        \unopB{5cm}{90 + (360/5)*2}
+                        \unopR{2.5cm}{90 + (360/5)*3}
+                        \unopR{2.5cm}{90}
+                        \unopBp{2.5cm}{90 + (360/5)}
+                        \unopG{2.5cm}{90 + (360/5)*2}
+                        \punto{2.5cm}{90 + (360/5)*4}
+                    \end{tikzpicture}
+                }
+        \end{tcbitemize}
+        \caption{}
+        \label{fig:possible2}
+        \end{figure}
+
 \end{proof}
     
 \begin{teorema}
@@ -251,13 +552,13 @@
                 }
                 \end{tcbitemize}
         \caption{A possible initial configuration is shown in (a), where all
-        tokens lie in one of the three vertices of a dominating set. We will fix
-        colors to represent different cops, so that blue corresponds to $c_1$,
-        green to $c_2$, red to $c_3$ and yellow to $c_4$. In a similar fashion,
-        figures indicate the number of token of the corresponding cop, implying
-        that the blue dot referes to cop $c_{1,1}$, while the green triangle
-        represents cop $c_{2,2}$. In (b) the worst case scenario is shown after
-        all cops have moved and before $R$ does its first move.}
+                tokens lie in one of the three vertices of a dominating set. We will fix
+                colors to represent different cops, so that blue corresponds to $c_1$,
+                green to $c_2$, red to $c_3$ and yellow to $c_4$. In a similar fashion,
+                figures indicate the number of token of the corresponding cop, implying
+                that the blue dot referes to cop $c_{1,1}$, while the green triangle
+                represents cop $c_{2,2}$. In (b) the worst case scenario is shown after
+                all cops have moved and before $R$ does its first move.}
         \label{fig:initial}
     \end{figure}
 
