@@ -1130,6 +1130,7 @@ estrategia dada por \cref{alg:captura}.
 \end{figure}
 
 \section{Estrellas con subdivisiones}
+\label{sec:estrellassub}
 
 En busca de que el resultado anterior d\'e informaci\'on acerca de una familia
 de gr\'aficas m\'as grande, se define para cada $m\in \n$, \textbf{la estrella
@@ -1182,7 +1183,10 @@ d\cref{teo:numero-de-policia-estrella}.
 \begin{proof}
     N\'otese primero que  el ladr\'on puede escoger jugar \'unicamente sobre los
     v\'ertices de la $S_{n,0}$ inducida en $S_{n,m}$, de manera que, tal como se
-    demostr\'o en \cref{teo:cota_estrella}, $c\paren{\t{k}{S_{n,m}}}\geq k$.
+    demostr\'o en \cref{teo:cota_estrella}, $c\paren{\t{k}{S_{n,m}}}\geq k$ (si
+    $C$ introduce multiples fichas de un mismo polic\'ia a una rama, dicho
+    polic\'ia no ser\'a capaz de capturar pues $R$ nunca introduce m\'as de una
+    ficha en cada rama).
 
     Se ver\'a que $c\paren{\t{k}{S_{n,m}}} = k$. As\'i pues, consid\'erese sin
     p\'erdida de generalidad que los $k$ polic\'ias, $c_1,\dots, c_k$, comienzan
@@ -1256,7 +1260,7 @@ d\cref{teo:numero-de-policia-estrella}.
     ficha libre hacia $r_i$, resolviendo obstrucciones de la forma usual. Este
     proceso se intercala para cada polic\'ia, y cada movimiento de ladr\'on, de
     manera que eventualmente un polic\'ia logra posicionar su ficha libre en el
-    mismo v\'ertice que su objetivo mientas tiene asedio a $R$, i.e., $R$ es
+    mismo v\'ertice que su objetivo mientas tiene bajo asedio a $R$, i.e., $R$ es
     capturado.
 
 \end{proof}
@@ -1274,25 +1278,29 @@ ligeramente m\'as general.
 En resumidas cuentas, el n\'umero policiaco de la gr\'afica de $k$ fichas de una
 estrella con $n$ ramas subdivididas inequitativamente (i.e., no todas las ramas
 tienen el mismo n\'umero de v\'ertices) es $k$. Adem\'as, este nuevo algoritmo
-generalizado tambi\'en resuelve la instancia en la que $m=0$. Es importante
-notar que de lo anterior no podemos concluir algo acerca del n\'umero policiaco
-de las gr\'aficas de $k$ fichas de las estrellas con $n$ ramas subdivididas si
-$n<2k-1$. Para ver esto, consideramos $n$ un entero fijo y $k_n$ el m\'inimo
-entero tal que $n < 2k_n -1$. Al ser este un m\'inimo, sucede que
+generalizado tambi\'en resuelve la instancia en la que $m=0$. Omitiremos de
+momento el algoritmo y un ejemplo de su ejecuci\'on en una partida pues, como se
+ver\'a en \cref{sec:arboles}, este mismo algoritmo nos es \'util para probar un
+resultado a\'un m\'as fuerte.
+
+\section{Estrellas con subdivisiones de grado bajo}
+\label{sec:estrellasubbajo}
+
+A diferencia de lo expuesto en \cref{sec:estrellas} donde, debido al Lema
+\ref{lem:isomorfismo}, \cref{teo:numero-de-policia-estrella} daba una respuesta
+al n\'umero policiaco de cualquier estrella simple, resulta que no podemos
+concluir, d\cref{teo:numero-de-policia-estrella-subdivisiones}, el n\'umero
+policiaco de las gr\'aficas de $k$ fichas de las estrellas con $n$ ramas
+subdivididas si $n<2k-1$. Para ver esto, consideramos $n$ un entero fijo y $k_n$
+el m\'inimo entero tal que $n < 2k_n -1$. Al ser este un m\'inimo, sucede que
 \[
     2\paren{k_n-1} - 1 \leq n < 2k_n - 1,
 \]
 de manera que
 \[
-    k_n\leq \frac{n + 1}{2} + 1 = \frac{n+3}{2} \leq k_n.
+    k_n\leq \frac{n + 1}{2} + 1 = \frac{n+3}{2} < k_n + 1
 \]
-Adem\'as, si $k_n=\left \lceil \frac{n+3}{2} \right \rceil$, entonces para $n$
-par sucede que
-\[
-    2\paren{k_n-1} - 1 = 2\paren{\frac{n+4}{2}-1} - 1 = n + 1,
-\]
-lo que contradice que $2\paren{k_n-1} - 1 \leq n$, concluyendo as\'i que
-$k_n=\left \lfloor \frac{n+3}{2} \right \rfloor$.
+y, por tanto, $k_n=\left \lfloor \frac{n+3}{2} \right \rfloor$.
 
 En este orden de ideas, para cualquier entero positivo $n$, si $m=0$,
 $\abs{V_{S_{n,m}}} = n(m+1) + 1 = n + 1$, de modo que, tal como se expuso al
@@ -1306,17 +1314,116 @@ recordando que $k\leq \frac{\abs{V_{S_{n,m}}}}{2}$ debido al Lema
         &= 2\paren{n(m+1) + 1 - k} - 1\\
         &\geq 2\paren{n(m+1) + 1 - \frac{n(m+1) + 1}{2}} -1\\
         &= n(m+1) + 1 -1\\
-        &\geq 2n > n.
+        &\geq 2n > n,
 \end{align*}
 
-Por tanto, no es posible utilizar el corolario anterior para resolver este caso
-(pues no habr\'ia al menos el doble menos uno de ramas que de fichas). M\'as
-a\'un, podemos enunciar el siguiente teorema para cubrir los casos restantes.
+por lo que no es posible utilizar
+\cref{teo:numero-de-policia-estrella-subdivisiones} para calcular el n\'umero
+policiaco de $\t{\abs{V_{S_{n,m}}}-k}{S_{n,m}}$ para cualquier $k\geq k_n$. No
+obstante, vale la pena notar que la estrategia descrita en dicho Teorema no
+depend\'ia del n\'umero de ramas que tiene la estrella subdividida, por lo que
+es posible concluir que $c\paren{\t{k}{S_{n,m}}} \leq k$ para cualesquiera $n$
+entero positivo, $m\geq 0$ y $k\geq2$.
 
+A manera de exploraci\'on, si $n=3$, entonces $k_n=3$, por lo que podemos dar
+una estrategia de escape para $R$ en $\t{3}{S_{3,1}}$ ante $n+1-k_n = 1$
+polic\'ia, el cual s\'i es capaz de capturar en $\t{3}{S_{3}}$  (ver
+\cref{fig:S31}).
+
+\begin{figure}[H]
+    \begin{tcbitemize}[raster columns=2,raster equal height, enhanced,
+                       colback=Black!5!white,colframe=Grey!75!black, boxsep=0mm,
+                       raster row skip=1mm, right=0.5mm, left=0.5mm, raster
+                       column skip=1mm, phantom =
+                       {\setcounter{myrasternum}{\thetcbrasternum}},
+                       title={(\arabic{myrasternum})\enspace}, boxsep=0mm,
+                       right=0.5mm, left=0.5mm, fonttitle=\bfseries,
+                       coltitle=black, raster column skip=1mm, detach
+                       title,before upper=\tcbtitle\\, raster halign=center,
+                       raster row skip=1mm]
+        \tcbitem
+
+        \centering
+        \begin{tikzpicture}
+            \begin{scope}[transform shape, scale=0.7]
+                \Stresuno
+                \unopBp{0cm}{0}
+                \unopBp{2.25cm}{90}
+                \unopB{2.25cm}{90 + (360/3)}
+                \punto{2.25cm}{90 + (360/3)*2}
+                
+            \end{scope}
+        \end{tikzpicture}
+        \tcbitem
+
+        \centering
+        \begin{tikzpicture}
+            \begin{scope}[transform shape, scale=0.7]
+                \Stresuno
+                \punto{0cm}{0}
+                \unopBp{2.25cm}{90}
+                \unopB{2.25cm}{90 + (360/3)}
+                \unopBp{2.25cm}{90 + (360/3)*2}
+                
+            \end{scope}
+        \end{tikzpicture}
+        \tcbitem 
+
+        \centering
+        \begin{tikzpicture}
+            \begin{scope}[transform shape, scale=0.7]
+                \Stresuno
+                \punto{0cm}{0}
+                \unopB{2.25cm}{90}
+                \punto{4.5cm}{90}
+                \unopB{2.25cm}{90 + (360/3)}
+                \unopBp{2.25cm}{90 + (360/3)*2}
+                
+            \end{scope}
+        \end{tikzpicture}
+        \tcbitem
+
+        \centering
+        \begin{tikzpicture}
+            \begin{scope}[transform shape, scale=0.7]
+                \Stresuno
+                \unopBp{0cm}{0}
+                \unopB{2.25cm}{90}
+                \punto{4.5cm}{90}
+                \unopBp{2.25cm}{90 + (360/3)*2}
+                
+            \end{scope}
+        \end{tikzpicture}
+
+        \tcbitem
+
+        \centering
+        \begin{tikzpicture}
+            \begin{scope}[transform shape, scale=0.7]
+                \Stresuno
+                \unopB{0cm}{0}
+                \unopB{2.25cm}{90}
+                \punto{4.5cm}{90}
+                \punto{2.25cm}{90 + (360/3)}
+                \unopBp{2.25cm}{90 + (360/3)*2}
+                
+            \end{scope}
+        \end{tikzpicture}
+    \end{tcbitemize}
+    \caption{}
+    \label{fig:S31}
+\end{figure}
+
+Como soluci\'on al problema de esta secci\'on, proponemos el siguiente resultado
+que concluye el c\'alculo del n\'umero policiaco para cualquier estrella.
+
+
+%Modificar el teorema, aún no resuelto
 \begin{teorema}
 \label{teo:cota-estrella-grado-bajo}
 Para toda $k\geq 2$, $0<n<2k-1$ y $m\geq 1$ suficientemente grande para que
-$k\leq \frac{\abs{V_{S_{n,m}}}}{2}$, $\t{k}{S_{n,m}}\geq k_n$.
+$k\leq \frac{\abs{V_{S_{n,m}}}}{2}$, $c\paren{\t{k}{S_{n,m}}} = \left\lceil
+\frac{\left \lfloor \frac{n-1}{2}\right \rfloor + k + 1}{2} \right \rceil$.
 \end{teorema}
 
 % \begin{proof}
@@ -1331,3 +1438,1153 @@ $k\leq \frac{\abs{V_{S_{n,m}}}}{2}$, $\t{k}{S_{n,m}}\geq k_n$.
 %        \binom{n}{\left\lfloor \frac{k-1}{n}\right\rfloor}
 %     \]
 % \end{proof}
+
+\section{\'Arboles}
+\label{sec:arboles}
+
+Dados los resultados y algoritmos propuestos en la secci\'on anterior, cabe
+preguntarse si es posible utilizar la misma idea tanto para calcular el n\'umero
+policiaco de la gr\'afica de fichas de un \'arbol arbitrario como para dar una
+estrategia ganadora con dicho n\'umero policiaco. Al igual que en el caso
+anterior, separaremos nuestra respuesta dependiendo de un par\'ametro en el
+\'arbol.
+
+En \cref{sec:estrellassub} el criterio fue respecto al n\'umero de ramas de la
+estrella con subdivisiones, el cual vimos que cambiaba el n\'umero de polic\'ias
+necesarios dependiendo de si se ten\'ian al menos tantas ramas como el doble de
+fichas menos uno. El an\'alogo a esta condici\'on para \'arboles es la
+existencia de un v\'ertice cuyo grado sea al menos dos veces el n\'umero de
+fichas menos uno. En efecto, si $k$ es un entero positivo, $T$ es un \'arbol y
+$v$ es un v\'ertice tal que $d(v)\geq 2k-1$, entonces $N\c{v}$ induce un
+$S_{n,m}$ con $m\geq 0$ y $n\geq 2k-1$, por lo que $R$ podr\'ia limitarse a
+jugar sobre dicha gr\'afica y, tal como se coment\'o en la demostraci\'on
+d\cref{teo:numero-de-policia-estrella-subdivisiones}, $k$ es una cota inferior
+para el n\'umero policiaco.
+
+La condici\'on anterior tiene una equivalencia inmediata: para cualquier \'arbol
+$T$, existe un v\'ertice de grado al menos $2k-1$ si y solo si $\Delta_T \geq
+2k-1$. As\'i, procedemos a demostrar el siguiente resultado:
+
+\begin{teorema}
+\label{teo:arbol}
+    Sea $k\geq 2$ y $T$ un \'arbol tal que $\Delta_T\geq 2k-1$. Entonces
+    $c\paren{\t{k}{T}} = k$.
+\end{teorema}
+
+\begin{proof}
+    Por lo mencionado anteriomente, $\Delta_T\geq 2k-1$ implica que existe un
+    v\'ertice de $T$, $v$, tal que $d(v)\geq 2k-1$. As\'i, $N[v]$ induce una
+    estrella de al menos $2k-1$ ramas, posiblemente consistentes de un solo
+    v\'ertice. As\'i, $R$ puede limitarse a jugar sobre $T[N[v]]$ siguiendo la
+    estrategia enunciada en \cref{teo:cota_estrella}, de modo que
+    $c\paren{\t{k}{T}}\geq k$.
+    
+    Para ver que $k$ polic\'ias son suficientes para capturar a $R$, se recurre
+    a la estrategia descrita en la demostraci\'on
+    d\cref{teo:numero-de-policia-estrella-subdivisiones}, afirmando que esta
+    misma estrategia propicia la captura de $R$. En efecto, la configuraci\'on
+    inicial de los $k$ polic\'ias vuelve a ser la misma que la descrita en
+    \cref{fig:partida1}, identificando al centro de la estrella en ese caso como
+    el v\'ertice $v$ del p\'arrafo anterior.
+    
+    Posteriormente, $C$ realiza sus movimientos acorde a \cref{alg:captura},
+    notando que nuevamente este resuelve las obstrucciones correctamente pues
+    \cref{alg:desob} se demostr\'o para cualquier \'arbol. As\'i, $C$,
+    eventualmente, logra que uno de sus polic\'ias, $c_i$, ponga bajo asedio a
+    $R$. Luego, si $R$ mueve su ficha $r_i$, $C$ ejecuta la estrategia
+    mencionada en \cref{teo:numero-de-policia-estrella-subdivisiones} para
+    desobstruir (en caso de estarlo) la ficha libre de $c_i$ y acercarla
+    $\ell+1$ unidades a $r_i$, poniendo a $R$ bajo asedio d\'ebil. Si \'este
+    contin\'ua moviendo $r_i$ por los siguientes $\ell$ turnos, $c_i$ vuelve a
+    poner bajo asedio a $R$ y logra acercar su ficha libre en al menos una
+    unidad a $r_i$. Si bien puede que $r_i$ no se mueva sobre una trayectoria,
+    sino sobre un sub\'arbol de $T$, $c_i$ se acerca en cada a turno a $r_i$ al
+    igual que en la estrategia de un polic\'ia contra un ladr\'on en un \'arbol,
+    de manera que $R$ eventualmente mueve una ficha distinta de $r_i$.
+
+    Lo anterior implica que, eventualmente, todos los polic\'ias de $C$ tienen
+    bajo asedio d\'ebil a $R$. Finalmente, la misma estrategia anterior se
+    alterna entre todos los polic\'ias para preservar el asedio d\'ebil de todos
+    y que al menos un polic\'ia logre acercar su ficha libre hacia su objetivo.
+    Por tanto, eventualmente todos los polic\'ias tienen bajo asedio a $R$ y,
+    finalmente, logran capturarle.
+
+\end{proof}
+
+Tal como se anticip\'o en \cref{sec:estrellassub}, adjuntamos a continuaci\'on
+el algoritmo de captura para la gr\'afica de $k$ fichas de cualquier \'arbol $T$
+con $\Delta_T\geq 2k-1$ (ver \cref{alg:captura_arbol1}), as\'i como el
+desarrollo de una partida en la que $C$ sigue dicha estrategia (ver
+\cref{fig:partida2}). Cabe mencionar aqu\'i que la configuraci\'on inicial de
+$C$ en este caso es escogida de la misma manera que en \cref{fig:partida1},
+notando que para ello se puede iterar sobre los v\'ertices de $T$ para encontrar
+uno de grado al menos $2k-1$ y, posteriormente, posicionar las polic\'ias de $C$
+en la vecindad cerrada del v\'ertice encontrado. M\'as a\'un, n\'otese que el
+\'unico cambio entre \cref{alg:captura} y \cref{alg:captura_arbol1} yace en la
+l\'inea $18$, donde se resuelve la desobstrucci\'on de la ficha libre (en caso
+de haberla) una vez que un polic\'ia $c_i$ ha puesto bajo asedio a $R$, notando
+que ello conlleva a que $c_i$ pone bajo asedio d\'ebil a $R$ y, si hubiera
+fichas de $c_{i,j}$ con $i\neq j$ que no capturasen sus respectivos objetivos,
+entonces en los siguientes turnos se ejecutar\'ia el c\'odigo dentro del
+\ttt{if} de la l\'inea $5$.
+
+\begin{algorithm}[H]
+    \SetAlgorithmName{Algoritmo}{}
+      \DontPrintSemicolon
+      \SetKwData{False}{false}\SetKwData{True}{true}
+      \SetKwFunction{New}{new}\SetKwFunction{End}{end}\SetKwFunction{Used}{used}
+      \SetKw{Continue}{continue}
+      \SetKwInOut{Input}{input}\SetKwInOut{Output}{output}
+    
+      \KwIn{Un enteros positivos $k$ y $T$ un \'arbol tal que $\Delta_T\geq
+      2k-1$, una configuraci\'on inicial para el ladr\'on en un juego de 
+      polic\'ias y ladrones sobre la gr\'afica de $k$ fichas de $T$ junto con un
+      etiquetado de sus fichas.}
+      \KwOut{Una instancia $I(t)$ en la que $C$ captura a $R$ al turno $t$.}
+      \BlankLine
+      $I(0) \gets$ la instancia en la que $C$ y $R$ se encuentran en su
+      configuraci\'on inicial\;
+      $t\leftarrow 0$\;
+      \While{$C$ no est\'e capturando a $R$ al turno $t$}{
+        \ForEach{$1\leq i\leq k$}{
+            \If{existe $j\ne i$ tal que $c_{i,j}$ no est\'a capturando a $r_j$}{
+                $j \gets$ el m\'inimo \'indice tal que $c_{i,j}$ no est\'a 
+                capturando a $r_j$\;
+                $v_{i,j} \gets$ el segundo v\'ertice en la
+                $c_{i,j}(t)r_j(t)$-trayectoria\;
+                \If{existe $s$ tal que $c_{i,s}(t) = v_{i,j}$}{
+                    \If{$s=i$ y $v_{i,j}=r_j(t)$}{
+                        $c_{i}(t+1) \gets \paren{c_i(t)\setminus
+                        \l{\paren{c_{i,j},c_{i,j}(t)},\paren{c_{i,s},c_{i,s}(t)}}} \cup
+                        \l{\paren{c_{i,j},c_{i,s}(t)},\paren{c_{i,s},c_{i,j}(t)}}$\;
+                    }\Else{
+                        $c_{i}(t+1) \gets \textsc{Desobstrucci\'on}
+                        \paren{k,T,I(t),c_{i,s},c_{i,j}}$\;
+                    }
+                }\Else{
+                    $c_i(t+1) \gets (c_i(t) \setminus \{(c_{i,j},c_{i,j}(t))\})
+                    \cup \{ (c_{i,j},v_{i,j}) \}$\;
+                }
+            }\Else{
+                $v_{i,i} \gets$ el segundo v\'ertice en la
+                $c_{i,i}(t)r_i(t)$-trayectoria\;
+                \If{existe $s$ tal que $c_{i,s}(t) = v_{i,i}$}{
+                    $c_{i}(t+1) \gets \textsc{Desobstrucci\'on}
+                    \paren{k,T,I(t),c_{i,s},c_{i,i}}$ \;
+                }\Else{
+                    $c_i(t+1) \gets (c_i(t) \setminus \{(c_{i,i},c_{i,i}(t))\})
+                    \cup \{ (c_{i,i},v_{i,i}) \}$\;
+                }
+            }
+        }
+        $t \leftarrow t+1$\;
+        $I(t) \gets R(t-1) \cup \bigcup_{i=1}^k c_i(t)$\;
+        \If{$C$ est\'a capturando a $R$ al turno $t$}{
+            \Continue\;
+        }\Else{
+            $I(t) \gets (I(t) \setminus R(t-1)) \cup R(t)$\;
+        }
+      }
+      {\Return $I(t)$}
+      \caption{\textsc{Captura \'Arbol 1}}
+      \label{alg:captura_arbol1}
+    \DecMargin{1em}
+\end{algorithm}
+
+\begin{figure}[H]
+    \begin{tcbitemize}[raster columns=2,raster equal height, enhanced,
+                       colback=Black!5!white,colframe=Grey!75!black, boxsep=0mm,
+                       raster row skip=1mm, right=0.5mm, left=0.5mm, raster
+                       column skip=1mm, phantom =
+                       {\setcounter{myrasternum}{\thetcbrasternum}},
+                       title={(\arabic{myrasternum})\enspace}, boxsep=0mm,
+                       right=0.5mm, left=0.5mm, fonttitle=\bfseries,
+                       coltitle=black, raster column skip=1mm, detach
+                       title,before upper=\tcbtitle\\, raster halign=center,
+                       raster row skip=1mm]
+        \tcbitem
+
+        \centering
+        \begin{tikzpicture}
+            \begin{scope}[transform shape, scale=0.7]
+                \arbol
+                \tresp{0cm}{0}
+                \trest{2.25cm}{90 + (360/5)*2}
+                \tresc{2.25cm}{90 + (360/5)*3}
+
+                \begin{scope}[shift={(1_0)}]
+                    \cuadro{2.25cm}{157.5}
+                \end{scope}
+
+                \begin{scope}[shift={(3_00)}]
+                    \tri{2.25cm}{247.5}
+                \end{scope}
+
+                \begin{scope}[shift={(5_0)}]
+                    \punto{2.25cm}{45}
+                \end{scope}
+            \end{scope}
+        \end{tikzpicture}
+        \tcbitem
+
+        \centering
+        \begin{tikzpicture}
+            \begin{scope}[transform shape, scale=0.7]
+                \arbol
+                \unopGunopR{2.25cm}{90}
+                \unopBunotGunotR{2.25cm}{90 + (360/5)*2}
+                \unocB{0cm}{0}
+                \unocGunocR{2.25cm}{90 + (360/5)*3}
+
+                \begin{scope}[shift={(1_0)}]
+                    \cuadro{2.25cm}{157.5}
+                \end{scope}
+
+                \begin{scope}[shift={(3_00)}]
+                    \unotB{0cm}{0}
+                    \tri{2.25cm}{247.5}
+                \end{scope}
+
+                \begin{scope}[shift={(5_0)}]
+                    \punto{2.25cm}{45}
+                \end{scope}
+            \end{scope}
+        \end{tikzpicture}
+        \tcbitem 
+
+        \centering
+        \begin{tikzpicture}
+            \begin{scope}[transform shape, scale=0.7]
+                \arbol
+                \unopGunopR{2.25cm}{90}
+                \unopBunotGunotR{2.25cm}{90 + (360/5)*2}
+                \unocB{0cm}{0}
+                \unocGunocR{2.25cm}{90 + (360/5)*3}
+
+                \begin{scope}[shift={(1_0)}]
+                    \cuadro{2.25cm}{157.5}
+                \end{scope}
+
+                \begin{scope}[shift={(3_00)}]
+                    \unotB{0cm}{0}
+                    \tri{2.25cm}{247.5}
+                \end{scope}
+
+                \begin{scope}[shift={(5_0)}]
+                    \punto{2.25cm}{45}
+                \end{scope}
+            \end{scope}
+        \end{tikzpicture}
+        \tcbitem
+
+        \centering
+        \begin{tikzpicture}
+            \begin{scope}[transform shape, scale=0.7]
+                \arbol
+                \unopBunotGunotR{2.25cm}{90 + (360/5)*2}
+                \unocB{0cm}{0}
+                \unocGunocR{2.25cm}{90 + (360/5)*3}
+
+                \begin{scope}[shift={(1_0)}]
+                    \cuadro{2.25cm}{157.5}
+                \end{scope}
+
+                \begin{scope}[shift={(3_00)}]
+                    \unotBt{2.25cm}{247.5}
+                \end{scope}
+
+                \begin{scope}[shift={(5_0)}]
+                    \unopGunopRp{2.25cm}{45}
+                \end{scope}
+            \end{scope}
+        \end{tikzpicture}
+    \end{tcbitemize}
+    \caption{Las escenas impares muestran una instancia de la partida seguida de
+    la anterior posterior al movimiento de $R$ (en (1) $R$ acaba de escoger su
+    posici\'on inicial). Por otro lado, las escenas pares muestran el movimiento
+    de $C$, de manera que la sucesi\'on de movimientos de la partida se
+    corresponde con la enumeraci\'on de las escenas. $C$ utiliza en cada paso la
+    estrategia inducida por \cref{alg:captura_arbol1}. Se recuerda que los
+    polic\'ias $1$, $2$ y $3$ reciben los colores azul, verde y rojo,
+    respectivamente, mientras que, para cada uno de ellos (incluido el
+    ladr\'on), el punto, el tri\'angulo y el cuadrado representan su primera,
+    segunda y tercera ficha, respectivamente.}
+    \label{fig:partida2}
+\end{figure}
+
+\begin{figure}[H]
+    \ContinuedFloat
+    \begin{tcbitemize}[raster columns=2,raster equal height, enhanced,
+        colback=Black!5!white,colframe=Grey!75!black, boxsep=0mm, raster row
+        skip=1mm, right=0.5mm, left=0.5mm, raster column skip=1mm, phantom =
+        {\addtocounter{myrasternum}{1}},
+        title={(\arabic{myrasternum})\enspace}, boxsep=0mm, right=0.5mm,
+        left=0.5mm, fonttitle=\bfseries, coltitle=black, raster column skip=1mm,
+        detach title,before upper=\tcbtitle\\, raster halign=center, raster row
+        skip=1mm]
+        
+        \tcbitem
+
+        \centering
+        \begin{tikzpicture}
+            \begin{scope}[transform shape, scale=0.7]
+                \arbol
+                \unopBunotGunotR{2.25cm}{90 + (360/5)*2}
+                \unocB{0cm}{0}
+                \unocGunocR{2.25cm}{90 + (360/5)*3}
+                \punto{2.25cm}{90}
+
+                \begin{scope}[shift={(1_0)}]
+                    \cuadro{2.25cm}{157.5}
+                \end{scope}
+
+                \begin{scope}[shift={(3_00)}]
+                    \unotBt{2.25cm}{247.5}
+                \end{scope}
+
+                \begin{scope}[shift={(5_0)}]
+                    \unopGunopR{2.25cm}{45}
+                \end{scope}
+            \end{scope}
+        \end{tikzpicture}
+        \tcbitem
+
+        \centering
+        \begin{tikzpicture}
+            \begin{scope}[transform shape, scale=0.7]
+                \arbol
+                \unopBunotGunotR{2.25cm}{90 + (360/5)*2}
+                \unocB{2.25cm}{90 + (360/5)}
+                \unocGunocR{2.25cm}{90 + (360/5)*3}
+                \unopGunopRp{2.25cm}{90}
+
+                \begin{scope}[shift={(1_0)}]
+                    \cuadro{2.25cm}{157.5}
+                \end{scope}
+
+                \begin{scope}[shift={(3_00)}]
+                    \unotBt{2.25cm}{247.5}
+                \end{scope}
+
+                \begin{scope}[shift={(5_0)}]
+
+                \end{scope}
+            \end{scope}
+        \end{tikzpicture}
+        \tcbitem
+        
+        \centering
+        \begin{tikzpicture}
+            \begin{scope}[transform shape, scale=0.7]
+                \arbol
+                \unopBunotGunotR{2.25cm}{90 + (360/5)*2}
+                \unocB{2.25cm}{90 + (360/5)}
+                \unocGunocR{2.25cm}{90 + (360/5)*3}
+                \unopGunopR{2.25cm}{90}
+                \punto{0cm}{0}
+
+                \begin{scope}[shift={(1_0)}]
+                    \cuadro{2.25cm}{157.5}
+                \end{scope}
+
+                \begin{scope}[shift={(3_00)}]
+                    \unotBt{2.25cm}{247.5}
+                \end{scope}
+
+                \begin{scope}[shift={(5_0)}]
+
+                \end{scope}
+            \end{scope}
+        \end{tikzpicture}
+        \tcbitem
+
+        \centering
+        \begin{tikzpicture}
+            \begin{scope}[transform shape, scale=0.7]
+                \arbol
+                \unopBunotGunotR{2.25cm}{90 + (360/5)*2}
+                \unocGunocR{2.25cm}{90 + (360/5)*3}
+                \unopGunopRp{0cm}{0}
+
+                \begin{scope}[shift={(1_0)}]
+                    \unocBc{2.25cm}{157.5}
+                \end{scope}
+
+                \begin{scope}[shift={(3_00)}]
+                    \unotBt{2.25cm}{247.5}
+                \end{scope}
+
+                \begin{scope}[shift={(5_0)}]
+
+                \end{scope}
+            \end{scope}
+        \end{tikzpicture}
+    \end{tcbitemize}
+\end{figure}
+
+\begin{figure}[H]
+    \ContinuedFloat
+    \begin{tcbitemize}[raster columns=2,raster equal height, enhanced,
+        colback=Black!5!white,colframe=Grey!75!black, boxsep=0mm, raster row
+        skip=1mm, right=0.5mm, left=0.5mm, raster column skip=1mm, phantom =
+        {\addtocounter{myrasternum}{1}}, title={(\arabic{myrasternum})\enspace},
+        boxsep=0mm, right=0.5mm, left=0.5mm, fonttitle=\bfseries,
+        coltitle=black, raster column skip=1mm, detach title,before
+        upper=\tcbtitle\\, raster halign=center, raster row skip=1mm]
+
+        \tcbitem
+        
+        \centering
+        \begin{tikzpicture}
+            \begin{scope}[transform shape, scale=0.7]
+                \arbol
+                \unopBunotGunotR{2.25cm}{90 + (360/5)*2}
+                \unocGunocR{2.25cm}{90 + (360/5)*3}
+                \unopGunopR{0cm}{0}
+                \punto{2.25cm}{90 + (360/5)*4}
+
+                \begin{scope}[shift={(1_0)}]
+                    \unocBc{2.25cm}{157.5}
+                \end{scope}
+
+                \begin{scope}[shift={(3_00)}]
+                    \unotBt{2.25cm}{247.5}
+                \end{scope}
+
+                \begin{scope}[shift={(5_0)}]
+
+                \end{scope}
+            \end{scope}
+        \end{tikzpicture}
+        \tcbitem
+
+        \centering
+        \begin{tikzpicture}
+            \begin{scope}[transform shape, scale=0.7]
+                \arbol
+                \unotGunotR{2.25cm}{90 + (360/5)*2}
+                \unocGunocR{2.25cm}{90 + (360/5)*3}
+                \unopGunopRp{2.25cm}{90 + (360/5)*4}
+                \unopB{0cm}{0}
+
+                \begin{scope}[shift={(1_0)}]
+                    \unocBc{2.25cm}{157.5}
+                \end{scope}
+
+                \begin{scope}[shift={(3_00)}]
+                    \unotBt{2.25cm}{247.5}
+                \end{scope}
+
+                \begin{scope}[shift={(5_0)}]
+
+                \end{scope}
+            \end{scope}
+        \end{tikzpicture}
+        \tcbitem
+        
+        \centering
+        \begin{tikzpicture}
+            \begin{scope}[transform shape, scale=0.7]
+                \arbol
+                \unotGunotR{2.25cm}{90 + (360/5)*2}
+                \unocGunocR{2.25cm}{90 + (360/5)*3}
+                \unopGunopRp{2.25cm}{90 + (360/5)*4}
+                \unopB{0cm}{0}
+
+                \begin{scope}[shift={(1_0)}]
+                    \unocBc{2.25cm}{157.5}
+                \end{scope}
+
+                \begin{scope}[shift={(3_00)}]
+                    \unotB{2.25cm}{247.5}
+                    \tri{0cm}{0}
+                \end{scope}
+
+                \begin{scope}[shift={(5_0)}]
+
+                \end{scope}
+            \end{scope}
+        \end{tikzpicture}
+        \tcbitem
+
+        \centering
+        \begin{tikzpicture}
+            \begin{scope}[transform shape, scale=0.7]
+                \arbol
+                \unotG{2.25cm}{90 + (360/5)*2}
+                \unocR{2.25cm}{90 + (360/5)*3}
+                \unopGunopRp{2.25cm}{90 + (360/5)*4}
+                \unopBunocGunotR{0cm}{0}
+
+                \begin{scope}[shift={(1_0)}]
+                    \unocBc{2.25cm}{157.5}
+                \end{scope}
+
+                \begin{scope}[shift={(3_00)}]
+                    \unotBt{0cm}{0}
+                \end{scope}
+
+                \begin{scope}[shift={(5_0)}]
+
+                \end{scope}
+            \end{scope}
+        \end{tikzpicture}
+    \end{tcbitemize}
+\end{figure}
+
+\begin{figure}[H]
+    \ContinuedFloat
+    \begin{tcbitemize}[raster columns=2,raster equal height, enhanced,
+        colback=Black!5!white,colframe=Grey!75!black, boxsep=0mm, raster row
+        skip=1mm, right=0.5mm, left=0.5mm, raster column skip=1mm, phantom =
+        {\addtocounter{myrasternum}{1}}, title={(\arabic{myrasternum})\enspace},
+        boxsep=0mm, right=0.5mm, left=0.5mm, fonttitle=\bfseries,
+        coltitle=black, raster column skip=1mm, detach title,before
+        upper=\tcbtitle\\, raster halign=center, raster row skip=1mm]
+
+        \tcbitem
+        
+        \centering
+        \begin{tikzpicture}
+            \begin{scope}[transform shape, scale=0.7]
+                \arbol
+                \unotG{2.25cm}{90 + (360/5)*2}
+                \unocRt{2.25cm}{90 + (360/5)*3}
+                \unopGunopRp{2.25cm}{90 + (360/5)*4}
+                \unopBunocGunotR{0cm}{0}
+
+                \begin{scope}[shift={(1_0)}]
+                    \unocBc{2.25cm}{157.5}
+                \end{scope}
+
+                \begin{scope}[shift={(3_00)}]
+                    \unotB{0cm}{0}
+                \end{scope}
+
+                \begin{scope}[shift={(5_0)}]
+
+                \end{scope}
+            \end{scope}
+        \end{tikzpicture}
+        \tcbitem
+
+        \centering
+        \begin{tikzpicture}
+            \begin{scope}[transform shape, scale=0.7]
+                \arbol
+                \unotG{2.25cm}{90 + (360/5)*2}
+                \unotBunotRt{2.25cm}{90 + (360/5)*3}
+                \unopGunopRp{2.25cm}{90 + (360/5)*4}
+                \unopBunocR{0cm}{0}
+                \unocG{2.25cm}{90 + (360/5)}
+
+                \begin{scope}[shift={(1_0)}]
+                    \unocBc{2.25cm}{157.5}
+                \end{scope}
+
+                \begin{scope}[shift={(3_00)}]
+
+                \end{scope}
+
+                \begin{scope}[shift={(5_0)}]
+
+                \end{scope}
+            \end{scope}
+        \end{tikzpicture}
+        \tcbitem
+        
+        \centering
+        \begin{tikzpicture}
+            \begin{scope}[transform shape, scale=0.7]
+                \arbol
+                \unotG{2.25cm}{90 + (360/5)*2}
+                \unotBunotR{2.25cm}{90 + (360/5)*3}
+                \unopGunopRp{2.25cm}{90 + (360/5)*4}
+                \unopBunocRt{0cm}{0}
+                \unocG{2.25cm}{90 + (360/5)}
+
+                \begin{scope}[shift={(1_0)}]
+                    \unocBc{2.25cm}{157.5}
+                \end{scope}
+
+                \begin{scope}[shift={(3_00)}]
+
+                \end{scope}
+
+                \begin{scope}[shift={(5_0)}]
+
+                \end{scope}
+            \end{scope}
+        \end{tikzpicture}
+        \tcbitem
+
+        \centering
+        \begin{tikzpicture}
+            \begin{scope}[transform shape, scale=0.7]
+                \arbol
+                \unotG{2.25cm}{90 + (360/5)*2}
+                \unopBunocR{2.25cm}{90 + (360/5)*3}
+                \unopGunopRp{2.25cm}{90 + (360/5)*4}
+                \unotBunotRt{0cm}{0}
+
+                \begin{scope}[shift={(1_0)}]
+                    \unocBunocGc{2.25cm}{157.5}
+                \end{scope}
+
+                \begin{scope}[shift={(3_00)}]
+                    
+                \end{scope}
+
+                \begin{scope}[shift={(5_0)}]
+
+                \end{scope}
+            \end{scope}
+        \end{tikzpicture}
+    \end{tcbitemize}
+\end{figure}
+
+\begin{figure}[H]
+    \ContinuedFloat
+    \begin{tcbitemize}[raster columns=2,raster equal height, enhanced,
+        colback=Black!5!white,colframe=Grey!75!black, boxsep=0mm, raster row
+        skip=1mm, right=0.5mm, left=0.5mm, raster column skip=1mm, phantom =
+        {\addtocounter{myrasternum}{1}}, title={(\arabic{myrasternum})\enspace},
+        boxsep=0mm, right=0.5mm, left=0.5mm, fonttitle=\bfseries,
+        coltitle=black, raster column skip=1mm, detach title,before
+        upper=\tcbtitle\\, raster halign=center, raster row skip=1mm]
+
+        \tcbitem
+        
+        \centering
+        \begin{tikzpicture}
+            \begin{scope}[transform shape, scale=0.7]
+                \arbol
+                \unotG{2.25cm}{90 + (360/5)*2}
+                \unopBunocR{2.25cm}{90 + (360/5)*3}
+                \unopGunopR{2.25cm}{90 + (360/5)*4}
+                \punto{4.5cm}{90 + (360/5)*4}
+                \unotBunotRt{0cm}{0}
+
+                \begin{scope}[shift={(1_0)}]
+                    \unocBunocGc{2.25cm}{157.5}
+                \end{scope}
+
+                \begin{scope}[shift={(3_00)}]
+                    
+                \end{scope}
+
+                \begin{scope}[shift={(5_0)}]
+
+                \end{scope}
+            \end{scope}
+        \end{tikzpicture}
+        \tcbitem
+
+        \centering
+        \begin{tikzpicture}
+            \begin{scope}[transform shape, scale=0.7]
+                \arbol
+                \unotG{2.25cm}{90 + (360/5)*2}
+                \unotBunocR{2.25cm}{90 + (360/5)*3}
+                \unopB{2.25cm}{90 + (360/5)*4}
+                \unopGunopRp{4.5cm}{90 + (360/5)*4}
+                \unotRt{0cm}{0}
+
+                \begin{scope}[shift={(1_0)}]
+                    \unocBunocGc{2.25cm}{157.5}
+                \end{scope}
+
+                \begin{scope}[shift={(3_00)}]
+                    
+                \end{scope}
+
+                \begin{scope}[shift={(5_0)}]
+
+                \end{scope}
+            \end{scope}
+        \end{tikzpicture}
+        \tcbitem
+        
+        \centering
+        \begin{tikzpicture}
+            \begin{scope}[transform shape, scale=0.7]
+                \arbol
+                \unotG{2.25cm}{90 + (360/5)*2}
+                \unotBunocR{2.25cm}{90 + (360/5)*3}
+                \unopB{2.25cm}{90 + (360/5)*4}
+                \unopGunopRp{4.5cm}{90 + (360/5)*4}
+                \unotRt{0cm}{0}
+                \cuadro{2.25cm}{90 + (360/5)}
+
+                \begin{scope}[shift={(1_0)}]
+                    \unocBunocG{2.25cm}{157.5}
+                \end{scope}
+
+                \begin{scope}[shift={(3_00)}]
+                    
+                \end{scope}
+
+                \begin{scope}[shift={(5_0)}]
+
+                \end{scope}
+            \end{scope}
+        \end{tikzpicture}
+        \tcbitem
+
+        \centering
+        \begin{tikzpicture}
+            \begin{scope}[transform shape, scale=0.7]
+                \arbol
+                \unotG{2.25cm}{90 + (360/5)*2}
+                \unotR{2.25cm}{90 + (360/5)*3}
+                \unopB{2.25cm}{90 + (360/5)*4}
+                \unopGunopRp{4.5cm}{90 + (360/5)*4}
+                \unotBt{0cm}{0}
+                \unocGunocRc{2.25cm}{90 + (360/5)}
+
+                \begin{scope}[shift={(1_0)}]
+                    \unocB{2.25cm}{157.5}
+                \end{scope}
+
+                \begin{scope}[shift={(3_00)}]
+                    
+                \end{scope}
+
+                \begin{scope}[shift={(5_0)}]
+
+                \end{scope}
+            \end{scope}
+        \end{tikzpicture}
+    \end{tcbitemize}
+    \caption{En (17), $R$ acaba de mover $r_1$ y $c_1$ tiene bajo
+    asedio a $R$, pero $c_{1,1}$ est\'a obstruida. Por tanto, la l\'inea (18) de
+    \cref{alg:captura_arbol1} se ejecuta para $c_1$, resolviendo la
+    obstrucci\'on como se muestra en (18) para poner a $R$ bajo asedio d\'ebil y
+    con su ficha libre $2$ unidades m\'as cerca de su objetivo respecto a la
+    instancia anterior. Posteriormente, $c_3$ realiza el mismo movimiento en (20).}
+\end{figure}
+
+\begin{figure}[H]
+    \ContinuedFloat
+    \begin{tcbitemize}[raster columns=2,raster equal height, enhanced,
+        colback=Black!5!white,colframe=Grey!75!black, boxsep=0mm, raster row
+        skip=1mm, right=0.5mm, left=0.5mm, raster column skip=1mm, phantom =
+        {\addtocounter{myrasternum}{1}}, title={(\arabic{myrasternum})\enspace},
+        boxsep=0mm, right=0.5mm, left=0.5mm, fonttitle=\bfseries,
+        coltitle=black, raster column skip=1mm, detach title,before
+        upper=\tcbtitle\\, raster halign=center, raster row skip=1mm]
+
+        \tcbitem
+        
+        \centering
+        \begin{tikzpicture}
+            \begin{scope}[transform shape, scale=0.7]
+                \arbol
+                \unotG{2.25cm}{90 + (360/5)*2}
+                \unotR{2.25cm}{90 + (360/5)*3}
+                \unopB{2.25cm}{90 + (360/5)*4}
+                \unopGunopRp{4.5cm}{90 + (360/5)*4}
+                \unotB{0cm}{0}
+                \tri{2.25cm}{90}
+                \unocGunocRc{2.25cm}{90 + (360/5)}
+
+                \begin{scope}[shift={(1_0)}]
+                    \unocB{2.25cm}{157.5}
+                \end{scope}
+
+                \begin{scope}[shift={(3_00)}]
+                    
+                \end{scope}
+
+                \begin{scope}[shift={(5_0)}]
+
+                \end{scope}
+            \end{scope}
+        \end{tikzpicture}
+        \tcbitem
+
+        \centering
+        \begin{tikzpicture}
+            \begin{scope}[transform shape, scale=0.7]
+                \arbol
+                \unotGunotR{0cm}{0}
+                \unopB{2.25cm}{90 + (360/5)*4}
+                \unopGunopRp{4.5cm}{90 + (360/5)*4}
+                \unotBt{2.25cm}{90}
+                \unocGunocRc{2.25cm}{90 + (360/5)}
+
+                \begin{scope}[shift={(1_0)}]
+                    \unocB{2.25cm}{157.5}
+                \end{scope}
+
+                \begin{scope}[shift={(3_00)}]
+                    
+                \end{scope}
+
+                \begin{scope}[shift={(5_0)}]
+
+                \end{scope}
+            \end{scope}
+        \end{tikzpicture}
+        \tcbitem
+        
+        \centering
+        \begin{tikzpicture}
+            \begin{scope}[transform shape, scale=0.7]
+                \arbol
+                \unotGunotR{0cm}{0}
+                \unopB{2.25cm}{90 + (360/5)*4}
+                \unopGunopRp{4.5cm}{90 + (360/5)*4}
+                \unotB{2.25cm}{90}
+                \unocGunocRc{2.25cm}{90 + (360/5)}
+
+                \begin{scope}[shift={(1_0)}]
+                    \unocB{2.25cm}{157.5}
+                \end{scope}
+
+                \begin{scope}[shift={(3_00)}]
+                    
+                \end{scope}
+
+                \begin{scope}[shift={(5_0)}]
+                    \tri{2.25cm}{135}
+                \end{scope}
+            \end{scope}
+        \end{tikzpicture}
+        \tcbitem
+
+        \centering
+        \begin{tikzpicture}
+            \begin{scope}[transform shape, scale=0.7]
+                \arbol
+                \unotGunotR{2.25cm}{90}
+                \unopB{2.25cm}{90 + (360/5)*4}
+                \unopGunopRp{4.5cm}{90 + (360/5)*4}
+                \unocGunocRc{2.25cm}{90 + (360/5)}
+
+                \begin{scope}[shift={(1_0)}]
+                    \unocB{2.25cm}{157.5}
+                \end{scope}
+
+                \begin{scope}[shift={(3_00)}]
+                    
+                \end{scope}
+
+                \begin{scope}[shift={(5_0)}]
+                    \unotBt{2.25cm}{135}
+                \end{scope}
+            \end{scope}
+        \end{tikzpicture}
+    \end{tcbitemize}
+\end{figure}
+
+\begin{figure}[H]
+    \ContinuedFloat
+    \begin{tcbitemize}[raster columns=2,raster equal height, enhanced,
+        colback=Black!5!white,colframe=Grey!75!black, boxsep=0mm, raster row
+        skip=1mm, right=0.5mm, left=0.5mm, raster column skip=1mm, phantom =
+        {\addtocounter{myrasternum}{1}}, title={(\arabic{myrasternum})\enspace},
+        boxsep=0mm, right=0.5mm, left=0.5mm, fonttitle=\bfseries,
+        coltitle=black, raster column skip=1mm, detach title,before
+        upper=\tcbtitle\\, raster halign=center, raster row skip=1mm]
+
+        \tcbitem
+        
+        \centering
+        \begin{tikzpicture}
+            \begin{scope}[transform shape, scale=0.7]
+                \arbol
+                \unotGunotR{2.25cm}{90}
+                \unopB{2.25cm}{90 + (360/5)*4}
+                \unopGunopRp{4.5cm}{90 + (360/5)*4}
+                \unocGunocR{2.25cm}{90 + (360/5)}
+                \cuadro{0cm}{0}
+
+                \begin{scope}[shift={(1_0)}]
+                    \unocB{2.25cm}{157.5}
+                \end{scope}
+
+                \begin{scope}[shift={(3_00)}]
+                    
+                \end{scope}
+
+                \begin{scope}[shift={(5_0)}]
+                    \unotBt{2.25cm}{135}
+                \end{scope}
+            \end{scope}
+        \end{tikzpicture}
+        \tcbitem
+
+        \centering
+        \begin{tikzpicture}
+            \begin{scope}[transform shape, scale=0.7]
+                \arbol
+                \unotG{2.25cm}{90}
+                \unopB{2.25cm}{90 + (360/5)*4}
+                \unopGunopRp{4.5cm}{90 + (360/5)*4}
+                \unocBunocR{2.25cm}{90 + (360/5)}
+                \unocGc{0cm}{0}
+
+                \begin{scope}[shift={(1_0)}]
+                    
+                \end{scope}
+
+                \begin{scope}[shift={(3_00)}]
+                    
+                \end{scope}
+
+                \begin{scope}[shift={(5_0)}]
+                    \unotBunotRt{2.25cm}{135}
+                \end{scope}
+            \end{scope}
+        \end{tikzpicture}
+        \tcbitem
+        
+        \centering
+        \begin{tikzpicture}
+            \begin{scope}[transform shape, scale=0.7]
+                \arbol
+                \unotG{2.25cm}{90}
+                \unopB{2.25cm}{90 + (360/5)*4}
+                \unopGunopRp{4.5cm}{90 + (360/5)*4}
+                \unocBunocR{2.25cm}{90 + (360/5)}
+                \unocG{0cm}{0}
+                \cuadro{2.25cm}{90 + (360/5)*3}
+
+                \begin{scope}[shift={(1_0)}]
+                    
+                \end{scope}
+
+                \begin{scope}[shift={(3_00)}]
+                    
+                \end{scope}
+
+                \begin{scope}[shift={(5_0)}]
+                    \unotBunotRt{2.25cm}{135}
+                \end{scope}
+            \end{scope}
+        \end{tikzpicture}
+        \tcbitem
+
+        \centering
+        \begin{tikzpicture}
+            \begin{scope}[transform shape, scale=0.7]
+                \arbol
+                \unotG{2.25cm}{90}
+                \unopB{2.25cm}{90 + (360/5)*4}
+                \unopGunopRp{4.5cm}{90 + (360/5)*4}
+                \unocBunocR{0cm}{0}
+                \unocGc{2.25cm}{90 + (360/5)*3}
+
+                \begin{scope}[shift={(1_0)}]
+                    
+                \end{scope}
+
+                \begin{scope}[shift={(3_00)}]
+                    
+                \end{scope}
+
+                \begin{scope}[shift={(5_0)}]
+                    \unotBunotRt{2.25cm}{135}
+                \end{scope}
+            \end{scope}
+        \end{tikzpicture}
+    \end{tcbitemize}
+\end{figure}
+
+\begin{figure}[H]
+    \ContinuedFloat
+    \begin{tcbitemize}[raster columns=2,raster equal height, enhanced,
+        colback=Black!5!white,colframe=Grey!75!black, boxsep=0mm, raster row
+        skip=1mm, right=0.5mm, left=0.5mm, raster column skip=1mm, phantom =
+        {\addtocounter{myrasternum}{1}}, title={(\arabic{myrasternum})\enspace},
+        boxsep=0mm, right=0.5mm, left=0.5mm, fonttitle=\bfseries,
+        coltitle=black, raster column skip=1mm, detach title,before
+        upper=\tcbtitle\\, raster halign=center, raster row skip=1mm]
+        
+        \tcbitem
+        
+        \centering
+        \begin{tikzpicture}
+            \begin{scope}[transform shape, scale=0.7]
+                \arbol
+                \unotG{2.25cm}{90}
+                \unopB{2.25cm}{90 + (360/5)*4}
+                \unopGunopRp{4.5cm}{90 + (360/5)*4}
+                \unocBunocR{0cm}{0}
+                \unocG{2.25cm}{90 + (360/5)*3}
+
+                \begin{scope}[shift={(1_0)}]
+                    
+                \end{scope}
+
+                \begin{scope}[shift={(3_00)}]
+                    \cuadro{0cm}{0}
+                \end{scope}
+
+                \begin{scope}[shift={(5_0)}]
+                    \unotBunotRt{2.25cm}{135}
+                \end{scope}
+            \end{scope}
+        \end{tikzpicture}
+        \tcbitem
+
+        \centering
+        \begin{tikzpicture}
+            \begin{scope}[transform shape, scale=0.7]
+                \arbol
+                \unotG{2.25cm}{90}
+                \unopB{2.25cm}{90 + (360/5)*4}
+                \unopGunopRp{4.5cm}{90 + (360/5)*4}
+                \unocBunocR{2.25cm}{90 + (360/5)*3}
+
+                \begin{scope}[shift={(1_0)}]
+                    
+                \end{scope}
+
+                \begin{scope}[shift={(3_00)}]
+                    \unocGc{0cm}{0}
+                \end{scope}
+
+                \begin{scope}[shift={(5_0)}]
+                    \unotBunotRt{2.25cm}{135}
+                \end{scope}
+            \end{scope}
+        \end{tikzpicture}
+        \tcbitem
+        
+        \centering
+        \begin{tikzpicture}
+            \begin{scope}[transform shape, scale=0.7]
+                \arbol
+                \unotG{2.25cm}{90}
+                \unopB{2.25cm}{90 + (360/5)*4}
+                \unopGunopRp{4.5cm}{90 + (360/5)*4}
+                \unocBunocR{2.25cm}{90 + (360/5)*3}
+
+                \begin{scope}[shift={(1_0)}]
+                    
+                \end{scope}
+
+                \begin{scope}[shift={(3_00)}]
+                    \unocG{0cm}{0}
+                    \cuadro{2.25cm}{292.5}
+                \end{scope}
+
+                \begin{scope}[shift={(5_0)}]
+                    \unotBunotRt{2.25cm}{135}
+                \end{scope}
+            \end{scope}
+        \end{tikzpicture}
+        \tcbitem
+
+        \centering
+        \begin{tikzpicture}
+            \begin{scope}[transform shape, scale=0.7]
+                \arbol
+                \unotG{2.25cm}{90}
+                \unopB{2.25cm}{90 + (360/5)*4}
+                \unopGunopRp{4.5cm}{90 + (360/5)*4}
+
+                \begin{scope}[shift={(1_0)}]
+                    
+                \end{scope}
+
+                \begin{scope}[shift={(3_00)}]
+                    \unocBunocR{0cm}{0}
+                    \unocGc{2.25cm}{292.5}
+                \end{scope}
+
+                \begin{scope}[shift={(5_0)}]
+                    \unotBunotRt{2.25cm}{135}
+                \end{scope}
+            \end{scope}
+        \end{tikzpicture}
+    \end{tcbitemize}
+    \caption{En (32), $R$ solo tiene dos movimientos que no le hacen perder el
+    juego. No obstante, al siguiente turno $c_1$ le terminar\'ia por capturar,
+    por lo que $R$ pasa como se muestra en (33).}
+\end{figure}
+
+\begin{figure}[H]
+    \ContinuedFloat
+    \begin{tcbitemize}[raster columns=2,raster equal height, enhanced,
+        colback=Black!5!white,colframe=Grey!75!black, boxsep=0mm, raster row
+        skip=1mm, right=0.5mm, left=0.5mm, raster column skip=1mm, phantom =
+        {\addtocounter{myrasternum}{1}}, title={(\arabic{myrasternum})\enspace},
+        boxsep=0mm, right=0.5mm, left=0.5mm, fonttitle=\bfseries,
+        coltitle=black, raster column skip=1mm, detach title,before
+        upper=\tcbtitle\\, raster halign=center, raster row skip=1mm]
+
+        \tcbitem
+        
+        \centering
+        \begin{tikzpicture}
+            \begin{scope}[transform shape, scale=0.7]
+                \arbol
+                \unotG{2.25cm}{90}
+                \unopB{2.25cm}{90 + (360/5)*4}
+                \unopGunopRp{4.5cm}{90 + (360/5)*4}
+
+                \begin{scope}[shift={(1_0)}]
+                    
+                \end{scope}
+
+                \begin{scope}[shift={(3_00)}]
+                    \unocBunocR{0cm}{0}
+                    \unocGc{2.25cm}{292.5}
+                \end{scope}
+
+                \begin{scope}[shift={(5_0)}]
+                    \unotBunotRt{2.25cm}{135}
+                \end{scope}
+            \end{scope}
+        \end{tikzpicture}
+        \tcbitem
+
+        \centering
+        \begin{tikzpicture}
+            \begin{scope}[transform shape, scale=0.7]
+                \arbol
+                \unopB{2.25cm}{90 + (360/5)*4}
+                \unopGunopRp{4.5cm}{90 + (360/5)*4}
+
+                \begin{scope}[shift={(1_0)}]
+                    
+                \end{scope}
+
+                \begin{scope}[shift={(3_00)}]
+                    \trescc{2.25cm}{292.5}
+                \end{scope}
+
+                \begin{scope}[shift={(5_0)}]
+                    \trestt{2.25cm}{135}
+                \end{scope}
+            \end{scope}
+        \end{tikzpicture}
+        \tcbitem
+        
+        \centering
+        \begin{tikzpicture}
+            \begin{scope}[transform shape, scale=0.7]
+                \arbol
+                \unopGp{4.5cm}{90 + (360/5)*4}
+
+                \begin{scope}[shift={(1_0)}]
+                    
+                \end{scope}
+
+                \begin{scope}[shift={(3_00)}]
+                    \unocGc{2.25cm}{292.5}
+                \end{scope}
+
+                \begin{scope}[shift={(5_0)}]
+                    \unotGt{2.25cm}{135}
+                \end{scope}
+            \end{scope}
+        \end{tikzpicture}
+    \end{tcbitemize}
+    \caption{En (34), al menos un polic\'ia termina por 
+    capturar a $R$, mostrando en (35) la posici\'on final en la que $c_2$
+    captura a $R$.}
+\end{figure}
