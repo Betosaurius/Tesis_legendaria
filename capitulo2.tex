@@ -1276,12 +1276,12 @@ ligeramente m\'as general.
 \end{corolario}
 
 En resumidas cuentas, el n\'umero policiaco de la gr\'afica de $k$ fichas de una
-estrella con $n$ ramas subdivididas inequitativamente (i.e., no todas las ramas
-tienen el mismo n\'umero de v\'ertices) es $k$. Adem\'as, este nuevo algoritmo
-generalizado tambi\'en resuelve la instancia en la que $m=0$. Omitiremos de
-momento el algoritmo y un ejemplo de su ejecuci\'on en una partida pues, como se
-ver\'a en \cref{sec:arboles}, este mismo algoritmo nos es \'util para probar un
-resultado a\'un m\'as fuerte.
+estrella con al menos $2k-1$ ramas subdivididas inequitativamente (i.e., no
+todas las ramas tienen el mismo n\'umero de v\'ertices) es $k$. Adem\'as, este
+nuevo algoritmo generalizado tambi\'en resuelve la instancia en la que $m=0$.
+Omitiremos de momento el algoritmo y un ejemplo de su ejecuci\'on en una partida
+pues, como se ver\'a en \cref{sec:arboles}, este mismo algoritmo nos es \'util
+para probar un resultado a\'un m\'as fuerte.
 
 \section{Estrellas con subdivisiones de grado bajo}
 \label{sec:estrellasubbajo}
@@ -1316,7 +1316,6 @@ recordando que $k\leq \frac{\abs{V_{S_{n,m}}}}{2}$ debido al Lema
         &= n(m+1) + 1 -1\\
         &\geq 2n > n,
 \end{align*}
-
 por lo que no es posible utilizar
 \cref{teo:numero-de-policia-estrella-subdivisiones} para calcular el n\'umero
 policiaco de $\t{\abs{V_{S_{n,m}}}-k}{S_{n,m}}$ para cualquier $k\geq k_n$. No
@@ -1455,9 +1454,9 @@ necesarios dependiendo de si se ten\'ian al menos tantas ramas como el doble de
 fichas menos uno. El an\'alogo a esta condici\'on para \'arboles es la
 existencia de un v\'ertice cuyo grado sea al menos dos veces el n\'umero de
 fichas menos uno. En efecto, si $k$ es un entero positivo, $T$ es un \'arbol y
-$v$ es un v\'ertice tal que $d(v)\geq 2k-1$, entonces $N\c{v}$ induce un
-$S_{n,m}$ con $m\geq 0$ y $n\geq 2k-1$, por lo que $R$ podr\'ia limitarse a
-jugar sobre dicha gr\'afica y, tal como se coment\'o en la demostraci\'on
+$v$ es un v\'ertice tal que $d(v)\geq 2k-1$, entonces $N\c{v}$ induce una
+estrella con al menos $2k-1$ picos, por lo que $R$ podr\'ia limitarse a jugar
+sobre dicha gr\'afica y, tal como se coment\'o en la demostraci\'on
 d\cref{teo:numero-de-policia-estrella-subdivisiones}, $k$ es una cota inferior
 para el n\'umero policiaco.
 
@@ -1467,17 +1466,16 @@ $T$, existe un v\'ertice de grado al menos $2k-1$ si y solo si $\Delta_T \geq
 
 \begin{teorema}
 \label{teo:arbol}
-    Sea $k\geq 2$ y $T$ un \'arbol tal que $\Delta_T\geq 2k-1$. Entonces
-    $c\paren{\t{k}{T}} = k$.
+    Sea $k$ un entero con $2 \le k \le \frac{|V_T|}{2}$. Si $T$ es un \'arbol
+    tal que $\Delta_T\geq 2k-1$, entonces $c\paren{\t{k}{T}} = k$.
 \end{teorema}
 
 \begin{proof}
     Por lo mencionado anteriomente, $\Delta_T\geq 2k-1$ implica que existe un
     v\'ertice de $T$, $v$, tal que $d(v)\geq 2k-1$. As\'i, $N[v]$ induce una
-    estrella de al menos $2k-1$ ramas, posiblemente consistentes de un solo
-    v\'ertice. As\'i, $R$ puede limitarse a jugar sobre $T[N[v]]$ siguiendo la
-    estrategia enunciada en \cref{teo:cota_estrella}, de modo que
-    $c\paren{\t{k}{T}}\geq k$.
+    estrella de al menos $2k-1$ picos. As\'i, $R$ puede limitarse a jugar sobre
+    $T[N[v]]$ siguiendo la estrategia enunciada en \cref{teo:cota_estrella}, de
+    modo que $c\paren{\t{k}{T}}\geq k$.
     
     Para ver que $k$ polic\'ias son suficientes para capturar a $R$, se recurre
     a la estrategia descrita en la demostraci\'on
@@ -1487,11 +1485,11 @@ $T$, existe un v\'ertice de grado al menos $2k-1$ si y solo si $\Delta_T \geq
     \cref{fig:partida1}, identificando al centro de la estrella en ese caso como
     el v\'ertice $v$ del p\'arrafo anterior.
     
-    Posteriormente, $C$ realiza sus movimientos acorde a \cref{alg:captura},
-    notando que nuevamente este resuelve las obstrucciones correctamente pues
-    \cref{alg:desob} se demostr\'o para cualquier \'arbol. As\'i, $C$,
-    eventualmente, logra que uno de sus polic\'ias, $c_i$, ponga bajo asedio a
-    $R$. Luego, si $R$ mueve su ficha $r_i$, $C$ ejecuta la estrategia
+    Posteriormente, $C$ realiza sus movimientos acorde al Algoritmo
+    \ref{alg:captura}, notando que nuevamente este resuelve las obstrucciones
+    correctamente pues \cref{alg:desob} se demostr\'o para cualquier \'arbol.
+    As\'i, $C$ logra eventualmente que uno de sus polic\'ias, $c_i$, ponga bajo
+    asedio a $R$. Luego, si $R$ mueve su ficha $r_i$, $C$ ejecuta la estrategia
     mencionada en \cref{teo:numero-de-policia-estrella-subdivisiones} para
     desobstruir (en caso de estarlo) la ficha libre de $c_i$ y acercarla
     $\ell+1$ unidades a $r_i$, poniendo a $R$ bajo asedio d\'ebil. Si \'este
@@ -1524,9 +1522,9 @@ en la vecindad cerrada del v\'ertice encontrado. M\'as a\'un, n\'otese que el
 l\'inea $18$, donde se resuelve la desobstrucci\'on de la ficha libre (en caso
 de haberla) una vez que un polic\'ia $c_i$ ha puesto bajo asedio a $R$, notando
 que ello conlleva a que $c_i$ pone bajo asedio d\'ebil a $R$ y, si hubiera
-fichas de $c_{i,j}$ con $i\neq j$ que no capturasen sus respectivos objetivos,
-entonces en los siguientes turnos se ejecutar\'ia el c\'odigo dentro del
-\ttt{if} de la l\'inea $5$.
+alguna ficha $c_{i,j}$ con $i\neq j$ que no capturase a su objetivo, entonces en
+los siguientes turnos se ejecutar\'ia el c\'odigo dentro del \ttt{if} de la
+l\'inea $5$.
 
 \begin{algorithm}[H]
     \SetAlgorithmName{Algoritmo}{}
@@ -1536,10 +1534,10 @@ entonces en los siguientes turnos se ejecutar\'ia el c\'odigo dentro del
       \SetKw{Continue}{continue}
       \SetKwInOut{Input}{input}\SetKwInOut{Output}{output}
     
-      \KwIn{Un enteros positivos $k$ y $T$ un \'arbol tal que $\Delta_T\geq
-      2k-1$, una configuraci\'on inicial para el ladr\'on en un juego de 
-      polic\'ias y ladrones sobre la gr\'afica de $k$ fichas de $T$ junto con un
-      etiquetado de sus fichas.}
+      \KwIn{Un entero positivo $k$ y $T$ un \'arbol tal que $\Delta_T \ge 2k-1$,
+      una configuraci\'on inicial para el ladr\'on en un juego de  polic\'ias y
+      ladrones sobre la gr\'afica de $k$ fichas de $T$ junto con un etiquetado
+      de sus fichas.}
       \KwOut{Una instancia $I(t)$ en la que $C$ captura a $R$ al turno $t$.}
       \BlankLine
       $I(0) \gets$ la instancia en la que $C$ y $R$ se encuentran en su
@@ -1699,16 +1697,16 @@ entonces en los siguientes turnos se ejecutar\'ia el c\'odigo dentro del
             \end{scope}
         \end{tikzpicture}
     \end{tcbitemize}
-    \caption{Las escenas impares muestran una instancia de la partida seguida de
-    la anterior posterior al movimiento de $R$ (en (1) $R$ acaba de escoger su
-    posici\'on inicial). Por otro lado, las escenas pares muestran el movimiento
-    de $C$, de manera que la sucesi\'on de movimientos de la partida se
-    corresponde con la enumeraci\'on de las escenas. $C$ utiliza en cada paso la
-    estrategia inducida por \cref{alg:captura_arbol1}. Se recuerda que los
-    polic\'ias $1$, $2$ y $3$ reciben los colores azul, verde y rojo,
-    respectivamente, mientras que, para cada uno de ellos (incluido el
-    ladr\'on), el punto, el tri\'angulo y el cuadrado representan su primera,
-    segunda y tercera ficha, respectivamente.}
+    \caption{Las escenas impares muestran una instancia de la partida, seguida
+    de la instancia posterior al movimiento de $C$ y previa al movimiento de $R$
+    (en (1) $R$ acaba de escoger su posici\'on inicial). Por otro lado, las
+    escenas pares muestran el movimiento de $C$, de manera que la sucesi\'on de
+    movimientos de la partida se corresponde con la enumeraci\'on de las
+    escenas. En cada paso $C$ utiliza la estrategia inducida por
+    \cref{alg:captura_arbol1}. Se recuerda que los polic\'ias $1$, $2$ y $3$
+    reciben los colores azul, verde y rojo, respectivamente, mientras que, para
+    cada uno de ellos (incluido el ladr\'on), el punto, el tri\'angulo y el
+    cuadrado representan su primera, segunda y tercera ficha, respectivamente.}
     \label{fig:partida2}
 \end{figure}
 
