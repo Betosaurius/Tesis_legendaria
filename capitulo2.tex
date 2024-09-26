@@ -1409,7 +1409,11 @@ polic\'ia, el cual s\'i es capaz de capturar en $\t{3}{S_{3}}$  (ver
             \end{scope}
         \end{tikzpicture}
     \end{tcbitemize}
-    \caption{}
+    \caption{En (1), $R$ escoge una posici\'on sobre el $S_1$ inducido de 
+    manera que sobrevive al menos un turno. Posterior al movimiento de $C$, $R$
+    mueve una de sus fichas hacia una hoja como en (3), de manera que, sin
+    importar c\'omo se acerque $C$ a $R$, este siempre puede mover hacia el
+    lugar que acaba de desocupar la ficha de $C$ que se acaba de mover.}
     \label{fig:S31}
 \end{figure}
 
@@ -1417,7 +1421,6 @@ Como soluci\'on al problema de esta secci\'on, proponemos el siguiente resultado
 que concluye el c\'alculo del n\'umero policiaco para cualquier estrella.
 
 
-%Modificar el teorema, aún no resuelto
 \begin{teorema}
 \label{teo:cota-estrella-grado-bajo}
 Para toda $k\geq 2$, $0<n<2k-1$ y $m\geq 1$ suficientemente grande para que
@@ -1444,9 +1447,8 @@ $k\leq \frac{\abs{V_{S_{n,m}}}}{2}$, $c\paren{\t{k}{S_{n,m}}} = \left\lceil
 Dados los resultados y algoritmos propuestos en la secci\'on anterior, cabe
 preguntarse si es posible utilizar la misma idea tanto para calcular el n\'umero
 policiaco de la gr\'afica de fichas de un \'arbol arbitrario como para dar una
-estrategia ganadora con dicho n\'umero policiaco. Al igual que en el caso
-anterior, separaremos nuestra respuesta dependiendo de un par\'ametro en el
-\'arbol.
+estrategia ganadora con dicho n\'umero policiaco. Una vez m\'as, separaremos
+nuestra respuesta en funci\'on de un par\'ametro en el \'arbol.
 
 En \cref{sec:estrellassub} el criterio fue respecto al n\'umero de ramas de la
 estrella con subdivisiones, el cual vimos que cambiaba el n\'umero de polic\'ias
@@ -1462,69 +1464,11 @@ para el n\'umero policiaco.
 
 La condici\'on anterior tiene una equivalencia inmediata: para cualquier \'arbol
 $T$, existe un v\'ertice de grado al menos $2k-1$ si y solo si $\Delta_T \geq
-2k-1$. As\'i, procedemos a demostrar el siguiente resultado:
-
-\begin{teorema}
-\label{teo:arbol}
-    Sea $k$ un entero con $2 \le k \le \frac{|V_T|}{2}$. Si $T$ es un \'arbol
-    tal que $\Delta_T\geq 2k-1$, entonces $c\paren{\t{k}{T}} = k$.
-\end{teorema}
-
-\begin{proof}
-    Por lo mencionado anteriomente, $\Delta_T\geq 2k-1$ implica que existe un
-    v\'ertice de $T$, $v$, tal que $d(v)\geq 2k-1$. As\'i, $N[v]$ induce una
-    estrella de al menos $2k-1$ picos. As\'i, $R$ puede limitarse a jugar sobre
-    $T[N[v]]$ siguiendo la estrategia enunciada en \cref{teo:cota_estrella}, de
-    modo que $c\paren{\t{k}{T}}\geq k$.
-    
-    Para ver que $k$ polic\'ias son suficientes para capturar a $R$, se recurre
-    a la estrategia descrita en la demostraci\'on
-    d\cref{teo:numero-de-policia-estrella-subdivisiones}, afirmando que esta
-    misma estrategia propicia la captura de $R$. En efecto, la configuraci\'on
-    inicial de los $k$ polic\'ias vuelve a ser la misma que la descrita en
-    \cref{fig:partida1}, identificando al centro de la estrella en ese caso como
-    el v\'ertice $v$ del p\'arrafo anterior.
-    
-    Posteriormente, $C$ realiza sus movimientos acorde al Algoritmo
-    \ref{alg:captura}, notando que nuevamente este resuelve las obstrucciones
-    correctamente pues \cref{alg:desob} se demostr\'o para cualquier \'arbol.
-    As\'i, $C$ logra eventualmente que uno de sus polic\'ias, $c_i$, ponga bajo
-    asedio a $R$. Luego, si $R$ mueve su ficha $r_i$, $C$ ejecuta la estrategia
-    mencionada en \cref{teo:numero-de-policia-estrella-subdivisiones} para
-    desobstruir (en caso de estarlo) la ficha libre de $c_i$ y acercarla
-    $\ell+1$ unidades a $r_i$, poniendo a $R$ bajo asedio d\'ebil. Si \'este
-    contin\'ua moviendo $r_i$ por los siguientes $\ell$ turnos, $c_i$ vuelve a
-    poner bajo asedio a $R$ y logra acercar su ficha libre en al menos una
-    unidad a $r_i$. Si bien puede que $r_i$ no se mueva sobre una trayectoria,
-    sino sobre un sub\'arbol de $T$, $c_i$ se acerca en cada a turno a $r_i$ al
-    igual que en la estrategia de un polic\'ia contra un ladr\'on en un \'arbol,
-    de manera que $R$ eventualmente mueve una ficha distinta de $r_i$.
-
-    Lo anterior implica que, eventualmente, todos los polic\'ias de $C$ tienen
-    bajo asedio d\'ebil a $R$. Finalmente, la misma estrategia anterior se
-    alterna entre todos los polic\'ias para preservar el asedio d\'ebil de todos
-    y que al menos un polic\'ia logre acercar su ficha libre hacia su objetivo.
-    Por tanto, eventualmente todos los polic\'ias tienen bajo asedio a $R$ y,
-    finalmente, logran capturarle.
-
-\end{proof}
-
-Tal como se anticip\'o en \cref{sec:estrellassub}, adjuntamos a continuaci\'on
-el algoritmo de captura para la gr\'afica de $k$ fichas de cualquier \'arbol $T$
-con $\Delta_T\geq 2k-1$ (ver \cref{alg:captura_arbol1}), as\'i como el
-desarrollo de una partida en la que $C$ sigue dicha estrategia (ver
-\cref{fig:partida2}). Cabe mencionar aqu\'i que la configuraci\'on inicial de
-$C$ en este caso es escogida de la misma manera que en \cref{fig:partida1},
-notando que para ello se puede iterar sobre los v\'ertices de $T$ para encontrar
-uno de grado al menos $2k-1$ y, posteriormente, posicionar las polic\'ias de $C$
-en la vecindad cerrada del v\'ertice encontrado. M\'as a\'un, n\'otese que el
-\'unico cambio entre \cref{alg:captura} y \cref{alg:captura_arbol1} yace en la
-l\'inea $18$, donde se resuelve la desobstrucci\'on de la ficha libre (en caso
-de haberla) una vez que un polic\'ia $c_i$ ha puesto bajo asedio a $R$, notando
-que ello conlleva a que $c_i$ pone bajo asedio d\'ebil a $R$ y, si hubiera
-alguna ficha $c_{i,j}$ con $i\neq j$ que no capturase a su objetivo, entonces en
-los siguientes turnos se ejecutar\'ia el c\'odigo dentro del \ttt{if} de la
-l\'inea $5$.
+2k-1$. Por \'ultimo, tal como se anticip\'o en \cref{sec:estrellassub},
+adjuntamos a continuaci\'on el algoritmo de captura para la gr\'afica de $k$
+fichas de una estrella subdividida con al menos $2k-1$ ramas, el cual afirmamos
+que tambi\'en es un algoritmo de captura para la gr\'afica de $k$ fichas de
+cualquier \'arbol $T$ con $\Delta_T\geq 2k-1$ (ver \cref{alg:captura_arbol1}).
 
 \begin{algorithm}[H]
     \SetAlgorithmName{Algoritmo}{}
@@ -1588,6 +1532,130 @@ l\'inea $5$.
       \label{alg:captura_arbol1}
     \DecMargin{1em}
 \end{algorithm}
+
+As'i pues, procedemos a demostrar el siguiente resultado.
+
+\begin{teorema}
+    El Algortimo \ref{alg:captura_arbol1} es correcto.
+\end{teorema}
+
+\begin{proof}
+    An\'alogo a lo que se prob\'o en
+    \cref{teo:numero-de-policia-estrella-subdivisiones}, se demostrar\'a que,
+    con la estrategia inducida por \cref{alg:captura_arbol1} y bajo un juego
+    \'optimo de $R$, un polic\'ia pone bajo asedio a $R$ y, uno vez que esto
+    sucede, $C$ logra que otro de sus polic\'ias ponga bajo asedio a $R$,
+    mientras que aquellos que alguna vez pusieron bajo asedio a $R$ pueden
+    acercar sus fichas libres hacia sus objetivos para eventualmente recuperar
+    el asedio.  Finalmente, cuando todos los polic\'ias tenga bajo asedio
+    d\'ebil a $R$, se demostrar\'a que alguno de ellos captura a $R$.
+    
+    Como \cref{alg:captura} y \cref{alg:captura_arbol1} son iguales en cada
+    l\'inea salvo en la $18$, ambos algoritmos realizan los mismos movimientos
+    cuando se ejecuta el \texttt{if} de la l\'inea $5$, notando que la subrutina
+    de desobstrucci\'on se ejecutara correctamente pues esta se ejecuta
+    correctamente sobre cualquier \'arbol (ver \texttt{input}
+    d\cref{alg:desob}). En tanto ning\'un polic\'ia ponga bajo asedio a $R$,
+    dicha l\'inea se ejectua para cada $c_i$, por lo que, al igual que se
+    mencion\'o en \cref{teo:numero-de-policia-estrella-subdivisiones}, un
+    polic\'ia, sin p\'erdida de generalidad $c_1$, logra poner bajo asedio a
+    $R$.
+    
+    Sup\'ongase ahora que $c_1,\dots, c_m$ tienen bajo asedio a $R$. Dado que
+    cada que $R$ mueve su ficha $r_i$, el polic\'ia $c_i$ se acerca a poner bajo
+    asedio a $R$, si $R$ pudiera evitar que otro polic\'ia le ponga bajo asedio,
+    entonces por el resto de la partida deber\'ia mover alguna de sus fichas
+    $r_i$ con $1\leq i \leq m$. As\'i, cuando $R$ mueve alguno de estos $r_i$,
+    $C$ utiliza su turno para que cada uno de sus polic\'ias que capturaban
+    $r_i$ le recapturen, mientras que $c_i$ acerca su ficha $c_{i,i}$ hacia
+    $r_i$. Si \'esta nunca est\'a obstru\'ida, para dicho polic\'ia se ejecuta
+    la l\'inea $20$ de manera que, an\'alogo a como un polic\'ia se acerca a
+    capturar al ladr\'on sobre cualquier \'arbol, $c_{i,i}$ mantiene su
+    distancia hacia $r_i$ y lo lleva hacia un v\'ertice donde $r_i$ ya no puede
+    alejarse m\'as de $r_i$.
+    
+    Por otro lado, si $c_{i,i}$ est\'a obstru\'ida, la l\'inea $18$ indica que
+    se debe resolver la obstrucci\'on. Dado que $c_i$ ya pon\'ia bajo asedio a
+    $R$, \'este polic\'ia resulve \'unicamente obstrucciones como las mostradas
+    en \cref{fig:obsnoad1}, de manera que si la ejecuci\'on completa de la
+    subrutina movi\'o $\ell$ fichas de $c_i$ que ya capturaban a sus respectivos
+    objetivos, entonces $c_{i,i}$ se acerc\'o en $\ell+1$ unidades a su
+    objetivo. M\'as a\'un, por como se resuelven este tipo de obstrucciones
+    acorde al Algoritmo \ref{alg:desob}, las $\ell$ fichas que se reetiquetaron
+    quedaron a distancia $1$ de sus objetivos, por lo que $c_i$ pierde el asedio
+    sobre $R$, pero preserva el asedio d\'ebil. Debido a que $c_i$ ya no pone
+    bajo asedio a $R$, en los subsecuentes turnos se ejecutar\'a el \ttt{if} de
+    la l\'inea $5$ para recapturar las fichas $r_j$ con $j\neq i$ con las fichas
+    $c_{i,j}$ respectivas. N\'otese que, si $R$ mueve $r_i$ en el resto
+    de sus turnos, al cabo de $\ell$ turnos $c_i$ logra poner bajo asedio a $R$
+    una vez m\'as, mientras que $r_i$ se alej\'o de $c_{i,i}$ en a lo m\'as
+    $\ell$ unidades. Por tanto, esta sucesi\'on de $\ell+1$ turnos finaliz\'o
+    con $R$ puesto bajo asedio por $c_i$ y con la ficha $c_{i,i}$ al menos una
+    unidad m\'as cerca de su objetivo, de modo que estas sucesiones podr\'ian
+    iterarse tantas veces como sean necesarias para que $c_{i,i}$ se ponga a
+    distancia $1$ de $r_i$ y, consecuentemente, si $R$ pasa en sus siguientes
+    turnos, $c_i$ le termina por capturar (notando nuevamente que $r_i$ no
+    siempre se podr\'a alejar de $c_{i,i}$).
+
+    As\'i pues, la estrategia anterior se ejecuta alternadamente para cada $c_i$
+    cuando $R$ mueve $r_i$, de modo que si $c_i$ realiz\'o una desobstrucci\'on
+    que reetiquet\'o $\ell$ de sus fichas, dej\'andole a $\ell$ turnos de
+    recuperar el asedio sobre $R$. Si $R$ mueve $r_j$ con $j\neq i$, $c_i$ en su
+    siguiente turno avanza una de sus fichas no libres, hacia su respectivo
+    objetivo, de manera que $c_i$ contin\'ua a $\ell$ turnos de recuperar el
+    asedio sobre $R$. De esta forma, luego de un n\'umero finito de movimientos,
+    alguno de los $c_s$ con $1\leq s\leq m$ vuelve a poner bajo asedio a $R$ y
+    logr\'o acercar su ficha libre hacia su objetivo. Por tanto, cuando todos
+    los polic\'ias tengan bajo asedio a $R$, y sus fichas libres est\'en a
+    distancia $1$ de sus objetivos, $R$ est\'a forzado a mover una ficha $r_j$
+    con $j>m$. As\'i, $c_j$ puede acercarse a poner bajo asedio a $R$, de manera
+    que $C$ consigue que otro polic\'ia ponga bajo asedio a $R$.
+
+    Lo anterior implica que, eventualmente, todos los polic\'ias de $C$ tienen
+    bajo asedio a $R$. Finalmente, la misma estrategia anterior se alterna ahora
+    entre todos los polic\'ias para preservar el asedio de todos y que al menos
+    un polic\'ia logre acercar su ficha libre hacia su objetivo. Por tanto,
+    despu\'es de un n\'umero finito de turnos $R$ se ve obligado a pasar con al
+    menos un polic\'ia a un turno de capturarle, por lo que $C$ captura a $R$.
+
+\end{proof}
+
+\begin{corolario}
+    \label{cor:arbol}
+        Sea $k$ un entero con $2 \le k \le \frac{|V_T|}{2}$. Si $T$ es un \'arbol
+        tal que $\Delta_T\geq 2k-1$, entonces $c\paren{\t{k}{T}} = k$.
+\end{corolario}
+
+\begin{proof}
+    Por lo mencionado anteriomente, $\Delta_T\geq 2k-1$ implica que existe un
+    v\'ertice de $T$, $v$, tal que $d(v)\geq 2k-1$. As\'i, $N[v]$ induce una
+    estrella de al menos $2k-1$ picos. As\'i, $R$ puede limitarse a jugar sobre
+    $T[N[v]]$ siguiendo la estrategia enunciada en \cref{teo:cota_estrella}, de
+    modo que $c\paren{\t{k}{T}}\geq k$.
+
+    La configuraci\'on inicial de los $k$ polic\'ias vuelve a ser la misma que
+    la descrita en \cref{fig:partida1}, identificando al centro de la estrella
+    en ese caso como el v\'ertice $v$ del p\'arrafo anterior. Por \'ultimo, $C$
+    ejecuta la estrategia inducida por \cref{alg:captura_arbol1}, de manera que
+    $k$ polic\'ias son suficientes para capturar en $\t{k}{T}$. As\'i,
+    $c\paren{\t{k}{T}} = k$.
+
+\end{proof}
+
+Finalmente, adjuntamos el desarrollo de una partida en la que $C$ sigue dicha
+estrategia (ver \cref{fig:partida2}). Cabe mencionar aqu\'i que la
+configuraci\'on inicial de $C$ en este caso es escogida de la misma manera que
+en \cref{fig:partida1}, notando que para ello se puede iterar sobre los
+v\'ertices de $T$ para encontrar uno de grado al menos $2k-1$ y, posteriormente,
+posicionar las polic\'ias de $C$ en la vecindad cerrada del v\'ertice
+encontrado. M\'as a\'un, n\'otese que el \'unico cambio entre \cref{alg:captura}
+y \cref{alg:captura_arbol1} yace en la l\'inea $18$, donde se resuelve la
+desobstrucci\'on de la ficha libre (en caso de haberla) una vez que un polic\'ia
+$c_i$ ha puesto bajo asedio a $R$, notando que ello conlleva a que $c_i$ pone
+bajo asedio d\'ebil a $R$ y, si hubiera alguna ficha $c_{i,j}$ con $i\neq j$ que
+no capturase a su objetivo, entonces en los siguientes turnos se ejecutar\'ia el
+c\'odigo dentro del \ttt{if} de la l\'inea $5$.
+
 
 \begin{figure}[H]
     \begin{tcbitemize}[raster columns=2,raster equal height, enhanced,
