@@ -1417,9 +1417,83 @@ polic\'ia, el cual s\'i es capaz de capturar en $\t{3}{S_{3}}$  (ver
     \label{fig:S31}
 \end{figure}
 
-Como soluci\'on al problema de esta secci\'on, proponemos el siguiente resultado
-que concluye el c\'alculo del n\'umero policiaco para cualquier estrella.
+%%%%% definir triadas
 
+Como soluci\'on al problema de esta secci\'on, nos centraremos en estudiar el
+caso de las trayectorias y las triadas, cuyo $k_n$ es $2$ y $3$ respectivamente.
+Para ello nos apoyaremos de la estrategia expuesta en
+\cref{teo:numero-de-policia-estrella-subdivisiones}, la cual probaremos a
+continuaci\'on que es efectiva para capturar $k$ fichas en cualquier gr\'afica de
+m\'as de $k$ fichas de un \'arbol.
+
+\begin{lema}
+\label{lem:k-captura}
+    Sea $k$ un entero positivo y $S$ una estrella con subdivisiones.
+    Consid\'erese un juego de polic\'ias y ladrones en la gr\'afica de $n$
+    fichas de $S$ con $k \leq n$. Si $C$ tiene al menos $k$ polic\'ias, entonces
+    alg\'un polic\'ia logra capturar $k$ fichas de $R$.
+\end{lema}
+
+\begin{proof}
+    Sean $c_1,\dots,c_k$ los primeros $k$ polic\'ias de $C$. Adem\'as, para cada
+    polic\'ia $c_i$, se define una funci\'on objetivo parcial, $o_i \colon
+    \l{c_{i,1},\dots,c_{i,k}} \to \c{R}$ dada por
+    \[
+        o_i(c_{i,j}) = r_{i+j-1 \mod n},
+    \]
+    donde el m\'odulo es tomado sobre el conjunto de representantes $\seg{1}{n}$
+    y la ficha $c_{i,1}$ es la ficha libre de cada $c_i$. As\'i, el primer
+    polic\'ia puede ejecutar la estrategia dada por
+    \cref{teo:numero-de-policia-estrella-subdivisiones} en busca de capturar las
+    primeras $k$ fichas de $R$. De forma similar, el $i$-\'esimo polic\'ia
+    utiliza la estrategia para capturar las $k$ fichas de $R$ comenzando en la
+    $i+j-1$-\'esima, recordando que estas naturalmente est\'an ordenadas
+    ciclicamente, es decir, $r_1 < r_2 < \dots r_n < r_1$.
+
+    Por otra parte, las fichas $c_{i,t}$ con $t>k$, a las cuales no se les
+    asign\'o objetivo, no se mover\'an durante la ejecuci\'on de la estrategia
+    salvo por obstrucciones. M\'as a\'un, si $c_{i,t}$ obstruye a $c_{i,j}$ con
+    $j\leq k$ y $t>k$, estas fichas se reetiquetan. Esto no afecta a la
+    estrategia aplicada a las primeras $k$ fichas de cada polic\'ia pues esta
+    forma de atender las obstrucciones de este tipo es equivalente a que la
+    ficha que obstru\'ia no estuviera en la gr\'afica, de manera que $c_{i,j}$
+    avanza como es usual.
+    
+    N\'otese que, dado que $k\geq n$, para cada $i\in \seg{1}{k}$ existe un
+    \'unico polic\'ia, a saber $c_i$, que ignora la ficha $r_i$. Esto se debe a
+    que el objetivo de $c_{i,1}$ es $i\mod n = i$ e $i\mod n \neq j\mod n$ con
+    $i,j\in \seg{1}{k}$ distintos.
+    
+    As\'i, cada que $R$ mueva una ficha $r_i$ con $i>k$, los polic\'ias ignoran
+    dicho movimiento y ejecutan su estrategia, de manera que cada polic\'ia se
+    acerca a completar una las capturas con sus $k-1$ fichas no libres o, en
+    caso de que estas ya estuvieran capturando a sus respectivos objetuvos,
+    acercan su ficha libre hacia su objetivo. De lo contrario, si $R$ mueve
+    $r_i$ con $i\leq k$, entonces al menos el $i$-\'esimo polic\'ia se acerca a
+    completar las capturas con sus $k-1$ fichas no libres o, en caso de que
+    estas ya estuvieran capturando a sus respectivos objetivos, acerca su ficha
+    libre hacia su objetivo, recordando que $r_i$ no se puede alejar
+    indefinidamente de $c_{i,1}$.
+
+    As\'i, por los mismos argumentos expuestos en
+    \cref{teo:numero-de-policia-estrella-subdivisiones}, alg\'un polic\'ia logra
+    la captura de las $k$ fichas que ten\'ia como objetivo.
+\end{proof}
+
+Si $S$ es una triada con subdivisiones $k\geq k_n = 3$, el lema anterior nos
+permite describir una estrategia para $C$ en un juego sobre la gr\'afica de $k$
+fichas de $S$ donde $C$ tiene $\left \lceil \frac{k+1}{2} \right \rceil$
+polic\'ias. Esto da lugar al siguiente teorema.
+
+\begin{teorema}
+\label{teo:cota-sup-triada}
+Sea $S$ una triada con subdivisiones y $k\geq 3$. Entonces $c(F_k(S))\leq \left
+\lceil \frac{k+1}{2} \right \rceil$.
+\end{teorema}
+
+\begin{proof}
+    
+\end{proof}
 
 \begin{teorema}
 \label{teo:cota-estrella-grado-bajo}
