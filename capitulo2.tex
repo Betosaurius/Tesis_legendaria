@@ -1131,31 +1131,30 @@ estrategia dada por \cref{alg:captura}.
 \section{Estrellas con subdivisiones}
 \label{sec:estrellassub}
 
-En busca de que el resultado anterior d\'e informaci\'on acerca m\'as gr\'aficas
-procedemos a definir una generealizaci\'on de las estrellas trabajadas en la
-\'ultima secci\'on. Dado $n\in\n^{+}$, para cada $i\in \seg{1}{n}$ tomemos un
-$m_i\in \n$. As\'i, definimos una \textbf{estrella de $n$ ramas con
-subdivisiones}, $S(m_1,\dots,m_n)$, que consiste en tomar la gr\'afica $S_n$ y,
-para cada $i\in\seg{1}{n}$, subdividir la arista $0i$ $m_i$ veces. V\'ease que
-$S(0,\dots, 0)=S_n$. M\'as concisamente, $S(m_1,\dots,m_n)=(V,E)$, donde
+En busca de que el resultado anterior d\'e informaci\'on acerca de m\'as
+gr\'aficas procedemos a definir una generealizaci\'on de las estrellas
+trabajadas en la \'ultima secci\'on. Dado $n\in\n^{+}$, para cada $i\in
+\seg{1}{n}$ tomemos un $m_i\in \n$. As\'i, definimos una \textbf{estrella de $n$
+ramas con subdivisiones}, $S(m_1,\dots,m_n)$, que consiste en tomar la gr\'afica
+$S_n$ y, para cada $i\in\seg{1}{n}$, subdividir la arista $0i$ $m_i$ veces.
+V\'ease que $S(0,\dots, 0)=S_n$. M\'as concisamente, $S(m_1,\dots,m_n)=(V,E)$,
+donde
 \begin{align*}
     V &=\paren{\bigcup_{i=1}^{n}\l{i_j \colon j\in \l{0,\dots, m_i}}} \cup \l{0} \\
     E &=\paren{\bigcup_{i=1}^{n}\l{i_ji_{j+1} \colon j \in \c{m_i}\setminus\l{m_i}}}
     \cup \l{0i_0 \colon i\in \c{n}\setminus\l{0}}.
 \end{align*}
 Para cada $i\in\seg{1}{n}$, llamaremos a la trayectoria $(i_0,\dots,i_{m_i})$ la
-\textbf{$i$-\'esima} y la denotaremos por $P_i$. Asimismo, nos referiremos por
-\textbf{v\'ertice soporte de la $i$-\'esima rama} al v\'ertice inicial de $P_i$,
-$i_0$.
-
-Dado $m\in\n$, denotaremos por $S_{n,m}$ a la gr\'afica $S(m_1,\dots,m_n)$
-donde $m_i=m$ para cada $i\in\seg{1}{n}$. As\'i llamaremos a $S_{n,m}$ la
-\textbf{estrella de $n$ ramas con $m$ subdivisiones}.
-
-Si bien es inmediato ver que $S_{n,0}$ es un retracto para cualquier estrella de
-$n$ ramas con subdivisiones $S$, no es inmediato que lo mismo sucede para sus
-respectivas gr\'aficas de $k$ fichas con $1\leq k\leq
-\left\lfloor\frac{\abs{V_S}}{2}\right\rfloor$. Por tanto, enunciamos el siguiente lema.
+\indice{$i$-\'esima rama} y la denotaremos por $P_i$. Asimismo, nos referiremos
+por \textbf{v\'ertice soporte de la $i$-\'esima rama} al v\'ertice inicial de
+$P_i$, $i_0$. Dado $m\in\n$, denotaremos por $S_{n,m}$ a la gr\'afica
+$S(m_1,\dots,m_n)$ donde $m_i=m$ para cada $i\in\seg{1}{n}$. As\'i llamaremos a
+$S_{n,m}$ la \textbf{estrella de $n$ ramas con $m$ subdivisiones}. Si bien es
+inmediato ver que $S_{n,0}$ es un retracto para cualquier estrella de $n$ ramas
+con subdivisiones $S$, no es inmediato que lo mismo sucede para sus respectivas
+gr\'aficas de $k$ fichas con $1\leq k\leq
+\left\lfloor\frac{\abs{V_S}}{2}\right\rfloor$. Por tanto, enunciamos el
+siguiente lema.
 
 %definir DFS y retracto, demostrar lema de cota por retracto
 
@@ -1167,18 +1166,18 @@ respectivas gr\'aficas de $k$ fichas con $1\leq k\leq
 
 \begin{proof}
     Sea $i$ la rama donde se encuentra $x$ y $m$ la longitud de dicha rama.
-    Sup\'ongase que $k\leq m$. Esto implica que, para cualquier $C\in \t{k}{S}$,
-    al menos un v\'ertice de la rama no est\'a en $C$ (pues la rama tiene $m+1$
-    v\'ertices). Luego, definimos $f$ como la funci\'on de $V_{\t{k}{S}}$ en
-    $V_{\t{k}{S-x}}$ dada por la regla
+    Sup\'ongase que $k\leq m$. Esto implica que, para cualquier $C\in
+    V_{\t{k}{S}}$, al menos un v\'ertice de la rama no est\'a en $C$ (pues la
+    rama tiene $m+1$ v\'ertices). Luego, se elige $x_C$ un v\'ertice en
+    $V_S\setminus C$ tal que se minimiza $d(x_c,x)$ y se define $f$ como la
+    funci\'on de $V_{\t{k}{S}}$ en $V_{\t{k}{S-x}}$ dada por la regla
     \[
-        f(C)=C\cup\l{x_C}\setminus \l{x},
+        f(C)=C\cup\l{x_C}\setminus \l{x}.
     \]
-    donde $x_C$ es un v\'ertice en $V_S\setminus C$ tal que se minimiza
-    $d(x_c,x)$. V\'ease que esta funci\'on est\'a bien definida pues, por lo
-    dicho anteriormente, al menos un v\'ertice de la $i$-\'esima rama no est\'a
-    en $C$ y, para cada $j\in\seg{0}{m_i+1}$, existe un \'unico v\'ertice en la
-    $i$-\'esima rama de a distancia $j$ de $x$.
+    V\'ease que esta funci\'on est\'a bien definida pues, por lo dicho
+    anteriormente, al menos un v\'ertice de la $i$-\'esima rama no est\'a en $C$
+    y, para cada $j\in\seg{0}{m+1}$, existe un \'unico v\'ertice en la $i$-\'esima
+    rama a distancia $j$ de $x$.
 
     Afirmamos que $f$ es un homomorfismo de $\t{k}{S}$ en $\t{k}{S-x}$. En
     efecto, n\'otese que para cada $C\in V_{\t{k}{S-x}}$, $x_C=x$ pues este no
@@ -1191,8 +1190,8 @@ respectivas gr\'aficas de $k$ fichas con $1\leq k\leq
     inducida de $\t{k}{S}$.
     
     Sup\'ongase ahora que $x\in C$. Como $CD\in E_{\t{k}{S}}$, sean $c,d\in V_S$
-    tales que $C\triangle D = {c,d}$ y $cd\in E_S$. Si alguno entre $c$ y $d$ es
-    $x$, sup\'ongase sin p\'erdida de generalidad que $c=x$, de modo que
+    tales que $C \triangle D = \{c,d\}$ y $cd\in E_S$. Si alguno entre $c$ y $d$
+    es $x$, sup\'ongase sin p\'erdida de generalidad que $c=x$, de modo que
     $x_D=x$. Adem\'as $d$ es el \'unico vecino de $x$ en $S$ pues este es una
     hoja, de modo que $d=x_C$. As\'i, 
     \[
@@ -1202,7 +1201,7 @@ respectivas gr\'aficas de $k$ fichas con $1\leq k\leq
     V_{\t{k}{S-x}}$.
 
     Finalmente, sup\'ongase que $c\neq x\neq d$, de manera que $x$ est\'a en
-    ambos $C$ y $D$. Si $x_C=x_D$. Entonces 
+    ambos $C$ y $D$. Si $x_C=x_D$, entonces 
     \[
         f(C)\triangle f(D)= (C\cup\l{x_C}\setminus \l{x})\triangle(D\cup\l{x_D}
         \setminus \l{x}) = C\triangle D=\l{c,d},
@@ -1217,7 +1216,7 @@ respectivas gr\'aficas de $k$ fichas con $1\leq k\leq
     $x_C$ es un v\'ertice la $i$-\'esima rama, este tiene grado $2$ en $S$ y,
     por ser $d(x_C,x)$ menor a $d(x_D,x)$, se sigue que $d$ es el \'unico
     v\'ertice tal que $d(d,x)=d(x_C,x)+1$. Adem\'as, $d\in C\setminus D$, por lo
-    que $x_D=d$ y
+    que $x_D=c$ y
     \[
         f(C)\triangle f(D)= (C\cup\l{x_C}\setminus \l{x})\triangle(D\cup\l{x_D}
     \setminus \l{x}) = \varnothing,
@@ -1228,17 +1227,17 @@ respectivas gr\'aficas de $k$ fichas con $1\leq k\leq
     %%%%%%%%%%%%%% Resolver esto
 
     Resta ver el caso cuando $k>m$. Sea $B$ el conjunto de $k$-conjuntos de
-    $V_{\t{k}{S}}$ tales que cada uno de estos contiene a los $m+1$ v\'ertices
-    de la $i$-\'esima rama, es decir,
+    $V_{S}$ tales que cada uno de estos contiene a los $m+1$ v\'ertices de la
+    $i$-\'esima rama, es decir,
     \[
-        B=\l{C\in \binom{V_S}{k}\colon \l{i_0,\dots,i_m}\subseteq C}.
+        B=\l{C\in \binom{V_S}{k}\colon\ \l{i_0,\dots,i_m}\subseteq C}.
     \]
     Afirmamos que $\t{k}{S}-B$ es un retracto de $\t{k}{S}$. En efecto, v\'ease
     que 
     \[
-        \t{k-(m_i+1)}{S-i_0-\dots-i_m}
+        \t{k-(m_i+1)}{S- \{i_0, \dots, i_m}\}
     \]
-    es una subgr\'afica inducida de $\t{k-m_i}{S-i_0-\dots-i_m}$ 
+    es una subgr\'afica inducida de $\t{k-m_i}{S-\{i_0, \dots, i_m\}}$ 
 
 \end{proof}
 
