@@ -399,13 +399,12 @@ mutuamente.
     \label{fig:obstruccion}
 \end{figure}
 
-En caso de que $c_{i,j}$ est\'e obstruida, entonces $c_i$ es incapaz de acercar
-su $j$-\'esima ficha a $r_j$ sin antes remover $c_{i,s}$ del v\'ertice
+En caso de que $c_{i,j}$ est\'e obstruida, $c_i$ es incapaz de acercar su
+$j$-\'esima ficha a $r_j$ sin antes remover $c_{i,s}$ del v\'ertice
 $c_{i,s}(t)$. As\'i, \cref{alg:desob} da una respuesta a c\'omo atender esta
 situaci\'on de manera que la suma de las distancias de las fichas de $c_i$ a sus
 objetivos, $d_{G} \paren{c_i(t),R(t)}$, disminuye (cuando el polic\'ia $c_i$
-a\'un no se encuentra capturando a $R$).
-\\
+a\'un no se encuentra capturando a $R$). \\
 
 \begin{algorithm}[H]
     \footnotesize{
@@ -1132,23 +1131,145 @@ estrategia dada por \cref{alg:captura}.
 \section{Estrellas con subdivisiones}
 \label{sec:estrellassub}
 
-En busca de que el resultado anterior d\'e informaci\'on acerca de una familia
-de gr\'aficas m\'as grande, se define para cada $m\in \n$, \textbf{la estrella
-de $n$ ramas con $m$ subdivisiones}, $S_{n,m}$, que consiste en tomar la
-gr\'afica $S_n$ y subdividir cada una de sus aristas de manera que estas
-contengan $m+1$ v\'ertices cada una, sin contar el v\'ertice $0$. V\'ease que
-para $m=0$, $S_{n,0}=S_n$. M\'as concisamente, si $n,m > 0$ se define
-$S_{n,m}=(V,E)$, donde
+En busca de que el resultado anterior d\'e informaci\'on acerca m\'as gr\'aficas
+procedemos a definir una generealizaci\'on de las estrellas trabajadas en la
+\'ultima secci\'on. Dado $n\in\n^{+}$, para cada $i\in \seg{1}{n}$ tomemos un
+$m_i\in \n$. As\'i, definimos una \textbf{estrella de $n$ ramas con
+subdivisiones}, $S(m_1,\dots,m_n)$, que consiste en tomar la gr\'afica $S_n$ y,
+para cada $i\in\seg{1}{n}$, subdividir la arista $0i$ $m_i$ veces. V\'ease que
+$S(0,\dots, 0)=S_n$. M\'as concisamente, $S(m_1,\dots,m_n)=(V,E)$, donde
 \begin{align*}
-    V &=\c{n}\cup\l{i_j: i\in\c{n}\setminus \l{0} , j\in \l{0,\dots, m}} \\
-    E &=\l{0i : i\in \c{n}\setminus\l{0}} \cup \l{i_ji_{j+1} \colon j \in \c{m}
-    \setminus\l{m}},
+    V &=\paren{\bigcup_{i=1}^{n}\l{i_j \colon j\in \l{0,\dots, m_i}}} \cup \l{0} \\
+    E &=\paren{\bigcup_{i=1}^{n}\l{i_ji_{j+1} \colon j \in \c{m_i}\setminus\l{m_i}}}
+    \cup \l{0i_0 \colon i\in \c{n}\setminus\l{0}}.
 \end{align*}
-identificando $i_0=i$; a estos v\'ertices les llamaremos \textbf{v\'ertices
-soporte de la ramas}.
+Para cada $i\in\seg{1}{n}$, llamaremos a la trayectoria $(i_0,\dots,i_{m_i})$ la
+\textbf{$i$-\'esima} y la denotaremos por $P_i$. Asimismo, nos referiremos por
+\textbf{v\'ertice soporte de la $i$-\'esima rama} al v\'ertice inicial de $P_i$,
+$i_0$.
 
-Adem\'as, introducimos una nueva definici\'on respecto a las condiciones en las
-que un polic\'ia tiene bajo asedio a $R$. Diremos que el $i$-\'esimo polic\'ia
+Dado $m\in\n$, denotaremos por $S_{n,m}$ a la gr\'afica $S(m_1,\dots,m_n)$
+donde $m_i=m$ para cada $i\in\seg{1}{n}$. As\'i llamaremos a $S_{n,m}$ la
+\textbf{estrella de $n$ ramas con $m$ subdivisiones}.
+
+Si bien es inmediato ver que $S_{n,0}$ es un retracto para cualquier estrella de
+$n$ ramas con subdivisiones $S$, no es inmediato que lo mismo sucede para sus
+respectivas gr\'aficas de $k$ fichas con $1\leq k\leq
+\left\lfloor\frac{\abs{V_S}}{2}\right\rfloor$. Por tanto, enunciamos el siguiente lema.
+
+%definir DFS y retracto, demostrar lema de cota por retracto
+
+\begin{lema}
+\label{lem:retracto}
+    Sean $S$ una estrella subdividida, $x$ una de sus hojas, y $k\leq \abs{V_S}
+    - 1$. Entonces $\t{k}{S-x}$ es un retracto de $\t{k}{S}$.
+\end{lema}
+
+\begin{proof}
+    Sea $i$ la rama donde se encuentra $x$ y $m$ la longitud de dicha rama.
+    Sup\'ongase que $k\leq m$. Esto implica que, para cualquier $C\in \t{k}{S}$,
+    al menos un v\'ertice de la rama no est\'a en $C$ (pues la rama tiene $m+1$
+    v\'ertices). Luego, definimos $f$ como la funci\'on de $V_{\t{k}{S}}$ en
+    $V_{\t{k}{S-x}}$ dada por la regla
+    \[
+        f(C)=C\cup\l{x_C}\setminus \l{x},
+    \]
+    donde $x_C$ es un v\'ertice en $V_S\setminus C$ tal que se minimiza
+    $d(x_c,x)$. V\'ease que esta funci\'on est\'a bien definida pues, por lo
+    dicho anteriormente, al menos un v\'ertice de la $i$-\'esima rama no est\'a
+    en $C$ y, para cada $j\in\seg{0}{m_i+1}$, existe un \'unico v\'ertice en la
+    $i$-\'esima rama de a distancia $j$ de $x$.
+
+    Afirmamos que $f$ es un homomorfismo de $\t{k}{S}$ en $\t{k}{S-x}$. En
+    efecto, n\'otese que para cada $C\in V_{\t{k}{S-x}}$, $x_C=x$ pues este no
+    se encuentra en $C$. Por tanto, $f(C) = C\cup\l{x_C}\setminus \l{x} = C$, de
+    modo que $f\c{V_{\t{k}{S-x}}}= V_{\t{k}{S-x}}$.
+
+    Luego, sean $C,D\in V_{\t{k}{S}}$ tales que $CD\in E_{\t{k}{S}}$. Si ninguno
+    de los dos conjuntos tiene a $x$, se sigue que $f(C)f(D)=CD$, la cual
+    tambi\'en es una arista en $\t{k}{S-x}$ por ser esta una subgr\'afica
+    inducida de $\t{k}{S}$.
+    
+    Sup\'ongase ahora que $x\in C$. Como $CD\in E_{\t{k}{S}}$, sean $c,d\in V_S$
+    tales que $C\triangle D = {c,d}$ y $cd\in E_S$. Si alguno entre $c$ y $d$ es
+    $x$, sup\'ongase sin p\'erdida de generalidad que $c=x$, de modo que
+    $x_D=x$. Adem\'as $d$ es el \'unico vecino de $x$ en $S$ pues este es una
+    hoja, de modo que $d=x_C$. As\'i, 
+    \[
+        f(C)=C\cup\l{d}\setminus{x} \text { y } f(D)=D = C \cup \l{d} \setminus \l{x},
+    \]
+    concluyendo que la arista $CD$ se colpsa en el v\'ertice $D\in
+    V_{\t{k}{S-x}}$.
+
+    Finalmente, sup\'ongase que $c\neq x\neq d$, de manera que $x$ est\'a en
+    ambos $C$ y $D$. Si $x_C=x_D$. Entonces 
+    \[
+        f(C)\triangle f(D)= (C\cup\l{x_C}\setminus \l{x})\triangle(D\cup\l{x_D}
+        \setminus \l{x}) = C\triangle D=\l{c,d},
+    \]
+    de modo que $f(C)f(D)\in E_{\t{k}{S-x}}$ pues, al ser $x$ distinto de ambos
+    $c$ y $d$, $cd$ es una arista de $S-x$. 
+    
+    Luego, si $x_C\neq x_D$, sup\'ongase sin p\'erdida de generalidad que
+    $d(x_C,x) < d(x_D,x)$. Dado que $x_C\neq x_D$, debe suceder que $x_C\in
+    D\setminus C$. Sup\'ongase sin perdida de generalidad que $x_C=d$. M\'as
+    a\'un, $c$ es adyacente a $x_C$ y es tal que est\'a en $C\setminus D$. Como
+    $x_C$ es un v\'ertice la $i$-\'esima rama, este tiene grado $2$ en $S$ y,
+    por ser $d(x_C,x)$ menor a $d(x_D,x)$, se sigue que $d$ es el \'unico
+    v\'ertice tal que $d(d,x)=d(x_C,x)+1$. Adem\'as, $d\in C\setminus D$, por lo
+    que $x_D=d$ y
+    \[
+        f(C)\triangle f(D)= (C\cup\l{x_C}\setminus \l{x})\triangle(D\cup\l{x_D}
+    \setminus \l{x}) = \varnothing,
+    \]
+    es decir, $f(C)=f(D)$. Por tanto, $f$ es un homomorfismo y,
+    consecuentemente, $\t{k}{S-x}$ es un retracto de $\t{k}{S}$.
+
+    %%%%%%%%%%%%%% Resolver esto
+
+    Resta ver el caso cuando $k>m$. Sea $B$ el conjunto de $k$-conjuntos de
+    $V_{\t{k}{S}}$ tales que cada uno de estos contiene a los $m+1$ v\'ertices
+    de la $i$-\'esima rama, es decir,
+    \[
+        B=\l{C\in \binom{V_S}{k}\colon \l{i_0,\dots,i_m}\subseteq C}.
+    \]
+    Afirmamos que $\t{k}{S}-B$ es un retracto de $\t{k}{S}$. En efecto, v\'ease
+    que 
+    \[
+        \t{k-(m_i+1)}{S-i_0-\dots-i_m}
+    \]
+    es una subgr\'afica inducida de $\t{k-m_i}{S-i_0-\dots-i_m}$ 
+
+\end{proof}
+
+La mayor ventaja del resultado anterior es que el mismo argumento funciona para
+cualquier \'arbol, por lo que tiene lugar el siguiente corolario.
+
+\begin{corolario}
+\label{cor:retracto-arbol}
+    Sean $T$ un \'arbol, $x$ una de sus hojas y $k\leq\abs{V_T}-1$. Entonces
+    $\t{k}{T-x}$ es un retracto de $\t{k}{T}$.
+\end{corolario}
+
+Finalmente, damos la cota inferior en funci\'on de un resultado previo.
+
+\begin{corolario}
+\label{cor:cota-inf-arbol}
+    Sean $T$ un \'arbol, $x$ uno de sus v\'ertices y $k\leq d(x)+1$. Entonces
+    $c\paren{\t{k}{T}}\geq k$ si $d(x)\geq 2k-1$ o $c\paren{\t{k}{T}}\geq
+    d(x)+1-k$ de lo contrario.
+\end{corolario}
+
+\begin{proof}
+    Aplicando recursivamente \cref{cor:retracto-arbol} y el Lema del Retracto se
+    obtiene que $c\paren{\t{k}{T}}\geq c\paren{\t{k}{S_{d(x)}}}$. El resultado
+    se sigue d\cref{teo:cota_estrella} si $d(x)\geq 2k-1$ y
+    d\cref{lem:isomorfismo} de lo contrario.
+
+\end{proof}
+
+Introducimos ahora una nueva definici\'on respecto a las condiciones en las que
+un polic\'ia tiene bajo asedio a $R$. Diremos que el $i$-\'esimo polic\'ia
 \textbf{tiene bajo asedio d\'ebil a $R$} al turno $t$ si cada ficha no libre de
 $c_i$ est\'a a distancia a lo m\'as $1$ de su objetivo (ver
 \cref{fig:asedio-debil}).
@@ -1180,20 +1301,16 @@ d\cref{teo:numero-de-policia-estrella}.
     Para toda $k\geq 2$, $n\geq 2k-1$ y $m\geq 0$,
     $c\paren{\t{k}{S_{n,m}}}=k$.
 \end{teorema}
-\begin{proof}
-    N\'otese primero que  el ladr\'on puede escoger jugar \'unicamente sobre los
-    v\'ertices de la $S_{n,0}$ inducida en $S_{n,m}$, de manera que, tal como se
-    demostr\'o en \cref{teo:cota_estrella}, $c\paren{\t{k}{S_{n,m}}}\geq k$ (si
-    $C$ introduce multiples fichas de un mismo polic\'ia a una rama, dicho
-    polic\'ia no ser\'a capaz de capturar pues $R$ nunca introduce m\'as de una
-    ficha en cada rama).
 
-    Se ver\'a que $c\paren{\t{k}{S_{n,m}}} = k$. As\'i pues, consid\'erese sin
-    p\'erdida de generalidad que los $k$ polic\'ias, $c_1,\dots, c_k$, comienzan
-    con la configuraci\'on $C_0$ descrita en \cref{fig:partida1}. La estrategia
-    de captura se divide en dos fases: el posicionamiento de los polic\'ias para
-    poner bajo asedio d\'ebil a $R$ y la captura de $R$ sobre las ramas de
-    $S_{n,m}$.
+\begin{proof}
+    D\cref{cor:cota-inf-arbol} se deduce que $c\paren{\t{k}{S_{n,m}}}\geq k$ por
+    lo que resta ver que $k$ polic\'ias son suficientes para capturar.
+
+    As\'i pues, consid\'erese sin p\'erdida de generalidad que los $k$
+    polic\'ias, $c_1,\dots, c_k$, comienzan con la configuraci\'on $C_0$
+    descrita en \cref{fig:partida1}. La estrategia de captura se divide en dos
+    fases: el posicionamiento de los polic\'ias para poner bajo asedio d\'ebil a
+    $R$ y la captura de $R$ sobre las ramas de $S_{n,m}$.
 
     En la primera fase, las fichas de los polic\'ias ejecutan la misma
     estrategia dada por \cref{alg:captura}. Por los mismos argumentos expuestos
@@ -1265,23 +1382,22 @@ d\cref{teo:numero-de-policia-estrella}.
 
 \end{proof}
 
-Observemos que el resultado anterior no depende de el n\'umero de subdivisiones
-que tiene cada rama de $S_{n,m}$, por lo que es posible enunciar un resultado
-ligeramente m\'as general.
+Observemos que el Teorema anterior no depende de la cantidad de v\'ertices que
+haya en una estrella subdividida, por lo que se puede enunciar un resultado un
+poco m\'as general.
 
 \begin{corolario}
-    Sean $k\geq 2$, $n\geq 2k-1$ y $m\geq 0$. Si $S$ es una subgr\'afica
-    inducida conexa de $S_{n,m}$ tal que $S_{n,0}\leq S$, entonces
-    $c\paren{\t{k}{S}}=k$.
+\label{cor:cota-sup-1}
+    Sean $k\geq 2$, $n\geq 2k-1$ y, para cada $i\in \seg{1}{n}$, $m_i\in\n$.
+    Entonces $c\paren{\t{k}{S(m_1,\dots,m_n)}}=k$.
 \end{corolario}
 
 En resumidas cuentas, el n\'umero policiaco de la gr\'afica de $k$ fichas de una
-estrella con al menos $2k-1$ ramas subdivididas inequitativamente (i.e., no
-todas las ramas tienen el mismo n\'umero de v\'ertices) es $k$. Adem\'as, este
-nuevo algoritmo generalizado tambi\'en resuelve la instancia en la que $m=0$.
+estrella con al menos $2k-1$ ramas subdivididas es $k$. Adem\'as, este nuevo
+algoritmo generalizado tambi\'en resuelve la instancia en la que $m=0$.
 Omitiremos de momento el algoritmo y un ejemplo de su ejecuci\'on en una partida
-pues, como se ver\'a en \cref{sec:arboles}, este mismo algoritmo nos es \'util
-para probar un resultado a\'un m\'as fuerte.
+pues, como se ver\'a en \cref{sec:arboles}, este mismo procedimineto nos es
+\'util para probar un resultado a\'un m\'as fuerte.
 
 \section{Estrellas con subdivisiones de grado bajo}
 \label{sec:estrellasubbajo}
@@ -1326,8 +1442,8 @@ entero positivo, $m\geq 0$ y $k\geq2$.
 
 A manera de exploraci\'on, si $n=3$, entonces $k_n=3$, por lo que podemos dar
 una estrategia de escape para $R$ en $\t{3}{S_{3,1}}$ ante $n+1-k_n = 1$
-polic\'ia, el cual s\'i es capaz de capturar en $\t{3}{S_{3}}$  (ver
-\cref{fig:S31}).
+polic\'ia, contrario al caso de $\t{3}{S_{3}}$ donde un polic\'ia basta para
+capturar a $R$ (ver \cref{fig:S31}).
 
 \begin{figure}[H]
     \begin{tcbitemize}[raster columns=2,raster equal height, enhanced,
@@ -1417,14 +1533,642 @@ polic\'ia, el cual s\'i es capaz de capturar en $\t{3}{S_{3}}$  (ver
     \label{fig:S31}
 \end{figure}
 
-%%%%% definir triadas
+%%%%% definir triadas, número de emparejamiento, bipartita, emparejamiento,
+%teorema de Hall
 
-Como soluci\'on al problema de esta secci\'on, nos centraremos en estudiar el
-caso de las trayectorias y las triadas, cuyo $k_n$ es $2$ y $3$ respectivamente.
+Como soluci\'on al problema de esta secci\'on, si $k\geq k_n$, acotaremos
+inferiormente el n\'umero de polic\'ia para las gr\'aficas de $k$ fichas de
+varios tipos de estrellas subdivididas de $n$ ramas.
+
+Previo a ello, demostraremos una desigualdad \'util para la prueba de la cota
+inferior.
+
+\begin{lema}
+\label{lem:desigualdad1}
+    Si $k\geq 1$, entonces
+    \[
+        \paren{\left\lceil\frac{k+1}{2}\right\rceil - 1}\paren{k+1} < 2^k.
+    \]
+\end{lema}
+    
+\begin{proof}
+    Se procede por inducci\'on sobre $k$. Para $k=1$ es claro que
+    $\left\lceil\frac{k+1}{2}\right\rceil - 1 = 0$ y $2^k =2$, por lo que la
+    desigualdad es inmediata. De forma similar, si $k=2$,
+    \[
+        \paren{\left\lceil\frac{k+1}{2}\right\rceil - 1}\paren{k+1} = 3 < 4 
+        = 2^k.
+    \]
+    Sup\'ongase ahora que, dado $k\geq 2$, la desigualdad es cierta para
+    cualquier $1\leq n\leq k$. Luego si $k$ es par,
+    \[
+        \paren{\left\lceil\frac{k+2}{2}\right\rceil - 1}\paren{k+2} = 
+        \paren{\left\lceil\frac{k+1}{2}\right\rceil - 1}\paren{k+1} + 
+        \left\lceil\frac{k+1}{2}\right\rceil - 1.
+    \]
+    Adem\'as, para cualquier $k\geq2$, $k+1\geq 1$, de manera que por
+    hip\'otesis de inducci\'on se tiene que
+    \[
+        \left\lceil\frac{k+1}{2}\right\rceil- 1 \leq \paren{\left\lceil\frac
+        {k+1}{2}\right\rceil - 1}\paren{k+1} < 2^k.
+    \]
+    As\'i, sustituyendo en la ecuaci\'on anterior se concluye que
+    \[
+        \paren{\left\lceil\frac{k+2}{2}\right\rceil - 1}\paren{k+2} < 2^k 
+        + 2^k = 2^{k+1}.
+    \]
+    Por otro lado, si $k$ es impar,
+    \begin{align*}
+        \paren{\left\lceil\frac{k+2}{2}\right\rceil - 1}\paren{k+2}
+        &=\paren{\left\lceil\frac{k+1}{2}\right\rceil}\paren{k+2}\\
+        &=\paren{\left\lceil\frac{k}{2}\right\rceil}\paren{k} + 
+        2\left\lceil\frac{k}{2}\right\rceil \\
+        &=\paren{\left\lceil\frac{k}{2}\right\rceil}\paren{k} + k+1\\
+        &=\paren{\left\lceil\frac{k}{2}\right\rceil -1}\paren{k} + 2k+1
+    \end{align*}
+    Luego, para toda $k\geq 3$ (pues se asumi\'o que $k$ es impar) se tiene que
+    $\left\lceil\frac{k}{2}\right\rceil - 1 \geq 1$, de modo que por hip\'otesis
+    de inducci\'on se sigue que
+    \[
+        k\leq \paren{\left\lceil\frac{k}{2}\right\rceil -1}\paren{k} < 2^{k-1}
+        \text{ y } k+1 \leq \paren{\left\lceil\frac{k+1}{2}\right\rceil -1}
+        \paren{k+1} < 2^{k}.
+    \] 
+    Por tanto, al sustituir en la ecuaci\'on anterior se obtiene que
+    \[
+        \paren{\left\lceil\frac{k+2}{2}\right\rceil - 1}\paren{k+2} < 2^{k-1} +
+            2^{k-1} + 2^{k} = 2^{k} + 2^{k} = 2^{k+1}.
+    \]
+
+\end{proof}
+
+Recordemos que para una gr\'afica $G$, $\alpha'(G)$ es el n\'umero de
+emparejamiento de $G$. As\'i pues, pasamos a demostrar el siguiente teorema.
+
+\begin{teorema}
+\label{teo:cota-inf-emparejamiento}
+    Sea $G$ una gr\'afica no vac\'ia. Si $1\leq k\leq \alpha'(G)$, entonces
+    $c\paren{\t{k}{G}} \geq \left\lceil\frac{k+1}{2}\right\rceil$.
+\end{teorema}
+
+\begin{proof}
+    Se demostrar\'a que $R$ tiene una estrategia de escape al jugar sobre
+    $\t{k}{G}$ contra $\left\lceil\frac{k+1}{2}\right\rceil - 1$ polic\'ias.
+
+    Sea $M=\l{e_1,\dots,e_{\alpha'(G)}}$ un emparejamiento m\'aximo de $G$.
+    Adem\'as, para cada $i\in\seg{1}{k}$, sean $u_i$ y $v_i$ los v\'ertices
+    extremos de $e_i$, los cuales son todos distintos por ser $M$ un
+    emparejamiento i.e., $u_i\neq u_j$ y $v_i\neq v_j$ para cualesquiera $i\neq
+    j$.
+
+    N\'otese que en $\t{k}{G}$ existen $2^{k}$ v\'ertices tales que, para cada
+    $i\in\seg{1}{k}$, existe una y solo una ficha en $u_i$ o en $v_i$. Sea $S$
+    dicho conjunto de $2^{k}$ v\'ertices.
+    
+    Por otra parte, afirmamos que para cualquier $v\in\t{k}{G}$ sucede que
+    $\abs{N[v]\cap S}\leq k+1$. En efecto, si $v\in S$, entonces este es
+    adyacente a otros $k$ v\'ertices en $S$, uno por cada ficha que estuviese en
+    $u_i$ y pudiera moverse a $v_i$ y viceversa. Por tanto, $\abs{N[v]\cap
+    S}=k+1$. En caso de que $v\notin S$, $N[v]\cap S=\varnothing$ si existen
+    $e_i$ y $e_j$ en $M$ tales que $v$ no tiene ninguna de sus fichas en los
+    v\'ertices $u_i$, $u_j$, $v_i$ y $v_j$. Finalmente, sup\'ongase sin
+    p\'erdida de generalidad que $v$ tiene una ficha en $u_i$ o $v_i$ para cada
+    $i\in\seg{2}{k}$. Luego, $\abs{N[v]\cap S}\leq 2$, donde la igualdad se da
+    si y solo si la ficha de $V$ que no est\'a ni en $u_1$ ni en $v_1$ est\'an
+    en un v\'ertice de $G$ adyacente a ambos $u_1$ y $v_2$. Luego, como $k\geq
+    1$, se sigue que $2\leq k+1$, concluyendo que $\abs{N[v]\cap S}\leq k+1$.
+
+    Esto \'ultimo implica que en un juego de polic\'ias y ladrones sobre
+    $\t{k}{G}$, un polic\'ia, sin importar su configuraci\'on actual, est\'a a
+    un turno o menos de a lo m\'as $k+1$ configuraciones en $S$. Luego, si $C$
+    tiene $\left\lceil\frac{k+1}{2}\right\rceil - 1$ polic\'ias, estos prohiben
+    a lo m\'as $\paren{\left\lceil\frac{k+1}{2}\right\rceil - 1}\paren{k+1}$
+    configuraciones iniciales si es que $R$ quiere comenzar en una
+    configuraci\'on en $S$ y busca sobrevivir al primer turno de $C$.
+    
+    Por tanto, en virtud d\cref{lem:desigualdad1} se sigue que $R$ tiene
+    \[
+        2^{k} - \paren{\left\lceil\frac{k+1}{2}\right\rceil - 1}\paren{k+1} \geq 1
+    \]
+    posibles configuraciones iniciales, de modo que $R$ sobrevive al primer
+    turno de $C$ y este tiene, para cada $i\in\seg{1}{k}$, una y solo una ficha
+    en $u_i$ o en $v_i$.
+    
+    Por el resto del juego, $R$ pasar\'a en tanto no haya un polic\'ia de $C$ a
+    un turno de capturarle. Por otra parte, si al menos un polic\'ia est\'a a un
+    turno de capturarle, se demostrar\'a que $R$ puede mover sus fichas de modo
+    que est\'e sigue en una configuraci\'on en $S$ y ning\'un polic\'ia est\'a a
+    un turno de capturarle.
+    
+    As\'i pues, sup\'ongase sin p\'erdida de generalidad que, para cada
+    $i\in\seg{1}{k}$, $R$ tiene su $i$-\'esima ficha en $u_i$ y $c_1$ es un
+    polic\'ia tal que, para cada $i\in\seg{1}{k-1}$, $c_{1,i}$ est\'a en $u_i$ y
+    $c_{1,k}$ est\'a en un v\'ertice adyacente a $u_k$, de modo que $c_1$ est\'a
+    a un turno de capturar a $R$. N\'otese que si $c_{1,k}$ est\'a en la
+    vecindad cerrada de $v_k$, $R$ no puede mover $r_k$ si pretende quedarse en
+    una configuraci\'on en $S$. No obstante, puede mover cualquier $r_i$ de
+    $u_i$ a $v_i$ con $i\in\seg{1}{k-1}$ quedando en una posici\'on en $S$ tal
+    que $c_1$ est\'a a dos turnos de capturarle pues $c_{1,i}$ ya capturaba a
+    $r_i$ antes de que este se moviera.
+
+    Por otra parte, si $c_1$ es un polic\'ia que est\'a a dos turnos de
+    capturarle, sup\'ongase sin p\'erdida de generalidad que $c_{1,i}$ est\'a en
+    $u_i$ para cada $i\in\seg{1}{k-2}$, es decir, $c_1$ ya captura las primeras
+    $k-2$ fichas de $C$. N\'otese aqu\'i que a lo m\'as dos movimientos de $R$,
+    que lo mantienen en una configuraci\'on en $S$, son tales que este se pone a
+    un turno de $c_1$, a saber, mover $r_{k-1}$ a $v_{k-1}$ y mover $r_k$ a
+    $v_{k}$. M\'as a\'un, para que estos movimientos sean tales que le pongan a
+    un turno de ser capturado por $c_1$, debe suceder que dicho polic\'ia tenga
+    sus \'ultimas dos fichas sin capturar en $v_{k-1}$ y $v_k$ respectivamente.
+
+    As\'i, si $p_1\geq 1$ es el n\'umero de polic\'ias de $C$ a un turno de
+    capturar a $R$, entonces hay $\left\lceil\frac{k+1}{2}\right\rceil - 1 - p_1$ a
+    al menos dos turnos de capturar a $R$. Luego, en el peor de los casos, $R$
+    tiene 
+    \[
+        k-p_1- 2\paren{\left\lceil\frac{k+1}{2}\right\rceil -1 - p_1}
+    \]
+    posibles movimientos que lo mantienen en una configuraci\'on en $R$ y son
+    tales que ning\'un polic\'ia estar\'a a un turno de capturarle. Dicha
+    cantidad se minimiza cuando $p_1$ es m\'inimo, por lo que, en el peor de los
+    casos, $R$ tiene $k + 3 - 2\left\lceil\frac{k+1}{2}\right\rceil$ movimientos
+    posibles. Se generan dos casos:
+    \begin{enumerate}
+        \item Si $k$ es impar, el n\'umero de movimientos posibles es
+                \[
+                    k + 3 - 2\frac{k+1}{2} = 2
+                \]
+        \item Si $k$ es par, el n\'umero de movimientos posibles es
+                \[
+                    k + 3 - 2\frac{k+2}{2} = 1
+                \]
+    \end{enumerate}
+    En cualquier caso se tiene que $R$ siempre tiene al menos un movimiento que
+    lo mantiene en una configuraci\'on en $S$ y ning\'un polic\'ia est\'a a un
+    turno de capturarle, concluyendo as\'i que $c\paren{\t{k}{G}} \geq
+    \left\lceil\frac{k+1}{2}\right\rceil$.
+
+\end{proof}
+
+Si bien el teorema anterior nos da la cota que buscamos para el n\'umero de
+polic\'ia de las gr\'aficas de fichas de las estrellas subdivididas, antes de
+ello queremos exploprar el alcance de esta cota para distintas $k$'s pues, el
+n\'umero de emparejamiento de una gr\'afica puede estar arbitrariamente alejado
+de la mitad de sus v\'ertices, de manera que habr\'ia una gran cantidad de
+valores tales que $\alpha'(G) < k <\frac{\abs{V}}{2}$. Un ejemplo de este caso
+son las ya mencionadas $S_n$ cuyo n\'umero de emparejamiento es $1$ pues
+cualquier arista de $S_n$ tiene como extremo a $0$.
+
+As\'i pues, centramos nuestra atenci\'on al problema de c\'omo calcular el
+n\'umer de emparejamiento de las estrellas subdivididas. Si $S$ es una estrella de
+$n$ ramas subdividida, al ser esta un \'arbol, dicha gr\'afica es bipartita, por
+lo que podemos calcular $\alpha'\paren{S}$ de forma relativamete sencilla.
+
+\begin{teorema}[F\'ormula de K\"onig-Ore]
+\label{teo:ko}
+    Si $G[X,Y]$ una gr\'afica bipartita, entonces
+    \[
+        \alpha'(G) = \abs{X} - \max\l{\abs{I} - \abs{N(I)} \colon I\subseteq X}.
+    \]
+\end{teorema}
+
+\begin{proof}
+    Sea $I\subseteq X$. Si $\abs{I}-\abs{N(I)}\leq 0$, es claro que $\alpha'(G)
+    \leq \abs{X} \leq \abs{X} - (\abs{I} - \abs{N(I)})$. Por otro lado, si
+    $\abs{I} - \abs{N(I)} > 0$, sea $M$ un emparejamiento m\'aximo de $G$.
+    N\'otese que, por ser $M$ emparejamiento m\'aximo, existe $U\subseteq I$ tal
+    que todo v\'ertice de $U$ no est\'a cubierto por $M$ y $\abs{U} = \abs{I} -
+    \abs{N(I)}$. As\'i, 
+    \[
+        \alpha'(G) = \abs{M} \leq \abs{X} - \abs{U} = \abs{X} - (\abs{I} -
+        \abs{N(I)}).
+    \]
+    Dado que lo anterior se cumple para cualquier $I\subseteq X$, se sigue que
+    \[
+        \alpha'(G) \leq \abs{X} - \max\l{\abs{I} - \abs{N(I)} \colon I\subseteq X}.
+    \]
+
+    Por otra parte, sea $F$ tal que $\abs{F} - \abs{N(F)}$ es m\'aximo sobre
+    todos los subconjuntos de $X$. Como $\abs{\varnothing} -
+    \abs{N(\varnothing)}=0$, se tiene que $\abs{F} - \abs{N(F)}\geq 0$. As\'i
+    pues, consid\'erese $G'$ la gr\'afica resultante de $G$ al agregar $\abs{F}
+    - \abs{N(F)}$ v\'ertices a $Y$ y hacerlos todos adyacentes a $X$. Luego, si
+    $I\subseteq X$,
+    \begin{align*}
+        \abs{I} &= \abs{I} + \abs{N_G(I)} - \abs{N_G(I)} \\
+                &= \abs{N_G(I)} + (\abs{I} - \abs{N_G(I)}) \\
+                &\leq \abs{N_G(I)} + (\abs{F} - \abs{N_G(F)}) = N_{G'}(I).
+    \end{align*}
+    As\'i, por el Teorema de Hall, $G'$ tiene un emparejamiento que satura a
+    $X$. Restringiendo $M$ a las aristas de $G$ se tiene un emparejamiento de
+    $G$ con al menos $\abs{X} - (\abs{F} - \abs{N_G(F)})$ aristas, por lo que
+    \[
+        \alpha'(G) \geq \abs{X} - \max\l{\abs{I} - \abs{N(I)} \colon I\subseteq X},
+    \]
+    y, consecuentemente, se da la igualdad.
+
+\end{proof}
+
+Este Teorema implica que basta encontrar un $I\subseteq X$ que maximice la
+cantidad $\abs{I} - \abs{N(I)}$ dada una bipartici\'on $[X,Y]$ de una gr\'afica
+bipartita $G$. Luego, si $G$ es un \'arbol, este tiene una \'unica bipartici\'on
+de sus v\'ertices en dos conjuntos $X$ y $Y$ independientes (salvo la
+bipartici\'on en la que $X$ y $Y$ se intercambian).
+
+As\'i pues, para $S$ una estrella subdividida, supongamos sin p\'erdida de
+generalidad que $0\in Y$, recordando que $0$ es el \'unico v\'ertice de $S$ cuyo
+grado puede ser mayor a $2$. Dado $F\subseteq X$, diremos que $F$ es
+\textbf{m\'aximo} si $\abs{F}-\abs{N(F)} = \max\l{\abs{I} - \abs{N(I)} \colon
+I\subseteq X}$ y este es maximal bajo contenci\'on con dicha propiedad.
+Probaremos ahora algunos lemas auxiliares respecto a dichos conjuntos m\'aximos.
+
+\begin{lema}
+\label{lem:rama-en-F}
+    Sean $n\geq 1$ y $S[X,Y]$ una estrella subdividida de $n$ ramas con partes $X$ y
+    $Y$ tal que $0\in Y$. Sean $F\subseteq X$ m\'aximo y $(i_{0}, \dots, i_{m_i})$
+    una rama de $S$, donde $1\leq i\leq n$ y $m_i$ es la longitud de la rama. Si
+    $i_{2j}\in F$ para alguna $0\leq j \leq \left\lfloor\frac{m_i}{2}\right\rfloor$,
+    entonces $\l{i_{2j} \colon 0\leq j \leq \left\lfloor\frac{m_i}{2}\right\rfloor}
+    \subseteq F$ y $0\in N(F)$.
+\end{lema}
+
+\begin{proof}
+    Sup\'ongase sin p\'erdida de generalidad que $i=1$ y $m\coloneq m_1$.
+    Se demostrar\'a que $1_{2(j+1)}$ y $1_{2(j-1)}$, en caso de existir, est\'an
+    en $F$.
+
+    Como $1_{2j}\in F$, ambos $1_{2j-1}$ y $1_{2j+1}$, en caso de existir,
+    est\'an en $N(F)$. Luego, sup\'ongase que $1_{2j+2} = 1_{2(j+1)}$ existe y
+    no est\'a en $F$. Dado que $1_{2j}\in F\subseteq X$, $1_{2j+1}\in Y$ y es
+    adyacente a $1_{2(j+1)}$, por lo que $1_{2(j+1)}$ est\'a en $X$ y, por
+    tanto, es distinto de $0$, de manera que este tiene grado $1$ o $2$,
+    generando dos casos:
+
+    \begin{enumerate}
+        \item Si tiene grado $1$, $F'=F\cup \l{1_{2(j+1)}}$ es un conjunto de
+        cardinalidad uno m\'as que $F$ y $N\paren{F'} = N(F)$ pues el \'unico
+        vecino de $1_{2(j+1)}$ tambi\'en es vecino de $1_{2j}$. Por tanto, $F'$
+        es tal que $\abs{F'}-\abs{N(F')} > \abs{F}-\abs{N(F)}$, lo que
+        contradice que $F$ sea m\'aximo.
+
+        \item Si tiene grado dos, nuevamente se generan dos casos: 
+              \begin{enumerate}
+                \item Si $1_{2(j+1)+1}\in N(F)$, entonces, al igual que en el
+                caso 1, $F'=F\cup \l{1_{2(j+1)}}$ es un subconjunto de $X$ tal
+                que $\abs{F'}-\abs{N(F')} > \abs{F}-\abs{N(F)}$.
+
+                \item Si $1_{2(j+1)+1}\notin N(F)$, entonces $F'=F\cup
+                \l{1_{2(j+1)}}$ es tal que $\abs{F'} = \abs{F}+1$ y $\abs{N(F')}
+                = \abs{N(F)} + 1$, por lo que si bien $\abs{F'}-\abs{N(F')} =
+                \abs{F}-\abs{N(F)}$, $F\subsetneq F'$, contradiciendo que $F$
+                sea m\'aximo
+              \end{enumerate}
+    \end{enumerate}
+
+    Lo anterior implica que $1_{2(j+1)} \in F$. An\'alogamente se tiene que
+    $1_{2(j-1)}\in F$, de modo que, procediendo de forma recursiva, $\l{1_{2j}
+    \colon 0\leq j \leq \left\lfloor\frac{m}{2}\right\rfloor} \subseteq F$.
+    Luego, como $1_0\in F$ y este es adyacente a $0$, se sigue que $0\in N(F)$.
+
+\end{proof}
+
+En seguida damos una condici\'on suficiente sobre un conjunto m\'aximo $F$ para
+asegurar que el v\'ertice soporte de cada rama de una estrella subdividida
+est\'a en $S$.
+
+\begin{lema}
+\label{lem:soporte-en-F}
+    Sean $n\geq 1$ y $S[X,Y]$ una estrella subdividida de $n$ ramas con partes $X$ y
+    $Y$ tal que $0\in Y$. Sea $F\subseteq X$ m\'aximo. Si $0\in N(F)$, entonces
+    $i_0\in F$ para cualquier $1\leq i\leq n$.
+\end{lema}
+
+\begin{proof}
+    Similar a la demostraci\'on d\cref{lem:rama-en-F}, si existe
+    $i\in\seg{1}{n}$ tal que $i_0\notin F$, entonces $F'=F\cup\l{i_0}$ es un
+    conjunto tal que $\abs{F'}-N\paren{F'}>\abs{F}-N\paren{F}$ si $i_0$ tiene
+    grado $1$ o si $i_1\in N(F)$, mientras que
+    $\abs{F'}-N\paren{F'}=\abs{F}-N\paren{F}$ y $F\subsetneq F'$ si $i_1\notin
+    N(F)$. En cualquier caso se contradice que $F$ es m\'aximo, concluyendo que
+    $i_0\in F$ para cualquier $i\in \seg{1}{n}$.
+
+\end{proof}
+
+Conclu\'imos con el siguiente resultado acerca de c\'omo puede ser un conjunto
+m\'aximo.
+
+\begin{lema}
+\label{lem:maximo}
+    Sean $n\geq 1$ y $S[X,Y]$ una estrella subdividida de $n$ ramas con partes $X$ y
+    $Y$ tal que $0\in Y$. Sea $F\subseteq X$ m\'aximo. Si $F\neq \varnothing$,
+    entonces $F=X$.
+\end{lema}
+
+\begin{proof}
+    Sea $x\in F$. N\'otese que todos los v\'ertices en $X$ son tales que distan
+    de $0$ en una cantidad impar e $i_0\in X$ para cada $i\in\seg{1}{n}$ pues
+    $0\in Y$. As\'i, $X=\l{i_{2j}\colon 1\leq i \leq n, 0\leq j\leq \left\lfloor
+    \frac{m_i}{2}\right\rfloor}$ se sigue que $x=i_{2j}$, donde $m_i$ es la
+    longitud de la $i$-\'esima rama. Luego, $x=i_{2j}$ para alguna
+    $i\in\seg{1}{n}$ y $j\in\seg{1}{\left\lfloor \frac{m_i}{2}\right\rfloor}$.
+    
+    Por \cref{lem:rama-en-F}, $\l{i_{2j} \colon 0\leq j \leq
+    \left\lfloor\frac{m_i}{2}\right\rfloor} \subseteq F$ y $0\in N(F)$.
+    Consecuentemente, por \cref{lem:soporte-en-F}, $i_0\in F$ para cada
+    $i\in\seg{1}{n}$. Luego, utilizando \cref{lem:rama-en-F} una vez por cada
+    $i\in \seg{1}{n}$, se sigue que $\l{i_{2j} \colon 0\leq j \leq
+    \left\lfloor\frac{m_i}{2}\right\rfloor} \subseteq F$ para cualquier $i\in
+    \seg{1}{n}$, de modo que $X\subseteq F$ y $X=F$.
+
+\end{proof}
+
+As\'i, el siguiente corolario nos da los posibles valores de $\alpha'$ para una
+estrella subdividida.
+
+\begin{corolario}
+\label{cor:posible-emparejamiento}
+    Sean $n\geq 1$ y $S[X,Y]$ una estrella subdividida de $n$ ramas con partes
+    $X$ y $Y$ tal que $0\in Y$. Entonces 
+    \[
+        \alpha'(S)=\min \l{\abs{X},\abs{Y}}.
+    \]
+\end{corolario}
+
+\begin{proof}
+    Sea $F\subseteq X$ tal que $\abs{F}-\abs{N(F)} =
+    \max\l{\abs{I}-\abs{N(I)}\colon I\subseteq X}$. Sup\'ongase sin p\'erdida de
+    generalidad que $F$ es m\'aximo. Por \cref{lem:maximo}, $F=\varnothing$ o
+    $F=X$. As\'i, $\abs{F}-\abs{N(F)} = 0$ para el primer caso, mientras que en
+    el segundo se tiene que $\abs{F}-\abs{N(F)} = \abs{X} - \abs{Y}$ pues
+    $N(X)=Y$. Luego, sustituyendo en la f\'ormula d\cref{teo:ko} se obtiene que
+    \[
+        \alpha'(S)=\abs{X} - \max\l{0, \abs{X} -\abs{Y}} = 
+        \min \l{\abs{X},\abs{Y}}.
+    \]
+\end{proof}
+
+Nuestro problema ahora se reduce a encontrar las cardinalidades de los conjuntos
+$X$ y $Y$ de la bipartici\'on asociada a una estrella subdividida donde $0\in
+Y$. Observemos que los elementos en estos conjuntos dependen de la longitud de
+cada una de las ramas de la estrella, de modo que necesitamos referirnos a la
+estrella subdividida $S$ en funci\'on de sus subdivisiones, es decir,
+$S=S(m_1,\dots,m_n)$. As\'i pues proponemos el siguiente lema.
+
+\begin{lema}
+\label{lem:cardinalidades}
+    Sea $n\geq 1$ y, para cada $i\in\seg{1}{n}$, sea $m_i\in \n$. Consid\'erese
+    una bipartici\'on de $S(m_1,\dots,m_n)$ en partes $X$ y $Y$ tal que $0\in
+    Y$. Entonces 
+    \[
+        \abs{X} = \sum_{i=1}^{n} \left\lfloor \frac{m_i+2}{2} \right\rfloor 
+        \text{ y } \abs{Y} = \sum_{i=1}^{n} \left\lceil \frac{m_i}{2} 
+        \right\rceil + 1.
+    \]
+\end{lema}
+
+\begin{proof}
+    Tal como se mencion\'o en la prueba d\cref{lem:maximo}
+    \[
+        X=\l{i_{2j}\colon 1\leq i \leq n, 0\leq j\leq \left\lfloor 
+        \frac{m_i}{2}\right\rfloor}.
+    \]
+    Por tanto, es inmediato que 
+    \[
+        \abs{X} = \sum_{i=1}^{n} \left\lfloor\frac{m_i + 2}{2}\right\rfloor.
+    \]
+    Adem\'as, para cada $i\in \seg{1}{n}$, hay $m_i + 1$ v\'ertices en la
+    $i$-\'esima rama, de los cuales $\left\lfloor\frac{m_i + 2}{2}\right\rfloor$
+    est\'an en $X$. As\'i, $Y$ tiene $\left\lceil\frac{m_i}{2}\right\rceil$
+    v\'ertices de la $i$-\'esima rama. Adicionalemente, $0\in Y$, por lo que
+    \[
+        \abs{Y} = \sum_{i=1}^{n} \left\lceil\frac{m_i}{2}\right\rceil + 1.
+    \]
+
+\end{proof}
+
+En virtud d\cref{lem:cardinalidades} y d\cref{cor:posible-emparejamiento},
+podemos dar una f\'ormula expl\'icita para el n\'umero de apareamiento.
+
+\begin{corolario}
+\label{cor:numero-emp1}
+    Sea $n\geq 1$ y, para cada $i\in\seg{1}{n}$, sea $m_i\in \n$. Entonces
+    \[
+        \alpha'(S(m_1,\dots,m_n)) = \min\l{\sum_{i=1}^{n} \left\lfloor
+        \frac{m_i + 2}{2}\right\rfloor, \sum_{i=1}^{n} \left\lceil
+        \frac{m_i}{2}\right\rceil + 1}.
+    \]
+\end{corolario}
+
+M\'as a\'un, podemos precisar m\'as el resultado anterior dependiendo de las
+paridades de los $m_i$.
+
+\begin{lema}
+\label{lem:num-emp}
+    Sea $n\geq 1$ y, para cada $i\in\seg{1}{n}$, sea $m_i\in \n$. Si $m_i\equiv
+    1 \mod 2$ para toda $i\in\seg{1}{n}$, entonces
+    \[
+        \alpha'(S(m_1,\dots,m_n)) = \sum_{i=1}^{n} \frac{m_i + 1}{2}.
+    \]
+    De lo contrario,
+    \[
+        \alpha'(S(m_1,\dots,m_n)) = \sum_{i=1}^{n} \left\lceil
+        \frac{m_i}{2}\right\rceil + 1.
+    \]
+\end{lema}
+
+\begin{proof}
+    D\cref{lem:cardinalidades} se deduce que
+    \begin{align*}
+        \abs{X}-\abs{Y} &= 
+                        \sum_{i=1}^{n} \left\lfloor\frac{m_i + 2}{2}
+                        \right\rfloor - \paren{\sum_{i=1}^{n} \left\lceil
+                        \frac{m_i}{2}\right\rceil + 1} \\
+                        &= \sum_{i=1}^{n}\paren{\left\lfloor \frac{m_i}{2} 
+                        + 1 \right\rfloor - \left\lceil \frac{m_i}{2} \right
+                        \rceil} - 1 \\
+                        &= n - 1 + \sum_{i=1}^{n}\paren{\left\lfloor\frac{m_i}
+                        {2}\right\rfloor - \left\lceil \frac{m_i}{2} \right
+                        \rceil}
+    \end{align*}
+    Adem\'as, para cada $i\in\seg{1}{n}$ se tiene que
+    \[
+        \left\lfloor \frac{m_i}{2} \right\rfloor - 
+        \left\lceil \frac{m_i}{2} \right\rceil = \begin{cases}
+        0, & \text{si } m_i \text{ es par.} \\
+        -1, & \text{en otro caso.}
+        \end{cases}
+    \]
+    Por tanto, si $o\in\seg{0}{n}$ es la cantidad de $m_i$'s que son impares, se
+    sigue que
+    \[
+        \abs{X} - \abs{Y} = n - 1 - o.
+    \]
+    Luego, si todos los $m_i$ son impares, $o=n$, de modo que $\abs{X} - \abs{Y}
+    = -1$ y, d\cref{cor:posible-emparejamiento} se concluye que
+    \[
+        \alpha'(S(m_1,\dots,m_n)) = \abs{X} - \max\l{0,-1} = \abs{X} = 
+        \sum_{i=1}^{n} \left\lfloor\frac{m_i + 2}{2}\right\rfloor = \sum_{i=1}^{n}
+        \frac{m_i + 1}{2}.
+    \]
+    De lo contrario, $o\leq n-1$, de modo que $0\leq n-1-o = \abs{X} - \abs{Y}$.
+    Por tanto, del mismo Corolario se llega a que
+    \[
+        \alpha'(S(m_1,\dots,m_n)) = \abs{X} - \max\l{0,\abs{X}-\abs{Y}} = \abs{Y}
+        = \sum_{i=1}^{n} \left\lceil\frac{m_i}{2}\right\rceil + 1
+    \]
+\end{proof}
+
+Posterior a este an\'alisis, podemos saber con certeza para cuales estrellas
+subdivididas podemos acotar el n\'umero de polic\'ia de su gr\'afica de fichas.
+
+\begin{lema}
+\label{lem:todo-acotado}
+    Sea $n\geq 1$ y, para cada $i\in\seg{1}{n}$, sea $m_i\in\n$. Si
+    $S=S(m_1,\dots,m_n)$, entonces $\alpha'(S) =
+    \left\lfloor\frac{\abs{V_S}}{2}\right\rfloor$ si y solo si $S$ tiene a lo
+    m\'as dos ramas de longitud par.
+\end{lema}
+
+\begin{proof}
+    Si $S$ no tiene ramas de longitud par, por \cref{lem:num-emp} se tiene que
+    \[
+        \alpha'(S) = \sum_{i=1}^{n}\frac{m+1}{2}.
+    \]
+    Por otro lado,
+    \begin{align*}
+        \left\lfloor\frac{\abs{V_S}}{2}\right\rfloor 
+            &=\left\lfloor\frac{1 + \sum_{i=1}^{n} m_i+1}{2}\right\rfloor \\
+            &=\left\lfloor\frac{1}{2} + \sum_{i=1}^{n} \frac{m_i+1}{2}\right\rfloor\\
+            &= \sum_{i=1}^{n} \frac{m_i+1}{2}.
+    \end{align*}
+    Por tanto, $\alpha'(S)= \left\lfloor\frac{\abs{V_S}}{2}\right\rfloor$.
+    Sup\'ongase entonces que $S$ tiene al menos una rama de longitud par y sea
+    $1\leq e \leq n$ el n\'umero de ramas de longitud par. Nuevamente
+    d\cref{lem:num-emp} se llega a que
+    \[
+        \alpha'(S) = \sum_{i=1}^{n}\left\lceil\frac{m_i}{2}\right\rceil + 1 = 
+        \sum_{\substack{i=1, \\ m_i \text{ par}}}^n \frac{m_i}{2} + \sum_{
+            \substack{i=1, \\ m_i \text{ impar}}}^{n}\frac{m_i+1}{2} + 1,
+    \]
+    mientras que
+    \begin{align*}
+        \left\lfloor\frac{\abs{V_S}}{2}\right\rfloor 
+            &=\left\lfloor\frac{1 + \sum_{i=1}^{n} m_i+1}{2}\right\rfloor \\
+            &=\left\lfloor\frac{1}{2} + \sum_{\substack{i=1, \\ m_i \text{ 
+                par}}}^{n}\frac{m_i+1}{2}+ \sum_{\substack{i=1, \\ m_i 
+                \text{ impar}}}^{n} \frac{m_i+1}{2}\right\rfloor\\
+            &= \sum_{\substack{i=1, \\ m_i \text{ impar}}}^{n} \frac{m_i+1}{2}
+                + \left\lfloor \frac{1}{2} + \sum_{\substack{i=1, \\ m_i 
+                \text{ par}}}^{n}\frac{m_i+1}{2}\right\rfloor\\
+            &= \sum_{\substack{i=1, \\ m_i \text{ impar}}}^{n} \frac{m_i+1}{2}
+                + \sum_{\substack{i=1, \\ m_i \text{ par}}}^{n}\frac{m_i}{2} + 
+                \left\lfloor\frac{1}{2} + \frac{e}{2}\right\rfloor.
+    \end{align*}
+    Por tanto $\alpha'(S)= \left\lfloor\frac{\abs{V_S}}{2}\right\rfloor$ si y
+    solo si $\left\lfloor\frac{1}{2} + \frac{e}{2}\right\rfloor = 1$, es decir,
+    si y solo si $e\in\l{1,2}$.
+
+\end{proof}
+
+Juntando \cref{teo:cota-inf-emparejamiento} y \cref{lem:todo-acotado} obtenemos
+el siguiente corolario.
+
+\begin{corolario}
+\label{cor:k-acotadas}
+    Sea $S$ una estrella subdividida. Si $S$ tiene a lo m\'as dos ramas de
+    longitud par, $c\paren{\t{k}{S}}\geq \left\lceil\frac{k+1}{2}\right\rceil$
+    para toda $1\leq k\leq \left\lfloor\frac{\abs{V_S}}{2}\right\rfloor$. De lo
+    contrario, $c\paren{\t{k}{S}}\geq \left\lceil\frac{k+1}{2}\right\rceil$ para
+    toda $1\leq k\leq \alpha'(S) <
+    \left\lfloor\frac{\abs{V_S}}{2}\right\rfloor$.
+\end{corolario}
+
+De este punto en adelante nos centraremos en estudiar las triadas, que son
+aquellas estrellas subdivididas con exactamente $3$ ramas. Resulta que si nos
+limitamos a estudiar las triadas, podemos dar un an\'alogo al Corolario
+\ref{cor:k-acotadas} para las $k>\alpha'(S)$. Para ello probaremos antes el
+siguiente lema.
+
+\begin{lema}
+\label{lem:emp-triada}
+    Sea $S=S(m_1,m_2,m_3)$ una triada. Entonces $\alpha'(S)=\left\lfloor
+    \frac{\abs{V_S}}{2}\right\rfloor$ si a lo m\'as dos ramas de $S$ son de
+    longitud par. En caso contrario, $\alpha'(S)=\left\lfloor
+    \frac{\abs{V_S}}{2}\right\rfloor - 1$.
+\end{lema}
+
+\begin{proof}
+    La primera aseveraci\'on se sigue d\cref{lem:todo-acotado}. Luego, si todas
+    las ramas de $S$ son pares, se sigue d\cref{lem:num-emp} que
+    \[
+        \alpha'(S) = \sum_{i=1}^{3}\left\lfloor\frac{m_i}{2}\right\rfloor + 1 =
+        \sum_{i=1}^{3}\frac{m_i}{2} + 1,
+    \]
+    mientras que
+    \[
+        \left\lfloor\frac{\abs{V_S}}{2}\right\rfloor = \left\lfloor\frac{1 + 
+        \sum_{i=1}^{3} m_i+1}{2}\right\rfloor = \sum_{i=1}^{3} \frac{m_i}{2} + 2,
+    \]
+    concluyendo que $\alpha'(S) = \left\lfloor\frac{\abs{V_S}}{2}\right\rfloor -
+    1$.
+
+\end{proof}
+
+El lema anterior implica que, dada $S$ una triada, \cref{cor:k-acotadas} acota
+inferiormente el n\'umero de polic\'ia de $\t{k}{S}$ para cualquier $k\leq
+\left\lfloor \frac{\abs{V_S}}{2}\right\rfloor$ salvo si $S$ tiene todas sus
+ramas de longitud par y $k=\left\lfloor\frac{\abs{V_S}}{2}\right\rfloor$. Por
+tanto, enunciamos el siguiente resultado que atiende esta situaci\'on.
+
+\begin{lema}
+\label{lem:k-especial-triada}
+    Sea $S$ una triada tal que todas sus ramas son de longitud par. Si
+    $k=\left\lfloor \frac{\abs{V_S}}{2}\right\rfloor$, entonces
+    $c\paren{\t{k}{S}}\geq \left\lceil\frac{k}{2}\right\rceil$.
+\end{lema}
+
+\begin{proof}
+    Sea $x$ una hoja de $S$, de manera que $S-x$ es una estrella de dos ramas
+    pares. Por \cref{lem:todo-acotado},
+    \[
+        \alpha'(S-x) = \left\lfloor\frac{\abs{V_S}-1}{2}\right\rfloor = 
+        \left\lfloor\frac{\abs{V_S}}{2}\right\rfloor - 1,
+    \]
+    donde la \'ultima igualdad de sigue de que $V_S$ tiene cardinalidad par.
+    As\'i, d\cref{lem:emp-triada} se tiene que $\alpha'(S-x)=\alpha'(S)$.
+
+    Luego, n\'otese que 
+    \[
+        k = \left\lfloor\frac{\abs{V_S}}{2}\right\rfloor = 
+        \left\lfloor\frac{\abs{V_{S-x}}}{2}\right\rfloor + 1 = 
+    \]
+    por lo que d\cref{lem:isomorfismo} se deduce que
+    \[
+        c(\t{k}{S-x}) = c(\t{\abs{V_{S-x}}-k}{S-x}) 
+        = c(\t{\abs{V_{S}}-k -1}{S-x}) = c(\t{k-1}{S-x}).
+    \]
+    Luego, como $k-1=\alpha'(S-x)$, se sigue d\cref{cor:k-acotadas} que
+    \[
+        c(\t{k}{S-x}) \geq \left\lceil\frac{k-1}{2}\right\rceil,
+    \]
+    de modo que, por \cref{lem:retracto} y el Lema del Retracto,
+    \[
+        \left\lceil\frac{k}{2}\right\rceil\leq c(\t{k}{S-x}) \leq c(\t{k}{S}).
+    \]
+\end{proof}
+
+Cambiamos ahora nuestro enfoque para determinar una cota superior para el
+n\'umero de polic\'ia de la gr\'afica de $k$ fichas de una estrella subdividida
+de $n$ ramas cuando $k\geq k_n$. En este caso daremos una estrategia para $C$
+sobre la gr\'afica de $3$ fichas de una triada, cuya $k_n=3$. Como ya se
+mencion\'o en \cref{cor:cota-sup-1}, $c\paren{\t{k}{S}}\leq k$ para cualquier
+$1\leq k\leq \left\lfloor\frac{\abs{V_S}}{2}\right\rfloor$. Por tanto,
+trataremos de mejorar dicha cota para las triadas.
+
 Para ello nos apoyaremos de la estrategia expuesta en
 \cref{teo:numero-de-policia-estrella-subdivisiones}, la cual probaremos a
-continuaci\'on que es efectiva para capturar $k$ fichas en cualquier gr\'afica de
-m\'as de $k$ fichas de un \'arbol.
+continuaci\'on que es efectiva para capturar $k$ fichas en cualquier gr\'afica
+de m\'as de $k$ fichas de un \'arbol.
 
 \begin{lema}
 \label{lem:k-captura}
@@ -1446,9 +2190,9 @@ m\'as de $k$ fichas de un \'arbol.
     polic\'ia puede ejecutar la estrategia dada por
     \cref{teo:numero-de-policia-estrella-subdivisiones} en busca de capturar las
     primeras $k$ fichas de $R$. De forma similar, el $i$-\'esimo polic\'ia
-    utiliza la estrategia para capturar las $k$ fichas de $R$ comenzando en la
-    $i+j-1$-\'esima, recordando que estas naturalmente est\'an ordenadas
-    ciclicamente, es decir, $r_1 < r_2 < \dots r_n < r_1$.
+    utiliza la estrategia para capturar las $k$ fichas consecutivas de $R$
+    comenzando en la $i+j-1$-\'esima, recordando que estas naturalmente est\'an
+    ordenadas ciclicamente, es decir, $r_1 < r_2 < \dots r_n < r_1$.
 
     Por otra parte, las fichas $c_{i,t}$ con $t>k$, a las cuales no se les
     asign\'o objetivo, no se mover\'an durante la ejecuci\'on de la estrategia
@@ -1459,15 +2203,15 @@ m\'as de $k$ fichas de un \'arbol.
     ficha que obstru\'ia no estuviera en la gr\'afica, de manera que $c_{i,j}$
     avanza como es usual.
     
-    N\'otese que, dado que $k\geq n$, para cada $i\in \seg{1}{k}$ existe un
+    N\'otese que, dado que $k\leq n$, para cada $i\in \seg{1}{k}$ existe un
     \'unico polic\'ia, a saber $c_i$, que ignora la ficha $r_i$. Esto se debe a
     que el objetivo de $c_{i,1}$ es $i\mod n = i$ e $i\mod n \neq j\mod n$ con
     $i,j\in \seg{1}{k}$ distintos.
     
     As\'i, cada que $R$ mueva una ficha $r_i$ con $i>k$, los polic\'ias ignoran
     dicho movimiento y ejecutan su estrategia, de manera que cada polic\'ia se
-    acerca a completar una las capturas con sus $k-1$ fichas no libres o, en
-    caso de que estas ya estuvieran capturando a sus respectivos objetuvos,
+    acerca a completar una de las capturas con sus $k-1$ fichas no libres o, en
+    caso de que estas ya estuvieran capturando a sus respectivos objetivos,
     acercan su ficha libre hacia su objetivo. De lo contrario, si $R$ mueve
     $r_i$ con $i\leq k$, entonces al menos el $i$-\'esimo polic\'ia se acerca a
     completar las capturas con sus $k-1$ fichas no libres o, en caso de que
@@ -1478,21 +2222,108 @@ m\'as de $k$ fichas de un \'arbol.
     As\'i, por los mismos argumentos expuestos en
     \cref{teo:numero-de-policia-estrella-subdivisiones}, alg\'un polic\'ia logra
     la captura de las $k$ fichas que ten\'ia como objetivo.
+
 \end{proof}
 
-Si $S$ es una triada con subdivisiones $k\geq k_n = 3$, el lema anterior nos
-permite describir una estrategia para $C$ en un juego sobre la gr\'afica de $k$
-fichas de $S$ donde $C$ tiene $\left \lceil \frac{k+1}{2} \right \rceil$
-polic\'ias. Esto da lugar al siguiente teorema.
+Cuando $n=k$, el lema anterior da una estrategia de captura ligeramente distinta
+a la descrita en \cref{teo:numero-de-policia-estrella-subdivisiones}. Ello nos
+provee de una mejor comprensi\'on de la estrategia expuesta, notando que esta no
+depende de las prioridades inducidas por las funciones objetivo de cada
+polic\'ia, sino de que cada polic\'ia ignora una ficha distinta.
+
+Procedemos ahora a demostrar el siguiente teorema.
 
 \begin{teorema}
 \label{teo:cota-sup-triada}
-Sea $S$ una triada con subdivisiones y $k\geq 3$. Entonces $c(F_k(S))\leq \left
-\lceil \frac{k+1}{2} \right \rceil$.
+Sea $S$ una triada con subdivisiones. Entonces $c(F_3(S)) \leq 2$.
 \end{teorema}
 
 \begin{proof}
+    Para cada $i\in\l{1,2}$, se define la funci\'on objetivo
+    $o_i:{c_{i,1},\dots,c_{i,3}}$ como en \cref{lem:k-captura}. Por dicho lema,
+    en un n\'umero finito de turnos $C$ logra capturar dos fichas de $R$ con uno
+    de sus polic\'ias. Sup\'ongase sin p\'erdida de generalidad que $c_1$ est\'a
+    capturando a $r_1$ y $r_2$ con $c_{1,1}$ y $c_{1,2}$ respectivamente.
+
+    Afirmamos que $R$ eventualmente mueve la ficha $r_1$. En efecto, cada que
+    $R$ mueva $r_2$, $c_{1,2}$ recaptura a $r_2$ acorde a la estrategia descrita
+    en \cref{teo:numero-de-policia-estrella-subdivisiones}, notando que este no
+    perder\'a la captura de $r_1$ pues nunca se genera una obstrucci\'on con la
+    ficha $c_{1,1}$. Mientras tanto, $c_2$ contin\'ua ejecutando la misma
+    estrategia de manera que la ficha $c_{2,2}$ se acerca a la ficha $r_3$ en
+    caso de no tenerla capturada, o $c_{2,1}$ se acerca a $r_2$, desobtruyendo y
+    recapturando con $c_{2,2}$ en el siguiente turno en caso de ser necesario. 
     
+    Por otra parte, cada que $R$ mueva $r_3$, $c_{1,3}$ se acerca a $r_3$,
+    nuevamente desobstruyendo y recapturando en lo siguientes turnos en caso de
+    ser necesario. N\'otese aqu\'i que, al finalizar su turno, $c_1$ logra
+    reducir su distancia a $R$ en una unidad, por lo que posterior al turno de
+    $R$ este se mantiene a la misma o a menor distancia respecto a la que
+    ten\'ian anteriormente. En tanto, $c_2$ se dedica a acercar $c_{2,2}$ a
+    $r_3$.
+
+    Luego, si $R$ alterna entre mover a $r_2$ y $r_3$, o $c_1$ logra capturar a
+    $R$ si este no mueve a $r_2$, o $c_2$ logra capturar a $r_3$ despu\'es de
+    una cantidad finita de movimientos de $r_2$. En caso de ocurrir lo segundo,
+    $c_1$ termina capturando a $R$ si este solo mueve a $r_3$. De lo contrario,
+    debe mover a $r_2$, d\'andole a $c_2$ una oportunidad de acercarse a
+    capturar a $r_2$ con la misma estrategia descrita en
+    \cref{teo:numero-de-policia-estrella-subdivisiones}. Esta sucesi\'on de
+    movimientos continuar\'a hasta que $c_2$ captura a ambas $r_2$ y $r_3$. Por
+    tanto, cuando $R$ vuelva a mover a $r_2$, podemos reetiquetar las fichas de
+    $R$ y los polic\'ias de $C$ de manera que la ficha que se acabe de mover sea
+    precisamente $r_1$, dejando a $c_1$ con la captura de $r_2$ con $c_{1,2}$ y
+    su ficha $c_{1,1}$ a un turno de capturar a $r_1$.
+
+    As\'i pues, cuando $R$ mueve $r_1$, $c_1$ se permite ignorar la recaptura
+    con $c_{1,1}$ para, en cambio, acercar su ficha $c_{1,3}$ a $r_3$,
+    desosbtruyendo en caso de ser necesario. N\'otese que en esta instancia
+    $c_1$ redujo su distancia de $R$ en uno, y en los siguientes turnos deber\'a
+    recaptrar si es que este hubiera resuelto obstrucciones, en cuyo caso
+    recapturar\'a siguiendo la prioridad dada por la estrategia
+    d\cref{teo:numero-de-policia-estrella-subdivisiones}, es decir, primero
+    $r_2$ y al final $r_1$. 
+    
+    Afirmamos que $R$ eventualmente mueve $r_3$. En efecto, en tanto $R$ solo
+    mueva a $r_1$ y $r_2$, $c_2$ es capaz de capturar con la estrategia usual a
+    sus objetivos $r_2$ y $r_3$ con $c_{2,1}$ y $c_{2,2}$ respectivamente. Si al
+    lograrlo $R$ solo mueve a $r_2$, $c_2$ se permite ignorar la recaptura y en
+    su lugar acerca a $c_{2,3}$ hacia $r_1$. En tanto $R$ mueve a $r_3$ o $r_1$,
+    sucede lo que buscamos ya sea para $c_1$ o para $c_2$, por lo que bastar\'ia
+    reetiquetar las fichas para concluir con que $R$ mueve a $r_3$ y $c_1$ es un
+    polic\'ia que est\'a a lo m\'as a $2$ turnos de capturar a $r_1$ y $r_2$.
+    As\'i pues, veremos que $R$ no puede mover a $r_2$ indefinidamente.
+    
+    Si $R$ mueve a $r_2$, $c_{2,1}$ le persigue hasta quedar a un turno de
+    capturarle y que $r_2$ no se pueda alejar de ella, lo cual es posible pues
+    $S$ es un \'arbol. As\'i, si es que $r_2$ avanza hacia $c_{2,1}$, $c_2$
+    habr\'ia reducido su distancia a $C$. En caso de no hacerlo, $c_{2,3}$
+    termina por capturar a $r_1$, por lo que esto \'ultimo debe sucer. M\'as
+    a\'un, cada que $c_{2,3}$ le obstruya a $c_{2,1}$, estas se reetiquetan. No
+    obstante, esta acci\'on no representa un movimiento para $c_2$, por lo que
+    este polic\'ia procede a acercar $c_{2,3}$ a $r_1$, deshaciendo el
+    reetiquetado entre y reduciendo la distancia entre $c_{2,3}$ y $r_1$ en al
+    menos uno, al mismo tiempo que deja a $c_{2,1}$ a\'un a un turno de capturar
+    a $r_2$. As\'i, eventualmente la distancia entre $r_1$ y $c_{2,3}$ es $0$,
+    por lo que este no puede ser m\'as una obstrucci\'on para $c_{2,1}$,
+    concluyendo que $c_{2,3}$ captura a $r_2$ y, por tanto, captura a $R$.
+
+    As\'i pues, volvemos a la situaci\'on en la que $c_1$ est\'a a lo m\'as a
+    dos turnos de recapturar a $r_1$ y $r_2$ con $c_{1,1}$ y $c_{1,2}$. As\'i,
+    cada que $R$ mueva a $r_3$, $c_1$ se acerca efectivamente a recuperar alguna
+    de estas capturar si es que no las tuviera, o acerca a $c_{1,3}$ hacia
+    $r_3$. Esto implica que, despu\'es de un numero finito de pasos, $r_3$ se
+    alej\'o a lo m\'as en $2$ unidades de $c_{1,3}$, recordando que, en caso de
+    que $c_{1,3}$ sea una obstrucci\'on para $c_{1,1}$ o $c_{1,2}$, este
+    polic\'ia realiza un movimiento extra posterior al reetiquetado para
+    compensar que $c_{1,3}$ se pudo haber alejado de $r_3$ en una unidad.
+
+    As\'i, dado que $r_3$ no se puede alejar indefinidamente de $c_{1,3}$ en
+    alg\'un momento sucede que su distancia disminuye, de modo que $c_{1}$ se
+    acerca efetivamente a capturar a $R$. Iterando esta estrategia se concluye
+    que eventualmente un polic\'ia logra capturar a $R$, por lo que
+    $c(\t{k}{S})\leq 2$.
+
 \end{proof}
 
 \begin{teorema}
@@ -1501,19 +2332,6 @@ Para toda $k\geq 2$, $0<n<2k-1$ y $m\geq 1$ suficientemente grande para que
 $k\leq \frac{\abs{V_{S_{n,m}}}}{2}$, $c\paren{\t{k}{S_{n,m}}} = \left\lceil
 \frac{\left \lfloor \frac{n-1}{2}\right \rfloor + k + 1}{2} \right \rceil$.
 \end{teorema}
-
-% \begin{proof}
-%     Basta ver que $R$ tiene una estrategia de escape contra $k_n-1$ polic\'ias
-%     en $F_k(S_{n,m})$. Para su configuraci\'on inicial, $R$ prioriza el
-%     posicionaminto se sus fichas de manera que estas se encuentren lo m\'as
-%     cercanas al v\'ertice $0$. As\'i, $R$ comienza colocando una ficha en el
-%     v\'ertice $0$ y procede a colocar sus siguientes $n$ fichas en alguno de los
-%     v\'ertices a distancia $1$ de $0$. Este proceso sigue hasta que $R$ termina
-%     de colocar todas sus fichas. Por tanto, $R$ tiene
-%     \[
-%        \binom{n}{\left\lfloor \frac{k-1}{n}\right\rfloor}
-%     \]
-% \end{proof}
 
 \section{\'Arboles}
 \label{sec:arboles}
@@ -1531,18 +2349,15 @@ fichas menos uno. El an\'alogo a esta condici\'on para \'arboles es la
 existencia de un v\'ertice cuyo grado sea al menos dos veces el n\'umero de
 fichas menos uno. En efecto, si $k$ es un entero positivo, $T$ es un \'arbol y
 $v$ es un v\'ertice tal que $d(v)\geq 2k-1$, entonces $N\c{v}$ induce una
-estrella con al menos $2k-1$ picos, por lo que $R$ podr\'ia limitarse a jugar
-sobre dicha gr\'afica y, tal como se coment\'o en la demostraci\'on
-d\cref{teo:numero-de-policia-estrella-subdivisiones}, $k$ es una cota inferior
-para el n\'umero policiaco.
+estrella con al menos $2k-1$ picos. As\'i, en virtud d\cref{cor:cota-inf-arbol},
+$k$ es una cota inferior para el n\'umero de polic\'ia de $\t{k}{T}$ cuando
+$\Delta_T\geq 2k-1$.
 
-La condici\'on anterior tiene una equivalencia inmediata: para cualquier \'arbol
-$T$, existe un v\'ertice de grado al menos $2k-1$ si y solo si $\Delta_T \geq
-2k-1$. Por \'ultimo, tal como se anticip\'o en \cref{sec:estrellassub},
-adjuntamos a continuaci\'on el algoritmo de captura para la gr\'afica de $k$
-fichas de una estrella subdividida con al menos $2k-1$ ramas, el cual afirmamos
-que tambi\'en es un algoritmo de captura para la gr\'afica de $k$ fichas de
-cualquier \'arbol $T$ con $\Delta_T\geq 2k-1$ (ver \cref{alg:captura_arbol1}).
+Por \'ultimo, tal como se anticip\'o en \cref{sec:estrellassub}, adjuntamos a
+continuaci\'on el algoritmo de captura para la gr\'afica de $k$ fichas de una
+estrella subdividida con al menos $2k-1$ ramas, el cual afirmamos que tambi\'en
+es un algoritmo de captura para la gr\'afica de $k$ fichas de cualquier \'arbol
+$T$ con $\Delta_T\geq 2k-1$ (ver \cref{alg:captura_arbol1}).
 
 \begin{algorithm}[H]
     \SetAlgorithmName{Algoritmo}{}
@@ -1696,21 +2511,14 @@ As'i pues, procedemos a demostrar el siguiente resultado.
 
 \end{proof}
 
+De este modo, tiene lugar el siguiente corolario como producto
+d\cref{teo:captura-arbol} y d\cref{cor:cota-inf-arbol}.
+
 \begin{corolario}
     \label{cor:arbol}
         Sea $k$ un entero con $1 \le k \le \frac{|V_T|}{2}$. Si $T$ es un
         \'arbol tal que $\Delta_T\geq 2k-1$, entonces $c\paren{\t{k}{T}} = k$.
 \end{corolario}
-
-\begin{proof}
-    Sea $v$ un v\'ertice de $T$ tal que $d(v)\geq 2k-1$. As\'i, $N[v]$ induce
-    una estrella de al menos $2k-1$ picos, por lo que $R$ puede limitarse a
-    jugar sobre $T[N[v]]$ siguiendo la estrategia enunciada en
-    \cref{teo:cota_estrella}.   Luego, $c\paren{\t{k}{T}}\geq k$.
-
-    El resultado se sigue entonces d\cref{teo:captura-arbol}.
-
-\end{proof}
 
 Finalmente, adjuntamos el desarrollo de una partida en la que $C$ sigue la
 estrategia antes descrita (ver \cref{fig:partida2}). Cabe mencionar aqu\'i que
