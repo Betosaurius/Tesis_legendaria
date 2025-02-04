@@ -1,151 +1,442 @@
 \chapter{Introducci\'on}
 \label{sec:intro}
 
-Este documento tiene algunos ejemplos m\'inimos de caracter\'isticas que se
-suelen utilizar en tesis de las licenciaturas en matem\'aticas y ciencias de la
-computaci\'on, en particular en el \'area de teor\'ia de gr\'aficas (el \'area
-de trabajo del autor).
+\section{Gr\'aficas}
 
-Se exhorta al usuario a leer la
-\href{https://tobi.oetiker.ch/lshort/lshort.pdf}{Not So Short Inroduction to
-\LaTeX}.   Aunque realmente no es un documento muy largo, para quienes nunca han
-usado \LaTeX{} es posible que las partes t\'ecnicas no tengan sentido.   En este
-caso, es recomendable leer los dos primeros cap\'itulos, y regresar al resto del
-documento para hacer consultas, o cuando se tenga algo de experiencia y se
-desee mejorar como usuario.   En particular, antes de intentar cambiar el tipo
-de letra, o el tama\~no de los m\'argenes, considere la siguiente observaci\'on
-que aparece en el documento antes mencionado:
-\begin{quote}
-  Typographical design  is  a  craft.   Unskilled  authors  often  commit
-  seriousformatting errors  by  assuming  that  book  design  is  mostly  a
-  question of aesthetics---``If a document looks good artistically, it is well
-  designed.'' But as a document has to be read and not hung up in a picture
-  gallery, the readability and understandability is of much greater importance
-  than the beautiful look of it.
-\end{quote}
+Dado un conjunto finito no vac\'io $V$, definimos una \indice{gr\'afica} $G$
+como un par ordenado $(V_G,E_G)$ con $V_G$ un conjunto no vac\'io y $E_G$ un
+subconjunto de $\binom{V}{2}$, donde
+\[
+  \binom{V}{2} = \l{e\subseteq V \colon 1\leq \abs{e}\leq 2}.
+\]
+Llamamos v\'ertices de $G$ a los elementos de $V_G$ y orden de $G$ a la
+cardinalidad de dicho conjunto. De forma similar, llamaremos aristas de $G$ y
+tama\~no de $G$ a los elementos y cardinalidad de $E_G$ respectivamente. Diremos
+que una gr\'afica $G$ es trivial si tiene orden $1$ y tama\~no $0$, de lo
+contrario, esta es no trivial.
 
-Idealmente, el lector obtuvo esta plantilla mediante
-\href{https://github.com/Japodrilo/template-tesis}{este repositorio}. De no ser
-as\'i, se le invita a visitarlo, y a usar las bondades del control de versiones
-que el uso de \href{https://git-scm.com/}{Git} otorga (en particular cuando se
-utiliza en conjunto con alguna plataforma para albergar sus repositorios
-remotamente\footnote{Los alumnos de la Facultad de Ciencias de la UNAM tienen
-acceso al \href{https://education.github.com/pack}{GitHub Student Developer
-Pack} con su cuenta \ttt{@ciencias.unam.mx}.}).
+En busca de facilitar el estudio de las propiedades de las gr\'aficas,
+regularmente representaremos estas estructuras a trav\'es de un dibujo en el
+plano, donde el conjunto de v\'ertices corresponde a puntos distintos y cada
+arista es una curva que une los puntos correspondientes a los v\'ertices en los
+que incide.
 
+Dada una arista de $e\in E_G$, diremos que $u\in V_G$ incide en $e$ y $e$ incide
+en $u$ si $u\in e$. Decimos que $e,f\in E_G$ distintas son incidentes si existe
+$u\in V_G$ incidente en ambas $e$ y $f$, y diremos que estas son no incidentes
+en caso contrario. Dos v\'ertices distintos $u$ y $v$ que inciden en una misma
+arista son adyacentes, de manera que $u$ es vecino de $v$ y viceversa. Si $e\in
+E_G$ es tal que existe $u\in V_G$ con $e=\l{u}$, diremos que $e$ es un
+\indice{lazo} y que $G$ es \indiceSub{gr\'afica}{reflexiva} si $\l{u}\in E_G$
+para cada $u\in V_G$. Llamamos \indice{vecindad} de $v$ al conjunto
+$N_G(v)\subseteq V$ de v\'ertices adyacentes a $v$, cuyos elementos ser\'an
+llamados vecinos de $v$. Denotamos por $d_G(v)$ a la cardinalidad de $N_G(v)$ y
+la llamamos el grado de $v$. As\'imismo, representaremos por $\delta_G$ al grado
+m\'inimo sobre los v\'ertices de $G$, mientras que $\Delta_G$ es el grado
+m\'aximo sobres los v\'ertices de $G$. De forma similar, para $S\subseteq X$,
+denotamos por $N(S)$ a la vecindad del conjunto $S$, definida como
+\[
+  N(S) = \bigcup_{x\in S} N(x).
+\]
 
-\section{C\'omo usar esta plantilla}
-\label{sec:howto}
+Dadas $G$ y $H$ gr\'aficas, decimos que estas son
+\indiceSub{gr\'afica}{isomorfas} si existe una funci\'on biyectiva $f:V_G\to
+V_H$ tal que $uv\in E_G$ si y solo si $f(u)f(v)\in E_H$. Escribiremos $G\cong H$
+para referirnos a que $G$ y $H$ son isomorfas.
 
-Esta plantilla se dise\~n\'o como una ayuda para aquellos usuarios que ya
-est\'an familiarizados con \LaTeX, pero nunca han desarrollado un proyecto
-``grande'' (m\'as all\'a de tareas o reportes finales de proyectos).   Siguiendo
-las instrucciones encontradas en el archivo \ttt{README.md}, lo m\'as probable
-es que hayan creado un nuevo repositorio a partir del ``template repository''
-que contiene este proyecto.   En primer lugar, verifique que el proyecto compile
-adecuadamente; el proyecto deber\'ia de compilar sin errores ni advertencias. Es
-posible que la primera vez que se compila, su manejador de paquetes actualice
-varios de \'estos, lo que puede llevar un tiempo.   En caso de tener errores, es
-posible que \'estos se deban a la falta de algunos paquetes, y a que su
-manejador de paquetes no los instala autom\'aticamente;  instalar los paquetes
-faltantes manualmente deber\'ia de resolver todos los problemas.
+Una gr\'afica $G$ es \indiceSub{gr\'afica}{bipartita} si $V_G$ puede partirse en
+dos subconjuntos ajenos $X$ y $Y$ tales que toda arista indice en un v\'ertice
+en $X$ y en un v\'ertice en $Y$. Tal partici\'on $(X,Y)$ es llamada una
+bipartici\'on de la gr\'afica y $X$ y $Y$ son sus partes. Denotamos a una
+gr\'afica bipartita $G$ con una partici\'on $(X,Y)$ por $G[X,Y]$. Si $G[X,Y]$ es
+tal que todo v\'ertice de $X$ es adyacente a todo v\'ertice de $Y$, decimos que
+$G$ es una gr\'afica \indiceSub{gr\'afica}{bipartita completa}. Una
+\indice{estrella} es una gr\'afica bipartita completa $G[X,Y]$ en la que
+$\abs{X}=1$ o $\abs{Y}=1$. Si $\abs{X}=1$ y $\abs{Y}=n$, decimos que $G[X,Y]$ es
+la estrella de $n$ picos y la denotamos por $S_n$. Adem\'as, sin p\'erdida de
+generalidad supondremos que $V_G=\c{n}$ con $X=\l{0}$ y $Y=\seg{1}{n}$, donde
+\[
+  \c{n}=\seg{0}{n}.
+\] 
 
-La estructura de este proyecto es sencilla.   Hay un archivo central,
-\ttt{tesis.tex}, que contiene el pre\'ambulo del documento, y donde se incluyen
-todos los paquetes y definiciones necesarias.   El c\'odigo est\'a comentado,
-explicando de forma m\'inima para qu\'e sirve cada comando; se recomienda que al
-modificarlo se mantenga un estilo semejante para no causarle problemas
-innecesarios a su yo del futuro.   Todos los contenidos se encuentran en otros
-archivos dentro del mismo directorio, que son llamados desde \ttt{tesis.tex}
-mediante el comando \ttt{\textbackslash{include}}.   De esta forma se
-incluyen la car\'atula, la hoja de datos, los cap\'itulos que forman parte de la
-tesis, la bibliograf\'ia, etc.   Por otro lado, \LaTeX~ genera (casi)
-autom\'aticamente el \'indice y el \'indice alfab\'etico, pero hay que agregar
-comandos para su inclusi\'on.  La mayor\'ia de los usuarios s\'olo necesitan
-preocuparse por modificar algunos de los archivos existentes, e incluir otros.
-Sin embargo, es \'util que est\'en familiarizados con los conceptos de
-\ttt{frontmatter}, \ttt{mainmatter}, \ttt{appendix} y \ttt{backmatter} (puede
-referirse a \cite{oetiker2007} para revisarlos).
+Una \indice{trayectoria} es una gr\'afica cuyos v\'ertices pueden ordenarse en
+una sucesi\'on lineal tal que dos v\'ertices son adyacentes en $G$ si y solo si
+son consecutivos en la sucesi\'on. Denotamos por $P_n$ a la trayectoria de orden
+$n$. Similarmente, un \indice{ciclo} consiste de una trayectoria en la que su
+primer y \'ultimo v\'ertice de la sucesi\'on son adyacentes. Adem\'as, denotamos
+por $C_n$ al ciclo de orden $n$. La \indice{longitud} de una trayectoria o un
+ciclo es el tama\~no de dicha gr\'afica. Diremos que un ciclo o una trayectoria
+son pares o impares acorde a la paridad de su longitud.
 
-A continuaci\'on, se recomienda revisar el documento generado (este documento) e
-identificar cu\'ales son las caracter\'isticas que se desean utilizar (dibujos,
-algoritmos, tablas, etc.).   Tras determinar cu\'ales son los paquetes
-relevantes para las caracter\'isticas deseadas, comentar (o borrar) todos
-aquellos que no ser\'an utilizados en el archivo \ttt{tesis.tex}.   Si se est\'a
-usando \ttt{git}, se recomienda leer \cref{sec:git}.   De otro modo, puede
-empezar a reemplazar los contenidos de la plantilla con su propio trabajo.
+Dada $G$ una gr\'afica, decimos que $H$ es una \indice{subgr\'afica} de $G$ si
+$V_H\subseteq V_G$ y $E_H\subseteq E_G$ donde para cada $e\in E_H$, $e\subseteq
+V_H$. Adicionalmente, decimos que $H$ es una subgr\'afica
+\indiceSub{subgr\'afica}{inducida} de $G$ si para cada $e\in E_G$ tal que
+$e\subseteq V_H$, $e\in E_H$, denotamos a dicha gr\'afica como $G[V_H]$.
 
-\section[Uso recomendado con git]{Flujo de trabajo recomendado con \ttt{git}}
-\label{sec:git}
+Dadas dos gr\'aficas $G$ y $H$, definimos la uni\'on de $G$ y $H$, $G\cup H$,
+como la gr\'afica cuyo conjunto de v\'ertices es $V_G\cup V_H$ y con conjunto de
+aristas $E_G\cup E_H$.
 
-Si el lector no est\'a usando \ttt{git}\index{git}, puede ignorar esta
-secci\'on.   De otro modo, se propone un flujo de trabajo con el que el tesista
-puede autogestionar el desarrollo de su tesis, o \'este puede ser supervisado
-por su director de tesis mediante el uso de \ttt{GitHub}\index{git!GitHub}.
+Una gr\'afica $G$ es \indiceSub{gr\'afica}{conexa} si para cualquier par de
+v\'ertices $u$ y $v$, existe $P$ una trayectoria como subgr\'afica de $G$ cuyos
+v\'ertices inicial y final son $u$ y $v$ respectivamente. Adem\'as, llamaremos
+\indice{componente conexa} a una subgr\'afica inducida maximal de $G$ con la
+propiedad de ser conexa.
 
-Este repositorio cuenta con dos ramas al momento de ser clonado: \ttt{master} y
-\ttt{original}.   Idealmente, \ttt{master} debe contener su trabajo final, una
-vez que ha sido revisado por su director de tesis, por lo que nunca deber\'ia de
-trabajar directamente sobre esta rama.   Por este motivo, antes de realizar
-cambios y experimentos en los archivos del proyecto, se recomienda crear una
-nueva rama, llamada por ejemplo \ttt{prueba}, usando el comando \ttt{git
-checkout -b prueba}.   Tras realizar algunos experimentos, eliminar los
-contenidos que no necesita, y agregar sus datos a la car\'atula y hoja de datos,
-posiblemente se sienta listo para empezar a incluir su trabajo en el proyecto.
-En este momento se recomienda agregar los cambios realizados al repositorio,
-realizar un \ttt{commit} con los mismos, y realizar un \ttt{merge} a
-\ttt{master}.   A partir de ahora, \ttt{master} estar\'a lista para empezar a
-trabajar.
+Dada una gr\'afica conexa $G$, decimos que $P$ es una $uv$-trayectoria en $G$ si
+$P$ es una trayectoria, es una subgr\'afica inducida de $G$, y su v\'ertices
+inicial y final son $u$ y $v$ respectivamente. Por lo regular denotaremos las
+trayectorias a trav\'es de su sucesi\'on de v\'ertices, es decir, si $n\geq 1$,
+$P=(v_1,\dots,v_n)$, donde $v_i\in V_G$ para cada $i\in\seg{1}{n}$ y
+$v_iv_{i+1}\in E_G$ para cada $i\in\seg{1}{n-1}$. Adem\'as, si $i\leq j$,
+denotamos por $v_iPv_j$ al segmento de la trayectoria $P$ que comienza en $v_i$
+y termina en $v_j$. Adicionalmente, si $v_jx\in E_G$, denotamos por $v_iPv_jx$ a
+la subgr\'afica de $G$ que contiene a las aristas del segmento de trayectoria
+$v_iPv_j$ y a la arista $v_jx$.
 
-En este momento, es posible crear
-\href{https://guides.github.com/features/issues/}{\ttt{Issues}} en su
-repositorio para tener metas de trabajo.   Como muy posiblemente s\'olo una
-persona est\'e trabajando en el proyecto (el tesista), es posible que s\'olo
-se trabaje en un \ttt{issue} a la vez, sin embargo, es una buena pr\'actica
-tener una rama para cada \ttt{issue} (lo que resultar\'a a\'un m\'as \'util si
-se trabaja en m\'as de una caracter\'istica nueva a la vez).   Idealmente, toda
-rama nueva saldr\'a de \ttt{master}, y estar\'a dedicada a resolver un \'unico
-\ttt{issue}.   Un ciclo de trabajo\index{ciclo de trabajo} usual puede verse
-de la siguiente forma.
+\begin{teorema}
+\label{teo:grado-ciclo}
+    Si $G$ es una gr\'afica tal que $\delta_G \geq 2$, entonces $G$ contiene un
+    ciclo.
+\end{teorema}
+  
+\begin{proof}
+  Sea $P=(v_1,\dots,v_n)$ una trayectoria de longitud m\'axima en $G$. Por ser
+  $P$ de longitud m\'axima, $N(v_n)\subseteq \seg{v_1}{v_{n-1}}$. Adem\'as,
+  $v_nv_{n-1}\in E_G$, por lo que
+  \[
+      2\leq \delta_G \leq d_G(v_n) = \abs{N(v_n)} = 1 + 
+      \abs{N(v_n)\cap \seg{v_1}{v_{n-1}}}.
+  \]
+  As\'i, existe $i\in\seg{1}{n-1}$ tal que $v_nv_i\in E_G$. Luego,
+  $v_iPv_nv_i$ es un ciclo en $G$.
 
-\begin{enumerate}
-  \item Determinar una caracter\'istica nueva que se desea agregar al
-    trabajo (e.g., la demostraci\'on de un teorema central de la tesis).
+\end{proof}
 
-  \item Crear un \ttt{issue} describiendo qu\'e es lo que espera agregar
-    al trabajo (e.g., qu\'e conceptos se necesitan agregar, proveer una
-    referencia del teorema, indicar si es necesario incluir resultados
-    preliminares o ejemplos).
+\begin{lema}
+\label{lem:trayectoria-ciclo}
+    Sean $P=(v_1,\dots,v_n)$ y $Q=(u_1,\dots,u_m)$ trayectorias distintas en $G$
+    tales que $v_1=u_1$ y $v_n=u_m$. Entonces $P\cup Q$ contiene un ciclo.
+\end{lema}
+  
+\begin{proof}
+  Consid\'erese $H$ la subgr\'afica de $G$ cuyo conjunto de aristas es
+  $E_P\triangle E_Q$ y su conjunto de v\'ertices es el dado por los v\'ertices
+  de $G$ incidentes en alguna arista de $E_P\triangle E_Q$. se afirma que
+  $\delta_H\geq 2$. En efecto, sea $v\in V_H$. Si $v=v_1$ o $v=v_n$, dado que el
+  grado de $v$ en $P$ y en $Q$ es $1$, debe suceder que la arista de $P$
+  incidente en $v$ es distinta de la arista de $Q$ incidente en $v$, por lo que
+  $d_H(v)\geq 2$.
+  
+  As\'i pues, sup\'ongase que $v$ es un v\'ertice distinto de los extremos de
+  $P$. Como $v\in V_H$, existe, sin p\'erdida de generalidad, $e\in E_P$
+  incidente en $v$ y $e\notin E_Q$. Al ser $v$ un v\'ertice distinto de los
+  extremos de $P$, existe $h\neq e$ arista de $P$ incidente en $v$. Si $h\notin
+  E_Q$, entones $d_H(v)\geq 2$. De lo contrario, nuevamente por ser $v$ distinto
+  de los extremos de $Q$, existe $e'\in E_Q$ distinta de $h$ incidente en $v$.
+  N\'otese que $e'\neq e$ pues $e\notin E_Q$. Luego, como $v$ tiene grado $2$ en
+  $P$, $e'\notin E_P$, por lo que $e'\in E_H$. As\'i, $d_H(v)\geq 2$.
 
-  \item Asignar el \ttt{issue} al tesista, y opcionalmente agregar una fecha
-    l\'imite.   (En caso de que el director de tesis est\'e supervisando el
-    trabajo mediante \ttt{git}, asignarlo como revisor del \ttt{issue}.)
+  Esto implica que $\delta_H\geq 2$, por lo que, en virtud
+  d\cref{teo:grado-ciclo}, $P\cup Q$ contiene un ciclo.
 
-  \item Crear una nueva rama (a partir de \ttt{master}) para resolver el
-    \ttt{issue}.
+\end{proof}
 
-  \item Una vez resuelto el \ttt{issue}, hacer un \ttt{commit} (o varios) con
-    los cambios, un \ttt{push} al repositorio, y abrir un \ttt{pull request}
-    que ser\'a cerrado una vez que el director de tesis haya revisado el nuevo
-    trabajo. (En caso de que el director de tesis est\'e supervisando el
-    trabajo mediante \ttt{git}, deber\'a de ser agregado como revisor del
-    \ttt{pull request}, y \'este ser\'a mezclado hasta tener su aprobaci\'on.)
+Si $u$ y $v$ son dos v\'ertices en una gr\'afica conexa $G$, denotamos por
+$d_G(x,y)$ a la longitud de la $xy$-trayectoria m\'as peque\~na en $G$. Decimos
+que $G$ es ac\'iclica si esta no tiene ciclo alguno como una subgr\'afica. Una
+gr\'afica $G$ es llamada un \textbf{\'arbol}\index{arbol@\'arbol} si esta es
+conexa y ac\'iclica.
 
-  \item Tras aceptar el \ttt{pull request}, cerrar el \ttt{issue} y borrar la
-    rama correspondientes (esto puede hacerse autom\'aticamente al aceptar el
-    \ttt{pull request}).
-\end{enumerate}
+De esta definici\'on y d\cref{lem:trayectoria-ciclo} se tiene el siguiente
+corolario inmediato.
 
-Un ciclo de trabajo tomar\'a tipicamente una semana, por lo que las metas a ser
-cubiertas por cada \ttt{issue} deber\'an planearse con cuidado.
+\begin{corolario}
+\label{cor:unitray}
+  En un \'arbol, para cualesquiera $u$ y $v$ v\'ertices existe una \'unica
+  $uv$-trayectoria.
+\end{corolario}
 
-Se recomienda no modificar la rama \ttt{original}.   Si en cualquier momento se
-necesitara tener acceso a este documento (quiz\'a el usuario requiere revisar un
-ejemplo, o recuperar alg\'un paquete que borr\'o previamente), basta con
-cambiarse a la rama \ttt{original}, donde siempre habr\'a una copia local del
-mismo.   Es importante se\~nalar que, por el momento, \ttt{GitHub} crea
-historias distintas para todas las ramas en un repositorio plantilla, por lo que
-no es posible mezclar f\'acilmente commits entre \ttt{original} y \ttt{master}.
-Esperamos que en un futuro \ttt{GitHub} permita empezar todas las ramas en un
-repositorio plantilla con el mismo commit, en cuyo caso se integrar\'a una
-tercera rama (\ttt{prueba}) a este repositorio.
+\cref{teo:grado-ciclo} implica que en un \'arbol no trivial existe al menos un
+v\'ertice de grado $1$. Llamaremos \textbf{hojas}\index{hoja} a los v\'ertices
+de grado $1$ en un \'arbol.
+
+Dada una gr\'afica $G$, podemos generar de forma sencilla una subgr\'afica a
+partir de esta con eliminaci\'on o adici\'on de v\'ertices. Si $u\in V_G$, y
+$V_G\setminus\l{u}\neq \varnothing$ denotamos por $G-u$ a la subgr\'afica
+inducida $G[V_G\setminus \l{u}]$. Similarmente, si $e=\l{x,y}\in E_G$ no es un
+lazo, decimos que $H$ se obtiene de $G$ al subdividir la arista $e$ si
+$V_H=V_G\cup\l{v_e}$ con $v_e\notin V_G$ y $E_H=E_G\cup \l{\l{v_e,x}, \l{v_e,y}}
+\setminus \l{x,y}$.
+
+Una observaci\'on inmediata es que si $T$ es un \'arbol no trivial y $x$ es una
+de sus hojas, entonces $T-x$ tambi\'en es un \'arbol pues, en efecto, $T-x$
+sigue siendo conexa y aciclica. De la misma manera, si $e$ es una arista de $T$,
+la subdivisi\'on de $e$ tambi\'en da lugar a un \'arbol.
+
+Dada una gr\'afica $G$, $M\subseteq E_G$ es un \indice{emparejamiento} en $G$ si
+$M$ no contiene lazos y cualesquiera dos aristas $e$ y $f$ en $M$ son no
+incidentes. Si $M$ es un emparejamiento, diremos que los dos extremos de una
+arista en $M$ est\'an emparejados bajo $M$, mientras que, para cualquier
+v\'ertice incidente en una arista de $M$, diremos que este est\'a saturado por
+$M$. Un \textbf{emparejamiento perfecto}\index{emparejamiento!perfecto} es un
+emparejamiento que satura a todos los v\'ertices de la gr\'afica, mientras que
+un emparejamiento es \indiceSub{emparejamiento}{m\'aximo} si satura la mayor
+cantidad de v\'ertices de entre todos los emparejamientos en la gr\'afica.
+As\'i, para $G$ una gr\'afica arbitraria, denotamos por $\alpha'(G)$ al
+\textbf{n\'umero de emparejamiento}\index{emparejamiento!n\'umero de} de $G$, es
+decir, la cardinalidad de un emparejamiento m\'aximo en $G$.
+
+Dado un emparejamiento $M$ en una gr\'afica $G$, definimos una
+$M$-\textbf{trayectoria} \indiceSub{trayectoria}{alternante} en $G$ como una
+trayectoria cuyas aristas alternan, siguiendo el orden de la trayectoria, entre
+aristas en $M$ y en $E_G\setminus M$. Si tanto el inicio como el final de la
+trayectoria no est\'an saturados por $M$, decimos que esta es una
+$M$-\textbf{trayectoria} \indiceSub{trayectoria}{aumentante}. El siguiente
+teorema relaciona la existencia de $M$-trayectorias aumentantes con los
+emparejamientos m\'aximos.
+
+\begin{teorema}[Teorema de Berge]
+\label{teo:berge}
+  Un emparejamiento $M$ en una gr\'afica $G$ es m\'aximo si y solo si $G$ no
+  contiene $M$-trayectorias aumentantes.
+\end{teorema}
+
+\begin{proof}
+  Sea $M$ un emparejamiento en $G$. Sup\'ongase que $G$ contiene una
+  $M$-trayectoria aumentante, $P$. V\'ease que $M'=M\triangle E_P$ es un
+  emparejamiento en $G$. En efecto, $M'$ no contiene lazos pues ni $M$ ni $P$
+  los contienen. Por otro lado, si $e,f\in M'$, si ambas aristas se encuentran
+  en $M\setminus E_P$, entonces estas son no incidentes. Si ambas aristas
+  est\'an en $E_P\setminus M$, entonces estas son no incidentes pues $P$ alterna
+  entre aristas en $M$ y en $E\setminus M$. Finalmente, si $e\in M\setminus E_P$
+  y $f\in E_P\setminus M$, estas son no incidentes ya que, de lo contrario, $f$
+  y $e$ inciden en un v\'ertice no saturado por $M$ (si dicho v\'ertice es el
+  incial o final de $P$) o indicen en un v\'ertice saturado por $M$ a trav\'es
+  de una arista en $P$ distinta de $e$, contradiciendo que $M$ es un
+  emparejamiento.
+  
+  As\'i, $M'$ es un emparejamiento y, dado que $P$ es $M$-alternante, este tiene
+  exactamente una arista m\'as en $E\setminus M$ de las que tiene en $M$, por lo
+  que $\abs{M'} = \abs{M} + 1$, contradiciendo que $M$ era un emparejamiento
+  m\'aximo en $G$.
+
+  Conversamente, sup\'ongase que $M$ es un emparejamiento en $G$ y que este no
+  es m\'aximo. Sea $M^*$ un emparejamiento m\'aximo en $G$, de manera que
+  $\abs{M^*} > \abs{M}$. Sea $H$ la gr\'afica cuyo conjunto de aristas es
+  $M\triangle M^*$ y su conjunto de v\'ertices es el dado por los v\'ertices de
+  $G$ incidentes en alguna arista en $M\triangle M^*$.
+
+  Obs\'ervese que cada v\'ertice de $H$ tiene grado (en $H$) $1$ o $2$ pues este
+  puede ser incidente en a lo m\'as una arista de $M$ y a lo m\'as una arista de
+  $M^*$. Por tanto, cada componente conexa de $H$ es un ciclo par que alterna
+  entre aristas en y $M^*$, o es una trayectoria que alterna entre aristas en
+  $M$ y $M^*$.
+
+  Como $\abs{M^*}>\abs{M}$, la subgr\'afica $H$ contiene m\'as aristas en $M^*$
+  que en $M$, por lo que debe existir en $H$ una componente conexa $P$ que
+  consiste de una trayectoria que alterna entre aristas en $M^*$ y $M$ y cuyas
+  primera y \'ultima arista est\'an en $M^*\setminus M$. As\'i, ambos el
+  v\'ertice inicial y final de $P$ no est\'an saturados por $M$, de manera que
+  $P$ es una $M$-trayectoria aumentante.
+
+\end{proof}
+
+En gr\'aficas bipartitas es sencillo dar una condici\'on necesaria y suficiente
+para para que existe un emparejamiento que sature a todos los v\'ertices en una
+de las partes de la bipartici\'on.
+
+\begin{teorema}[Teorema de Hall]
+\label{teo:hall}
+  Una gr\'afica bipartita $G[X,Y]$ tiene un emparejamiento que satura todos los
+  v\'ertices en $X$ si y solo si
+  \[
+      \abs{N(S)}\geq \abs{S}
+  \]
+  para cada $S\subseteq X$.
+\end{teorema}
+
+\begin{proof}
+  Sea $G\coloneqq G[X,Y]$ una gr\'afica bipartita con un emparejamiento $M$ que
+  satura todos los v\'ertices en $X$. Sea $S\subseteq X$. Los v\'ertices en $S$
+  est\'an emparejados bajo $M$ a distintos v\'ertices en $N(S)$, por lo que
+  $\abs{N(S)}\geq \abs{S}$.
+
+  Sup\'ongase ahora que $G[X,Y]$ es una gr\'afica bipartita y sup\'ongase que
+  $G$ no tiene un emparejamiento que sature a todos los v\'ertices en $X$. Sea
+  $M^*$ un emparejamiento m\'aximo en $G$ y $u\in X$ no saturado por $M^*$. Sea
+  $Z$ el conjunto de todos los v\'ertices tales que, si $z\in Z$, existe una
+  $M^*$-trayectoria alternante que comienza en $x$ y termina en $z$. Como $M^*$
+  es un emparejamiento m\'aximo, se sigue d\cref{teo:berge} que $u$ es el
+  \'unico v\'ertice en $Z$ no saturado por $M^*$. Sean $R=X\cap Z$ y $B=Y\cap
+  Z$.
+
+  Claramente los v\'ertices en $R\setminus\l{u}$ est\'an emparejados bajo $M^*$
+  con v\'ertices en $B$. As\'i, $\abs{B} = \abs{R} - 1$ y $B\subseteq N(R)$. De
+  hecho, $B=N(R)$ pues todo v\'ertice en $N(R)$ es alcanzado por $u$ a trav\'es
+  de una $M^*$-trayectoria alternante. Por tanto,
+  \[
+    \abs{N(R)} = \abs{B} = \abs{R} - 1 < \abs{R},
+  \]
+  de manera que la condici\'on dada por el teorema falla para $S=R$.
+
+\end{proof}
+
+Un \indice{homomorfismo} de una gr\'afica $G$ en una gr\'afica $H$ es una
+funci\'on $f:V_G\to V_H$ tal que $f(u)f(v)\in E_H$ para toda $uv\in E_G$.
+
+Dada una gr\'afica $G$ sin lazos y $1\leq k\leq \abs{V_G}$, definimos la
+\textbf{gr\'afica de k fichas}\index{gr\'afica!de fichas} de $G$, $\t{k}{G}$,
+cuyo conjunto de v\'ertices consiste de todos los $k$-conjuntos de $V_G$,
+mientras que dos de estos $k$-conjuntos, $A$ y $B$, son adyacentes si y solo
+$A\triangle B\in E_G$.
+
+Una observaci\'on inmediata de la definici\'on es que, si $G$ es una gr\'afica
+sin lazos, $G$ es isomorfa a su gr\'afica de $1$ ficha, es decir, $G\cong
+\t{1}{G}$. Esto inmediato al ver que los $1$-conjuntos de $V_G$ son los
+unitarios de los v\'ertices y que dos $1$-conjuntos son adyacentes en $\t{1}{k}$
+si y solo si su diferencia sim\'ertica es una arista en $G$, es decir, si estos
+son adyacentes en $G$.
+
+El siguiente lema reduce los casos a estudiar para las gr\'aficas de fichas.
+
+\begin{lema}
+  \label{lem:isomorfismo}
+      Sean $k$ y $n$ enteros positivos. Si $G$ una gr\'afica sin lazos de orden
+      $n$ y $k < n$, entonces $\t{k}{G} \cong \t{n-k}{G}$.
+  \end{lema}
+
+  \begin{proof}
+    Se propone la funci\'on $\varphi:V_{\t{k}{G}} \to \varphi:V_{\t{n-k}{G}}$
+    dada por la regla de correspondencia
+    \[
+      \varphi(A) = V\setminus A.
+    \]
+    Dicha funci\'on est\'a bien definida pues $\abs{V\setminus A} = n-k$. Por
+    tanto, resta demostrar que dicha funci\'on da un isomorfismo entre
+    $\t{k}{G}$ y $\t{n-k}{G}$.
+
+    Si $AB\in E_{\t{k}{G}}$, entonces $A\triangle B =\l{a,b}\in E_G$ con $a\in
+    A\setminus B$ y $b\in B\setminus A$. As\'i,
+    \begin{align*}
+      f(A)\triangle f(B) 
+        &= \paren{V\setminus A}\triangle \paren{V\setminus B} \\
+        &= \paren{V\setminus A \setminus \paren{V\setminus B}} \cup 
+           \paren{V\setminus B \setminus \paren{V\setminus A}}\\
+        &= \paren{V\setminus A \cap B} \cup \paren{V\setminus B \setminus \cap A}\\
+        &= \l{b} \cup \l{a} = \l{a,b}\in E_G.
+    \end{align*}
+    Por tanto, $f(A)f(B)\in E_{\t{n-k}{G}}$. Este mismo argumento demuestra que
+    si $f(A)f(B)\in E_{\t{n-k}{G}}$, entonces $AB\in E_{\t{k}{G}}$, por lo que
+    se concluye que $\t{k}{G} \cong \t{n-k}{G}$.
+
+  \end{proof}
+
+\indice{Polic\'ias y ladrones} es un juego de evasi\'on-persecuci\'on sobre una
+gr\'afica en el cual dos jugadores, $C$ y $R$, toman turnos alternadamente para
+conseguir su objetivo. Por una parte, $C$ controla a una cantidad fija de
+polic\'ias, $c$, tales que estos ocupan v\'ertices no necesariamente distintos
+de $G$ y, en cada turno, todos se mueven a trav\'es de una arista incidente al
+v\'ertice en el que se encontraban previamente. Por otro lado, $R$ controla a un
+\'unico ladr\'on cuyas reglas de movimiento son las mismas que las descritas
+para los polic\'ias de $C$. Por tanto, el objetivo de $C$ es que al menos uno de
+sus polic\'ias ocupe el mismo v\'ertice que el ladr\'on, momento en el que
+diremos que dicho polic\'ia \indice{captura} a $R$ y terminando el juego de
+inmediato con la victoria de $C$. En tanto, el objetivo de $R$ es evitar su
+captura, de manera que $R$ gana el juego si este tiene una forma de evitar su
+captura indefinidamente. Por convenci\'on, $C$ comienza el juego al escoger
+posiciones iniciales para cada uno de sus polic\'ias, mientras que $R$ en su
+primer turno decide en qu\'e v\'ertice colocar a su ladr\'on.
+
+Diremos que un jugador tiene una \indice{estrategia ganadora} si este cuenta con
+un conjunto de reglas a seguir tal que, sin importar lo que haga su
+contrincante, este es capaz de ganar el juego. Por tanto, $C$ tiene una
+estrategia ganadora si este puede eventualmente capturar a $R$ tras un n\'umero
+finito de movimientos y sin importar los movimientos que este realice, mientras
+que $R$ tiene una estrategia ganadora si este puede evadir su captura sin
+importar los movimientos que realice $C$.
+
+Una versi\'on de este juego llamada \textit{lazy cops and robbers} considera la
+opci\'on de que, en su turno, cada polic\'ia y el ladr\'on pueden pasar, de modo
+que estos mantienen su posici\'on. No obstante, esta variante del juego puede
+emularse con la versi\'on tradicional al jugar sobre gr\'aficas reflexivas, de
+manera que, si alg\'un polic\'ia o el ladr\'on buscan pasar, estos se mueven a
+trav\'es del lazo asociado al v\'ertice en el que se encuentran. As\'i, a lo
+largo del trabajo examinaremos el juego tradicional \'unicamente sobre
+gr\'aficas reflexivas a\'un cuando nos referiremos a dichas gr\'aficas como sus
+versiones sin lazos.
+
+Dada una gr\'afica $G$ de orden $n$, es claro que si $C$ tiene $n$ polic\'ias,
+entonces este tiene una estrategia ganadora, a saber, en su primer turno coloca
+cada polic\'ia en un v\'ertice distinto de $G$, de manera que, sin importar que
+v\'ertice escoja $R$, este pasa a ser capturado inmediatamente. Por tanto, cabe
+preguntarse, dada una gr\'afica $G$, cu\'al es el m\'inimo n\'umero de
+polic\'ias que $C$ necesita para capturar a $R$. A este par\'ametro lo
+llamaremos el \indice{n\'umero policiaco} de $G$ y lo denotaremos por $c(G)$.
+
+Dada una gr\'afica $G$ y $H$ una de sus subgr\'aficas inducidas, decimos que $H$
+es un \indice{retracto} de $G$ si existe un homomorfismo $f$ de $G$ en $H$ tal
+que $f(x)=x$ para cualquier $x\in V_H$. A trav\'es de esta noci\'on, podemos dar
+una cota inferior para el n\'umero policiaco de una gr\'afica en funci\'on de
+sus retractos.
+
+\begin{lema}
+\label{lem:retracto-cota}
+  Si $H$ es un retracto de $G$, entonces $c(H)\leq c(G)$.  
+\end{lema}
+
+\begin{proof}
+  Sup\'ongase que $k$ polic\'ias tienen una estrategia ganadora en $G$ y sea $f$
+  un homomorfismo de $G$ a $H$ tal que $f(x)=x$ para cada $x\in V_H$. Se
+  consideran dos partidas en paralelo de polic\'ias y ladrones: una jugada sobre
+  $G$ y otra sobre $H$. El juego en $H$ puede considerarse como un juego sobre
+  $G$ pues $H$ es una subgr\'afica inducida de $G$. La estrategia ganadora de
+  $C$ en $G$ puede no ser suficiente para capturar a $R$ en $H$, por ejemplo,
+  puede que este tenga que salir de $H$ para ser capturado en la parte de $G$
+  que no est\'a en $H$.
+
+  As\'i pues, se considera la siguiente estrategia de sombras: los polic\'ias
+  jugando en $G$ siguen la estrategia usual, mientras que los polic\'ias jugando
+  en $H$ realizan los movimientos dados por las im\'agenes bajo $f$ de los
+  polic\'ias en $G$. Por simplicidad, se denota por $f(c)$ a las imagenes de las
+  posiciones de los polic\'ias en $G$. As\'i, si un polic\'ia $c$ en $G$ se
+  mueve de un v\'ertice $u$ a $v$, entonces un polic\'ia $f(c)$ en $H$ se mueve
+  de $f(u)$ a $f(v)$, el cual es un movimiento v\'alido por ser $f$ un
+  homomorfismo.
+
+  Se afirma que la estrategia descrita es ganadora para los polic\'ias en $H$.
+  En efecto, consid\'erese que los polic\'ias juegan en $G$ y $R$ est\'a
+  restringido a $H$. Si los polic\'ias est\'an a punto de ganar en $G$, debe
+  suceder que el v\'ertice en el que se encuentra $R$ y todos sus vecinos, tanto
+  en $H$ como en $G$, son adyacentes a un polic\'ia. Luego, si $u$ es el
+  v\'ertice en el que se encuentra $R$ y $v$ es un v\'ertice adyacente a este,
+  el homomorfismo $f$ manda la arista $uv\in E_G$ a la arista $uf(v)\in E_H$.
+  Luego, como $f$ es homomorfismo, si $c$ era el polic\'ia en un v\'ertice
+  adyacente a $v$ en $G$, $f(c)$ es un polic\'ia adyacente a $f(v)$ en $H$. Lo
+  mismo sucede con el polic\'ia en $G$ que est\'a en un v\'ertice adyacente al
+  v\'ertice en el que se encuentra $R$. Por tanto, todos los posibles
+  movimientos de $R$ son tales que un polic\'ia en $H$ le captura en a lo m\'as
+  su siguiente turno, de modo que $k$ polic\'ias bastan para capturar en $H$.
+
+\end{proof}
+
+Dada una gr\'afica $G$ sin lazos y $k\geq 1$, podemos considerar un juego de
+polic\'ias y ladrones sobre su gr\'afica de $k$ fichas, recordando que el juego
+se desarrolla sobre la versi\'on reflexiva de $\t{k}{G}$. No obstante, en lugar
+de trabajar sobre $\t{k}{G}$ para obtener estrategias ganadoras, podemos
+recurrir a la misma gr\'afica para plantear una modificaci\'on del juego
+tradicional, de manera que se puede emular una partida cl\'asica sobre
+$\t{k}{G}$. As\'i pues, para una partida tradicional de polic\'ias y ladrones
+sobre $\t{k}{G}$, consid\'erse una partida de polic\'ias y ladrones por equipos
+en $G$, donde cada polic\'ia de $C$ y el ladr\'on tienen un equipo de $k$ fichas
+tales que, por cada polic\'ia y el ladr\'on, sus $k$ fichas determinan un
+$k$-conjunto de $V_G$. Adem\'as, en su turno, cada polic\'ia y el ladr\'on
+escogen una de sus $k$ fichas y la mueven de un v\'ertice a otro a trav\'es de
+una arista, de manera que posterior a su movimiento estos siguen determinando un
+$k$-conjunto de $V_G$. Por otra parte, la acci\'on de que un polic\'ia o el
+ladr\'on pase en la gr\'afica de fichas se corresponde con que el respectivo
+polic\'ia o el ladr\'on no mueva alguna de sus fichas en $G$. En esta ocasi\'on,
+$C$ gana si en su turno logra que las $k$ fichas de uno de sus polic\'ias
+determinen el mismo $k$-conjunto que las $k$ fichas del ladr\'on, mientras que
+el ladr\'on gana si puede evitar que ello sucede indefinidamente.

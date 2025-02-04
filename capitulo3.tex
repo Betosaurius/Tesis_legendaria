@@ -4,12 +4,26 @@
 \section{Petersen}
 \label{sec:petersen}
 
+Como un resultado agregado en una gr\'afica de inter\'es particular distinta de
+un \'arbol, cambiamos nuestro enfoque a la gr\'afica de Petersen, $P$ (ver
+\cref{fig:petersen-grafica}).
+
+\begin{figure}[!htbp]
+    \begin{tikzpicture}
+        \petersen
+    \end{tikzpicture}
+    \caption{Gr\'afica de Petersen $P$.}
+    \label{fig:petersen-grafica}
+\end{figure}
+
+Antes de revisar un caso de mayor 
+
 % Cosas a usar: diam(P)=2, existe una \'unica geod\'esica entre cualesquiera par
 % de v\'ertices, existe un conjunto dominante de 3 v\'ertices
 
 \begin{lema}
-    \label{bound}
-      If $P$ denotes the Petersen graph, then $c\paren{\t{2}{P}} > 3$.
+\label{lem:bound}
+      Si $P$ es la gr\'afica de Petersen, $c\paren{\t{2}{P}} > 3$.
 \end{lema}
     
 \begin{proof}
@@ -25,49 +39,48 @@
     not contain a $K_4$, meaning that at least two of such vertices are
     non-adjacent.
 
-    \begin{figure}[ht]
-    \centering
-    \begin{tcbitemize}[raster columns=2,raster equal height, enhanced,
-        colback=Black!5!white,colframe=Grey!75!black,
-        phantom={\setcounter{myrasternum}{\thetcbrasternum}},
-        title={(\alph{myrasternum})\enspace}, boxsep=0mm, right=0.5mm,
-        left=0.5mm, fonttitle=\bfseries, coltitle=black, raster
-        column skip=1mm, detach title,before upper=\tcbtitle, raster
-        halign=center, raster row skip=1mm]
+    \begin{figure}[!htbp]
+        \begin{tcbitemize}[raster columns=2, raster equal height, enhanced,
+            colback=Black!5!white,colframe=Grey!75!black, attach title to upper,
+            phantom={\setcounter{myrasternum}{\thetcbrasternum}},
+            title={(\alph{myrasternum})\enspace}, halign lower=center, halign
+            upper = left, lower separated=false, middle=0mm, boxsep=0mm,
+            leftupper=2mm, left=2mm, right=2mm, fonttitle=\bfseries,
+            coltitle=black, raster column skip=1mm,raster halign=center, raster
+            row skip=1mm]
 
-        \tcbitem
-
-            \centering
-            \scalebox{0.5}{
-                \begin{tikzpicture}
-                        \petersen
-                        \unopB{5cm}{90}
-                        \unopG{5cm}{90 + (360/5)*1}
-                        \unopR{5cm}{90 + (360/5)*2}
-                        \unopB{5cm}{90 + (360/5)*3}
-                        \unopG{5cm}{90 + (360/5)*4}
-                        \unopR{2.5cm}{90}
-                \end{tikzpicture}
-            }
-        
-        \tcbitem
-
-            \centering
-            \scalebox{0.5}{
-                \begin{tikzpicture}
-                    \petersen
-                    \unopB{5cm}{90}
-                    \unopG{5cm}{90 + (360/5)*1}
-                    \unopR{5cm}{90 + (360/5)*2}
-                    \unopB{5cm}{90 + (360/5)*3}
-                    \unopG{5cm}{90 + (360/5)*4}
-                    \unopR{2.5cm}{90}
-                    \punto{2.5cm}{90 + (360/5)}
-                    \punto{2.5cm}{90 + (360/5)*2}
-                \end{tikzpicture}
-            }
-            \end{tcbitemize}
-    \caption{In (a), $C$ has chosen his initial position to be one that occupies
+            \tcbitem
+                \tcblower
+                    \scalebox{0.5}{
+                        \begin{tikzpicture}
+                                \petersen
+                                \unopB{5cm}{90}
+                                \unopG{5cm}{90 + (360/5)*1}
+                                \unopR{5cm}{90 + (360/5)*2}
+                                \unopB{5cm}{90 + (360/5)*3}
+                                \unopG{5cm}{90 + (360/5)*4}
+                                \unopR{2.5cm}{90}
+                        \end{tikzpicture}
+                    }
+            
+            \tcbitem
+                \tcblower
+                    \scalebox{0.5}{
+                        \begin{tikzpicture}
+                            \petersen
+                            \unopB{5cm}{90}
+                            \unopG{5cm}{90 + (360/5)*1}
+                            \unopR{5cm}{90 + (360/5)*2}
+                            \unopB{5cm}{90 + (360/5)*3}
+                            \unopG{5cm}{90 + (360/5)*4}
+                            \unopR{2.5cm}{90}
+                            \punto{2.5cm}{90 + (360/5)}
+                            \punto{2.5cm}{90 + (360/5)*2}
+                        \end{tikzpicture}
+                    }
+        \end{tcbitemize}
+    \captionsetup{font=footnotesize}
+        \caption{In (a), $C$ has chosen his initial position to be one that occupies
             the most vertices of $P$. Nonetheless, $R$ can still position his
             tokens as in (b) on the remaining vertices, fulfilling the condition
             he seeks. Notice that all tokens have the same shape since no
@@ -93,47 +106,46 @@
     any of his tokens to a vertex not adjacent to his other token, achieving his
     goal (see (a) and (b) in Figure \ref{fig:best_cover1}).
 
-    \begin{figure}[ht]
-        \centering
-        \begin{tcbitemize}[raster columns=2,raster equal height, enhanced,
-            colback=Black!5!white,colframe=Grey!75!black,
+    \begin{figure}[!htbp]
+        \begin{tcbitemize}[raster columns=2, raster equal height, enhanced,
+            colback=Black!5!white,colframe=Grey!75!black, attach title to upper,
             phantom={\setcounter{myrasternum}{\thetcbrasternum}},
-            title={(\alph{myrasternum})\enspace}, boxsep=0mm, right=0.5mm,
-            left=0.5mm, fonttitle=\bfseries, coltitle=black, raster
-            column skip=1mm, detach title,before upper=\tcbtitle, raster
-            halign=center, raster row skip=1mm]
+            title={(\alph{myrasternum})\enspace}, halign lower=center, halign
+            upper = left, lower separated=false, middle=0mm, boxsep=0mm,
+            leftupper=2mm, left=2mm, right=2mm, fonttitle=\bfseries,
+            coltitle=black, raster column skip=1mm,raster halign=center, raster
+            row skip=1mm]
     
             \tcbitem
-    
-                \centering
-                \scalebox{0.5}{
-                    \begin{tikzpicture}
-                        \localpetersen
-                        \begin{scope}[xshift=2.5cm]
-                            \unopB{2.5cm}{(360/3)*2+180}
-                        \end{scope}
-                        \unopBp{2.5cm}{180}
-                        \punto{2.5cm}{0}
-                    \end{tikzpicture}
-                }
+                \tcblower
+                    \scalebox{0.5}{
+                        \begin{tikzpicture}
+                            \localpetersen
+                            \begin{scope}[xshift=2.5cm]
+                                \unopB{2.5cm}{(360/3)*2+180}
+                            \end{scope}
+                            \unopBp{2.5cm}{180}
+                            \punto{2.5cm}{0}
+                        \end{tikzpicture}
+                    }
             
             \tcbitem
-    
-                \centering
-                \scalebox{0.5}{
-                    \begin{tikzpicture}
-                        \localpetersen
-                        \begin{scope}[xshift=2.5cm]
-                            \unopB{2.5cm}{(360/3)*2 + 180}
-                        \end{scope}
-                        \unopB{2.5cm}{180}
-                        \begin{scope}[xshift=-2.5cm]
-                            \punto{2.5cm}{(360/3)*1}
-                        \end{scope}
-                        \punto{2.5cm}{0}
-                    \end{tikzpicture}
-                }
+                \tcblower
+                    \scalebox{0.5}{
+                        \begin{tikzpicture}
+                            \localpetersen
+                            \begin{scope}[xshift=2.5cm]
+                                \unopB{2.5cm}{(360/3)*2 + 180}
+                            \end{scope}
+                            \unopB{2.5cm}{180}
+                            \begin{scope}[xshift=-2.5cm]
+                                \punto{2.5cm}{(360/3)*1}
+                            \end{scope}
+                            \punto{2.5cm}{0}
+                        \end{tikzpicture}
+                    }
         \end{tcbitemize}
+        \captionsetup{font=footnotesize}
         \caption{In (a) are shown the vertices to which $R$ could move their
                 tokens after $C$'s turn. Besides that, cop $c_1$ is the only one
                 which is less than $3$ turns away from capturing $R$. Even if
@@ -174,121 +186,116 @@
     for one of them tokens to move into (see (e) and (f) in Figure
     \ref{fig:best_cover2}).
     
-    \begin{figure}[ht]
-        \centering
-        \begin{tcbitemize}[raster columns=2,raster equal height, enhanced,
-            colback=Black!5!white,colframe=Grey!75!black,
+    \begin{figure}[!htbp]
+        \begin{tcbitemize}[raster columns=2, raster equal height, enhanced,
+            colback=Black!5!white,colframe=Grey!75!black, attach title to upper,
             phantom={\setcounter{myrasternum}{\thetcbrasternum}},
-            title={(\alph{myrasternum})\enspace}, boxsep=0mm, right=0.5mm,
-            left=0.5mm, fonttitle=\bfseries, coltitle=black, raster
-            column skip=1mm, detach title,before upper=\tcbtitle, raster
-            halign=center, raster row skip=1mm]
+            title={(\alph{myrasternum})\enspace}, halign lower=center, halign
+            upper = left, lower separated=false, middle=0mm, boxsep=0mm,
+            leftupper=2mm, left=2mm, right=2mm, fonttitle=\bfseries,
+            coltitle=black, raster column skip=1mm,raster halign=center, raster
+            row skip=1mm]
     
             \tcbitem
-    
-                \centering
-                \scalebox{0.5}{
-                    \begin{tikzpicture}
-                        \localpetersen
-                        \begin{scope}[xshift=2.5cm]
-                            \unopB{2.5cm}{(360/3)*2 + 180}
-                        \end{scope}
-                        \unopBp{2.5cm}{180}
-                        \unopGp{2.5cm}{0}
-                        \begin{scope}[xshift=-2.5cm]
-                            \unopG{2.5cm}{(360/3)*1}
-                        \end{scope}
-                    \end{tikzpicture}
-                }
+                \tcblower
+                    \scalebox{0.5}{
+                        \begin{tikzpicture}
+                            \localpetersen
+                            \begin{scope}[xshift=2.5cm]
+                                \unopB{2.5cm}{(360/3)*2 + 180}
+                            \end{scope}
+                            \unopBp{2.5cm}{180}
+                            \unopGp{2.5cm}{0}
+                            \begin{scope}[xshift=-2.5cm]
+                                \unopG{2.5cm}{(360/3)*1}
+                            \end{scope}
+                        \end{tikzpicture}
+                    }
             
             \tcbitem
-    
-                \centering
-                \scalebox{0.5}{
-                    \begin{tikzpicture}
-                        \localpetersen
-                        \begin{scope}[xshift=2.5cm]
-                            \unopB{2.5cm}{(360/3)*2 + 180}
-                        \end{scope}
-                        \unopB{2.5cm}{180}
-                        \unopGp{2.5cm}{0}
-                        \begin{scope}[xshift=-2.5cm]
-                            \unopG{2.5cm}{(360/3)*1}
-                            \punto{2.5cm}{(360/3)*2}
-                        \end{scope}
-                    \end{tikzpicture}
-                }
+                \tcblower
+                    \scalebox{0.5}{
+                        \begin{tikzpicture}
+                            \localpetersen
+                            \begin{scope}[xshift=2.5cm]
+                                \unopB{2.5cm}{(360/3)*2 + 180}
+                            \end{scope}
+                            \unopB{2.5cm}{180}
+                            \unopGp{2.5cm}{0}
+                            \begin{scope}[xshift=-2.5cm]
+                                \unopG{2.5cm}{(360/3)*1}
+                                \punto{2.5cm}{(360/3)*2}
+                            \end{scope}
+                        \end{tikzpicture}
+                    }
             
             \tcbitem
-    
-                \centering
-                \scalebox{0.5}{
-                    \begin{tikzpicture}
-                        \localpetersen
-                        \begin{scope}[xshift=2.5cm]
-                            \unopB{2.5cm}{(360/3)*2 + 180}
-                            \unopG{2.5cm}{(360/3)*1 + 180}
-                        \end{scope}
-                        \unopBp{2.5cm}{180}
-                        \unopGp{2.5cm}{0}
-                    \end{tikzpicture}
-                }
+                \tcblower
+                    \scalebox{0.5}{
+                        \begin{tikzpicture}
+                            \localpetersen
+                            \begin{scope}[xshift=2.5cm]
+                                \unopB{2.5cm}{(360/3)*2 + 180}
+                                \unopG{2.5cm}{(360/3)*1 + 180}
+                            \end{scope}
+                            \unopBp{2.5cm}{180}
+                            \unopGp{2.5cm}{0}
+                        \end{tikzpicture}
+                    }
             
             \tcbitem
-    
-                \centering
-                \scalebox{0.5}{
-                    \begin{tikzpicture}
-                        \localpetersen
-                        \begin{scope}[xshift=2.5cm]
-                            \unopB{2.5cm}{(360/3)*2 + 180}
-                            \unopG{2.5cm}{(360/3)*1 + 180}
-                        \end{scope}
-                        \unopB{2.5cm}{180}
-                        \unopGp{2.5cm}{0}
-                        \begin{scope}[xshift=-2.5cm]
-                            \punto{2.5cm}{(360/3)}
-                        \end{scope}
-                    \end{tikzpicture}
-                }
+                \tcblower
+                    \scalebox{0.5}{
+                        \begin{tikzpicture}
+                            \localpetersen
+                            \begin{scope}[xshift=2.5cm]
+                                \unopB{2.5cm}{(360/3)*2 + 180}
+                                \unopG{2.5cm}{(360/3)*1 + 180}
+                            \end{scope}
+                            \unopB{2.5cm}{180}
+                            \unopGp{2.5cm}{0}
+                            \begin{scope}[xshift=-2.5cm]
+                                \punto{2.5cm}{(360/3)}
+                            \end{scope}
+                        \end{tikzpicture}
+                    }
         
             \tcbitem
-    
-                \centering
-                \scalebox{0.5}{
-                    \begin{tikzpicture}
-                        \localpetersen
-                        \begin{scope}[xshift=2.5cm]
-                            \unopB{2.5cm}{(360/3)*2 + 180}
-                            \unopG{2.5cm}{(360/3)*1 + 180}
-                        \end{scope}
-                        \begin{scope}[xshift=-2.5cm]
-                            \unopG{2.5cm}{(360/3)*1}
-                        \end{scope}
-                        \unopBp{2.5cm}{180}
-                        \punto{2.5cm}{0}
-                    \end{tikzpicture}
-                }
+                \tcblower
+                    \scalebox{0.5}{
+                        \begin{tikzpicture}
+                            \localpetersen
+                            \begin{scope}[xshift=2.5cm]
+                                \unopB{2.5cm}{(360/3)*2 + 180}
+                                \unopG{2.5cm}{(360/3)*1 + 180}
+                            \end{scope}
+                            \begin{scope}[xshift=-2.5cm]
+                                \unopG{2.5cm}{(360/3)*1}
+                            \end{scope}
+                            \unopBp{2.5cm}{180}
+                            \punto{2.5cm}{0}
+                        \end{tikzpicture}
+                    }
             
             \tcbitem
-    
-                \centering
-                \scalebox{0.5}{
-                    \begin{tikzpicture}
-                        \localpetersen
-                        \begin{scope}[xshift=2.5cm]
-                            \unopB{2.5cm}{(360/3)*2 + 180}
-                            \unopG{2.5cm}{(360/3)*1 + 180}
-                        \end{scope}
-                        \begin{scope}[xshift=-2.5cm]
-                            \unopG{2.5cm}{(360/3)*1}
-                            \punto{2.5cm}{(360/3)*2}
-                        \end{scope}
-                        \unopB{2.5cm}{180}
-                        \punto{2.5cm}{0}
-                    \end{tikzpicture}
-                }
+                \tcblower
+                    \scalebox{0.5}{
+                        \begin{tikzpicture}
+                            \localpetersen
+                            \begin{scope}[xshift=2.5cm]
+                                \unopB{2.5cm}{(360/3)*2 + 180}
+                                \unopG{2.5cm}{(360/3)*1 + 180}
+                            \end{scope}
+                            \begin{scope}[xshift=-2.5cm]
+                                \unopG{2.5cm}{(360/3)*1}
+                                \punto{2.5cm}{(360/3)*2}
+                            \end{scope}
+                            \unopB{2.5cm}{180}
+                            \punto{2.5cm}{0}
+                        \end{tikzpicture}
+                    }
         \end{tcbitemize}
+        \captionsetup{font=footnotesize}
         \caption{In (a), even though $c_1$ and $c_2$ are close to capture $R$,
         he can move as in (b) to escape from both of them and remain in a
         desired position, noticing that $c_3$ is neglected since he is not close
@@ -317,77 +324,74 @@
     turn away from capturing him (see (b) of Figure \ref{fig:possible}).
 
 
-    \begin{figure}[ht]
-    \centering
-    \begin{tcbitemize}[raster columns=2,raster equal height, enhanced,
-        colback=Black!5!white,colframe=Grey!75!black,
+    \begin{figure}[!htbp]
+    \begin{tcbitemize}[raster columns=2, raster equal height, enhanced,
+        colback=Black!5!white,colframe=Grey!75!black, attach title to upper,
         phantom={\setcounter{myrasternum}{\thetcbrasternum}},
-        title={(\alph{myrasternum})\enspace}, boxsep=0mm, right=0.5mm,
-        left=0.5mm, fonttitle=\bfseries, coltitle=black, raster
-        column skip=1mm, detach title,before upper=\tcbtitle, raster
-        halign=center, raster row skip=1mm]
+        title={(\alph{myrasternum})\enspace}, halign lower=center, halign
+        upper = left, lower separated=false, middle=0mm, boxsep=0mm,
+        leftupper=2mm, left=2mm, right=2mm, fonttitle=\bfseries,
+        coltitle=black, raster column skip=1mm,raster halign=center, raster
+        row skip=1mm]
 
         \tcbitem
-
-            \centering
-            \scalebox{0.5}{
-                \begin{tikzpicture}
-                \petersen
-                \unopB{2.5cm}{90 + (360/5)*4}
-                \unopG{5cm}{90 + (360/5)*1}
-                \unopG{5cm}{90 + (360/5)*2}
-                \unopR{2.5cm}{90 + (360/5)*3}
-                \unopR{2.5cm}{90}
-                \unopBp{2.5cm}{90 + (360/5)}
-                \punto{2.5cm}{90 + (360/5)*2}
-                \end{tikzpicture}
-            }
+            \tcblower
+                \scalebox{0.5}{
+                    \begin{tikzpicture}
+                    \petersen
+                    \unopB{2.5cm}{90 + (360/5)*4}
+                    \unopG{5cm}{90 + (360/5)*1}
+                    \unopG{5cm}{90 + (360/5)*2}
+                    \unopR{2.5cm}{90 + (360/5)*3}
+                    \unopR{2.5cm}{90}
+                    \unopBp{2.5cm}{90 + (360/5)}
+                    \punto{2.5cm}{90 + (360/5)*2}
+                    \end{tikzpicture}
+                }
         
         \tcbitem
-
-            \centering
-            \scalebox{0.5}{
-                \begin{tikzpicture}
-                \petersen
-                \unopBp{2.5cm}{90 + (360/5)*4}
-                \unopG{5cm}{90 + (360/5)*1}
-                \unopG{5cm}{90 + (360/5)*2}
-                \unopR{2.5cm}{90 + (360/5)*3}
-                \unopR{2.5cm}{90}
-                \unopB{2.5cm}{90 + (360/5)}
-                \punto{2.5cm}{90 + (360/5)*2}
-                \end{tikzpicture}
-            }
+            \tcblower
+                \scalebox{0.5}{
+                    \begin{tikzpicture}
+                    \petersen
+                    \unopBp{2.5cm}{90 + (360/5)*4}
+                    \unopG{5cm}{90 + (360/5)*1}
+                    \unopG{5cm}{90 + (360/5)*2}
+                    \unopR{2.5cm}{90 + (360/5)*3}
+                    \unopR{2.5cm}{90}
+                    \unopB{2.5cm}{90 + (360/5)}
+                    \punto{2.5cm}{90 + (360/5)*2}
+                    \end{tikzpicture}
+                }
 
         \tcbitem
-
-            \centering
-            \scalebox{0.5}{
-                \begin{tikzpicture}
-                \petersen
-                \unopB{5cm}{90 + (360/5)*4}
-                \unopG{5cm}{90 + (360/5)*2}
-                \unopR{2.5cm}{90 + (360/5)*3}
-                \unopBunopG{2.5cm}{90 + (360/5)}
-                \unopRp{2.5cm}{90 + (360/5)*2}
-                \punto{2.5cm}{90 + (360/5)*4}
-                \end{tikzpicture}
-            }
+            \tcblower
+                \scalebox{0.5}{
+                    \begin{tikzpicture}
+                    \petersen
+                    \unopB{5cm}{90 + (360/5)*4}
+                    \unopG{5cm}{90 + (360/5)*2}
+                    \unopR{2.5cm}{90 + (360/5)*3}
+                    \unopBunopG{2.5cm}{90 + (360/5)}
+                    \unopRp{2.5cm}{90 + (360/5)*2}
+                    \punto{2.5cm}{90 + (360/5)*4}
+                    \end{tikzpicture}
+                }
         
         \tcbitem
-
-            \centering
-            \scalebox{0.5}{
-                \begin{tikzpicture}
-                \petersen
-                \unopBp{5cm}{90 + (360/5)*4}
-                \unopG{5cm}{90 + (360/5)*2}
-                \unopR{2.5cm}{90 + (360/5)*3}
-                \unopBunopG{2.5cm}{90 + (360/5)}
-                \unopRp{2.5cm}{90 + (360/5)*2}
-                \end{tikzpicture}
-            }
+            \tcblower
+                \scalebox{0.5}{
+                    \begin{tikzpicture}
+                    \petersen
+                    \unopBp{5cm}{90 + (360/5)*4}
+                    \unopG{5cm}{90 + (360/5)*2}
+                    \unopR{2.5cm}{90 + (360/5)*3}
+                    \unopBunopG{2.5cm}{90 + (360/5)}
+                    \unopRp{2.5cm}{90 + (360/5)*2}
+                    \end{tikzpicture}
+                }
     \end{tcbitemize}
+    \captionsetup{font=footnotesize}
     \caption{In (a) is shown the best way $C$ can guard the exits of $R$ to
             prevent him from doing a movement different from puting their tokens
             next to each other. Notice that the movement of $R$ shown in (b)
@@ -418,679 +422,674 @@
     Figure \ref{fig:possible2} the other case following a similar argument to ensure
     the escape of $R$. Thus, $c\paren{\t{2}{P}}>3$.
 
-    \begin{figure}[ht]
-        \centering
-        \begin{tcbitemize}[raster columns=2,raster equal height, enhanced,
-            colback=Black!5!white,colframe=Grey!75!black,
+    \begin{figure}[!htbp]
+        \begin{tcbitemize}[raster columns=2, raster equal height, enhanced,
+            colback=Black!5!white,colframe=Grey!75!black, attach title to upper,
             phantom={\setcounter{myrasternum}{\thetcbrasternum}},
-            title={(\alph{myrasternum})\enspace}, boxsep=0mm, right=0.5mm,
-            left=0.5mm, fonttitle=\bfseries, coltitle=black, raster
-            column skip=1mm, detach title,before upper=\tcbtitle, raster
-            halign=center, raster row skip=1mm]
+            title={(\alph{myrasternum})\enspace}, halign lower=center, halign
+            upper = left, lower separated=false, middle=0mm, boxsep=0mm,
+            leftupper=2mm, left=2mm, right=2mm, fonttitle=\bfseries,
+            coltitle=black, raster column skip=1mm,raster halign=center, raster
+            row skip=1mm]
     
             \tcbitem
-    
-                \centering
-                \scalebox{0.5}{
-                    \begin{tikzpicture}
-                        \petersen
-                        \unopG{5cm}{90 + (360/5)*1}
-                        \unopB{5cm}{90 + (360/5)*2}
-                        \unopR{2.5cm}{90 + (360/5)*3}
-                        \unopR{2.5cm}{90}
-                        \unopBp{2.5cm}{90 + (360/5)}
-                    \unopGp{2.5cm}{90 + (360/5)*2}
-                    \end{tikzpicture}
-                }
+                \tcblower
+                    \scalebox{0.5}{
+                        \begin{tikzpicture}
+                            \petersen
+                            \unopG{5cm}{90 + (360/5)*1}
+                            \unopB{5cm}{90 + (360/5)*2}
+                            \unopR{2.5cm}{90 + (360/5)*3}
+                            \unopR{2.5cm}{90}
+                            \unopBp{2.5cm}{90 + (360/5)}
+                        \unopGp{2.5cm}{90 + (360/5)*2}
+                        \end{tikzpicture}
+                    }
             
             \tcbitem
-    
-                \centering
-                \scalebox{0.5}{
-                    \begin{tikzpicture}
-                        \petersen
-                        \unopG{5cm}{90 + (360/5)*1}
-                        \unopB{5cm}{90 + (360/5)*2}
-                        \unopR{2.5cm}{90 + (360/5)*3}
-                        \unopR{2.5cm}{90}
-                        \unopBp{2.5cm}{90 + (360/5)}
-                        \unopG{2.5cm}{90 + (360/5)*2}
-                        \punto{2.5cm}{90 + (360/5)*4}
-                    \end{tikzpicture}
-                }
+                \tcblower
+                    \scalebox{0.5}{
+                        \begin{tikzpicture}
+                            \petersen
+                            \unopG{5cm}{90 + (360/5)*1}
+                            \unopB{5cm}{90 + (360/5)*2}
+                            \unopR{2.5cm}{90 + (360/5)*3}
+                            \unopR{2.5cm}{90}
+                            \unopBp{2.5cm}{90 + (360/5)}
+                            \unopG{2.5cm}{90 + (360/5)*2}
+                            \punto{2.5cm}{90 + (360/5)*4}
+                        \end{tikzpicture}
+                    }
     
             \tcbitem
-    
-                \centering
-                \scalebox{0.5}{
-                    \begin{tikzpicture}
-                        \petersen
-                        \unopG{5cm}{90 + (360/5)*1}
-                        \unopB{5cm}{90 + (360/5)*3}
-                        \unopR{2.5cm}{90 + (360/5)*3}
-                        \unopBp{2.5cm}{90 + (360/5)}
-                        \unopGunopR{2.5cm}{90 + (360/5)*2}
-                        \punto{2.5cm}{90 + (360/5)*4}
-                    \end{tikzpicture}
-                }
+                \tcblower
+                    \scalebox{0.5}{
+                        \begin{tikzpicture}
+                            \petersen
+                            \unopG{5cm}{90 + (360/5)*1}
+                            \unopB{5cm}{90 + (360/5)*3}
+                            \unopR{2.5cm}{90 + (360/5)*3}
+                            \unopBp{2.5cm}{90 + (360/5)}
+                            \unopGunopR{2.5cm}{90 + (360/5)*2}
+                            \punto{2.5cm}{90 + (360/5)*4}
+                        \end{tikzpicture}
+                    }
             
             \tcbitem
-    
-                \centering
-                \scalebox{0.5}{
-                    \begin{tikzpicture}
-                        \petersen
-                        \unopG{5cm}{90 + (360/5)*1}
-                        \unopB{5cm}{90 + (360/5)*2}
-                        \unopR{2.5cm}{90 + (360/5)*3}
-                        \unopR{2.5cm}{90}
-                        \unopBp{2.5cm}{90 + (360/5)}
-                        \unopG{2.5cm}{90 + (360/5)*2}
-                        \punto{2.5cm}{90 + (360/5)*4}
-                    \end{tikzpicture}
-                }
+                \tcblower
+                    \scalebox{0.5}{
+                        \begin{tikzpicture}
+                            \petersen
+                            \unopG{5cm}{90 + (360/5)*1}
+                            \unopB{5cm}{90 + (360/5)*2}
+                            \unopR{2.5cm}{90 + (360/5)*3}
+                            \unopR{2.5cm}{90}
+                            \unopBp{2.5cm}{90 + (360/5)}
+                            \unopG{2.5cm}{90 + (360/5)*2}
+                            \punto{2.5cm}{90 + (360/5)*4}
+                        \end{tikzpicture}
+                    }
         \end{tcbitemize}
+        \captionsetup{font=footnotesize}
         \caption{}
         \label{fig:possible2}
         \end{figure}
 
 \end{proof}
     
-\begin{teorema}
-    If $P$ denotes the Petersen graph, then $c\paren{\t{2}{P}}=4$.
-\end{teorema}
+% \begin{teorema}
+%     If $P$ denotes the Petersen graph, then $c\paren{\t{2}{P}}=4$.
+% \end{teorema}
 
-\begin{proof}
-    From Lemma \ref{bound} we already know that $c\paren{\t{2}{P}}\geq 4$. It
-    suffices to show that $c\paren{\t{2}{P}}\leq 4$. Recall that $\gamma(P)=3$,
-    so that one may choose the initial configuration of the cops to be one in
-    which they, individually, ocuppy a permutation of the $3$ vertices of a
-    dominating set (see (a) in Figure \ref{fig:initial}). We claim that, in
-    their first turn after choosing an initial configuration, cops $c_1$ and
-    $c_2$ can capture $r_1$ and $r_2$ with their first and second tokens
-    respectively. This can easily be seen from Figure \ref{fig:initial} since
-    there are at least two colors in each vertex, so in case $c_{1,1}$ and
-    $c_{2,2}$ were not at distance one from their respective targets, they would
-    just exchange their colors (and the shapes within their new color if
-    needed).
+% \begin{proof}
+%     From Lemma \ref{bound} we already know that $c\paren{\t{2}{P}}\geq 4$. It
+%     suffices to show that $c\paren{\t{2}{P}}\leq 4$. Recall that $\gamma(P)=3$,
+%     so that one may choose the initial configuration of the cops to be one in
+%     which they, individually, ocuppy a permutation of the $3$ vertices of a
+%     dominating set (see (a) in Figure \ref{fig:initial}). We claim that, in
+%     their first turn after choosing an initial configuration, cops $c_1$ and
+%     $c_2$ can capture $r_1$ and $r_2$ with their first and second tokens
+%     respectively. This can easily be seen from Figure \ref{fig:initial} since
+%     there are at least two colors in each vertex, so in case $c_{1,1}$ and
+%     $c_{2,2}$ were not at distance one from their respective targets, they would
+%     just exchange their colors (and the shapes within their new color if
+%     needed).
 
-    \begin{figure}[ht]
-        \centering
-        \begin{tcbitemize}[raster columns=2,raster equal height, enhanced,
-            colback=Black!5!white,colframe=Grey!75!black,
-            phantom={\setcounter{myrasternum}{\thetcbrasternum}},
-            title={(\alph{myrasternum})\enspace}, boxsep=0mm, right=0.5mm,
-            left=0.5mm, fonttitle=\bfseries, coltitle=black, raster
-            column skip=1mm, detach title,before upper=\tcbtitle, raster
-            halign=center, raster row skip=1mm]
+%     \begin{figure}[ht]
+%         \centering
+%         \begin{tcbitemize}[raster columns=2,raster equal height, enhanced,
+%             colback=Black!5!white,colframe=Grey!75!black,
+%             phantom={\setcounter{myrasternum}{\thetcbrasternum}},
+%             title={(\alph{myrasternum})\enspace}, boxsep=0mm, right=0.5mm,
+%             left=0.5mm, fonttitle=\bfseries, coltitle=black, raster
+%             column skip=1mm, detach title,before upper=\tcbtitle, raster
+%             halign=center, raster row skip=1mm]
 
-            \tcbitem
+%             \tcbitem
 
-                \centering
-                \scalebox{0.5}{
-                    \begin{tikzpicture}
-                            \petersen
-                            \unopBunopYunotR{5cm}{90 + (360/5)*2}
-                            \unotBunotYunopG{2.5cm}{90 + (360/5)*4}
-                            \unotGunopR{2.5cm}{90}
-                    \end{tikzpicture}
-                }
+%                 \centering
+%                 \scalebox{0.5}{
+%                     \begin{tikzpicture}
+%                             \petersen
+%                             \unopBunopYunotR{5cm}{90 + (360/5)*2}
+%                             \unotBunotYunopG{2.5cm}{90 + (360/5)*4}
+%                             \unotGunopR{2.5cm}{90}
+%                     \end{tikzpicture}
+%                 }
             
-            \tcbitem
+%             \tcbitem
 
-                \centering
-                \scalebox{0.5}{
-                    \begin{tikzpicture}
-                        \petersen
-                        \unopBp{5cm}{90 + (360/5)*3}
-                        \unopR{2.5cm}{90 + (360/5)*3}
-                        \unotGt{5cm}{90}
-                        \unotY{5cm}{90 + (360/5)*4}
-                        \unotBunopG{2.5cm}{90 + (360/5)*4}
-                        \unotRunopY{5cm}{90 + (360/5)*2}
-                    \end{tikzpicture}
-                }
-                \end{tcbitemize}
-        \caption{A possible initial configuration is shown in (a), where all
-                tokens lie in one of the three vertices of a dominating set. We will fix
-                colors to represent different cops, so that blue corresponds to $c_1$,
-                green to $c_2$, red to $c_3$ and yellow to $c_4$. In a similar fashion,
-                figures indicate the number of token of the corresponding cop, implying
-                that the blue dot referes to cop $c_{1,1}$, while the green triangle
-                represents cop $c_{2,2}$. In (b) the worst case scenario is shown after
-                all cops have moved and before $R$ does its first move.}
-        \label{fig:initial}
-    \end{figure}
+%                 \centering
+%                 \scalebox{0.5}{
+%                     \begin{tikzpicture}
+%                         \petersen
+%                         \unopBp{5cm}{90 + (360/5)*3}
+%                         \unopR{2.5cm}{90 + (360/5)*3}
+%                         \unotGt{5cm}{90}
+%                         \unotY{5cm}{90 + (360/5)*4}
+%                         \unotBunopG{2.5cm}{90 + (360/5)*4}
+%                         \unotRunopY{5cm}{90 + (360/5)*2}
+%                     \end{tikzpicture}
+%                 }
+%                 \end{tcbitemize}
+%         \caption{A possible initial configuration is shown in (a), where all
+%                 tokens lie in one of the three vertices of a dominating set. We will fix
+%                 colors to represent different cops, so that blue corresponds to $c_1$,
+%                 green to $c_2$, red to $c_3$ and yellow to $c_4$. In a similar fashion,
+%                 figures indicate the number of token of the corresponding cop, implying
+%                 that the blue dot referes to cop $c_{1,1}$, while the green triangle
+%                 represents cop $c_{2,2}$. In (b) the worst case scenario is shown after
+%                 all cops have moved and before $R$ does its first move.}
+%         \label{fig:initial}
+%     \end{figure}
 
-    Once the latter has happened, cops $3$ and $4$ move to capture $r_1$ and
-    $r_2$ respectively, emphasizing that token $c_{i,j}$ always move towards
-    token $r_j$. Thus, if $c_3$ had any of his tokens at distance $1$ from
-    $r_1$, it would possibly relabel it to put $c_{3,1}$ in position to capture
-    $r_1$ in the same turn (and the sasme would happen for $c_{4,2}$).
-    Nevertheless, per cop, there is one vertex in the dominating set where no
-    token of such cop is, meaning $c_{3,1}$ and $c_{4,2}$ might not capture
-    their objectives in the current turn. Despite this fact, since the diameter
-    in $P$ is $2$, in the worst case both $c_{3,1}$ and $c_{4,2}$ end their
-    turns at distance $1$ from $r_1$ and $r_2$ respectively (see (b) from Figure
-    \ref{fig:initial}).
-    Esto es falso, ya me rendi :(
+%     Once the latter has happened, cops $3$ and $4$ move to capture $r_1$ and
+%     $r_2$ respectively, emphasizing that token $c_{i,j}$ always move towards
+%     token $r_j$. Thus, if $c_3$ had any of his tokens at distance $1$ from
+%     $r_1$, it would possibly relabel it to put $c_{3,1}$ in position to capture
+%     $r_1$ in the same turn (and the sasme would happen for $c_{4,2}$).
+%     Nevertheless, per cop, there is one vertex in the dominating set where no
+%     token of such cop is, meaning $c_{3,1}$ and $c_{4,2}$ might not capture
+%     their objectives in the current turn. Despite this fact, since the diameter
+%     in $P$ is $2$, in the worst case both $c_{3,1}$ and $c_{4,2}$ end their
+%     turns at distance $1$ from $r_1$ and $r_2$ respectively (see (b) from Figure
+%     \ref{fig:initial}).
+%     Esto es falso, ya me rendi :(
 
-    Given the current situation, if $R$ passes, then both $c_{3,1}$ and
-    $c_{4,2}$ achieve their goal. Otherwise, assume without loss of generality
-    that $r_1$ has moved. This yields to $c_{4,2}$ capturing $r_2$, while
-    $c_{1,1}$ recaptures $r_1$ and $c_{3,1}$ follows the shortest path leading
-    to $r_1$, which is unique and will leave it at distance one from its
-    objective. At the moment, if $R$ wants to avoid both $c_{4,2}$ and $c_{3,1}$
-    to capture their objectives, he needs to keep moving $r_1$ indefinitely.
-    Moreover, it has to do so by avoiding the vertices in the closed
-    neighborhood of $c_{3,2}$, since entering to one of those would make $c_3$
-    to relabel their tokens, capturing $r_1$ with $c_{3,1}$ in that same turn.
-    Notice that $R$ would have to move $r_1$ on an induced copy of $C_6$ (not
-    able to move back since $c_{3,1}$ is always following him). Therefore,
-    either $c_2$ or $c_4$ could positionate their first token in a vertex of
-    such cycle so that, eventually, $r_1$ could not move forward in the cycle,
-    since both $c_2$ and $c_4$ are already capturing $r_2$. Hence, $R$ can only
-    pass, move $r_1$ backwards to $c_{3,1}$, or move $r_1$ into the neighborhood
-    of $c_{3,2}$. Then, both $c_{3,1}$ and $c_{4,2}$ would be capturing their
-    objectives (see Figure \ref{fig:cycle}).
+%     Given the current situation, if $R$ passes, then both $c_{3,1}$ and
+%     $c_{4,2}$ achieve their goal. Otherwise, assume without loss of generality
+%     that $r_1$ has moved. This yields to $c_{4,2}$ capturing $r_2$, while
+%     $c_{1,1}$ recaptures $r_1$ and $c_{3,1}$ follows the shortest path leading
+%     to $r_1$, which is unique and will leave it at distance one from its
+%     objective. At the moment, if $R$ wants to avoid both $c_{4,2}$ and $c_{3,1}$
+%     to capture their objectives, he needs to keep moving $r_1$ indefinitely.
+%     Moreover, it has to do so by avoiding the vertices in the closed
+%     neighborhood of $c_{3,2}$, since entering to one of those would make $c_3$
+%     to relabel their tokens, capturing $r_1$ with $c_{3,1}$ in that same turn.
+%     Notice that $R$ would have to move $r_1$ on an induced copy of $C_6$ (not
+%     able to move back since $c_{3,1}$ is always following him). Therefore,
+%     either $c_2$ or $c_4$ could positionate their first token in a vertex of
+%     such cycle so that, eventually, $r_1$ could not move forward in the cycle,
+%     since both $c_2$ and $c_4$ are already capturing $r_2$. Hence, $R$ can only
+%     pass, move $r_1$ backwards to $c_{3,1}$, or move $r_1$ into the neighborhood
+%     of $c_{3,2}$. Then, both $c_{3,1}$ and $c_{4,2}$ would be capturing their
+%     objectives (see Figure \ref{fig:cycle}).
 
-    \begin{figure}[ht]
-        \centering
-        \begin{tcbitemize}[raster columns=2,raster equal height, enhanced,
-            colback=Black!5!white,colframe=Grey!75!black,
-            phantom={\setcounter{myrasternum}{\thetcbrasternum}},
-            title={(\alph{myrasternum})\enspace}, boxsep=0mm, right=0.5mm,
-            left=0.5mm, fonttitle=\bfseries, coltitle=black, raster column
-            skip=1mm, detach title,before upper=\tcbtitle\\, raster
-            halign=center, raster row skip=1mm]
+%     \begin{figure}[ht]
+%         \centering
+%         \begin{tcbitemize}[raster columns=2,raster equal height, enhanced,
+%             colback=Black!5!white,colframe=Grey!75!black,
+%             phantom={\setcounter{myrasternum}{\thetcbrasternum}},
+%             title={(\alph{myrasternum})\enspace}, boxsep=0mm, right=0.5mm,
+%             left=0.5mm, fonttitle=\bfseries, coltitle=black, raster column
+%             skip=1mm, detach title,before upper=\tcbtitle\\, raster
+%             halign=center, raster row skip=1mm]
 
-            \tcbitem
+%             \tcbitem
                 
-                \centering
-                \scalebox{0.5}{
-                    \begin{tikzpicture}
-                            \petersendos
-                            \unotGunotYt{5cm}{90 + (360/5)}
-                            \unopBp{2.5cm}{90 + (360/5)*4}
-                            \unopR{5cm}{90 + (360/5)*4}
-                            \unotRunopY{5cm}{90 + (360/5)*2}
-                            \unopG{5cm}{90}
-                            \unotB{2.5cm}{90 + (360/5)}
+%                 \centering
+%                 \scalebox{0.5}{
+%                     \begin{tikzpicture}
+%                             \petersendos
+%                             \unotGunotYt{5cm}{90 + (360/5)}
+%                             \unopBp{2.5cm}{90 + (360/5)*4}
+%                             \unopR{5cm}{90 + (360/5)*4}
+%                             \unotRunopY{5cm}{90 + (360/5)*2}
+%                             \unopG{5cm}{90}
+%                             \unotB{2.5cm}{90 + (360/5)}
 
-                    \end{tikzpicture}
-                }
+%                     \end{tikzpicture}
+%                 }
             
-            \tcbitem
+%             \tcbitem
 
-                \centering
-                \scalebox{0.5}{
-                    \begin{tikzpicture}
-                        \petersendos
-                        \unotGunotYt{5cm}{90 + (360/5)}
-                        \unopBp{2.5cm}{90 + (360/5)}
-                        \unotBunopR{2.5cm}{90 + (360/5)*4}
-                        \unotRunopY{5cm}{90 + (360/5)*2}
-                        \unopG{5cm}{90}
+%                 \centering
+%                 \scalebox{0.5}{
+%                     \begin{tikzpicture}
+%                         \petersendos
+%                         \unotGunotYt{5cm}{90 + (360/5)}
+%                         \unopBp{2.5cm}{90 + (360/5)}
+%                         \unotBunopR{2.5cm}{90 + (360/5)*4}
+%                         \unotRunopY{5cm}{90 + (360/5)*2}
+%                         \unopG{5cm}{90}
                         
-                    \end{tikzpicture}
-                }
-            \tcbitem
+%                     \end{tikzpicture}
+%                 }
+%             \tcbitem
 
-                \centering
-                \scalebox{0.5}{
-                    \begin{tikzpicture}
-                        \petersendos
-                        \unotGunotYt{5cm}{90 + (360/5)}
-                        \unopBp{2.5cm}{90 + (360/5)*3}
-                        \unotB{2.5cm}{90 + (360/5)*4}
-                        \unopR{2.5cm}{90 + (360/5)}
-                        \unotRunopY{5cm}{90 + (360/5)*2}
-                        \unopG{5cm}{90}
+%                 \centering
+%                 \scalebox{0.5}{
+%                     \begin{tikzpicture}
+%                         \petersendos
+%                         \unotGunotYt{5cm}{90 + (360/5)}
+%                         \unopBp{2.5cm}{90 + (360/5)*3}
+%                         \unotB{2.5cm}{90 + (360/5)*4}
+%                         \unopR{2.5cm}{90 + (360/5)}
+%                         \unotRunopY{5cm}{90 + (360/5)*2}
+%                         \unopG{5cm}{90}
                         
-                    \end{tikzpicture}
-                }
+%                     \end{tikzpicture}
+%                 }
             
-                \tcbitem
+%                 \tcbitem
 
-                    \centering
-                    \scalebox{0.5}{
-                        \begin{tikzpicture}
-                            \petersendos
-                            \unotGunotYt{5cm}{90 + (360/5)}
-                            \unopBp{2.5cm}{90}
-                            \unotB{2.5cm}{90 + (360/5)*4}
-                            \unopR{2.5cm}{90 + (360/5)*3}
-                            \unotRunopY{5cm}{90 + (360/5)*2}
-                            \unopG{5cm}{90}
+%                     \centering
+%                     \scalebox{0.5}{
+%                         \begin{tikzpicture}
+%                             \petersendos
+%                             \unotGunotYt{5cm}{90 + (360/5)}
+%                             \unopBp{2.5cm}{90}
+%                             \unotB{2.5cm}{90 + (360/5)*4}
+%                             \unopR{2.5cm}{90 + (360/5)*3}
+%                             \unotRunopY{5cm}{90 + (360/5)*2}
+%                             \unopG{5cm}{90}
                             
-                        \end{tikzpicture}
-                    }
-        \end{tcbitemize}
-        \caption{Each scene depicts a configuration of the game where $R$ is to
-        play its turn. Notice thar $r_1$ avoids the neighborhood of $c_{3,2}$
-        and escapes from $c_{3,1}$ moving along the purple cycle. After $3$
-        turns, if $r_1$ wants to move, it either gets captured by $c_{3,1}$ or
-        gets at distance $1$ from $c_{3,2}$. Whenever there is an obstruction,
-        the cops relabel their tokens and pass since they no longer need to
-        recapture.}
-        \label{fig:cycle}
-    \end{figure}
+%                         \end{tikzpicture}
+%                     }
+%         \end{tcbitemize}
+%         \caption{Each scene depicts a configuration of the game where $R$ is to
+%         play its turn. Notice thar $r_1$ avoids the neighborhood of $c_{3,2}$
+%         and escapes from $c_{3,1}$ moving along the purple cycle. After $3$
+%         turns, if $r_1$ wants to move, it either gets captured by $c_{3,1}$ or
+%         gets at distance $1$ from $c_{3,2}$. Whenever there is an obstruction,
+%         the cops relabel their tokens and pass since they no longer need to
+%         recapture.}
+%         \label{fig:cycle}
+%     \end{figure}
 
-    In the following steps, $c_{1,1}$ and $c_{3,1}$ will move to recapture $r_1$
-    if such token were to be moved by $R$. In the same manner, $c_{2,2}$ and
-    $c_{4,2}$ will recapture whenever $R$ moves $r_2$. Now we claim that it is
-    possible to carry both $r_1$ and $r_2$ to be in adjacent vertices. Indeed,
-    let $N(r_1(t))=\l{u_1,v,u_2}$ and $N(r_2(t))=\l{w_1,v,w_2}$, noting that the
-    intersection of both sets is equal to $\l{v}$ since the diameter of Petersen
-    is $2$ and, between any pair of vertices, there is a unique path of shortest
-    lenght. Without loss of generality, assume the last token moved by $R$ is
-    $r_1$. Hence, $c_1$ and $c_3$ exhausted their movement by recapturing as
-    said at the beginning of the paragraph. Then, in an attempt to force $R$ to
-    fix $r_1$ in its position or to get it near to $r_2$, without loss of
-    generality $c_{2,1}$ and $c_{4,1}$ move their tokens to be adjacent to $u_1$
-    and $u_2$ respectively. Notice that this can be attained since, from any
-    possible vertex in which they could be, $C$ can move one to the neighborhood
-    of $u_1$ and the other to the neighborhood of $u_2$ (see Figure
-    \ref{fig:guarding0}).
+%     In the following steps, $c_{1,1}$ and $c_{3,1}$ will move to recapture $r_1$
+%     if such token were to be moved by $R$. In the same manner, $c_{2,2}$ and
+%     $c_{4,2}$ will recapture whenever $R$ moves $r_2$. Now we claim that it is
+%     possible to carry both $r_1$ and $r_2$ to be in adjacent vertices. Indeed,
+%     let $N(r_1(t))=\l{u_1,v,u_2}$ and $N(r_2(t))=\l{w_1,v,w_2}$, noting that the
+%     intersection of both sets is equal to $\l{v}$ since the diameter of Petersen
+%     is $2$ and, between any pair of vertices, there is a unique path of shortest
+%     lenght. Without loss of generality, assume the last token moved by $R$ is
+%     $r_1$. Hence, $c_1$ and $c_3$ exhausted their movement by recapturing as
+%     said at the beginning of the paragraph. Then, in an attempt to force $R$ to
+%     fix $r_1$ in its position or to get it near to $r_2$, without loss of
+%     generality $c_{2,1}$ and $c_{4,1}$ move their tokens to be adjacent to $u_1$
+%     and $u_2$ respectively. Notice that this can be attained since, from any
+%     possible vertex in which they could be, $C$ can move one to the neighborhood
+%     of $u_1$ and the other to the neighborhood of $u_2$ (see Figure
+%     \ref{fig:guarding0}).
 
-    \begin{figure}[ht]
-        \centering
-        \begin{tcbitemize}[raster columns=2,raster equal height, enhanced,
-            colback=Black!5!white,colframe=Grey!75!black,
-            phantom={\setcounter{myrasternum}{\thetcbrasternum}},
-            title={(\alph{myrasternum})\enspace}, boxsep=0mm, right=0.5mm,
-            left=0.5mm, fonttitle=\bfseries, coltitle=black, raster column
-            skip=1mm, detach title,before upper=\tcbtitle\\, raster
-            halign=center, raster row skip=1mm]
+%     \begin{figure}[ht]
+%         \centering
+%         \begin{tcbitemize}[raster columns=2, raster equal height, enhanced,
+%             colback=Black!5!white,colframe=Grey!75!black, attach title to upper,
+%             phantom={\setcounter{myrasternum}{\thetcbrasternum}},
+%             title={(\arabic{myrasternum})\enspace}, halign lower=center, halign
+%             upper = left, lower separated=false, middle=0mm, boxsep=0mm,
+%             leftupper=2mm, left=2mm, right=2mm, fonttitle=\bfseries,
+%             coltitle=black, raster column skip=1mm,raster halign=center, raster
+%             row skip=1mm]
 
-            \tcbitem
+%             \tcbitem
+%                 \tcblower
+%                     \scalebox{0.5}{
+%                         \begin{tikzpicture}
+%                             \petersentres
+%                             \unopBunopRp{2.5cm}{90 + (360/5)*2}
+%                             \unotGunotYt{5cm}{90 + (360/5)}
 
-                \centering
-                \scalebox{0.5}{
-                    \begin{tikzpicture}
-                        \petersentres
-                        \unopBunopRp{2.5cm}{90 + (360/5)*2}
-                        \unotGunotYt{5cm}{90 + (360/5)}
-
-                    \end{tikzpicture}
-                }
+%                         \end{tikzpicture}
+%                     }
             
-            \tcbitem
+%             \tcbitem
+%                 \tcblower
+%                     \scalebox{0.5}{
+%                         \begin{tikzpicture}
+%                             \petersencuatro
+%                             \unopBunopRp{2.5cm}{90 + (360/5)*2}
+%                             \unotGunotYt{5cm}{90 + (360/5)}
+%                             \unopGunopY{5cm}{90 + (360/5)*3}
+                            
+%                         \end{tikzpicture}
+%                     }
+%             \tcbitem
+%                 \tcblower
+%                     \scalebox{0.5}{
+%                         \begin{tikzpicture}
+%                             \petersen
+%                             \unopBunopRp{2.5cm}{90 + (360/5)*2}
+%                             \unotGunotYt{5cm}{90 + (360/5)}
+%                             \unopG{2.5cm}{90 + (360/5)*3}
+%                             \unopY{5cm}{90 + (360/5)*4}
+                            
+%                         \end{tikzpicture}
+%                     }
+%         \end{tcbitemize}
+%         \caption{In the following diagrams, $c_{1,2}$ and $c_{3,2}$ have been
+%         excluded since they do not play a role in the current step. In picture
+%         (a) $R$ has moved $r_1$, so $c_{1,1}$ and $c_{3,1}$ have recaptured him.
+%         Then, $c_{2,1}$ and $c_{4,1}$ want to guard both the blue and green
+%         vertices that are adjacent to the current vertex of $r_1$. Notice that
+%         black-shaded vertices are ignored since if either $c_{2,1}$ or $c_{4,1}$
+%         were there, then $C$ would win in his turn or that a cop would have two
+%         of their tokens in the same vertex (which is not allowed). In a similar
+%         way, if any of those two tokens were in the blue or green unshaded
+%         regions, then $C$ would win in his turn by capturing $r_1$ with such
+%         token due to $c_{2,2}$ and $c_{4,2}$ already capturing $r_2$. Finally,
+%         for any of the remaining vertices, crosshatched or not, there is a blue
+%         crosshatched vertex and a green crosshatched vertex in its closed
+%         neighborhood, determining the move of both $c_{2,1}$ and $c_{4,1}$ as
+%         per picture (b) and (c), ending $C$'s turn.}
+%         \label{fig:guarding0}
+%     \end{figure}
 
-                \centering
-                \scalebox{0.5}{
-                    \begin{tikzpicture}
-                        \petersencuatro
-                        \unopBunopRp{2.5cm}{90 + (360/5)*2}
-                        \unotGunotYt{5cm}{90 + (360/5)}
-                        \unopGunopY{5cm}{90 + (360/5)*3}
-                        
-                    \end{tikzpicture}
-                }
-            \tcbitem
+%     Observe that $r_1$ can be moved to neither $u_1$ nor $u_2$ since it will get
+%     $R$ to lose in the next turn. Therefore, either $R$ passes or moves $r_2$.
+%     In the first case, both $c_{2,1}$ and $c_{4,1}$ get to $u_1$ and $u_2$
+%     respectively to force $R$ to move $r_1$ closer to $r_2$ or to move $r_2$
+%     itself. Thus, in either case $R$ moves $r_2$ and we can assume without loss
+%     of generality that its new position is $w_1$. As mentioned before, $c_{2,2}$
+%     and $c_{4,2}$ would have to recapture $r_2$. If any obstruction were to
+%     exist, notice that it could be solved with a relabel of tokens, preserving
+%     the condition of $r_1$ not being able to move unless it gets near to $r_2$,
+%     leading to $R$ being forced to get $r_1$ and $r_2$ in adjacent vertices (see
+%     Figure \ref{fig:guarding}).
 
-                \centering
-                \scalebox{0.5}{
-                    \begin{tikzpicture}
-                        \petersen
-                        \unopBunopRp{2.5cm}{90 + (360/5)*2}
-                        \unotGunotYt{5cm}{90 + (360/5)}
-                        \unopG{2.5cm}{90 + (360/5)*3}
-                        \unopY{5cm}{90 + (360/5)*4}
-                        
-                    \end{tikzpicture}
-                }
-        \end{tcbitemize}
-        \caption{In the following diagrams, $c_{1,2}$ and $c_{3,2}$ have been
-        excluded since they do not play a role in the current step. In picture
-        (a) $R$ has moved $r_1$, so $c_{1,1}$ and $c_{3,1}$ have recaptured him.
-        Then, $c_{2,1}$ and $c_{4,1}$ want to guard both the blue and green
-        vertices that are adjacent to the current vertex of $r_1$. Notice that
-        black-shaded vertices are ignored since if either $c_{2,1}$ or $c_{4,1}$
-        were there, then $C$ would win in his turn or that a cop would have two
-        of their tokens in the same vertex (which is not allowed). In a similar
-        way, if any of those two tokens were in the blue or green unshaded
-        regions, then $C$ would win in his turn by capturing $r_1$ with such
-        token due to $c_{2,2}$ and $c_{4,2}$ already capturing $r_2$. Finally,
-        for any of the remaining vertices, crosshatched or not, there is a blue
-        crosshatched vertex and a green crosshatched vertex in its closed
-        neighborhood, determining the move of both $c_{2,1}$ and $c_{4,1}$ as
-        per picture (b) and (c), ending $C$'s turn.}
-        \label{fig:guarding0}
-    \end{figure}
+%     \begin{figure}[ht]
+%         \centering
+%         \begin{tcbitemize}[raster columns=2,raster equal height, enhanced,
+%             colback=Black!5!white,colframe=Grey!75!black,
+%             phantom={\setcounter{myrasternum}{\thetcbrasternum}},
+%             title={(\alph{myrasternum})\enspace}, boxsep=0mm, right=0.5mm,
+%             left=0.5mm, fonttitle=\bfseries, coltitle=black, raster column
+%             skip=1mm, detach title,before upper=\tcbtitle\\, raster
+%             halign=center, raster row skip=1mm]
 
-    Observe that $r_1$ can be moved to neither $u_1$ nor $u_2$ since it will get
-    $R$ to lose in the next turn. Therefore, either $R$ passes or moves $r_2$.
-    In the first case, both $c_{2,1}$ and $c_{4,1}$ get to $u_1$ and $u_2$
-    respectively to force $R$ to move $r_1$ closer to $r_2$ or to move $r_2$
-    itself. Thus, in either case $R$ moves $r_2$ and we can assume without loss
-    of generality that its new position is $w_1$. As mentioned before, $c_{2,2}$
-    and $c_{4,2}$ would have to recapture $r_2$. If any obstruction were to
-    exist, notice that it could be solved with a relabel of tokens, preserving
-    the condition of $r_1$ not being able to move unless it gets near to $r_2$,
-    leading to $R$ being forced to get $r_1$ and $r_2$ in adjacent vertices (see
-    Figure \ref{fig:guarding}).
+%             \tcbitem
 
-    \begin{figure}[ht]
-        \centering
-        \begin{tcbitemize}[raster columns=2,raster equal height, enhanced,
-            colback=Black!5!white,colframe=Grey!75!black,
-            phantom={\setcounter{myrasternum}{\thetcbrasternum}},
-            title={(\alph{myrasternum})\enspace}, boxsep=0mm, right=0.5mm,
-            left=0.5mm, fonttitle=\bfseries, coltitle=black, raster column
-            skip=1mm, detach title,before upper=\tcbtitle\\, raster
-            halign=center, raster row skip=1mm]
+%                 \centering
+%                 \scalebox{0.5}{
+%                     \begin{tikzpicture}
+%                         \petersen
+%                         \unopBunopRp{2.5cm}{90 + (360/5)*2}
+%                         \unotGunotY{5cm}{90 + (360/5)}
+%                         \unopGt{5cm}{90}
+%                         \unotB{2.5cm}{90 + (360/5)*4}
+%                         \unotR{2.5cm}{90 + (360/5)*3}
+%                         \unopY{5cm}{90 + (360/5)*4}
 
-            \tcbitem
-
-                \centering
-                \scalebox{0.5}{
-                    \begin{tikzpicture}
-                        \petersen
-                        \unopBunopRp{2.5cm}{90 + (360/5)*2}
-                        \unotGunotY{5cm}{90 + (360/5)}
-                        \unopGt{5cm}{90}
-                        \unotB{2.5cm}{90 + (360/5)*4}
-                        \unotR{2.5cm}{90 + (360/5)*3}
-                        \unopY{5cm}{90 + (360/5)*4}
-
-                    \end{tikzpicture}
-                }
+%                     \end{tikzpicture}
+%                 }
             
-            \tcbitem
+%             \tcbitem
 
-                \centering
-                \scalebox{0.5}{
-                    \begin{tikzpicture}
-                        \petersencinco
-                        \unopBunopRp{2.5cm}{90 + (360/5)*2}
-                        \unopG{5cm}{90 + (360/5)}
-                        \unotGunotYt{5cm}{90}
-                        \unotB{2.5cm}{90 + (360/5)*4}
-                        \unotR{2.5cm}{90 + (360/5)*3}
-                        \unopY{5cm}{90 + (360/5)*4}
+%                 \centering
+%                 \scalebox{0.5}{
+%                     \begin{tikzpicture}
+%                         \petersencinco
+%                         \unopBunopRp{2.5cm}{90 + (360/5)*2}
+%                         \unopG{5cm}{90 + (360/5)}
+%                         \unotGunotYt{5cm}{90}
+%                         \unotB{2.5cm}{90 + (360/5)*4}
+%                         \unotR{2.5cm}{90 + (360/5)*3}
+%                         \unopY{5cm}{90 + (360/5)*4}
                         
-                    \end{tikzpicture}
-                }
-            \tcbitem
+%                     \end{tikzpicture}
+%                 }
+%             \tcbitem
 
-                \centering
-                \scalebox{0.5}{
-                    \begin{tikzpicture}
-                        \petersen
-                        \unopBunopRp{2.5cm}{90 + (360/5)*2}
-                        \unopG{5cm}{90 + (360/5)}
-                        \unotGunotYt{5cm}{90}
-                        \unotB{2.5cm}{90 + (360/5)*4}
-                        \unotR{2.5cm}{90 + (360/5)*1}
-                        \unopY{5cm}{90 + (360/5)*4}
+%                 \centering
+%                 \scalebox{0.5}{
+%                     \begin{tikzpicture}
+%                         \petersen
+%                         \unopBunopRp{2.5cm}{90 + (360/5)*2}
+%                         \unopG{5cm}{90 + (360/5)}
+%                         \unotGunotYt{5cm}{90}
+%                         \unotB{2.5cm}{90 + (360/5)*4}
+%                         \unotR{2.5cm}{90 + (360/5)*1}
+%                         \unopY{5cm}{90 + (360/5)*4}
                         
-                    \end{tikzpicture}
-                }
-            \tcbitem
+%                     \end{tikzpicture}
+%                 }
+%             \tcbitem
 
-                \centering
-                \scalebox{0.5}{
-                    \begin{tikzpicture}
-                        \petersen
-                        \unopBunopRp{2.5cm}{90 + (360/5)*2}
-                        \unopG{5cm}{90 + (360/5)*2}
-                        \unotGunotYt{5cm}{90}
-                        \unotB{5cm}{90 + (360/5)*4}
-                        \unotR{5cm}{90 + (360/5)*1}
-                        \unopY{2.5cm}{90 + (360/5)*4}
+%                 \centering
+%                 \scalebox{0.5}{
+%                     \begin{tikzpicture}
+%                         \petersen
+%                         \unopBunopRp{2.5cm}{90 + (360/5)*2}
+%                         \unopG{5cm}{90 + (360/5)*2}
+%                         \unotGunotYt{5cm}{90}
+%                         \unotB{5cm}{90 + (360/5)*4}
+%                         \unotR{5cm}{90 + (360/5)*1}
+%                         \unopY{2.5cm}{90 + (360/5)*4}
                         
-                    \end{tikzpicture}
-                }
-        \end{tcbitemize}
-        \caption{In picture (a), $R$ just moved $r_2$, to which $C$ answers by
-        recapturing with $c_{4,2}$ and relabeling the tokens of $c_2$ as per
-        picture (b). Notice that the relabel causes $c_{2,1}$ to guard the new
-        neighbor of $r_1(t+1)$ which is not in the shortest path between
-        $r_1(t+1)$ and $r_2(t+1)$, still fulfilling his duty of the previous
-        step. Meanwhile, $c_{1,2}$ and $c_{3,2}$ are moved as in (c) to guard
-        the neighbors of $r_2(t+1)$ which are not in the shortest path between
-        $r_1(t+1)$ and $r_2(t+1)$. Notice that $R$ can only pass if he wants to
-        avoid getting $r_1$ and $r_2$ to be in adjacent vertices. Nonetheless,
-        $C$ move their cops as in (d), forcing $R$ to finally put $r_1$ and
-        $r_2$ at distance $1$.}
-        \label{fig:guarding}
-    \end{figure}
+%                     \end{tikzpicture}
+%                 }
+%         \end{tcbitemize}
+%         \caption{In picture (a), $R$ just moved $r_2$, to which $C$ answers by
+%         recapturing with $c_{4,2}$ and relabeling the tokens of $c_2$ as per
+%         picture (b). Notice that the relabel causes $c_{2,1}$ to guard the new
+%         neighbor of $r_1(t+1)$ which is not in the shortest path between
+%         $r_1(t+1)$ and $r_2(t+1)$, still fulfilling his duty of the previous
+%         step. Meanwhile, $c_{1,2}$ and $c_{3,2}$ are moved as in (c) to guard
+%         the neighbors of $r_2(t+1)$ which are not in the shortest path between
+%         $r_1(t+1)$ and $r_2(t+1)$. Notice that $R$ can only pass if he wants to
+%         avoid getting $r_1$ and $r_2$ to be in adjacent vertices. Nonetheless,
+%         $C$ move their cops as in (d), forcing $R$ to finally put $r_1$ and
+%         $r_2$ at distance $1$.}
+%         \label{fig:guarding}
+%     \end{figure}
 
-    Once more, let $N(w_1)=\l{u_1, r_2(t),y}$. Notice that one of $u_1$ and
-    $u_2$, without loss of generality $u_1$, is the new unique vertex in both
-    the neighborhoods of $r_1(t+1)$ and $r_2(t+1)$. Then, $c_{1,2}$ and
-    $c_{3,2}$ can be positioned on the neighborhood of $u_1$ and $y$
-    respectively, wanting to force $r_2$ to go back to $r_2(t)$. Note that for
-    that to happen, either $c_{1,1}$ or $c_{3,1}$ may relabel their tokens and
-    move from capturing their target as shown in Figure \ref{fig:guarding1}, not
-    representing a major problem since they would remain at distance $1$ from
-    $r_{1}$. Then, if $R$ passes, $c_{1,2}$ and $c_{3,2}$ get to $r_2(t)$ and
-    $y$ respectively unless one of $c_{1,1}$ and $c_{3,1}$ is not capturing
-    $r_1$, case in which such token recaptures $r_1$. Meanwhile $c_{2,1}$ gets
-    positioned so that it guards $v$ instead of $u_1$, whereas $c_{4,1}$ advances
-    to $u_2$, being left at distance $1$ from $r_1$ (see (d) in Figure
-    \ref{fig:guarding1}).
+%     Once more, let $N(w_1)=\l{u_1, r_2(t),y}$. Notice that one of $u_1$ and
+%     $u_2$, without loss of generality $u_1$, is the new unique vertex in both
+%     the neighborhoods of $r_1(t+1)$ and $r_2(t+1)$. Then, $c_{1,2}$ and
+%     $c_{3,2}$ can be positioned on the neighborhood of $u_1$ and $y$
+%     respectively, wanting to force $r_2$ to go back to $r_2(t)$. Note that for
+%     that to happen, either $c_{1,1}$ or $c_{3,1}$ may relabel their tokens and
+%     move from capturing their target as shown in Figure \ref{fig:guarding1}, not
+%     representing a major problem since they would remain at distance $1$ from
+%     $r_{1}$. Then, if $R$ passes, $c_{1,2}$ and $c_{3,2}$ get to $r_2(t)$ and
+%     $y$ respectively unless one of $c_{1,1}$ and $c_{3,1}$ is not capturing
+%     $r_1$, case in which such token recaptures $r_1$. Meanwhile $c_{2,1}$ gets
+%     positioned so that it guards $v$ instead of $u_1$, whereas $c_{4,1}$ advances
+%     to $u_2$, being left at distance $1$ from $r_1$ (see (d) in Figure
+%     \ref{fig:guarding1}).
 
-    \begin{figure}[ht]
-        \centering
-        \begin{tcbitemize}[raster columns=2,raster equal height, enhanced,
-            colback=Black!5!white,colframe=Grey!75!black,
-            phantom={\setcounter{myrasternum}{\thetcbrasternum}},
-            title={(\alph{myrasternum})\enspace}, boxsep=0mm, right=0.5mm,
-            left=0.5mm, fonttitle=\bfseries, coltitle=black, raster column
-            skip=1mm, detach title,before upper=\tcbtitle\\, raster
-            halign=center, raster row skip=1mm]
+%     \begin{figure}[ht]
+%         \centering
+%         \begin{tcbitemize}[raster columns=2,raster equal height, enhanced,
+%             colback=Black!5!white,colframe=Grey!75!black,
+%             phantom={\setcounter{myrasternum}{\thetcbrasternum}},
+%             title={(\alph{myrasternum})\enspace}, boxsep=0mm, right=0.5mm,
+%             left=0.5mm, fonttitle=\bfseries, coltitle=black, raster column
+%             skip=1mm, detach title,before upper=\tcbtitle\\, raster
+%             halign=center, raster row skip=1mm]
 
-            \tcbitem
+%             \tcbitem
 
-                \centering
-                \scalebox{0.5}{
-                    \begin{tikzpicture}
-                        \petersen
-                        \unopBunopRp{2.5cm}{90 + (360/5)*2}
-                        \unotGunotY{5cm}{90 + (360/5)}
-                        \tri{5cm}{90}
-                        \unotBunotR{2.5cm}{90 + (360/5)*4}
-                        \unopG{2.5cm}{90 + (360/5)*3}
-                        \unopY{5cm}{90 + (360/5)*4}
+%                 \centering
+%                 \scalebox{0.5}{
+%                     \begin{tikzpicture}
+%                         \petersen
+%                         \unopBunopRp{2.5cm}{90 + (360/5)*2}
+%                         \unotGunotY{5cm}{90 + (360/5)}
+%                         \tri{5cm}{90}
+%                         \unotBunotR{2.5cm}{90 + (360/5)*4}
+%                         \unopG{2.5cm}{90 + (360/5)*3}
+%                         \unopY{5cm}{90 + (360/5)*4}
 
-                    \end{tikzpicture}
-                }
+%                     \end{tikzpicture}
+%                 }
             
-            \tcbitem
+%             \tcbitem
 
-                \centering
-                \scalebox{0.5}{
-                    \begin{tikzpicture}
-                        \petersenseis
-                        \unopBunopRp{2.5cm}{90 + (360/5)*2}
-                        \unotGunotYt{5cm}{90}
-                        \unotBunotR{2.5cm}{90 + (360/5)*4}
-                        \unopG{2.5cm}{90 + (360/5)*3}
-                        \unopY{5cm}{90 + (360/5)*4}
+%                 \centering
+%                 \scalebox{0.5}{
+%                     \begin{tikzpicture}
+%                         \petersenseis
+%                         \unopBunopRp{2.5cm}{90 + (360/5)*2}
+%                         \unotGunotYt{5cm}{90}
+%                         \unotBunotR{2.5cm}{90 + (360/5)*4}
+%                         \unopG{2.5cm}{90 + (360/5)*3}
+%                         \unopY{5cm}{90 + (360/5)*4}
                         
-                    \end{tikzpicture}
-                }
-            \tcbitem
+%                     \end{tikzpicture}
+%                 }
+%             \tcbitem
 
-                \centering
-                \scalebox{0.5}{
-                    \begin{tikzpicture}
-                        \petersen
-                        \unopBp{2.5cm}{90 + (360/5)*2}
-                        \unotR{2.5cm}{90}
-                        \unotGunotYt{5cm}{90}
-                        \unotBunopR{2.5cm}{90 + (360/5)*4}
-                        \unopG{2.5cm}{90 + (360/5)*3}
-                        \unopY{5cm}{90 + (360/5)*4}
+%                 \centering
+%                 \scalebox{0.5}{
+%                     \begin{tikzpicture}
+%                         \petersen
+%                         \unopBp{2.5cm}{90 + (360/5)*2}
+%                         \unotR{2.5cm}{90}
+%                         \unotGunotYt{5cm}{90}
+%                         \unotBunopR{2.5cm}{90 + (360/5)*4}
+%                         \unopG{2.5cm}{90 + (360/5)*3}
+%                         \unopY{5cm}{90 + (360/5)*4}
                         
-                    \end{tikzpicture}
-                }
-            \tcbitem
+%                     \end{tikzpicture}
+%                 }
+%             \tcbitem
 
-                \centering
-                \scalebox{0.5}{
-                    \begin{tikzpicture}
-                        \petersen
-                        \unopBunopRp{2.5cm}{90 + (360/5)*2}
-                        \unotR{2.5cm}{90}
-                        \unotGunotYt{5cm}{90}
-                        \unopG{5cm}{90 + (360/5)*3}
-                        \unopY{2.5cm}{90 + (360/5)*4}
-                        \unotB{5cm}{90 + (360/5)*4}
+%                 \centering
+%                 \scalebox{0.5}{
+%                     \begin{tikzpicture}
+%                         \petersen
+%                         \unopBunopRp{2.5cm}{90 + (360/5)*2}
+%                         \unotR{2.5cm}{90}
+%                         \unotGunotYt{5cm}{90}
+%                         \unopG{5cm}{90 + (360/5)*3}
+%                         \unopY{2.5cm}{90 + (360/5)*4}
+%                         \unotB{5cm}{90 + (360/5)*4}
                         
-                    \end{tikzpicture}
-                }
-        \end{tcbitemize}
-        \caption{When the movement of $r_2$ does not propiciate an obstruction
-        of cop $c_2$ or $c_4$, both cops recapture as usual, whereas $c_{1,2}$
-        and $c_{3,2}$ try to guard the blue and green unshaded vertices. Observe
-        that only two vertices - the neighbors of $r_1(t+1)$ different from the
-        blue one- are such that they do not have a blue crosshatched neighbor.
-        For such cases as the one presented in (b), $C$ chooses one cop between
-        $c_{1,1}$ and $c_{3,1}$ to relabel with his second token and proceeds to
-        get it in the blue unshaded vertex as shown in (c). Even though
-        $c_{3,1}$ is not capturing $r_1$, if $r_2$ were to enter the vertex in
-        wich $r_{3,2}$ is, $C$ would win in the next turn since $c_{3,1}$ was
-        left at distance $1$ from $r_1$. Therefore, if $R$ wants to avoid having
-        $r_1$ by $r_2$, it will either pass, move $r_1$ to $v$, or move $r_2$
-        back into $r_2(t)$. If $R$ were to pass, then $C$ move their cops as
-        shown in (d), forcing the move of either $r_2$ to $r_2(t)$ or $r_1$ to
-        $v$.}
-        \label{fig:guarding1}
-    \end{figure}
+%                     \end{tikzpicture}
+%                 }
+%         \end{tcbitemize}
+%         \caption{When the movement of $r_2$ does not propiciate an obstruction
+%         of cop $c_2$ or $c_4$, both cops recapture as usual, whereas $c_{1,2}$
+%         and $c_{3,2}$ try to guard the blue and green unshaded vertices. Observe
+%         that only two vertices - the neighbors of $r_1(t+1)$ different from the
+%         blue one- are such that they do not have a blue crosshatched neighbor.
+%         For such cases as the one presented in (b), $C$ chooses one cop between
+%         $c_{1,1}$ and $c_{3,1}$ to relabel with his second token and proceeds to
+%         get it in the blue unshaded vertex as shown in (c). Even though
+%         $c_{3,1}$ is not capturing $r_1$, if $r_2$ were to enter the vertex in
+%         wich $r_{3,2}$ is, $C$ would win in the next turn since $c_{3,1}$ was
+%         left at distance $1$ from $r_1$. Therefore, if $R$ wants to avoid having
+%         $r_1$ by $r_2$, it will either pass, move $r_1$ to $v$, or move $r_2$
+%         back into $r_2(t)$. If $R$ were to pass, then $C$ move their cops as
+%         shown in (d), forcing the move of either $r_2$ to $r_2(t)$ or $r_1$ to
+%         $v$.}
+%         \label{fig:guarding1}
+%     \end{figure}
 
-    Thus, $R$ is forced to move either $r_1$ to $v$ or $r_2$ to $r_2(t)$.
-    Without loss of generality, suppose that $R$ moves $r_1$ to $v$. Just as before,
-    $c_{1,1}$ and $c_{3,1}$ move towards $r_1$, while $c_{2,1}$ and $c_{4,1}$
-    are positioned to guard the vertices in the neighborhood of $v$ aside from
-    $r_2(t)$. At this position, either $R$ passes or gets $r_1$ to be adjacent
-    to $r_2$. Moreover, if it passes, $C$ can move his cops as shown in
-    (a)-(d) of Figure \ref{fig:guarding2} to force $R$ to put $r_1$ by $r_2$.
+%     Thus, $R$ is forced to move either $r_1$ to $v$ or $r_2$ to $r_2(t)$.
+%     Without loss of generality, suppose that $R$ moves $r_1$ to $v$. Just as before,
+%     $c_{1,1}$ and $c_{3,1}$ move towards $r_1$, while $c_{2,1}$ and $c_{4,1}$
+%     are positioned to guard the vertices in the neighborhood of $v$ aside from
+%     $r_2(t)$. At this position, either $R$ passes or gets $r_1$ to be adjacent
+%     to $r_2$. Moreover, if it passes, $C$ can move his cops as shown in
+%     (a)-(d) of Figure \ref{fig:guarding2} to force $R$ to put $r_1$ by $r_2$.
 
-    \begin{figure}[ht]
-        \centering
-        \begin{tcbitemize}[raster columns=2,raster equal height, enhanced,
-            colback=Black!5!white,colframe=Grey!75!black,
-            phantom={\setcounter{myrasternum}{\thetcbrasternum}},
-            title={(\alph{myrasternum})\enspace}, boxsep=0mm, right=0.5mm,
-            left=0.5mm, fonttitle=\bfseries, coltitle=black, raster column
-            skip=1mm, detach title,before upper=\tcbtitle\\, raster
-            halign=center, raster row skip=1mm]
+%     \begin{figure}[ht]
+%         \centering
+%         \begin{tcbitemize}[raster columns=2,raster equal height, enhanced,
+%             colback=Black!5!white,colframe=Grey!75!black,
+%             phantom={\setcounter{myrasternum}{\thetcbrasternum}},
+%             title={(\alph{myrasternum})\enspace}, boxsep=0mm, right=0.5mm,
+%             left=0.5mm, fonttitle=\bfseries, coltitle=black, raster column
+%             skip=1mm, detach title,before upper=\tcbtitle\\, raster
+%             halign=center, raster row skip=1mm]
 
-            \tcbitem
+%             \tcbitem
 
-                \centering
-                \scalebox{0.5}{
-                    \begin{tikzpicture}
-                        \petersen
-                        \unopB{2.5cm}{90 + (360/5)*2}
-                        \punto{5cm}{90 + (360/5)*2}
-                        \unotR{2.5cm}{90}
-                        \unotGunotYt{5cm}{90}
-                        \unotBunopR{2.5cm}{90 + (360/5)*4}
-                        \unopG{2.5cm}{90 + (360/5)*3}
-                        \unopY{5cm}{90 + (360/5)*4}
+%                 \centering
+%                 \scalebox{0.5}{
+%                     \begin{tikzpicture}
+%                         \petersen
+%                         \unopB{2.5cm}{90 + (360/5)*2}
+%                         \punto{5cm}{90 + (360/5)*2}
+%                         \unotR{2.5cm}{90}
+%                         \unotGunotYt{5cm}{90}
+%                         \unotBunopR{2.5cm}{90 + (360/5)*4}
+%                         \unopG{2.5cm}{90 + (360/5)*3}
+%                         \unopY{5cm}{90 + (360/5)*4}
                         
-                    \end{tikzpicture}
-                }
+%                     \end{tikzpicture}
+%                 }
             
-            \tcbitem
+%             \tcbitem
 
-                \centering
-                \scalebox{0.5}{
-                    \begin{tikzpicture}
-                        \petersen
-                        \unopBp{5cm}{90 + (360/5)*2}
-                        \unopR{2.5cm}{90 + (360/5)*2}
-                        \unotR{2.5cm}{90}
-                        \unotGunotYt{5cm}{90}
-                        \unotBunopY{2.5cm}{90 + (360/5)*4}
-                        \unopG{2.5cm}{90 + (360/5)*3}
+%                 \centering
+%                 \scalebox{0.5}{
+%                     \begin{tikzpicture}
+%                         \petersen
+%                         \unopBp{5cm}{90 + (360/5)*2}
+%                         \unopR{2.5cm}{90 + (360/5)*2}
+%                         \unotR{2.5cm}{90}
+%                         \unotGunotYt{5cm}{90}
+%                         \unotBunopY{2.5cm}{90 + (360/5)*4}
+%                         \unopG{2.5cm}{90 + (360/5)*3}
                         
-                    \end{tikzpicture}
-                }
-            \tcbitem
+%                     \end{tikzpicture}
+%                 }
+%             \tcbitem
 
-                \centering
-                \scalebox{0.5}{
-                    \begin{tikzpicture}
-                        \petersen
-                        \unopBunopRp{5cm}{90 + (360/5)*2}
-                        \unotR{2.5cm}{90}
-                        \unotGunotYt{5cm}{90}
-                        \unotB{5cm}{90 + (360/5)*4}
-                        \unopY{2.5cm}{90 + (360/5)*2}
-                        \unopG{5cm}{90 + (360/5)*3}
+%                 \centering
+%                 \scalebox{0.5}{
+%                     \begin{tikzpicture}
+%                         \petersen
+%                         \unopBunopRp{5cm}{90 + (360/5)*2}
+%                         \unotR{2.5cm}{90}
+%                         \unotGunotYt{5cm}{90}
+%                         \unotB{5cm}{90 + (360/5)*4}
+%                         \unopY{2.5cm}{90 + (360/5)*2}
+%                         \unopG{5cm}{90 + (360/5)*3}
                         
-                    \end{tikzpicture}
-                }
-            \tcbitem
+%                     \end{tikzpicture}
+%                 }
+%             \tcbitem
 
-                \centering
-                \scalebox{0.5}{
-                    \begin{tikzpicture}
-                        \petersen
-                        \unopBunopR{5cm}{90 + (360/5)*2}
-                        \punto{5cm}{90 + (360/5)*1}
-                        \unotR{2.5cm}{90}
-                        \unotGunotYt{5cm}{90}
-                        \unotB{5cm}{90 + (360/5)*4}
-                        \unopY{2.5cm}{90 + (360/5)*2}
-                        \unopG{5cm}{90 + (360/5)*3}
+%                 \centering
+%                 \scalebox{0.5}{
+%                     \begin{tikzpicture}
+%                         \petersen
+%                         \unopBunopR{5cm}{90 + (360/5)*2}
+%                         \punto{5cm}{90 + (360/5)*1}
+%                         \unotR{2.5cm}{90}
+%                         \unotGunotYt{5cm}{90}
+%                         \unotB{5cm}{90 + (360/5)*4}
+%                         \unopY{2.5cm}{90 + (360/5)*2}
+%                         \unopG{5cm}{90 + (360/5)*3}
                         
-                    \end{tikzpicture}
-                }
+%                     \end{tikzpicture}
+%                 }
             
-            \tcbitem
+%             \tcbitem
 
-                \centering
-                \scalebox{0.5}{
-                    \begin{tikzpicture}
-                        \petersen
-                        \unopBunopRp{5cm}{90 + (360/5)}
-                        \unotR{2.5cm}{90}
-                        \unotGunotYt{5cm}{90}
-                        \unotB{5cm}{90 + (360/5)*4}
-                        \unopY{2.5cm}{90 + (360/5)*4}
-                        \unopG{5cm}{90 + (360/5)*3}
+%                 \centering
+%                 \scalebox{0.5}{
+%                     \begin{tikzpicture}
+%                         \petersen
+%                         \unopBunopRp{5cm}{90 + (360/5)}
+%                         \unotR{2.5cm}{90}
+%                         \unotGunotYt{5cm}{90}
+%                         \unotB{5cm}{90 + (360/5)*4}
+%                         \unopY{2.5cm}{90 + (360/5)*4}
+%                         \unopG{5cm}{90 + (360/5)*3}
                         
-                    \end{tikzpicture}
-                }
+%                     \end{tikzpicture}
+%                 }
             
-            \tcbitem
+%             \tcbitem
 
-                \centering
-                \scalebox{0.5}{
-                    \begin{tikzpicture}
-                        \petersen
-                        \unopBp{5cm}{90 + (360/5)}
-                        \unotBt{5cm}{90}
-                    \end{tikzpicture}
-                }
-        \end{tcbitemize}
-        \caption{In (a) $R$ just moved $r_1$, movement to which $C$ answers as
-        per (b) by guarding the neighborhood of $r_1$ with $c_{2,1}$ and
-        $c_{4,1}$ and by moving $c_{1,1}$ and $c_{3,1}$ towards $r_1$. $R$
-        proceeds to pass, causing $C$ to move their tokens as in (c) to force
-        him to move either $r_1$ or $r_2$ to the unique vertex they can do so as
-        shown in (d) without loss of generality. Finally, $C$ follows the
-        strategy to block the exit escapes of both $r_1$ and $r_2$, being able
-        to capture $R$ in at most two turns as shown in (e) and (f).}
-        \label{fig:guarding2}
-    \end{figure}
+%                 \centering
+%                 \scalebox{0.5}{
+%                     \begin{tikzpicture}
+%                         \petersen
+%                         \unopBp{5cm}{90 + (360/5)}
+%                         \unotBt{5cm}{90}
+%                     \end{tikzpicture}
+%                 }
+%         \end{tcbitemize}
+%         \caption{In (a) $R$ just moved $r_1$, movement to which $C$ answers as
+%         per (b) by guarding the neighborhood of $r_1$ with $c_{2,1}$ and
+%         $c_{4,1}$ and by moving $c_{1,1}$ and $c_{3,1}$ towards $r_1$. $R$
+%         proceeds to pass, causing $C$ to move their tokens as in (c) to force
+%         him to move either $r_1$ or $r_2$ to the unique vertex they can do so as
+%         shown in (d) without loss of generality. Finally, $C$ follows the
+%         strategy to block the exit escapes of both $r_1$ and $r_2$, being able
+%         to capture $R$ in at most two turns as shown in (e) and (f).}
+%         \label{fig:guarding2}
+%     \end{figure}
 
-    This concludes the proof to the claim that $r_1$ and $r_2$ are eventually in
-    adjacent vertices. Finally, notice that when this happens, two cops use their
-    free tokens to cover the two vertices $r_1$ could go, while the two other cops
-    use their free tokens to prevent $r_2$ to escape through the two vertices it
-    could go, noting that there are only two possible vertices for each token
-    since they are mutually blocking one vertex. Furthermore, one pair between
-    $c_{1,1}$ with $c_{3,1}$ and $c_{2,2}$ with $c_{4,2}$ are capturing their
-    targets, while the other is at distance $1$ from it. Therefore, $R$ is forced
-    to pass during his turn, losing to $C$ in his turn (see (e) and (f) of Figure
-    \ref{fig:guarding2}). Hence, $c\paren{\t{2}{P}}\leq 4$ and, consequently,
-    $c\paren{\t{2}{P}}= 4$.
+%     This concludes the proof to the claim that $r_1$ and $r_2$ are eventually in
+%     adjacent vertices. Finally, notice that when this happens, two cops use their
+%     free tokens to cover the two vertices $r_1$ could go, while the two other cops
+%     use their free tokens to prevent $r_2$ to escape through the two vertices it
+%     could go, noting that there are only two possible vertices for each token
+%     since they are mutually blocking one vertex. Furthermore, one pair between
+%     $c_{1,1}$ with $c_{3,1}$ and $c_{2,2}$ with $c_{4,2}$ are capturing their
+%     targets, while the other is at distance $1$ from it. Therefore, $R$ is forced
+%     to pass during his turn, losing to $C$ in his turn (see (e) and (f) of Figure
+%     \ref{fig:guarding2}). Hence, $c\paren{\t{2}{P}}\leq 4$ and, consequently,
+%     $c\paren{\t{2}{P}}= 4$.
 
-\end{proof}
+% \end{proof}
