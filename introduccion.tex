@@ -1,6 +1,14 @@
 \chapter{Introducci\'on}
 \label{sec:intro}
 
+Con el objetivo de tener todos los ingredientes necesarios para la abstracci\'on
+del juego de polic\'ias y ladrones, antes de adentrarnos a las reglas que rigen
+una de estas partidas debemos sentar las bases que nos ayudar\'an a describir el
+funcionamiento de este. En este caso, la noci\'on de un \textit{tablero} se
+puede abstraer mediante una gr\'afica, dot\'ando al juego de toda la estructura
+matem\'atica que esta conlleva. As\'i pues, las definiciones de las siguientes
+tres secciones vienen de \cite{bondy} y \cite{diestel}.
+
 \section{Gr\'aficas}
 
 Dado un conjunto finito no vac\'io $V$, definimos una \indice{gr\'afica} $G$
@@ -10,91 +18,179 @@ subconjunto de $\binom{V}{1} \cup \binom{V}{2}$, donde
   \binom{V}{k} = \l{e\subseteq V \colon\ \abs{e} = k}.
 \]
 Llamamos v\'ertices de $G$ a los elementos de $V_G$ y orden de $G$ a la
-cardinalidad de dicho conjunto. De forma similar, llamaremos aristas de $G$ y
-tama\~no de $G$ a los elementos y cardinalidad de $E_G$ respectivamente. Diremos
-que una gr\'afica $G$ es trivial si tiene orden $1$ y tama\~no $0$, de lo
-contrario, esta es no trivial.
+cardinalidad de dicho conjunto. De forma similar, llamamos aristas de $G$ y
+tama\~no de $G$ a los elementos y cardinalidad de $E_G$ respectivamente. Por
+convenci\'on, si $e={x,y}$ con $x,y\in V_G$ distintos, denotamos por $xy$ a la
+arista $e$. Decimos que una gr\'afica $G$ es trivial si tiene orden $1$ y
+tama\~no $0$, de lo contrario, esta es no trivial.
 
 En busca de facilitar el estudio de las propiedades de las gr\'aficas,
-regularmente representaremos estas estructuras a trav\'es de un dibujo en el
-plano, donde el conjunto de v\'ertices corresponde a puntos distintos y cada
-arista es una curva que une los puntos correspondientes a los v\'ertices en los
-que incide.
+representamos estas estructuras a trav\'es de un dibujo en el plano, donde el
+conjunto de v\'ertices corresponde a puntos distintos y cada arista es una curva
+que une los puntos correspondientes a los v\'ertices en los que incide (ver
+\cref{fig:grafica-dibujo}).
 
-Dada una arista $e$ en $E_G$, diremos que un v\'ertice $u$ incide en $e$, y que
+\begin{figure}[ht!]
+  \centering
+  \begin{tikzpicture}
+    \begin{scope}[scale=2.5]
+      \node (0) [vertex2, label=180:$v_1$] at (0,0){};
+      \node (1) [vertex2, label=90:$v_2$]  at (1,0){};
+      \begin{scope}[xshift=2cm]
+      \node (2) [vertex2,label=90:$v_3$]   at (270:1){};
+      \node (3) [vertex2,label=0:$v_4$]    at (0:1){};
+      \node (4) [vertex2,label=90:$v_5$]   at (90:1){};
+      \end{scope}
+      
+      \draw [myloop,in=60,out=120,looseness=12]
+            (0) to node[above]{$e_1$} (0);
+      \draw [myloop,in=240,out=300,looseness=12]
+            (2) to node[below]{$e_7$} (2);
+      
+      \draw [edge]  (0) to node [midway, above=5pt] {$e_2$} (1);
+      \draw [edge]  (1) to node [midway, below=5pt] {$e_3$} (2);
+      \draw [edge]  (2) to node [midway, below=5pt] {$e_4$} (3);
+      \draw [edge]  (3) to node [midway, above=5pt] {$e_5$} (4);
+      \draw [edge]  (4) to node [midway, above=5pt] {$e_6$} (1);
+    \end{scope}
+    \end{tikzpicture}
+  \caption{El dibujo de una gr\'afica $G$.}
+  \label{fig:grafica-dibujo}
+  \end{figure}
+
+Dada una arista $e$ en $E_G$, decimos que un v\'ertice $u$ incide en $e$, y que
 $e$ incide en $u$, si $u\in e$. Decimos que $e,f\in E_G$ distintas son
-incidentes si existe $u\in V_G$ incidente en ambas $e$ y $f$, y diremos que
+incidentes si existe $u\in V_G$ incidente en ambas $e$ y $f$, y decimos que
 estas son no incidentes en caso contrario. Dos v\'ertices distintos $u$ y $v$
 que inciden en una misma arista son adyacentes, de manera que $u$ es vecino de
-$v$ y viceversa. Si $e\in E_G$ es tal que existe $u\in V_G$ con $e=\l{u}$,
-diremos que $e$ es un \indice{lazo} y que $G$ es
+$v$ y viceversa. En \cref{fig:grafica-dibujo}, $v_1$ es incidente en $e_2$ y
+$e_2$ es incidente en $v_1$, mientras que $e_1$ y $e_2$ son aristas incidentes y
+$v_1$ y $v_2$ son v\'ertices adyacentes.
+
+Si $e\in E_G$ es tal que existe $u\in V_G$ con $e=\l{u}$, decimos que $e$ es un
+\indice{lazo} y $u$ tiene un lazo, mientras que $G$ es
 \indiceSub{gr\'afica}{reflexiva} si $\l{u}\in E_G$ para cada $u\in V_G$.
 Llamamos \indice{vecindad} de $v$ al conjunto $N_G(v)$ de v\'ertices de $G$
-adyacentes a $v$; sus elementos ser\'an llamados vecinos de $v$. Denotamos por
-$d_G(v)$ a la cardinalidad de $N_G(v)$ y la llamamos el grado de $v$.
-As\'imismo, representaremos por $\delta_G$ al grado m\'inimo sobre los
-v\'ertices de $G$, mientras que $\Delta_G$ es el grado m\'aximo sobres los
-v\'ertices de $G$. De forma similar, para $S\subseteq X$, denotamos por $N(S)$ a
-la vecindad del conjunto $S$, definida como
+adyacentes a $v$; sus elementos ser\'an llamados vecinos de $v$. Adem\'as,
+definimos la vecindad \indiceSub{vecindad}{cerrada} de $v$, $N_G[v]$, como la
+uni\'on de $N_G(v)$ y $\l{v}$. Si $v$ no tiene lazo, denotamos por $d_G(v)$ a la
+cardinalidad de $N_G(v)$, de lo contrario, $d_G(v) = \abs{N_G(v)} + 2$. Este
+valor recibe el nombre de \indice{grado} de $v$. As\'imismo, representamos por
+$\delta_G$ al grado m\'inimo sobre los v\'ertices de $G$, mientras que
+$\Delta_G$ es el grado m\'aximo sobres los v\'ertices de $G$. De forma similar,
+para $S\subseteq X$, denotamos por $N_G(S)$ a la vecindad del conjunto $S$,
+definida como
 \[
-  N(S) = \bigcup_{x\in S} N(x).
+  N_G(S) = \bigcup_{x\in S} N_G(x).
 \]
-
-Dadas $G$ y $H$ gr\'aficas, decimos que estas son
-\indiceSub{gr\'afica}{isomorfas} si existe una funci\'on biyectiva $f:V_G\to
-V_H$ tal que $uv\in E_G$ si y solo si $f(u)f(v)\in E_H$. Escribimos $G\cong H$
-para referirnos a que $G$ y $H$ son isomorfas.
-
-Una gr\'afica $G$ es \indiceSub{gr\'afica}{bipartita} si $V_G$ puede partirse en
-dos subconjuntos ajenos $X$ y $Y$ tales que toda arista incide en un v\'ertice
-en $X$ y en un v\'ertice en $Y$. Tal partici\'on $(X,Y)$ es llamada una
-bipartici\'on de la gr\'afica y $X$ y $Y$ son sus partes. Denotamos a una
-gr\'afica bipartita $G$ con una partici\'on $(X,Y)$ por $G[X,Y]$. Si $G[X,Y]$ es
-tal que todo v\'ertice de $X$ es adyacente a todo v\'ertice de $Y$, decimos que
-$G$ es una gr\'afica \indiceSub{gr\'afica}{bipartita completa}. Una
-\indice{estrella} es una gr\'afica bipartita completa $G[X,Y]$ en la que
-$\abs{X}=1$ o $\abs{Y}=1$. Si $\abs{X}=1$ y $\abs{Y}=n$, decimos que $G[X,Y]$ es
-la estrella de $n$ picos y la denotamos por $S_n$. Adem\'as, sin p\'erdida de
-generalidad supondremos que $V_G=\c{n}$ con $X=\l{0}$ y $Y=\seg{1}{n}$, donde
-\[
-  \c{n}=\seg{0}{n}.
-\] 
-
-Una \indice{trayectoria} es una gr\'afica cuyos v\'ertices admiten un orden
-total tal que dos v\'ertices son adyacentes en $G$ si y solo si son consecutivos
-en el orden. Denotamos por $P_n$ a la trayectoria de orden $n$. Similarmente, un
-\indice{ciclo} consiste de una trayectoria en la que su primer y \'ultimo
-v\'ertice de la sucesi\'on son adyacentes. Adem\'as, denotamos por $C_n$ al
-ciclo de orden $n$. La \indice{longitud} de una trayectoria o un ciclo es el
-tama\~no de dicha gr\'afica. Diremos que un ciclo o una trayectoria son pares o
-impares acorde a la paridad de su longitud.
+As\'i, en \cref{fig:grafica-dibujo}, $v_1$ tiene un lazo ($e_1$) y su grado es
+$3$, donde $N_G(v_1)=\l{v_2}$. Adem\'as, $G$ no es reflexiva pues $v_2$ no tiene
+un lazo. Si $S=\l{1,2}$, entonces $N_G(S)=\l{v_1,v_2,v_3,v_5}$. Adem\'as,
+pasando sobre todos los v\'ertices de $G$ se obtiene que $\delta_G=2$ y
+$\Delta_G=4$.
 
 Dada $G$ una gr\'afica, decimos que $H$ es una \indice{subgr\'afica} de $G$ si
 $V_H\subseteq V_G$ y $E_H\subseteq E_G$ donde para cada $e\in E_H$, $e\subseteq
 V_H$. Adicionalmente, decimos que $H$ es una subgr\'afica
 \indiceSub{subgr\'afica}{inducida} de $G$ si para cada $e\in E_G$ tal que
-$e\subseteq V_H$, $e\in E_H$, denotamos a dicha gr\'afica como $G[V_H]$.
+$e\subseteq V_H$, $e\in E_H$. Alternativamente, si $\varnothing\neq V\subseteq
+V_G$, denotamos por $G[S]$ a la subgr\'afica inducida de $G$ cuyo conjunto de
+v\'ertices es $S$ y cuyo conjunto de aristas tiene a todas las $e\in E_G$
+incidentes en al menos un v\'ertice en $S$. De forma similar, para $\varnothing
+E\subseteq E_G$, denotamos por $G[E]$ a la subgr\'afica de $G$ cuyo conjunto de
+aristas es $E$ y su conjunto de v\'ertices son todos aquellos $v\in V_G$ tales
+que indicen en al menos una arista de $E$.
 
-Dadas dos gr\'aficas $G$ y $H$, definimos la uni\'on de $G$ y $H$, $G \cup H$,
-como la gr\'afica cuyo conjunto de v\'ertices es $V_G\cup V_H$ y con conjunto de
-aristas $E_G\cup E_H$.
+\begin{figure}[ht!]
+  \centering
+  \begin{tikzpicture}
+    \begin{scope}[scale=2.5]
+      \node (0) [vertex2, label=180:$v_1$,fill=red] at (0,0){};
+      \node (1) [vertex2, label=90:$v_2$, fill=red]  at (1,0){};
+      \begin{scope}[xshift=2cm]
+      \node (2) [vertex2,label=90:$v_3$, fill=blue]   at (270:1){};
+      \node (3) [vertex2,label=0:$v_4$, fill=blue]    at (0:1){};
+      \node (4) [vertex2,label=90:$v_5$]   at (90:1){};
+      \end{scope}
+      
+      \draw [myloop,in=60,out=120,looseness=12]
+            (0) to node[above]{$e_1$} (0);
+      \draw [myloop,in=240,out=300,looseness=12, blue]
+            (2) to node[below]{$e_7$} (2);
+      
+      \draw [edge, red]  (0) to node [midway, above=5pt] {$e_2$} (1);
+      \draw [edge]  (1) to node [midway, below=5pt] {$e_3$} (2);
+      \draw [edge, blue]  (2) to node [midway, below=5pt] {$e_4$} (3);
+      \draw [edge]  (3) to node [midway, above=5pt] {$e_5$} (4);
+      \draw [edge]  (4) to node [midway, above=5pt] {$e_6$} (1);
+    \end{scope}
+    \end{tikzpicture}
+  \caption{La gr\'afica determinada por los v\'ertices y aristas rojas, $H$, es
+   una subgr\'afica de $G$. No obstante, esta no es inducida pues
+   $G[\l{v_1,v_2}]$ tambi\'en incluye el lazo $e_1$. Por otro lado
+   $H=G[\l{e_2}]$. En tanto, la gr\'afica inducida por los v\'ertices y aristas
+   en azul, $H'$, s\'i es una subgr\'afica inducida de $G$, a saber,
+   $H'=G[\l{v_3,v_4}]$.}
+  \label{fig:grafica-dibujo2}
+  \end{figure}
 
-Una gr\'afica $G$ es \indiceSub{gr\'afica}{conexa} si para cualquier par de
-v\'ertices $u$ y $v$, existe $P$ una trayectoria como subgr\'afica de $G$ cuyos
-v\'ertices inicial y final son $u$ y $v$ respectivamente. Adem\'as, llamaremos
-\indice{componente conexa} a una subgr\'afica inducida maximal de $G$ con la
-propiedad de ser conexa.
+Un \indice{homomorfismo} de una gr\'afica $G$ en una gr\'afica $H$ es una
+funci\'on $f \colon V_G\to V_H$ tal que $f(u)f(v)\in E_H$ para toda $uv\in E_G$.
+Si adicionalmente pedimos que $f$ sea biyectiva y que $f(u)f(v)\in E_H$ si y
+solo si $uv\in E_G$, decimos que $f$ es un \indice{isomorfismo} de gr\'aficas y
+que $G$ y $H$ son \indiceSub{gr\'afica}{isomorfas}. Escribimos $G\cong H$ para
+referirnos a que $G$ y $H$ son isomorfas. En \cref{fig:grafica-dibujo2}, existe
+un homomorfismo de $G[\l{v_3,v_4}]$ en la gr\'afica $G[\l{v_3}]$, a saber, aquel
+que fija $v_3$ y que manda $v_4$ a $v_3$. No obstante, estas gr\'aficas no son
+isomorfas pues existe una \'unica funci\'on de $\l{v_3,v_4}$ en $\l{v_3}$, la
+cual no es biyectiva. Por otro lado, $G[\l{v_1,v_2}] \cong G[\l{v_3,v_4}]$.
 
-Dada una gr\'afica conexa $G$, decimos que $P$ es una $uv$-trayectoria en $G$ si
-$P$ es una trayectoria, es una subgr\'afica inducida de $G$, y su v\'ertices
-inicial y final son $u$ y $v$ respectivamente. Por lo regular denotaremos las
-trayectorias a trav\'es de su sucesi\'on de v\'ertices, es decir, si $n\geq 1$,
-$P=(v_1,\dots,v_n)$, donde $v_i\in V_G$ para cada $i\in\seg{1}{n}$ y
-$v_iv_{i+1}\in E_G$ para cada $i\in\seg{1}{n-1}$. Adem\'as, si $i\leq j$,
-denotamos por $v_iPv_j$ al segmento de la trayectoria $P$ que comienza en $v_i$
-y termina en $v_j$. Adicionalmente, si $v_jx\in E_G$, denotamos por $v_iPv_jx$ a
-la subgr\'afica de $G$ que contiene a las aristas del segmento de trayectoria
-$v_iPv_j$ y a la arista $v_jx$.
+Decimos que $G$ es \indiceSub{gr\'afica}{completa} si $E_G=\binom{V}{2}$.
+N\'otese que cualesquiera dos gr\'aficas completas de orden $n$ son isomorfas,
+por lo que denotamos por $K_n$ a la gr\'afica completa de orden $n$. Una gr\'afica $G$
+es \indiceSub{gr\'afica}{bipartita} si $V_G$ puede partirse en dos subconjuntos
+ajenos $X$ y $Y$ tales que toda arista incide en un v\'ertice en $X$ y en un
+v\'ertice en $Y$. Tal partici\'on $(X,Y)$ es llamada una bipartici\'on de la
+gr\'afica y $X$ y $Y$ son sus partes. Denotamos a una gr\'afica bipartita $G$
+con una partici\'on $(X,Y)$ por $G[X,Y]$. Si $G[X,Y]$ es tal que ambos $X$ y $Y$
+son distintos del vac\'io y todo v\'ertice de $X$ es adyacente a todo v\'ertice
+de $Y$, decimos que $G$ es una gr\'afica \indiceSub{gr\'afica}{bipartita
+completa}. En \cref{fig:grafica-dibujo2}, $X=\l{v_5}$ y $Y=\l{v_2,v_4}$ forman
+una partici\'on $(X,Y)$ de la gr\'afica $G[\l{v_2,v_4,v_5}]$, que de hecho es
+bipartita completa. Por otra parte, $X=\l{v_2}$ y $Y=\l{v_4}$ forman una
+partici\'on $(X,Y)$ de $G[\l{v_2,v_4}]$, pero esta no es bipartita completa.
+
+Una \indice{trayectoria} es una gr\'afica $G$ cuyos v\'ertices admiten un orden
+total tal que dos v\'ertices son adyacentes en $G$ si y solo si son consecutivos
+en el orden. Si $P$ es una trayectoria de orden $n$, suponemos sin p\'erida de
+generalidad que $V_P=\l{v_1,\dots,v_n}$, de manera que denotamos a las
+trayectorias a trav\'es del orden de sus v\'ertices, de modo que
+$P=\paren{v_1,\dots,v_n}$. De lo anterior es claro que, si $P$ y $P'$ son dos
+trayectorias de orden $n$ con $n\geq 1$, entonces $P\cong P'$, donde el
+isomorfismo es el que manda un v\'ertice de $P$ en la $i$\'esima posici\'on al
+v\'ertice de $P'$ en la $i$-\'esima posici\'on. As\'i pues, denotamos por $P_n$
+a la trayectoria de orden $n$. Similarmente, un \indice{ciclo} consiste de una
+trayectoria en la que su primer y \'ultimo v\'ertice del orden son adyacentes.
+Por el mismo argumento, existe un \'unico ciclo de orden $n$, al que denotamos
+por $C_n$. La \indice{longitud} de una trayectoria o un ciclo es el tama\~no de
+dicha gr\'afica. Diremos que un ciclo o una trayectoria son pares o impares
+acorde a la paridad de su longitud. Por otra parte, sean $G$ una gr\'afica y
+$u,v\in V_G$. Decimos que $W=(v_1,v_2,\dots, v_n)$ es un $uv$-\indice{camino} en
+$G$ si $v_iv_{i+1}\in E_G$ para cada $i\in\seg{1}{n-1}$. Si adicionalmente
+$v_i\neq v_j$ cada para $i\neq j$, decimos que $P=(v_1,\dots, v_n)$ es una
+$uv$-trayectoria en $G$. Si $i\leq j$, denotamos por $v_iPv_j$ al segmento de la
+trayectoria $P$ que comienza en $v_i$ y termina en $v_j$. Adicionalmente, si
+$v_jx\in E_G$, denotamos por $v_iPv_jx$ a la subgr\'afica de $G$ inducida por
+las aristas del segmento $v_iPv_j$ y la arista $v_jx$. Analogamente se define un
+ciclo en $G$ como $C=(v_1,\dots,v_n,v_1)$, donde $v_{i}v_{i+1}\in E_G$ para cada
+$i\in\seg{1}{n-1}$, $v_nv_1\in E_G$ y $v_i\neq v_j$ para cada $i\neq j$.
+Continuando con los ejemplos en \cref{fig:grafica-dibujo2}, $P=(v_2,v_5,v_4)$ es
+una $v_2v_4$-trayectoria en $G$ y es tal que $P\cong P_3$. Por otro lado,
+$v_2Pv_4v_3v_2$ es un ciclo par de longitud $4$ isomorfo a $C_4$.
+
+Pasamos ahora a demostrar el siguiente teorema b\'asico que nos da una
+condici\'on suficiente para que una gr\'afica contenga a un ciclo como
+sugr\'afica.
 
 \begin{teorema}
 \label{teo:grado-ciclo}
@@ -103,17 +199,24 @@ $v_iPv_j$ y a la arista $v_jx$.
 \end{teorema}
   
 \begin{proof}
-  Sea $P=(v_1,\dots,v_n)$ una trayectoria de longitud m\'axima en $G$. Por ser
-  $P$ de longitud m\'axima, $N(v_n)\subseteq \seg{v_1}{v_{n-1}}$. Adem\'as,
-  $v_nv_{n-1}\in E_G$, por lo que
+  Si $G$ tiene un lazo en un v\'ertice $v$, $C=(v,v)$ es un ciclo en $G$.
+  Sup\'ongase entonces que $G$ no tiene lazos. Sea $P=(v_1,\dots,v_n)$ una
+  trayectoria de longitud m\'axima en $G$. Por ser $P$ de longitud m\'axima,
+  $N_G(v_n)\subseteq \seg{v_1}{v_{n-1}}$. Adem\'as, $v_nv_{n-1}\in E_G$ y no hay
+  lazo en $v_n$, por lo que
   \[
-      2\leq \delta_G \leq d_G(v_n) = \abs{N(v_n)} = 1 + 
-      \abs{N(v_n)\cap \seg{v_1}{v_{n-2}}}.
+      2\leq \delta_G \leq d_G(v_n) = \abs{N_G(v_n)} = 1 + 
+      \abs{N_G(v_n)\cap \seg{v_1}{v_{n-2}}}.
   \]
   As\'i, existe $i\in\seg{1}{n-2}$ tal que $v_nv_i\in E_G$. Luego,
   $v_iPv_nv_i$ es un ciclo en $G$.
 
 \end{proof}
+
+El teorema anterior nos permite demostrar un resultado similar que nos asegura
+la existencia de un ciclo en $G$. Dadas dos gr\'aficas $G$ y $H$, definimos la
+\indice{uni\'on} de $G$ y $H$, $G \cup H$, como la gr\'afica cuyo conjunto de
+v\'ertices es $V_G\cup V_H$ y con conjunto de aristas $E_G\cup E_H$.
 
 \begin{lema}
 \label{lem:trayectoria-ciclo}
@@ -122,13 +225,11 @@ $v_iPv_j$ y a la arista $v_jx$.
 \end{lema}
   
 \begin{proof}
-  Consid\'erese $H$ la subgr\'afica de $G$ cuyo conjunto de aristas es
-  $E_P\triangle E_Q$ y su conjunto de v\'ertices es el dado por los v\'ertices
-  de $G$ incidentes en alguna arista en $E_P\triangle E_Q$. Se afirma que
-  $\delta_H\geq 2$. En efecto, sea $v\in V_H$. Si $v=v_1$ o $v=v_n$, dado que el
-  grado de $v$ es $1$ tanto en $P$ como en $Q$, debe suceder que la arista de
-  $P$ incidente en $v$ es distinta de la arista de $Q$ incidente en $v$, por lo
-  que $d_H(v)\geq 2$.
+  Como $E_P\neq E_Q$ por ser $P$ y $Q$ trayectorias distintas, se puede
+  considerar $H=G[E_P\triangle E_Q]$. Se afirma que $\delta_H\geq 2$. En efecto,
+  sea $v\in V_H$. Si $v=v_1$ o $v=v_n$, dado que el grado de $v$ es $1$ tanto en
+  $P$ como en $Q$, debe suceder que la arista de $P$ incidente en $v$ es
+  distinta de la arista de $Q$ incidente en $v$, por lo que $d_H(v)\geq 2$.
   
   As\'i pues, sup\'ongase que $v$ es un v\'ertice distinto de los extremos de
   $P$. Como $v\in V_H$, existe, sin p\'erdida de generalidad, $e\in E_P$
@@ -144,57 +245,224 @@ $v_iPv_j$ y a la arista $v_jx$.
 
 \end{proof}
 
-Si $u$ y $v$ son dos v\'ertices en una gr\'afica conexa $G$, denotamos por
-$d_G(x,y)$ a la longitud de la $xy$-trayectoria m\'as peque\~na en $G$. Decimos
-que $G$ es ac\'iclica si esta no tiene ciclo alguno como una subgr\'afica. Una
-gr\'afica $G$ es llamada un \textbf{\'arbol}\index{arbol@\'arbol} si esta es
-conexa y ac\'iclica. De esta definici\'on y d\cref{lem:trayectoria-ciclo} se
-tiene el siguiente corolario inmediato.
+Pasamos ahora a definir una propiedad fundamental de las gr\'aficas. Una
+gr\'afica $G$ es \indiceSub{gr\'afica}{conexa} si para cualquier par de
+v\'ertices $u$ y $v$, existe una $uv$-trayectoria en $G$. Adem\'as, llamaremos
+\indice{componente conexa} a una subgr\'afica inducida maximal de $G$ con la
+propiedad de ser conexa. Si $u$ y $v$ son dos v\'ertices en una gr\'afica conexa
+$G$, denotamos por $d_G(x,y)$ a la longitud de la $xy$-trayectoria m\'as
+peque\~na en $G$. Decimos que $G$ es ac\'iclica si esta no tiene ciclo alguno
+como una subgr\'afica. As\'i, en \cref{fig:grafica-dibujo} es claro que $G$ es
+conexa, mientras que $G[\l{v_2,v_4}]$ no lo es. No obstante, $G$ no es aciclica,
+mientras que $G[\l{v_2,v_4}]$ s\'i lo es. Adem\'as, algunas distancias entre
+v\'ertices de $G$ son $d_G(v_1,v_1)=0$, $d_G(v_1,v_2)=1$ y $d_G(v_2,v_4)=2$.
+
+El siguiente teorema caracteriza las componentes conexas de una gr\'afica $G$
+tal que $\Delta_G\leq 2$.
+
+\begin{teorema}
+\label{teo:compconexa}
+  Si $G$ es una gr\'afica con $\delta_G\leq 2$ y $C$ es una componente conexa de
+  $G$, entonces $C$ es una trayectoria o un ciclo.
+\end{teorema}
+
+\begin{proof}
+  Sea $P=(v_1,\dots,v_n)$ una trayectoria de longitud m\'axima en $C$. Si $1=n$,
+  entonces $C$ es la gr\'afica trivial, y por tanto una trayectoria, o es la
+  gr\'afica con un v\'ertice y un lazo, por lo que es un ciclo. Luego, si $1\neq
+  n$, al ser $P$ de longitud m\'axima se tiene que $N_G(v_n)\subseteq
+  \seg{v_1}{v_{n-1}}$. N\'otese que para cada $i\in\seg{2}{n-2}$ y para
+  cualquier v\'ertice $u$ distinto de $v_{i-1}$ y $v_{i+1}$, $uv_i\notin E_G$
+  pues, de lo contrario,
+  \[
+      2\geq \Delta_G \geq d_G(v_i) \geq 3,  
+  \]
+  lo cual es una contradicci\'on. As\'i, $N_G(v_n)\subseteq \l{v_{n-1},v_1}$ y
+  $N_G(v_1)\subseteq \l{v_n,v_2}$, mientras que $N_G(v_i)=\l{v_{i-1},v_{i+1}}$
+  para cualquier $i\in\seg{2}{n-2}$. Adem\'as, ning\'un v\'ertice en $C$ tiene
+  lazos pues $\Delta_G\leq 2$, por lo que $C$ es una trayectoria si
+  $v_1v_n\notin E_G$, o es un ciclo si $v_1v_n\in E_G$.
+
+\end{proof}
+
+\section{\'Arboles}
+
+Una gr\'afica $G$ es un \textbf{\'arbol}\index{arbol@\'arbol} si esta es conexa
+y ac\'iclica. De esta definici\'on y d\cref{lem:trayectoria-ciclo} se tiene el
+siguiente corolario inmediato.
 
 \begin{corolario}
 \label{cor:unitray}
-  En un \'arbol, para cualesquiera $u$ y $v$ v\'ertices existe una \'unica
-  $uv$-trayectoria.
+  En un \'arbol $T$, para cualesquiera $u$ y $v$ v\'ertices existe una \'unica
+  $uv$-trayectoria en $T$.
 \end{corolario}
 
 \Cref{teo:grado-ciclo} implica que en un \'arbol no trivial existe al menos un
-v\'ertice de grado $1$. Llamaremos \textbf{hojas}\index{hoja} a los v\'ertices
-de grado $1$ en un \'arbol.
+v\'ertice de grado $1$. Llamamos \textbf{hojas}\index{hoja} a los v\'ertices de
+grado $1$ en un \'arbol.
+
+\begin{figure}[ht!]
+  \centering
+  \begin{tikzpicture}
+    \begin{scope}[scale=2.5]
+      \node (0) [vertex2, label=180:$v_1$, fill=red] at (0,0){};
+      \node (1) [vertex2, label=90:$v_2$, fill=red]  at (1,0){};
+      \begin{scope}[xshift=2cm]
+      \node (2) [vertex2,label=90:$v_3$, fill=red]   at (270:1){};
+      \node (3) [vertex2,label=0:$v_4$, fill=red]    at (0:1){};
+      \node (4) [vertex2,label=90:$v_5$, fill=red]   at (90:1){};
+      \end{scope}
+      
+      \draw [myloop,in=60,out=120,looseness=12]
+            (0) to node[above]{$e_1$} (0);
+      \draw [myloop,in=240,out=300,looseness=12]
+            (2) to node[below]{$e_7$} (2);
+      
+      \draw [edge, red]  (0) to node [midway, above=5pt] {$e_2$} (1);
+      \draw [edge, red]  (1) to node [midway, below=5pt] {$e_3$} (2);
+      \draw [edge, red]  (2) to node [midway, below=5pt] {$e_4$} (3);
+      \draw [edge, red]  (3) to node [midway, above=5pt] {$e_5$} (4);
+      \draw [edge]  (4) to node [midway, above=5pt] {$e_6$} (1);
+    \end{scope}
+    \end{tikzpicture}
+  \caption{Los v\'ertices y aristas de rojo inducen la gr\'afica
+  $G[\l{e_2,e_3,e_4,e_5}]$, la cual es un \'arbol y tiene a $v_1$ y $v_5$ como
+  hojas.}
+  \label{fig:grafica-dibujo3}
+  \end{figure}
 
 Dada una gr\'afica $G$, podemos a\~nadir o eliminar v\'ertices a $G$ para
 generar de subgr\'afica a partir de esta. Si $u\in V_G$, y
 $V_G\setminus\l{u}\neq \varnothing$ denotamos por $G-u$ a la subgr\'afica
 inducida $G[V_G\setminus \l{u}]$. Similarmente, si $e$ es una arista con
 $e=\l{x,y}$, decimos que $H$ se obtiene de $G$ al subdividir la arista $e$ si
-$V_H=V_G\cup\l{v_e}$ con $v_e\notin V_G$ y $E_H=E_G\cup \l{\l{v_e,x}, \l{v_e,y}}
-\setminus \l{x,y}$.
+$V_H=V_G\cup\l{v_e}$ con $v_e\notin V_G$ y $E_H=E_G\cup \l{v_ex, v_ey}
+\setminus \l{xy}$.
 
-Una observaci\'on inmediata es que si $T$ es un \'arbol no trivial y $x$ es una
-de sus hojas, entonces $T-x$ tambi\'en es un \'arbol pues, en efecto, $T-x$
-sigue siendo conexa y ac\'iclica. De la misma manera, si $e$ es una arista de
-$T$, la subdivisi\'on de $e$ tambi\'en da lugar a un \'arbol.
+Una observaci\'on inmediata es que si $x$ es una hoja de $T$ y $P$ es una
+trayectoria en $T$ que no utiliza a $x$ entonces $P$ es una trayectoria en
+$T-x$. As\'i, por \cref{cor:unitray}, la $uv$-trayectoria en $T$ con $u\neq
+x\neq v$ no utiliza a $x$ pues $d_T(x)=1$ y el grado (en P) de todo v\'ertice en
+$P$ distinto de los extremos es $2$. Adem\'as, dado que $T$ es ac\'iclica, es
+claro que $T-x$ tambi\'en lo es, por lo que tiene lugar el siguiente corolario.
 
-Dada una gr\'afica $G$, $M\subseteq E_G$ es un \indice{emparejamiento} en $G$ si
-$M$ no contiene lazos y cualesquiera dos aristas $e$ y $f$ en $M$ son no
-incidentes. Si $M$ es un emparejamiento, diremos que los dos extremos de una
+\begin{corolario}
+\label{cor:eliminacion-arbol}
+  Si $T$ un \'arbol y $x$ una de sus hojas, entonces $T-x$ es un \'arbol.
+\end{corolario}
+
+De la misma manera, si $e$ es una arista de $T$, la gr\'afica obtenida de la
+subdivisi\'on de $e$, $T'$ tambi\'en da lugar a un \'arbol pues todas las
+trayectorias en $T$ que no usaban a $e$ siguen siendo trayectorias en $T'$,
+mientras que las que la usaban se convierten en trayectorias de un v\'ertice
+m\'as al usar las dos aristas incidentes en $v_e$. En tanto, de haber un ciclo
+en $T'$, este utilizar\'ia a $v_e$ y a sus dos aristas, por lo que un ciclo de
+un v\'ertice menos existir\'ia en $T$, contradiciendo que este es un \'arbol.
+As\'i pues, se llega al siguiente corolario.
+
+\begin{corolario}
+\label{cor:subdivision-arbol}
+  Si $T$ es un \'arbol y $e$ una de sus aristas, entonces la gr\'afica obtenida
+  al subdividir $e$ es un \'arbol.
+\end{corolario}
+
+\begin{figure}[ht!]
+  \centering
+  \begin{tikzpicture}
+    \begin{scope}[scale=2.5]
+      \node (0) [vertex2, label=180:$v_1$, fill=blue] at (0,0){};
+      \node (1) [vertex2, label=90:$v_2$, fill=blue]  at (1,0){};
+      \begin{scope}[xshift=2cm]
+      \node (2) [vertex2,label=180:$v_3$, fill=red]   at (270:1){};
+      \node (3) [vertex2,label=0:$v_4$, fill=red]    at (0:1){};
+      \node (4) [vertex2,label=90:$v_5$, fill=blue!50!white]   at (90:1){};
+      \node (5) [vertex2,label=135:$v_6$, fill=red]   at (315:0.707){};
+      \end{scope}
+      
+      \draw [myloop,in=60,out=120,looseness=12]
+            (0) to node[above]{$e_1$} (0);
+      \draw [myloop,in=240,out=300,looseness=12]
+            (2) to node[below]{$e_7$} (2);
+      
+      \draw [edge, blue]  (0) to node [midway, above=5pt] {$e_2$} (1);
+      \draw [edge]  (1) to node [midway, below=5pt] {$e_3$} (2);
+      \draw [edge, red]  (2) to node [midway, above left=2pt] {$v_3v_6$} (5);
+      \draw [edge, red]  (5) to node [midway, below right=2pt] {$v_6v_4$} (3);
+      \draw [edge]  (3) to node [midway, above=5pt] {$e_5$} (4);
+      \draw [edge, blue!50!white, dashed]  (4) to node [midway, above=5pt] {$e_6$} (1);
+    \end{scope}
+    \end{tikzpicture}
+  \caption{Al \'arbol $G[\l{e_2,e_6}]$ se le elimina la hoja $v_5$, resultado en
+  un \'arbol. Por otra parte, al \'arbol $G[\l{e_4}]$ se le subdivide la arista
+  $e_4$ para generar otro \'arbol.}
+  \label{fig:grafica-dibujo4}
+\end{figure}
+
+\section{Emparejamientos}
+
+Dada una gr\'afica $G$, decimos que $S\subseteq V_G$ es un conjunto
+\indice{dominante} de $G$ si toda v\'ertice fuera de $S$ es adyacente a al menos
+un v\'ertice de $S$; al m\'inimo de las cardinalidades sobre todos los conjuntos
+dominantes de $G$ le llamamos \indice{n\'umero de dominancia} y lo denotamos por
+$\gamma(G)$. Similarmente, $M\subseteq E_G$ es un \indice{emparejamiento} en $G$
+si $M$ no contiene lazos y cualesquiera dos aristas $e$ y $f$ en $M$ son no
+incidentes. Si $M$ es un emparejamiento, decimos que los dos extremos de una
 arista en $M$ est\'an emparejados bajo $M$, mientras que, para cualquier
-v\'ertice incidente en una arista de $M$, diremos que este est\'a saturado por
+v\'ertice incidente en una arista de $M$, decimos que este est\'a saturado por
 $M$. Un \textbf{emparejamiento perfecto}\index{emparejamiento!perfecto} es un
 emparejamiento que satura a todos los v\'ertices de la gr\'afica, mientras que
 un emparejamiento es \indiceSub{emparejamiento}{m\'aximo} si satura la mayor
-cantidad de v\'ertices de entre todos los emparejamientos en la gr\'afica.
-As\'i, para $G$ una gr\'afica arbitraria, denotamos por $\alpha'(G)$ al
-\textbf{n\'umero de emparejamiento}\index{emparejamiento!n\'umero de} de $G$, es
-decir, la cardinalidad de un emparejamiento m\'aximo en $G$.
+cantidad de v\'ertices de entre todos los emparejamientos. Denotamos por
+$\alpha'(G)$ al \textbf{n\'umero de
+emparejamiento}\index{emparejamiento!n\'umero de} de $G$, es decir, la
+cardinalidad de un emparejamiento m\'aximo en $G$.
 
 Dado un emparejamiento $M$ en una gr\'afica $G$, definimos una
 $M$-\textbf{trayectoria} \indiceSub{trayectoria}{alternante} en $G$ como una
 trayectoria cuyas aristas alternan, siguiendo el orden de la trayectoria, entre
 aristas en $M$ y en $E_G\setminus M$. Si tanto el inicio como el final de la
 trayectoria no est\'an saturados por $M$, decimos que esta es una
-$M$-\textbf{trayectoria} \indiceSub{trayectoria}{aumentable}. El siguiente
-teorema relaciona la existencia de $M$-trayectorias aumentables con los
-emparejamientos m\'aximos.
+$M$-\textbf{trayectoria} \indiceSub{trayectoria}{aumentable} (ver
+\cref{fig:grafica-dibujo5}).
+
+\begin{figure}[ht!]
+  \centering
+  \begin{tikzpicture}
+    \begin{scope}[scale=2.5]
+      \node (0) [vertex2, label=180:$v_1$, fill=blue] at (0,0){};
+      \node (1) [vertex2, label=90:$v_2$, node split half=90]  at (1,0){};
+      \begin{scope}[xshift=2cm]
+      \node (2) [vertex2,label=90:$v_3$, fill=red]   at (270:1){};
+      \node (3) [vertex2,label=0:$v_4$, fill=red]    at (0:1){};
+      \node (4) [vertex2,label=90:$v_5$, fill=red]   at (90:1){};
+      \end{scope}
+      
+      \draw [myloop,in=60,out=120,looseness=12]
+            (0) to node[above]{$e_1$} (0);
+      \draw [myloop,in=240,out=300,looseness=12]
+            (2) to node[below]{$e_7$} (2);
+      
+      \draw [edge, blue]  (0) to node [midway, above=5pt] {$e_2$} (1);
+      \draw [edge]  (1) to node [midway, below=5pt] {$e_3$} (2);
+      \draw [edge, red]  (2) to node [midway, below right=2pt] {$e_4$} (3);
+      \draw [edge]  (3) to node [midway, above=5pt] {$e_5$} (4);
+      \draw [edge, red]  (4) to node [midway, above=5pt] {$e_6$} (1);
+    \end{scope}
+    \end{tikzpicture}
+  \captionsetup{font=normalsize}
+  \caption{El conjunto de aristas azules, $\l{e_2}$, es un emparejamiento $M$ en
+  $G$ que empareja a $v_1$ y $v_2$ y los satura. M\'as a\'un, $M$ no es m\'aximo
+  pues $M^*=\l{e_4,e_6}$ es un emparejamiento de cardinalidad mayor. Este s\'i
+  es m\'aximo en $G$, m\'as no es un emparejamiento perfecto. No obstante, $M^*$
+  s\'i es un emparejamiento p\'erfecto en $G-v_1$. Adem\'as, $(v_1,v_2,v_5)$ es
+  una $M^*$-trayectoria alternante, mientras que $(v_3,v_4)$ es una
+  $M$-trayectoria aumentable. Finalmente, $\l{v_1,v_2,v_3}$ es un conjunto
+  dominante, pero $\gamma(G)=2$ pues $\l{v_2,v_4}$ tambi\'en lo es.}
+  \label{fig:grafica-dibujo5}
+\end{figure}
+
+El siguiente teorema relaciona la existencia de $M$-trayectorias aumentables con
+los emparejamientos m\'aximos.
 
 \begin{teorema}[Teorema de Berge]
 \label{teo:berge}
@@ -223,15 +491,15 @@ emparejamientos m\'aximos.
 
   Rec\'iprocamente, sup\'ongase que $M$ es un emparejamiento en $G$ y que este
   no es m\'aximo. Sea $M^*$ un emparejamiento m\'aximo en $G$, de manera que
-  $\abs{M^*} > \abs{M}$. Sea $H$ la gr\'afica cuyo conjunto de aristas es
-  $M\triangle M^*$ y su conjunto de v\'ertices es el dado por los v\'ertices de
-  $G$ incidentes en alguna arista en $M\triangle M^*$.
+  $\abs{M^*} > \abs{M}$. Sea $H=G[M\triangle M^*]$.
 
   Obs\'ervese que cada v\'ertice de $H$ tiene grado (en $H$) $1$ o $2$ pues este
   puede ser incidente en a lo m\'as una arista de $M$ y a lo m\'as una arista de
-  $M^*$. Por tanto, cada componente conexa de $H$ es un ciclo par que alterna
-  entre aristas en $M$ y $M^*$, o es una trayectoria que alterna entre aristas
-  en $M$ y $M^*$.
+  $M^*$. As\'i, $\Delta_H\leq 2$, por lo que, en virtud de
+  \cref{teo:compconexa}, cada componente conexa de $H$ es un ciclo o es una
+  trayectoria. M\'as a\'un, si es un ciclo, este es par pues alterna entre
+  aristas en $M$ y $M^*$ por ser estos emparejamientos, mientras que la
+  trayectoria alterna entre aristas en $M$ y $M^*$ por la misma raz\'on.
 
   Como $\abs{M^*}>\abs{M}$, la subgr\'afica $H$ contiene m\'as aristas en $M^*$
   que en $M$, por lo que debe existir en $H$ una componente conexa $P$ que
@@ -243,7 +511,7 @@ emparejamientos m\'aximos.
 \end{proof}
 
 En gr\'aficas bipartitas es sencillo dar una condici\'on necesaria y suficiente
-para que existe un emparejamiento que sature a todos los v\'ertices en una de
+para que exista un emparejamiento que sature a todos los v\'ertices en una de
 las partes de la bipartici\'on.
 
 \begin{teorema}[Teorema de Hall]
@@ -266,15 +534,51 @@ las partes de la bipartici\'on.
   $G$ no tiene un emparejamiento que sature a todos los v\'ertices en $X$. Sea
   $M^*$ un emparejamiento m\'aximo en $G$ y $u\in X$ no saturado por $M^*$. Sea
   $Z$ el conjunto de todos los v\'ertices tales que, si $z\in Z$, existe una
-  $M^*$-trayectoria alternante que comienza en $x$ y termina en $z$. Como $M^*$
+  $M^*$-trayectoria alternante que comienza en $u$ y termina en $z$. Como $M^*$
   es un emparejamiento m\'aximo, se sigue d\cref{teo:berge} que $u$ es el
   \'unico v\'ertice en $Z$ no saturado por $M^*$. Sean $R=X\cap Z$ y $B=Y\cap
   Z$.
 
+  \begin{figure}[ht!]
+    \centering
+    \begin{tikzpicture}
+      \begin{scope}[scale=2.5]
+        \node (0) [vertex2, label=180:$u$, fill=blue] at (0,0){};
+        \node (1) [vertex2, label=90:$v_2$, fill=red]  at (1,0){};
+        \begin{scope}[xshift=2cm]
+        \node (2) [vertex2,label=90:$v_3$, fill=blue]   at (270:1){};
+        \node (3) [vertex2,label=0:$v_4$, fill=red]    at (0:1){};
+        \node (4) [vertex2,label=90:$z$, fill=blue]   at (90:1){};
+        \end{scope}
+        
+        \draw [edge]  (0) to node [midway, above=5pt] {$e_1$} (1);
+        \draw [edge]  (1) to node [midway, below=5pt] {$e_2$} (2);
+        \draw [edge, verdeAzulado]  (2) to node [midway, below right=2pt] {$e_3$} (3);
+        \draw [edge]  (3) to node [midway, above=5pt] {$e_4$} (4);
+        \draw [edge, verdeAzulado]  (4) to node [midway, above=5pt] {$e_5$} (1);
+      \end{scope}
+      \end{tikzpicture}
+    \caption{La gr\'afica $G$ es bipartita con la partici\'on $(X,Y)$ dada por
+    la coloraci\'on de los v\'ertices, de manera que los v\'ertices azules
+    est\'an en $X$ y los rojos en $Y$. Las aristas verdes forman un
+    emparejamiento m\'aximo $M^*$ por \cref{teo:berge}. Adem\'as, utilizando las
+    trayectorias $M^*$-alternantes se obtiene que $Z=\l{u,v_2,z,v_4,v_3}$.
+    As\'i, $R=\l{u,z,v_3}$ y $B=\l{v_2,v_4}$.}
+    \label{fig:grafica-dibujo6}
+  \end{figure}
+
   Claramente los v\'ertices en $R\setminus\l{u}$ est\'an emparejados bajo $M^*$
-  con v\'ertices en $B$. As\'i, $\abs{B} = \abs{R} - 1$ y $B\subseteq N(R)$. De
-  hecho, $B=N(R)$ pues todo v\'ertice en $N(R)$ es alcanzado por $u$ a trav\'es
-  de una $M^*$-trayectoria alternante. Por tanto,
+  a v\'ertices en $B$. As\'i, $\abs{B} \geq \abs{R} - 1$ , mientras que cada
+  v\'ertice en $B$ est\'a saturado por $M^*$ ya que, de lo contrario, la $M^*$
+  trayectoria alternante de $u$ a $y$ ser\'ia $M^*$-aumentante, contradiciendo
+  que $M^*$ es m\'aximo por \cref{teo:berge}. Luego, $\abs{B} = \abs{R} - 1$.
+  Por otro lado, $B\subseteq N(R)$ pues, dado $y\in B$, el pen\'ultimo v\'ertice
+  de una $uy$-trayectoria $M^*$-alternante est\'a en $R$. En tanto, todo
+  v\'ertice $y$ en $N(R)$ es alcanzado por $u$ a trav\'es de una
+  $M^*$-trayectoria alternante hacia $x\in R$, $P$, y $xy\in E_G$. Si $y$ est\'a
+  en $P$, $y\in B$, mientras que si no, $uPxy$ es una trayectoria
+  $M^*$-alternante pues $x$ est\'a saturado por $M^*$, de manera que $xy\notin
+  M^*$. Por tanto, $B=N(R)$ y
   \[
     \abs{N(R)} = \abs{B} = \abs{R} - 1 < \abs{R},
   \]
@@ -282,37 +586,101 @@ las partes de la bipartici\'on.
 
 \end{proof}
 
-Un \indice{homomorfismo} de una gr\'afica $G$ en una gr\'afica $H$ es una
-funci\'on $f \colon V_G\to V_H$ tal que $f(u)f(v)\in E_H$ para toda $uv\in E_G$.
+\section{Gr\'aficas de fichas}
 
-Dada una gr\'afica $G$ sin lazos y $1\leq k\leq \abs{V_G}$, definimos la
-\textbf{gr\'afica de k fichas}\index{gr\'afica!de fichas} de $G$, $\t{k}{G}$,
-cuyo conjunto de v\'ertices consiste de todos los $k$-conjuntos de $V_G$,
-mientras que dos de estos $k$-conjuntos, $A$ y $B$, son adyacentes si y solo
-$A\triangle B\in E_G$. Una observaci\'on inmediata de la definici\'on es que, si
-$G$ es una gr\'afica sin lazos, $G$ es isomorfa a su gr\'afica de $1$ ficha, es
-decir, $G\cong \t{1}{G}$. Esto es inmediato al ver que los $1$-conjuntos de
-$V_G$ son los unitarios de los v\'ertices y que dos $1$-conjuntos son adyacentes
-en $\t{1}{k}$ si y solo si su diferencia sim\'ertica es una arista en $G$, es
-decir, si estos son adyacentes en $G$.
+Dada una gr\'afica $G$, estamos interesados en obtener una estructura que nos
+permita estudiar \textit{configuraciones} de $G$. No es de sorprender que esa
+estructura que buscamos es tambi\'en una gr\'afica. As\'i, en \cite{fabila},
+Fabila et al introducen el concepto de \textit{gr\'afica de fichas} de una
+gr\'afica $G$ y estudian sus propiedades b\'asicas como gr\'afica en t\'erminos
+de las propiedades de $G$. Por tanto, las siguientes definiciones y resultados
+se obtienen de dicho trabajo.
+
+Dado $X$ un conjunto y $k\leq \abs{X}$, decimos que $S\subseteq X$ es un
+$k$-conjunto si $\abs{S}=k$. Dada una gr\'afica $G$ sin lazos y $1\leq k\leq
+\abs{V_G}$, definimos la \textbf{gr\'afica de k fichas}\index{gr\'afica!de
+fichas} de $G$, $\t{k}{G}$, cuyo conjunto de v\'ertices consiste de todos los
+$k$-conjuntos de $V_G$, mientras que dos de estos $k$-conjuntos, $A$ y $B$, son
+adyacentes si y solo $A\triangle B\in E_G$ (ver \cref{fig:grafica-fichas}). Una
+observaci\'on inmediata de la definici\'on es que, si $G$ es una gr\'afica sin
+lazos, $G$ es isomorfa a su gr\'afica de $1$ ficha, es decir, $G\cong \t{1}{G}$.
+Esto es inmediato al ver que los $1$-conjuntos de $V_G$ son los unitarios de los
+v\'ertices y que dos $1$-conjuntos son adyacentes en $\t{1}{k}$ si y solo si su
+diferencia sim\'ertica es una arista en $G$, es decir, si estos son adyacentes
+en $G$.
+
+\begin{figure}[ht!]
+\centering
+  \begin{tikzpicture} 
+    \triada{4.5cm}{(360/6)*0}
+    \triada{4.5cm}{(360/6)*1}
+    \triada{4.5cm}{(360/6)*2}
+    \triada{4.5cm}{(360/6)*3}
+    \triada{4.5cm}{(360/6)*4}
+    \triada{4.5cm}{(360/6)*5}
+
+    \foreach \i in {0,2,4}
+      \node (\i) [bola35]  at ({(360/6)*\i}:4.5){};
+    \foreach \i in {1,3,5}
+      \node (\i) [bola35] at ({(360/6)*\i}:4.5){};
+    
+    \foreach \i in {0,...,5}
+      \draw [edge] let \n1={int(mod(\i+1,6))} in (\i) to (\n1);
+
+    \begin{scope}[shift={(2)}]
+      \node (P1) [punto2,fill=black] at ({90}:1) {};
+      \node (P2) [punto2,fill=black] at (0:0) {};
+    \end{scope}
+
+    \begin{scope}[shift={(3)}]
+      \node (P3) [punto2,fill=black] at ({90}:1) {};
+      \node (P4) [punto2,fill=black] at ({90 + 360/3}:1) {};
+    \end{scope}
+
+    \begin{scope}[shift={(4)}]
+      \node (P5) [punto2,fill=black] at (0:0) {};
+      \node (P6) [punto2,fill=black] at ({90 + 360/3}:1) {};
+    \end{scope}
+
+    \begin{scope}[shift={(5)}]
+      \node (P7) [punto2,fill=black] at ({90 + (360/3)*2}:1) {};
+      \node (P8) [punto2,fill=black] at ({90 + 360/3}:1) {};
+    \end{scope}
+
+    \begin{scope}[shift={(0)}]
+      \node (P9) [punto2,fill=black] at ({90 + (360/3)*2}:1) {};
+      \node (P10) [punto2,fill=black] at (0:0) {};
+    \end{scope}
+
+    \begin{scope}[shift={(1)}]
+      \node (P11) [punto2,fill=black] at ({90 + (360/3)*2}:1) {};
+      \node (P12) [punto2,fill=black] at ({90}:1) {};
+    \end{scope}
+  \end{tikzpicture}
+  \caption{Se muestra $\t{2}{G}$, la gr\'afica de $2$ fichas de la gr\'afica
+  bipartita completa $G[X,Y]$ con $\abs{X}=1$ y $\abs{Y}=3$. Dentro de cada
+  v\'ertice de $\t{2}{G}$ se dibuj\'o a $G$ junto con un $2$-conjunto de sus
+  v\'ertices identificado por los puntos. N\'otese que los v\'ertices adyacentes
+  a un v\'ertice de $\t{2}{G}$ corresponden a aquellas configuraciones que se
+  alcanzan al ``deslizar'' una ficha a lo largo de una arista de $G$.}
+  \label{fig:grafica-fichas}
+\end{figure}
+  
 
 El siguiente lema reduce los casos a estudiar para las gr\'aficas de fichas.
 
 \begin{lema}
   \label{lem:isomorfismo}
-      Sean $k$ y $n$ enteros positivos. Si $G$ una gr\'afica sin lazos de orden
-      $n$ y $k < n$, entonces $\t{k}{G} \cong \t{n-k}{G}$.
+      Sean $k$ y $n$ enteros positivos. Si $G$ es una gr\'afica sin lazos de
+      orden $n$ y $k < n$, entonces $\t{k}{G} \cong \t{n-k}{G}$.
   \end{lema}
 
   \begin{proof}
     Se propone la funci\'on $\varphi \colon V_{\t{k}{G}} \to V_{\t{n-k}{G}}$
-    dada por la regla de correspondencia
-    \[
-      \varphi(A) = V\setminus A.
-    \]
-    Dicha funci\'on est\'a bien definida pues $\abs{V\setminus A} = n-k$. Por
-    tanto, resta demostrar que dicha funci\'on da un isomorfismo entre
-    $\t{k}{G}$ y $\t{n-k}{G}$.
+    dada por la regla de correspondencia $\varphi(A) = V\setminus A$. Dicha
+    funci\'on est\'a bien definida pues $\abs{V\setminus A} = n-k$. Por tanto,
+    resta demostrar que dicha funci\'on da un isomorfismo entre $\t{k}{G}$ y
+    $\t{n-k}{G}$.
 
     Si $AB\in E_{\t{k}{G}}$, entonces $A\triangle B =\l{a,b}\in E_G$ con $a\in
     A\setminus B$ y $b\in B\setminus A$. As\'i,
@@ -321,32 +689,40 @@ El siguiente lema reduce los casos a estudiar para las gr\'aficas de fichas.
         &= \paren{V\setminus A}\triangle \paren{V\setminus B} \\
         &= \paren{V\setminus A \setminus \paren{V\setminus B}} \cup 
            \paren{V\setminus B \setminus \paren{V\setminus A}}\\
-        &= \paren{V\setminus A \cap B} \cup \paren{V\setminus B \setminus \cap A}\\
+        &= \paren{\paren{V\setminus A} \cap B} \cup \paren{\paren{V\setminus B}  \cap A}\\
         &= \l{b} \cup \l{a} = \l{a,b}\in E_G.
     \end{align*}
-    Por tanto, $f(A)f(B)\in E_{\t{n-k}{G}}$. Este mismo argumento demuestra que
-    si $f(A)f(B)\in E_{\t{n-k}{G}}$, entonces $AB\in E_{\t{k}{G}}$, por lo que
-    se concluye que $\t{k}{G} \cong \t{n-k}{G}$.
+    Luego, $f(A)f(B)\in E_{\t{n-k}{G}}$. Por la misma raz\'on, si $f(A)f(B)\in
+    E_{\t{n-k}{G}}$, entonces $AB\in E_{\t{k}{G}}$, por lo que se concluye que
+    $\t{k}{G} \cong \t{n-k}{G}$.
 
   \end{proof}
 
 \section{Polic\'ias y ladrones}
 
-\indice{Polic\'ias y ladrones} es un juego de evasi\'on-persecuci\'on sobre una
-gr\'afica en el cual dos jugadores, $C$ y $R$, toman turnos alternadamente para
-conseguir su objetivo. Por una parte, $C$ controla a una cantidad fija de
-polic\'ias, $c$, tales que estos ocupan v\'ertices no necesariamente distintos
-de $G$ y, en cada turno, todos se mueven a trav\'es de una arista incidente al
-v\'ertice en el que se encontraban previamente. Por otro lado, $R$ controla a un
-\'unico ladr\'on cuyas reglas de movimiento son las mismas que las descritas
-para los polic\'ias de $C$. Por tanto, el objetivo de $C$ es que al menos uno de
-sus polic\'ias ocupe el mismo v\'ertice que el ladr\'on, momento en el que
-diremos que dicho polic\'ia \indice{captura} a $R$ y terminando el juego de
-inmediato con la victoria de $C$. En tanto, el objetivo de $R$ es evitar su
-captura, de manera que $R$ gana el juego si este tiene una forma de evitar su
-captura indefinidamente. Por convenci\'on, $C$ comienza el juego al escoger
-posiciones iniciales para cada uno de sus polic\'ias, mientras que $R$ en su
-primer turno decide en qu\'e v\'ertice colocar a su ladr\'on.
+Llegamos finalmente a la definici\'on del juego de polic\'ias y ladrones. Como
+objeto de estudio matem\'atico, la versi\'on de polic\'ias y ladrones que hoy en
+d\'ia conocemos es de al rededor de 1980. El par\'ametro que nos dedicaremos a
+estudiar a lo largo del texto, el \textit{n\'umero policiaco}, fue introducido
+por Aigner y Fromme en \cite{aignerDAM8}. Por otra parte, en \cite{bonato},
+Bonato y Nowakowski realizan una revisi\'on documental de todos los resultados
+que se tienen respecto al juego.
+
+As\'i pues, \indice{polic\'ias y ladrones} es un juego de
+evasi\'on-persecuci\'on sobre una gr\'afica en el cual dos jugadores, $C$ y $R$,
+toman turnos alternadamente para conseguir su objetivo. Por una parte, $C$
+controla a una cantidad fija de polic\'ias, $c$, tales que estos ocupan
+v\'ertices no necesariamente distintos de $G$ y, en cada turno, todos se mueven
+a trav\'es de una arista incidente al v\'ertice en el que se encontraban
+previamente. Por otro lado, $R$ controla a un \'unico ladr\'on cuyas reglas de
+movimiento son las mismas que las descritas para los polic\'ias de $C$. Por
+tanto, el objetivo de $C$ es que al menos uno de sus polic\'ias ocupe el mismo
+v\'ertice que el ladr\'on, momento en el que diremos que dicho polic\'ia
+\indice{captura} a $R$ y termina el juego de inmediato con la victoria de $C$.
+En tanto, el objetivo de $R$ es evitar su captura, de manera que $R$ gana el
+juego si puede hacer esto de forma indefinida. Por convenci\'on, $C$ comienza el
+juego al escoger posiciones iniciales para cada uno de sus polic\'ias, mientras
+que $R$ en su primer turno decide en qu\'e v\'ertice colocar a su ladr\'on.
 
 Diremos que un jugador tiene una \indice{estrategia ganadora} si este cuenta con
 un conjunto de reglas a seguir tal que, sin importar lo que haga su
@@ -420,22 +796,79 @@ sus retractos.
 
 \end{proof}
 
+\begin{lema}
+\label{lem:cotasup-dominante}
+  Si $G$ es una gr\'afica, entonces $c(G)\leq \gamma(G)$.
+\end{lema}
+
+\begin{proof}
+  Sea $S\subseteq V_G$ un conjunto dominante de $G$ de cardinalidad $\gamma(G)$.
+  As\'i, si $C$ tiene $\gamma(G)$ polic\'ias, este pone uno de ellos en cada
+  v\'ertice de $S$ en su primer turno. Sup\'ongase que $R$ se posiciona en $v$.
+  Si $v\in S$, hay un polic\'ia en $v$, por lo que el juego termina. De lo
+  contrario, existe una arista que incide en $v$ y es tal que su otro extremo,
+  $u$ est\'a en $S$ por ser este dominante. As\'i, el polic\'ia que se encuentra
+  en $u$ procede a capturar a $R$ en su siguiente turno.
+
+\end{proof}
+
+A manera de exploraci\'on, demostramos el siguiente teorema para \'arboles.
+
+\begin{teorema}
+\label{teo:copnum-arbol}
+  Si $T$ es un \'arbol, entonces $c(T)=1$.
+\end{teorema}
+
+\begin{proof}
+  Si $T$ es trivial, el resultado es claro. Por tanto, sup\'ongase que es no
+  trivial. Se dar\'a una estrategia ganadora para $C$ que controla a un \'unico
+  polic\'ia. Se denotar\'a por $C$ al polic\'ia que controla $C$, de modo que
+  este se posicione en un v\'ertice arbitrario de $T$. De la misma forma, se
+  denotar\'a por $R$ al ladr\'on que controla $R$. En los siguientes turnos,
+  dado que $T$ es un \'arbol, por \cref{cor:unitray} se tiene que existe una
+  \'unica trayectoria en $T$ de el v\'ertice en el que se encuentra $C$ al
+  v\'ertice en el que se encuentra $R$. As\'i, una estrategia para $C$ es mover
+  al segundo v\'ertice de la \'unica trayectoria entre su posici\'on actual y la
+  posici\'on de $R$.
+
+  Esto implica que, postrior al turno de $R$, la distancia entre $C$ y $R$ no
+  aumenta nunca. M\'as a\'un, dicha distancia debe disminuir eventualmente pues
+  si $R$ evita que eso pase, este llega eventualmente a una hoja, que existe por
+  ser $T$ no trivial. Luego, por inducci\'on se tiene que la distancia entre $C$
+  y $R$ eventualmente disminuye de $1$ a $0$, por lo que $C$ captura a $R$.
+
+\end{proof}
+
 Dada una gr\'afica $G$ sin lazos y $k\geq 1$, podemos considerar un juego de
 polic\'ias y ladrones sobre su gr\'afica de $k$ fichas, recordando que el juego
 se desarrolla sobre la versi\'on reflexiva de $\t{k}{G}$. No obstante, en lugar
 de trabajar sobre $\t{k}{G}$ para obtener estrategias ganadoras, podemos
 recurrir a la misma gr\'afica para plantear una modificaci\'on del juego
 tradicional, de manera que se puede emular una partida cl\'asica sobre
-$\t{k}{G}$. As\'i pues, para una partida tradicional de polic\'ias y ladrones
-sobre $\t{k}{G}$, consid\'erse una partida de polic\'ias y ladrones por equipos
-en $G$, donde cada polic\'ia de $C$ y el ladr\'on tienen un equipo de $k$ fichas
-tales que, por cada polic\'ia y el ladr\'on, sus $k$ fichas determinan un
-$k$-conjunto de $V_G$. Adem\'as, en su turno, cada polic\'ia y el ladr\'on
-escogen una de sus $k$ fichas y la mueven de un v\'ertice a otro a trav\'es de
-una arista, de manera que posterior a su movimiento estos siguen determinando un
-$k$-conjunto de $V_G$. Por otra parte, la acci\'on de que un polic\'ia o el
-ladr\'on pase en la gr\'afica de fichas se corresponde con que el respectivo
-polic\'ia o el ladr\'on no mueva alguna de sus fichas en $G$. En esta ocasi\'on,
-$C$ gana si en su turno logra que las $k$ fichas de uno de sus polic\'ias
-determinen el mismo $k$-conjunto que las $k$ fichas del ladr\'on, mientras que
-el ladr\'on gana si puede evitar que ello sucede indefinidamente.
+$\t{k}{G}$. Est\'a variante la introduce Fern\'andez en \cite{fernandez}. Para
+una partida tradicional de polic\'ias y ladrones sobre $\t{k}{G}$, consid\'erse
+una partida de polic\'ias y ladrones por equipos en $G$, donde cada polic\'ia de
+$C$ y el ladr\'on tienen un equipo de $k$ fichas tales que, por cada polic\'ia y
+el ladr\'on, sus $k$ fichas determinan un $k$-conjunto de $V_G$. Adem\'as, en su
+turno, cada polic\'ia y el ladr\'on escogen una de sus $k$ fichas y la mueven de
+un v\'ertice a otro a trav\'es de una arista, de manera que posterior a su
+movimiento estos siguen determinando un $k$-conjunto de $V_G$. Por otra parte,
+la acci\'on de que un polic\'ia o el ladr\'on pase en la gr\'afica de fichas se
+corresponde con que el respectivo polic\'ia o el ladr\'on no mueva alguna de sus
+fichas en $G$. En esta ocasi\'on, $C$ gana si en su turno logra que las $k$
+fichas de uno de sus polic\'ias determinen el mismo $k$-conjunto que las $k$
+fichas del ladr\'on, mientras que el ladr\'on gana si puede evitar que ello
+sucede indefinidamente. En algunas ocasiones nos referiremos a los v\'ertices en
+$\t{k}{G}$ como \textbf{configuraciones}\index{configuraci\'on}.
+
+De este punto en adelante, denotamos por $c_i$ al $i$-\'esimo polic\'ia de $C$,
+mientras que al ladr\'on, controlado por $R$, lo denotamos por $r$. Adem\'as,
+nos interesa distinguir entre las fichas de $r$, por lo que, para cada $1\leq
+j\leq k$ denotamos por $r_j$ a la $j$-\'esima ficha de $r$. M\'as a\'un, decimos
+que un polic\'ia $c_i$ \indice{domina} una configuraci\'on $S\in V_{\t{k}{G}}$
+si este se encuentra en $S$ o en una configuraci\'on adyacente a $S$ . Adem\'as,
+decimos que una ficha de $c_i$ captura a $r_j$ si estas se encuentran en el
+mismo v\'ertice, mientras que $c_i$ captura a $r_j$ si una ficha de $c_i$ le
+captura. Finalmente, $c_i$ captura a $r$ si ambos determinan el mismo
+$k$-conjunto de $V_{\t{k}{G}}$, mientras que $C$ captura a $R$ si $c_i$ captura
+a $r$ para alguna $i$.

@@ -1,0 +1,75 @@
+\chapter{Conclusi\'on}
+\label{cap:conc}
+
+Recopilando los resultados relevantes en la tesis, logramos determinar el
+n\'umero policiaco de las gr\'aficas de $k$ fichas de cualquier estrella $S_n$.
+Si bien este \'ultimo es el resultado principal de la primera secci\'on de
+resultados, no podemos dejar a un lado la utilidad del algoritmo de
+desobstrucci\'on, el cual nos facilit\'o la descripci\'on de una estrategia
+ganadora para $C$ con exactamente $c(\t{k}{S_n})$ polic\'ias. As\'imismo,
+destacamos tambi\'en el descubrimiento de una estrategia ganadora para $R$ si
+$C$ tiene menos de $c(\t{k}{S_n})$ polic\'ias.
+
+Por otro lado, una ligera modificaci\'on en la mencionada estrategia ganadora
+para $C$ nos permiti\'o determinar una cota superior para el n\'umero policiaco
+de la gr\'afica de $k$ fichas de cualquier \'arbol. Adem\'as, nuestro resultado
+acerca de los retractos de gr\'aficas de $k$ fichas de un \'arbol evidenci\'o
+que dicha cota superior es justa cuando los \'arboles tiene grado m\'aximo
+suficientemente respecto al n\'umero de fichas.
+
+Para el resto de gr\'aficas de fichas de \'arboles con grado m\'aximo bajo,
+logramos mejor la cota inferior para estrellas subdivididas de grado bajo dada
+por el lema de retractos en la gr\'afica de fichas de un \'arbol, esto siempre y
+cuando el n\'umero de fichas sea menor al n\'umero de emparejamiento de la
+estrella subdividida. M\'as a\'un, si la estrella subdividida tiene a lo m\'as
+dos ramas de longitud par, esta cota cubre todos los posibles valores de $k$.
+Particularmente para las triadas, se obtuvo una cota inferior para todas las
+posibles $k$ sin importar la paridad de la longitud de sus ramas. Dicha cota
+inferior tambi\'en induce una estrategia de escape para $R$ en funci\'on de
+otros algoritmos, como uno que construye emparejamientos m\'aximos dada una
+gr\'afica.
+
+Finalmente, revisamos el caso particular de la gr\'afica de Petersen, en la que
+logramos acotar el n\'umero policiaco de $\t{2}{P}$ al dar una estrategia
+ganadora para $C$ con $4$ polic\'ias.
+
+M\'as all\'a de las cotas dadas para el n\'umero policiaco en los distintos
+casos de estudio, confiamos en que el dise\~no de estrategias nos ayude a
+comprender los problemas que quedan sin soluci\'on en este trabajo. La
+intuci\'on que nos dejan las estrategias desarrolladas nos llevan a pensar en
+las siguientes dos conjeturas.
+
+\begin{conjetura}
+    Para toda $k\geq 2$, $0<n<2k-1$ y $m\geq 1$ suficientemente grande para que
+    $k\leq \left\lfloor\frac{\abs{V_{S_{n,m}}}}{2}\right\rfloor$, se tiene que
+    \[
+        c\paren{\t{k}{S_{n,m}}} = \left\lceil \frac{\left \lfloor \frac{n-1}{2}
+        \right \rfloor + k + 1}{2} \right \rceil.
+    \]
+\end{conjetura}
+
+\begin{conjetura}
+    Si $P$ denota la gr\'afica de Petersen, entonces $c(\t{2}{P})=4$.
+\end{conjetura}
+
+A manera de resumen, se presenta una tabla con las cotas encontradas.
+
+% \begin{table}[h]
+%     \begin{center}
+%     \begin{tabularx}{\textwidth}{>{\centering\arraybackslash}X 
+%         | >{\centering\arraybackslash}X 
+%         | >{\centering\arraybackslash}X | >{\centering\arraybackslash}X |
+%         >{\centering\arraybackslash}X | >{\centering\arraybackslash}X }
+%         \hline
+%         & $c(\t{k}{S_n})$ & $c(\t{k}{S(m_1,\dots,m_n)})$ & $n=2$ & $T$
+%         \\
+%         \hline
+%         $k< k_n$ & $k$ & $k$ & $k$ & $k$ \\
+%         \hline
+%         $k_n < k \leq \alpha'$ & N/A & $\left \rceil \frac{k+1}{2} \right\rceil$ & & \\
+%         \hline
+%         $\alpha' < k \leq \left\lfloor \frac{\abs{V}}{2} \right \rfloor$ & $k$ &
+%         $\leq k$ & & 
+%     \end{tabularx}
+% \end{center}
+% \end{table}
