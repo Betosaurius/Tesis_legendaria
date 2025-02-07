@@ -93,13 +93,13 @@ Dada $G$ una gr\'afica, decimos que $H$ es una \indice{subgr\'afica} de $G$ si
 $V_H\subseteq V_G$ y $E_H\subseteq E_G$ donde para cada $e\in E_H$, $e\subseteq
 V_H$. Adicionalmente, decimos que $H$ es una subgr\'afica
 \indiceSub{subgr\'afica}{inducida} de $G$ si para cada $e\in E_G$ tal que
-$e\subseteq V_H$, $e\in E_H$. Alternativamente, si $\varnothing\neq V\subseteq
+$e\subseteq V_H$, $e\in E_H$. Alternativamente, si $\varnothing\neq S\subseteq
 V_G$, denotamos por $G[S]$ a la subgr\'afica inducida de $G$ cuyo conjunto de
-v\'ertices es $S$ y cuyo conjunto de aristas tiene a todas las $e\in E_G$
+v\'ertices es $S$ y cuyo conjunto de aristas tiene a todas las aristas
 incidentes en al menos un v\'ertice en $S$. De forma similar, para $\varnothing
-E\subseteq E_G$, denotamos por $G[E]$ a la subgr\'afica de $G$ cuyo conjunto de
-aristas es $E$ y su conjunto de v\'ertices son todos aquellos $v\in V_G$ tales
-que indicen en al menos una arista de $E$.
+\ne E \subseteq E_G$, denotamos por $G[E]$ a la subgr\'afica de $G$ cuyo
+conjunto de aristas es $E$ y su conjunto de v\'ertices son todos aquellos
+v\'ertices tales que inciden en al menos una arista de $E$.
 
 \begin{figure}[ht!]
   \centering
@@ -118,14 +118,14 @@ que indicen en al menos una arista de $E$.
       \draw [myloop,in=240,out=300,looseness=12, blue]
             (2) to node[below]{$e_7$} (2);
       
-      \draw [edge, red]  (0) to node [midway, above=5pt] {$e_2$} (1);
+      \draw [edge, dashed, red]  (0) to node [midway, above=5pt] {$e_2$} (1);
       \draw [edge]  (1) to node [midway, below=5pt] {$e_3$} (2);
-      \draw [edge, blue]  (2) to node [midway, below=5pt] {$e_4$} (3);
+      \draw [edge, blue, dotted]  (2) to node [midway, below=5pt] {$e_4$} (3);
       \draw [edge]  (3) to node [midway, above=5pt] {$e_5$} (4);
       \draw [edge]  (4) to node [midway, above=5pt] {$e_6$} (1);
     \end{scope}
     \end{tikzpicture}
-  \caption{La gr\'afica determinada por los v\'ertices y aristas rojas, $H$, es
+  \caption{La gr\'afica determinada por los v\'ertices y arista rojas, $H$, es
    una subgr\'afica de $G$. No obstante, esta no es inducida pues
    $G[\l{v_1,v_2}]$ tambi\'en incluye el lazo $e_1$. Por otro lado
    $H=G[\l{e_2}]$. En tanto, la gr\'afica inducida por los v\'ertices y aristas
@@ -147,32 +147,33 @@ cual no es biyectiva. Por otro lado, $G[\l{v_1,v_2}] \cong G[\l{v_3,v_4}]$.
 
 Decimos que $G$ es \indiceSub{gr\'afica}{completa} si $E_G=\binom{V}{2}$.
 N\'otese que cualesquiera dos gr\'aficas completas de orden $n$ son isomorfas,
-por lo que denotamos por $K_n$ a la gr\'afica completa de orden $n$. Una gr\'afica $G$
-es \indiceSub{gr\'afica}{bipartita} si $V_G$ puede partirse en dos subconjuntos
-ajenos $X$ y $Y$ tales que toda arista incide en un v\'ertice en $X$ y en un
-v\'ertice en $Y$. Tal partici\'on $(X,Y)$ es llamada una bipartici\'on de la
-gr\'afica y $X$ y $Y$ son sus partes. Denotamos a una gr\'afica bipartita $G$
-con una partici\'on $(X,Y)$ por $G[X,Y]$. Si $G[X,Y]$ es tal que ambos $X$ y $Y$
-son distintos del vac\'io y todo v\'ertice de $X$ es adyacente a todo v\'ertice
-de $Y$, decimos que $G$ es una gr\'afica \indiceSub{gr\'afica}{bipartita
-completa}. En \cref{fig:grafica-dibujo2}, $X=\l{v_5}$ y $Y=\l{v_2,v_4}$ forman
-una partici\'on $(X,Y)$ de la gr\'afica $G[\l{v_2,v_4,v_5}]$, que de hecho es
-bipartita completa. Por otra parte, $X=\l{v_2}$ y $Y=\l{v_4}$ forman una
-partici\'on $(X,Y)$ de $G[\l{v_2,v_4}]$, pero esta no es bipartita completa.
+por lo que denotamos por $K_n$ a la gr\'afica completa de orden $n$. Una
+gr\'afica $G$ es \indiceSub{gr\'afica}{bipartita} si $V_G$ puede partirse en dos
+subconjuntos ajenos $X$ y $Y$ tales que toda arista incide en un v\'ertice en
+$X$ y en un v\'ertice en $Y$. Tal partici\'on $(X,Y)$ es llamada una
+bipartici\'on de la gr\'afica y $X$ y $Y$ son sus partes. Denotamos a una
+gr\'afica bipartita $G$ con una partici\'on $(X,Y)$ por $G[X,Y]$. Si $G[X,Y]$ es
+tal que ambos $X$ y $Y$ son distintos del vac\'io y todo v\'ertice de $X$ es
+adyacente a todo v\'ertice de $Y$, decimos que $G$ es una gr\'afica
+\indiceSub{gr\'afica}{bipartita completa}. En \cref{fig:grafica-dibujo2},
+$X=\l{v_5}$ y $Y=\l{v_2,v_4}$ forman una partici\'on $(X,Y)$ de la gr\'afica
+$G[\l{v_2,v_4,v_5}]$, que de hecho es bipartita completa. Por otra parte,
+$X=\l{v_2}$ y $Y=\l{v_4}$ forman una partici\'on $(X,Y)$ de $G[\l{v_2,v_4}]$,
+pero esta no es bipartita completa.
 
 Una \indice{trayectoria} es una gr\'afica $G$ cuyos v\'ertices admiten un orden
 total tal que dos v\'ertices son adyacentes en $G$ si y solo si son consecutivos
-en el orden. Si $P$ es una trayectoria de orden $n$, suponemos sin p\'erida de
+en el orden. Si $P$ es una trayectoria de orden $n$, suponemos sin p\'erdida de
 generalidad que $V_P=\l{v_1,\dots,v_n}$, de manera que denotamos a las
 trayectorias a trav\'es del orden de sus v\'ertices, de modo que
 $P=\paren{v_1,\dots,v_n}$. De lo anterior es claro que, si $P$ y $P'$ son dos
-trayectorias de orden $n$ con $n\geq 1$, entonces $P\cong P'$, donde el
-isomorfismo es el que manda un v\'ertice de $P$ en la $i$\'esima posici\'on al
+trayectorias de orden $n$ con $n\ge 1$, entonces $P\cong P'$, donde el
+isomorfismo es el que manda un v\'ertice de $P$ en la $i$-\'esima posici\'on al
 v\'ertice de $P'$ en la $i$-\'esima posici\'on. As\'i pues, denotamos por $P_n$
 a la trayectoria de orden $n$. Similarmente, un \indice{ciclo} consiste de una
 trayectoria en la que su primer y \'ultimo v\'ertice del orden son adyacentes.
 Por el mismo argumento, existe un \'unico ciclo de orden $n$, al que denotamos
-por $C_n$. La \indice{longitud} de una trayectoria o un ciclo es el tama\~no de
+$C_n$. La \indice{longitud} de una trayectoria o un ciclo es el tama\~no de
 dicha gr\'afica. Diremos que un ciclo o una trayectoria son pares o impares
 acorde a la paridad de su longitud. Por otra parte, sean $G$ una gr\'afica y
 $u,v\in V_G$. Decimos que $W=(v_1,v_2,\dots, v_n)$ es un $uv$-\indice{camino} en
@@ -185,7 +186,7 @@ las aristas del segmento $v_iPv_j$ y la arista $v_jx$. Analogamente se define un
 ciclo en $G$ como $C=(v_1,\dots,v_n,v_1)$, donde $v_{i}v_{i+1}\in E_G$ para cada
 $i\in\seg{1}{n-1}$, $v_nv_1\in E_G$ y $v_i\neq v_j$ para cada $i\neq j$.
 Continuando con los ejemplos en \cref{fig:grafica-dibujo2}, $P=(v_2,v_5,v_4)$ es
-una $v_2v_4$-trayectoria en $G$ y es tal que $P\cong P_3$. Por otro lado,
+una $v_2v_4$-trayectoria en $G$, y es tal que $P\cong P_3$. Por otro lado,
 $v_2Pv_4v_3v_2$ es un ciclo par de longitud $4$ isomorfo a $C_4$.
 
 Pasamos ahora a demostrar el siguiente teorema b\'asico que nos da una
@@ -194,7 +195,7 @@ sugr\'afica.
 
 \begin{teorema}
 \label{teo:grado-ciclo}
-    Si $G$ es una gr\'afica tal que $\delta_G \geq 2$, entonces $G$ contiene un
+    Si $G$ es una gr\'afica tal que $\delta_G \ge 2$, entonces $G$ contiene un
     ciclo.
 \end{teorema}
   
@@ -214,33 +215,34 @@ sugr\'afica.
 \end{proof}
 
 El teorema anterior nos permite demostrar un resultado similar que nos asegura
-la existencia de un ciclo en $G$. Dadas dos gr\'aficas $G$ y $H$, definimos la
-\indice{uni\'on} de $G$ y $H$, $G \cup H$, como la gr\'afica cuyo conjunto de
-v\'ertices es $V_G\cup V_H$ y con conjunto de aristas $E_G\cup E_H$.
+la existencia de un ciclo en $G$. Dadas dos gr\'aficas $G$ y $H$, con conjuntos
+de v\'ertices no necesariamente ajenos, definimos la \indice{uni\'on} de $G$ y
+$H$, $G \cup H$, como la gr\'afica cuyo conjunto de v\'ertices es $V_G\cup V_H$
+y con conjunto de aristas $E_G\cup E_H$.
 
-\begin{lema}
-\label{lem:trayectoria-ciclo}
+\begin{proposicion}
+\label{pro:trayectoria-ciclo}
     Sean $P=(v_1,\dots,v_n)$ y $Q=(u_1,\dots,u_m)$ trayectorias distintas en $G$
     tales que $v_1=u_1$ y $v_n=u_m$. Entonces $P\cup Q$ contiene un ciclo.
-\end{lema}
+\end{proposicion}
   
 \begin{proof}
   Como $E_P\neq E_Q$ por ser $P$ y $Q$ trayectorias distintas, se puede
-  considerar $H=G[E_P\triangle E_Q]$. Se afirma que $\delta_H\geq 2$. En efecto,
+  considerar $H=G[E_P\triangle E_Q]$. Se afirma que $\delta_H\ge 2$. En efecto,
   sea $v\in V_H$. Si $v=v_1$ o $v=v_n$, dado que el grado de $v$ es $1$ tanto en
   $P$ como en $Q$, debe suceder que la arista de $P$ incidente en $v$ es
-  distinta de la arista de $Q$ incidente en $v$, por lo que $d_H(v)\geq 2$.
+  distinta de la arista de $Q$ incidente en $v$, por lo que $d_H(v)\ge 2$.
   
   As\'i pues, sup\'ongase que $v$ es un v\'ertice distinto de los extremos de
   $P$. Como $v\in V_H$, existe, sin p\'erdida de generalidad, $e\in E_P$
   incidente en $v$ y $e\notin E_Q$. Al ser $v$ un v\'ertice distinto de los
   extremos de $P$, existe $h\neq e$ arista de $P$ incidente en $v$. Si $h\notin
-  E_Q$, entones $d_H(v)\geq 2$. De lo contrario, nuevamente por ser $v$ distinto
+  E_Q$, entones $d_H(v)\ge 2$. De lo contrario, nuevamente por ser $v$ distinto
   de los extremos de $Q$, existe $e'\in E_Q$ distinta de $h$ incidente en $v$.
   N\'otese que $e'\neq e$ pues $e\notin E_Q$. Luego, como $v$ tiene grado $2$ en
-  $P$, $e'\notin E_P$, por lo que $e'\in E_H$. As\'i, $d_H(v)\geq 2$.
+  $P$, $e'\notin E_P$, por lo que $e'\in E_H$. As\'i, $d_H(v)\ge 2$.
 
-  Esto implica que $\delta_H\geq 2$, por lo que, en virtud
+  Esto implica que $\delta_H\ge 2$, por lo que, en virtud
   d\cref{teo:grado-ciclo}, $P\cup Q$ contiene un ciclo.
 
 \end{proof}
@@ -275,7 +277,7 @@ tal que $\Delta_G\leq 2$.
   cualquier v\'ertice $u$ distinto de $v_{i-1}$ y $v_{i+1}$, $uv_i\notin E_G$
   pues, de lo contrario,
   \[
-      2\geq \Delta_G \geq d_G(v_i) \geq 3,  
+      2\ge \Delta_G \ge d_G(v_i) \ge 3,  
   \]
   lo cual es una contradicci\'on. As\'i, $N_G(v_n)\subseteq \l{v_{n-1},v_1}$ y
   $N_G(v_1)\subseteq \l{v_n,v_2}$, mientras que $N_G(v_i)=\l{v_{i-1},v_{i+1}}$
@@ -288,7 +290,7 @@ tal que $\Delta_G\leq 2$.
 \section{\'Arboles}
 
 Una gr\'afica $G$ es un \textbf{\'arbol}\index{arbol@\'arbol} si esta es conexa
-y ac\'iclica. De esta definici\'on y d\cref{lem:trayectoria-ciclo} se tiene el
+y ac\'iclica. De esta definici\'on y d\cref{pro:trayectoria-ciclo} se tiene el
 siguiente corolario inmediato.
 
 \begin{corolario}
@@ -325,9 +327,8 @@ grado $1$ en un \'arbol.
       \draw [edge]  (4) to node [midway, above=5pt] {$e_6$} (1);
     \end{scope}
     \end{tikzpicture}
-  \caption{Los v\'ertices y aristas de rojo inducen la gr\'afica
-  $G[\l{e_2,e_3,e_4,e_5}]$, la cual es un \'arbol y tiene a $v_1$ y $v_5$ como
-  hojas.}
+  \caption{Los aristas de rojo inducen la gr\'afica $G[\l{e_2,e_3,e_4,e_5}]$, la
+  cual es un \'arbol y tiene a $v_1$ y $v_5$ como hojas.}
   \label{fig:grafica-dibujo3}
   \end{figure}
 
@@ -480,7 +481,7 @@ los emparejamientos m\'aximos.
   entre aristas en $M$ y en $E\setminus M$. Finalmente, si $e\in M\setminus E_P$
   y $f\in E_P\setminus M$, estas son no incidentes ya que, de lo contrario, $f$
   y $e$ inciden en un v\'ertice no saturado por $M$ (si dicho v\'ertice es el
-  incial o final de $P$) o indicen en un v\'ertice saturado por $M$ a trav\'es
+  incial o final de $P$) o inciden en un v\'ertice saturado por $M$ a trav\'es
   de una arista en $P$ distinta de $e$, contradiciendo que $M$ es un
   emparejamiento.
   
@@ -519,16 +520,16 @@ las partes de la bipartici\'on.
   Una gr\'afica bipartita $G[X,Y]$ tiene un emparejamiento que satura todos los
   v\'ertices en $X$ si y solo si
   \[
-      \abs{N(S)}\geq \abs{S}
+      \abs{N(S)}\ge \abs{S}
   \]
   para cada $S\subseteq X$.
 \end{teorema}
 
 \begin{proof}
-  Sea $G\coloneqq G[X,Y]$ una gr\'afica bipartita con un emparejamiento $M$ que
-  satura todos los v\'ertices en $X$. Sea $S\subseteq X$. Los v\'ertices en $S$
-  est\'an emparejados bajo $M$ a distintos v\'ertices en $N(S)$, por lo que
-  $\abs{N(S)}\geq \abs{S}$.
+  Sea $G[X,Y]$ una gr\'afica bipartita con un emparejamiento $M$ que satura
+  todos los v\'ertices en $X$. Sea $S\subseteq X$. Los v\'ertices en $S$ est\'an
+  emparejados bajo $M$ a distintos v\'ertices en $N(S)$, por lo que
+  $\abs{N(S)}\ge \abs{S}$.
 
   Sup\'ongase ahora que $G[X,Y]$ es una gr\'afica bipartita y sup\'ongase que
   $G$ no tiene un emparejamiento que sature a todos los v\'ertices en $X$. Sea
@@ -568,17 +569,17 @@ las partes de la bipartici\'on.
   \end{figure}
 
   Claramente los v\'ertices en $R\setminus\l{u}$ est\'an emparejados bajo $M^*$
-  a v\'ertices en $B$. As\'i, $\abs{B} \geq \abs{R} - 1$ , mientras que cada
+  a v\'ertices en $B$. As\'i, $\abs{B} \ge \abs{R} - 1$ , mientras que cada
   v\'ertice en $B$ est\'a saturado por $M^*$ ya que, de lo contrario, la $M^*$
-  trayectoria alternante de $u$ a $y$ ser\'ia $M^*$-aumentante, contradiciendo
+  trayectoria alternante de $u$ a $y$ ser\'ia $M^*$-aumentable, contradiciendo
   que $M^*$ es m\'aximo por \cref{teo:berge}. Luego, $\abs{B} = \abs{R} - 1$.
   Por otro lado, $B\subseteq N(R)$ pues, dado $y\in B$, el pen\'ultimo v\'ertice
   de una $uy$-trayectoria $M^*$-alternante est\'a en $R$. En tanto, todo
-  v\'ertice $y$ en $N(R)$ es alcanzado por $u$ a trav\'es de una
-  $M^*$-trayectoria alternante hacia $x\in R$, $P$, y $xy\in E_G$. Si $y$ est\'a
-  en $P$, $y\in B$, mientras que si no, $uPxy$ es una trayectoria
-  $M^*$-alternante pues $x$ est\'a saturado por $M^*$, de manera que $xy\notin
-  M^*$. Por tanto, $B=N(R)$ y
+  v\'ertice $y$ en $N(R)$ tiene un vecino $x$ que es alcanzado por $u$ a
+  trav\'es de una $M^*$-trayectoria alternante $P$ cuyo \'ultimo v\'ertice es
+  $x$. Si $y$ es un v\'ertice interno de $P$, $y\in B$, mientras que si no,
+  $uPxy$ es una trayectoria $M^*$-alternante pues $x$ est\'a saturado por $M^*$,
+  de manera que $xy\notin M^*$. Por tanto, $B=N(R)$ y
   \[
     \abs{N(R)} = \abs{B} = \abs{R} - 1 < \abs{R},
   \]
@@ -839,7 +840,7 @@ A manera de exploraci\'on, demostramos el siguiente teorema para \'arboles.
 
 \end{proof}
 
-Dada una gr\'afica $G$ sin lazos y $k\geq 1$, podemos considerar un juego de
+Dada una gr\'afica $G$ sin lazos y $k\ge 1$, podemos considerar un juego de
 polic\'ias y ladrones sobre su gr\'afica de $k$ fichas, recordando que el juego
 se desarrolla sobre la versi\'on reflexiva de $\t{k}{G}$. No obstante, en lugar
 de trabajar sobre $\t{k}{G}$ para obtener estrategias ganadoras, podemos
