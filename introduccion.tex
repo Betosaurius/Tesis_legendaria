@@ -592,23 +592,23 @@ las partes de la bipartici\'on.
 Dada una gr\'afica $G$, estamos interesados en obtener una estructura que nos
 permita estudiar \textit{configuraciones} de $G$. No es de sorprender que esa
 estructura que buscamos es tambi\'en una gr\'afica. As\'i, en \cite{fabila},
-Fabila et al introducen el concepto de \textit{gr\'afica de fichas} de una
+Fabila et al. introducen el concepto de \textit{gr\'afica de fichas} de una
 gr\'afica $G$ y estudian sus propiedades b\'asicas como gr\'afica en t\'erminos
 de las propiedades de $G$. Por tanto, las siguientes definiciones y resultados
 se obtienen de dicho trabajo.
 
 Dado $X$ un conjunto y $k\leq \abs{X}$, decimos que $S\subseteq X$ es un
-$k$-conjunto si $\abs{S}=k$. Dada una gr\'afica $G$ sin lazos y $1\leq k\leq
-\abs{V_G}$, definimos la \textbf{gr\'afica de k fichas}\index{gr\'afica!de
+$k$-conjunto de $X$ si $\abs{S}=k$. Dada una gr\'afica $G$ sin lazos y $1\leq
+k\leq \abs{V_G}$, definimos la \textbf{gr\'afica de k fichas}\index{gr\'afica!de
 fichas} de $G$, $\t{k}{G}$, cuyo conjunto de v\'ertices consiste de todos los
 $k$-conjuntos de $V_G$, mientras que dos de estos $k$-conjuntos, $A$ y $B$, son
-adyacentes si y solo $A\triangle B\in E_G$ (ver \cref{fig:grafica-fichas}). Una
-observaci\'on inmediata de la definici\'on es que, si $G$ es una gr\'afica sin
-lazos, $G$ es isomorfa a su gr\'afica de $1$ ficha, es decir, $G\cong \t{1}{G}$.
-Esto es inmediato al ver que los $1$-conjuntos de $V_G$ son los unitarios de los
-v\'ertices y que dos $1$-conjuntos son adyacentes en $\t{1}{k}$ si y solo si su
-diferencia sim\'ertica es una arista en $G$, es decir, si estos son adyacentes
-en $G$.
+adyacentes si y solo si $A\triangle B\in E_G$ (ver \cref{fig:grafica-fichas}).
+Una observaci\'on inmediata de la definici\'on es que, si $G$ es una gr\'afica
+sin lazos, $G$ es isomorfa a su gr\'afica de $1$ ficha, es decir, $G\cong
+\t{1}{G}$. Esto es inmediato al ver que los $1$-conjuntos de $V_G$ son los
+unitarios de los v\'ertices y que dos $1$-conjuntos son adyacentes en $\t{1}{k}$
+si y solo si su diferencia sim\'ertica es una arista en $G$, es decir, si estos
+son adyacentes en $G$.
 
 \begin{figure}[ht!]
 \centering
@@ -703,7 +703,7 @@ El siguiente lema reduce los casos a estudiar para las gr\'aficas de fichas.
 
 Llegamos finalmente a la definici\'on del juego de polic\'ias y ladrones. Como
 objeto de estudio matem\'atico, la versi\'on de polic\'ias y ladrones que hoy en
-d\'ia conocemos es de al rededor de 1980. El par\'ametro que nos dedicaremos a
+d\'ia conocemos es de alrededor de 1980. El par\'ametro que nos dedicaremos a
 estudiar a lo largo del texto, el \textit{n\'umero policiaco}, fue introducido
 por Aigner y Fromme en \cite{aignerDAM8}. Por otra parte, en \cite{bonato},
 Bonato y Nowakowski realizan una revisi\'on documental de todos los resultados
@@ -712,50 +712,50 @@ que se tienen respecto al juego.
 As\'i pues, \indice{polic\'ias y ladrones} es un juego de
 evasi\'on-persecuci\'on sobre una gr\'afica en el cual dos jugadores, $C$ y $R$,
 toman turnos alternadamente para conseguir su objetivo. Por una parte, $C$
-controla a una cantidad fija de polic\'ias, $c$, tales que estos ocupan
-v\'ertices no necesariamente distintos de $G$ y, en cada turno, todos se mueven
-a trav\'es de una arista incidente al v\'ertice en el que se encontraban
-previamente. Por otro lado, $R$ controla a un \'unico ladr\'on cuyas reglas de
-movimiento son las mismas que las descritas para los polic\'ias de $C$. Por
-tanto, el objetivo de $C$ es que al menos uno de sus polic\'ias ocupe el mismo
-v\'ertice que el ladr\'on, momento en el que diremos que dicho polic\'ia
-\indice{captura} a $R$ y termina el juego de inmediato con la victoria de $C$.
-En tanto, el objetivo de $R$ es evitar su captura, de manera que $R$ gana el
-juego si puede hacer esto de forma indefinida. Por convenci\'on, $C$ comienza el
-juego al escoger posiciones iniciales para cada uno de sus polic\'ias, mientras
-que $R$ en su primer turno decide en qu\'e v\'ertice colocar a su ladr\'on.
+controla a una cantidad fija $c$ de polic\'ias tales que estos ocupan v\'ertices
+no necesariamente distintos de $G$ y, en cada turno, todos se mueven a trav\'es
+de una arista incidente al v\'ertice en el que se encontraban previamente. Por
+otro lado, $R$ controla a un \'unico ladr\'on cuyas reglas de movimiento son las
+mismas que las descritas para los polic\'ias de $C$. Por tanto, el objetivo de
+$C$ es que al menos uno de sus polic\'ias ocupe el mismo v\'ertice que el
+ladr\'on, momento en el que diremos que dicho polic\'ia \indice{captura} a $R$ y
+termina el juego de inmediato con la victoria de $C$. En tanto, el objetivo de
+$R$ es evitar su captura, de manera que $R$ gana el juego si puede hacer esto de
+forma indefinida. Por convenci\'on, $C$ comienza el juego al escoger posiciones
+iniciales para cada uno de sus polic\'ias, mientras que, posteriormente, $R$ en
+su primer turno decide en qu\'e v\'ertice colocar a su ladr\'on.
 
-Diremos que un jugador tiene una \indice{estrategia ganadora} si este cuenta con
-un conjunto de reglas a seguir tal que, sin importar lo que haga su
-contrincante, este es capaz de ganar el juego. Por tanto, $C$ tiene una
-estrategia ganadora si este puede eventualmente capturar a $R$ tras un n\'umero
-finito de movimientos y sin importar los movimientos que este realice, mientras
-que $R$ tiene una estrategia ganadora si este puede evadir su captura sin
-importar los movimientos que realice $C$.
+Diremos que un jugador tiene una \indice{estrategia ganadora} si cuenta con un
+conjunto de reglas a seguir tal que, sin importar lo que haga su contrincante,
+este es capaz de ganar el juego. Por tanto, $C$ tiene una estrategia ganadora si
+puede eventualmente capturar a $R$ tras un n\'umero finito de movimientos y sin
+importar los movimientos que este realice, mientras que $R$ tiene una estrategia
+ganadora si puede evadir su captura sin importar los movimientos que realice
+$C$.
 
-Una versi\'on de este juego llamada \textit{lazy cops and robbers} considera la
-opci\'on de que, en su turno, cada polic\'ia y el ladr\'on pueden pasar, de modo
-que estos mantienen su posici\'on. No obstante, esta variante del juego puede
-emularse con la versi\'on tradicional al jugar sobre gr\'aficas reflexivas, de
-manera que, si alg\'un polic\'ia o el ladr\'on buscan pasar, estos se mueven a
-trav\'es del lazo asociado al v\'ertice en el que se encuentran. As\'i, a lo
-largo del trabajo examinaremos el juego tradicional \'unicamente sobre
-gr\'aficas reflexivas a\'un cuando nos referiremos a dichas gr\'aficas como sus
-versiones sin lazos.
+La versi\'on antes descrita es la llamada versi\'on ``activa'' del juego.   Hay
+una versi\'on ``pasiva'' en la que, en su turno, cada polic\'ia y el ladr\'on
+pueden pasar, de modo que estos mantienen su posici\'on. No obstante, esta
+variante del juego puede emularse con la versi\'on activa al jugar sobre
+gr\'aficas reflexivas, de manera que, si alg\'un polic\'ia o el ladr\'on buscan
+pasar, estos se mueven a trav\'es del lazo asociado al v\'ertice en el que se
+encuentran. As\'i, a lo largo del trabajo examinaremos el juego tradicional
+\'unicamente sobre gr\'aficas reflexivas a\'un cuando nos referiremos a dichas
+gr\'aficas como sus versiones sin lazos.
 
 Dada una gr\'afica $G$ de orden $n$, es claro que si $C$ tiene $n$ polic\'ias,
-entonces este tiene una estrategia ganadora, a saber, en su primer turno coloca
-cada polic\'ia en un v\'ertice distinto de $G$, de manera que, sin importar que
+entonces tiene una estrategia ganadora, a saber, en su primer turno coloca cada
+polic\'ia en un v\'ertice distinto de $G$, de manera que, sin importar que
 v\'ertice escoja $R$, este pasa a ser capturado inmediatamente. Por tanto, cabe
 preguntarse, dada una gr\'afica $G$, cu\'al es el m\'inimo n\'umero de
 polic\'ias que $C$ necesita para capturar a $R$. A este par\'ametro lo
 llamaremos el \indice{n\'umero policiaco} de $G$ y lo denotaremos por $c(G)$.
 
-Dada una gr\'afica $G$ y $H$ una de sus subgr\'aficas inducidas, decimos que $H$
-es un \indice{retracto} de $G$ si existe un homomorfismo $f$ de $G$ en $H$ tal
-que $f(x)=x$ para cualquier $x\in V_H$. A trav\'es de esta noci\'on, podemos dar
-una cota inferior para el n\'umero policiaco de una gr\'afica en funci\'on de
-sus retractos.
+Dadas una gr\'afica $G$ y $H$ una de sus subgr\'aficas inducidas, decimos que
+$H$ es un \indice{retracto} de $G$ si existe un homomorfismo $f$ de $G$ en $H$
+tal que $f(x)=x$ para cualquier $x\in V_H$. A trav\'es de esta noci\'on, podemos
+dar una cota inferior para el n\'umero policiaco de una gr\'afica en funci\'on
+de sus retractos.
 
 \begin{lema}
 \label{lem:retracto-cota}
@@ -765,21 +765,21 @@ sus retractos.
 \begin{proof}
   Sup\'ongase que $k$ polic\'ias tienen una estrategia ganadora en $G$ y sea $f$
   un homomorfismo de $G$ a $H$ tal que $f(x)=x$ para cada $x\in V_H$. Se
-  consideran dos partidas en paralelo de polic\'ias y ladrones: una jugada sobre
-  $G$ y otra sobre $H$. El juego en $H$ puede considerarse como un juego sobre
-  $G$ pues $H$ es una subgr\'afica inducida de $G$. La estrategia ganadora de
-  $C$ en $G$ puede no ser suficiente para capturar a $R$ en $H$, por ejemplo,
-  puede que este tenga que salir de $H$ para ser capturado en la parte de $G$
-  que no est\'a en $H$.
+  consideran dos partidas indepdendientes en paralelo de polic\'ias y ladrones:
+  una jugada sobre $G$ y otra sobre $H$. El juego en $H$ puede considerarse como
+  un juego sobre $G$ pues $H$ es una subgr\'afica inducida de $G$. La estrategia
+  ganadora de $C$ con $k$ polic\'ias en $G$ puede no ser suficiente para
+  capturar a $R$ en $H$, por ejemplo, puede que $R$ tenga que salir de $H$ para
+  ser capturado en la parte de $G$ que no est\'a en $H$.
 
   As\'i pues, se considera la siguiente estrategia de sombras: los polic\'ias
-  jugando en $G$ siguen la estrategia usual, mientras que los polic\'ias jugando
-  en $H$ realizan los movimientos dados por las im\'agenes bajo $f$ de los
-  polic\'ias en $G$. Por simplicidad, se denota por $f(c)$ a las imagenes de las
-  posiciones de los polic\'ias en $G$. As\'i, si un polic\'ia $c$ en $G$ se
-  mueve de un v\'ertice $u$ a $v$, entonces un polic\'ia $f(c)$ en $H$ se mueve
-  de $f(u)$ a $f(v)$, el cual es un movimiento v\'alido por ser $f$ un
-  homomorfismo.
+  jugando la partida en $G$ siguen la estrategia usual, mientras que los
+  polic\'ias jugando la partida en $H$ realizan los movimientos dados por las
+  im\'agenes bajo $f$ de los polic\'ias en $G$. Por simplicidad, se denota por
+  $f(c)$ a las imagenes de las posiciones de los polic\'ias en $G$. As\'i, si un
+  polic\'ia $c_i$ en $G$ se mueve de un v\'ertice $u$ a $v$, entonces un
+  polic\'ia $f(c_i)$ en $H$ se mueve de $f(u)$ a $f(v)$, el cual es un
+  movimiento v\'alido por ser $f$ un homomorfismo.
 
   Se afirma que la estrategia descrita es ganadora para los polic\'ias en $H$.
   En efecto, consid\'erese que los polic\'ias juegan en $G$ y $R$ est\'a
@@ -788,8 +788,8 @@ sus retractos.
   en $H$ como en $G$, son adyacentes a un polic\'ia. Luego, si $u$ es el
   v\'ertice en el que se encuentra $R$ y $v$ es un v\'ertice adyacente a este,
   el homomorfismo $f$ manda la arista $uv\in E_G$ a la arista $uf(v)\in E_H$.
-  Luego, como $f$ es homomorfismo, si $c$ era el polic\'ia en un v\'ertice
-  adyacente a $v$ en $G$, $f(c)$ es un polic\'ia adyacente a $f(v)$ en $H$. Lo
+  Luego, como $f$ es homomorfismo, si $c_i$ es el polic\'ia en un v\'ertice
+  adyacente a $v$ en $G$, $f(c_i)$ es un polic\'ia adyacente a $f(v)$ en $H$. Lo
   mismo sucede con el polic\'ia en $G$ que est\'a en un v\'ertice adyacente al
   v\'ertice en el que se encuentra $R$. Por tanto, todos los posibles
   movimientos de $R$ son tales que un polic\'ia en $H$ le captura en a lo m\'as
@@ -827,7 +827,7 @@ A manera de exploraci\'on, demostramos el siguiente teorema para \'arboles.
   este se posicione en un v\'ertice arbitrario de $T$. De la misma forma, se
   denotar\'a por $R$ al ladr\'on que controla $R$. En los siguientes turnos,
   dado que $T$ es un \'arbol, por \cref{cor:unitray} se tiene que existe una
-  \'unica trayectoria en $T$ de el v\'ertice en el que se encuentra $C$ al
+  \'unica trayectoria en $T$ del v\'ertice en el que se encuentra $C$ al
   v\'ertice en el que se encuentra $R$. As\'i, una estrategia para $C$ es mover
   al segundo v\'ertice de la \'unica trayectoria entre su posici\'on actual y la
   posici\'on de $R$.
@@ -835,7 +835,7 @@ A manera de exploraci\'on, demostramos el siguiente teorema para \'arboles.
   Esto implica que, postrior al turno de $R$, la distancia entre $C$ y $R$ no
   aumenta nunca. M\'as a\'un, dicha distancia debe disminuir eventualmente pues
   si $R$ evita que eso pase, este llega eventualmente a una hoja, que existe por
-  ser $T$ no trivial. Luego, por inducci\'on se tiene que la distancia entre $C$
+  ser $T$ no trivial. Luego, inductivamente se tiene que la distancia entre $C$
   y $R$ eventualmente disminuye de $1$ a $0$, por lo que $C$ captura a $R$.
 
 \end{proof}
@@ -846,29 +846,30 @@ se desarrolla sobre la versi\'on reflexiva de $\t{k}{G}$. No obstante, en lugar
 de trabajar sobre $\t{k}{G}$ para obtener estrategias ganadoras, podemos
 recurrir a la misma gr\'afica para plantear una modificaci\'on del juego
 tradicional, de manera que se puede emular una partida cl\'asica sobre
-$\t{k}{G}$. Est\'a variante la introduce Fern\'andez en \cite{fernandez}. Para
-una partida tradicional de polic\'ias y ladrones sobre $\t{k}{G}$, consid\'erse
-una partida de polic\'ias y ladrones por equipos en $G$, donde cada polic\'ia de
-$C$ y el ladr\'on tienen un equipo de $k$ fichas tales que, por cada polic\'ia y
-el ladr\'on, sus $k$ fichas determinan un $k$-conjunto de $V_G$. Adem\'as, en su
-turno, cada polic\'ia y el ladr\'on escogen una de sus $k$ fichas y la mueven de
-un v\'ertice a otro a trav\'es de una arista, de manera que posterior a su
-movimiento estos siguen determinando un $k$-conjunto de $V_G$. Por otra parte,
-la acci\'on de que un polic\'ia o el ladr\'on pase en la gr\'afica de fichas se
-corresponde con que el respectivo polic\'ia o el ladr\'on no mueva alguna de sus
-fichas en $G$. En esta ocasi\'on, $C$ gana si en su turno logra que las $k$
-fichas de uno de sus polic\'ias determinen el mismo $k$-conjunto que las $k$
-fichas del ladr\'on, mientras que el ladr\'on gana si puede evitar que ello
-sucede indefinidamente. En algunas ocasiones nos referiremos a los v\'ertices en
-$\t{k}{G}$ como \textbf{configuraciones}\index{configuraci\'on}.
+$\t{k}{G}$. Est\'a variante la introduce Fern\'andez-Vel\'azquez en
+\cite{fernandez}. Para una partida tradicional de polic\'ias y ladrones sobre
+$\t{k}{G}$, consid\'erese una partida de polic\'ias y ladrones por equipos en
+$G$, donde cada polic\'ia de $C$ y el ladr\'on tienen un equipo de $k$ fichas
+tales que, por cada polic\'ia y el ladr\'on, sus $k$ fichas determinan un
+$k$-conjunto de $V_G$. Adem\'as, en su turno, cada polic\'ia y el ladr\'on
+escogen una de sus $k$ fichas y la mueven de un v\'ertice a otro a trav\'es de
+una arista, de manera que posterior a su movimiento estos siguen determinando un
+$k$-conjunto de $V_G$. Por otra parte, la acci\'on de que un polic\'ia o el
+ladr\'on pase en la gr\'afica de fichas se corresponde con que el respectivo
+polic\'ia o el ladr\'on no mueva alguna de sus fichas en $G$. En esta ocasi\'on,
+$C$ gana si en su turno logra que las $k$ fichas de uno de sus polic\'ias
+determinen el mismo $k$-conjunto que las $k$ fichas del ladr\'on, mientras que
+el ladr\'on gana si puede evitar indefinidamente que ello suceda. En algunas
+ocasiones nos referiremos a los v\'ertices en $\t{k}{G}$ como
+\textbf{configuraciones}\index{configuraci\'on}.
 
 De este punto en adelante, denotamos por $c_i$ al $i$-\'esimo polic\'ia de $C$,
-mientras que al ladr\'on, controlado por $R$, lo denotamos por $r$. Adem\'as,
-nos interesa distinguir entre las fichas de $r$, por lo que, para cada $1\leq
-j\leq k$ denotamos por $r_j$ a la $j$-\'esima ficha de $r$. M\'as a\'un, decimos
-que un polic\'ia $c_i$ \indice{domina} una configuraci\'on $S\in V_{\t{k}{G}}$
-si este se encuentra en $S$ o en una configuraci\'on adyacente a $S$ . Adem\'as,
-decimos que una ficha de $c_i$ captura a $r_j$ si estas se encuentran en el
+mientras que al ladr\'on, controlado por $R$, lo denotamos por $r$. Nos interesa
+distinguir entre las fichas de $r$, por lo que, para cada $1\leq j\leq k$
+denotamos por $r_j$ a la $j$-\'esima ficha de $r$. M\'as a\'un, decimos que un
+polic\'ia $c_i$ \indice{domina} una configuraci\'on $S\in V_{\t{k}{G}}$ si este
+se encuentra en $S$ o en una configuraci\'on adyacente a $S$. Adem\'as, decimos
+que una ficha $c_{i,j}$ de $c_i$ captura a $r_j$ si estas se encuentran en el
 mismo v\'ertice, mientras que $c_i$ captura a $r_j$ si una ficha de $c_i$ le
 captura. Finalmente, $c_i$ captura a $r$ si ambos determinan el mismo
 $k$-conjunto de $V_{\t{k}{G}}$, mientras que $C$ captura a $R$ si $c_i$ captura
