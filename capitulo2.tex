@@ -1143,121 +1143,137 @@ Para cada $i\in\seg{1}{n}$, llamaremos a la trayectoria $(i_0,\dots,i_{m_i})$ la
 referiremos por \textbf{v\'ertice soporte de la $i$-\'esima rama} al v\'ertice
 inicial de $P_i$, $i_0$. Dado $m\in\n$, denotaremos por $S_{n,m}$ a la gr\'afica
 $S(m_1,\dots,m_n)$ donde $m_i=m$ para cada $i\in\seg{1}{n}$. As\'i llamaremos a
-$S_{n,m}$ la \textbf{estrella de $n$ ramas con $m$ subdivisiones}. Si bien es
-inmediato ver que $S_{n,0}$ es un retracto para cualquier estrella de $n$ ramas
-con subdivisiones $S$, no es inmediato que lo mismo sucede para sus respectivas
-gr\'aficas de $k$ fichas con $1\leq k\leq
-\left\lfloor\frac{\abs{V_S}}{2}\right\rfloor$. Por tanto, enunciamos el
-siguiente lema.
+$S_{n,m}$ la \textbf{estrella de $n$ ramas con $m$ subdivisiones}. 
+
+En busca de una cota inferior para el n\'umero policiaco de las gr\'aficas de
+$k$ fichas de las estrellas, el primer objetivo de esta secci\'on es dar una
+estrategia para $R$ en funci\'on de la estrategia dada en
+\cref{teo:cota_estrella}. As\'i pues, si $T$ es un \'arbol y $x\in V_T$, sea
+$H=G[N_T[x]]$. Definimos una funci\'on $s'$ de $V_T$ en $V_H$ dada por la regla
+de correspondencia
+\[
+    s'(v) = u_v
+\]
+donde $u_v$ es el v\'ertice de $H$ que minimiza $d(v,u)$ para cada $u$ v\'ertice
+de $H$. N\'otese que $f$ est\'a bien definida pues si $v\in V_H$, $s'(v) = v$.
+Por otra parte, si $v\notin V_H$, por ser $T$ un \'arbol se tiene, por
+\cref{cor:unitray}, que existe una \'unica $vx$-trayectoria en $T$, por lo que
+$f(v)$ es precisamente el pen\'ultimo v\'ertice de la $vx$ trayectoria.
+Definimos $s$ la funci\'on de $V_{\t{k}{T}}$ en
+$\bigcup_{i=1}^{j}\binom{V_H}{j}$ dada por la regla de correspondencia
+\[
+    s(C) = \l{s'(v) \colon\  v\in C}.
+\]
+la cual est\'a bien definida pues $s'$ lo est\'a y la imagen de $s$ consiste de
+un conjunto con al menos un elemento de $V_H$. Llamamos a $s(C)$ la
+\indice{sombra} de $C$ sobre $H$. De forma similar, dada una partida de
+polic\'ias y ladrones sobre la gr\'afica de $k$ fichas de un \'arbol $T$, para
+cada $c_i$, podemos considerar la sombra de $c_i$ sobre $H$, $c_i^s$, como un
+polic\'ia cuya $j$-\'esima ficha est\'a sobre la sombra de la posici\'on de
+$c_{i,j}$, es decir
+\[
+    c_{i,j}^s(t) = s\paren{c_{i,j}(t)}.
+\]
+N\'otese que puede que $c_i^s$ no determine un $k$-conjunto de $V_H$ pues $s'$
+no necesariamete es inyectiva. No obstante, esta definici\'on de la sombra de un
+polic\'ia nos ayuda a describir la estrategia buscada para $R$.
+
 
 \begin{lema}
 \label{lem:retracto}
-    Sean $S$ una estrella subdividida, $x$ una de sus hojas, y $k\leq \abs{V_S}
-    - 1$. Entonces $\t{k}{S-x}$ es un retracto de $\t{k}{S}$.
+    Si $S$ es una estrella subdividida de $n$ ramas y $k$ es tal que $n\geq
+    2k-1$, entonces $c\paren{\t{k}{S_n}} \leq c\paren{\t{k}{S}}$.
 \end{lema}
 
 \begin{proof}
-    Sea $i$ la rama donde se encuentra $x$ y $m$ la longitud de dicha rama.
-    Sup\'ongase que $k\leq m$. Esto implica que, para cualquier $C\in
-    V_{\t{k}{S}}$, al menos un v\'ertice de la rama no est\'a en $C$ (pues la
-    rama tiene $m+1$ v\'ertices). Luego, se elige $x_C$ un v\'ertice en
-    $V_S\setminus C$ tal que se minimiza $d(x_c,x)$ y se define $f$ como la
-    funci\'on de $V_{\t{k}{S}}$ en $V_{\t{k}{S-x}}$ dada por la regla
-    \[
-        f(C)=C\cup\l{x_C}\setminus \l{x}.
-    \]
-    V\'ease que esta funci\'on est\'a bien definida pues, por lo dicho
-    anteriormente, al menos un v\'ertice de la $i$-\'esima rama no est\'a en $C$
-    y, para cada $j\in\seg{0}{m+1}$, existe un \'unico v\'ertice en la $i$-\'esima
-    rama a distancia $j$ de $x$.
+    Consid\'erese un juego de polic\'ias y ladrones sobre la gr\'afica de $k$
+    fichas de $S$ con $c\paren{\t{k}{S_n}} - 1 = k-1$ polic\'ias. Sea $H$ la
+    subgr\'afica inducida de $S$ isomorga a $S_n$. Por lo dicho en la
+    demostraci\'on d\cref{teo:cota_estrella}, $R$ puede escoger una
+    configuraci\'on inicial sobre $H$ con una ficha en $0$ y de manera que
+    ning\'un polic\'ia le captura $k-1$ fichas en los v\'ertices soporte de $S$.
+    M\'as a\'un, esto se cumple tambi\'en para las sombras de cada polic\'ia
+    pues, en caso de que $c_{i}^s$ no determine un $k$-conjunto de $S$, este
+    debe tener al menos dos fichas sobre una misma rama, por lo que $c_i$
+    determina a lo m\'as $k$ conjuntos de $k-1$ fichas en los v\'ertices soporte
+    de $S$ al igual que en \cref{teo:cota_estrella}. Esto asegura que $R$
+    sobrevive a su primer turno y, cuando $C$ mueva sus polic\'ias, las sombras
+    de estos no capturan a $R$ pues:
+    \begin{itemize}
+        \item Si la ficha de $c_i$ que se movi\'o lo hizo
+        sobre una rama de $S$, $c_i^s$ no cambia su configuraci\'on.
+        \item Si $c_i$ movi\'o una ficha fuera de una rama hacia $0$, $c_i^s$
+        a\'un no captura $k-1$ fichas sobre las ramas y $R$ tiene una ficha en
+        $0$, por lo que $c_i^s$ no captura a $R$ en su siguiente turno.
+        \item Si $c_i$ movi\'o una ficha de $0$ a una rama, $c_i^s$ aun tiene
+        que recapturar a $0$ con otra ficha.
+    \end{itemize}
 
-    Afirmamos que $f$ es un homomorfismo de $\t{k}{S}$ en $\t{k}{S-x}$. En
-    efecto, n\'otese que para cada $C\in V_{\t{k}{S-x}}$, $x_C=x$ pues este no
-    se encuentra en $C$. Por tanto, $f(C) = C\cup\l{x_C}\setminus \l{x} = C$, de
-    modo que $f\c{V_{\t{k}{S-x}}}= V_{\t{k}{S-x}}$.
+    En los siguientes turnos, $R$ pasa hasta que la sombra de al menos un
+    polic\'ia le captura $k-1$ fichas en los v\'ertices soporte de $S$. N\'otese
+    que $R$ puede hacer esto pues, si alg\'un $c_i$ estuviera a un turno de
+    capturarle, sucede una de dos cosas:
+    \begin{enumerate}
+        \item Si la ficha $r_j$ que a\'un no captura $c_{i,j}$ est\'a en el
+        v\'ertice soporte de la $i$-\'esima rama, dado que $r$ tiene una ficha
+        en $0$, debe suceder que $c_{i,j}$ est\'a en la $i$-\'esima rama, por lo
+        que $c_{i}^s$ ya capturaba a $R$, contradiciendo que $c_{i}^s$ no
+        capturaba a $R$ inicialmente.
 
-    Luego, sean $C,D\in V_{\t{k}{S}}$ tales que $CD\in E_{\t{k}{S}}$. Si ninguno
-    de los dos conjuntos tiene a $x$, se sigue que $f(C)f(D)=CD$, la cual
-    tambi\'en es una arista en $\t{k}{S-x}$ por ser esta una subgr\'afica
-    inducida de $\t{k}{S}$.
-    
-    Sup\'ongase ahora que $x\in C$. Como $CD\in E_{\t{k}{S}}$, sean $c,d\in V_S$
-    tales que $C \triangle D = \{c,d\}$ y $cd\in E_S$. Si alguno entre $c$ y $d$
-    es $x$, sup\'ongase sin p\'erdida de generalidad que $c=x$, de modo que
-    $x_D=x$. Adem\'as $d$ es el \'unico vecino de $x$ en $S$ pues este es una
-    hoja, de modo que $d=x_C$. As\'i, 
-    \[
-        f(C)=C\cup\l{d}\setminus{x} \text { y } f(D)=D = C \cup \l{d} \setminus \l{x},
-    \]
-    concluyendo que la arista $CD$ se colpsa en el v\'ertice $D\in
-    V_{\t{k}{S-x}}$.
+        \item Si la ficha $r_j$ que no captura $c_{i,j}$ est\'a en $0$, entonces
+        previamente $c_i^s$ ya capturaba $k-1$ fichas de $R$ en ramas, lo cual
+        es una contradicci\'on pues inicialmente ello no suced\'ia.
+    \end{enumerate}
 
-    Finalmente, sup\'ongase que $c\neq x\neq d$, de manera que $x$ est\'a en
-    ambos $C$ y $D$. Si $x_C=x_D$, entonces 
-    \[
-        f(C)\triangle f(D)= (C\cup\l{x_C}\setminus \l{x})\triangle(D\cup\l{x_D}
-        \setminus \l{x}) = C\triangle D=\l{c,d},
-    \]
-    de modo que $f(C)f(D)\in E_{\t{k}{S-x}}$ pues, al ser $x$ distinto de ambos
-    $c$ y $d$, $cd$ es una arista de $S-x$. 
-    
-    Luego, si $x_C\neq x_D$, sup\'ongase sin p\'erdida de generalidad que
-    $d(x_C,x) < d(x_D,x)$. Dado que $x_C\neq x_D$, debe suceder que $x_C\in
-    D\setminus C$. Sup\'ongase sin perdida de generalidad que $x_C=d$. M\'as
-    a\'un, $c$ es adyacente a $x_C$ y es tal que est\'a en $C\setminus D$. Como
-    $x_C$ es un v\'ertice la $i$-\'esima rama, este tiene grado $2$ en $S$ y,
-    por ser $d(x_C,x)$ menor a $d(x_D,x)$, se sigue que $d$ es el \'unico
-    v\'ertice tal que $d(d,x)=d(x_C,x)+1$. Adem\'as, $d\in C\setminus D$, por lo
-    que $x_D=c$ y
-    \[
-        f(C)\triangle f(D)= (C\cup\l{x_C}\setminus \l{x})\triangle(D\cup\l{x_D}
-    \setminus \l{x}) = \varnothing,
-    \]
-    es decir, $f(C)=f(D)$. Por tanto, $f$ es un homomorfismo y,
-    consecuentemente, $\t{k}{S-x}$ es un retracto de $\t{k}{S}$.
+    Este argumento prueba que, si al final del turno de $R$, la sombra de
+    ning\'un polic\'ia le captura $k-1$ fichas en v\'ertices soporte, entonces
+    $R$ sobrevive a su siguiente turno, por lo que se probar\'a que $R$ siempre
+    puede volver a una de estas situaciones.
 
-    %%%%%%%%%%%%%% Resolver esto
+    Sup\'ongase que $R$ tiene las $k-1$ de sus fichas en v\'ertices soporte
+    capturadas por las sombras de polic\'ias $c_1^s,\dots, c_m^s$ y sea $r_1$ la
+    ficha de $r$ en $0$. Dado que en el turno anterior estos no capturaban las
+    fichas de $R$ en v\'ertices soporte, $c_{i}^s$ no tiene ficha en $0$ para
+    cada $i\in\seg{1}{m}$. Adem\'as, estos cubren a lo m\'as $m$ ramas a las
+    cuales $r_0$ no se puede mover pues alg\'un $c_{i}^s$ le terminar\'ia por
+    capturar (mas no necesariamente $c_i$). Por otra parte, las sombras
+    $c_{m+1}^s,\dots,c_{k-1}^s$ pueden evitar que $R$ mueva $r_0$ a, a lo m\'as,
+    otras $k-1-m$ ramas, pues alguno de estos pasar\'ian a capturarle $k-1$
+    fichas en los v\'ertices soporte y, en su siguiente turno, $c_i^s$
+    terminar\'ia por capturar a $R$ si este tiene una ficha en $0$. As\'i, $r_0$
+    tiene a lo m\'as $m+k-1+k-1 = 2k-2$ v\'ertices soportes a los cuales no se
+    puede mover, y como $n\geq 2k-1$, $r_0$ puede mover su ficha a al menos un
+    v\'ertice soporte.
 
-    Resta ver el caso cuando $k>m$. Sea $B$ el conjunto de $k$-conjuntos de
-    $V_{S}$ tales que cada uno de estos contiene a los $m+1$ v\'ertices de la
-    $i$-\'esima rama, es decir,
-    \[
-        B=\l{C\in \binom{V_S}{k}\colon\ \l{i_0,\dots,i_m}\subseteq C}.
-    \]
-    Afirmamos que $\t{k}{S}-B$ es un retracto de $\t{k}{S}$. En efecto, v\'ease
-    que 
-    \[
-        \t{k-(m_i+1)}{S- \{i_0, \dots, i_m}\}
-    \]
-    es una subgr\'afica inducida de $\t{k-m_i}{S-\{i_0, \dots, i_m\}}$ 
+    En tanto la sombra de ning\'un polic\'ia que le capture $k-1$ fichas en
+    v\'ertices soporte tenga una ficha en $0$, $R$ pasa, lo cual es posible
+    pues, en caso de que alg\'un polic\'ia $c_i$ est\'e a un turno de
+    capturarle, este debio primero capturarle $k-1$ con su sombra y,
+    posteriormente, mover su ficha que a\'un no captura a $0$. Sean
+    $c_1,\dots,c_m$ los polic\'ias que, con sus sombras, le capturan $k-1$
+    fichas en v\'ertices soporte a $r$ y tienen la sombra de su \'ultima ficha
+    que no captura en $0$. Se afirma que $r$ tiene una ficha que est\'a
+    capturada simult\'aneamente por $c_1^s,\dots, c_m^s$. En efecto, al ser
+    $k-1$ polic\'ias y al estar captutando $k-1$ fichas de $r$ con su sombra, en
+    el peor caso se tiene que a cada sombra de polic\'ia le falta una ficha
+    distinta por capturar, de manera que, sin p\'erdida de generalidad, a
+    $c_i^s$ le resta capturar la ficha $r_i$ de $r$. Finalmente, como $m\leq
+    k-1$, cada $c_i^s$ est\'a capturando la ficha $r_k$, de manera que $R$ mueve
+    $r_k$ a $0$, terminando su turno con la sombra de ning\'un polic\'ia
+    capturandole $k-1$ fichas en los v\'ertices soporte de $S$. Por tanto, $R$
+    puede iterar esta estrategia de modo que $k \leq c\paren{\t{k}{S}}$.
 
 \end{proof}
 
-La mayor ventaja del resultado anterior es que el mismo argumento funciona para
-cualquier \'arbol, por lo que tiene lugar el siguiente corolario.
-
-\begin{corolario}
-\label{cor:retracto-arbol}
-    Sean $T$ un \'arbol, $x$ una de sus hojas y $k\leq\abs{V_T}-1$. Entonces
-    $\t{k}{T-x}$ es un retracto de $\t{k}{T}$.
-\end{corolario}
-
-Finalmente, damos la cota inferior en funci\'on de un resultado previo.
+Lo importante de la estrategia anterior es que esta no depende de que la
+gr\'afica sobre la que se toma su gr\'afica de fichas sea una estrella pues la
+definici\'on de sombras es v\'alida para cualquier \'arbol y un v\'ertice de
+\'el que se toma como centro. As\'i, tiene luegar el siguiente corolario.
 
 \begin{corolario}
 \label{cor:cota-inf-arbol}
-    Sean $T$ un \'arbol, $x$ uno de sus v\'ertices y $k\leq d(x)+1$. Entonces
-    $c\paren{\t{k}{T}}\geq k$ si $d(x)\geq 2k-1$ o $c\paren{\t{k}{T}}\geq
-    d(x)+1-k$ de lo contrario.
+    Sean $T$ un \'arbol. Si $\Delta\geq 2k-1$, $k\leq c\paren{\t{k}{T}}$.
 \end{corolario}
-
-\begin{proof}
-    Aplicando recursivamente \cref{cor:retracto-arbol} y
-    \cref{lem:retracto-cota} se obtiene que $c\paren{\t{k}{T}}\geq
-    c\paren{\t{k}{S_{d(x)}}}$. El resultado se sigue d\cref{teo:cota_estrella}
-    si $d(x)\geq 2k-1$ y d\cref{lem:isomorfismo} de lo contrario.
-
-\end{proof}
 
 Introducimos ahora una nueva definici\'on respecto a las condiciones en las que
 un polic\'ia tiene bajo asedio a $r$. Diremos que el $i$-\'esimo polic\'ia tiene
