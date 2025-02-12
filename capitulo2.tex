@@ -332,26 +332,23 @@ $c_i$ hacen un movimiento legal en el turno $t$.
 Finalmente, dado $c_i$ un polic\'ia (fijo, pero arbitrario), se puede considerar
 la funci\'on $o_i \colon \c{c_i}\to \c{r}$, tal que $c_{i,j}\mapsto r_j$ para
 cada $j\in\seg{1}{k}$; llamamos a $r_j$ el \indice{objetivo} de $c_{i,j}$ y
-$o_i$ es la funci\'on objetivo de $c_i$. Observemos que se pueden considerar dos
-distancias del $i$-\'esimo polic\'ia al ladr\'on en el turno $t$ a trav\'es de
-su funci\'on objetivo y dependiendo de la gr\'afica en la que se analiza el
-juego. Definimos $d_G \paren{c_i,r}$ como la suma de las distancias en $G$ entre
-cada ficha de $c_i$ y su objetivo al turno $t$, es decir,
+$o_i$ es la funci\'on objetivo de $c_i$. Definimos dos distancias del
+$i$-\'esimo polic\'ia al ladr\'on en el turno $t$ a trav\'es de su funci\'on
+objetivo y dependiendo de la gr\'afica en la que se analiza el juego. Definimos
+$d_G \paren{c_i,r}$ como la suma de las distancias en $G$ entre cada ficha de
+$c_i$ y su objetivo al turno $t$, es decir,
 \[
     d_G \paren{c_i(t),r(t)} = \sum_{j=1}^k d_G \paren{c_{i,j}(t), r_j(t)}.
 \]
 Por otra parte, puede considerarse naturalmente la distancia de $c_i(t)$ a
 $r(t)$ en la gr\'afica de $k$ fichas de $G$, $d_{F_k(G)} \paren{c_i(t),r(t)}$.
-Resulta sencillo ver que
+Resulta intuitivamente claro que
 \begin{align}
 \label{eq:suma}
     d_{F_k(G)} \paren{c_i(t),r(t)} \leq d_G \paren{c_i(t),r(t)}
 \end{align}
-pues $c_i$ al turno $t$ necesita al menos $d_G \paren{c_i(t),r(t)}$ movimientos
-para que sus fichas capturen a sus respectivos objetivos en $G$, de manera que,
-despu\'es de esos movimientos, la distancia en $F_k(G)$ entre la posici\'on de
-$c_i$ y $r$ es $0$.  Notemos que la igualdad en \ref{eq:suma} siempre se cumple
-si reetiquetamos a las fichas de $c_i$ para minimizar $d_G (c_i(t), r(t))$.
+pero la justificaci\'on formal se har\'a evidente despu\'es de introducir el
+concepto de obstrucci\'on entre dos fichas del mismo equipo.
 
 Con estos preliminares, procedemos a describir una estrategia que ser\'a
 utilizada recurrentemente en las siguientes demostraciones. Consid\'erese un
@@ -441,7 +438,14 @@ a\'un no se encuentra capturando a $r$).
     \end{algorithm}
 
 En este orden de ideas, el siguiente lema demuestra la validez
-d\cref{alg:desob}.
+d\cref{alg:desob}. Previamente, notemos que ya estamos en posici\'on de
+esclarecer la desigualdad en \ref{eq:suma}.  Al turno $t$, el polic\'ia $c_i$
+necesita a lo m\'as $d_G \paren{c_i(t),r(t)}$ movimientos para que sus fichas
+capturen a sus respectivos objetivos en $G$, posiblemnte utilizando
+reetiquetados como el utilizado en \cref{alg:desob}, de manera que, despu\'es de
+esos movimientos, la distancia en $F_k(G)$ entre la posici\'on de $c_i$ y $r$ es
+$0$. Notemos que la igualdad en \ref{eq:suma} siempre se cumple si reetiquetamos
+a las fichas de $c_i$ para minimizar $d_G (c_i(t), r(t))$.
 
 \begin{lema}
 \label{lem:obstruccion}
@@ -839,7 +843,7 @@ cual es tal que la configuraci\'on inicial de cada uno de los polic\'ias es la
 misma y corresponde a tener una ficha en el centro y el resto en las hojas de
 $S_n$ --- llamaremos $C_0$ a dicha configuraci\'on. Adem\'as, las fichas inician
 con un etiquetado ya establecido, de manera que las $j$-\'esimas fichas de todos
-los polic\'ias inician en mismo v\'ertice para cada $j\in\seg{1}{k}$.
+los polic\'ias inician en el mismo v\'ertice para cada $j\in\seg{1}{k}$.
 
 \begin{algorithm}[!htbp]
     \footnotesize{
@@ -1126,13 +1130,12 @@ estrategia dada por \cref{alg:captura}.
 \label{sec:estrellassub}
 
 En busca de que el resultado anterior d\'e informaci\'on acerca de m\'as
-gr\'aficas procedemos a definir una generealizaci\'on de las estrellas
-trabajadas en la \'ultima secci\'on. Dado $n\in\n^{+}$, para cada $i\in
-\seg{1}{n}$ tomemos un $m_i\in \n$. As\'i, definimos una \textbf{estrella de $n$
-ramas con subdivisiones}, $S(m_1,\dots,m_n)$, que consiste en tomar la gr\'afica
-$S_n$ y, para cada $i\in\seg{1}{n}$, subdividir la arista $0i$ $m_i$ veces.
-V\'ease que $S(0,\dots, 0)=S_n$. M\'as concisamente, $S(m_1,\dots,m_n)=(V,E)$,
-donde
+gr\'aficas procedemos a definir una generalizaci\'on de las estrellas trabajadas
+en la \'ultima secci\'on. Dado $n\in\n^{+}$, para cada $i\in \seg{1}{n}$ tomemos
+un $m_i\in \n$. As\'i, definimos una \textbf{estrella de $n$ ramas con
+subdivisiones}, $S(m_1,\dots,m_n)$, que consiste en tomar la gr\'afica $S_n$ y,
+para cada $i\in\seg{1}{n}$, subdividir la arista $0i$ $m_i$ veces. V\'ease que
+$S(0,\dots, 0)=S_n$. M\'as concisamente, $S(m_1,\dots,m_n)=(V,E)$, donde
 \begin{align*}
     V &=\paren{\bigcup_{i=1}^{n}\l{i_j \colon j\in \l{0,\dots, m_i}}} \cup \l{0} \\
     E &=\paren{\bigcup_{i=1}^{n}\l{i_ji_{j+1} \colon j \in \c{m_i}\setminus\l{m_i}}}
@@ -1158,9 +1161,9 @@ donde $u_v$ es el v\'ertice de $H$ que minimiza $d(v,u)$ para cada $u$ v\'ertice
 de $H$. N\'otese que $f$ est\'a bien definida pues si $v\in V_H$, $s'(v) = v$.
 Por otra parte, si $v\notin V_H$, por ser $T$ un \'arbol se tiene, por
 \cref{cor:unitray}, que existe una \'unica $vx$-trayectoria en $T$, por lo que
-$f(v)$ es precisamente el pen\'ultimo v\'ertice de la $vx$ trayectoria.
+$f(v)$ es precisamente el pen\'ultimo v\'ertice de la $vx$-trayectoria.
 Definimos $s$ la funci\'on de $V_{\t{k}{T}}$ en
-$\bigcup_{i=1}^{j}\binom{V_H}{j}$ dada por la regla de correspondencia
+$\bigcup_{i=1}^{k}\binom{V_H}{i}$ dada por la regla de correspondencia
 \[
     s(C) = \l{s'(v) \colon\  v\in C}.
 \]
@@ -1172,7 +1175,7 @@ cada $c_i$, podemos considerar la sombra de $c_i$ sobre $H$, $c_i^s$, como un
 polic\'ia cuya $j$-\'esima ficha est\'a sobre la sombra de la posici\'on de
 $c_{i,j}$, es decir
 \[
-    c_{i,j}^s(t) = s\paren{c_{i,j}(t)}.
+    c_{i,j}^s(t) = s' \paren{c_{i,j}(t)}.
 \]
 N\'otese que puede que $c_i^s$ no determine un $k$-conjunto de $V_H$ pues $s'$
 no necesariamete es inyectiva. No obstante, esta definici\'on de la sombra de un
@@ -1188,17 +1191,17 @@ polic\'ia nos ayuda a describir la estrategia buscada para $R$.
 \begin{proof}
     Consid\'erese un juego de polic\'ias y ladrones sobre la gr\'afica de $k$
     fichas de $S$ con $c\paren{\t{k}{S_n}} - 1 = k-1$ polic\'ias. Sea $H$ la
-    subgr\'afica inducida de $S$ isomorga a $S_n$. Por lo dicho en la
+    subgr\'afica inducida de $S$ isomorfa a $S_n$. Por lo dicho en la
     demostraci\'on d\cref{teo:cota_estrella}, $R$ puede escoger una
     configuraci\'on inicial sobre $H$ con una ficha en $0$ y de manera que
-    ning\'un polic\'ia le captura $k-1$ fichas en los v\'ertices soporte de $S$.
-    M\'as a\'un, esto se cumple tambi\'en para las sombras de cada polic\'ia
-    pues, en caso de que $c_{i}^s$ no determine un $k$-conjunto de $S$, este
-    debe tener al menos dos fichas sobre una misma rama, por lo que $c_i$
-    determina a lo m\'as $k$ conjuntos de $k-1$ fichas en los v\'ertices soporte
-    de $S$ al igual que en \cref{teo:cota_estrella}. Esto asegura que $R$
-    sobrevive a su primer turno y, cuando $C$ mueva sus polic\'ias, las sombras
-    de estos no capturan a $R$ pues:
+    ning\'un polic\'ia le captura $k-1$ fichas en los v\'ertices soporte de las
+    ramas de $S$. M\'as a\'un, esto se cumple tambi\'en para las sombras de cada
+    polic\'ia pues, en caso de que $c_{i}^s$ no determine un $k$-conjunto de
+    $S$, este debe tener al menos dos fichas sobre una misma rama, por lo que
+    $c_i$ determina a lo m\'as $k$ conjuntos de $k-1$ fichas en los v\'ertices
+    soporte de las ramas de $S$ al igual que en \cref{teo:cota_estrella}. Esto
+    asegura que $R$ sobrevive a su primer turno y, cuando $C$ mueva sus
+    polic\'ias, las sombras de estos no capturan a $R$ pues:
     \begin{itemize}
         \item Si la ficha de $c_i$ que se movi\'o lo hizo
         sobre una rama de $S$, $c_i^s$ no cambia su configuraci\'on.
@@ -1210,9 +1213,9 @@ polic\'ia nos ayuda a describir la estrategia buscada para $R$.
     \end{itemize}
 
     En los siguientes turnos, $R$ pasa hasta que la sombra de al menos un
-    polic\'ia le captura $k-1$ fichas en los v\'ertices soporte de $S$. N\'otese
-    que $R$ puede hacer esto pues, si alg\'un $c_i$ estuviera a un turno de
-    capturarle, sucede una de dos cosas:
+    polic\'ia le captura $k-1$ fichas en los v\'ertices soporte de las ramas de
+    $S$. N\'otese que $R$ puede hacer esto pues, si alg\'un $c_i$ estuviera a un
+    turno de capturarle, sucede una de dos cosas:
     \begin{enumerate}
         \item Si la ficha $r_j$ que a\'un no captura $c_{i,j}$ est\'a en el
         v\'ertice soporte de la $i$-\'esima rama, dado que $r$ tiene una ficha
@@ -1225,43 +1228,44 @@ polic\'ia nos ayuda a describir la estrategia buscada para $R$.
         es una contradicci\'on pues inicialmente ello no suced\'ia.
     \end{enumerate}
 
-    Este argumento prueba que, si al final del turno de $R$, la sombra de
-    ning\'un polic\'ia le captura $k-1$ fichas en v\'ertices soporte, entonces
-    $R$ sobrevive a su siguiente turno, por lo que se probar\'a que $R$ siempre
-    puede volver a una de estas situaciones.
+    Este argumento prueba que, si al final del turno de $R$, ning\'un polic\'ia
+    tine a su compra capturando $k-1$ fichas en v\'ertices soporte de las ramas,
+    entonces $R$ sobrevive a su siguiente turno, por lo que se probar\'a que $R$
+    siempre puede volver a una de estas situaciones.
 
     Sup\'ongase que $R$ tiene las $k-1$ de sus fichas en v\'ertices soporte
     capturadas por las sombras de polic\'ias $c_1^s,\dots, c_m^s$ y sea $r_1$ la
     ficha de $r$ en $0$. Dado que en el turno anterior estos no capturaban las
-    fichas de $R$ en v\'ertices soporte, $c_{i}^s$ no tiene ficha en $0$ para
-    cada $i\in\seg{1}{m}$. Adem\'as, estos cubren a lo m\'as $m$ ramas a las
-    cuales $r_0$ no se puede mover pues alg\'un $c_{i}^s$ le terminar\'ia por
-    capturar (mas no necesariamente $c_i$). Por otra parte, las sombras
-    $c_{m+1}^s,\dots,c_{k-1}^s$ pueden evitar que $R$ mueva $r_0$ a, a lo m\'as,
-    otras $k-1-m$ ramas, pues alguno de estos pasar\'ian a capturarle $k-1$
-    fichas en los v\'ertices soporte y, en su siguiente turno, $c_i^s$
-    terminar\'ia por capturar a $R$ si este tiene una ficha en $0$. As\'i, $r_0$
-    tiene a lo m\'as $m+k-1+k-1 = 2k-2$ v\'ertices soportes a los cuales no se
-    puede mover, y como $n\geq 2k-1$, $r_0$ puede mover su ficha a al menos un
-    v\'ertice soporte.
+    fichas de $R$ en v\'ertices soporte de las ramas, $c_{i}^s$ no tiene ficha
+    en $0$ para cada $i\in\seg{1}{m}$. Adem\'as, estos cubren a lo m\'as $m$
+    ramas a las cuales $r_1$ no se puede mover pues alg\'un $c_{i}^s$ le
+    terminar\'ia por capturar (mas no necesariamente $c_i$). Por otra parte, las
+    sombras $c_{m+1}^s,\dots,c_{k-1}^s$ pueden evitar que $R$ mueva $r_1$ a, a
+    lo m\'as, otras $k-1-m$ ramas, pues alguno de estos pasar\'ian a capturarle
+    $k-1$ fichas en los v\'ertices soporte de las ramas y, en su siguiente
+    turno, $c_i^s$ terminar\'ia por capturar a $R$ si este tiene una ficha en
+    $0$. As\'i, $r_1$ tiene a lo m\'as $m+k-1+k-1-m = 2k-2$ v\'ertices soporte
+    de las ramas a los cuales no se puede mover, y como $n\geq 2k-1$, $r_1$
+    puede mover su ficha a al menos un v\'ertice soporte de las ramas.
 
     En tanto la sombra de ning\'un polic\'ia que le capture $k-1$ fichas en
-    v\'ertices soporte tenga una ficha en $0$, $R$ pasa, lo cual es posible
-    pues, en caso de que alg\'un polic\'ia $c_i$ est\'e a un turno de
-    capturarle, este debio primero capturarle $k-1$ con su sombra y,
+    v\'ertices soporte de las ramas tenga una ficha en $0$, $R$ pasa, lo cual es
+    posible pues, en caso de que alg\'un polic\'ia $c_i$ est\'e a un turno de
+    capturarle, este debi\'o primero capturarle $k-1$ fichas con su sombra y,
     posteriormente, mover su ficha que a\'un no captura a $0$. Sean
     $c_1,\dots,c_m$ los polic\'ias que, con sus sombras, le capturan $k-1$
-    fichas en v\'ertices soporte a $r$ y tienen la sombra de su \'ultima ficha
-    que no captura en $0$. Se afirma que $r$ tiene una ficha que est\'a
-    capturada simult\'aneamente por $c_1^s,\dots, c_m^s$. En efecto, al ser
-    $k-1$ polic\'ias y al estar captutando $k-1$ fichas de $r$ con su sombra, en
-    el peor caso se tiene que a cada sombra de polic\'ia le falta una ficha
-    distinta por capturar, de manera que, sin p\'erdida de generalidad, a
+    fichas en v\'ertices soporte de las ramas a $r$ y tienen la sombra de su
+    \'ultima ficha que no captura en $0$. Se afirma que $r$ tiene una ficha que
+    est\'a capturada simult\'aneamente por $c_1^s,\dots, c_m^s$. En efecto, al
+    ser $k-1$ polic\'ias y al estar captutando $k-1$ fichas de $r$ con su
+    sombra, en el peor caso se tiene que a cada sombra de polic\'ia le falta una
+    ficha distinta por capturar, de manera que, sin p\'erdida de generalidad, a
     $c_i^s$ le resta capturar la ficha $r_i$ de $r$. Finalmente, como $m\leq
     k-1$, cada $c_i^s$ est\'a capturando la ficha $r_k$, de manera que $R$ mueve
     $r_k$ a $0$, terminando su turno con la sombra de ning\'un polic\'ia
-    capturandole $k-1$ fichas en los v\'ertices soporte de $S$. Por tanto, $R$
-    puede iterar esta estrategia de modo que $k \leq c\paren{\t{k}{S}}$.
+    captur\'andole $k-1$ fichas en los v\'ertices soporte de las ramas de $S$.
+    Por tanto, $R$ puede iterar esta estrategia de modo que $k \leq
+    c\paren{\t{k}{S}}$.
 
 \end{proof}
 
