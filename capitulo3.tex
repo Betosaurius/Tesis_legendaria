@@ -22,10 +22,10 @@ un \'arbol, cambiamos nuestro enfoque a la gr\'afica de Petersen, $P$ (ver
 Antes de revisar un caso de mayor complejidad, determinaremos el n\'umero
 policiaco de la gr\'afica de Petersen. Enunciamos el siguiente lema.
 
-\begin{lema}
-\label{lem:dominante-petersen}
+\begin{proposicion}
+\label{pro:dominante-petersen}
     Si $P$ es la gr\'afica de Petersen, entonces $\gamma(P)=3$.
-\end{lema}
+\end{proposicion}
 
 \begin{proof}
     N\'otese que la gr\'afica de Petersen tiene orden $10$ y todos sus
@@ -73,7 +73,7 @@ Luego, tiene lugar el siguiente teorema.
     En virtud d\cref{cor:cotasup-petersen1}, basta demostrar que $R$ tiene una
     estrategia de escape en un juego de polic\'ias y ladrones sobre $P$ contra
     dos polic\'ias. V\'ease que por lo mencionado en
-    \cref{lem:dominante-petersen}, para cualquier par de v\'ertices de $P$ existe
+    \cref{pro:dominante-petersen}, para cualquier par de v\'ertices de $P$ existe
     al menos un v\'ertice a distancia al menos $2$, por lo que $R$ puede escoger
     su posici\'on inicial y sobrevive al primer turno de $C$.
     
@@ -98,13 +98,13 @@ Luego, tiene lugar el siguiente teorema.
 \end{proof}
 
 Cambiando nuestra atenci\'on a la gr\'afica de $2$ fichas de Petersen,
-observemos que d\cref{lem:dominante-petersen} se tiene que la distancia m\'axima
-entre dos v\'ertices de $P$ es $2$. Una observaci\'on \'util acerca de $P$ que
-se deduce de \cref{fig:petersen-dominante} es que cualesquiera dos de sus
-v\'ertices est\'an a lo m\'as a distancia $2$. Adem\'as, dado que $P$ no tiene
-ciclos de longitud $4$, sucede que para cualesquiera dos v\'ertices no
-adyacentes, $u$ y $v$, son tales que existe una \'unica $uv$-trayectoria de
-longitud $2$. As\'i, proponemos el siguiente lema.
+observemos que de \cref{pro:dominante-petersen} se tiene que la distancia
+m\'axima entre dos v\'ertices de $P$ es $2$. Una observaci\'on \'util acerca de
+$P$ que se deduce de \cref{fig:petersen-dominante} es que cualesquiera dos de
+sus v\'ertices est\'an a lo m\'as a distancia $2$. Adem\'as, dado que $P$ no
+tiene ciclos de longitud $4$, sucede que para cualesquiera dos v\'ertices no
+adyacentes, $u$ y $v$, existe una \'unica $uv$-trayectoria de longitud $2$.
+As\'i, proponemos la siguiente cota superior.
 
 % \begin{lema}
 % \label{lem:bound}
@@ -637,24 +637,24 @@ longitud $2$. As\'i, proponemos el siguiente lema.
     Para la primera etapa, como $\gamma(P)=3$, existe $S\subseteq V_P$ de
     cardinalidad $3$ tal que este es un conjunto dominante de $P$. Luego, $C$
     puede escoger su configuraci\'on inicial de manera que, para cada dos
-    v\'ertices $x$ y $y$ de $S$, existe $i\in\seg{1}{4}$ tal que $c_i$ tiene sus
+    v\'ertices $x$ y $y$ en $S$, existe $i\in\seg{1}{4}$ tal que $c_i$ tiene sus
     fichas en $x$ y $y$ (v\'ease (a) en \cref{fig:initial}). Se afirma que, en
     su primer turno despu\'es de escoger su configuraci\'on inicial, $c_{1,1}$ y
     $c_{2,2}$ pueden capturar a $r_1$ y $r_2$ respectivamente. Esto se puede ver
-    en \cref{fig:initial} pues en cada v\'ertice hay al menos dos colores, de
-    modo que si $c_{1,1}$ y $c_{2,2}$ no estuvieran a distancia $1$ de sus
-    objetivos, estos solo intercambiar\'ian sus colores (y sus formas en caso de
-    ser necesario). Por otro lado, $c_{3,1}$ y $c_{4,2}$ se mueven para capturar
-    $r_1$ y $r_2$ respectivamente. As\'i, si $c_3$ tuviera alguna de sus fichas
-    a distancia $1$ de $r_1$, este reetiqueta en caso de ser necesario para que
-    $c_{3,1}$ capture a $r_1$ en el mismo turno (y lo mismo sucede para
-    $c_{4,2}$). No obstante, para cada $i\in\seg{1}{4}$, hay un v\'ertice de $S$
-    en el que no hay ninguna ficha de $c_i$, de modo que $c_{3,1}$ y $c_{4,2}$
-    puede que no capturen a sus objetivos en el primer turno de $C$. A pesar de
-    ello, dado que la distancia entre cada par de v\'ertices de $P$ es a lo
-    m\'as $2$, en el peor de los casos ambos $c_{3,1}$ y $c_{4,2}$ se encuentran
-    a distancia $1$ de sus respectivos objetivos (v\'ease (b) en
-    \cref{fig:initial}).
+    en (b) de \cref{fig:initial} pues en cada v\'ertice hay al menos dos
+    colores, de modo que si $c_{1,1}$ y $c_{2,2}$ no estuvieran a distancia $1$
+    de sus objetivos, estos solo intercambiar\'ian sus colores (y sus formas en
+    caso de ser necesario). Por otro lado, $c_{3,1}$ y $c_{4,2}$ se mueven para
+    capturar $r_1$ y $r_2$ respectivamente. As\'i, si $c_3$ tuviera alguna de
+    sus fichas a distancia $1$ de $r_1$, este reetiqueta en caso de ser
+    necesario para que $c_{3,1}$ capture a $r_1$ en el mismo turno (y lo mismo
+    sucede para $c_{4,2}$). No obstante, para cada $i\in\seg{1}{4}$, hay un
+    v\'ertice de $S$ en el que no hay ninguna ficha de $c_i$, de modo que
+    $c_{3,1}$ y $c_{4,2}$ puede que no capturen a sus objetivos en el primer
+    turno de $C$. A pesar de ello, dado que la distancia entre cada par de
+    v\'ertices de $P$ es a lo m\'as $2$, en el peor de los casos ambos $c_{3,1}$
+    y $c_{4,2}$ se encuentran a distancia $1$ de sus respectivos objetivos
+    (v\'ease (b) en \cref{fig:initial}).
 
     \begin{figure}[!htbp]
         \begin{tcbitemize}[raster columns=2, raster equal height, enhanced,
@@ -714,16 +714,16 @@ longitud $2$. As\'i, proponemos el siguiente lema.
     $r_1$ hacia v\'ertices fuera de la vecindad cerrada de $c_{3,2}(t)$, pues al
     moverse a alguno de estos, $c_3$ reetiqueta sus fichas de manera que
     $c_{3,1}$ captura a $r_1$. N\'otese que $R$ tendr\'ia que mover $r_1$ sobre
-    un $C_6$ inducido en $G$ (sin capaz de moverse mas que en una direcci\'on
-    pues $c_{3,1}$ le bloquea un v\'ertice sobre el $C_6$, v\'ease (a) en
-    \cref{fig:cycle}). As\'i, $c_2$ o $c_4$ podr\'ian posicionar su primer ficha
-    sobre el ciclo de manera que, eventualmente, $r_1$ no puede avanzar sobre el
-    $C_6$ pues ambos $c_{2,2}$ y $c_{4,2}$ ya captuan a $r_2$. Por tanto, $R$
-    solo puede pasar o mover $r_1$ hacia atr\'as sobre $C_6$ (de manera que
-    $c_{3,1}$ captura a $r_1$), o mover $r_1$ hacia la vecindad de $c_{3,2}(t)$.
-    En cualquiera de los casos, $c_{3,1}$ termina por capturar a $r_1$, de
-    manera que ambos $c_{3,1}$ y $c_{4,2}$ capturan a sus respectivos objetivos
-    (v\'ease (d) en \cref{fig:cycle}).
+    un $C_6$ inducido en $G$ (incapaz de moverse mas que en una direcci\'on pues
+    $c_{3,1}$ le bloquea un v\'ertice sobre el $C_6$, v\'ease (a) en
+    \cref{fig:cycle}). As\'i, $c_2$ o $c_4$ podr\'ian posicionar su primera
+    ficha sobre el ciclo de manera que, eventualmente, $r_1$ no puede avanzar
+    sobre el $C_6$ pues ambos $c_{2,2}$ y $c_{4,2}$ ya captuan a $r_2$. Por
+    tanto, $R$ solo puede pasar o mover $r_1$ hacia atr\'as sobre $C_6$ (de
+    manera que $c_{3,1}$ captura a $r_1$), o mover $r_1$ hacia la vecindad de
+    $c_{3,2}(t)$. En cualquiera de los casos, $c_{3,1}$ termina por capturar a
+    $r_1$, de manera que ambos $c_{3,1}$ y $c_{4,2}$ capturan a sus respectivos
+    objetivos (v\'ease (d) en \cref{fig:cycle}).
 
     \begin{figure}[!htbp]
         \begin{tcbitemize}[raster columns=2, raster equal height, enhanced,
