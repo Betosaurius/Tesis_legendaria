@@ -690,7 +690,7 @@ As\'i, proponemos la siguiente cota superior.
                         \end{tikzpicture}
                     }
             \end{tcbitemize}
-        \captionsetup{font=scriptsize }
+        \captionsetup{font=footnotesize}
         \caption{Una posible configuraci\'on inicial se muestra en (a), donde
         todas las fichas yacen en los tres v\'ertices de un conjunto dominante.
         Se fijan colores para diferenciar distintos polic\'ias, de modo que el
@@ -793,7 +793,7 @@ As\'i, proponemos la siguiente cota superior.
                             \end{tikzpicture}
                         }
         \end{tcbitemize}
-        \captionsetup{font=scriptsize}
+        \captionsetup{font=footnotesize}
         \caption{Cada escena representa un turno del juego donde $R$ debe mover.
         Obs\'ervese que $r_1$ evita la vecindad de $c_{3,2}(t)$ y escapa de
         $c_{3,1}$ movi\'endose sobre el ciclo morado. Despu\'es de $3$ turnos,
@@ -849,7 +849,7 @@ As\'i, proponemos la siguiente cota superior.
                             
                         \end{tikzpicture}
                     }
-            \tcbitem
+            \tcbitem[raster multicolumn=2]
                 \tcblower
                     \scalebox{0.4}{
                         \begin{tikzpicture}
@@ -862,19 +862,19 @@ As\'i, proponemos la siguiente cota superior.
                         \end{tikzpicture}
                     }
         \end{tcbitemize}
-        \captionsetup{font=scriptsize}
-        \caption{En los siguientes diagramas, las fichas $c_{1,2}$ y $c_{3,2}$
-        se omiten. En (a), $R$ acaba de mover $r_1$, de modo que $c_{1,1}$ y
-        $c_{3,1}$ le han recapturado. Luego, se busca posicionar a $c_{2,1}$ y
-        $c_{4,1}$ adyacentes a $u_1$ y $u_2$. Si alguno entre $c_{2,1}$ y
-        $c_{4,1}$ estuviera en un v\'ertice negro sombreado, $C$ ganar\'ia en a
-        lo m\'as un turno o un polic\'ia tendr\'ia sus dos fichas en un mismo
-        v\'ertice, lo cual es imposible. De forma similar, si alguno entre
-        $c_{2,1}$ y $c_{4,1}$ estuviera en $u_1$ o en $u_2$, entonces $C$ gana
-        en su siguiente turno. Finalmente, para cada uno de los v\'ertices
-        restantes, sombreados o no, existe un v\'ertice azul sombreado y un
-        v\'ertice verde sombreado en su vecindad cerrada, determinando el
-        movimiento de ambos $c_{2,1}$ y $c_{4,1}$ como se ilustra en (b) y (c).}
+        \captionsetup{font=footnotesize}
+        \caption{En esta figura se omiten las fichas $c_{1,2}$ y $c_{3,2}$. En
+        (a), $R$ acaba de mover $r_1$, de modo que $c_{1,1}$ y $c_{3,1}$ le han
+        recapturado. Se busca posicionar a $c_{2,1}$ y $c_{4,1}$ adyacentes a
+        $u_1$ y $u_2$. Si alguno entre $c_{2,1}$ y $c_{4,1}$ estuviera en un
+        v\'ertice negro sombreado, $C$ ganar\'ia en a lo m\'as un turno o un
+        polic\'ia tendr\'ia sus dos fichas en un mismo v\'ertice, lo cual es
+        imposible. De forma similar, si alguno entre $c_{2,1}$ y $c_{4,1}$
+        estuviera en $u_1$ o en $u_2$, entonces $C$ gana en su siguiente turno.
+        Para cada uno de los v\'ertices restantes existe un v\'ertice azul
+        sombreado y un v\'ertice verde sombreado en su vecindad cerrada,
+        determinando el movimiento de ambos $c_{2,1}$ y $c_{4,1}$ como se
+        ilustra en (b) y (c).}
         \label{fig:guarding0}
     \end{figure}
 
@@ -882,11 +882,10 @@ As\'i, proponemos la siguiente cota superior.
     llevar\'ia que $R$ pierda al siguiente turno. As\'i, $R$ pasa o mueve $r_2$.
     En el primer caso, ambos $c_{2,1}$ y $c_{4,1}$ avanzan a $u_1$ y $u_2$
     respectivamente para forzar a $R$ a mover $r_1$ hacia $r_2$, o a mover a
-    $r_2$. Por tanto, en cualquier caso $R$ mueve $r_2$ y se puede asumir sin
-    p\'erdida de generalidad que su nueva posici\'on es $w_1$. Sea
-    $N(w_1)=\l{u_1, r_2(t),y}$. Como se mencion\'o anteriormente, $c_{2,2}$ y
-    $c_{4,2}$ recapturan $r_2$. Se generan dos casos dependiendo de si se tiene
-    una obstrucci\'on:
+    $r_2$. En cualquier caso, $R$ mueve $r_2$ y se puede asumir sin p\'erdida de
+    generalidad que su nueva posici\'on es $w_1$. Sea $N(w_1)=\l{u_1,
+    r_2(t),y}$. Luego, $c_{2,2}$ y $c_{4,2}$ recapturan $r_2$ y se generan dos
+    casos dependiendo de si se tiene una obstrucci\'on:
     
     \begin{enumerate}
         \item Si existe una obstrucci\'on, solo uno entre $c_2$ y $c_4$ est\'a
@@ -898,7 +897,7 @@ As\'i, proponemos la siguiente cota superior.
         $r_2(t+1)$, de manera que $R$ no puede mantener sus fichas en v\'ertices
         no adyacentes (v\'ease \cref{fig:guarding}).
     
-        \begin{figure}[!htbp]
+        \begin{figure}[H]
             \begin{tcbitemize}[raster columns=2, raster equal height, enhanced,
                 colback=Black!5!white,colframe=Grey!75!black, attach title to upper,
                 phantom={\setcounter{myrasternum}{\thetcbrasternum}},
@@ -966,17 +965,16 @@ As\'i, proponemos la siguiente cota superior.
                             \end{tikzpicture}
                         }
             \end{tcbitemize}
-            \captionsetup{font=scriptsize}
-            \caption{En (a), $R$ acaba de mover $r_2$, de manera que $c_{2,2}$ y
-            $c_{4,2}$ recapturan y $c_2$ reetiqueta sus fichas como en (b).
-            Mientras tanto, $c_{1,2}$ y $c_{3,2}$ se mueven como en (b) para
-            posicionarse en un v\'ertice adyacente a $y$ y un v\'ertice
-            adyacente a $r_2(t)$ respectivamente. N\'otese que el reetiquetado
-            causa que $c_{2,1}$ sea adyacente al v\'ertice azul sin sombreado en
-            (c), de modo que este a\'un cumple su funci\'on del paso anterior.
-            V\'ease que $R$ solo puede pasar si es que quiere evitar que $r_1$ y
-            $r_2$ est\'en en v\'ertices adyacentes. No obstante, $C$ mueve sus
-            polic\'ias como en (d), forzando el movimiento de $R$.}
+            \captionsetup{font=footnotesize}
+            \caption{En (a), $R$ acaba de mover $r_2$, de manera que $c_{4,2}$
+            recaptura y $c_2$ reetiqueta sus fichas. En tanto, $c_{1,2}$ y
+            $c_{3,2}$ se mueven como en (b) para posicionarse en un v\'ertice
+            adyacente a $y$ y un v\'ertice adyacente a $r_2(t)$ respectivamente.
+            El reetiquetado causa que $c_{2,1}$ sea adyacente al v\'ertice azul
+            sin sombreado en (c), de modo que este a\'un cumple su funci\'on del
+            paso anterior. Luego, $R$ solo puede pasar si es que quiere evitar
+            que $r_1$ y $r_2$ est\'en en v\'ertices adyacentes. No obstante, $C$
+            mueve sus polic\'ias como en (d).}
             \label{fig:guarding}
         \end{figure}
 
@@ -1043,7 +1041,7 @@ As\'i, proponemos la siguiente cota superior.
                                 \end{tikzpicture}
                             }
                 \end{tcbitemize}
-                \captionsetup{font=scriptsize}
+                \captionsetup{font=footnotesize}
                 \caption{Cuando el movimiento de $r_2$ no propicie una
                 obstrucci\'on de $c_2$ o $c_4$, ambos polic\'ias recapturan como
                 es usual, mientras que $c_{1,2}$ se mueve hacia $r_2(t)$ y
@@ -1062,7 +1060,7 @@ As\'i, proponemos la siguiente cota superior.
             obligando nuevamente a que $R$ mueva $r_1$ a $v$ (v\'ease
             \cref{fig:guarding2}).
 
-            \begin{figure}[!htbp]
+            \begin{figure}[H]
                 \begin{tcbitemize}[raster columns=2, raster equal height, enhanced,
                     colback=Black!5!white,colframe=Grey!75!black, attach title to upper,
                     phantom={\setcounter{myrasternum}{\thetcbrasternum}},
@@ -1116,7 +1114,7 @@ As\'i, proponemos la siguiente cota superior.
                                 \end{tikzpicture}
                             }
                 \end{tcbitemize}
-                \captionsetup{font=scriptsize}
+                \captionsetup{font=footnotesize}
                 \caption{Al igual que en el subcaso anterior, $c_2$ y $c_4$
                 recapturan como en (b), mientras que $c_{1,2}$ y $c_{3,2}$ se
                 mueven como en (c) para obligar el movimiento de $r_1$ a $v$.}
@@ -1128,7 +1126,7 @@ As\'i, proponemos la siguiente cota superior.
             \cref{fig:guarding3}). En este caso, $C$ mueve las fichas de manera
             que $c_{1,2}$ termina en $z$ y $c_{3,2}$ est\'a en $x$.
 
-            \begin{figure}[!htbp]
+            \begin{figure}[H]
                 \begin{tcbitemize}[raster columns=2, raster equal height, enhanced,
                     colback=Black!5!white,colframe=Grey!75!black, attach title to upper,
                     phantom={\setcounter{myrasternum}{\thetcbrasternum}},
@@ -1180,7 +1178,7 @@ As\'i, proponemos la siguiente cota superior.
                                 \end{tikzpicture}
                             }
                 \end{tcbitemize}
-                \captionsetup{font=scriptsize}
+                \captionsetup{font=footnotesize}
                 \caption{Una vez m\'as, $c_2$ y $c_4$ recapturan como en (b),
                 mientras que $c_{1,2}$ se posiciona en $z$ y $c_{3,2}$ en $x$.}
                 \label{fig:guarding3}
@@ -1248,7 +1246,7 @@ As\'i, proponemos la siguiente cota superior.
                             \end{tikzpicture}
                         }
             \end{tcbitemize}
-            \captionsetup{font=scriptsize}
+            \captionsetup{font=footnotesize}
             \caption{En (a), $R$ acaba de mover $r_1$, de manera que $C$ mueve
             como en (b) para posicionarse $c_{2,1}$ en $x$ y $c_{4,1}$ en $u_2$,
             a la vez que $c_{1,1}$ y $c_{3,1}$ recapturan. En este caso, $R$ no
@@ -1303,7 +1301,7 @@ As\'i, proponemos la siguiente cota superior.
                             \end{tikzpicture}
                         }
             \end{tcbitemize}
-            \captionsetup{font=scriptsize}
+            \captionsetup{font=footnotesize}
             \caption{Si $R$ mueve $r_2$ a $u_2$ como en (a), $C$ mueve a sus
             polic\'ias como en (b) para forzar el movimiento de $R$ que ponga a
             $r_1$ adyacente a $r_2$.}
@@ -1359,7 +1357,7 @@ As\'i, proponemos la siguiente cota superior.
                             \end{tikzpicture}
                         }
             \end{tcbitemize}
-            \captionsetup{font=scriptsize}
+            \captionsetup{font=footnotesize}
             \caption{En (a), $R$ acaba de mover $r_2$ a $u_1$, por lo que $C$
             mueve como en (b) para forzar el movimiento de $r_1$ hacia $r_2$
             o viceversa.}
@@ -1379,7 +1377,7 @@ As\'i, proponemos la siguiente cota superior.
     polic\'ias proceden a posicionarse sobre las vecindades de los v\'ertices a
     los que puede mover $R$, dejando a $r_1$ sin movimientos.
     
-    \begin{figure}[!htbp]
+    \begin{figure}[H]
         \begin{tcbitemize}[raster columns=2, raster equal height, enhanced,
             colback=Black!5!white,colframe=Grey!75!black, attach title to upper,
             phantom={\setcounter{myrasternum}{\thetcbrasternum}},
@@ -1427,7 +1425,7 @@ As\'i, proponemos la siguiente cota superior.
                         \end{tikzpicture}
                     }
         \end{tcbitemize}
-        \captionsetup{font=scriptsize}
+        \captionsetup{font=footnotesize}
         \caption{En (a), $C$ busca poner, sin p\'erdida de generalidad, a
         $c_{2,1}$ y $c_{4,1}$ en un v\'ertice azul sombreado y en un v\'ertice
         sombreado verde. Si alguno de ellos estuviera en los v\'ertices negros
@@ -1459,7 +1457,7 @@ As\'i, proponemos la siguiente cota superior.
                 \unopY{2.5cm}{90 + (360/5)*1}
             \end{tikzpicture}
         }
-    \captionsetup{font=scriptsize}
+    \captionsetup{font=footnotesize}
     \caption{Posterior a que $R$ pase, $C$ mueve para evitar que este mueva y
     capturarle en su siguiente turno.}
     \label{fig:captura1}
@@ -1483,7 +1481,7 @@ As\'i, proponemos la siguiente cota superior.
                 \unopY{2.5cm}{90 + (360/5)*1}
             \end{tikzpicture}
         }
-    \captionsetup{font=scriptsize}
+    \captionsetup{font=footnotesize}
     \caption{Posterior a que $R$ pase, $C$ mueve para evitar que este mueva y
     capturarle en su siguiente turno.}
     \label{fig:captura2}
