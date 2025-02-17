@@ -1276,7 +1276,7 @@ definici\'on de sombras es v\'alida para cualquier \'arbol y un v\'ertice de
 
 \begin{corolario}
 \label{cor:cota-inf-arbol}
-    Sean $T$ un \'arbol. Si $\Delta\geq 2k-1$, $k\leq c\paren{\t{k}{T}}$.
+    Sean $T$ un \'arbol. Si $\Delta_T\geq 2k-1$, $k\leq c\paren{\t{k}{T}}$.
 \end{corolario}
 
 Introducimos ahora una nueva definici\'on respecto a las condiciones en las que
@@ -1706,12 +1706,12 @@ emparejamiento de $G$. As\'i pues, pasamos a demostrar el siguiente teorema.
 
 Si bien el teorema anterior nos da la cota que buscamos para el n\'umero de
 polic\'ia de las gr\'aficas de fichas de las estrellas subdivididas, antes de
-ello queremos exploprar el alcance de esta cota para distintas $k$'s pues, el
+ello queremos explorar el alcance de esta cota para distintas $k$'s pues el
 n\'umero de emparejamiento de una gr\'afica puede estar arbitrariamente alejado
-de la mitad de sus v\'ertices, de manera que habr\'ia una gran cantidad de
-valores tales que $\alpha'(G) < k <\frac{\abs{V}}{2}$. Un ejemplo de este caso
-son las ya mencionadas $S_n$ cuyo n\'umero de emparejamiento es $1$ pues
-cualquier arista de $S_n$ tiene como extremo a $0$.
+de la mitad de sus orden, de manera que habr\'ia una gran cantidad de valores
+tales que $\alpha'(G) < k <\frac{\abs{V}}{2}$. Un ejemplo de este caso son las
+ya mencionadas $S_n$ cuyo n\'umero de emparejamiento es $1$ pues cualquier
+arista de $S_n$ tiene como extremo a $0$.
 
 As\'i pues, centramos nuestra atenci\'on al problema de c\'omo calcular el
 n\'umer de emparejamiento de las estrellas subdivididas. Si $S$ es una estrella de
@@ -2111,8 +2111,441 @@ siguiente lema.
 El lema anterior implica que, dada $S$ una triada, \cref{cor:k-acotadas} acota
 inferiormente el n\'umero policiaco de $\t{k}{S}$ para cualquier $k\leq
 \left\lfloor \frac{\abs{V_S}}{2}\right\rfloor$ salvo si $S$ tiene todas sus
-ramas de longitud par y $k=\left\lfloor\frac{\abs{V_S}}{2}\right\rfloor$. Por
-tanto, enunciamos el siguiente resultado que atiende esta situaci\'on.
+ramas de longitud par y $k=\left\lfloor\frac{\abs{V_S}}{2}\right\rfloor$. Para
+atender este \'ultimo caso, demostramos el siguiente lema respecto a la
+estructura de las gr\'aficas de $k$ fichas de las triadas.
+
+\begin{lema}
+\label{lem:retracto_triada}
+    Sea $S$ una triada y $x$ una de sus hojas. Si $k<\abs{V}$, entonces
+    $\t{k}{S-x}$ es un retracto de $\t{k}{S}$.
+\end{lema}
+
+\begin{proof}
+    Sea $i$ la rama donde se encuentra $x$ y $m$ la longitud de dicha rama. Se
+    analizan dos casos dependiendo de si $k\leq m$ o $k>m$. 
+    
+    Si $k\leq m$, se tiene que, para cualquier $C\in \t{k}{S}$, al menos un
+    v\'ertice de la rama no est\'a en $C$ (pues la rama tiene $m+1$ v\'ertices).
+    Luego, se define $f$ como la funci\'on de $V_{\t{k}{S}}$ en $V_{\t{k}{S-x}}$
+    dada por la regla
+    \[
+        f(C)=C\cup\l{x_C}\setminus \l{x},
+    \]
+    donde $x_C$ es un v\'ertice en $V_S\setminus C$ tal que se minim\'iza
+    $d(x_C,x)$. V\'ease que esta funci\'on est\'a bien definida pues, por lo
+    dicho anteriormente, al menos un v\'ertice de la $i$-\'esima rama no est\'a
+    en $C$ y, para cada $j\in\seg{0}{m_i+1}$, existe un \'unico v\'ertice en la
+    $i$-\'esima rama de a distancia $j$ de $x$.
+
+    Se afirma que $f$ es un homomorfismo de $\t{k}{S}$ en $\t{k}{S-x}$. En
+    efecto, n\'otese que para cada $C\in V_{\t{k}{S-x}}$, $x_C=x$ pues este no
+    se encuentra en $C$. Por tanto, $f(C) = C\cup\l{x_C}\setminus \l{x} = C$, de
+    modo que $f\c{V_{\t{k}{S-x}}}= V_{\t{k}{S-x}}$. Luego, sean $C,D\in
+    V_{\t{k}{S}}$ tales que $CD\in E_{\t{k}{S}}$. Si ninguno de los dos
+    conjuntos tiene a $x$, se sigue que $f(C)f(D)=CD$, la cual tambi\'en es una
+    arista en $\t{k}{S-x}$ por ser esta una subgr\'afica inducida de $\t{k}{S}$.
+    
+    Sup\'ongase ahora que $x\in C$. Como $CD\in E_{\t{k}{S}}$, sean $c,d\in V_S$
+    tales que $C\triangle D = {c,d}$ y $cd\in E_S$. Si alguno entre $c$ y $d$ es
+    $x$, sup\'ongase sin p\'erdida de generalidad que $c=x$, de modo que
+    $x_D=x$. Adem\'as $d$ es el \'unico vecino de $x$ en $S$ pues este es una
+    hoja, de modo que $d=x_C$. As\'i, 
+    \[
+        f(C)=C\cup\l{d}\setminus{x} \text { y } f(D)=D = C \cup \l{d} \setminus 
+        \l{x},
+    \]
+    concluyendo que la arista $CD$ se colpsa en el v\'ertice $D\in
+    V_{\t{k}{S-x}}$.
+    Finalmente, sup\'ongase que $c\neq x\neq d$, de manera que $x$ est\'a en
+    ambos $C$ y $D$. Si $x_C=x_D$. Entonces 
+    \[
+        f(C)\triangle f(D)= (C\cup\l{x_C}\setminus \l{x})\triangle(D\cup\l{x_D}
+        \setminus \l{x}) = C\triangle D=\l{c,d},
+    \]
+    de modo que $f(C)f(D)\in E_{\t{k}{S-x}}$ pues, al ser $x$ distinto de ambos
+    $c$ y $d$, $cd$ es una arista de $S-x$. 
+    
+    Luego, si $x_C\neq x_D$, sup\'ongase sin p\'erdida de generalidad que
+    $d(x_C,x) < d(x_D,x)$. Dado que $x_C\neq x_D$, debe suceder que $x_C\in
+    D\setminus C$. Sup\'ongase sin perdida de generalidad que $x_C=d$. M\'as
+    a\'un, $c$ es adyacente a $x_C$ y es tal que est\'a en $C\setminus D$. Como
+    $x_C$ es un v\'ertice la $i$-\'esima rama, este tiene grado $2$ en $S$ y,
+    por ser $d(x_C,x)$ menor a $d(x_D,x)$, se sigue que $d$ es el \'unico
+    v\'ertice tal que $d(d,x)=d(x_C,x)+1$. Adem\'as, $d\in C\setminus D$, por lo
+    que $x_D=d$ y
+    \[
+        f(C)\triangle f(D)= (C\cup\l{x_C}\setminus \l{x})\triangle(D\cup\l{x_D}
+    \setminus \l{x}) = \varnothing,
+    \]
+    es decir, $f(C)=f(D)$. Por tanto, $f$ es un homomorfismo y,
+    consecuentemente, $\t{k}{S-x}$ es un retracto de $\t{k}{S}$.
+    
+    Resta ver el caso cuando $k>m$. Por ser $S$ una triada, $S-i=S-i_0-\cdots -
+    i_m$ es una trayectoria. Sup\'ongase sin p\'erdida de generalidad que $i=3$,
+    de manera que $1_0$ y $2_0$ son los \'unicos v\'ertices adyacentes a $O$.
+    Sea $B$ el conjunto de $k$-conjuntos de $V_{\t{k}{S}}$ tales que cada uno de
+    estos contiene a los $m+1$ v\'ertices de la $i$-\'esima rama, es decir,
+    \[
+        B=\l{C\in \binom{V_S}{k}\colon\  \l{i_0,\dots,i_m}\subseteq C}.
+    \]
+    Por otra parte, sea $B'$ el subconjunto de configuraciones $C$ en $B$ tales
+    que $0$ est\'a en $C$ y al menos uno entre $1_0$ y $2_0$ est\'a en $C$, es
+    decir,
+    \[
+        B' = \l{C\in B\colon\  0\in C, \abs{C\cap \l{1_0,2_0}\geq 1}}.
+    \]
+    Se demostrar\'a que $H=\t{k}{S}[V_{\t{k}{S}}\setminus B']$ es un retracto de
+    $\t{k}{S}$. En efecto, dado $C\in B'$, sean $s$ y $t$ enteros tales que
+    \begin{align*}
+        s &=\max\l{i\colon\  1_j\in C \text{ para toda } j\in\seg{0}{i}}+1 \\
+        t &=\max\l{i\colon\  2_j\in C \text{ para toda } j\in\seg{0}{i}}+1,
+    \end{align*}
+    donde $s$ y $t$ son cero en caso de que el conjunto sobre el que se toma el
+    m\'aximo respectivamente sea vac\'io. Dado que alguno entre $1_0$ y $2_0$
+    est\'a en $C$, alguno entre $s$ y $t$ es mayor que $0$. Si $s\geq 1$ y
+    existe un v\'ertice en la segunda rama que no est\'a en $C$, sea $v=2_j$ el
+    v\'ertice que no est\'a en $C$ con $j$ m\'inimo. Luego, se define $f(C)$
+    como se muestra en \cref{fig:ultimo_vertice}.
+
+    \begin{figure}[!htbp]
+        \begin{tcbitemize}[raster columns=2, raster equal height, enhanced,
+            colback=Black!5!white,colframe=Grey!75!black, attach title to upper,
+            phantom={\setcounter{myrasternum}{\thetcbrasternum}},
+            title={(\alph{myrasternum})\enspace}, halign lower=center, halign upper
+            = left, lower separated=false, middle=0mm, boxsep=0mm, leftupper=2mm,
+            fonttitle=\bfseries, coltitle=black, raster column skip=1mm,raster
+            halign=center, raster row skip=1mm]
+            \tcbitem
+                \tcblower
+                    \scalebox{1}{
+                        \begin{tikzpicture}
+                                \Pathuno
+                        \end{tikzpicture}
+                    }
+            \tcbitem
+                \tcblower
+                    \scalebox{1}{
+                        \begin{tikzpicture}
+                               \Pathdos
+                        \end{tikzpicture}
+                    }
+        \end{tcbitemize}
+        \captionsetup{font=normalsize}
+        \caption{En \'esta y las siguientes figuras se omite la primera rama en
+        cada una de las configuraciones, las cuales son tales que tienen una
+        ficha en cada una de los v\'ertices de la rama. Los v\'ertices a la
+        izquierda del $0$ corresponden a los de la rama $1$, mientras que los
+        que est\'an a la derecha son los de la rama $2$. En (a) se muestra la
+        configuraci\'on $C$ y en (b) se muestra la im\'agen de $C$ bajo $f$.}
+        \label{fig:ultimo_vertice}
+    \end{figure}
+
+    Por otro lado, si todo v\'ertice de la segunda rama est\'a en $C$, por ser
+    $k<\abs{V}$, existe un v\'ertice de la primera rama que no est\'a en $C$.
+    Sea $v=1_j$ el v\'ertice que no est\'a en $C$ con $j$ m\'inimo. As\'i, se
+    define $f(C)$ como en \cref{fig:no_ultimo_vertice}. 
+
+    \begin{figure}[!htbp]
+        \begin{tcbitemize}[raster columns=2, raster equal height, enhanced,
+            colback=Black!5!white,colframe=Grey!75!black, attach title to upper,
+            phantom={\setcounter{myrasternum}{\thetcbrasternum}},
+            title={(\alph{myrasternum})\enspace}, halign lower=center, halign upper
+            = left, lower separated=false, middle=0mm, boxsep=0mm, leftupper=2mm,
+            fonttitle=\bfseries, coltitle=black, raster column skip=1mm,raster
+            halign=center, raster row skip=1mm]
+            \tcbitem
+                \tcblower
+                    \scalebox{1}{
+                        \begin{tikzpicture}
+                                \Pathtres
+                        \end{tikzpicture}
+                    }
+            \tcbitem
+                \tcblower
+                    \scalebox{1}{
+                        \begin{tikzpicture}
+                               \Pathcuatro
+                        \end{tikzpicture}
+                    }
+        \end{tcbitemize}
+        \captionsetup{font=normalsize}
+        \caption{En (a) se muestra la
+        configuraci\'on $C$ y en (b) se muestra la im\'agen de $C$ bajo $f$.}
+        \label{fig:no_ultimo_vertice}
+    \end{figure}
+
+    Por otra parte, si $s=0$, debe suceder que $t\geq 1$. Luego, $f$ manda a $C$
+    como en \cref{fig:no_rama_uno}, dependiendo de si $C$ tiene o no todos los
+    v\'ertices de la rama $2$.
+
+    \begin{figure}[!htbp]
+        \begin{tcbitemize}[raster columns=2, raster equal height, enhanced,
+            colback=Black!5!white,colframe=Grey!75!black, attach title to upper,
+            phantom={\setcounter{myrasternum}{\thetcbrasternum}},
+            title={(\alph{myrasternum})\enspace}, halign lower=center, halign upper
+            = left, lower separated=false, middle=0mm, boxsep=0mm, leftupper=2mm,
+            fonttitle=\bfseries, coltitle=black, raster column skip=1mm,raster
+            halign=center, raster row skip=1mm]
+            \tcbitem
+                \tcblower
+                    \scalebox{1}{
+                        \begin{tikzpicture}
+                                \Pathcinco
+                        \end{tikzpicture}
+                    }
+            \tcbitem
+                \tcblower
+                    \scalebox{1}{
+                        \begin{tikzpicture}
+                               \Pathseis
+                        \end{tikzpicture}
+                    }
+            \tcbitem
+                \tcblower
+                    \scalebox{1}{
+                        \begin{tikzpicture}
+                               \Pathsiete
+                        \end{tikzpicture}
+                    }
+            \tcbitem
+                \tcblower
+                    \scalebox{1}{
+                        \begin{tikzpicture}
+                               \Pathocho
+                        \end{tikzpicture}
+                    }
+        \end{tcbitemize}
+        \captionsetup{font=normalsize}
+        \caption{En (a) se muestra la configuraci\'on $C$ y en (b) se muestra la
+        im\'agen de $C$ bajo $f$. An\'alogamente, si $C$ es como en (c), se
+        muesta $f(C)$ en (d).}
+        \label{fig:no_rama_uno}
+    \end{figure}
+
+    Para el resto de configuraciones, $C\notin B'$, por lo que se define
+    $f(C)=C$. As\'i, por construcci\'on, $f(C)=C$ para cada $C\notin B'$, por lo
+    que basta demostrar que si $CD\in E_{\t{k}{S}}$ con $C\in B'$, entonces
+    $f(C)f(D)\in E_{H}$.
+
+    Si $C$ es como en (a) de \cref{fig:ultimo_vertice}, las configuraciones $D$
+    adyacentes a este son como en \cref{fig:ultimo_vertice_adyacente}
+    dependiendo de si $t=0$ y si $v\in C$, notando que en todas las ocasiones
+    $f(D)$ es adyacente a $f(C)$ en $H$ o $f(C)=f(D)$.
+
+    \begin{figure}[!htbp]
+        \begin{tcbitemize}[raster columns=2, raster equal height=rows, enhanced,
+            colback=Black!5!white,colframe=Grey!75!black, attach title to upper,
+            phantom={\setcounter{myrasternum}{\thetcbrasternum}},
+            title={(\alph{myrasternum})\enspace}, halign lower=center, halign upper
+            = left, lower separated=false, middle=0mm, boxsep=0mm,
+            fonttitle=\bfseries, coltitle=black, raster column skip=1mm,raster
+            halign=center, raster row skip=1mm, left=0mm, right=0mm, leftupper=2mm]
+            \tcbitem
+                \tcblower
+                    \scalebox{1}{
+                        \begin{tikzpicture}
+                                \Pathuno
+                                \node (p) [bola1, fill=Crimson, label=90:$p$] at (1.75,1){};
+                                \node (q) [bola1, label=90:$q$] at (2.5,1){};
+                                \draw[edge] (p) to (q);
+                        \end{tikzpicture}
+                    }
+            \tcbitem
+                \tcblower
+                    \scalebox{1}{
+                        \begin{tikzpicture}
+                               \Pathdos
+                                \node (p) [bola1, fill=Crimson, label=90:$p$] at (1.75,1){};
+                                \node (q) [bola1, label=90:$q$] at (2.5,1){};
+                                \draw[edge] (p) to (q);
+                        \end{tikzpicture}
+                    }
+            \tcbitem
+                \tcblower
+                    \scalebox{1}{
+                        \begin{tikzpicture}
+                                \Pathunom
+                        \end{tikzpicture}
+                    }
+            \tcbitem
+                \tcblower
+                    \scalebox{1}{
+                        \begin{tikzpicture}
+                                \Pathunomm
+                        \end{tikzpicture}
+                    }
+            \tcbitem
+                \tcblower
+                    \scalebox{1}{
+                        \begin{tikzpicture}
+                                \Pathunomenos
+                        \end{tikzpicture}
+                    }
+            \tcbitem
+                \tcblower
+                    \scalebox{1}{
+                        \begin{tikzpicture}
+                                \Pathunomenosm
+                        \end{tikzpicture}
+                    }
+            \tcbitem
+                \tcblower
+                    \scalebox{1}{
+                        \begin{tikzpicture}
+                                \Pathunocero
+                        \end{tikzpicture}
+                    }
+            \tcbitem
+                \tcblower
+                    \scalebox{1}{
+                        \begin{tikzpicture}
+                                \Pathunocero
+                        \end{tikzpicture}
+                    }
+        \end{tcbitemize}
+        \captionsetup{font=normalsize}
+        \caption{En (a), $D$ no tiene a $v$ y tiene a $p$, mientras que $C$
+        tiene a $q$ y no a $p$. Luego, de la regla descrita en
+        \cref{fig:ultimo_vertice} se tiene que $f(D)$ es como se muestra en (b)
+        y $f(C)\triangle f(D)=\l{p,q}\in E_S$. Si $v\in D$, se puede ver como en
+        (c), como en (e) si $t>0$, o como en (g) si $t=0$. En los primeros dos
+        casos, las reglas de correspondencia dada por (b) de
+        \cref{fig:ultimo_vertice} resulta en $f(D)$ como en (d), (f) y (h)
+        respectivamente, notando que en cualquier caso $f(C)=f(D)$ (para $D$
+        como en (c), $w$ est\'a en $C$). Finalmente, para $D$ como en (g),
+        $f(D)=D=f(C)$.}
+        \label{fig:ultimo_vertice_adyacente}
+    \end{figure}
+
+    Si $D$ es adyacente a $C$ y este \'ultimo es como en (a) de
+    \cref{fig:no_ultimo_vertice} o como en (a) o (c) de \cref{fig:no_rama_uno},
+    por razones similares a las expuestas anteriormente, $f(C)=f(D)$ o
+    $f(C)f(D)\in E_H$, por lo que $H$ es un retracto de $\t{k}{S}$.
+
+    Luego, para cada $C\in B\cap V_H$, si $0\in C$, debe suceder que ambos $1_0$
+    ni $2_0$ est\'an en $C$. As\'i $C$ es adyacente en $\t{k}{S}$ a $D$ y $E$,
+    las configuraciones resultantes de mover la ficha en $0$ a $1_0$ y $2_0$
+    respectivamente. N\'otese que $D$ y $E$ son adyacentes a las configuraciones
+    $D'$ y $E'$ respectivamente, las cuales son configuraciones distintas en
+    $V_{\t{k}{S}}\setminus B$ resultantes de mover la ficha en $1_0$ o $2_0$ a
+    $0$. Estas a su vez son a adyacentes a la configuraci\'on $C'$ mostrada en
+    \cref{fig:domino}, por lo que se puede definir $g$ como una funci\'on de
+    $V_H$ en $V_{\t{k}{S}}\setminus B$ dada por la regla $g(C)=C'$, donde $C'$
+    est\'a dado como en \cref{fig:domino} dependiendo de si $0$ est\'a en $C$ o
+    no. Por otra parte, $g$ es la identidad en $V_{\t{k}{S}}\setminus B$. Es
+    claro que $g$ est\'a bien definida si $0$ no est\'a en $C$, mientras que si
+    lo est\'a, la configuraci\'on $C'$ es \'unica pues $C$, por ser una
+    configuraci\'on en $V_H$, tiene exactamente dos vecinos $D$ y $E$ como se
+    muestran en \cref{fig:domino}. 
+
+    \begin{figure}[!htbp]
+        \centering
+        \begin{tikzpicture}
+            \node (C) [bola35, label=90:$C$] {};
+            \node (Dp) [bola35, left= of C, label=90:$D$] {};
+            \node (Dbp) [bola35, right= of C, label=90:$E$] {};
+            \node (dp) [bola35, below= of Dp, label=270:$D'$] {};
+            \node (dbp) [bola35, below= of Dbp, label=270:$E'$] {};
+            \node (c) [bola35, below= of C, label=270:$C'$] {};
+
+            \draw[edge] (Dp) to (C);
+            \draw[edge] (Dbp) to (C);
+            \draw[edge] (Dp) to (dp);
+            \draw[edge] (Dbp) to (dbp);
+            \draw[edge] (dbp) to (c);
+            \draw[edge] (c) to (dp);
+
+            \begin{scope}[shift={(C)}]
+                \triadados
+                \puntodos{1cm}{90}
+                \puntodos{0cm}{0}
+
+            \end{scope}
+
+            \begin{scope}[shift={(Dp)}]
+                \triadados
+                \puntodos{1cm}{90}
+                \puntodos{1cm}{210}
+                
+            \end{scope}
+
+            \begin{scope}[shift={(Dbp)}]
+                \triadados
+                \puntodos{1cm}{90}
+                \puntodos{1cm}{330}
+                
+            \end{scope}
+
+            \begin{scope}[shift={(dp)}]
+                \triadados
+                \puntodos{0cm}{0}
+                \puntodos{1cm}{210}
+                
+            \end{scope}
+
+            \begin{scope}[shift={(dbp)}]
+                \triadados
+                \puntodos{0cm}{0}
+                \puntodos{1cm}{330}
+                
+            \end{scope}
+
+            \begin{scope}[shift={(c)}]
+                \triadados
+                \puntodos{1cm}{210}
+                \puntodos{1cm}{330}
+                
+            \end{scope}
+
+        \end{tikzpicture}
+
+        \captionsetup{font=normalsize}
+        \caption{Se muestran una configuraci\'on en $V_H$ con una ficha en $0$
+        junto a sus configuraciones adyacentes en $B$, as\'i como la vecindad de
+        de dichas configuraciones en el complemento de $B$ (el rengl\'on
+        inferior). La existencia y unicidad de $C'$ se tiene al deslizar la
+        ficha en $0$ de $D'$ o $E'$ hacia el \'unico v\'ertice al que se puede
+        mover distinto de $1_0$.}
+        \label{fig:domino}
+    \end{figure}
+
+    Se afirma que $g$ es un homomorfismo. En efecto, dados $C$ y $D$ adyacentes
+    en $H$, se tienen los siguientes casos:
+    \begin{enumerate}
+        \item Si ambos est\'an en $V_{\t{k}{S}}\setminus B$, entonces
+        $g(C)\triangle g(D)=C\triangle D$.
+
+        \item Si $C\in B$ y $D\in V_{\t{k}{S}}\setminus B$, por ser estos
+        adyacentes debe suceder que $C\triangle D=\l{1_0,0}$, por lo que
+        $g(C)=D=g(D)$.
+
+        \item Si ambos $C$ y $D$ est\'an en $B$ y ninguno de estos tiene a $0$,
+        se sigue $g(C)\triangle g(D) = C\triangle D$ pues ambos $g(C)$ y $g(D)$
+        tienen a $0$ y no tienen a $1_0$.
+
+        \item Si solo uno de los dos tiene a $0$, por el dibujo de
+        \cref{fig:domino} se tiene que $g(C)$ y $g(D)$ son adyacentes.
+
+        \item Si ambos tienen a $0$, por un argumento similar al expuesto en (a)
+        de \cref{fig:ultimo_vertice_adyacente} se tiene que $g(C)$ y $g(D)$ son
+        adyacentes.
+    
+    \end{enumerate}
+
+    Por tanto, $H'=\t{k}{S}[V_{\t{k}{S}}\setminus B]$ es un retracto de $H$ y,
+    dado que $H$ es un retracto de $\t{k}{S}$, componiendo las funciones $f$ y
+    $g$ se obtiene que $H'$ es un retracto de $\t{k}{S}$ (pues la composici\'on
+    de $f$ y $g$ sigue preservando las adyacencias). Finalmente, n\'otese que
+    las configuraciones en $H'$ son $k$-conjuntos de $V_S$ que no tienen todos
+    los v\'ertices de la rama $1$, por lo que, al igual que en el caso cuando
+    $k\leq m$ se puede dar un homomorfismo de $V_{\t{k}{S}}\setminus B$ en
+    $V_{\t{k}{S-x}}$, concluyendo que $\t{k}{S-x}$ es un retracto de $\t{k}{S}$.
+
+\end{proof}
+
+As\'i pues, terminamos por acotar el n\'umero policiaco para todos los valores
+de $k$ en las gr\'aficas de fichas de las triadas.
 
 \begin{lema}
 \label{lem:k-especial-triada}
@@ -2145,7 +2578,7 @@ tanto, enunciamos el siguiente resultado que atiende esta situaci\'on.
     \[
         c(\t{k}{S-x}) \geq \left\lceil\frac{k-1}{2}\right\rceil,
     \]
-    de modo que, por \cref{lem:retracto} y \cref{lem:retracto-cota},
+    de modo que, por \cref{lem:retracto_triada} y \cref{lem:retracto-cota},
     \[
         \left\lceil\frac{k}{2}\right\rceil\leq c(\t{k}{S-x}) \leq c(\t{k}{S}).
     \]
@@ -2173,8 +2606,11 @@ de m\'as de $k$ fichas de un \'arbol.
 \end{lema}
 
 \begin{proof}
-    Para cada polic\'ia $c_i$, se define una funci\'on objetivo, $o_i \colon
-    \l{c_{i,1},\dots,c_{i,k}} \to \c{r}$ dada por
+    Para cada polic\'ia $c_i$, se define una funci\'on objetivo
+    \[
+        o_i \colon \l{c_{i,1},\dots,c_{i,k}} \to \c{r}
+    \]
+    dada por
     \[
         o_i(c_{i,j}) = r_{i+j-1 \mod n},
     \]
@@ -2315,7 +2751,7 @@ Sea $S$ una triada con subdivisiones. Entonces $c(F_3(S)) \leq 2$.
     alg\'un momento sucede que su distancia disminuye, de modo que $c_{1}$ se
     acerca efetivamente a capturar a $R$. Iterando esta estrategia se concluye
     que eventualmente un polic\'ia logra capturar a $R$, por lo que
-    $c(\t{k}{S})\leq 2$.
+    $c(\t{3}{S})\leq 2$.
 
 \end{proof}
 
@@ -3463,7 +3899,7 @@ c\'odigo dentro del \ttt{if} de la l\'inea $5$.
 
 \begin{figure}[!htbp]
     \ContinuedFloat
-    \begin{tcbitemize}[raster columns=2, raster equal height, enhanced,
+    \begin{tcbitemize}[raster columns=1, raster equal height, enhanced,
         colback=Black!5!white,colframe=Grey!75!black, attach title to upper,
         phantom={\addtocounter{myrasternum}{1}},
         title={(\arabic{myrasternum})\enspace}, halign lower=center, halign upper

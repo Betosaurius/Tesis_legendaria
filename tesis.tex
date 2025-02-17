@@ -15,6 +15,8 @@
 % Inclusion de imagenes
 \usepackage{graphicx}
 
+\usepackage{multirow}
+
 % Pies de imagenes
 \usepackage{caption}
 
@@ -35,7 +37,7 @@
 \newcounter{myrasternum}
 
 % Colores
-\usepackage[table,svgnames]{xcolor}
+\usepackage[table,svgnames, xcdraw]{xcolor}
 
 \definecolor{verdeOscuro}{rgb}{0,0.6,0}
 \definecolor{verdeAzulado}{RGB}{3,168,108}
@@ -87,7 +89,7 @@
 
 % Generacion de dibujos con TeX
 \usepackage{tikz}
-\usetikzlibrary{arrows,shapes,matrix,decorations,shapes.geometric,calc,automata,positioning, backgrounds, patterns}
+\usetikzlibrary{arrows,shapes,matrix,decorations,shapes.geometric,calc,automata,positioning, backgrounds, patterns, decorations.pathreplacing}
 \tikzstyle{arc}   =[->,shorten <=3pt, shorten >=3pt,
                    >=stealth, line width=1.1pt]
 \tikzstyle{edge}  =[shorten <=2pt, shorten >=2pt,
@@ -242,6 +244,25 @@
 \end{scope}
 }
 
+\newcommand{\triadados}{
+  \node (0) [bola1] at (0,0) {};
+  \foreach \i in {1,...,3}{
+  \node (\i) [bola1] at ({90+(360/3)*\i}:1) {};
+  }
+
+  \node (4) at ({90+(360/3)*1}:1.75) {};
+  \node (5) at ({90+(360/3)*2}:1.75) {};
+  \node (6) at ({90+(360/3)*3}:1.75) {};
+  
+  
+  \foreach \i in {1,...,3}
+  \draw[edge] (\i) to (0);
+
+  \draw[edge, dotted, shorten <=0pt] (1) to (4);
+  \draw[edge, dotted, shorten <=0pt] (2) to (5);
+  \draw[edge, dotted, shorten <=0pt] (3) to (6);
+}
+
 \newcommand{\Stresuno}{%
 \node (0) [bola2] at (0,0){};
 \foreach \i in {1,...,3}{
@@ -253,6 +274,327 @@
     }
 }
 }
+
+\newcommand{\Pathuno}{%
+
+\node (1) [bola1, fill=Crimson] at (-0.75,0){};
+\node (2) [bola1, fill=Crimson] at (0.75,0){};
+\node (i) [bola1, fill=Crimson] at (-1.75,0){};
+\node (d) [bola1, fill=Crimson] at (1.75,0){};
+\node (v) [bola1, label=270:$v$] at (2.5,0){};
+\node (0) [bola1, fill=Crimson, label=270:$0$] at (0,0){};
+\node (A) at (-2.625,0){};
+\node (B) at (3.375,0){};
+
+\draw[edge] (1) to (0);
+\draw[edge] (2) to (0);
+\draw[edge] (d) to (v);
+\draw[dashed, edge] (i) .. controls (-1.375,1) and (-1.125,-1) 
+.. (1);
+\draw[dashed, edge] (2) .. controls (1.125,1) and (1.375,-1) 
+.. (d);
+\draw[dotted,edge, shorten >=0pt] (A) -- (i);
+\draw[dotted,edge, shorten <=0pt] (v) -- (B);
+
+\draw [thick, decoration= {brace,mirror,raise=0.75cm}, decorate] (i.west) --
+(1.east) node [pos=0.5,anchor=north,yshift=-0.75cm] {$s\geq 1$}; 
+\draw [thick, decoration= {brace,mirror,raise=0.75cm}, decorate] (2.west) --
+(d.east) node [pos=0.5,anchor=north,yshift=-0.75cm] {$t\geq 0$}; 
+}
+
+\newcommand{\Pathunocero}{%
+
+\node (1) [bola1, fill=Crimson] at (-0.75,0){};
+\node (2) [bola1, label=270:$v$, fill=Crimson] at (0.75,0){};
+\node (i) [bola1, fill=Crimson] at (-1.75,0){};
+\node (0) [bola1, label=270:$0$] at (0,0){};
+\node (A) at (-2.625,0){};
+\node (B) at (1.625,0){};
+
+\draw[edge] (1) to (0);
+\draw[edge] (2) to (0);
+\draw[dashed, edge] (i) .. controls (-1.375,1) and (-1.125,-1) 
+.. (1);
+\draw[dotted,edge, shorten >=0pt] (A) -- (i);
+\draw[dotted,edge, shorten <=0pt] (2) -- (B);
+
+\draw [thick, decoration= {brace,mirror,raise=0.75cm}, decorate] (i.west) --
+(1.east) node [pos=0.5,anchor=north,yshift=-0.75cm] {$s\geq 1$};
+}
+
+\newcommand{\Pathunom}{%
+
+\node (1) [bola1, fill=Crimson] at (-0.75,0){};
+\node (2) [bola1, fill=Crimson] at (0.75,0){};
+\node (i) [bola1, fill=Crimson] at (-1.75,0){};
+\node (d) [bola1, fill=Crimson] at (1.75,0){};
+\node (v) [bola1, label=270:$v$, fill=Crimson] at (2.5,0){};
+\node (w) [bola1, label=270:$w$] at (3.25,0){};
+\node (0) [bola1, fill=Crimson, label=270:$0$] at (0,0){};
+\node (A) at (-2.625,0){};
+\node (B) at (4.125,0){};
+
+\draw[edge] (1) to (0);
+\draw[edge] (2) to (0);
+\draw[edge] (d) to (v);
+\draw[edge] (w) to (v);
+\draw[dashed, edge] (i) .. controls (-1.375,1) and (-1.125,-1) 
+.. (1);
+\draw[dashed, edge] (2) .. controls (1.125,1) and (1.375,-1) 
+.. (d);
+\draw[dotted,edge, shorten >=0pt] (A) -- (i);
+\draw[dotted,edge, shorten <=0pt] (w) -- (B);
+
+\draw [thick, decoration= {brace,mirror,raise=0.75cm}, decorate] (i.west) --
+(1.east) node [pos=0.5,anchor=north,yshift=-0.75cm] {$s\geq 1$}; 
+\draw [thick, decoration= {brace,mirror,raise=0.75cm}, decorate] (2.west) --
+(d.east) node [pos=0.5,anchor=north,yshift=-0.75cm] {$t\geq 0$}; 
+}
+
+\newcommand{\Pathunomm}{%
+
+\node (1) [bola1, fill=Crimson] at (-0.75,0){};
+\node (2) [bola1, fill=Crimson] at (0.75,0){};
+\node (i) [bola1, fill=Crimson] at (-1.75,0){};
+\node (d) [bola1, fill=Crimson] at (1.75,0){};
+\node (v) [bola1, label=270:$v$, fill=Crimson] at (2.5,0){};
+\node (w) [bola1, label=270:$w$, fill=Crimson] at (3.25,0){};
+\node (0) [bola1, label=270:$0$] at (0,0){};
+\node (A) at (-2.625,0){};
+\node (B) at (4.125,0){};
+
+\draw[edge] (1) to (0);
+\draw[edge] (2) to (0);
+\draw[edge] (d) to (v);
+\draw[edge] (w) to (v);
+\draw[dashed, edge] (i) .. controls (-1.375,1) and (-1.125,-1) 
+.. (1);
+\draw[dashed, edge] (2) .. controls (1.125,1) and (1.375,-1) 
+.. (d);
+\draw[dotted,edge, shorten >=0pt] (A) -- (i);
+\draw[dotted,edge, shorten <=0pt] (w) -- (B);
+
+\draw [thick, decoration= {brace,mirror,raise=0.75cm}, decorate] (i.west) --
+(1.east) node [pos=0.5,anchor=north,yshift=-0.75cm] {$s\geq 1$}; 
+\draw [thick, decoration= {brace,mirror,raise=0.75cm}, decorate] (2.west) --
+(d.east) node [pos=0.5,anchor=north,yshift=-0.75cm] {$t\geq 0$}; 
+}
+
+\newcommand{\Pathunomenos}{%
+
+\node (1) [bola1, fill=Crimson] at (-0.75,0){};
+\node (2) [bola1, fill=Crimson] at (0.75,0){};
+\node (i) [bola1, fill=Crimson] at (-1.75,0){};
+\node (d) [bola1, fill=Crimson] at (1.75,0){};
+\node (w) [bola1, label=270:$w$] at (2.5,0){};
+\node (v) [bola1, label=270:$v$, fill=Crimson] at (3.25,0){};
+\node (0) [bola1, fill=Crimson, label=270:$0$] at (0,0){};
+\node (A) at (-2.625,0){};
+\node (B) at (4.125,0){};
+
+\draw[edge] (1) to (0);
+\draw[edge] (2) to (0);
+\draw[edge] (d) to (w);
+\draw[edge] (w) to (v);
+\draw[dashed, edge] (i) .. controls (-1.375,1) and (-1.125,-1) 
+.. (1);
+\draw[dashed, edge] (2) .. controls (1.125,1) and (1.375,-1) 
+.. (d);
+\draw[dotted,edge, shorten >=0pt] (A) -- (i);
+\draw[dotted,edge, shorten <=0pt] (v) -- (B);
+
+\draw [thick, decoration= {brace,mirror,raise=0.75cm}, decorate] (i.west) --
+(1.east) node [pos=0.5,anchor=north,yshift=-0.75cm] {$s\geq 1$}; 
+\draw [thick, decoration= {brace,mirror,raise=0.75cm}, decorate] (2.west) --
+(d.east) node [pos=0.5,anchor=north,yshift=-0.75cm] {$t-1\geq 0$}; 
+}
+
+\newcommand{\Pathunomenosm}{%
+
+\node (1) [bola1, fill=Crimson] at (-0.75,0){};
+\node (2) [bola1, fill=Crimson] at (0.75,0){};
+\node (i) [bola1, fill=Crimson] at (-1.75,0){};
+\node (d) [bola1, fill=Crimson] at (1.75,0){};
+\node (w) [bola1, label=270:$w$, fill=Crimson] at (2.5,0){};
+\node (v) [bola1, label=270:$v$, fill=Crimson] at (3.25,0){};
+\node (0) [bola1, label=270:$0$] at (0,0){};
+\node (A) at (-2.625,0){};
+\node (B) at (4.125,0){};
+
+\draw[edge] (1) to (0);
+\draw[edge] (2) to (0);
+\draw[edge] (d) to (w);
+\draw[edge] (w) to (v);
+\draw[dashed, edge] (i) .. controls (-1.375,1) and (-1.125,-1) 
+.. (1);
+\draw[dashed, edge] (2) .. controls (1.125,1) and (1.375,-1) 
+.. (d);
+\draw[dotted,edge, shorten >=0pt] (A) -- (i);
+\draw[dotted,edge, shorten <=0pt] (v) -- (B);
+
+\draw [thick, decoration= {brace,mirror,raise=0.75cm}, decorate] (i.west) --
+(1.east) node [pos=0.5,anchor=north,yshift=-0.75cm] {$s\geq 1$}; 
+\draw [thick, decoration= {brace,mirror,raise=0.75cm}, decorate] (2.west) --
+(d.east) node [pos=0.5,anchor=north,yshift=-0.75cm] {$t-1\geq 0$}; 
+}
+
+\newcommand{\Pathdos}{%
+
+\node (1) [bola1, fill=Crimson] at (-0.75,0){};
+\node (2) [bola1, fill=Crimson] at (0.75,0){};
+\node (i) [bola1, fill=Crimson] at (-1.75,0){};
+\node (d) [bola1, fill=Crimson] at (1.75,0){};
+\node (v) [bola1, fill=Crimson, label=270:$v$] at (2.5,0){};
+\node (0) [bola1, label=270:$0$] at (0,0){};
+\node (A) at (-2.625,0){};
+\node (B) at (3.375,0){};
+
+\draw[edge] (1) to (0);
+\draw[edge] (2) to (0);
+\draw[edge] (d) to (v);
+\draw[dashed, edge] (i) .. controls (-1.375,1) and (-1.125,-1) 
+.. (1);
+\draw[dashed, edge] (2) .. controls (1.125,1) and (1.375,-1) 
+.. (d);
+\draw[dotted,edge, shorten >=0pt] (A) -- (i);
+\draw[dotted,edge, shorten <=0pt] (v) -- (B);
+
+\draw [thick, decoration= {brace,mirror,raise=0.75cm}, decorate] (i.west) --
+(1.east) node [pos=0.5,anchor=north,yshift=-0.75cm] {$s\geq 1$}; 
+\draw [thick, decoration= {brace,mirror,raise=0.75cm}, decorate] (2.west) --
+(d.east) node [pos=0.5,anchor=north,yshift=-0.75cm] {$t\geq 0$}; 
+}
+
+\newcommand{\Pathtres}{%
+
+\node (1) [bola1, fill=Crimson] at (-0.75,0){};
+\node (2) [bola1, fill=Crimson] at (0.75,0){};
+\node (i) [bola1, fill=Crimson] at (-1.75,0){};
+\node (d) [bola1, fill=Crimson] at (1.75,0){};
+\node (v) [bola1, label=270:$v$] at (-2.5,0){};
+\node (0) [bola1, fill=Crimson, label=270:$0$] at (0,0){};
+\node (A) at (-3.375,0){};
+
+\draw[edge] (1) to (0);
+\draw[edge] (2) to (0);
+\draw[edge] (i) to (v);
+\draw[dashed, edge] (i) .. controls (-1.375,1) and (-1.125,-1) 
+.. (1);
+\draw[dashed, edge] (2) .. controls (1.125,1) and (1.375,-1) 
+.. (d);
+\draw[dotted,edge, shorten >=0pt] (A) -- (v);
+
+\draw [thick, decoration= {brace,mirror,raise=0.75cm}, decorate] (i.west) --
+(1.east) node [pos=0.5,anchor=north,yshift=-0.75cm] {$s\geq 1$}; 
+\draw [thick, decoration= {brace,mirror,raise=0.75cm}, decorate] (2.west) --
+(d.east) node [pos=0.5,anchor=north,yshift=-0.75cm] {$t\geq 0$}; 
+}
+
+\newcommand{\Pathcuatro}{%
+
+\node (1) [bola1, fill=Crimson] at (-0.75,0){};
+\node (2) [bola1, fill=Crimson] at (0.75,0){};
+\node (i) [bola1, fill=Crimson] at (-1.75,0){};
+\node (d) [bola1, fill=Crimson] at (1.75,0){};
+\node (v) [bola1, fill=Crimson, label=270:$v$] at (-2.5,0){};
+\node (0) [bola1, label=270:$0$] at (0,0){};
+\node (A) at (-3.375,0){};
+
+\draw[edge] (1) to (0);
+\draw[edge] (2) to (0);
+\draw[edge] (i) to (v);
+\draw[dashed, edge] (i) .. controls (-1.375,1) and (-1.125,-1) 
+.. (1);
+\draw[dashed, edge] (2) .. controls (1.125,1) and (1.375,-1) 
+.. (d);
+\draw[dotted,edge, shorten >=0pt] (A) -- (v);
+
+\draw [thick, decoration= {brace,mirror,raise=0.75cm}, decorate] (i.west) --
+(1.east) node [pos=0.5,anchor=north,yshift=-0.75cm] {$s\geq 1$}; 
+\draw [thick, decoration= {brace,mirror,raise=0.75cm}, decorate] (2.west) --
+(d.east) node [pos=0.5,anchor=north,yshift=-0.75cm] {$t\geq 0$}; 
+}
+
+\newcommand{\Pathcinco}{%
+
+\node (1) [bola1, label=270:$v$] at (-0.75,0){};
+\node (2) [bola1, fill=Crimson] at (0.75,0){};
+\node (d) [bola1, fill=Crimson] at (1.75,0){};
+\node (0) [bola1, fill=Crimson, label=270:$0$] at (0,0){};
+\node (A) at (-1.5,0){};
+
+\draw[edge] (1) to (0);
+\draw[edge] (2) to (0);
+\draw[dashed, edge] (2) .. controls (1.125,1) and (1.375,-1) 
+.. (d);
+\draw[dotted,edge, shorten >=0pt] (A) -- (1);
+
+\draw [thick, decoration= {brace,mirror,raise=0.75cm}, decorate] (2.west) --
+(d.east) node [pos=0.5,anchor=north,yshift=-0.75cm] {$t\geq 1$}; 
+}
+
+\newcommand{\Pathseis}{%
+
+\node (1) [bola1, label=270:$v$, fill=Crimson] at (-0.75,0){};
+\node (2) [bola1, fill=Crimson] at (0.75,0){};
+\node (d) [bola1, fill=Crimson] at (1.75,0){};
+\node (0) [bola1, label=270:$0$] at (0,0){};
+\node (A) at (-1.5,0){};
+
+\draw[edge] (1) to (0);
+\draw[edge] (2) to (0);
+\draw[dashed, edge] (2) .. controls (1.125,1) and (1.375,-1) 
+.. (d);
+\draw[dotted,edge, shorten >=0pt] (A) -- (1);
+
+\draw [thick, decoration= {brace,mirror,raise=0.75cm}, decorate] (2.west) --
+(d.east) node [pos=0.5,anchor=north,yshift=-0.75cm] {$t\geq 1$}; 
+}
+
+\newcommand{\Pathsiete}{%
+
+\node (1) [bola1] at (-0.75,0){};
+\node (2) [bola1, fill=Crimson] at (0.75,0){};
+\node (d) [bola1, fill=Crimson] at (1.75,0){};
+\node (v) [bola1, label=270:$v$] at (2.5,0){};
+\node (0) [bola1, label=270:$0$, fill=Crimson] at (0,0){};
+\node (A) at (3.25,0){};
+\node (B) at (-1.5,0){};
+
+\draw[edge] (1) to (0);
+\draw[edge] (2) to (0);
+\draw[edge] (d) to (v);
+\draw[dashed, edge] (2) .. controls (1.125,1) and (1.375,-1) 
+.. (d);
+\draw[dotted,edge, shorten <=0pt] (v) -- (A);
+\draw[dotted,edge, shorten >=0pt] (B) -- (1);
+
+\draw [thick, decoration= {brace,mirror,raise=0.75cm}, decorate] (2.west) --
+(d.east) node [pos=0.5,anchor=north,yshift=-0.75cm] {$t\geq 1$}; 
+}
+
+\newcommand{\Pathocho}{%
+
+\node (1) [bola1] at (-0.75,0){};
+\node (2) [bola1, fill=Crimson] at (0.75,0){};
+\node (d) [bola1, fill=Crimson] at (1.75,0){};
+\node (v) [bola1, label=270:$v$, fill=Crimson] at (2.5,0){};
+\node (0) [bola1, label=270:$0$] at (0,0){};
+\node (A) at (3.25,0){};
+\node (B) at (-1.5,0){};
+
+\draw[edge] (1) to (0);
+\draw[edge] (2) to (0);
+\draw[edge] (d) to (v);
+\draw[dashed, edge] (2) .. controls (1.125,1) and (1.375,-1) 
+.. (d);
+\draw[dotted,edge, shorten <=0pt] (v) -- (A);
+\draw[dotted,edge, shorten >=0pt] (B) -- (1);
+
+\draw [thick, decoration= {brace,mirror,raise=0.75cm}, decorate] (2.west) --
+(d.east) node [pos=0.5,anchor=north,yshift=-0.75cm] {$t\geq 1$}; 
+}
+
 
 \newcommand{\petersen}{%
 
@@ -1446,6 +1788,12 @@
 \newcommand{\punto}[2]{%
 \begin{scope}[style/.expanded=\polarshift{#1}{#2}]
   \node (Pr) [punto,fill=black] at (0,0) {};
+\end{scope}
+}
+
+\newcommand{\puntodos}[2]{%
+\begin{scope}[style/.expanded=\polarshift{#1}{#2}]
+  \node (Pr) [punto2,fill=black] at (0,0) {};
 \end{scope}
 }
 

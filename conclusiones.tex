@@ -15,7 +15,7 @@ para $C$ nos permiti\'o determinar una cota superior para el n\'umero policiaco
 de la gr\'afica de $k$ fichas de cualquier \'arbol. Adem\'as, nuestro resultado
 acerca de los retractos de gr\'aficas de $k$ fichas de un \'arbol evidenci\'o
 que dicha cota superior es justa cuando los \'arboles tiene grado m\'aximo
-suficientemente respecto al n\'umero de fichas.
+al menos el doble del n\'umero de fichas.
 
 Para el resto de gr\'aficas de fichas de \'arboles con grado m\'aximo bajo,
 logramos mejor la cota inferior para estrellas subdivididas de grado bajo dada
@@ -40,11 +40,11 @@ intuci\'on que nos dejan las estrategias desarrolladas nos llevan a pensar en
 las siguientes dos conjeturas.
 
 \begin{conjetura}
-    Para toda $k\geq 2$, $0<n<2k-1$ y $m\geq 1$ suficientemente grande para que
+    Para toda $k\geq 2$, $1<n<2k-1$ y $m\geq 1$ suficientemente grande para que
     $k\leq \left\lfloor\frac{\abs{V_{S_{n,m}}}}{2}\right\rfloor$, se tiene que
     \[
-        c\paren{\t{k}{S_{n,m}}} = \left\lceil \frac{\left \lfloor \frac{n-1}{2}
-        \right \rfloor + k + 1}{2} \right \rceil.
+        c\paren{\t{k}{S_{n,m}}} = \left\lceil \frac{\left \lceil \frac{n-1}{2}
+        \right \rceil + k}{2} \right \rceil.
     \]
 \end{conjetura}
 
@@ -52,24 +52,37 @@ las siguientes dos conjeturas.
     Si $P$ denota la gr\'afica de Petersen, entonces $c(\t{2}{P})=4$.
 \end{conjetura}
 
-A manera de resumen, se presenta una tabla con las cotas encontradas.
+Por otro lado creemos que la demostraci\'on dada para \cref{lem:retracto_triada}
+puede extenderse para demostrar la siguiente conjetura
 
-% \begin{table}[h]
-%     \begin{center}
-%     \begin{tabularx}{\textwidth}{>{\centering\arraybackslash}X 
-%         | >{\centering\arraybackslash}X 
-%         | >{\centering\arraybackslash}X | >{\centering\arraybackslash}X |
-%         >{\centering\arraybackslash}X | >{\centering\arraybackslash}X }
-%         \hline
-%         & $c(\t{k}{S_n})$ & $c(\t{k}{S(m_1,\dots,m_n)})$ & $n=2$ & $T$
-%         \\
-%         \hline
-%         $k< k_n$ & $k$ & $k$ & $k$ & $k$ \\
-%         \hline
-%         $k_n < k \leq \alpha'$ & N/A & $\left \rceil \frac{k+1}{2} \right\rceil$ & & \\
-%         \hline
-%         $\alpha' < k \leq \left\lfloor \frac{\abs{V}}{2} \right \rfloor$ & $k$ &
-%         $\leq k$ & & 
-%     \end{tabularx}
-% \end{center}
-% \end{table}
+\begin{conjetura}
+    Si $T$ es un \'arbol no trivial, $x$ es una de sus hojas, y $k<\abs{V_T}$,
+    entonces $\t{k}{T-x}$ es un retracto de $\t{k}{T}$.
+\end{conjetura}
+
+Dicho resultado no se tiene como corolario directo del lema mencionado en caso
+de que existan v\'ertices de grado al menos $4$. No obstante, la evidencia
+obtenida de los ejemplos sugiere que esto es verdad incluso para dichos casos,
+por lo que podr\'iamos tener una mejor comprensi\'on de la estructura de las
+gr\'aficas de fichas de \'arboles en caso de que la conjetura sea cierta.
+
+A manera de resumen, se presenta una tabla con las cotas encontradas para el
+n\'umero policiaco de gr\'aficas de fichas de \'arboles, haciendo \'enfasis en
+que para cada resultado se obtuvo una estrategia de escape o una de captura.
+
+\begin{table}[h]
+    \centering
+    \resizebox{\textwidth}{!}{%
+    \begin{tabular}{|c|ccccc|}
+    \hline
+    \rowcolor[HTML]{9B9B9B} 
+    {\color[HTML]{333333} }                                                                                                                                           & \multicolumn{1}{c|}{\cellcolor[HTML]{9B9B9B}{\color[HTML]{333333} $S_n$}} & \multicolumn{1}{c|}{\cellcolor[HTML]{9B9B9B}{\color[HTML]{333333} \begin{tabular}[c]{@{}c@{}}$T$,\\ ($k_n =\left\lfloor\frac{\Delta_T + 3}{2}\right\rfloor$)\end{tabular}}} & \multicolumn{1}{c|}{\cellcolor[HTML]{9B9B9B}{\color[HTML]{333333} \begin{tabular}[c]{@{}c@{}}$S(m_1,\dots,m_n)$,\\ $\abs{\l{m_i \colon \ m_i \text{ es par}}} \leq 2$\end{tabular}}} & \multicolumn{1}{c|}{\cellcolor[HTML]{9B9B9B}{\color[HTML]{333333} \begin{tabular}[c]{@{}c@{}}$S(m_1,\dots,m_n)$,\\ $\abs{\l{m_i \colon \ m_i \text{ es par}}} >2$\end{tabular}}} & {\color[HTML]{333333} \begin{tabular}[c]{@{}c@{}}$S(m_1,\dots,m_3)$,\\ $m_i$ es par para toda $i$\end{tabular}} \\ \hline
+    \rowcolor[HTML]{EFEFEF} 
+    {\color[HTML]{000000} \begin{tabular}[c]{@{}c@{}}\phantom{M}\\ $k < k_n$\\ \phantom{M}\end{tabular}}                            & \multicolumn{5}{c|}{\cellcolor[HTML]{EFEFEF}{\color[HTML]{000000} $k$}}                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             \\ \hline
+    \rowcolor[HTML]{FFFFFF} 
+    {\color[HTML]{333333} \begin{tabular}[c]{@{}c@{}}\phantom{M}\\ $k_n \leq k \leq \alpha '$\\ \phantom{M}\end{tabular}}           & \multicolumn{1}{c|}{\cellcolor[HTML]{FFFFFF}{\color[HTML]{333333} N/A}}   & \multicolumn{4}{c|}{\cellcolor[HTML]{FFFFFF}{\color[HTML]{333333} $\left\lfloor \frac{k+1}{2}\right \rfloor \leq$, $\leq k$}}                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           \\ \hline
+    \rowcolor[HTML]{EFEFEF} 
+    {\color[HTML]{333333} \begin{tabular}[c]{@{}c@{}}\phantom{M}\\ $\alpha' < k \leq \frac{\abs{V}}{2}$\\ \phantom{M}\end{tabular}} & \multicolumn{1}{c|}{\cellcolor[HTML]{EFEFEF}{\color[HTML]{333333} N/A}}   & \multicolumn{1}{c|}{\cellcolor[HTML]{EFEFEF}{\color[HTML]{333333} $\leq k$}}                                                                                                & \multicolumn{1}{c|}{\cellcolor[HTML]{EFEFEF}{\color[HTML]{333333} N/A}}                                                                                                              & \multicolumn{1}{c|}{\cellcolor[HTML]{EFEFEF}{\color[HTML]{333333} $\leq k$}}                                                                                                     & {\color[HTML]{333333} $\left\lfloor \frac{k}{2}\right \rfloor \leq$, $\leq k$}                                  \\ \hline
+    \end{tabular}%
+    }
+    \end{table}
