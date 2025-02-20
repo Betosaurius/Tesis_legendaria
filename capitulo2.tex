@@ -2333,7 +2333,12 @@ estructura de las gr\'aficas de $k$ fichas de las triadas.
     dependiendo de si $t=0$ y si $v\in C$, notando que en todas las ocasiones
     $f(D)$ es adyacente a $f(C)$ en $H$ o $f(C)=f(D)$.
 
-    \begin{figure}[!htbp]
+    Si $D$ es adyacente a $C$ y este \'ultimo es como en (a) de
+    \cref{fig:no_ultimo_vertice} o como en (a) o (c) de \cref{fig:no_rama_uno},
+    por razones similares a las expuestas anteriormente, $f(C)=f(D)$ o
+    $f(C)f(D)\in E_H$, por lo que $H$ es un retracto de $\t{k}{S}$.
+
+    \begin{figure}[H]
         \begin{tcbitemize}[raster columns=2, raster equal height=rows, enhanced,
             colback=Black!5!white,colframe=Grey!75!black, attach title to upper,
             phantom={\setcounter{myrasternum}{\thetcbrasternum}},
@@ -2417,11 +2422,6 @@ estructura de las gr\'aficas de $k$ fichas de las triadas.
         $f(D)=D=f(C)$.}
         \label{fig:ultimo_vertice_adyacente}
     \end{figure}
-
-    Si $D$ es adyacente a $C$ y este \'ultimo es como en (a) de
-    \cref{fig:no_ultimo_vertice} o como en (a) o (c) de \cref{fig:no_rama_uno},
-    por razones similares a las expuestas anteriormente, $f(C)=f(D)$ o
-    $f(C)f(D)\in E_H$, por lo que $H$ es un retracto de $\t{k}{S}$.
 
     Luego, para cada $C\in B\cap V_H$, si $0\in C$, debe suceder que ambos $1_0$
     ni $2_0$ est\'an en $C$. As\'i $C$ es adyacente en $\t{k}{S}$ a $D$ y $E$,
@@ -3892,44 +3892,7 @@ c\'odigo dentro del \ttt{if} de la l\'inea $5$.
                 }
     \end{tcbitemize}
     \captionsetup{font=footnotesize}
-    \caption{En (32), $R$ solo tiene dos movimientos que no le hacen perder el
-    juego. No obstante, al siguiente turno $c_1$ le terminar\'ia por capturar,
-    por lo que $R$ pasa como se muestra en (33).}
-\end{figure}
-
-\begin{figure}[!htbp]
-    \ContinuedFloat
-    \begin{tcbitemize}[raster columns=1, raster equal height, enhanced,
-        colback=Black!5!white,colframe=Grey!75!black, attach title to upper,
-        phantom={\addtocounter{myrasternum}{1}},
-        title={(\arabic{myrasternum})\enspace}, halign lower=center, halign upper
-        = left, lower separated=false, middle=0mm, boxsep=0mm, leftupper=2mm, left=2mm,
-        right=2mm, fonttitle=\bfseries, coltitle=black, raster column skip=1mm,raster
-        halign=center, raster row skip=1mm]
-
-        \tcbitem
-            \tcblower
-                \scalebox{0.67}{
-                    \begin{tikzpicture}
-                        \arbol
-                        \unopGp{4.5cm}{90 + (360/5)*4}
-
-                        \begin{scope}[shift={(1_0)}]
-                            
-                        \end{scope}
-
-                        \begin{scope}[shift={(3_00)}]
-                            \unocGc{2.25cm}{292.5}
-                        \end{scope}
-
-                        \begin{scope}[shift={(5_0)}]
-                            \unotGt{2.25cm}{135}
-                        \end{scope}
-                    \end{tikzpicture}
-                }
-    \end{tcbitemize}
-    \captionsetup{font=normalsize}
-    \caption{En (34), al menos un polic\'ia
-    termina por capturar a $r$, mostrando en (35) la posici\'on final en la que
-    $c_2$ captura a $r$.}
+    \caption{En (32), $R$ tiene dos movimientos que no le hacen perder. No
+    obstante, al siguiente turno, $c_1$ terminar\'ia por capturar, por lo que
+    $R$ pasa como en (33). En (34), $c_2$ y $c_3$ capturan a $r$.}
 \end{figure}
