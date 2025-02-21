@@ -978,9 +978,7 @@ As\'i, proponemos la siguiente cota superior.
             \label{fig:guarding}
         \end{figure}
 
-        \item Si no se tiene una obstrucci\'on, ambos $c_{1,2}$ y
-        $c_{3,2}$ puede posicionarse en la vecindad de $y$. Aqu\'i se generan
-        tres subcasos:
+        \item Si no se tiene una obstrucci\'on, se generan tres subcasos:
         \begin{enumerate}
             \item Si alguno entre $c_{1,2}$ y $c_{3,2}$ est\'a en $w_2$ o en
             $v$ (v\'ease (b) en \cref{fig:guarding1}), sup\'ongase sin p\'erdida
@@ -988,7 +986,7 @@ As\'i, proponemos la siguiente cota superior.
             $r_2(t)$ y $c_{3,2}$ se posiciona en la vecindad de $y$ (v\'ease (c)
             en \cref{fig:guarding1}). Esto obliga a $R$ a mover $r_1$ a $v$.
 
-            \begin{figure}[!htbp]
+            \begin{figure}[H]
                 \begin{tcbitemize}[raster columns=2, raster equal height, enhanced,
                     colback=Black!5!white,colframe=Grey!75!black, attach title to upper,
                     phantom={\setcounter{myrasternum}{\thetcbrasternum}},
@@ -1053,11 +1051,11 @@ As\'i, proponemos la siguiente cota superior.
                 \label{fig:guarding1}
             \end{figure}
 
-            \item Si ninguno est\'a en $w_2$ o $v$, pero al menos uno est\'a en
-            $u_2$ o $z$ y el otro no est\'a en $z$, sup\'ongase sin p\'erdida de
-            generalidad que $c_{1,2}$ est\'a en $u_2$. As\'i, $c_{1,2}$ se mueve
-            a $w_2$ y, como $c_{3,2}$ no est\'a en $z$, este se mueve a $y$,
-            obligando nuevamente a que $R$ mueva $r_1$ a $v$ (v\'ease
+            \item Si alguno est\'a en la vecindad cerrada de $w_2$ y el otro
+            est\'a en la vecindad cerrada de $y$, sup\'ongase sin p\'erdida de
+            generalidad que $c_{1,2}$ est\'a en la vecindad de $w_2$. As\'i,
+            $c_{1,2}$ se mueve a $w_2$ y $c_{3,2}$ se mueve a $y$, obligando
+            nuevamente a que $R$ mueva $r_1$ a $v$ (v\'ease
             \cref{fig:guarding2}).
 
             \begin{figure}[H]
@@ -1194,14 +1192,15 @@ As\'i, proponemos la siguiente cota superior.
             una posici\'on an\'aloga a la mostrada en (b) de
             \cref{fig:guarding1}, por lo que puede moverse como en el caso a)
             para obligar el movimiento de $r_1$ a $v$.
+            %TODO: Figura de este caso
 
         \end{enumerate}
         
         Por tanto, en cualquier caso $R$ est\'a forzado a mover $r_1$ hacia $v$.
         Al igual que antes, $c_{1,1}$ y $c_{3,1}$ recapturan $r_1$, mientras
         que, sin p\'erdida de generalidad, $c_{2,1}$ y $c_{4,1}$ se posicionan
-        en $x$ y $u_2$ respectivamente. M\'as a\'un, $R$ est\'a en una
-        posici\'on an\'aloga alguna de las mostradas en (c) para
+        en $x$ y $u_2$ respectivamente. M\'as a\'un, $R$ viene de una posici\'on
+        an\'aloga a alguna de las mostradas en (c) para
         \cref{fig:guarding1,fig:guarding2,fig:guarding3}. Si se viene de la
         posici\'on (c) de \cref{fig:guarding3}, el \'unico movimiento que puede
         hacer $R$ es mover $r_2$ o $r_1$ hacia $r_2(t)$, poni\'endo las fichas
@@ -1317,6 +1316,7 @@ As\'i, proponemos la siguiente cota superior.
         acerca a $z$. Por tanto, $R$ no puede mover $r_2$ a $z$ pues este pierde
         en a lo m\'as un turno, por lo que se ve obligado a juntar las fichas
         $r_1$ y $r_2$ en v\'ertices adyacentes (v\'ease \cref{fig:guarding6}).
+        %TODO: Agregar el caso donde se regresa a la obstrucción.
 
         \begin{figure}[!htbp]
             \begin{tcbitemize}[raster columns=2, raster equal height, enhanced,
@@ -1366,16 +1366,13 @@ As\'i, proponemos la siguiente cota superior.
     \end{enumerate}
 
     Esto concluye la prueba de que $r_1$ y $r_2$ eventualmente est\'an en
-    posiciones adyacentes. M\'as a\'un, de las escenas (b) de
-    \cref{fig:guarding4,fig:guarding5,fig:guarding6}, de las escenas (c) de
-    \cref{fig:guarding0,,fig:guarding1,fig:guarding2,fig:guarding3}, y de las
-    escenas (c) y (d) de \cref{fig:guarding}, que antes de que $r_1$ y $r_2$
-    est\'en en v\'ertices adyacentes, $c_{1,1}$ y $c_{3,1}$ capturaban a $r_1$,
-    mientras que $c_{2,2}$ y $c_{4,2}$ capturaban a $r_2$. As\'i, sup\'ongase
-    sin p\'erdida de generalidad que $r_1$ fue la \'ultima ficha movida, de modo
-    que la situaci\'on es como se muestra en \cref{fig:guarding7}. Los
-    polic\'ias proceden a posicionarse sobre las vecindades de los v\'ertices a
-    los que puede mover $R$, dejando a $r_1$ sin movimientos.
+    posiciones adyacentes. M\'as a\'un, antes de que $r_1$ y $r_2$ est\'en en
+    v\'ertices adyacentes, $c_{1,1}$ y $c_{3,1}$ capturaban a $r_1$, mientras
+    que $c_{2,2}$ y $c_{4,2}$ capturaban a $r_2$. As\'i, sup\'ongase sin
+    p\'erdida de generalidad que $r_1$ fue la \'ultima ficha movida, de modo que
+    la situaci\'on es como se muestra en \cref{fig:guarding7}. Los polic\'ias
+    proceden a posicionarse sobre las vecindades de los v\'ertices a los que
+    puede mover $R$, dejando a $r_1$ sin movimientos.
     
     \begin{figure}[H]
         \begin{tcbitemize}[raster columns=2, raster equal height, enhanced,
