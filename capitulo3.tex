@@ -1,4 +1,4 @@
-\chapter[Petersen]{Polic\'ias y ladrones sobre gr\'aficas de fichas gr\'aficas de inter\'es}
+\chapter{Polic\'ias y ladrones sobre gr\'aficas de fichas de inter\'es}
 \label{cap:resultados2}
 
 \section{Petersen}
@@ -805,17 +805,19 @@ As\'i, proponemos la siguiente cota superior.
 
     Para la segunda etapa y en los siguientes turnos, $c_{1,1}$ y $c_{3,1}$
     recapturan a $r_1$ si $R$ lo mueve. De la misma manera, $c_{2,2}$ y
-    $c_{4,2}$ recapturan cada que $R$ mueva $r_2$. Sea $N(r_1(t))=\l{u_1,v,u_2}$
-    y $N(r_2(t))=\l{w_1,v,w_2}$, notando que la intersecci\'on de ambos
-    conjuntos es $\l{v}$ pues entre cualesquiera dos v\'ertices no adyacentes
-    existe una \'unica trayctoria de longitud $2$. Sin p\'erdida de generalidad,
-    sup\'ongase que la \'ulitma ficha movida por $R$ es $r_1$. Luego, $c_1$ y
-    $c_3$ usan su movimiento para recapturar tal como se dijo al inicio del
-    p\'arrafo. En tanto, sin p\'erdida de generalidad, $c_{2,1}$ y $c_{4,1}$ se
-    mueven hacia un v\'ertice adyacente a $u_1$ y $u_2$ respectivamente.
-    N\'otese que esto es posible pues, desde cualquier v\'ertice en el que
-    $c_{2,1}$ y $c_{4,1}$ pudieran estar, $C$ puede mover uno hacia la vecindad
-    de $u_1$ y el otro a la vecindad de $u_2$ (v\'ease \cref{fig:guarding0}).
+    $c_{4,2}$ recapturan cada que $R$ mueva $r_2$. Sup\'ongase que $r_1$ y $r_2$
+    no est\'an en v\'ertices adyacentes. Sean $r_1(t)=a$, $r_2(t)=b$,
+    $N_P(a)=\l{u_1,v,u_2}$ y $N_P(b)=\l{w_1,v,w_2}$, notando que la intersecci\'on
+    de ambos conjuntos es $\l{v}$ pues entre cualesquiera dos v\'ertices no
+    adyacentes existe una \'unica trayctoria de longitud $2$. Sin p\'erdida de
+    generalidad, sup\'ongase que la \'ulitma ficha movida por $R$ es $r_1$.
+    Luego, $c_1$ y $c_3$ usan su movimiento para recapturar tal como se dijo al
+    inicio del p\'arrafo. En tanto, sin p\'erdida de generalidad, $c_{2,1}$ y
+    $c_{4,1}$ se mueven hacia un v\'ertice adyacente a $u_1$ y $u_2$
+    respectivamente. N\'otese que esto es posible pues, desde cualquier
+    v\'ertice en el que $c_{2,1}$ y $c_{4,1}$ pudieran estar, $C$ puede mover
+    uno hacia la vecindad de $u_1$ y el otro a la vecindad de $u_2$ (v\'ease
+    \cref{fig:guarding0}).
 
     \begin{figure}[!htbp]
         \begin{tcbitemize}[raster columns=2, raster equal height, enhanced,
@@ -883,9 +885,9 @@ As\'i, proponemos la siguiente cota superior.
     En el primer caso, ambos $c_{2,1}$ y $c_{4,1}$ avanzan a $u_1$ y $u_2$
     respectivamente para forzar a $R$ a mover $r_1$ hacia $r_2$, o a mover a
     $r_2$. En cualquier caso, $R$ mueve $r_2$ y se puede asumir sin p\'erdida de
-    generalidad que su nueva posici\'on es $w_1$. Sea $N(w_1)=\l{u_1,
-    r_2(t),y}$. Luego, $c_{2,2}$ y $c_{4,2}$ recapturan $r_2$ y se generan dos
-    casos dependiendo de si se tiene una obstrucci\'on:
+    generalidad que su nueva posici\'on es $w_1$. Sea $N_P(w_1)=\l{u_1, b,y}$.
+    Luego, $c_{2,2}$ y $c_{4,2}$ recapturan $r_2$ y se generan dos casos
+    dependiendo de si se tiene una obstrucci\'on:
     
     \begin{enumerate}
         \item Si existe una obstrucci\'on, solo uno entre $c_2$ y $c_4$ est\'a
@@ -894,8 +896,8 @@ As\'i, proponemos la siguiente cota superior.
         las fichas, preservando la condici\'on de que $r_1$ no puede moverse a
         ning\'un v\'ertice m\'as que para acercarse a $r_2$. Adem\'as, al igual
         que en el caso anterior, $c_1$ y $c_3$ pueden acercarse a la vecindad de
-        $r_2(t+1)$, de manera que $R$ no puede mantener sus fichas en v\'ertices
-        no adyacentes (v\'ease \cref{fig:guarding}).
+        $w_1$, de manera que $R$ no puede mantener sus fichas en v\'ertices no
+        adyacentes (v\'ease \cref{fig:guarding}).
     
         \begin{figure}[H]
             \begin{tcbitemize}[raster columns=2, raster equal height, enhanced,
@@ -969,22 +971,29 @@ As\'i, proponemos la siguiente cota superior.
             \caption{En (a), $R$ acaba de mover $r_2$, de manera que $c_{4,2}$
             recaptura y $c_2$ reetiqueta sus fichas. En tanto, $c_{1,2}$ y
             $c_{3,2}$ se mueven como en (b) para posicionarse en un v\'ertice
-            adyacente a $y$ y un v\'ertice adyacente a $r_2(t)$ respectivamente.
-            El reetiquetado causa que $c_{2,1}$ sea adyacente al v\'ertice azul
-            sin sombreado en (c), de modo que este a\'un cumple su funci\'on del
-            paso anterior. Luego, $R$ solo puede pasar si es que quiere evitar
-            que $r_1$ y $r_2$ est\'en en v\'ertices adyacentes. No obstante, $C$
-            mueve sus polic\'ias como en (d).}
+            adyacente a $y$ y un v\'ertice adyacente a $b$ respectivamente (lo
+            cual es posible pues cualquier v\'ertice es adyacente a uno verde
+            sombreado y a uno azul sombreado en (a), ignorando los v\'ertices
+            sombreados de negro y el azul y verde sin sombrear pues $C$ gana al
+            siguiente turno o est\'a en una posici\'on ilegal). El reetiquetado
+            causa que $c_{2,1}$ sea adyacente al v\'ertice azul sin sombreado en
+            (c), de modo que este a\'un cumple su funci\'on del paso anterior.
+            Luego, $R$ solo puede pasar si es que quiere evitar que $r_1$ y
+            $r_2$ est\'en en v\'ertices adyacentes. No obstante, $C$ mueve sus
+            polic\'ias como en (d), forzando el movimiento de $R$.}
             \label{fig:guarding}
         \end{figure}
 
         \item Si no se tiene una obstrucci\'on, se generan tres subcasos:
         \begin{enumerate}
-            \item Si alguno entre $c_{1,2}$ y $c_{3,2}$ est\'a en $w_2$ o en
-            $v$ (v\'ease (b) en \cref{fig:guarding1}), sup\'ongase sin p\'erdida
-            de generalidad que es $c_{1,2}$, de modo que este se mueve hacia
-            $r_2(t)$ y $c_{3,2}$ se posiciona en la vecindad de $y$ (v\'ease (c)
-            en \cref{fig:guarding1}). Esto obliga a $R$ a mover $r_1$ a $v$.
+            \item Si alguno entre $c_{1,2}$ y $c_{3,2}$ est\'a en la vecindad de
+            $b$ (v\'ease \cref{fig:guarding1}), sup\'ongase sin p\'erdida de
+            generalidad que es $c_{1,2}$, de modo que este se mueve hacia $b$ y
+            $c_{3,2}$ se posiciona en la vecindad de $y$ (v\'ease (c) en
+            \cref{fig:guarding1}). Esto obliga a $R$ a mover $r_1$ a $v$.
+            Posterior al movimiento de $R$, $c_{1,1}$ y $c_{3,1}$ recapturan,
+            mientras que $c_{4,1}$ se posiciona en la vecindad $a$ (ver (d) y
+            (e) \cref{fig:guarding1}).
 
             \begin{figure}[H]
                 \begin{tcbitemize}[raster columns=2, raster equal height, enhanced,
@@ -1024,7 +1033,7 @@ As\'i, proponemos la siguiente cota superior.
                                     
                                 \end{tikzpicture}
                             }
-                    \tcbitem[raster multicolumn=2]
+                    \tcbitem
                         \tcblower
                             \scalebox{0.4}{
                                 \begin{tikzpicture}
@@ -1038,25 +1047,128 @@ As\'i, proponemos la siguiente cota superior.
                                     
                                 \end{tikzpicture}
                             }
+                    \tcbitem
+                        \tcblower
+                            \scalebox{0.4}{
+                                \begin{tikzpicture}
+                                    \petersen
+                                    \unopBunopR{2.5cm}{90 + (360/5)*2}
+                                    \punto{5cm}{90 + (360/5)*2}
+                                    \unotGunotYt{5cm}{90}
+                                    \unotR{5cm}{90 + (360/5)*3}
+                                    \unotB{5cm}{90 + (360/5)}
+                                    \unopG{2.5cm}{90 + (360/5)*3}
+                                    \unopY{5cm}{90 + (360/5)*4}
+                                    
+                                \end{tikzpicture}
+                            }
+                    \tcbitem[raster multicolumn=2]
+                        \tcblower
+                            \scalebox{0.4}{
+                                \begin{tikzpicture}
+                                    \petersen
+                                    \unopBunopRp{5cm}{90 + (360/5)*2}
+                                    \unotGunotYt{5cm}{90}
+                                    \unopGunotR{5cm}{90 + (360/5)*3}
+                                    \unotB{5cm}{90 + (360/5)}
+                                    \unopY{2.5cm}{90 + (360/5)*4}
+                                    
+                                \end{tikzpicture}
+                            }
                 \end{tcbitemize}
                 \captionsetup{font=footnotesize}
                 \caption{Cuando el movimiento de $r_2$ no propicie una
                 obstrucci\'on de $c_2$ o $c_4$, ambos polic\'ias recapturan como
-                es usual, mientras que $c_{1,2}$ se mueve hacia $r_2(t)$ y
-                $c_{3,2}$ se posiciona en la vecindad de $y$. N\'otese que se
-                ignorar\'an los casos en los que alguno entre $c_{1,2}$ y
-                $c_{3,2}$ est\'an en los v\'ertices sombreados de negro o en $y$
-                pues $C$ gana en a lo m\'as un turno o est\'a en una posici\'on
-                ilegal.}
+                es usual, mientras que $c_{1,2}$ se mueve hacia $b$ y $c_{3,2}$
+                se posiciona en la vecindad de $y$. N\'otese que se ignorar\'an
+                los casos en los que alguno entre $c_{1,2}$ y $c_{3,2}$ est\'an
+                en los v\'ertices sombreados de negro o en $y$ pues $C$ gana en
+                a lo m\'as un turno o est\'a en una posici\'on ilegal. En (d),
+                $R$ acaba de mover $r_1$ a $v$, por lo que $C$ mueve como en (e)
+                para forzar el movimiento de $R$.}
                 \label{fig:guarding1}
             \end{figure}
 
-            \item Si alguno est\'a en la vecindad cerrada de $w_2$ y el otro
-            est\'a en la vecindad cerrada de $y$, sup\'ongase sin p\'erdida de
-            generalidad que $c_{1,2}$ est\'a en la vecindad de $w_2$. As\'i,
-            $c_{1,2}$ se mueve a $w_2$ y $c_{3,2}$ se mueve a $y$, obligando
-            nuevamente a que $R$ mueva $r_1$ a $v$ (v\'ease
-            \cref{fig:guarding2}).
+            Luego, $R$ est\'a obligado a mover $r_2$ a $u_1$. Como $c_{3,2}$
+            est\'a en $u_2$ o en $x$, este puede moverse para estar en la
+            vecindad $z$. En tanto, $c_{2,2}$ y $c_{4,2}$ recapturan a $r_2$
+            (v\'ease \cref{fig:guarding62}). Por tanto, $R$ no puede mover $r_2$
+            a $z$ pues este pierde en a lo m\'as un turno, por lo que se ve
+            obligado a mover $r_1$ a $b$ (v\'ease (c) en \cref{fig:guarding62}).
+            N\'otese que $c_1$ se encuentra obstru\'ido al recapturar con
+            $c_{1,1}$, por lo que este caso se reduce al 1, de modo que $R$ se
+            ve obligado a poner sus fichas en v\'ertices adyacentes posterior al
+            turno de $C$.
+
+            \begin{figure}[H]
+                \begin{tcbitemize}[raster columns=2, raster equal height, enhanced,
+                    colback=Black!5!white,colframe=Grey!75!black, attach title to upper,
+                    phantom={\setcounter{myrasternum}{\thetcbrasternum}},
+                    title={(\alph{myrasternum})\enspace}, halign lower=center, halign
+                    upper = left, lower separated=false, middle=0mm, boxsep=0mm,
+                    leftupper=2mm, left=2mm, right=2mm, fonttitle=\bfseries,
+                    coltitle=black, raster column skip=1mm,raster halign=center, raster
+                    row skip=1mm]
+        
+                    \tcbitem
+                        \tcblower
+                            \scalebox{0.4}{
+                                \begin{tikzpicture}
+                                    \petersen
+                                    \unopBunopRp{5cm}{90 + (360/5)*2}
+                                    \unotGunotY{5cm}{90}
+                                    \tri{2.5cm}{90}
+                                    \unotRunopY{2.5cm}{90 + (360/5)*4}
+                                    \unotB{5cm}{90 + (360/5)}
+                                    \unopG{5cm}{90 + (360/5)*3}
+                                    
+                                \end{tikzpicture}
+                            }
+                    \tcbitem
+                        \tcblower
+                            \scalebox{0.4}{
+                                \begin{tikzpicture}
+                                    \petersen
+                                    \unopBunopRp{5cm}{90 + (360/5)*2}
+                                    \unotGunotYt{2.5cm}{90}
+                                    \unopY{2.5cm}{90 + (360/5)*4}
+                                    \unotR{2.5cm}{90+ (360/5)*1}
+                                    \unotB{5cm}{90 + (360/5)}
+                                    \unopG{5cm}{90 + (360/5)*3}
+                                    
+                                \end{tikzpicture}
+                            }
+                    \tcbitem[raster multicolumn=2]
+                        \tcblower
+                            \scalebox{0.4}{
+                                \begin{tikzpicture}
+                                    \petersen
+                                    \unopBunopR{5cm}{90 + (360/5)*2}
+                                    \unotGunotYt{2.5cm}{90}
+                                    \unopY{2.5cm}{90 + (360/5)*4}
+                                    \unotR{2.5cm}{90+ (360/5)*1}
+                                    \unotBp{5cm}{90 + (360/5)}
+                                    \unopG{5cm}{90 + (360/5)*3}
+                                    
+                                \end{tikzpicture}
+                            }
+                \end{tcbitemize}
+                \captionsetup{font=footnotesize}
+                \caption{En (a), $R$ acaba de mover $r_2$ a $u_1$, por lo que $C$
+                mueve como en (b) para forzar el movimiento de $r_1$ a $b$,
+                quedando en una situaci\'on an\'aloga a la mostrada en (a) de
+                \cref{fig:guarding}.}
+                \label{fig:guarding62}
+            \end{figure}
+
+            \item Si lo anterior no ocurre y alguno est\'a en la vecindad de
+            $w_2$ y el otro est\'a en la vecindad de $y$, sup\'ongase sin
+            p\'erdida de generalidad que $c_{1,2}$ est\'a en la vecindad de
+            $w_2$. As\'i, $c_{1,2}$ se mueve a $w_2$ y $c_{3,2}$ se mueve a $y$,
+            obligando nuevamente a que $R$ mueva $r_1$ a $v$ (v\'ease
+            \cref{fig:guarding2}). Al igual que en el subcaso anterior, $C$
+            mueve como en (e) de \cref{fig:guarding2}, obligando a que $R$ mueva
+            $r_2$ a $u_1$.
 
             \begin{figure}[H]
                 \begin{tcbitemize}[raster columns=2, raster equal height, enhanced,
@@ -1088,7 +1200,7 @@ As\'i, proponemos la siguiente cota superior.
                         \tcblower
                             \scalebox{0.4}{
                                 \begin{tikzpicture}
-                                    \petersenseis
+                                    \petersenseisdos
                                     \unopBunopRp{2.5cm}{90 + (360/5)*2}
                                     \unotGunotYt{5cm}{90}
                                     \unotB{2.5cm}{90 + (360/5)*4}
@@ -1098,7 +1210,7 @@ As\'i, proponemos la siguiente cota superior.
                                     
                                 \end{tikzpicture}
                             }
-                    \tcbitem[raster multicolumn=2]
+                    \tcbitem
                         \tcblower
                             \scalebox{0.4}{
                                 \begin{tikzpicture}
@@ -1111,18 +1223,161 @@ As\'i, proponemos la siguiente cota superior.
                                     
                                 \end{tikzpicture}
                             }
+                    \tcbitem
+                        \tcblower
+                            \scalebox{0.4}{
+                                \begin{tikzpicture}
+                                    \petersen
+                                    \unopBunopR{2.5cm}{90 + (360/5)*2}
+                                    \punto{5cm}{90 + (360/5)*2}
+                                    \unotGunotYt{5cm}{90}
+                                    \unotB{2.5cm}{90 + (360/5)}
+                                    \unopG{2.5cm}{90 + (360/5)*3}
+                                    \unotRunopY{5cm}{90 + (360/5)*4}
+                                    
+                                \end{tikzpicture}
+                            }
+                    \tcbitem[raster multicolumn=2]
+                        \tcblower
+                            \scalebox{0.4}{
+                                \begin{tikzpicture}
+                                    \petersen
+                                    \unopBunopRp{5cm}{90 + (360/5)*2}
+                                    \unotGunotYt{5cm}{90}
+                                    \unotB{2.5cm}{90 + (360/5)}
+                                    \unopG{5cm}{90 + (360/5)*3}
+                                    \unopY{2.5cm}{90 + (360/5)*4}
+                                    \unotR{5cm}{90 + (360/5)*4}
+                                    
+                                \end{tikzpicture}
+                            }
                 \end{tcbitemize}
                 \captionsetup{font=footnotesize}
                 \caption{Al igual que en el subcaso anterior, $c_2$ y $c_4$
                 recapturan como en (b), mientras que $c_{1,2}$ y $c_{3,2}$ se
-                mueven como en (c) para obligar el movimiento de $r_1$ a $v$.}
+                mueven como en (c) para obligar el movimiento de $r_1$ a $v$,
+                ignorando los casos en los que alguno entre $c_{3,2}$ y
+                $c_{1,2}$ est\'en en los v\'ertices negros sombreados o en $y$
+                pues estos ya se cubrieron. En (d), $R$ mueve $r_1$ a $v$, por
+                lo que $C$ mueve sus polic\'ias como en (e).}
                 \label{fig:guarding2}
             \end{figure}
 
+            Una vez m\'as, $R$ mueve $r_2$ a $u_1$. Nuevamente $c_{2,2}$ y
+            $c_{4,2}$ recapturan, mientras que $c_{1,2}$ se mueve a $z$ y
+            $c_{3,1}$ se mueve a $u_2$ (v\'ease \cref{fig:guarding5}). Sin
+            importar si $R$ mueve $r_2$ de regreso a $w_1$ (como en (c) de
+            \cref{fig:guarding5}) o mueve $r_1$ a $b$ (como en (e)), $C$ mueve
+            como en (d) o en (f) respectivamente para forzar a $R$ a juntar las
+            fichas $r_1$ y $r_2$.
+
+            \begin{figure}[H]
+                \begin{tcbitemize}[raster columns=2, raster equal height, enhanced,
+                    colback=Black!5!white,colframe=Grey!75!black, attach title to upper,
+                    phantom={\setcounter{myrasternum}{\thetcbrasternum}},
+                    title={(\alph{myrasternum})\enspace}, halign lower=center, halign
+                    upper = left, lower separated=false, middle=0mm, boxsep=0mm,
+                    leftupper=2mm, left=2mm, right=2mm, fonttitle=\bfseries,
+                    coltitle=black, raster column skip=1mm,raster halign=center, raster
+                    row skip=1mm]
+        
+                    \tcbitem
+                        \tcblower
+                            \scalebox{0.4}{
+                                \begin{tikzpicture}
+                                    \petersen
+                                    \unopBunopRp{5cm}{90 + (360/5)*2}
+                                    \unotGunotY{5cm}{90}
+                                    \tri{2.5cm}{90}
+                                    \unotB{2.5cm}{90 + (360/5)}
+                                    \unopG{5cm}{90 + (360/5)*3}
+                                    \unotR{5cm}{90 + (360/5)*4}
+                                    \unopY{2.5cm}{90 + (360/5)*4}
+                                    
+                                \end{tikzpicture}
+                            }
+                    \tcbitem
+                        \tcblower
+                            \scalebox{0.4}{
+                                \begin{tikzpicture}
+                                    \petersen
+                                    \unopBunopRp{5cm}{90 + (360/5)*2}
+                                    \unotGunotYt{2.5cm}{90}
+                                    \unotB{2.5cm}{90 + (360/5)*3}
+                                    \unopG{5cm}{90 + (360/5)*3}
+                                    \unotRunopY{2.5cm}{90 + (360/5)*4}
+                                    
+                                \end{tikzpicture}
+                            }
+                    \tcbitem
+                        \tcblower
+                            \scalebox{0.4}{
+                                \begin{tikzpicture}
+                                    \petersen
+                                    \unopBunopRp{5cm}{90 + (360/5)*2}
+                                    \tri{5cm}{90}
+                                    \unotGunotY{2.5cm}{90}
+                                    \unotB{2.5cm}{90 + (360/5)*3}
+                                    \unopG{5cm}{90 + (360/5)*3}
+                                    \unotRunopY{2.5cm}{90 + (360/5)*4}
+                                    
+                                \end{tikzpicture}
+                            }
+                    \tcbitem
+                        \tcblower
+                            \scalebox{0.4}{
+                                \begin{tikzpicture}
+                                    \petersen
+                                    \unopBunopRp{5cm}{90 + (360/5)*2}
+                                    \unotGunotYt{5cm}{90}
+                                    \unotB{2.5cm}{90}
+                                    \unopG{5cm}{90 + (360/5)*3}
+                                    \unopY{2.5cm}{90 + (360/5)*4}
+                                    \unotR{5cm}{90 + (360/5)*4}
+                                    
+                                \end{tikzpicture}
+                            }
+                    \tcbitem
+                        \tcblower
+                            \scalebox{0.4}{
+                                \begin{tikzpicture}
+                                    \petersen
+                                    \unopBunopR{5cm}{90 + (360/5)*2}
+                                    \punto{5cm}{90 + (360/5)}
+                                    \unotGunotYt{2.5cm}{90}
+                                    \unotB{2.5cm}{90 + (360/5)*3}
+                                    \unopG{5cm}{90 + (360/5)*3}
+                                    \unotRunopY{2.5cm}{90 + (360/5)*4}
+                                    
+                                \end{tikzpicture}
+                            }
+                    \tcbitem
+                            \tcblower
+                                \scalebox{0.4}{
+                                    \begin{tikzpicture}
+                                        \petersen
+                                        \unopBunopRp{5cm}{90 + (360/5)}
+                                        \unotGunotYt{2.5cm}{90}
+                                        \unotB{2.5cm}{90 + (360/5)*3}
+                                        \unopG{5cm}{90 + (360/5)*2}
+                                        \unotR{2.5cm}{90 + (360/5)*4}
+                                        \unopY{2.5cm}{90 + (360/5)}
+                                        
+                                    \end{tikzpicture}
+                                }
+                \end{tcbitemize}
+                \captionsetup{font=footnotesize}
+                \caption{Si $R$ mueve $r_2$ a $u_1$ como en (a), $C$ mueve a sus
+                polic\'ias como en (b). Independientemente de lo que haga $R$ en
+                su siguiente turno (moverse como en (c) o en (e)), $C$ forza que
+                $R$ junte las fichas $r_1$ y $r_2$ al siguiente turno.}
+                \label{fig:guarding5}
+            \end{figure}
+
             \item Si los anteriores casos no suceden, $c_{1,2}$ y $c_{3,2}$
-            deben estar ambos en $z$ o en $x$ (v\'ease (b) en
-            \cref{fig:guarding3}). En este caso, $C$ mueve las fichas de manera
-            que $c_{1,2}$ termina en $z$ y $c_{3,2}$ est\'a en $x$.
+            deben estar ambos en $z$ o en $x$ (v\'ease \cref{fig:guarding3}). En
+            este caso, $C$ mueve las fichas de manera que $c_{1,2}$ termina en
+            $z$ y $c_{3,2}$ est\'a en $x$.
 
             \begin{figure}[H]
                 \begin{tcbitemize}[raster columns=2, raster equal height, enhanced,
@@ -1182,187 +1437,120 @@ As\'i, proponemos la siguiente cota superior.
                 \label{fig:guarding3}
             \end{figure}
 
-            Si $R$ pasa, la posici\'on actual es una an\'aloga a la mostrada en
-            (b) de \cref{fig:guarding2}, de modo que $C$ mueve como en el caso
-            b) para obligar el movimiento de $r_1$ a $v$. De lo contrario, $R$
-            mueve $r_2$ a $r_2(t)$, de manera que $c_{2,2}$ y $c_{4,2}$ le
-            recapturan y $c_{1,2}$ se mueve a $w_2$. En esta posici\'on $R$ no
-            puede mover $r_1$ a $v$ pues pondr\'ia sus fichas en v\'ertices
-            adyacentes, de modo que $r_2$ regresa a $w_1$. As\'i $C$ est\'a en
-            una posici\'on an\'aloga a la mostrada en (b) de
-            \cref{fig:guarding1}, por lo que puede moverse como en el caso a)
-            para obligar el movimiento de $r_1$ a $v$.
-            %TODO: Figura de este caso
+            Si $R$ pasa, la posici\'on en (c) de \cref{fig:guarding3} es una
+            an\'aloga a la mostrada en (a) de \cref{fig:guarding2} (uno en la
+            vecindad de $w_2$ y el otro en la vecindad de $y$), por lo que
+            eventualmente $R$ pone las fichas $r_1$ y $r_2$ en v\'ertices
+            adyacentes. De lo contrario, si $R$ mueve $r_2$ a $b$, $c_{2,2}$ y
+            $c_{4,2}$ le recapturan, mientras que $c_{1,2}$ se mueve a $w_2$
+            (ver \cref{fig:intermedio}). En esta posici\'on $R$ est\'a obligado
+            a mover $r_2$ de regreso a $w_1$. As\'i $C$ est\'a en una posici\'on
+            an\'aloga a la mostrada en (a) de \cref{fig:guarding1} (una ficha en
+            la vecindad de $b$), por lo que $R$ eventualmente posiciona $r_1$ y
+            $r_2$ en v\'ertices adyacentes.
 
-        \end{enumerate}
-        
-        Por tanto, en cualquier caso $R$ est\'a forzado a mover $r_1$ hacia $v$.
-        Al igual que antes, $c_{1,1}$ y $c_{3,1}$ recapturan $r_1$, mientras
-        que, sin p\'erdida de generalidad, $c_{2,1}$ y $c_{4,1}$ se posicionan
-        en $x$ y $u_2$ respectivamente. M\'as a\'un, $R$ viene de una posici\'on
-        an\'aloga a alguna de las mostradas en (c) para
-        \cref{fig:guarding1,fig:guarding2,fig:guarding3}. Si se viene de la
-        posici\'on (c) de \cref{fig:guarding3}, el \'unico movimiento que puede
-        hacer $R$ es mover $r_2$ o $r_1$ hacia $r_2(t)$, poni\'endo las fichas
-        de $r$ en v\'ertices adyacentes (v\'ease \cref{fig:guarding4}).
-        
-        \begin{figure}[!htbp]
-            \begin{tcbitemize}[raster columns=2, raster equal height, enhanced,
-                colback=Black!5!white,colframe=Grey!75!black, attach title to upper,
-                phantom={\setcounter{myrasternum}{\thetcbrasternum}},
-                title={(\alph{myrasternum})\enspace}, halign lower=center, halign
-                upper = left, lower separated=false, middle=0mm, boxsep=0mm,
-                leftupper=2mm, left=2mm, right=2mm, fonttitle=\bfseries,
-                coltitle=black, raster column skip=1mm,raster halign=center, raster
-                row skip=1mm]
-    
+            \begin{figure}[H]
+                \begin{tcbitemize}[raster columns=2, raster equal height, enhanced,
+                    colback=Black!5!white,colframe=Grey!75!black, attach title to upper,
+                    phantom={\setcounter{myrasternum}{\thetcbrasternum}},
+                    title={(\alph{myrasternum})\enspace}, halign lower=center, halign
+                    upper = left, lower separated=false, middle=0mm, boxsep=0mm,
+                    leftupper=2mm, left=2mm, right=2mm, fonttitle=\bfseries,
+                    coltitle=black, raster column skip=1mm,raster halign=center, raster
+                    row skip=1mm]
+
                 \tcbitem
                     \tcblower
                         \scalebox{0.4}{
                             \begin{tikzpicture}
                                 \petersen
-                                \unopBunopR{2.5cm}{90 + (360/5)*2}
-                                \punto{5cm}{90 + (360/5)*2}
-                                \unotGunotYt{5cm}{90}
+                                \unopBunopRp{2.5cm}{90 + (360/5)*2}
+                                \unotGunotY{5cm}{90}
+                                \tri{5cm}{90 + (360/5)}
                                 \unotBunopG{2.5cm}{90 + (360/5)*3}
                                 \unopY{5cm}{90 + (360/5)*4}
                                 \unotR{5cm}{90 + (360/5)*3}
                                 
                             \end{tikzpicture}
                         }
-                
                 \tcbitem
                     \tcblower
                         \scalebox{0.4}{
                             \begin{tikzpicture}
                                 \petersen
-                                \unopBunopRp{5cm}{90 + (360/5)*2}
-                                \unotGunotYt{5cm}{90}
-                                \unotB{2.5cm}{90 + (360/5)*3}
-                                \unopGunotR{5cm}{90 + (360/5)*3}
-                                \unopY{2.5cm}{90 + (360/5)*4}
-                                
-                            \end{tikzpicture}
-                        }
-            \end{tcbitemize}
-            \captionsetup{font=footnotesize}
-            \caption{En (a), $R$ acaba de mover $r_1$, de manera que $C$ mueve
-            como en (b) para posicionarse $c_{2,1}$ en $x$ y $c_{4,1}$ en $u_2$,
-            a la vez que $c_{1,1}$ y $c_{3,1}$ recapturan. En este caso, $R$ no
-            tiene ning\'un movimiento mas que mover $r_1$ hacia $r_2$ o
-            viceversa.}
-            \label{fig:guarding4}
-        \end{figure}
-
-        Si se viene de la posici\'on (c) de \cref{fig:guarding2}, $R$ puede
-        mover $r_2$ a $u_1$. No obstante, si ambos $c_{2,2}$ y $c_{4,2}$
-        recapturan, mientras que $c_{1,2}$ se mueve a $z$, $R$ se ve obligado a
-        poner $r_1$ y $r_2$ en v\'ertices adyacentes (v\'ease
-        \cref{fig:guarding5}).
-
-        \begin{figure}[!htbp]
-            \begin{tcbitemize}[raster columns=2, raster equal height, enhanced,
-                colback=Black!5!white,colframe=Grey!75!black, attach title to upper,
-                phantom={\setcounter{myrasternum}{\thetcbrasternum}},
-                title={(\alph{myrasternum})\enspace}, halign lower=center, halign
-                upper = left, lower separated=false, middle=0mm, boxsep=0mm,
-                leftupper=2mm, left=2mm, right=2mm, fonttitle=\bfseries,
-                coltitle=black, raster column skip=1mm,raster halign=center, raster
-                row skip=1mm]
-    
-                \tcbitem
-                    \tcblower
-                        \scalebox{0.4}{
-                            \begin{tikzpicture}
-                                \petersen
-                                \unopBunopRp{5cm}{90 + (360/5)*2}
-                                \unotGunotY{5cm}{90}
-                                \tri{2.5cm}{90}
+                                \unopBunopRp{2.5cm}{90 + (360/5)*2}
+                                \unotGunotYt{5cm}{90 + (360/5)}
+                                \unopG{2.5cm}{90 + (360/5)*3}
                                 \unotB{2.5cm}{90 + (360/5)}
-                                \unopG{5cm}{90 + (360/5)*3}
-                                \unotR{5cm}{90 + (360/5)*4}
-                                \unopY{2.5cm}{90 + (360/5)*4}
+                                \unopY{5cm}{90 + (360/5)*4}
+                                \unotR{5cm}{90 + (360/5)*3}
                                 
                             \end{tikzpicture}
                         }
-                \tcbitem
-                    \tcblower
-                        \scalebox{0.4}{
-                            \begin{tikzpicture}
-                                \petersen
-                                \unopBunopRp{5cm}{90 + (360/5)*2}
-                                \unotGunotYt{2.5cm}{90}
-                                \unotB{2.5cm}{90 + (360/5)*3}
-                                \unopG{5cm}{90 + (360/5)*3}
-                                \unotR{5cm}{90 + (360/5)*4}
-                                \unopY{2.5cm}{90 + (360/5)*4}
-                                
-                            \end{tikzpicture}
-                        }
-            \end{tcbitemize}
-            \captionsetup{font=footnotesize}
-            \caption{Si $R$ mueve $r_2$ a $u_2$ como en (a), $C$ mueve a sus
-            polic\'ias como en (b) para forzar el movimiento de $R$ que ponga a
-            $r_1$ adyacente a $r_2$.}
-            \label{fig:guarding5}
-        \end{figure}
+                
+                \end{tcbitemize}
+                \captionsetup{font=footnotesize}
+                \caption{Posterior al movimiento de $R$, $C$ mueve sus
+                polic\'ias como en (b) para obligar el regreso de $r_2$ a
+                $w_1$.}
+                \label{fig:intermedio}
+            \end{figure}
+            
+            Finalmente, si $R$ mueve $r_1$ a $v$, $C$ mueve como en (b) de
+            \cref{fig:guarding4}, obligando a $R$ a que ponga $r_1$ y $r_2$ en
+            v\'ertices adyacentes.
+            
+            \begin{figure}[H]
+                \begin{tcbitemize}[raster columns=2, raster equal height, enhanced,
+                    colback=Black!5!white,colframe=Grey!75!black, attach title to upper,
+                    phantom={\setcounter{myrasternum}{\thetcbrasternum}},
+                    title={(\alph{myrasternum})\enspace}, halign lower=center, halign
+                    upper = left, lower separated=false, middle=0mm, boxsep=0mm,
+                    leftupper=2mm, left=2mm, right=2mm, fonttitle=\bfseries,
+                    coltitle=black, raster column skip=1mm,raster halign=center, raster
+                    row skip=1mm]
+        
+                    \tcbitem
+                        \tcblower
+                            \scalebox{0.4}{
+                                \begin{tikzpicture}
+                                    \petersen
+                                    \unopBunopR{2.5cm}{90 + (360/5)*2}
+                                    \punto{5cm}{90 + (360/5)*2}
+                                    \unotGunotYt{5cm}{90}
+                                    \unotBunopG{2.5cm}{90 + (360/5)*3}
+                                    \unopY{5cm}{90 + (360/5)*4}
+                                    \unotR{5cm}{90 + (360/5)*3}
+                                    
+                                \end{tikzpicture}
+                            }
+                    
+                    \tcbitem
+                        \tcblower
+                            \scalebox{0.4}{
+                                \begin{tikzpicture}
+                                    \petersen
+                                    \unopBunopRp{5cm}{90 + (360/5)*2}
+                                    \unotGunotYt{5cm}{90}
+                                    \unotB{2.5cm}{90 + (360/5)*3}
+                                    \unopGunotR{5cm}{90 + (360/5)*3}
+                                    \unopY{2.5cm}{90 + (360/5)*4}
+                                    
+                                \end{tikzpicture}
+                            }
+                \end{tcbitemize}
+                \captionsetup{font=footnotesize}
+                \caption{En (a), $R$ acaba de mover $r_1$, de manera que $C$
+                mueve como en (b) para posicionarse $c_{2,1}$ en $x$ y $c_{4,1}$
+                en $u_2$, a la vez que $c_{1,1}$ y $c_{3,1}$ recapturan.}
+                \label{fig:guarding4}
+            \end{figure}
 
-        Finalmente, si se viene de la posici\'on (c) de \cref{fig:guarding1},
-        $R$ puede mover $r_2$ a $u_1$. Esta situaci\'on tiene de hecho dos
-        variantes, dependiendo de si $c_{3,2}$ est\'a en $u_2$ o en $x$. No
-        obstante, en cualquiera de los casos se tiene que $c_{3,2}$ est\'a en un
-        v\'ertice adyacente a un v\'ertice de la vecindad cerrada de $z$. As\'i,
-        en su turno, $C$ recaptura con $c_{2,2}$ y $c_{4,2}$ y $c_{3,2}$ se
-        acerca a $z$. Por tanto, $R$ no puede mover $r_2$ a $z$ pues este pierde
-        en a lo m\'as un turno, por lo que se ve obligado a juntar las fichas
-        $r_1$ y $r_2$ en v\'ertices adyacentes (v\'ease \cref{fig:guarding6}).
-        %TODO: Agregar el caso donde se regresa a la obstrucción.
+        \end{enumerate}
+        
+       
 
-        \begin{figure}[!htbp]
-            \begin{tcbitemize}[raster columns=2, raster equal height, enhanced,
-                colback=Black!5!white,colframe=Grey!75!black, attach title to upper,
-                phantom={\setcounter{myrasternum}{\thetcbrasternum}},
-                title={(\alph{myrasternum})\enspace}, halign lower=center, halign
-                upper = left, lower separated=false, middle=0mm, boxsep=0mm,
-                leftupper=2mm, left=2mm, right=2mm, fonttitle=\bfseries,
-                coltitle=black, raster column skip=1mm,raster halign=center, raster
-                row skip=1mm]
-    
-                \tcbitem
-                    \tcblower
-                        \scalebox{0.4}{
-                            \begin{tikzpicture}
-                                \petersen
-                                \unopBunopRp{5cm}{90 + (360/5)*2}
-                                \unotGunotY{5cm}{90}
-                                \tri{2.5cm}{90}
-                                \unotRunopY{2.5cm}{90 + (360/5)*4}
-                                \unotB{5cm}{90 + (360/5)}
-                                \unopG{5cm}{90 + (360/5)*3}
-                                
-                            \end{tikzpicture}
-                        }
-                \tcbitem
-                    \tcblower
-                        \scalebox{0.4}{
-                            \begin{tikzpicture}
-                                \petersen
-                                \unopBunopRp{5cm}{90 + (360/5)*2}
-                                \unotGunotYt{2.5cm}{90}
-                                \unopY{2.5cm}{90 + (360/5)*4}
-                                \unotR{2.5cm}{90+ (360/5)*1}
-                                \unotB{5cm}{90 + (360/5)}
-                                \unopG{5cm}{90 + (360/5)*3}
-                                
-                            \end{tikzpicture}
-                        }
-            \end{tcbitemize}
-            \captionsetup{font=footnotesize}
-            \caption{En (a), $R$ acaba de mover $r_2$ a $u_1$, por lo que $C$
-            mueve como en (b) para forzar el movimiento de $r_1$ hacia $r_2$
-            o viceversa.}
-            \label{fig:guarding6}
-        \end{figure}
+        
     \end{enumerate}
 
     Esto concluye la prueba de que $r_1$ y $r_2$ eventualmente est\'an en
@@ -1372,118 +1560,321 @@ As\'i, proponemos la siguiente cota superior.
     p\'erdida de generalidad que $r_1$ fue la \'ultima ficha movida, de modo que
     la situaci\'on es como se muestra en \cref{fig:guarding7}. Los polic\'ias
     proceden a posicionarse sobre las vecindades de los v\'ertices a los que
-    puede mover $R$, dejando a $r_1$ sin movimientos.
+    puede mover $R$, dejando a $r_1$ sin movimientos. 
     
-    \begin{figure}[H]
-        \begin{tcbitemize}[raster columns=2, raster equal height, enhanced,
-            colback=Black!5!white,colframe=Grey!75!black, attach title to upper,
-            phantom={\setcounter{myrasternum}{\thetcbrasternum}},
-            title={(\alph{myrasternum})\enspace}, halign lower=center, halign
-            upper = left, lower separated=false, middle=0mm, boxsep=0mm,
-            leftupper=2mm, left=2mm, right=2mm, fonttitle=\bfseries,
-            coltitle=black, raster column skip=1mm,raster halign=center, raster
-            row skip=1mm]
-            \tcbitem
-                \tcblower
-                    \scalebox{0.4}{
-                        \begin{tikzpicture}
-                            \petersennueve
-                            \punto{5cm}{90 + (360/5)}
-                            \unopBunopR{5cm}{90 + (360/5)*2}
-                            \unotGunotYt{5cm}{90}
-                            
-                        \end{tikzpicture}
-                    }
-            
-            \tcbitem
-                \tcblower
-                    \scalebox{0.4}{
-                        \begin{tikzpicture}
-                            \petersendiez
-                            \punto{5cm}{90 + (360/5)}
-                            \unopBunopR{5cm}{90 + (360/5)*2}
-                            \unotGunotYt{5cm}{90}
-                            \unopG{2.5cm}{90 + (360/5)*2}
-                            \unopY{2.5cm}{90 + (360/5)*3}
-                        \end{tikzpicture}
-                    }
-            
-            \tcbitem[raster multicolumn=2]
-                \tcblower
-                    \scalebox{0.4}{
-                        \begin{tikzpicture}
-                            \petersen
-                            \punto{5cm}{90 + (360/5)}
-                            \unopBunopR{5cm}{90 + (360/5)*2}
-                            \unotGunotYt{5cm}{90}
-                            \unotB{2.5cm}{90 + (360/5)*4}
-                            \unopG{2.5cm}{90 + (360/5)*2}
-                            \unotRunopY{2.5cm}{90 + (360/5)*3}
-                        \end{tikzpicture}
-                    }
-        \end{tcbitemize}
+    Se generan tres casos dependiendo de la posici\'on de $c_{1,2}$ y $c_{3,2}$:
+
+    \begin{enumerate}
+        \item Si ninguno entre $c_{1,2}$ y $c_{3,1}$ est\'a en $b$ y no sucede
+        que ambos esten $u_1$ o en $y$, entonces de (b) de \cref{fig:guarding7}
+        es claro que $c_{1,2}$ y $c_{3,1}$ pueden ponerse, como en (c), en
+        v\'ertices adyacentes a $y$ y $u_1$ respectivamente.
+
+        \begin{figure}[H]
+            \begin{tcbitemize}[raster columns=2, raster equal height, enhanced,
+                colback=Black!5!white,colframe=Grey!75!black, attach title to upper,
+                phantom={\setcounter{myrasternum}{\thetcbrasternum}},
+                title={(\alph{myrasternum})\enspace}, halign lower=center, halign
+                upper = left, lower separated=false, middle=0mm, boxsep=0mm,
+                leftupper=2mm, left=2mm, right=2mm, fonttitle=\bfseries,
+                coltitle=black, raster column skip=1mm,raster halign=center, raster
+                row skip=1mm]
+                \tcbitem
+                    \tcblower
+                        \scalebox{0.4}{
+                            \begin{tikzpicture}
+                                \petersennueve
+                                \punto{5cm}{90 + (360/5)}
+                                \unopBunopR{5cm}{90 + (360/5)*2}
+                                \unotGunotYt{5cm}{90}
+                                
+                            \end{tikzpicture}
+                        }
+                
+                \tcbitem
+                    \tcblower
+                        \scalebox{0.4}{
+                            \begin{tikzpicture}
+                                \petersendiez
+                                \punto{5cm}{90 + (360/5)}
+                                \unopBunopR{5cm}{90 + (360/5)*2}
+                                \unotGunotYt{5cm}{90}
+                                \unopG{2.5cm}{90 + (360/5)*2}
+                                \unopY{2.5cm}{90 + (360/5)*3}
+                            \end{tikzpicture}
+                        }
+                
+                \tcbitem[raster multicolumn=2]
+                    \tcblower
+                        \scalebox{0.4}{
+                            \begin{tikzpicture}
+                                \petersen
+                                \punto{5cm}{90 + (360/5)}
+                                \unopBunopR{5cm}{90 + (360/5)*2}
+                                \unotGunotYt{5cm}{90}
+                                \unotB{2.5cm}{90 + (360/5)*4}
+                                \unopG{2.5cm}{90 + (360/5)*2}
+                                \unotRunopY{2.5cm}{90 + (360/5)*3}
+                            \end{tikzpicture}
+                        }
+            \end{tcbitemize}
+            \captionsetup{font=footnotesize}
+            \caption{En (a), $C$ busca poner, sin p\'erdida de generalidad, a
+            $c_{2,1}$ y $c_{4,1}$ en un v\'ertice azul sombreado y en un
+            v\'ertice sombreado verde. Si alguno de ellos estuviera en los
+            v\'ertices negros sombreados, en el v\'ertice azul no sombreado, o
+            en el v\'ertice verde no sombreado, se sigue que $C$ captura a $R$
+            en a lo m\'as un turn, o est\'a en una configuraci\'on ilegal, o
+            est\'a en el siguiente caso. Por otra parte el resto de v\'ertices
+            es tal que tiene al menos un v\'ertice verde sombreado y uno azul
+            sombreado en su vecindad cerrada. Por tanto, siempre se pueden
+            colocar $c_{2,1}$ y $c_{4,1}$ de manera que estos impiden que $r_1$
+            se mueva los v\'ertices verde o azul sin sombrear. An\'alogamente,
+            en (b) se mueven $c_{1,2}$ y $c_{3,2}$ a un v\'ertice azul y uno
+            verde respectivamente. As\'i, $C$ termina su turno como se muestra
+            en (c).}
+            \label{fig:guarding7}
+        \end{figure}
+    
+        Si $R$ pasa como en (a) de \cref{fig:captura1}, $C$ mueve como en (b) para
+        capturar a $R$ en su siguiente turno. De lo contrario, $R$ mueve $r_2$ a
+        $u_2$ o a $y$. Sup\'ongase sin p\'erdida de generalidad que se mueve a
+        $r_2$ como en (c), el otro caso es an\'alogo. En ese caso, $C$ mueve como en
+        (d), capturando a $R$ en su siguiente turno.
+    
+        \begin{figure}[H]
+            \begin{tcbitemize}[raster columns=2, raster equal height, enhanced,
+                colback=Black!5!white,colframe=Grey!75!black, attach title to upper,
+                phantom={\setcounter{myrasternum}{\thetcbrasternum}},
+                title={(\alph{myrasternum})\enspace}, halign lower=center, halign
+                upper = left, lower separated=false, middle=0mm, boxsep=0mm,
+                leftupper=2mm, left=2mm, right=2mm, fonttitle=\bfseries,
+                coltitle=black, raster column skip=1mm,raster halign=center, raster
+                row skip=1mm]
+                
+                \tcbitem
+                    \tcblower
+                        \scalebox{0.4}{
+                            \begin{tikzpicture}
+                                \petersen
+                                \punto{5cm}{90 + (360/5)}
+                                \unopBunopR{5cm}{90 + (360/5)*2}
+                                \unotGunotYt{5cm}{90}
+                                \unotB{2.5cm}{90 + (360/5)*4}
+                                \unopG{2.5cm}{90 + (360/5)*2}
+                                \unotRunopY{2.5cm}{90 + (360/5)*3}
+                            \end{tikzpicture}
+                        }
+                
+                \tcbitem
+                    \tcblower
+                        \scalebox{0.4}{
+                            \begin{tikzpicture}
+                                \petersen
+                                \unopBunopRp{5cm}{90 + (360/5)}
+                                \unotGunotYt{5cm}{90}
+                                \unotB{2.5cm}{90 + (360/5)*4}
+                                \unopG{5cm}{90 + (360/5)*2}
+                                \unotR{2.5cm}{90 + (360/5)*3}
+                                \unopY{2.5cm}{90 + (360/5)*1}
+                            \end{tikzpicture}
+                        }
+    
+                \tcbitem
+                    \tcblower
+                        \scalebox{0.4}{
+                            \begin{tikzpicture}
+                                \petersen
+                                \punto{5cm}{90 + (360/5)}
+                                \unopBunopR{5cm}{90 + (360/5)*2}
+                                \unotGunotY{5cm}{90}
+                                \tri{2.5cm}{90}
+                                \unotB{2.5cm}{90 + (360/5)*4}
+                                \unopG{2.5cm}{90 + (360/5)*2}
+                                \unotRunopY{2.5cm}{90 + (360/5)*3}
+                            \end{tikzpicture}
+                        }
+    
+                \tcbitem
+                    \tcblower
+                        \scalebox{0.4}{
+                            \begin{tikzpicture}
+                                \petersen
+                                \unopBp{5cm}{90 + (360/5)}
+                                \unopR{5cm}{90 + (360/5)*2}
+                                \unotGunotY{5cm}{90}
+                                \unopGt{2.5cm}{90}
+                                \unotB{2.5cm}{90 + (360/5)*4}
+                                \unotR{2.5cm}{90 + (360/5)*3}
+                                \unopY{2.5cm}{90 + (360/5)*1}
+                            \end{tikzpicture}
+                        }
+            \end{tcbitemize}
         \captionsetup{font=footnotesize}
-        \caption{En (a), $C$ busca poner, sin p\'erdida de generalidad, a
-        $c_{2,1}$ y $c_{4,1}$ en un v\'ertice azul sombreado y en un v\'ertice
-        sombreado verde. Si alguno de ellos estuviera en los v\'ertices negros
-        sombreados, en el v\'ertice azul no sombreado, o en el v\'ertice verde
-        no sombreado, se sigue que $C$ captura a $R$ en a lo m\'as un turno o
-        est\'a en una configuraci\'on inicial. Por otra parte el resto de
-        v\'ertices es tal que tiene al menos un v\'ertice verde sombreado y uno
-        azul sombreado en su vecindad cerrada. Por tanto, siempre se pueden
-        colocar $c_{2,1}$ y $c_{4,1}$ de manera que estos impiden que $r_1$ se
-        mueva los v\'ertices verde o azul sin sombrear. An\'alogamente se mueven
-        $c_{1,2}$ y $c_{3,2}$ en un v\'ertice azul y uno verde en (b). As\'i,
-        $C$ termina su turno como se muestra en (c).}
-        \label{fig:guarding7}
-    \end{figure}
+        \caption{Posterior a que $R$ pase como en (a), $C$ mueve como en (b) para
+        capturarle en su siguiente turno. En cambio, si $R$ mueve $r_2$ como en (c),
+        $C$ mueve sus fichas como en (d), obligando a $R$ a pasar y captur\'andolo
+        en su siguiente turno al reetiquetar las fichas de $c_2$.}
+        \label{fig:captura1}
+        \end{figure}
 
-    Por \'ultimo, si $R$ pasa, $C$ mueve como en \cref{fig:captura1} para
-    capturar a $R$ en su siguiente turno.
+        \item Si alguno entre $c_{1,2}$ y $c_{3,2}$ est\'a en $b$, n\'otese que
+        dicho polic\'ia (o ambos) puede reetiquetar sus fichas, de manera que la
+        segunda ficha se encuentra en $v$ y es adyacente a ambos un v\'ertice
+        azul sombreado y un v\'ertice verde sombreado, movi\'endose en ese mismo
+        turno para obligar a $R$ a pasar y capturarle en a lo m\'as dos turnos
+        (v\'ease (b) en \cref{fig:guarding8}).
 
-    \begin{figure}[H]
-        \centering
-        \scalebox{0.4}{
-            \begin{tikzpicture}
-                \petersen
-                \unopBunopRp{5cm}{90 + (360/5)}
-                \unotGunotYt{5cm}{90}
-                \unotB{2.5cm}{90 + (360/5)*4}
-                \unopG{5cm}{90 + (360/5)*2}
-                \unotR{2.5cm}{90 + (360/5)*3}
-                \unopY{2.5cm}{90 + (360/5)*1}
-            \end{tikzpicture}
-        }
-    \captionsetup{font=footnotesize}
-    \caption{Posterior a que $R$ pase, $C$ mueve para evitar que este mueva y
-    capturarle en su siguiente turno.}
-    \label{fig:captura1}
-    \end{figure}
+        \begin{figure}[H]
+            \begin{tcbitemize}[raster columns=2, raster equal height, enhanced,
+                colback=Black!5!white,colframe=Grey!75!black, attach title to upper,
+                phantom={\setcounter{myrasternum}{\thetcbrasternum}},
+                title={(\alph{myrasternum})\enspace}, halign lower=center, halign
+                upper = left, lower separated=false, middle=0mm, boxsep=0mm,
+                leftupper=2mm, left=2mm, right=2mm, fonttitle=\bfseries,
+                coltitle=black, raster column skip=1mm,raster halign=center, raster
+                row skip=1mm]
+                \tcbitem
+                    \tcblower
+                        \scalebox{0.4}{
+                            \begin{tikzpicture}
+                                \petersenonce
+                                \unotBp{5cm}{90 + (360/5)}
+                                \unopBunopR{5cm}{90 + (360/5)*2}
+                                \unotGunotYt{5cm}{90}
+                                \unopG{2.5cm}{90 + (360/5)*2}
+                                \unopY{2.5cm}{90 + (360/5)*3}
+                                \unotR{5cm}{90 + (360/5)*4}
+                                
+                            \end{tikzpicture}
+                        }
+                
+                \tcbitem
+                    \tcblower
+                        \scalebox{0.4}{
+                            \begin{tikzpicture}
+                                \petersen
+                                \unopBp{5cm}{90 + (360/5)}
+                                \unotBunopR{5cm}{90 + (360/5)*2}
+                                \unotGunotYt{5cm}{90}
+                                \unopG{2.5cm}{90 + (360/5)*2}
+                                \unopY{2.5cm}{90 + (360/5)*3}
+                                \unotR{5cm}{90 + (360/5)*4}
+                            \end{tikzpicture}
+                        }
+                
+                \tcbitem[raster multicolumn=2]
+                    \tcblower
+                        \scalebox{0.4}{
+                            \begin{tikzpicture}
+                                \petersen
+                                \unopBp{5cm}{90 + (360/5)}
+                                \unopR{5cm}{90 + (360/5)*2}
+                                \unotGunotYt{5cm}{90}
+                                \unotBunopG{2.5cm}{90 + (360/5)*2}
+                                \unopY{2.5cm}{90 + (360/5)*3}
+                                \unotR{5cm}{90 + (360/5)*4}
+                            \end{tikzpicture}
+                        }
+            \end{tcbitemize}
+            \captionsetup{font=footnotesize}
+            \caption{En (a), $c_1$ se encuentra obstru\'ido, por lo que
+            reetiqueta sus fichas como en (b) y mueve como en (c), mientras que
+            $c_{3,2}$ se asegura de estar en un v\'ertice adyacente a $y$
+            (reetiquetando en caso de que $c_2$ tambi\'en estuviera
+            obstru\'ida).}
+            \label{fig:guarding8}
+        \end{figure}
 
-    Si en cambio $R$ mueve $r_2$, sup\'ongase sin p\'erdida de generalidad que
-    $r_2$ se mueve a $u_1$, el otro caso es an\'alogo. Luego $C$ mueve sus
-    fichas como en \cref{fig:captura2}, capturando a $R$ en su siguiente turno.
+        \item Si ambos $c_{1,2}$ y $c_{3,2}$ est\'an en $u_1$ o $y$, sup\'ongase
+        sin p\'erdida de generalidad que est\'an en $u_1$, el otro caso es
+        an\'alogo. En este caso, $C$ mueve $c_{3,2}$ a $z$ como en (b) de
+        \cref{fig:guarding9}. Si $R$ pasa en este momento, se tiene una
+        situaci\'on an\'aloga a la del caso $1$, por lo que $R$ debe mover $r_2$
+        a $y$. Luego, $C$ mueve como en (d) de \cref{fig:guarding9}, obligando a
+        $R$ a pasar y, dos turnos despu\'es, ser capturado.
 
-    \begin{figure}[!htbp]
-        \centering
-        \scalebox{0.4}{
-            \begin{tikzpicture}
-                \petersen
-                \unopBunopRp{5cm}{90 + (360/5)}
-                \unotGunotY{5cm}{90}
-                \tri{2.5cm}{90}
-                \unotB{2.5cm}{90 + (360/5)*4}
-                \unopG{5cm}{90 + (360/5)*2}
-                \unotR{2.5cm}{90 + (360/5)*3}
-                \unopY{2.5cm}{90 + (360/5)*1}
-            \end{tikzpicture}
-        }
-    \captionsetup{font=footnotesize}
-    \caption{Posterior a que $R$ pase, $C$ mueve para evitar que este mueva y
-    capturarle en su siguiente turno.}
-    \label{fig:captura2}
-    \end{figure}
+        \begin{figure}[H]
+            \begin{tcbitemize}[raster columns=2, raster equal height, enhanced,
+                colback=Black!5!white,colframe=Grey!75!black, attach title to upper,
+                phantom={\setcounter{myrasternum}{\thetcbrasternum}},
+                title={(\alph{myrasternum})\enspace}, halign lower=center, halign
+                upper = left, lower separated=false, middle=0mm, boxsep=0mm,
+                leftupper=2mm, left=2mm, right=2mm, fonttitle=\bfseries,
+                coltitle=black, raster column skip=1mm,raster halign=center, raster
+                row skip=1mm]
+                \tcbitem
+                    \tcblower
+                        \scalebox{0.4}{
+                            \begin{tikzpicture}
+                                \petersendiez
+                                \punto{5cm}{90 + (360/5)}
+                                \unopBunopR{5cm}{90 + (360/5)*2}
+                                \unotGunotYt{5cm}{90}
+                                \unopG{2.5cm}{90 + (360/5)*2}
+                                \unopY{2.5cm}{90 + (360/5)*3}
+                                \unotBunotR{2.5cm}{90}
+                                
+                            \end{tikzpicture}
+                        }
+                
+                \tcbitem
+                    \tcblower
+                        \scalebox{0.4}{
+                            \begin{tikzpicture}
+                                \petersen
+                                \punto{5cm}{90 + (360/5)}
+                                \unopBunopR{5cm}{90 + (360/5)*2}
+                                \unotGunotYt{5cm}{90}
+                                \unopG{2.5cm}{90 + (360/5)*2}
+                                \unotRunopY{2.5cm}{90 + (360/5)*3}
+                                \unotB{2.5cm}{90}
+                                
+                            \end{tikzpicture}
+                        }
+                
+                \tcbitem
+                    \tcblower
+                        \scalebox{0.4}{
+                            \begin{tikzpicture}
+                                \petersen
+                                \punto{5cm}{90 + (360/5)}
+                                \unopBunopR{5cm}{90 + (360/5)*2}
+                                \unotGunotY{5cm}{90}
+                                \tri{5cm}{90 + (360/5)*4}
+                                \unopG{2.5cm}{90 + (360/5)*2}
+                                \unotRunopY{2.5cm}{90 + (360/5)*3}
+                                \unotB{2.5cm}{90}
+                                
+                            \end{tikzpicture}
+                        }
+                
+                \tcbitem
+                    \tcblower
+                        \scalebox{0.4}{
+                            \begin{tikzpicture}
+                                \petersen
+                                \punto{5cm}{90 + (360/5)}
+                                \unopBunopR{5cm}{90 + (360/5)*2}
+                                \unotBunotG{5cm}{90}
+                                \unotYt{5cm}{90 + (360/5)*4}
+                                \unopG{2.5cm}{90 + (360/5)*4}
+                                \unopY{2.5cm}{90 + (360/5)*3}
+                                \unotR{5cm}{90 + (360/5)*3}
+                                
+                            \end{tikzpicture}
+                        }
+            \end{tcbitemize}
+            \captionsetup{font=footnotesize}
+            \caption{En (a), $c_{1,2}$ y $c_{3,2}$ est\'an ambos en $u_1$, por
+            lo que uno de ellos se mueve a $z$ como en (b). En (c), $R$ mueve
+            $r_2$ a $y$, por lo que $C$ mueve como en (d) para obligar a $R$ a
+            pasar y capturar en a lo m\'as dos turnos.}
+            \label{fig:guarding9}
+        \end{figure}
 
+    \end{enumerate}
+    
     Se concluye que $c(\t{2}{P})\leq 4$.
 
 \end{proof}

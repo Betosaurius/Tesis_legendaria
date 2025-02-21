@@ -727,13 +727,16 @@
 \newcommand{\petersencinco}{%
 
 \foreach \i in {0}
-  \node (\i) [bola2, label=0:\Large $w_1$]  at ({(360/5)*\i + 90}:5){};
-\foreach \i in {7,8}
+  \node (\i) [bola2, label=0:\Large $w_1$, pattern=north east lines, line width=2pt]  at ({(360/5)*\i + 90}:5){};
+\foreach \i in {7}
+  \node (\i) [bola2, pattern=north east lines, line width=2pt]  at ({(360/5)*\i
+  + 90}:2.5){};
+\foreach \i in {8}
   \node (\i) [bola2]  at ({(360/5)*\i + 90}:2.5){};
 \foreach \i in {5}
-  \node (\i) [bola2]  at ({(360/5)*\i + 90}:2.5){\Large $u_1$};
+  \node (\i) [bola2, pattern=north east lines, line width=2pt, label=180:\Large $u_1$]  at ({(360/5)*\i + 90}:2.5){};
 \foreach \i in {1}
-  \node (\i) [bola2, Navy, line width=2pt, label=180:\Large $r_2(t)$] at ({(360/5)*\i + 90}:5){};
+  \node (\i) [bola2, Navy, line width=2pt, label=180:\Large $b$] at ({(360/5)*\i + 90}:5){};
 \foreach \i in {6}
   \node (\i) [bola2, Navy, line width=2pt, pattern=crosshatch, pattern
   color= Navy] at ({(360/5)*\i + 90}:2.5){};
@@ -766,11 +769,48 @@
   + 90}:5){};
 \foreach \i in {1}
   \node (\i) [bola2, pattern=north east lines, line width=2pt, label=180:\Large 
-  $r_2(t)$]  at ({(360/5)*\i + 90}:5){};
+  $b$]  at ({(360/5)*\i + 90}:5){};
 \foreach \i in {2}
   \node (\i) [bola2, label=180:\Large $v$]  at ({(360/5)*\i + 90}:5){};
 \foreach \i in {6}
   \node (\i) [bola2]  at ({(360/5)*\i + 90}:2.5){\Large $w_2$};
+\foreach \i in {7}
+  \node (\i) [bola2, pattern=north east lines, line width=2pt, label=180:\Large $a$]  at ({(360/5)*\i + 90}:2.5){};
+\foreach \i in {5}
+  \node (\i) [bola2, pattern=north east lines, line width=2pt, label=180:\Large $u_1$] at ({(360/5)*\i + 90}:2.5){};
+\foreach \i in {8}
+  \node (\i) [bola2, label=0:\Large $z$] at ({(360/5)*\i + 90}:2.5){};
+\foreach \i in {4}
+  \node (\i) [bola2, SeaGreen, line width=2pt, label=0:\Large $y$] at ({(360/5)*\i + 90}:5){};
+\foreach \i in {3}
+  \node (\i) [bola2, SeaGreen, line width=2pt, pattern=crosshatch, pattern
+  color= SeaGreen, label=0:\Large $x$] at ({(360/5)*\i + 90}:5){};
+\foreach \i in {9}
+  \node (\i) [bola2, SeaGreen, line width=2pt, pattern=crosshatch, pattern
+  color= SeaGreen, label=90:\Large $u_2$] at ({(360/5)*\i + 90}:2.5){};
+
+\foreach \i in {0,...,4}
+  \draw [edge] let \n1={int(mod(\i+1,5))} in (\i) to (\n1);
+
+\foreach \i in {5,...,9}
+  \draw [edge] let \n1={int(mod(\i+2,5)+5)} in (\i) to (\n1);
+
+\foreach \i in {0,...,4}
+  \draw [edge] let \n1={int(\i+5)} in (\i) to (\n1);
+}
+
+\newcommand{\petersenseisdos}{%
+
+\foreach \i in {0}
+  \node (\i) [bola2, pattern=north east lines, line width=2pt]  at ({(360/5)*\i
+  + 90}:5){};
+\foreach \i in {1}
+  \node (\i) [bola2, pattern=north east lines, line width=2pt, label=180:\Large 
+  $b$]  at ({(360/5)*\i + 90}:5){};
+\foreach \i in {2}
+  \node (\i) [bola2, label=180:\Large $v$, pattern=north east lines, line width=2pt]  at ({(360/5)*\i + 90}:5){};
+\foreach \i in {6}
+  \node (\i) [bola2, pattern=north east lines, line width=2pt, label=270:\Large $w_2$]  at ({(360/5)*\i + 90}:2.5){};
 \foreach \i in {7}
   \node (\i) [bola2, pattern=north east lines, line width=2pt]  at ({(360/5)*\i + 90}:2.5){};
 \foreach \i in {5}
@@ -803,11 +843,11 @@
   + 90}:5){};
 \foreach \i in {1}
   \node (\i) [bola2, pattern=north east lines, line width=2pt, label=180:\Large 
-  $r_2(t)$]  at ({(360/5)*\i + 90}:5){};
+  $b$]  at ({(360/5)*\i + 90}:5){};
 \foreach \i in {2}
-  \node (\i) [bola2, label=180:\Large $v$]  at ({(360/5)*\i + 90}:5){};
+  \node (\i) [bola2, label=180:\Large $v$, pattern=north east lines, line width=2pt]  at ({(360/5)*\i + 90}:5){};
 \foreach \i in {6}
-  \node (\i) [bola2]  at ({(360/5)*\i + 90}:2.5){\Large $w_2$};
+  \node (\i) [bola2, pattern=north east lines, line width=2pt, label=270:\Large $w_2$]  at ({(360/5)*\i + 90}:2.5){};
 \foreach \i in {7}
   \node (\i) [bola2, pattern=north east lines, line width=2pt]  at ({(360/5)*\i + 90}:2.5){};
 \foreach \i in {5}
@@ -820,8 +860,7 @@
   \node (\i) [bola2, SeaGreen, line width=2pt, pattern=crosshatch, pattern
   color= SeaGreen, label=0:\Large $x$] at ({(360/5)*\i + 90}:5){};
 \foreach \i in {9}
-  \node (\i) [bola2, SeaGreen, line width=2pt, pattern=crosshatch, pattern
-  color= SeaGreen, label=90:\Large $u_2$] at ({(360/5)*\i + 90}:2.5){};
+  \node (\i) [bola2, line width=2pt, pattern=north east lines, label=90:\Large $u_2$] at ({(360/5)*\i + 90}:2.5){};
 
 \foreach \i in {0,...,4}
   \draw [edge] let \n1={int(mod(\i+1,5))} in (\i) to (\n1);
@@ -909,6 +948,45 @@
   + 90}:5){};
 \foreach \i in {2}
   \node (\i) [bola2]  at ({(360/5)*\i + 90}:5){};
+\foreach \i in {6}
+  \node (\i) [bola2]  at ({(360/5)*\i + 90}:2.5){};
+\foreach \i in {7}
+  \node (\i) [bola2, SeaGreen, pattern=crosshatch, line width=2pt, pattern 
+  color= SeaGreen] at ({(360/5)*\i + 90}:2.5){};
+\foreach \i in {5}
+  \node (\i) [bola2, line width=2pt, SeaGreen] at ({(360/5)*\i + 90}:2.5){};
+\foreach \i in {8}
+  \node (\i) [bola2, SeaGreen, line width=2pt, pattern=crosshatch, pattern
+  color=SeaGreen] at ({(360/5)*\i + 90}:2.5){};
+\foreach \i in {4}
+  \node (\i) [bola2, line width=2pt, Navy] at ({(360/5)*\i + 90}:5){};
+\foreach \i in {3}
+  \node (\i) [bola2, Navy, line width=2pt, pattern=crosshatch, pattern
+  color= Navy] at ({(360/5)*\i + 90}:5){};
+\foreach \i in {9}
+  \node (\i) [bola2, Navy, line width=2pt, pattern=crosshatch, pattern
+  color= Navy] at ({(360/5)*\i + 90}:2.5){};
+
+\foreach \i in {0,...,4}
+  \draw [edge] let \n1={int(mod(\i+1,5))} in (\i) to (\n1);
+
+\foreach \i in {5,...,9}
+  \draw [edge] let \n1={int(mod(\i+2,5)+5)} in (\i) to (\n1);
+
+\foreach \i in {0,...,4}
+  \draw [edge] let \n1={int(\i+5)} in (\i) to (\n1);
+}
+
+\newcommand{\petersenonce}{%
+
+\foreach \i in {0}
+  \node (\i) [bola2, pattern=north east lines, line width=2pt]  at ({(360/5)*\i
+  + 90}:5){};
+\foreach \i in {1}
+  \node (\i) [bola2, label=180:\Large $b$]  at ({(360/5)*\i 
+  + 90}:5){};
+\foreach \i in {2}
+  \node (\i) [bola2, label=180:\Large $v$]  at ({(360/5)*\i + 90}:5){};
 \foreach \i in {6}
   \node (\i) [bola2]  at ({(360/5)*\i + 90}:2.5){};
 \foreach \i in {7}
@@ -1737,6 +1815,13 @@
 \end{scope}
 }
 
+\newcommand{\unotYt}[2]{%
+\begin{scope}[style/.expanded=\polarshift{#1}{#2}]
+  \node (TY) [tri,fill=yellow] at (90:0.4) {};
+  \node (Tr) [tri,fill=black] at ({90 + (360/2)*1}:0.4) {};
+\end{scope}
+}
+
 \newcommand{\unotBc}[3][0.4]{%
 \begin{scope}[style/.expanded=\polarshift{#2}{#3}]
   \node (TB) [tri,fill=blue] at (90:#1) {};
@@ -1927,6 +2012,13 @@
 \end{scope}
 }
 
+\newcommand{\unotBunotG}[2]{%
+\begin{scope}[style/.expanded=\polarshift{#1}{#2}]
+  \node (TG) [tri,fill=verdeOscuro] at ({90 + (360/2)*1}:0.4) {};
+  \node (TB) [tri,fill=blue] at ({90}:0.4) {};
+\end{scope}
+}
+
 \newcommand{\unotBunopY}[2]{%
 \begin{scope}[style/.expanded=\polarshift{#1}{#2}]
   \node (PY) [punto,fill=yellow] at ({90 + (360/2)*1}:0.4) {};
@@ -1998,6 +2090,14 @@
   \node (TR) [tri,fill=red] at ({90 + (360/3)*1}:0.4) {};
   \node (TB) [tri,fill=blue] at ({90}:0.4) {};
   \node (Tr) [tri,fill=black] at ({90 + (360/3)*2}:0.4) {};
+\end{scope}
+}
+
+\newcommand{\unotBunotRp}[2]{%
+\begin{scope}[style/.expanded=\polarshift{#1}{#2}]
+  \node (TR) [tri,fill=red] at ({90 + (360/3)*1}:0.4) {};
+  \node (TB) [tri,fill=blue] at ({90}:0.4) {};
+  \node (Pr) [punto,fill=black] at ({90 + (360/3)*2}:0.4) {};
 \end{scope}
 }
 
