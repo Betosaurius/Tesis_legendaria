@@ -40,11 +40,11 @@ intuci\'on que nos dejan las estrategias desarrolladas nos llevan a pensar en
 las siguientes dos conjeturas.
 
 \begin{conjetura}
-    Para toda $k\geq 2$, $1<n<2k-1$ y $m\geq 1$ suficientemente grande para que
+    Para toda $k\geq 2$, $1\leq n<2k-1$ y $m\geq 1$ suficientemente grande para que
     $k\leq \left\lfloor\frac{\abs{V_{S_{n,m}}}}{2}\right\rfloor$, se tiene que
     \[
-        c\paren{\t{k}{S_{n,m}}} = \left\lceil \frac{\left \lceil \frac{n-1}{2}
-        \right \rceil + k}{2} \right \rceil.
+        c\paren{\t{k}{S_{n,m}}} = \left\lceil \frac{k + 1 + \left \lfloor \frac{n-1}{2}
+        \right \rfloor}{2} \right \rceil.
     \]
 \end{conjetura}
 
@@ -52,7 +52,12 @@ las siguientes dos conjeturas.
     Si $P$ denota la gr\'afica de Petersen, entonces $c(\t{2}{P})=4$.
 \end{conjetura}
 
-Por otro lado creemos que la demostraci\'on dada para \cref{lem:retracto_triada}
+En particular para la primera conjetura, esta concuerda con nuestras
+exploraciones obtenidas en gr\'aficas de fichas de triadas, mientras que para
+trayectorias, esta fue probada por Bruno Amezcua en su tesis de licenciatura.
+
+Por otro lado creemos que la demostraci\'on dada para
+\cref{lem:retracto_triada}
 puede extenderse para demostrar la siguiente conjetura
 
 \begin{conjetura}
@@ -70,7 +75,7 @@ A manera de resumen, se presenta una tabla con las cotas encontradas para el
 n\'umero policiaco de gr\'aficas de fichas de \'arboles, haciendo \'enfasis en
 que para cada resultado se obtuvo una estrategia de escape o una de captura.
 
-\begin{table}[h]
+\begin{table}[H]
     \centering
     \resizebox{\textwidth}{!}{%
     \begin{tabular}{|c|ccccc|}
@@ -85,4 +90,9 @@ que para cada resultado se obtuvo una estrategia de escape o una de captura.
     {\color[HTML]{333333} \begin{tabular}[c]{@{}c@{}}\phantom{M}\\ $\alpha' < k \leq \frac{\abs{V}}{2}$\\ \phantom{M}\end{tabular}} & \multicolumn{1}{c|}{\cellcolor[HTML]{EFEFEF}{\color[HTML]{333333} N/A}}   & \multicolumn{1}{c|}{\cellcolor[HTML]{EFEFEF}{\color[HTML]{333333} $\leq k$}}                                                                                                & \multicolumn{1}{c|}{\cellcolor[HTML]{EFEFEF}{\color[HTML]{333333} N/A}}                                                                                                              & \multicolumn{1}{c|}{\cellcolor[HTML]{EFEFEF}{\color[HTML]{333333} $\leq k$}}                                                                                                     & {\color[HTML]{333333} $\left\lfloor \frac{k}{2}\right \rfloor \leq$, $\leq k$}                                  \\ \hline
     \end{tabular}%
     }
-    \end{table}
+    \captionsetup{font=tiny}
+    \captionof{table}{En cada cuadrante de la tabla se muestran el n\'umero
+    policiaco (o las cotas obtenidas separadas por comas) de la gr\'afica de $k$
+    fichas asociada a la gr\'afica en la columna dada, clasificadas por
+    renglones seg\'un el intervalo en el que se encuentre $k$.}
+\end{table}

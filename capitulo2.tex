@@ -2580,18 +2580,19 @@ de $k$ en las gr\'aficas de fichas de las triadas.
     \]
 \end{proof}
 
-Cambiamos ahora nuestro enfoque para determinar una cota superior para el
-n\'umero policiaco de la gr\'afica de $k$ fichas de una estrella subdividida de
-$n$ ramas cuando $k\geq k_n$. En este caso daremos una estrategia para $C$ sobre
-la gr\'afica de $3$ fichas de una triada, cuya $k_n=3$. Como ya se mencion\'o en
-\cref{cor:cota-sup-1}, $c\paren{\t{k}{S}}\leq k$ para cualquier $1\leq k\leq
-\left\lfloor\frac{\abs{V_S}}{2}\right\rfloor$. Por tanto, trataremos de mejorar
-dicha cota para las triadas.
+Cambiamos nuestro enfoque hacia determinar una cota superior para el n\'umero
+policiaco de la gr\'afica de $k$ fichas de una estrella subdividida de $n$ ramas
+cuando $k\geq k_n$. Como ya se mencion\'o en \cref{cor:cota-sup-1},
+$c\paren{\t{k}{S}}\leq k$ para cualquier $1\leq k\leq
+\left\lfloor\frac{\abs{V_S}}{2}\right\rfloor$. Por tanto, nuestro objetivo es
+mejorar dicha cota en caso de ser posible.
 
-Para ello nos apoyaremos de la estrategia expuesta en
-\cref{teo:numero-de-policia-estrella-subdivisiones}, la cual probaremos a
-continuaci\'on que es efectiva para capturar $k$ fichas en cualquier gr\'afica
-de m\'as de $k$ fichas de un \'arbol.
+Para ello, creemos que la estrategia de captura dada en
+\cref{teo:numero-de-policia-estrella-subdivisiones} puede ser de gran ayuda,
+pues el siguiente resultado evidencia que, si $C$ tiene $k$ polic\'ias, este
+eventualmente logra capturar $k$ fichas de $r$ con uno de ellos, notando que
+esto no implica el final del juego pues puede que se est\'e jugando sobre la
+gr\'afica de $n$ fichas de una estrella, con $n>k$.
 
 \begin{proposicion}
 \label{pro:k-captura}
@@ -2653,8 +2654,21 @@ de m\'as de $k$ fichas de un \'arbol.
 Cuando $n=k$, el lema anterior da una estrategia de captura ligeramente distinta
 a la descrita en \cref{teo:numero-de-policia-estrella-subdivisiones}. Ello nos
 provee de una mejor comprensi\'on de la estrategia expuesta, notando que esta no
-depende de las prioridades inducidas por las funciones objetivo de cada
+depende de las ``prioridades'' inducidas por las funciones objetivo de cada
 polic\'ia, sino de que cada polic\'ia ignora una ficha distinta.
+
+Creemos que la estrategia mencionada puede ser de utilidad para describir una
+que, posiblemente con m\'as polic\'ias, termine por capturar a $R$. En una
+primera instancia, si $n>k$ en la proposici\'on anterior, los primeros $k$
+polic\'ias podr\'ian dedicarse a capturar $k$ fichas del ladr\'on, todos
+capturando un $k$ conjunto distinto. En tanto, el resto de polic\'ias (menos de
+$n-k$ de modo que el n\'umero total de polic\'ias es menor a $n$) evitan que el
+ladr\'on se libere de las $k$ capturas de alguno de los primeros $k$ polic\'ias,
+a la vez que permiten que al menos uno entre $c_1,\dots, c_k$ se acerque
+efectivamente a capturarle. No obstante, creemos que la cantidad adicional de
+polic\'ias necesarios depende de el n\'umero de ramas en la estrella, por lo que
+habr\'ia que hacer un an\'alisis respecto al grado del v\'ertice $0$ y su
+influencia en la estrategia.
 
 \section{\'Arboles}
 \label{sec:arboles}
@@ -2670,11 +2684,11 @@ estrella con subdivisiones, el cual vimos que cambiaba el n\'umero de polic\'ias
 necesarios dependiendo de si se ten\'ian al menos tantas ramas como el doble de
 fichas menos uno. El an\'alogo a esta condici\'on para \'arboles es la
 existencia de un v\'ertice cuyo grado sea al menos dos veces el n\'umero de
-fichas menos uno. En efecto, si $k$ es un entero positivo, $T$ es un \'arbol y
-$v$ es un v\'ertice tal que $d(v)\geq 2k-1$, entonces $N\c{v}$ induce una
-estrella con al menos $2k-1$ picos. As\'i, en virtud d\cref{cor:cota-inf-arbol},
-$k$ es una cota inferior para el n\'umero policiaco de $\t{k}{T}$ cuando
-$\Delta_T\geq 2k-1$.
+fichas menos uno; este ser\'a el \'unico caso a explorar en la secci\'on. En
+efecto, si $k$ es un entero positivo, $T$ es un \'arbol y $v$ es un v\'ertice
+tal que $d(v)\geq 2k-1$, entonces $N\c{v}$ induce una estrella con al menos
+$2k-1$ picos. As\'i, en virtud d\cref{cor:cota-inf-arbol}, $k$ es una cota
+inferior para el n\'umero policiaco de $\t{k}{T}$ cuando $\Delta_T\geq 2k-1$.
 
 Por \'ultimo, tal como se anticip\'o en \cref{sec:estrellassub}, adjuntamos a
 continuaci\'on el algoritmo de captura para la gr\'afica de $k$ fichas de una
