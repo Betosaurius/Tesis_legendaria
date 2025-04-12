@@ -17,12 +17,13 @@ subconjunto de $\binom{V}{1} \cup \binom{V}{2}$, donde
 \[
   \binom{V}{k} = \l{e\subseteq V \colon\ \abs{e} = k}.
 \]
-Llamamos v\'ertices de $G$ a los elementos de $V_G$ y orden de $G$ a la
-cardinalidad de dicho conjunto. De forma similar, llamamos aristas de $G$ y
-tama\~no de $G$ a los elementos y cardinalidad de $E_G$ respectivamente. Por
-convenci\'on, si $e={x,y}$ con $x,y\in V_G$ distintos, denotamos por $xy$ a la
-arista $e$. Decimos que una gr\'afica $G$ es trivial si tiene orden $1$ y
-tama\~no $0$, de lo contrario, esta es no trivial.
+Llamamos \textbf{v\'ertices}\index{v\'ertice} de $G$ a los elementos de $V_G$ y
+\indice{orden} de $G$ a la cardinalidad de dicho conjunto. De forma similar,
+llamamos \textbf{aristas}\index{arista} de $G$ y \indice{tama\~no} de $G$ a los
+elementos y cardinalidad de $E_G$ respectivamente. Por convenci\'on, si
+$e={x,y}$ con $x,y\in V_G$ distintos, denotamos por $xy$ a la arista $e$.
+Decimos que una gr\'afica $G$ es \indiceSub{gr\'afica}{trivial} si tiene orden
+$1$ y tama\~no $0$, de lo contrario, esta es \indiceSub{gr\'afica}{no trivial}.
 
 En busca de facilitar el estudio de las propiedades de las gr\'aficas,
 representamos estas estructuras a trav\'es de un dibujo en el plano, donde el
@@ -33,13 +34,13 @@ que une los puntos correspondientes a los v\'ertices en los que incide (ver
 \begin{figure}[ht!]
   \centering
   \begin{tikzpicture}
-    \begin{scope}[scale=2.5]
+    \begin{scope}[scale=1]
       \node (0) [vertex2, label=180:$v_1$] at (0,0){};
-      \node (1) [vertex2, label=90:$v_2$]  at (1,0){};
-      \begin{scope}[xshift=2cm]
-      \node (2) [vertex2,label=90:$v_3$]   at (270:1){};
-      \node (3) [vertex2,label=0:$v_4$]    at (0:1){};
-      \node (4) [vertex2,label=90:$v_5$]   at (90:1){};
+      \node (1) [vertex2, label=90:$v_2$]  at (2,0){};
+      \begin{scope}[xshift=4cm]
+        \node (2) [vertex2,label=90:$v_3$, below right=2cm of 1] {};
+        \node (3) [vertex2,label=0:$v_4$ , above right=2cm of 2] {};
+        \node (4) [vertex2,label=90:$v_5$, above right=2cm of 1] {};
       \end{scope}
       
       \draw [myloop,in=60,out=120,looseness=12]
@@ -47,25 +48,28 @@ que une los puntos correspondientes a los v\'ertices en los que incide (ver
       \draw [myloop,in=240,out=300,looseness=12]
             (2) to node[below]{$e_7$} (2);
       
-      \draw [edge]  (0) to node [midway, above=5pt] {$e_2$} (1);
-      \draw [edge]  (1) to node [midway, below=5pt] {$e_3$} (2);
-      \draw [edge]  (2) to node [midway, below=5pt] {$e_4$} (3);
-      \draw [edge]  (3) to node [midway, above=5pt] {$e_5$} (4);
-      \draw [edge]  (4) to node [midway, above=5pt] {$e_6$} (1);
+      \draw [edge]  (0) to node [midway, above] {$e_2$} (1);
+      \draw [edge]  (1) to node [midway, below left] {$e_3$} (2);
+      \draw [edge]  (2) to node [midway, below right] {$e_4$} (3);
+      \draw [edge]  (3) to node [midway, above right] {$e_5$} (4);
+      \draw [edge]  (4) to node [midway, above left] {$e_6$} (1);
     \end{scope}
     \end{tikzpicture}
+  \captionsetup{font=footnotesize}
   \caption{El dibujo de una gr\'afica $G$.}
   \label{fig:grafica-dibujo}
   \end{figure}
 
-Dada una arista $e$ en $E_G$, decimos que un v\'ertice $u$ incide en $e$, y que
-$e$ incide en $u$, si $u\in e$. Decimos que $e,f\in E_G$ distintas son
-incidentes si existe $u\in V_G$ incidente en ambas $e$ y $f$, y decimos que
-estas son no incidentes en caso contrario. Dos v\'ertices distintos $u$ y $v$
-que inciden en una misma arista son adyacentes, de manera que $u$ es vecino de
-$v$ y viceversa. En \cref{fig:grafica-dibujo}, $v_1$ es incidente en $e_2$ y
-$e_2$ es incidente en $v_1$, mientras que $e_1$ y $e_2$ son aristas incidentes y
-$v_1$ y $v_2$ son v\'ertices adyacentes.
+Dada una arista $e$ en $E_G$, decimos que un v\'ertice $u$ \textbf{incide}
+\index{v\'ertice!incidente en arista} en $e$, y que $e$ incide en $u$, si $u\in
+e$. Decimos que $e,f\in E_G$ distintas son \textbf{incidentes}
+\index{arista!incidentes} si existe $u\in V_G$ incidente en ambas $e$ y $f$, y
+decimos que estas son no incidentes en caso contrario. Dos v\'ertices distintos
+$u$ y $v$ que inciden en una misma arista son \indiceSub{v\'ertice}{adyacentes},
+de manera que $u$ es \textit{vecino} de $v$ y viceversa. En
+\cref{fig:grafica-dibujo}, $v_1$ es incidente en $e_2$ y $e_2$ es incidente en
+$v_1$, mientras que $e_1$ y $e_2$ son aristas incidentes y $v_1$ y $v_2$ son
+v\'ertices adyacentes.
 
 Si $e\in E_G$ es tal que existe $u\in V_G$ con $e=\l{u}$, decimos que $e$ es un
 \indice{lazo} y $u$ tiene un lazo, mientras que $G$ es
@@ -96,7 +100,7 @@ V_H$. Adicionalmente, decimos que $H$ es una subgr\'afica
 $e\subseteq V_H$, $e\in E_H$. Alternativamente, si $\varnothing\neq S\subseteq
 V_G$, denotamos por $G[S]$ a la subgr\'afica inducida de $G$ cuyo conjunto de
 v\'ertices es $S$ y cuyo conjunto de aristas tiene a todas las aristas
-incidentes en al menos un v\'ertice en $S$. De forma similar, para $\varnothing
+incidentes \'unicamente en v\'ertice en $S$. De forma similar, para $\varnothing
 \ne E \subseteq E_G$, denotamos por $G[E]$ a la subgr\'afica de $G$ cuyo
 conjunto de aristas es $E$ y su conjunto de v\'ertices son todos aquellos
 v\'ertices tales que inciden en al menos una arista de $E$.
@@ -104,13 +108,13 @@ v\'ertices tales que inciden en al menos una arista de $E$.
 \begin{figure}[ht!]
   \centering
   \begin{tikzpicture}
-    \begin{scope}[scale=2.5]
+    \begin{scope}[scale=1]
       \node (0) [vertex2, label=180:$v_1$,fill=red] at (0,0){};
-      \node (1) [vertex2, label=90:$v_2$, fill=red]  at (1,0){};
-      \begin{scope}[xshift=2cm]
-      \node (2) [vertex2,label=90:$v_3$, fill=blue]   at (270:1){};
-      \node (3) [vertex2,label=0:$v_4$, fill=blue]    at (0:1){};
-      \node (4) [vertex2,label=90:$v_5$]   at (90:1){};
+      \node (1) [vertex2, label=90:$v_2$, fill=red]  at (2,0){};
+      \begin{scope}[xshift=4cm]
+      \node (2) [vertex2,label=90:$v_3$, fill=blue, below right=2cm of 1] {};
+      \node (3) [vertex2,label=0:$v_4$, fill=blue, above right=2cm of 2] {};
+      \node (4) [vertex2,label=90:$v_5$, above right=2cm of 1] {};
       \end{scope}
       
       \draw [myloop,in=60,out=120,looseness=12]
@@ -118,13 +122,14 @@ v\'ertices tales que inciden en al menos una arista de $E$.
       \draw [myloop,in=240,out=300,looseness=12, blue]
             (2) to node[below]{$e_7$} (2);
       
-      \draw [edge, dashed, red]  (0) to node [midway, above=5pt] {$e_2$} (1);
-      \draw [edge]  (1) to node [midway, below=5pt] {$e_3$} (2);
-      \draw [edge, blue, dotted]  (2) to node [midway, below=5pt] {$e_4$} (3);
-      \draw [edge]  (3) to node [midway, above=5pt] {$e_5$} (4);
-      \draw [edge]  (4) to node [midway, above=5pt] {$e_6$} (1);
+      \draw [edge, dashed, red]  (0) to node [midway, above] {$e_2$} (1);
+      \draw [edge]  (1) to node [midway, below left] {$e_3$} (2);
+      \draw [edge, blue, dotted]  (2) to node [midway, below right] {$e_4$} (3);
+      \draw [edge]  (3) to node [midway, above right] {$e_5$} (4);
+      \draw [edge]  (4) to node [midway, above left] {$e_6$} (1);
     \end{scope}
     \end{tikzpicture}
+  \captionsetup{font=footnotesize}
   \caption{La gr\'afica determinada por los v\'ertices y arista rojas, $H$, es
    una subgr\'afica de $G$. No obstante, esta no es inducida pues
    $G[\l{v_1,v_2}]$ tambi\'en incluye el lazo $e_1$. Por otro lado
@@ -264,7 +269,7 @@ tal que $\Delta_G\leq 2$.
 
 \begin{teorema}
 \label{teo:compconexa}
-  Si $G$ es una gr\'afica con $\delta_G\leq 2$ y $C$ es una componente conexa de
+  Si $G$ es una gr\'afica con $\Delta_G\leq 2$ y $C$ es una componente conexa de
   $G$, entonces $C$ es una trayectoria o un ciclo.
 \end{teorema}
 
@@ -290,29 +295,30 @@ tal que $\Delta_G\leq 2$.
 \section{\'Arboles}
 
 Una gr\'afica $G$ es un \textbf{\'arbol}\index{arbol@\'arbol} si esta es conexa
-y ac\'iclica. De esta definici\'on y d\cref{pro:trayectoria-ciclo} se tiene el
-siguiente corolario inmediato.
+y ac\'iclica (ver \cref{fig:grafica-dibujo3}). Por ser ac\'iclica, autom\'aticamente tenemos que $G$ no tiene
+lazos. M\'as a\'un, de \cref{pro:trayectoria-ciclo} se tiene el siguiente
+corolario inmediato.
 
 \begin{corolario}
 \label{cor:unitray}
-  En un \'arbol $T$, para cualesquiera $u$ y $v$ v\'ertices existe una \'unica
-  $uv$-trayectoria en $T$.
+  Sea $T$ un \'arbol, y sean $u$ y $v$ v\'ertices de $T$. Entonces existe una
+  \'unica $uv$-trayectoria en $T$.
 \end{corolario}
 
 \Cref{teo:grado-ciclo} implica que en un \'arbol no trivial existe al menos un
 v\'ertice de grado $1$. Llamamos \textbf{hojas}\index{hoja} a los v\'ertices de
 grado $1$ en un \'arbol.
 
-\begin{figure}[ht!]
+\begin{figure}[H]
   \centering
   \begin{tikzpicture}
-    \begin{scope}[scale=2.5]
+    \begin{scope}[scale=1]
       \node (0) [vertex2, label=180:$v_1$, fill=red] at (0,0){};
-      \node (1) [vertex2, label=90:$v_2$, fill=red]  at (1,0){};
-      \begin{scope}[xshift=2cm]
-      \node (2) [vertex2,label=90:$v_3$, fill=red]   at (270:1){};
-      \node (3) [vertex2,label=0:$v_4$, fill=red]    at (0:1){};
-      \node (4) [vertex2,label=90:$v_5$, fill=red]   at (90:1){};
+      \node (1) [vertex2, label=90:$v_2$, fill=red]  at (2,0){};
+      \begin{scope}[xshift=4cm]
+      \node (2) [vertex2,label=90:$v_3$, fill=red, below right=2cm of 1] {};
+      \node (3) [vertex2,label=0:$v_4$, fill=red, above right=2cm of 2] {};
+      \node (4) [vertex2,label=90:$v_5$, fill=red, above right=2cm of 1] {};
       \end{scope}
       
       \draw [myloop,in=60,out=120,looseness=12]
@@ -320,25 +326,26 @@ grado $1$ en un \'arbol.
       \draw [myloop,in=240,out=300,looseness=12]
             (2) to node[below]{$e_7$} (2);
       
-      \draw [edge, red]  (0) to node [midway, above=5pt] {$e_2$} (1);
-      \draw [edge, red]  (1) to node [midway, below=5pt] {$e_3$} (2);
-      \draw [edge, red]  (2) to node [midway, below=5pt] {$e_4$} (3);
-      \draw [edge, red]  (3) to node [midway, above=5pt] {$e_5$} (4);
-      \draw [edge]  (4) to node [midway, above=5pt] {$e_6$} (1);
+      \draw [edge, red]  (0) to node [midway, above] {$e_2$} (1);
+      \draw [edge, red]  (1) to node [midway, below left] {$e_3$} (2);
+      \draw [edge, red]  (2) to node [midway, below right] {$e_4$} (3);
+      \draw [edge, red]  (3) to node [midway, above right] {$e_5$} (4);
+      \draw [edge]  (4) to node [midway, above left] {$e_6$} (1);
     \end{scope}
     \end{tikzpicture}
-  \caption{Los aristas de rojo inducen la gr\'afica $G[\l{e_2,e_3,e_4,e_5}]$, la
+  \captionsetup{font=footnotesize}
+  \caption{Las aristas de rojo inducen la gr\'afica $G[\l{e_2,e_3,e_4,e_5}]$, la
   cual es un \'arbol y tiene a $v_1$ y $v_5$ como hojas.}
   \label{fig:grafica-dibujo3}
   \end{figure}
 
 Dada una gr\'afica $G$, podemos a\~nadir o eliminar v\'ertices a $G$ para
-generar de subgr\'afica a partir de esta. Si $u\in V_G$, y
+generar una nueva gr\'afica a partir de $G$. Si $u\in V_G$, y
 $V_G\setminus\l{u}\neq \varnothing$ denotamos por $G-u$ a la subgr\'afica
 inducida $G[V_G\setminus \l{u}]$. Similarmente, si $e$ es una arista con
 $e=\l{x,y}$, decimos que $H$ se obtiene de $G$ al subdividir la arista $e$ si
-$V_H=V_G\cup\l{v_e}$ con $v_e\notin V_G$ y $E_H=E_G\cup \l{v_ex, v_ey}
-\setminus \l{xy}$.
+$V_H=V_G\cup\l{v_e}$ con $v_e\notin V_G$ y $E_H=E_G\cup \l{v_ex, v_ey} \setminus
+\l{xy}$.
 
 Una observaci\'on inmediata es que si $x$ es una hoja de $T$ y $P$ es una
 trayectoria en $T$ que no utiliza a $x$ entonces $P$ es una trayectoria en
@@ -349,35 +356,29 @@ claro que $T-x$ tambi\'en lo es, por lo que tiene lugar el siguiente corolario.
 
 \begin{corolario}
 \label{cor:eliminacion-arbol}
-  Si $T$ un \'arbol y $x$ una de sus hojas, entonces $T-x$ es un \'arbol.
+  Si $T$ es un \'arbol y $x$ es una de sus hojas, entonces $T-x$ es un \'arbol.
 \end{corolario}
 
 De la misma manera, si $e$ es una arista de $T$, la gr\'afica obtenida de la
 subdivisi\'on de $e$, $T'$ tambi\'en da lugar a un \'arbol pues todas las
 trayectorias en $T$ que no usaban a $e$ siguen siendo trayectorias en $T'$,
 mientras que las que la usaban se convierten en trayectorias de un v\'ertice
-m\'as al usar las dos aristas incidentes en $v_e$. En tanto, de haber un ciclo
-en $T'$, este utilizar\'ia a $v_e$ y a sus dos aristas, por lo que un ciclo de
-un v\'ertice menos existir\'ia en $T$, contradiciendo que este es un \'arbol.
-As\'i pues, se llega al siguiente corolario.
-
-\begin{corolario}
-\label{cor:subdivision-arbol}
-  Si $T$ es un \'arbol y $e$ una de sus aristas, entonces la gr\'afica obtenida
-  al subdividir $e$ es un \'arbol.
-\end{corolario}
+m\'as al usar las dos aristas incidentes en $v_e$ (ver
+\cref{fig:grafica-dibujo4}). En tanto, de haber un ciclo en $T'$, este
+utilizar\'ia a $v_e$ y a sus dos aristas, por lo que un ciclo de un v\'ertice
+menos existir\'ia en $T$, contradiciendo que este es un \'arbol.
 
 \begin{figure}[ht!]
   \centering
   \begin{tikzpicture}
-    \begin{scope}[scale=2.5]
+    \begin{scope}[scale=1]
       \node (0) [vertex2, label=180:$v_1$, fill=blue] at (0,0){};
-      \node (1) [vertex2, label=90:$v_2$, fill=blue]  at (1,0){};
-      \begin{scope}[xshift=2cm]
-      \node (2) [vertex2,label=180:$v_3$, fill=red]   at (270:1){};
-      \node (3) [vertex2,label=0:$v_4$, fill=red]    at (0:1){};
-      \node (4) [vertex2,label=90:$v_5$, fill=blue!50!white]   at (90:1){};
-      \node (5) [vertex2,label=135:$v_6$, fill=red]   at (315:0.707){};
+      \node (1) [vertex2, label=90:$v_2$, fill=blue]  at (2,0){};
+      \begin{scope}[xshift=4cm]
+      \node (2) [vertex2,label=180:$v_3$, fill=red, below right=2cm of 1] {};
+      \node (3) [vertex2,label=0:$v_4$, fill=red, above right=2cm of 2] {};
+      \node (4) [vertex2,label=90:$v_5$, fill=blue!50!white, above right=2cm of 1] {};
+      \node (5) [vertex2,label=315:$v_6$, fill=red, above right=0.75cm of 2] {};
       \end{scope}
       
       \draw [myloop,in=60,out=120,looseness=12]
@@ -385,38 +386,46 @@ As\'i pues, se llega al siguiente corolario.
       \draw [myloop,in=240,out=300,looseness=12]
             (2) to node[below]{$e_7$} (2);
       
-      \draw [edge, blue]  (0) to node [midway, above=5pt] {$e_2$} (1);
-      \draw [edge]  (1) to node [midway, below=5pt] {$e_3$} (2);
-      \draw [edge, red]  (2) to node [midway, above left=2pt] {$v_3v_6$} (5);
-      \draw [edge, red]  (5) to node [midway, below right=2pt] {$v_6v_4$} (3);
-      \draw [edge]  (3) to node [midway, above=5pt] {$e_5$} (4);
-      \draw [edge, blue!50!white, dashed]  (4) to node [midway, above=5pt] {$e_6$} (1);
+      \draw [edge, blue]  (0) to node [midway, above] {$e_2$} (1);
+      \draw [edge]  (1) to node [midway, below left] {$e_3$} (2);
+      \draw [edge, red]  (2) to node [midway, above left] {$v_3v_6$} (5);
+      \draw [edge, red]  (5) to node [midway, above left] {$v_6v_4$} (3);
+      \draw [edge]  (3) to node [midway, above right] {$e_5$} (4);
+      \draw [edge, blue!50!white, dashed]  (4) to node [midway, above left] {$e_6$} (1);
     \end{scope}
     \end{tikzpicture}
+  \captionsetup{font=footnotesize}
   \caption{Al \'arbol $G[\l{e_2,e_6}]$ se le elimina la hoja $v_5$, resultado en
   un \'arbol. Por otra parte, al \'arbol $G[\l{e_4}]$ se le subdivide la arista
   $e_4$ para generar otro \'arbol.}
   \label{fig:grafica-dibujo4}
 \end{figure}
+As\'i pues, se llega al siguiente corolario.
+
+\begin{corolario}
+\label{cor:subdivision-arbol}
+  Si $T$ es un \'arbol y $e$ es una de sus aristas, entonces la gr\'afica obtenida
+  al subdividir $e$ es un \'arbol.
+\end{corolario}
 
 \section{Emparejamientos}
 
 Dada una gr\'afica $G$, decimos que $S\subseteq V_G$ es un conjunto
-\indice{dominante} de $G$ si toda v\'ertice fuera de $S$ es adyacente a al menos
+\indice{dominante} de $G$ si todo v\'ertice fuera de $S$ es adyacente a al menos
 un v\'ertice de $S$; al m\'inimo de las cardinalidades sobre todos los conjuntos
 dominantes de $G$ le llamamos \indice{n\'umero de dominancia} y lo denotamos por
 $\gamma(G)$. Similarmente, $M\subseteq E_G$ es un \indice{emparejamiento} en $G$
 si $M$ no contiene lazos y cualesquiera dos aristas $e$ y $f$ en $M$ son no
 incidentes. Si $M$ es un emparejamiento, decimos que los dos extremos de una
-arista en $M$ est\'an emparejados bajo $M$, mientras que, para cualquier
-v\'ertice incidente en una arista de $M$, decimos que este est\'a saturado por
-$M$. Un \textbf{emparejamiento perfecto}\index{emparejamiento!perfecto} es un
-emparejamiento que satura a todos los v\'ertices de la gr\'afica, mientras que
-un emparejamiento es \indiceSub{emparejamiento}{m\'aximo} si satura la mayor
-cantidad de v\'ertices de entre todos los emparejamientos. Denotamos por
-$\alpha'(G)$ al \textbf{n\'umero de
-emparejamiento}\index{emparejamiento!n\'umero de} de $G$, es decir, la
-cardinalidad de un emparejamiento m\'aximo en $G$.
+arista en $M$ est\'an \textit{emparejados} bajo $M$, mientras que, para
+cualquier v\'ertice incidente en una arista de $M$, decimos que el v\'ertice
+est\'a \indiceSub{v\'ertice}{saturado} por $M$. Un \textbf{emparejamiento
+perfecto}\index{emparejamiento!perfecto} es un emparejamiento que satura a todos
+los v\'ertices de la gr\'afica, mientras que un emparejamiento es
+\indiceSub{emparejamiento}{m\'aximo} si satura la mayor cantidad de v\'ertices
+de entre todos los emparejamientos. Denotamos por $\alpha'(G)$ al
+\textbf{n\'umero de emparejamiento}\index{emparejamiento!n\'umero de} de $G$, es
+decir, la cardinalidad de un emparejamiento m\'aximo en $G$.
 
 Dado un emparejamiento $M$ en una gr\'afica $G$, definimos una
 $M$-\textbf{trayectoria} \indiceSub{trayectoria}{alternante} en $G$ como una
@@ -429,13 +438,13 @@ $M$-\textbf{trayectoria} \indiceSub{trayectoria}{aumentable} (ver
 \begin{figure}[ht!]
   \centering
   \begin{tikzpicture}
-    \begin{scope}[scale=2.5]
+    \begin{scope}[scale=1]
       \node (0) [vertex2, label=180:$v_1$, fill=blue] at (0,0){};
-      \node (1) [vertex2, label=90:$v_2$, node split half=90]  at (1,0){};
-      \begin{scope}[xshift=2cm]
-      \node (2) [vertex2,label=90:$v_3$, fill=red]   at (270:1){};
-      \node (3) [vertex2,label=0:$v_4$, fill=red]    at (0:1){};
-      \node (4) [vertex2,label=90:$v_5$, fill=red]   at (90:1){};
+      \node (1) [vertex2, label=90:$v_2$, node split half=90]  at (2,0){};
+      \begin{scope}[xshift=4cm]
+      \node (2) [vertex2,label=90:$v_3$, fill=red, below right=2cm of 1] {};
+      \node (3) [vertex2,label=0:$v_4$, fill=red, above right=2cm of 2] {};
+      \node (4) [vertex2,label=90:$v_5$, fill=red, above right=2cm of 1] {};
       \end{scope}
       
       \draw [myloop,in=60,out=120,looseness=12]
@@ -443,14 +452,14 @@ $M$-\textbf{trayectoria} \indiceSub{trayectoria}{aumentable} (ver
       \draw [myloop,in=240,out=300,looseness=12]
             (2) to node[below]{$e_7$} (2);
       
-      \draw [edge, blue]  (0) to node [midway, above=5pt] {$e_2$} (1);
-      \draw [edge]  (1) to node [midway, below=5pt] {$e_3$} (2);
-      \draw [edge, red]  (2) to node [midway, below right=2pt] {$e_4$} (3);
-      \draw [edge]  (3) to node [midway, above=5pt] {$e_5$} (4);
-      \draw [edge, red]  (4) to node [midway, above=5pt] {$e_6$} (1);
+      \draw [edge, blue]  (0) to node [midway, above] {$e_2$} (1);
+      \draw [edge]  (1) to node [midway, below left] {$e_3$} (2);
+      \draw [edge, red]  (2) to node [midway, below right] {$e_4$} (3);
+      \draw [edge]  (3) to node [midway, above right] {$e_5$} (4);
+      \draw [edge, red]  (4) to node [midway, above left] {$e_6$} (1);
     \end{scope}
     \end{tikzpicture}
-  \captionsetup{font=normalsize}
+  \captionsetup{font=footnotesize}
   \caption{El conjunto de aristas azules, $\l{e_2}$, es un emparejamiento $M$ en
   $G$ que empareja a $v_1$ y $v_2$ y los satura. M\'as a\'un, $M$ no es m\'aximo
   pues $M^*=\l{e_4,e_6}$ es un emparejamiento de cardinalidad mayor. Este s\'i
@@ -462,6 +471,7 @@ $M$-\textbf{trayectoria} \indiceSub{trayectoria}{aumentable} (ver
   \label{fig:grafica-dibujo5}
 \end{figure}
 
+\newpage
 El siguiente teorema relaciona la existencia de $M$-trayectorias aumentables con
 los emparejamientos m\'aximos.
 
@@ -543,22 +553,23 @@ las partes de la bipartici\'on.
   \begin{figure}[ht!]
     \centering
     \begin{tikzpicture}
-      \begin{scope}[scale=2.5]
+      \begin{scope}[scale=1]
         \node (0) [vertex2, label=180:$u$, fill=blue] at (0,0){};
-        \node (1) [vertex2, label=90:$v_2$, fill=red]  at (1,0){};
-        \begin{scope}[xshift=2cm]
-        \node (2) [vertex2,label=90:$v_3$, fill=blue]   at (270:1){};
-        \node (3) [vertex2,label=0:$v_4$, fill=red]    at (0:1){};
-        \node (4) [vertex2,label=90:$z$, fill=blue]   at (90:1){};
+        \node (1) [vertex2, label=90:$v_2$, fill=red]  at (2,0){};
+        \begin{scope}[xshift=4cm]
+        \node (2) [vertex2,label=90:$v_3$, fill=blue, below right=2cm of 1] {};
+        \node (3) [vertex2,label=0:$v_4$, fill=red, above right=2cm of 2] {};
+        \node (4) [vertex2,label=90:$z$, fill=blue, above right=2cm of 1] {};
         \end{scope}
         
-        \draw [edge]  (0) to node [midway, above=5pt] {$e_1$} (1);
-        \draw [edge]  (1) to node [midway, below=5pt] {$e_2$} (2);
-        \draw [edge, verdeAzulado]  (2) to node [midway, below right=2pt] {$e_3$} (3);
-        \draw [edge]  (3) to node [midway, above=5pt] {$e_4$} (4);
-        \draw [edge, verdeAzulado]  (4) to node [midway, above=5pt] {$e_5$} (1);
+        \draw [edge]  (0) to node [midway, above] {$e_1$} (1);
+        \draw [edge]  (1) to node [midway, below left] {$e_2$} (2);
+        \draw [edge, verdeAzulado]  (2) to node [midway, below right] {$e_3$} (3);
+        \draw [edge]  (3) to node [midway, above right] {$e_4$} (4);
+        \draw [edge, verdeAzulado]  (4) to node [midway, above left] {$e_5$} (1);
       \end{scope}
       \end{tikzpicture}
+    \captionsetup{font=footnotesize}
     \caption{La gr\'afica $G$ es bipartita con la partici\'on $(X,Y)$ dada por
     la coloraci\'on de los v\'ertices, de manera que los v\'ertices azules
     est\'an en $X$ y los rojos en $Y$. Las aristas verdes forman un
@@ -598,66 +609,67 @@ de las propiedades de $G$. Por tanto, las siguientes definiciones y resultados
 se obtienen de dicho trabajo.
 
 Dado $X$ un conjunto y $k\leq \abs{X}$, decimos que $S\subseteq X$ es un
-$k$-conjunto de $X$ si $\abs{S}=k$. Dada una gr\'afica $G$ sin lazos y $1\leq
-k\leq \abs{V_G}$, definimos la \textbf{gr\'afica de k fichas}\index{gr\'afica!de
+$k$-conjunto de $X$ si $\abs{S}=k$. Adem\'as, dados dos conjuntos $A$ y $B$,
+recordemos que la \indice{diferecia sim\'etrica} de $A$ y $B$, denotada por
+$A\triangle B$, se define como
+\[
+  A \triangle B = (A\setminus B) \cup (B\setminus A).
+\]
+As\'i, dada una gr\'afica $G$ sin lazos y un entero $k$ tal que $1\leq k\leq
+\abs{V_G}$, definimos la \textbf{gr\'afica de k fichas}\index{gr\'afica!de
 fichas} de $G$, $\t{k}{G}$, cuyo conjunto de v\'ertices consiste de todos los
 $k$-conjuntos de $V_G$, mientras que dos de estos $k$-conjuntos, $A$ y $B$, son
 adyacentes si y solo si $A\triangle B\in E_G$ (ver \cref{fig:grafica-fichas}).
-Una observaci\'on inmediata de la definici\'on es que, si $G$ es una gr\'afica
-sin lazos, $G$ es isomorfa a su gr\'afica de $1$ ficha, es decir, $G\cong
-\t{1}{G}$. Esto es inmediato al ver que los $1$-conjuntos de $V_G$ son los
-unitarios de los v\'ertices y que dos $1$-conjuntos son adyacentes en $\t{1}{k}$
-si y solo si su diferencia sim\'ertica es una arista en $G$, es decir, si estos
-son adyacentes en $G$.
 
-\begin{figure}[ht!]
+\begin{figure}[H]
 \centering
-  \begin{tikzpicture} 
-    \triada{4.5cm}{(360/6)*0}
-    \triada{4.5cm}{(360/6)*1}
-    \triada{4.5cm}{(360/6)*2}
-    \triada{4.5cm}{(360/6)*3}
-    \triada{4.5cm}{(360/6)*4}
-    \triada{4.5cm}{(360/6)*5}
+  \begin{tikzpicture}
+    \triadatres{1.8cm}{(360/6)*0}
+    \triadatres{1.8cm}{(360/6)*1}
+    \triadatres{1.8cm}{(360/6)*2}
+    \triadatres{1.8cm}{(360/6)*3}
+    \triadatres{1.8cm}{(360/6)*4}
+    \triadatres{1.8cm}{(360/6)*5}
 
     \foreach \i in {0,2,4}
-      \node (\i) [bola35]  at ({(360/6)*\i}:4.5){};
+      \node (\i) [bola2]  at ({(360/6)*\i}:1.8){};
     \foreach \i in {1,3,5}
-      \node (\i) [bola35] at ({(360/6)*\i}:4.5){};
+      \node (\i) [bola2] at ({(360/6)*\i}:1.8){};
     
     \foreach \i in {0,...,5}
       \draw [edge] let \n1={int(mod(\i+1,6))} in (\i) to (\n1);
 
     \begin{scope}[shift={(2)}]
-      \node (P1) [punto2,fill=black] at ({90}:1) {};
-      \node (P2) [punto2,fill=black] at (0:0) {};
+      \node (P1) [punto3,fill=black] at ({90}:0.4) {};
+      \node (P2) [punto3,fill=black] at (0:0) {};
     \end{scope}
 
     \begin{scope}[shift={(3)}]
-      \node (P3) [punto2,fill=black] at ({90}:1) {};
-      \node (P4) [punto2,fill=black] at ({90 + 360/3}:1) {};
+      \node (P3) [punto3,fill=black] at ({90}:0.4) {};
+      \node (P4) [punto3,fill=black] at ({90 + 360/3}:0.4) {};
     \end{scope}
 
     \begin{scope}[shift={(4)}]
-      \node (P5) [punto2,fill=black] at (0:0) {};
-      \node (P6) [punto2,fill=black] at ({90 + 360/3}:1) {};
+      \node (P5) [punto3,fill=black] at (0:0) {};
+      \node (P6) [punto3,fill=black] at ({90 + 360/3}:0.4) {};
     \end{scope}
 
     \begin{scope}[shift={(5)}]
-      \node (P7) [punto2,fill=black] at ({90 + (360/3)*2}:1) {};
-      \node (P8) [punto2,fill=black] at ({90 + 360/3}:1) {};
+      \node (P7) [punto3,fill=black] at ({90 + (360/3)*2}:0.4) {};
+      \node (P8) [punto3,fill=black] at ({90 + 360/3}:0.4) {};
     \end{scope}
 
     \begin{scope}[shift={(0)}]
-      \node (P9) [punto2,fill=black] at ({90 + (360/3)*2}:1) {};
-      \node (P10) [punto2,fill=black] at (0:0) {};
+      \node (P9) [punto3,fill=black] at ({90 + (360/3)*2}:0.4) {};
+      \node (P10) [punto3,fill=black] at (0:0) {};
     \end{scope}
 
     \begin{scope}[shift={(1)}]
-      \node (P11) [punto2,fill=black] at ({90 + (360/3)*2}:1) {};
-      \node (P12) [punto2,fill=black] at ({90}:1) {};
+      \node (P11) [punto3,fill=black] at ({90 + (360/3)*2}:0.4) {};
+      \node (P12) [punto3,fill=black] at ({90}:0.4) {};
     \end{scope}
   \end{tikzpicture}
+  \captionsetup{font=footnotesize}
   \caption{Se muestra $\t{2}{G}$, la gr\'afica de $2$ fichas de la gr\'afica
   bipartita completa $G[X,Y]$ con $\abs{X}=1$ y $\abs{Y}=3$. Dentro de cada
   v\'ertice de $\t{2}{G}$ se dibuj\'o a $G$ junto con un $2$-conjunto de sus
@@ -666,7 +678,13 @@ son adyacentes en $G$.
   alcanzan al ``deslizar'' una ficha a lo largo de una arista de $G$.}
   \label{fig:grafica-fichas}
 \end{figure}
-  
+
+Una observaci\'on inmediata de la definici\'on es que, si $G$ es una gr\'afica
+sin lazos, $G$ es isomorfa a su gr\'afica de $1$ ficha, es decir, $G\cong
+\t{1}{G}$. Esto es inmediato al ver que los $1$-conjuntos de $V_G$ son los
+unitarios de los v\'ertices y que dos $1$-conjuntos son adyacentes en $\t{1}{G}$
+si y solo si su diferencia sim\'ertica es una arista en $G$, es decir, si estos
+son adyacentes en $G$.
 
 El siguiente lema reduce los casos a estudiar para las gr\'aficas de fichas.
 
@@ -710,18 +728,19 @@ Bonato y Nowakowski realizan una revisi\'on documental de todos los resultados
 que se tienen respecto al juego.
 
 As\'i pues, \indice{polic\'ias y ladrones} es un juego de
-evasi\'on-persecuci\'on sobre una gr\'afica en el cual dos jugadores, $C$ y $R$,
-toman turnos alternadamente para conseguir su objetivo. Por una parte, $C$
-controla a una cantidad fija $c$ de polic\'ias tales que estos ocupan v\'ertices
-no necesariamente distintos de $G$ y, en cada turno, todos se mueven a trav\'es
-de una arista incidente al v\'ertice en el que se encontraban previamente. Por
-otro lado, $R$ controla a un \'unico ladr\'on cuyas reglas de movimiento son las
-mismas que las descritas para los polic\'ias de $C$. Por tanto, el objetivo de
-$C$ es que al menos uno de sus polic\'ias ocupe el mismo v\'ertice que el
-ladr\'on, momento en el que diremos que dicho polic\'ia \indice{captura} a $R$ y
-termina el juego de inmediato con la victoria de $C$. En tanto, el objetivo de
-$R$ es evitar su captura, de manera que $R$ gana el juego si puede hacer esto de
-forma indefinida. Por convenci\'on, $C$ comienza el juego al escoger posiciones
+evasi\'on-persecuci\'on sobre una gr\'afica en el cual dos jugadores, $C$ y $R$
+(del ingl\'es, \textit{cops \& robbers}), toman turnos alternadamente para
+conseguir su objetivo. Por una parte, $C$ controla a una cantidad fija $c$ de
+polic\'ias tales que estos ocupan v\'ertices no necesariamente distintos de $G$
+y, en cada turno, todos se mueven a trav\'es de una arista incidente al
+v\'ertice en el que se encontraban previamente. Por otro lado, $R$ controla a un
+\'unico ladr\'on cuyas reglas de movimiento son las mismas que las descritas
+para los polic\'ias de $C$. Por tanto, el objetivo de $C$ es que al menos uno de
+sus polic\'ias ocupe el mismo v\'ertice que el ladr\'on, momento en el que
+diremos que dicho polic\'ia \indice{captura} a $R$ y termina el juego de
+inmediato con la victoria de $C$. En tanto, el objetivo de $R$ es evitar su
+captura, de manera que $R$ gana el juego si puede hacer esto de forma
+indefinida. Por convenci\'on, $C$ comienza el juego al escoger posiciones
 iniciales para cada uno de sus polic\'ias, mientras que, posteriormente, $R$ en
 su primer turno decide en qu\'e v\'ertice colocar a su ladr\'on.
 
@@ -745,7 +764,7 @@ gr\'aficas como sus versiones sin lazos.
 
 Dada una gr\'afica $G$ de orden $n$, es claro que si $C$ tiene $n$ polic\'ias,
 entonces tiene una estrategia ganadora, a saber, en su primer turno coloca cada
-polic\'ia en un v\'ertice distinto de $G$, de manera que, sin importar que
+polic\'ia en un v\'ertice distinto de $G$, de manera que, sin importar cu\'al
 v\'ertice escoja $R$, este pasa a ser capturado inmediatamente. Por tanto, cabe
 preguntarse, dada una gr\'afica $G$, cu\'al es el m\'inimo n\'umero de
 polic\'ias que $C$ necesita para capturar a $R$. A este par\'ametro lo
@@ -756,6 +775,8 @@ $H$ es un \indice{retracto} de $G$ si existe un homomorfismo $f$ de $G$ en $H$
 tal que $f(x)=x$ para cualquier $x\in V_H$. A trav\'es de esta noci\'on, podemos
 dar una cota inferior para el n\'umero policiaco de una gr\'afica en funci\'on
 de sus retractos.
+
+\newpage
 
 \begin{lema}
 \label{lem:retracto-cota}
@@ -793,7 +814,8 @@ de sus retractos.
   mismo sucede con el polic\'ia en $G$ que est\'a en un v\'ertice adyacente al
   v\'ertice en el que se encuentra $R$. Por tanto, todos los posibles
   movimientos de $R$ son tales que un polic\'ia en $H$ le captura en a lo m\'as
-  su siguiente turno, de modo que $k$ polic\'ias bastan para capturar en $H$.
+  su siguiente turno, de modo que $k$ polic\'ias bastan para capturar a $R$ en
+  $H$.
 
 \end{proof}
 
@@ -832,7 +854,7 @@ A manera de exploraci\'on, demostramos el siguiente teorema para \'arboles.
   al segundo v\'ertice de la \'unica trayectoria entre su posici\'on actual y la
   posici\'on de $R$.
 
-  Esto implica que, postrior al turno de $R$, la distancia entre $C$ y $R$ no
+  Esto implica que, posterior al turno de $R$, la distancia entre $C$ y $R$ no
   aumenta nunca. M\'as a\'un, dicha distancia debe disminuir eventualmente pues
   si $R$ evita que eso pase, este llega eventualmente a una hoja, que existe por
   ser $T$ no trivial. Luego, inductivamente se tiene que la distancia entre $C$
@@ -855,22 +877,27 @@ $k$-conjunto de $V_G$. Adem\'as, en su turno, cada polic\'ia y el ladr\'on
 escogen una de sus $k$ fichas y la mueven de un v\'ertice a otro a trav\'es de
 una arista, de manera que posterior a su movimiento estos siguen determinando un
 $k$-conjunto de $V_G$. Por otra parte, la acci\'on de que un polic\'ia o el
-ladr\'on pase en la gr\'afica de fichas se corresponde con que el respectivo
+ladr\'on pase el turno representa, en la gr\'afica de fichas, que el respectivo
 polic\'ia o el ladr\'on no mueva alguna de sus fichas en $G$. En esta ocasi\'on,
 $C$ gana si en su turno logra que las $k$ fichas de uno de sus polic\'ias
 determinen el mismo $k$-conjunto que las $k$ fichas del ladr\'on, mientras que
-el ladr\'on gana si puede evitar indefinidamente que ello suceda. En algunas
-ocasiones nos referiremos a los v\'ertices en $\t{k}{G}$ como
+el ladr\'on gana si puede evitar indefinidamente que esto suceda. En algunas
+ocasiones nos referiremos a los v\'ertices de $\t{k}{G}$ como
 \textbf{configuraciones}\index{configuraci\'on}.
 
 De este punto en adelante, denotamos por $c_i$ al $i$-\'esimo polic\'ia de $C$,
 mientras que al ladr\'on, controlado por $R$, lo denotamos por $r$. Nos interesa
 distinguir entre las fichas de $r$, por lo que, para cada $1\leq j\leq k$
-denotamos por $r_j$ a la $j$-\'esima ficha de $r$. M\'as a\'un, decimos que un
-polic\'ia $c_i$ \indice{domina} una configuraci\'on $S\in V_{\t{k}{G}}$ si este
-se encuentra en $S$ o en una configuraci\'on adyacente a $S$. Adem\'as, decimos
-que una ficha $c_{i,j}$ de $c_i$ captura a $r_j$ si estas se encuentran en el
-mismo v\'ertice, mientras que $c_i$ captura a $r_j$ si una ficha de $c_i$ le
-captura. Finalmente, $c_i$ captura a $r$ si ambos determinan el mismo
-$k$-conjunto de $V_{\t{k}{G}}$, mientras que $C$ captura a $R$ si $c_i$ captura
-a $r$ para alguna $i$.
+denotamos por $r_j$ a la $j$-\'esima ficha de $r$. Asimismo, distinguimos las
+fichas de cada polic\'ia $c_i$, de modo que, para cada $1\leq j\leq k$,
+denotamos por $c_{i,j}$ a la $j$-\'esima ficha del $i$-\'esimo polic\'ia.
+Decimos que un polic\'ia $c_i$ \indice{domina} una configuraci\'on $S\in
+V_{\t{k}{G}}$ si este se encuentra en $S$ o en una configuraci\'on adyacente a
+$S$. Adem\'as, decimos que una ficha $c_{i,j}$ de $c_i$
+\textbf{captura}\index{captura!de fichas} a $r_j$ si estas se encuentran en el
+mismo v\'ertice. En algunos casos abusaremos del vocabulario al decir que $c_i$
+\textit{captura} a $r_j$ si una ficha de $c_i$ le captura. Finalmente, $c_i$
+\textbf{captura en la gr\'afica de fichas}\index{captura!en la gr\'afica de
+fichas} a $r$ si ambos determinan el mismo $k$-conjunto de $V_{G}$. Nuevamente
+abusando del vocabulario, diremos que $C$ \textit{captura} a $R$ si $c_i$
+captura a $r$ para alg\'un \'indice $i$.

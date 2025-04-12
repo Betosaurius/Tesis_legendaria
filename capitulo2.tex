@@ -11,20 +11,27 @@ generalidad supondremos que $V_G=\c{n}$ con $X=\l{0}$ y $Y=\seg{1}{n}$, donde
 \[
   \c{n}=\seg{0}{n}.
 \]
+Al v\'ertice $0$ le llamamos el \textbf{centro}\index{estrella!centro de una} de
+la estrella, observando que $d_{S_n}(0) = n$.
 
-En virtud d\cref{lem:isomorfismo}, dado que $S_n$ tiene orden $n+1$, para cada
-$k$ en los enteros positivos basta trabajar las gr\'aficas $S_n$ con $n\geq
-2k-1$, pues si $n<2k-1$, v\'ease que
+Consideremos $n$ un entero positivo fijo. Antes de estudiar las gr\'aficas de
+fichas una estrella $S_n$, queremos determinar, respecto a $n$, cu\'ales valores
+de $k$ debemos considerar para cubrir en su totalidad todos los posibles
+n\'umeros de fichas sin trabajar todas ellas. N\'otese que el orden de $S_n$ es
+$n+1$ por lo que, en virtud d\cref{lem:isomorfismo}
 \[
-    2\c{\paren{n+1}-k}-1 = 2n - (2k-1),
+    \t{k}{S_n} \cong \t{\abs{V_{S_n}}-k}{S_n} = \t{n+1-k}{S_n}.
 \]
-y como $n<2k-1$, entonces
+Luego, si $k>\frac{n+1}{2}$, se tiene que
 \[
-    2\c{\paren{n+1}-k}-1 < 2n - n = n,
+n+1-k<n+1-\frac{n+1}{2} = \frac{n+1}{2}.
 \]
-Por tanto, si $r=\paren{n+1}-k$, se tiene que $n\geq 2r-1$, de manera que basta
-determinar $c\paren{\t{r}{S_n}}$ pues $\t{k}{S_n}\cong\t{\paren{n+1}-k}{S_n} =
-\t{r}{S_n}$.
+Por tanto, si $s=n+1-k$, $\t{k}{S_n} \cong \t{s}{S_n}$ y $s\leq \frac{n+1}{2}$,
+la la invarianza del n\'umero policiaco bajo isomorfismo tiene como consecuencia
+que $c\paren{\t{k}{S_n}} = c\paren{\t{s}{S_n}}$. As\'i, basta determinar
+$c\paren{\t{k}{S_n}}$ para los enteros $k$ tales que $k\leq \frac{n+1}{2}$.
+Adem\'as, siempre consideramos $2\leq k$ pues, para $k=1$, $\t{1}{S_n}=S_n$, de
+modo que d\cref{teo:copnum-arbol} se sigue que $c(\t{1}{S_n})=1$.
 
 En busca de determinar una cota inferior para el n\'umero policiaco en este
 caso, proponemos el siguiente lema respecto a una desigualdad.
@@ -69,13 +76,17 @@ caso, proponemos el siguiente lema respecto a una desigualdad.
     \]
 \end{proof}
 
+Ahora estamos listos para demostrar el siguiente resultado.
+
 \begin{teorema}
 \label{teo:cota_estrella}
-    Para $k\geq 2$ y $n\geq 2k-1$, $c\paren{\t{k}{S_n}} \geq k$.
+    Si $n$ y $k$ son enteros positivos tales que $2 \leq k \leq \frac{n+1}{2}$,
+    $c\paren{\t{k}{S_n}} \geq k$.
 \end{teorema}
 
 \begin{proof}
-    Basta demostrar que $R$ tiene una estrategia de escape jugando sobre
+    Como $k\leq \frac{n+1}{2}$, despejando se tiene que $2k-1 \leq n$. Basta
+    demostrar que $R$ tiene una estrategia ganadora jugando sobre
     $\t{k}{S_{2k-1}}$ contra $k-1$ polic\'ias, notando que para $n > 2k-1$, el
     ladr\'on realiza los mismos movimientos, ignorando las hojas adicionales.
 
@@ -99,17 +110,18 @@ caso, proponemos el siguiente lema respecto a una desigualdad.
             \estrella
             
             \unopRp{0cm}{0}
-            \unopRc{2.25cm}{90}
-            \unopB{2.25cm}{90+(360/5)}
-            \unopR{2.25cm}{90+(360/5)*2}
-            \unopB{2.25cm}{90+(360/5)*3}
-            \unopBt{2.25cm}{90+(360/5)*4}
+            \unopRc{1.275cm}{90}
+            \unopB{1.275cm}{90+(360/5)}
+            \unopR{1.275cm}{90+(360/5)*2}
+            \unopB{1.275cm}{90+(360/5)*3}
+            \unopBt{1.275cm}{90+(360/5)*4}
         \end{tikzpicture}
+        \captionsetup{font=footnotesize}
         \caption{Una posible elecci\'on de configuraci\'on inicial de $R$ para
         $k=3$. N\'otese que ninguno de los $k-1$ polic\'ias, cuyas posiciones de
         fichas est\'an representadas por los puntos azules y rojos, est\'an
         capturando dos fichas de $R$ en las hojas, representadas como el punto,
-        el tri\'angul y el cuadrado negros.}
+        el tri\'angulo y el cuadrado negros.}
         \label{fig:Configuracion_inicial}
     \end{figure}
 
@@ -185,7 +197,7 @@ caso, proponemos el siguiente lema respecto a una desigualdad.
 Anexamos a continuaci\'on el desarrollo de una partida en la que $R$ utiliza la
 estretegia descrita en \cref{teo:cota_estrella}.
 
-\begin{figure}[!htbp]
+\begin{figure}[H]
     \begin{tcbitemize}[raster columns=2, raster equal height,
         enhanced, colback=Black!5!white,colframe=Grey!75!black,
         attach title to upper,
@@ -201,11 +213,11 @@ estretegia descrita en \cref{teo:cota_estrella}.
                     \estrella
                     
                     \unopRp{0cm}{0}
-                    \unopRc{2.25cm}{90}
-                    \unopB{2.25cm}{90+(360/5)}
-                    \unopR{2.25cm}{90+(360/5)*2}
-                    \unopB{2.25cm}{90+(360/5)*3}
-                    \unopBt{2.25cm}{90+(360/5)*4}
+                    \unopRc{1.275cm}{90}
+                    \unopB{1.275cm}{90+(360/5)}
+                    \unopR{1.275cm}{90+(360/5)*2}
+                    \unopB{1.275cm}{90+(360/5)*3}
+                    \unopBt{1.275cm}{90+(360/5)*4}
                 \end{tikzpicture}
         \tcbitem
             \tcblower
@@ -213,10 +225,10 @@ estretegia descrita en \cref{teo:cota_estrella}.
                     \estrella
                     
                     \unopBp{0cm}{0}
-                    \unopRc{2.25cm}{90}
-                    \unopB{2.25cm}{90+(360/5)}
-                    \unopR{2.25cm}{90+(360/5)*2}
-                    \unopBunopRt{2.25cm}{90+(360/5)*4}
+                    \unopRc{1.275cm}{90}
+                    \unopB{1.275cm}{90+(360/5)}
+                    \unopR{1.275cm}{90+(360/5)*2}
+                    \unopBunopRt{1.275cm}{90+(360/5)*4}
                 \end{tikzpicture}
         \tcbitem
             \tcblower
@@ -224,11 +236,11 @@ estretegia descrita en \cref{teo:cota_estrella}.
                     \estrella
                     
                     \unopB{0cm}{0}
-                    \unopRc{2.25cm}{90}
-                    \unopB{2.25cm}{90+(360/5)}
-                    \unopR{2.25cm}{90+(360/5)*2}
-                    \punto{2.25cm}{90+(360/5)*3}
-                    \unopBunopRt{2.25cm}{90+(360/5)*4}
+                    \unopRc{1.275cm}{90}
+                    \unopB{1.275cm}{90+(360/5)}
+                    \unopR{1.275cm}{90+(360/5)*2}
+                    \punto{1.275cm}{90+(360/5)*3}
+                    \unopBunopRt{1.275cm}{90+(360/5)*4}
                 \end{tikzpicture}
         \tcbitem
             \tcblower
@@ -236,54 +248,35 @@ estretegia descrita en \cref{teo:cota_estrella}.
                     \estrella
                     
                     \unopR{0cm}{0}
-                    \unopRc{2.25cm}{90}
-                    \unopB{2.25cm}{90+(360/5)}
-                    \unopBp{2.25cm}{90+(360/5)*3}
-                    \unopBunopRt{2.25cm}{90+(360/5)*4}
+                    \unopRc{1.275cm}{90}
+                    \unopB{1.275cm}{90+(360/5)}
+                    \unopBp{1.275cm}{90+(360/5)*3}
+                    \unopBunopRt{1.275cm}{90+(360/5)*4}
                 \end{tikzpicture}
+        \tcbitem[raster multicolumn=2]
+                \tcblower
+                    \begin{tikzpicture}
+                        \estrella
+                        
+                        \unopRt{0cm}{0}
+                        \unopRc{1.275cm}{90}
+                        \unopB{1.275cm}{90+(360/5)}
+                        \unopBp{1.275cm}{90+(360/5)*3}
+                        \unopBunopR{1.275cm}{90+(360/5)*4}
+                    \end{tikzpicture}
     \end{tcbitemize}
     \captionsetup{font=footnotesize}
     \caption{Se presenta una partida de polic\'ias y ladrones sobre $S_5$ con
     $3$ fichas. Las escenas se leen siguiendo la numeraci\'on, de manera que las
     im\'agenes en la columna derecha muestran las situaciones posteriores al
-    turno de $C$, mientras que las de la columna izquierda representan las
-    situaciones despu\'es del turno de $R$. La primera escena exhibe la
-    configuraci\'on inicial, donde $R$ logra escoger de manera que ning\'un
-    polc\'ia le captura dos fichas en las hojas. En la segunda escena $R$ tiene
-    dos de sus fichas capturadas en las hojas, de manera que se ve obligado a
-    mover su ficha del centro a una de las hojas disponibles. En (d), $R$ se ve
-    forzado a mover una vez m\'as, lo cual puede hacer pues existe al menos una
-    de sus fichas que es capturada por los dos polic\'ias.}
-    \label{fig:gana-R}
-\end{figure}
-
-\begin{figure}[!htbp]
-    \ContinuedFloat
-    \begin{tcbitemize}[raster columns=1, raster equal height,
-        enhanced, colback=Black!5!white,colframe=Grey!75!black,
-        attach title to upper,
-        phantom={\addtocounter{myrasternum}{1}},
-        title={(\alph{myrasternum})\enspace}, halign lower=center,
-        halign upper = left, lower separated=false, middle=0mm,
-        boxsep=0mm, leftupper=2mm, fonttitle=\bfseries,
-        coltitle=black, raster column skip=1mm,raster halign=center,
-        raster row skip=1mm]
-        \tcbitem
-            \tcblower
-                \begin{tikzpicture}
-                    \estrella
-                    
-                    \unopRt{0cm}{0}
-                    \unopRc{2.25cm}{90}
-                    \unopB{2.25cm}{90+(360/5)}
-                    \unopBp{2.25cm}{90+(360/5)*3}
-                    \unopBunopR{2.25cm}{90+(360/5)*4}
-                \end{tikzpicture}
-    \end{tcbitemize}
-    \captionsetup{font=footnotesize}
-    \caption{En esta instancia se tiene que $R$ regresa a una posici\'on en la
-    que no existe un polic\'ia que le capture dos fichas en las hojas, que es
+    turno de $C$ y las de la columna izquierda son posteriores al turno de $R$.
+    En (b), $R$ tiene dos fichas capturadas en hojas, por lo que debe mover su
+    ficha del centro a alguna hoja. En (d), $R$ se ve forzado a mover una vez
+    m\'as, lo cual puede hacer pues existe al menos una de sus fichas que es
+    capturada por los dos polic\'ias. En este punto $R$ regresa a una posici\'on
+    en la que ning\'un polic\'ia le captura dos fichas en las hojas, que es
     justo el objetivo de la estrategia.}
+    \label{fig:gana-R}
 \end{figure}
 
 Dado este resultado, nuestra nueva meta es determinar con exactitud el n\'umero
@@ -300,16 +293,16 @@ fichas de un mismo polic\'ia para dar instrucciones de movimiento acorde a ese
 etiquetado. Adicionalmente, denotamos por $\c{c_i}$ al conjunto de todas las
 fichas de $c_i$, es decir, $\c{c_i} = \seg{c_{i,1}}{c_{i,k}}$. An\'alogamente,
 $\c{r}=\seg{r_1}{r_k}$ (las fichas de $R$ tambi\'en recibir\'an un etiquetado
-arbitrario). Dado un turno $t$ del juego, denotamos por $c_{i,j}(t)$ al
-v\'ertice de $G$ en el que la $j$-\'esima ficha del $i$-\'esimo polic\'ia se
-encuentra al turno $t$. Con esto podemos definir la posici\'on de $c_i$ al turno
-$t$ como el subconjunto $c_i(t)$ de $[c_i] \times V_G$ dado por
+arbitrario). Denotamos por $c_{i,j}(t)$ al v\'ertice de $G$ en el que la
+$j$-\'esima ficha del $i$-\'esimo polic\'ia se encuentra al momento $t$. Con
+esto podemos definir la posici\'on de $c_i$ al momento $t$ como el subconjunto
+$c_i(t)$ de $[c_i] \times V_G$ dado por
 \[
     c_{i}(t) = \l{\paren{c_{i,1},c_{i,1}(t)},\dots,\paren{c_{i,k},c_{i,k}(t)}}.
 \]
-De forma similar se define $r(t)$ para la posici\'on del ladr\'on al turno $t$.
-As\'i pues, definimos el \indice{turno} $t$ del juego, $I(t)$, como la uni\'on
-de las posiciones de todos los polic\'ias y el ladr\'on, es decir,
+De forma similar se define $r(t)$ para la posici\'on del ladr\'on al momento
+$t$. As\'i pues, definimos el \indice{turno} $t$ del juego, $I(t)$, como la
+uni\'on de las posiciones de todos los polic\'ias y el ladr\'on, es decir,
 \[
     I(t) = \bigcup_{i=1}^k c_{i}(t) \cup r(t).
 \]
@@ -322,21 +315,22 @@ del mismo polic\'ia no pueden ocupar un mismo v\'ertice en $G$. Si denotamos por
 $\pi_2\c{c_i(t)}$ a dicho $k$-conjunto de $V_G$, entonces este conjunto
 determina la posici\'on del $i$-\'esimo polic\'ia en la gr\'afica de $k$ fichas
 de $G$.   Para $i \in \seg{1}{r}$ y $t \in \n$, decimos que la posici\'on
-$c_i(t+1)$ se obtiene legalmente de $c_i(t)$, o que $c_i$ hace un movimiento
-legal en el turno \textit{t}, si la diferencia sim\'etrica de $\pi_2\c{c_i(t)}$
-y $\pi_2\c{c_i(t+1)}$ es una arista de $G$ o es vac\'ia. An\'alogamente se
-define un movimiento legal en el turno $t$ para $r$. Para alguna instancia $I$,
-decimos que un turno $I(t+1)$ se obtiene legalmente de $I(t)$ si $r$ y cada
-$c_i$ hacen un movimiento legal en el turno $t$.
+$c_i(t+1)$ \textit{se obtiene legalmente} de $c_i(t)$, o que $c_i$ \textit{hace
+un movimiento legal} en el turno $I(t)$, si la diferencia sim\'etrica de
+$\pi_2\c{c_i(t)}$ y $\pi_2\c{c_i(t+1)}$ es una arista de $G$ o es vac\'ia.
+An\'alogamente se define un movimiento legal en el turno $I(t)$ para $r$. Para
+alguna instancia $I$, decimos que un turno $I(t+1)$ \textit{se obtiene
+legalmente} de $I(t)$ si $r$ y cada $c_i$ hacen un movimiento legal en el turno
+$I(t)$.
 
 Finalmente, dado $c_i$ un polic\'ia (fijo, pero arbitrario), se puede considerar
 la funci\'on $o_i \colon \c{c_i}\to \c{r}$, tal que $c_{i,j}\mapsto r_j$ para
 cada $j\in\seg{1}{k}$; llamamos a $r_j$ el \indice{objetivo} de $c_{i,j}$ y
 $o_i$ es la funci\'on objetivo de $c_i$. Definimos dos distancias del
-$i$-\'esimo polic\'ia al ladr\'on en el turno $t$ a trav\'es de su funci\'on
+$i$-\'esimo polic\'ia al ladr\'on en el turno $I(t)$ a trav\'es de su funci\'on
 objetivo y dependiendo de la gr\'afica en la que se analiza el juego. Definimos
 $d_G \paren{c_i,r}$ como la suma de las distancias en $G$ entre cada ficha de
-$c_i$ y su objetivo al turno $t$, es decir,
+$c_i$ y su objetivo al turno $I(t)$, es decir,
 \[
     d_G \paren{c_i(t),r(t)} = \sum_{j=1}^k d_G \paren{c_{i,j}(t), r_j(t)}.
 \]
@@ -354,7 +348,7 @@ Con estos preliminares, procedemos a describir una estrategia que ser\'a
 utilizada recurrentemente en las siguientes demostraciones. Consid\'erese un
 turno $I(t)$ del juego de polic\'ias y ladrones sobre la gr\'afica de $k$ fichas
 de un \'arbol $T$. Se dice que una ficha $c_{i,j}$ est\'a \indice{obstruida} si
-no se encuentra capturando a su objetivo en el turno $t$ (i.e., $c_{i,j}(t)\neq
+no se encuentra capturando a su objetivo en el turno $I(t)$ (i.e., $c_{i,j}(t)\neq
 r_j(t)$) y existe $s \in \seg{1}{k}$ tal que $c_{i,s}(t)$ es el segundo
 v\'ertice de la \'unica $c_{i,j}(t)r_j(t)$-trayectoria en $T$, recordando que
 esta es \'unica debido al Corolario \ref{cor:unitray}. En este caso se dice que
@@ -364,14 +358,18 @@ $c_{i,s}$ en el turno $I(t)$, se dice que $c_{i,j}$ y $c_{i,s}$ se obstruyen
 mutuamente y esta es una \textbf{obstrucci\'on}
 \indiceSub{obstrucci\'on}{mutua}.
 
-\begin{figure}[!htbp]
+\begin{figure}[H]
     \centering
     \begin{tikzpicture}[every node/.style = {draw, circle, minimum size=1cm,
         line width=0.75pt, inner sep=0pt, outer sep=0pt}, on grid, node distance
-        = 2.5cm] \node (i) [fill=Crimson] {$c_{i,j}$}; \node (j) [fill=Crimson,
-        right= of i] {$c_{i,s}$}; \node (1) [right=5cm of j] {$r_j$}; \draw[edge]
-        (i) -- (j); \draw[dashed,edge] (j) .. controls (4,1) and (6,-1) .. (1);
+        = 2.5cm]
+        \node (i) [fill=Crimson] {$c_{i,j}$};
+        \node (j) [fill=Crimson, right= of i] {$c_{i,s}$};
+        \node (1) [right=5cm of j] {$r_j$};
+        \draw[edge] (i) -- (j);
+        \draw[dashed,edge] (j) .. controls (4,1) and (6,-1) .. (1);
     \end{tikzpicture}
+    \captionsetup{font=footnotesize}
     \caption{Diagrama de la ficha $c_{i,j}$ obstruida por la ficha $c_{i,s}$.}
     \label{fig:obstruccion}
 \end{figure}
@@ -383,8 +381,9 @@ situaci\'on de manera que la suma de las distancias de las fichas de $c_i$ a sus
 objetivos, $d_{G} \paren{c_i(t),r(t)}$, disminuye (cuando el polic\'ia $c_i$
 a\'un no se encuentra capturando a $r$).
 
-\begin{algorithm}[!htbp]
+\begin{algorithm}[ht!]
     \footnotesize{
+    \LinesNumbered
     \SetAlgorithmName{Algoritmo}{}
       \DontPrintSemicolon
       \SetKwData{False}{false}\SetKwData{True}{true}
@@ -435,11 +434,14 @@ a\'un no se encuentra capturando a $r$).
       \label{alg:desob}
     \DecMargin{1em}
     }
-    \end{algorithm}
+    
+\end{algorithm}
+
+\newpage
 
 En este orden de ideas, el siguiente lema demuestra la validez
 d\cref{alg:desob}. Previamente, notemos que ya estamos en posici\'on de
-esclarecer la desigualdad en \ref{eq:suma}.  Al turno $t$, el polic\'ia $c_i$
+esclarecer la desigualdad en \ref{eq:suma}.  Al turno $I(t)$, el polic\'ia $c_i$
 necesita a lo m\'as $d_G \paren{c_i(t),r(t)}$ movimientos para que sus fichas
 capturen a sus respectivos objetivos en $G$, posiblemnte utilizando
 reetiquetados como el utilizado en \cref{alg:desob}, de manera que, despu\'es de
@@ -499,6 +501,7 @@ a las fichas de $c_i$ para minimizar $d_G (c_i(t), r(t))$.
                             .. (2);
                         \end{tikzpicture}
             \end{tcbitemize}
+            \captionsetup{font=footnotesize}
             \caption{Si $c_{i,j}$ y $c_{i,s}$ se obstruyen mutuamente, entonces
             intercambian etiquetas (y por lo tanto objetivos). Las dem\'as
             fichas se mantienen sin cambio.}
@@ -519,7 +522,7 @@ a las fichas de $c_i$ para minimizar $d_G (c_i(t), r(t))$.
             $c_{i,s}$ y $c_{i,u}$ se resuelve con una llamada recursiva (ver
             \cref{fig:obsad2}).
 
-            \begin{figure}[!htbp]
+            \begin{figure}[H]
                 \begin{tcbitemize}[raster columns=2, raster equal height,
                     enhanced, colback=Black!5!white,colframe=Grey!75!black,
                     attach title to upper,
@@ -555,12 +558,14 @@ a las fichas de $c_i$ para minimizar $d_G (c_i(t), r(t))$.
                                 (4.625,-1) .. (2);
                             \end{tikzpicture}
                 \end{tcbitemize}
+                \captionsetup{font=footnotesize}
                 \caption{Al no haber obstrucci\'on mutua entre $c_{i,j}$ y $c_{i,s}$,
                 $c_{i,s}$ debe avanzar (de ser posible) siguiendo la $c_{i,s}(t)r_s(t)
                 $-trayectoria.}
                 \label{fig:obsad1}
             \end{figure}
-            \begin{figure}[!htbp]
+
+            \begin{figure}[H]
                 \begin{tcbitemize}[raster columns=2, raster equal height,
                     enhanced, colback=Black!5!white,colframe=Grey!75!black,
                     attach title to upper,
@@ -594,6 +599,7 @@ a las fichas de $c_i$ para minimizar $d_G (c_i(t), r(t))$.
                                 (4.25,-1) .. (2);
                             \end{tikzpicture}
                 \end{tcbitemize}
+                \captionsetup{font=footnotesize}
                 \caption{Como $c_{i,s}$ est\'a obstruido, el algoritmo pasa a
                 enfocarse a resolver la obstrucci\'on para $c_{i,s}$, $c_{i,u}$.}
                 \label{fig:obsad2}
@@ -649,6 +655,7 @@ a las fichas de $c_i$ para minimizar $d_G (c_i(t), r(t))$.
                                 (4.75,-1) .. (2);
                             \end{tikzpicture}
                 \end{tcbitemize}
+                \captionsetup{font=footnotesize}
                 \caption{Las fichas $c_{i,j}$ y $c_{i,s}$ intercambian sus
                 etiquetas, de manera que $c_{i,j}$ se acerca en uno a su
                 objetivo, pero $c_{i,s}$ se aleja en uno (not\'ando que lo mismo
@@ -662,7 +669,7 @@ a las fichas de $c_i$ para minimizar $d_G (c_i(t), r(t))$.
         \end{enumerate}
     \end{enumerate}
 
-    V\'ease que el algoritmo tiene una ejecucci\'on finita pues las llamadas
+    V\'ease que el algoritmo tiene una ejecuci\'on finita pues las llamadas
     recursivas de la \cref{line:llamada2} generan nuevas instancias en las que
     $c_{i,j}$ recorre la $c_{i,j}(t)r_j(t)$-trayectoria inicial a trav\'es de
     reetiquetados de fichas, de manera que en cada uno de esos pasos $d_G
@@ -721,16 +728,18 @@ utilizada cuando sea necesario resolver obstrucciones. En las siguientes
 demostraciones utilizaremos este etiquetado y asignaciones de objetivos.
 
 Decimos que el $i$-\'esimo polic\'ia tiene \indice{bajo asedio} a $r$ en el
-turno $t$ si cada ficha de $c_i$ distinta de su ficha libre est\'a capturando a
-su objetivo al turno $t$, es decir, $c_{i,j}(t)=r_j(t)$ para cada $j \neq i$. De
-forma similar, decimos que $r$ est\'a bajo asedio en el turno $t$ si cada
-polic\'ia tiene bajo asedio a $r$ (en el mismo turno $t$). El siguiente lema
-asegura que es posible poner bajo asedio a $r$.
+turno $I(t)$ si cada ficha de $c_i$ distinta de su ficha libre est\'a capturando
+a su objetivo al turno $I(t)$, es decir, $c_{i,j}(t)=r_j(t)$ para cada $j \neq
+i$. Adicionalmente, decimos que $r$ est\'a \textbf{bajo asedio} en el turno
+$I(t)$ si cada polic\'ia tiene bajo asedio a $r$ (en el mismo turno $I(t)$). El
+siguiente lema asegura que es posible poner bajo asedio a $r$.
 
 \begin{lema}
 \label{lem:Instancia_capturas}
-    Para $k\geq 2$ y $n\geq 2k-1$, si el ladr\'on juega de forma \'optima,
-    entonces $C$ logra poner a $r$ bajo asedio en un n\'umero finito de turnos.
+    Sean $n$ y $k$ enteros positivos tales que $2\leq k\leq \frac{n+1}{2}$ y
+    consid\'erese un juego de polic\'ias y ladrones en $\t{k}{S_n}$ contra $k$
+    polic\'ias. Si el ladr\'on juega de forma \'optima, entonces $C$ logra poner
+    a $r$ bajo asedio en un n\'umero finito de turnos.
 \end{lema}
 
 \begin{proof}
@@ -740,7 +749,7 @@ asegura que es posible poner bajo asedio a $r$.
     d\cref{alg:desob}) si no est\'a obstruida y hasta que el resto de sus fichas
     se encuentren capturando a su objetivo.
 
-    As\'i pues, dada una instancia $I(t)$ y para cada $i\in\seg{1}{k}$, si $c_i$
+    As\'i pues, dado un turno $I(t)$ y para cada $i\in\seg{1}{k}$, si $c_i$
     tiene al menos una ficha distinta de su ficha libre, $c_{i,j}$, que no se
     encuentra capturando a su objetivo $r_j$, entonces $c_i$ procede a mover la
     ficha de este tipo cuyo \'indice $j$-\'esimo sea m\'inimo, resolviendo
@@ -764,7 +773,7 @@ asegura que es posible poner bajo asedio a $r$.
     distancia de sus fichas a sus objetivos (sin contar la distancia de su ficha
     libre a su objetivo), mientras que el resto la mantiene constante.
 
-    Siguiendo esta estrtegia es claro que existe un momento a partir del cual
+    Siguiendo esta estrategia es claro que existe un momento a partir del cual
     las fichas de un polic\'ia $c_i$ (salvo su ficha libre) ya est\'an
     capturando a sus correspondientes objetivos, i.e., $c_i$ tiene bajo asedio a
     $r$. Si en este caso $R$ se limita a mover $r_i$, entonces el resto de
@@ -773,7 +782,7 @@ asegura que es posible poner bajo asedio a $r$.
     fichas). No obstante, $c_i$ podr\'ia mover su ficha libre a $0$ (pues si $R$
     est\'a moviendo \'unicamente a $r_i$, entonces en el centro de la estrella
     no hay una ficha que obstruya a $c_{i,i}$), de manera que $c_i$ captura en a
-    lo m\'as en un turno, contradiciendo que $R$ juega de forma \'optima. Este
+    lo m\'as un turno, contradiciendo que $R$ juega de forma \'optima. Este
     razonamiento puede utilizarse de forma recursiva para ver que si $R$ juega
     de forma \'optima, entonces todos los polic\'ias logran que sus fichas no
     libres capturen a sus correspondientes objetivos, lo que implica que $r$
@@ -785,16 +794,18 @@ Llegamos as\'i al resultado principal de la secci\'on.
 
 \begin{teorema}
 \label{teo:numero-de-policia-estrella}
-    Para $k\geq 2$ y $n\geq 2k-1$, $c\paren{\t{k}{S_{n}}}=k$.
+    Si $n$ y $k$ son enteros positivos tales que $2\leq k \leq \frac{n+1}{2}$,
+    $c\paren{\t{k}{S_{n}}}=k$.
 \end{teorema}
 
 \begin{proof}
-    Por \cref{lem:Instancia_capturas}, podemos asumir sin p\'erdida de
-    generalidad que $R$ se encuentra bajo asedio. Se consideran los siguientes
-    casos:
+    Por \cref{teo:cota_estrella}, basta demostrar que $c\paren{\t{k}{S_n}} \leq
+    k$, es decir, que $C$ puede capturar a $R$ con $k$ polic\'ias. Por
+    \cref{lem:Instancia_capturas}, podemos asumir sin p\'erdida de generalidad
+    que $r$ se encuentra bajo asedio. Se consideran los siguientes casos:
     \begin{enumerate}
         \item Si es turno de $C$ y
-        \begin{enumerate}[(a)]
+        \begin{enumerate}[a)]
             \item $r$ tiene una ficha en $0$, sup\'ongase sin p\'erdida de
             generalidad que es $r_k$, entonces $c_k$ es un polic\'ia que no
             tiene una ficha capturando a $r_k$ pero el resto de sus fichas
@@ -812,26 +823,24 @@ Llegamos as\'i al resultado principal de la secci\'on.
         \end{enumerate}
 
         \item Si es turno de $R$ y
-        \begin{enumerate}[(a)]
+        \begin{enumerate}[a)]
             \item $r$ no tiene una ficha en $0$, $R$ est\'a obligado a mover
-            para no regresar al caso 1(b). Si mueve $r_i$ a $0$, $c_i$ procede a
-            mover $c_{i,i}$ a $0$, capturando a $R$.
+            para no regresar al caso 1b). Si mueve $r_i$ a $0$, $c_i$ procede a
+            mover $c_{i,i}$ a $0$, capturando a $r$.
             
             \item $r$ tiene una ficha en $0$, $r_i$, el ladr\'on est\'a obligado
-            a mover para no regresar al caso 1(a). N\'otese que no puede mover
+            a mover para no regresar al caso 1a). N\'otese que no puede mover
             $r_i$ a la hoja donde est\'e $c_{i,i}$, pues este se har\'ia perder
             inmediatamente.
             
             As\'i, si se mueve a una hoja que tenga la ficha $c_{j,j}$ con
             $j\neq i$, en este momento $c_j$ pasa a capturar $k-1$ de las fichas
-            de $r$ y es tal que tiene una ficha en $0$ (pues $c_{j,i}$ est\'a en
-            $\overline{c_i}$, el cual est\'a en $0$ pues previamente estaba
-            capturando a $r_i$), por lo que puede moverla a la hoja donde est\'e
-            $r_j$ para terminar de capturar a $r$.
+            de $r$ y es tal que tiene una ficha en $0$, por lo que puede moverla
+            a la hoja donde est\'e $r_j$ para terminar de capturar a $r$.
 
             De lo contrario, si $r_i$ se mueve a una hoja vac\'ia, entonces
             $\overline{c_i}$ recaptura. As\'i, esta instancia se reduce al caso
-            2(a).
+            2a).
         \end{enumerate}
     \end{enumerate}
     Se concluye pues que $c\paren{F_k\paren{S_n}}=k$.
@@ -841,12 +850,16 @@ Llegamos as\'i al resultado principal de la secci\'on.
 Presentamos a continuaci\'on \cref{alg:captura} para que $C$ capture a $R$, el
 cual es tal que la configuraci\'on inicial de cada uno de los polic\'ias es la
 misma y corresponde a tener una ficha en el centro y el resto en las hojas de
-$S_n$ --- llamaremos $C_0$ a dicha configuraci\'on. Adem\'as, las fichas inician
-con un etiquetado ya establecido, de manera que las $j$-\'esimas fichas de todos
-los polic\'ias inician en el mismo v\'ertice para cada $j\in\seg{1}{k}$.
+$S_n$ --- denotamos por $C_0$ a dicha configuraci\'on. Adem\'as, las fichas
+inician con un etiquetado ya establecido, de manera que las $j$-\'esimas fichas
+de todos los polic\'ias inician en el mismo v\'ertice.
 
-\begin{algorithm}[!htbp]
+\newpage
+
+\begin{algorithm}[ht!]
     \footnotesize{
+    \LinesNumbered
+    \SetAlgoVlined
     \SetAlgorithmName{Algoritmo}{}
       \DontPrintSemicolon
       \SetKwData{False}{false}\SetKwData{True}{true}
@@ -854,16 +867,15 @@ los polic\'ias inician en el mismo v\'ertice para cada $j\in\seg{1}{k}$.
       \SetKw{Continue}{continue}
       \SetKwInOut{Input}{input}\SetKwInOut{Output}{output}
     
-      \KwIn{Dos enteros positivos $k$ y $n$ tales que $n\geq 2k-1$, una
+      \KwIn{Dos enteros positivos $k$ y $n$ tales que $2\leq k\leq \frac{n+1}{2}$, una
       configuraci\'on inicial para el ladr\'on en un juego de polic\'ias y
       ladrones sobre la gr\'afica de $k$ fichas de $S_n$ junto con un etiquetado
-      de sus fichas.} \KwOut{Una instancia $I(t)$ en la que $C$ captura a $R$ al
-      turno $t$.}
+      de sus fichas.} \KwOut{Un turno $I(t)$ en la que $C$ captura a $R$.}
       \BlankLine
-      $I(0) \gets$ la instancia en la que $C$ y $R$ se encuentran en su
+      $I(0) \gets$ la posici\'on en la que $C$ y $R$ se encuentran en su
       configuraci\'on inicial\;
       $t\leftarrow 0$\;
-      \While{$C$ no est\'e capturando a $R$ al turno $t$}{
+      \While{$C$ no est\'e capturando a $R$ al turno $I(t)$}{
         \ForEach{$1\leq i\leq k$}{
             \If{existe $j\ne i$ tal que $c_{i,j}$ no est\'a capturando a $r_j$}{
                 $j \gets$ el m\'inimo \'indice tal que $c_{i,j}$ no est\'a 
@@ -875,42 +887,49 @@ los polic\'ias inician en el mismo v\'ertice para cada $j\in\seg{1}{k}$.
                         $c_{i}(t+1) \gets \paren{c_i(t)\setminus
                         \l{\paren{c_{i,j},c_{i,j}(t)},\paren{c_{i,s},c_{i,s}(t)}}} \cup
                         \l{\paren{c_{i,j},c_{i,s}(t)},\paren{c_{i,s},c_{i,j}(t)}}$\;
-                    }\Else{
+                    }
+                    \Else{
                         $c_{i}(t+1) \gets \textsc{Desobstrucci\'on}
                         \paren{k,S_n,I(t),c_{i,s},c_{i,j}}$\;
                     }
-                }\Else{
+                }
+                \Else{
                     $c_i(t+1) \gets (c_i(t) \setminus \{(c_{i,j},c_{i,j}(t))\})
                     \cup \{ (c_{i,j},v_{i,j}) \}$\;
                 }
             }\Else{
-                $v_{i,i} \gets$ el segundo v\'ertice en la
-                $c_{i,i}(t)r_i(t)$-trayectoria\;
-                \If{existe $s$ tal que $c_{i,s}(t) = v_{i,i}$}{
-                    $c_{i}(t+1) \gets c_i(t)$\;
-                }\Else{
-                    $c_i(t+1) \gets (c_i(t) \setminus \{(c_{i,i},c_{i,i}(t))\})
-                    \cup \{ (c_{i,i},v_{i,i}) \}$\;
+                        $v_{i,i} \gets$ el segundo v\'ertice en la
+                        $c_{i,i}(t)r_i(t)$-trayectoria\;
+                        \If{existe $s$ tal que $c_{i,s}(t) = v_{i,i}$}{
+                            $c_{i}(t+1) \gets c_i(t)$\;
+                        }
+                        \Else{
+                            $c_i(t+1) \gets (c_i(t) \setminus \{(c_{i,i},c_{i,i}(t))\})
+                            \cup \{ (c_{i,i},v_{i,i}) \}$\;
+                        }
+                    }
                 }
-            }
-        }
-        $t \leftarrow t+1$\;
-        $I(t) \gets r(t-1) \cup \bigcup_{i=1}^k c_i(t)$\;
-        \If{$C$ est\'a capturando a $R$ al turno $t$}{
-            \Continue\;
-        }\Else{
-            $I(t) \gets (I(t) \setminus r(t-1)) \cup r(t)$\;
-        }
-      }
-      {\Return $I(t)$}
+                $t \leftarrow t+1$\;
+                $I(t) \gets r(t-1) \cup \bigcup_{i=1}^k c_i(t)$\;
+                \If{$C$ est\'a capturando a $R$}{
+                    \Continue\;
+                }
+                \Else{
+                    $I(t) \gets (I(t) \setminus r(t-1)) \cup r(t)$\;
+                }
+              }
+              {\Return $I(t)$}
       \caption{\textsc{Captura}}
       \label{alg:captura}
     \DecMargin{1em}
     }
 \end{algorithm}
 
-Anexamos una partida en la que $C$ utiliza la
-estrategia dada por \cref{alg:captura}.
+En \cref{fig:partida1} anexamos una partida en la que $C$ utiliza la estrategia
+dada por \cref{alg:captura}. Los colores y las figuras inducen un etiquetado, de
+manera que $1$, $2$ y $3$ corresponden a azul, verde y rojo respectivamente,
+mientras que $1$, $2$ y $3$ corresponden a punto, tri\'angulo y cuadrado
+respectivamente.
 
 \begin{figure}[!htbp]
     \begin{tcbitemize}[raster columns=2, raster equal height, enhanced,
@@ -926,12 +945,12 @@ estrategia dada por \cref{alg:captura}.
                     \begin{tikzpicture}
                         \estrella
                         
-                        \tresc{2.25cm}{90+(360/5)*3}
+                        \tresc{1.275cm}{90+(360/5)*3}
                         \tresp{0cm}{0}
-                        \trest{2.25cm}{90+(360/5)*2}
-                        \punto{2.25cm}{90}
-                        \tri{2.25cm}{90+(360/5)*4}
-                        \cuadro{2.25cm}{90+(360/5)*1}
+                        \trest{1.275cm}{90+(360/5)*2}
+                        \punto{1.275cm}{90}
+                        \tri{1.275cm}{90+(360/5)*4}
+                        \cuadro{1.275cm}{90+(360/5)*1}
                     \end{tikzpicture}
                 }
         \tcbitem
@@ -940,11 +959,11 @@ estrategia dada por \cref{alg:captura}.
                     \begin{tikzpicture}
                         \estrella
 
-                        \tresc{2.25cm}{90+(360/5)*3}
-                        \unotBt{2.25cm}{90+(360/5)*4}
-                        \cuadro{2.25cm}{90+(360/5)*1}
-                        \dospRGp{2.25cm}{90}
-                        \unopBdost{2.25cm}{90+(360/5)*2}
+                        \tresc{1.275cm}{90+(360/5)*3}
+                        \unotBt{1.275cm}{90+(360/5)*4}
+                        \cuadro{1.275cm}{90+(360/5)*1}
+                        \dospRGp{1.275cm}{90}
+                        \unopBdost{1.275cm}{90+(360/5)*2}
                     \end{tikzpicture}
                 }
         \tcbitem 
@@ -953,12 +972,12 @@ estrategia dada por \cref{alg:captura}.
                     \begin{tikzpicture}
                         \estrella
                         
-                        \tresc{2.25cm}{90+(360/5)*3}
-                        \unotBt{2.25cm}{90+(360/5)*4}
-                        \cuadro{2.25cm}{90+(360/5)*1}
-                        \dospRG{2.25cm}{90}
+                        \tresc{1.275cm}{90+(360/5)*3}
+                        \unotBt{1.275cm}{90+(360/5)*4}
+                        \cuadro{1.275cm}{90+(360/5)*1}
+                        \dospRG{1.275cm}{90}
                         \punto{0cm}{0}
-                        \unopBdost{2.25cm}{90+(360/5)*2}
+                        \unopBdost{1.275cm}{90+(360/5)*2}
                     \end{tikzpicture}
                 }
         \tcbitem
@@ -967,31 +986,76 @@ estrategia dada por \cref{alg:captura}.
                     \begin{tikzpicture}
                         \estrella
 
-                        \doscRG{2.25cm}{90+(360/5)*3}
-                        \unotBt{2.25cm}{90+(360/5)*4}
-                        \cuadro{2.25cm}{90+(360/5)*1}
+                        \doscRG{1.275cm}{90+(360/5)*3}
+                        \unotBt{1.275cm}{90+(360/5)*4}
+                        \cuadro{1.275cm}{90+(360/5)*1}
                         \unocBdospp{0cm}{0}
-                        \unopBdost{2.25cm}{90+(360/5)*2}
+                        \unopBdost{1.275cm}{90+(360/5)*2}
                     \end{tikzpicture}
                 }
+        \tcbitem 
+            \tcblower
+                \scalebox{1}{
+                    \begin{tikzpicture}
+                        \estrella
+                        
+                        \doscRGp{1.275cm}{90+(360/5)*3}
+                        \unotBt{1.275cm}{90+(360/5)*4}
+                        \cuadro{1.275cm}{90+(360/5)*1}
+                        \unocBdosp{0cm}{0}
+                        \unopBdost{1.275cm}{90+(360/5)*2}
+                    \end{tikzpicture}
+                }
+        \tcbitem
+            \tcblower
+                \scalebox{1}{
+                    \begin{tikzpicture}
+                        \estrella
+
+                        \dospRGp{1.275cm}{90+(360/5)*3}
+                        \unotBt{1.275cm}{90+(360/5)*4}
+                        \unocBc{1.275cm}{90+(360/5)*1}
+                        \doscRG{0cm}{0}
+                        \unopBdost{1.275cm}{90+(360/5)*2}
+                    \end{tikzpicture}
+                }
+        \tcbitem 
+                \tcblower
+                    \scalebox{1}{
+                        \begin{tikzpicture}
+                            \estrella
+                            
+                            \dospRGp{1.275cm}{90+(360/5)*3}
+                            \unotBt{1.275cm}{90+(360/5)*4}
+                            \unocB{1.275cm}{90+(360/5)*1}
+                            \doscRGc{0cm}{0}
+                            \unopBdost{1.275cm}{90+(360/5)*2}
+                    
+                        \end{tikzpicture}
+                    }
+            \tcbitem
+                \tcblower
+                    \scalebox{1}{
+                        \begin{tikzpicture}
+                            \estrella
+    
+                            \dospRGp{1.275cm}{90+(360/5)*3}
+                            \dostRBt{1.275cm}{90+(360/5)*4}
+                            \doscBGc{0cm}{0}
+                            \unopBunotGc{1.275cm}{90+(360/5)*2}
+                        \end{tikzpicture}
+                    }
     \end{tcbitemize}
-    \captionsetup{font=small}
+    \captionsetup{font=footnotesize}
     \caption{Se muestra una partida de polic\'ias y ladrones sobre $S_5$ con $3$
-    fichas, de manera que, por \cref{teo:numero-de-policia-estrella}, son
-    necesarios $3$ polic\'ias para que $C$ tenga una estrategia ganadora. Cada
-    polic\'ia, representado por un color (azul, verde o rojo) tiene sus 3 fichas
-    distinguidas por figuras (c\'irculo, tri\'angulo o cuadrado), mientras que
-    $R$ controla las fichas negras. Las figuras funcionan como etiquetado, de
-    manera que las fichas de $c_i$ de figura $x$ deben capturar a la ficha de
-    $r$ de figura $x$. Adem\'as, el c\'irculo azul es la ficha libre del
-    polic\'ia azul, el tri\'angulo verde es la ficha libre del polic\'ia verde,
-    y el cuadrado rojo es la ficha libre del polic\'ia rojo. Las escenas se leen
-    siguiendo la enumeraci\'on, donde cada una representa la situaci\'on
-    posterior al movimiento de uno de los jugadores.}
+    fichas. Las escenas se leen siguiendo la enumeraci\'on, donde cada una
+    representa la situaci\'on posterior al movimiento de uno de los jugadores.
+    En (h), $r$ se encuentra bajo asedio (todas las fichas salvo las libres de
+    cada polic\'ia se encuentran capturando a sus respectivos objetivos).}
     \label{fig:partida1}
 \end{figure}
 
-\begin{figure}[!htbp]
+\begin{figure}[ht!]
     \ContinuedFloat
     \begin{tcbitemize}[raster columns=2, raster equal height, enhanced,
         colback=Black!5!white,colframe=Grey!75!black, attach title to upper,
@@ -1006,79 +1070,11 @@ estrategia dada por \cref{alg:captura}.
                     \begin{tikzpicture}
                         \estrella
                         
-                        \doscRGp{2.25cm}{90+(360/5)*3}
-                        \unotBt{2.25cm}{90+(360/5)*4}
-                        \cuadro{2.25cm}{90+(360/5)*1}
-                        \unocBdosp{0cm}{0}
-                        \unopBdost{2.25cm}{90+(360/5)*2}
-                    \end{tikzpicture}
-                }
-        \tcbitem
-            \tcblower
-                \scalebox{1}{
-                    \begin{tikzpicture}
-                        \estrella
-
-                        \dospRGp{2.25cm}{90+(360/5)*3}
-                        \unotBt{2.25cm}{90+(360/5)*4}
-                        \unocBc{2.25cm}{90+(360/5)*1}
-                        \doscRG{0cm}{0}
-                        \unopBdost{2.25cm}{90+(360/5)*2}
-                    \end{tikzpicture}
-                }
-        \tcbitem 
-            \tcblower
-                \scalebox{1}{
-                    \begin{tikzpicture}
-                        \estrella
-                        
-                        \dospRGp{2.25cm}{90+(360/5)*3}
-                        \unotBt{2.25cm}{90+(360/5)*4}
-                        \unocB{2.25cm}{90+(360/5)*1}
-                        \doscRGc{0cm}{0}
-                        \unopBdost{2.25cm}{90+(360/5)*2}
-                
-                    \end{tikzpicture}
-                }
-        \tcbitem
-            \tcblower
-                \scalebox{1}{
-                    \begin{tikzpicture}
-                        \estrella
-
-                        \dospRGp{2.25cm}{90+(360/5)*3}
-                        \dostRBt{2.25cm}{90+(360/5)*4}
-                        \doscBGc{0cm}{0}
-                        \unopBunotGc{2.25cm}{90+(360/5)*2}
-                    \end{tikzpicture}
-                }
-    \end{tcbitemize}
-    \captionsetup{font=small}
-    \caption{En (h), $r$ se encuentra bajo asedio (todas las fichas salvo las
-    libres de cada polic\'ia se encuentran capturando a sus respectivos
-    objetivos)}
-\end{figure}
-
-\begin{figure}[!htbp]
-    \ContinuedFloat
-    \begin{tcbitemize}[raster columns=2, raster equal height, enhanced,
-        colback=Black!5!white,colframe=Grey!75!black, attach title to upper,
-        phantom={\addtocounter{myrasternum}{1}},
-        title={(\alph{myrasternum})\enspace}, halign lower=center, halign upper
-        = left, lower separated=false, middle=0mm, boxsep=0mm, leftupper=2mm,
-        fonttitle=\bfseries, coltitle=black, raster column skip=1mm,raster
-        halign=center, raster row skip=1mm]
-        \tcbitem 
-            \tcblower
-                \scalebox{1}{
-                    \begin{tikzpicture}
-                        \estrella
-                        
-                        \dospRGp{2.25cm}{90+(360/5)*3}
-                        \dostRBt{2.25cm}{90+(360/5)*4}
+                        \dospRGp{1.275cm}{90+(360/5)*3}
+                        \dostRBt{1.275cm}{90+(360/5)*4}
                         \doscBG{0cm}{0}
-                        \unopBunotGc{2.25cm}{90+(360/5)*2}
-                        \cuadro{2.25cm}{90}
+                        \unopBunotGc{1.275cm}{90+(360/5)*2}
+                        \cuadro{1.275cm}{90}
                     \end{tikzpicture}
                 }
         \tcbitem
@@ -1087,112 +1083,114 @@ estrategia dada por \cref{alg:captura}.
                     \begin{tikzpicture}
                         \estrella
 
-                        \dospRGp{2.25cm}{90+(360/5)*3}
-                        \dostRBt{2.25cm}{90+(360/5)*4}
-                        \doscBGc{2.25cm}{90}
+                        \dospRGp{1.275cm}{90+(360/5)*3}
+                        \dostRBt{1.275cm}{90+(360/5)*4}
+                        \doscBGc{1.275cm}{90}
                         \unocR{0cm}{0}
-                        \unopBunotG{2.25cm}{90+(360/5)*2}
+                        \unopBunotG{1.275cm}{90+(360/5)*2}
                     \end{tikzpicture}
                 }
         \tcbitem 
-            \tcblower
-                \scalebox{1}{
-                    \begin{tikzpicture}
-                        \estrella
-                        
-                        \dospRG{2.25cm}{90+(360/5)*3}
-                        \dostRBt{2.25cm}{90+(360/5)*4}
-                        \doscBGc{2.25cm}{90}
-                        \unocRp{0cm}{0}
-                        \unopBunotG{2.25cm}{90+(360/5)*2}
-                    \end{tikzpicture}
-                }
-        \tcbitem
-            \tcblower
-                \scalebox{1}{
-                    \begin{tikzpicture}
-                        \estrella
-
-                        \dospRG{2.25cm}{90+(360/5)*3}
-                        \dostRBt{2.25cm}{90+(360/5)*4}
-                        \doscBGc{2.25cm}{90}
-                        \unopBunocRp{0cm}{0}
-                        \unotG{2.25cm}{90+(360/5)*2}
-                    \end{tikzpicture}
-                }
+                \tcblower
+                    \scalebox{1}{
+                        \begin{tikzpicture}
+                            \estrella
+                            
+                            \dospRG{1.275cm}{90+(360/5)*3}
+                            \dostRBt{1.275cm}{90+(360/5)*4}
+                            \doscBGc{1.275cm}{90}
+                            \unocRp{0cm}{0}
+                            \unopBunotG{1.275cm}{90+(360/5)*2}
+                        \end{tikzpicture}
+                    }
+            \tcbitem
+                \tcblower
+                    \scalebox{1}{
+                        \begin{tikzpicture}
+                            \estrella
+    
+                            \dospRG{1.275cm}{90+(360/5)*3}
+                            \dostRBt{1.275cm}{90+(360/5)*4}
+                            \doscBGc{1.275cm}{90}
+                            \unopBunocRp{0cm}{0}
+                            \unotG{1.275cm}{90+(360/5)*2}
+                        \end{tikzpicture}
+                    }
     \end{tcbitemize}
-    \captionsetup{font=small}
+    \captionsetup{font=footnotesize}
     \caption{Finalmente, $C$ termina por capturar dos turnos despu\'es con su
     polic\'ia azul.}
 \end{figure}
 
-\section{Estrellas con subdivisiones}
+\section{Estrellas subdivididas}
 \label{sec:estrellassub}
 
 En busca de que el resultado anterior d\'e informaci\'on acerca de m\'as
-gr\'aficas procedemos a definir una generalizaci\'on de las estrellas trabajadas
-en la \'ultima secci\'on. Dado $n\in\n^{+}$, para cada $i\in \seg{1}{n}$ tomemos
-un $m_i\in \n$. As\'i, definimos una \textbf{estrella de $n$ ramas con
-subdivisiones}, $S(m_1,\dots,m_n)$, que consiste en tomar la gr\'afica $S_n$ y,
-para cada $i\in\seg{1}{n}$, subdividir la arista $0i$ $m_i$ veces. V\'ease que
-$S(0,\dots, 0)=S_n$. M\'as concisamente, $S(m_1,\dots,m_n)=(V,E)$, donde
+gr\'aficas, procedemos a definir una generalizaci\'on de las estrellas
+trabajadas en la \'ultima secci\'on. Dado $n\in\n^{+}$, para cada $i\in
+\seg{1}{n}$ tomemos un $m_i\in \n$. As\'i, definimos una \textbf{estrella de $n$
+ramas subdivididas}, $S(m_1,\dots,m_n)$, que consiste en tomar la gr\'afica
+$S_n$ y, para cada $i\in\seg{1}{n}$, subdividir la arista $0i$ $m_i$ veces.
+V\'ease que $S(0,\dots, 0)=S_n$. M\'as concisamente, $S(m_1,\dots,m_n)=(V,E)$,
+donde
 \begin{align*}
     V &=\paren{\bigcup_{i=1}^{n}\l{i_j \colon j\in \l{0,\dots, m_i}}} \cup \l{0} \\
     E &=\paren{\bigcup_{i=1}^{n}\l{i_ji_{j+1} \colon j \in \c{m_i}\setminus\l{m_i}}}
     \cup \l{0i_0 \colon i\in \c{n}\setminus\l{0}}.
 \end{align*}
 Para cada $i\in\seg{1}{n}$, llamaremos a la trayectoria $(i_0,\dots,i_{m_i})$ la
-\index{esima rama @ $i$-\'esima rama} y la denotaremos por $P_i$. Asimismo, nos
-referiremos por \textbf{v\'ertice soporte de la $i$-\'esima rama} al v\'ertice
-inicial de $P_i$, $i_0$. Dado $m\in\n$, denotaremos por $S_{n,m}$ a la gr\'afica
-$S(m_1,\dots,m_n)$ donde $m_i=m$ para cada $i\in\seg{1}{n}$. As\'i llamaremos a
-$S_{n,m}$ la \textbf{estrella de $n$ ramas con $m$ subdivisiones}. 
+\textbf{$i$-\'esima rama}\index{esima rama @ $i$-\'esima rama} y la denotamos
+por $P_i$. Asimismo, nos referiremos por \textbf{v\'ertice soporte de la
+$i$-\'esima rama} al v\'ertice inicial de $P_i$, $i_0$. Dado $m\in\n$,
+denotaremos por $S_{n,m}$ a la gr\'afica $S(m_1,\dots,m_n)$ donde $m_i=m$ para
+cada $i\in\seg{1}{n}$. As\'i llamaremos a $S_{n,m}$ la \textbf{estrella de $n$
+ramas con $m$ subdivisiones}. 
 
 En busca de una cota inferior para el n\'umero policiaco de las gr\'aficas de
-$k$ fichas de las estrellas, el primer objetivo de esta secci\'on es dar una
-estrategia para $R$ en funci\'on de la estrategia dada en
+$k$ fichas de las estrellas subdivididas, el primer objetivo de esta secci\'on
+es dar una estrategia para $R$ en funci\'on de la estrategia dada en
 \cref{teo:cota_estrella}. As\'i pues, si $T$ es un \'arbol y $x\in V_T$, sea
 $H=G[N_T[x]]$. Definimos una funci\'on $s'$ de $V_T$ en $V_H$ dada por la regla
 de correspondencia
 \[
-    s'(v) = u_v
+    s'(v) = u_v,
 \]
 donde $u_v$ es el v\'ertice de $H$ que minimiza $d(v,u)$ para cada $u$ v\'ertice
 de $H$. N\'otese que $f$ est\'a bien definida pues si $v\in V_H$, $s'(v) = v$.
 Por otra parte, si $v\notin V_H$, por ser $T$ un \'arbol se tiene, por
 \cref{cor:unitray}, que existe una \'unica $vx$-trayectoria en $T$, por lo que
 $f(v)$ es precisamente el pen\'ultimo v\'ertice de la $vx$-trayectoria.
-Definimos $s$ la funci\'on de $V_{\t{k}{T}}$ en
-$\bigcup_{i=1}^{k}\binom{V_H}{i}$ dada por la regla de correspondencia
+Definimos la funci\'on $s\colon V_{\t{k}{T}} \to
+\bigcup_{i=1}^{k}\binom{V_H}{i}$ dada por la regla de correspondencia
 \[
     s(C) = \l{s'(v) \colon\  v\in C}.
 \]
-la cual est\'a bien definida pues $s'$ lo est\'a y la imagen de $s$ consiste de
-un conjunto con al menos un elemento de $V_H$. Llamamos a $s(C)$ la
-\indice{sombra} de $C$ sobre $H$. De forma similar, dada una partida de
-polic\'ias y ladrones sobre la gr\'afica de $k$ fichas de un \'arbol $T$, para
-cada $c_i$, podemos considerar la sombra de $c_i$ sobre $H$, $c_i^s$, como un
-polic\'ia cuya $j$-\'esima ficha est\'a sobre la sombra de la posici\'on de
+Notemos que esta funci\'on est\'a bien definida pues $s'$ lo est\'a y la imagen
+de $s$ consiste de un conjunto con al menos un elemento de $V_H$. Llamamos a
+$s(C)$ la \indice{sombra} de $C$ sobre $H$. De forma similar, dada una partida
+de polic\'ias y ladrones sobre la gr\'afica de $k$ fichas de un \'arbol $T$,
+para cada $c_i$, podemos considerar la sombra de $c_i$ sobre $H$, $c_i^s$, como
+un polic\'ia cuya $j$-\'esima ficha est\'a sobre la sombra de la posici\'on de
 $c_{i,j}$, es decir
 \[
     c_{i,j}^s(t) = s' \paren{c_{i,j}(t)}.
 \]
-N\'otese que puede que $c_i^s$ no determine un $k$-conjunto de $V_H$ pues $s'$
-no necesariamete es inyectiva. No obstante, esta definici\'on de la sombra de un
-polic\'ia nos ayuda a describir la estrategia buscada para $R$.
+N\'otese que puede pasar que $c_i^s$ no determine un $k$-conjunto de $V_H$, pues
+$s'$ no necesariamete es inyectiva. No obstante, esta definici\'on de la sombra
+de un polic\'ia nos ayuda a describir la estrategia buscada para $R$.
 
 
 \begin{lema}
 \label{lem:retracto}
-    Si $S$ es una estrella subdividida de $n$ ramas y $k$ es tal que $n\geq
-    2k-1$, entonces $c\paren{\t{k}{S_n}} \leq c\paren{\t{k}{S}}$.
+    Si $S$ es una estrella subdividida de $n$ ramas y $k$ es tal que
+    $k\leq\frac{n+1}{2}$, entonces $c\paren{\t{k}{S}} \geq
+    c\paren{\t{k}{S_n}}=k$.
 \end{lema}
 
 \begin{proof}
-    Consid\'erese un juego de polic\'ias y ladrones sobre la gr\'afica de $k$
-    fichas de $S$ con $c\paren{\t{k}{S_n}} - 1 = k-1$ polic\'ias. Sea $H$ la
-    subgr\'afica inducida de $S$ isomorfa a $S_n$. Por lo dicho en la
-    demostraci\'on d\cref{teo:cota_estrella}, $R$ puede escoger una
+    Consid\'erese un juego de polic\'ias y ladrones sobre $\t{k}{S}$ con $k-1$
+    polic\'ias. Sea $H$ la subgr\'afica inducida de $S$ isomorfa a $S_n$. Por lo
+    dicho en la demostraci\'on d\cref{teo:cota_estrella}, $R$ puede escoger una
     configuraci\'on inicial sobre $H$ con una ficha en $0$ y de manera que
     ning\'un polic\'ia le captura $k-1$ fichas en los v\'ertices soporte de las
     ramas de $S$. M\'as a\'un, esto se cumple tambi\'en para las sombras de cada
@@ -1229,9 +1227,9 @@ polic\'ia nos ayuda a describir la estrategia buscada para $R$.
     \end{enumerate}
 
     Este argumento prueba que, si al final del turno de $R$, ning\'un polic\'ia
-    tine a su compra capturando $k-1$ fichas en v\'ertices soporte de las ramas,
-    entonces $R$ sobrevive a su siguiente turno, por lo que se probar\'a que $R$
-    siempre puede volver a una de estas situaciones.
+    tiene a su sombra capturando $k-1$ fichas en v\'ertices soporte de las
+    ramas, entonces $R$ sobrevive a su siguiente turno, por lo que se probar\'a
+    que $R$ siempre puede volver a una de estas situaciones.
 
     Sup\'ongase que $R$ tiene las $k-1$ de sus fichas en v\'ertices soporte
     capturadas por las sombras de polic\'ias $c_1^s,\dots, c_m^s$ y sea $r_1$ la
@@ -1264,53 +1262,55 @@ polic\'ia nos ayuda a describir la estrategia buscada para $R$.
     k-1$, cada $c_i^s$ est\'a capturando la ficha $r_k$, de manera que $R$ mueve
     $r_k$ a $0$, terminando su turno con la sombra de ning\'un polic\'ia
     captur\'andole $k-1$ fichas en los v\'ertices soporte de las ramas de $S$.
-    Por tanto, $R$ puede iterar esta estrategia de modo que $k \leq
-    c\paren{\t{k}{S}}$.
+    Por tanto, $R$ puede iterar esta estrategia de modo que $c\paren{\t{k}{S}}
+    \geq k$.
 
 \end{proof}
 
 Lo importante de la estrategia anterior es que esta no depende de que la
-gr\'afica sobre la que se toma su gr\'afica de fichas sea una estrella pues la
+gr\'afica sobre la que se toma su gr\'afica de fichas sea una estrella, pues la
 definici\'on de sombras es v\'alida para cualquier \'arbol y un v\'ertice de
 \'el que se toma como centro. As\'i, tiene luegar el siguiente corolario.
 
 \begin{corolario}
 \label{cor:cota-inf-arbol}
-    Sean $T$ un \'arbol. Si $\Delta_T\geq 2k-1$, $k\leq c\paren{\t{k}{T}}$.
+    Sea $T$ un \'arbol. Si $k$ es un entero positivo tal que $k\leq
+    \frac{\Delta_T+1}{2}$, entonces $c\paren{\t{k}{T}}\geq k$.
 \end{corolario}
 
 Introducimos ahora una nueva definici\'on respecto a las condiciones en las que
 un polic\'ia tiene bajo asedio a $r$. Diremos que el $i$-\'esimo polic\'ia tiene
-\textbf{bajo asedio} \indiceSub{bajo asedio}{d\'ebil} a $r$ al turno $t$ si cada
-ficha no libre de $c_i$ est\'a a distancia a lo m\'as $1$ de su objetivo (ver
-\cref{fig:asedio-debil}).
+\textbf{bajo asedio} \indiceSub{bajo asedio}{d\'ebil} a $r$ al turno $I(t)$ si cada
+ficha no libre de $c_i$ est\'a a distancia a lo m\'as $1$ de su objetivo.
 
-\begin{figure}[ht]
+\begin{figure}[ht!]
     \centering
     \begin{tikzpicture}
-        \begin{scope}[scale=0.9]
+        \begin{scope}[scale=1]
             \estrellasubdiv
-            \unotBc[0.2cm]{0cm}{0}
-            \tri{1.5cm}{90}
-            \unocB{1.5cm}{90+(360/5)*4}
-            \punto{4.5cm}{90+(360/5)*4}
-            \unopB{1.5cm}{90+(360/5)*2}
+            \unotBc{0cm}{0}
+            \tri{1.125cm}{90}
+            \unocB{1.125cm}{90+(360/5)*4}
+            \punto{3.875cm}{90+(360/5)*4}
+            \unopB{1.125cm}{90+(360/5)*2}
         \end{scope}
-
     \end{tikzpicture}
-    \caption{Ejemplo de instancia en la que el polic\'ia azul tiene bajo asedio
-    d\'ebil a $r$. Obs\'ervese que no es necesario que la ficha libre del
-    polic\'ia (c\'irculo azul) se encuentre cerca de su objetivo.}
+    \captionsetup{font=footnotesize}
+    \caption{El polic\'ia azul tiene bajo asedio d\'ebil a $r$. Obs\'ervese que
+    no es necesario que la ficha libre del polic\'ia se encuentre cerca de su
+    objetivo.}
     \label{fig:asedio-debil}
 \end{figure}
 
-Con este preeliminar es posible enunciar una generalizaci\'on
+\newpage
+
+Con este preliminar, es posible enunciar una generalizaci\'on
 d\cref{teo:numero-de-policia-estrella}.
 
 \begin{teorema}
 \label{teo:numero-de-policia-estrella-subdivisiones}
-    Para toda $k\geq 2$, $n\geq 2k-1$ y $m\geq 0$,
-    $c\paren{\t{k}{S_{n,m}}}=k$.
+    Sean $n$ y $k$ enteros positivos tales que $2\leq k \leq \frac{n+1}{2}$ y
+    $m$ un natural. Entonces $c\paren{\t{k}{S_{n,m}}}=k$.
 \end{teorema}
 
 \begin{proof}
@@ -1326,7 +1326,7 @@ d\cref{teo:numero-de-policia-estrella}.
     en \cref{teo:numero-de-policia-estrella}, despu\'es de un cierto n\'umero de
     turnos, un polic\'ia $c_i$ pone bajo asedio a $r$ (recordando que
     \cref{alg:desob} resuelve obstrucciones sin importar el \'arbol sobre el que
-    se juega). El problema surge una vez que $c_i$ asedia a $R r$ pues, si su
+    se juega). El problema surge una vez que $c_i$ asedia a $r$ pues, si su
     ficha libre est\'a obstruida, \cref{alg:captura} indica que $c_i$ pasa.
     As\'i, si $m\geq 1$, $r_i$ puede moverse sobre una misma rama, de modo que,
     en alg\'un momento, el algoritmo hace que todos los polic\'ias distintos de
@@ -1342,9 +1342,9 @@ d\cref{teo:numero-de-policia-estrella}.
     Se afirma que esta nueva estrategia propicia que, en alg\'un turno, un
     polic\'ia $c_j$ con $j\neq i$ logra reducir la suma de las distancias de sus
     fichas a sus objetivos (sin considerar su ficha libre). En efecto, si $c_i$
-    tiene bajo asedio a $r$ y $R$ mueve una ficha $r_j$ con $j\neq i$, entonces,
-    dado que el $j$-\'esimo polic\'ia ignora a $r_j$, este puede avanzar o
-    resolver obstrucciones con \cref{alg:desob} para reducir
+    tiene bajo asedio a $r$, y $R$ mueve una ficha $r_j$ con $j\neq i$,
+    entonces, dado que el $j$-\'esimo polic\'ia ignora a $r_j$, este puede
+    avanzar o resolver obstrucciones con \cref{alg:desob} para reducir
     $d_{S_{n,m}}\paren{c_j(t),r(t)}$. An\'alogamente, si $R$ pasa, entonces
     todos los polic\'ias (salvo quiz\'as $c_i$) reducen la suma de las
     distancias de sus fichas a sus objetivos sin considerar su ficha libre.
@@ -1380,6 +1380,8 @@ d\cref{teo:numero-de-policia-estrella}.
     en todo momento. Por tanto, aplicar la estrategia mencionada propicia que
     eventualmente todos los polic\'ias tengan bajo asedio d\'ebil a $r$.
 
+    \newpage
+
     Para la segunda fase, cada que $R$ mueva la ficha $r_i$, si el polic\'ia
     $c_i$ tiene bajo asedio d\'ebil a $r$, entonces prioriza que las fichas
     distintas de su ficha libre capturen a su objetivo; de otro modo, acerca su
@@ -1397,8 +1399,9 @@ poco m\'as general.
 
 \begin{corolario}
 \label{cor:cota-sup-1}
-    Sean $k\geq 2$, $n\geq 2k-1$ y, para cada $i\in \seg{1}{n}$, $m_i\in\n$.
-    Entonces $c\paren{\t{k}{S(m_1,\dots,m_n)}}=k$.
+    Sean $n$ y $k$ enteros positivos tales que $2\leq k\leq \frac{n+1}{2}$ y,
+    para cada $i\in \seg{1}{n}$, $m_i\in\n$. Entonces
+    $c\paren{\t{k}{S(m_1,\dots,m_n)}}=k$.
 \end{corolario}
 
 En resumidas cuentas, el n\'umero policiaco de la gr\'afica de $k$ fichas de una
@@ -1408,7 +1411,7 @@ Omitiremos de momento el algoritmo y un ejemplo de su ejecuci\'on en una partida
 pues, como se ver\'a en \cref{sec:arboles}, este mismo procedimineto nos es
 \'util para probar un resultado a\'un m\'as fuerte.
 
-\section{Estrellas con subdivisiones de grado bajo}
+\section{Estrellas de grado bajo subdivididas}
 \label{sec:estrellasubbajo}
 
 A diferencia de lo expuesto en \cref{sec:estrellas} donde, debido al Lema
@@ -1416,16 +1419,19 @@ A diferencia de lo expuesto en \cref{sec:estrellas} donde, debido al Lema
 al n\'umero policiaco de cualquier estrella simple, resulta que no podemos
 concluir, d\cref{teo:numero-de-policia-estrella-subdivisiones}, el n\'umero
 policiaco de las gr\'aficas de $k$ fichas de las estrellas con $n$ ramas
-subdivididas si $n<2k-1$. Para ver esto, consideramos $n$ un entero fijo y $k_n$
-el m\'inimo entero tal que $n < 2k_n -1$. Al ser este un m\'inimo, sucede que
+subdivididas si $\frac{n+1}{2} < k$. Para ver esto, consideramos $n$ un entero
+fijo y $k_n$ el m\'inimo entero tal que $\frac{n+1}{2}<k_n$. Al ser este un
+m\'inimo, sucede que
 \[
-    2\paren{k_n-1} - 1 \leq n < 2k_n - 1,
+    k_n-1 \leq \frac{n+1}{2} < k_n,
 \]
 de manera que
 \[
     k_n\leq \frac{n + 1}{2} + 1 = \frac{n+3}{2} < k_n + 1
 \]
 y, por tanto, $k_n=\left \lfloor \frac{n+3}{2} \right \rfloor$.
+
+\newpage
 
 En este orden de ideas, para cualquier entero positivo $n$, si $m=0$,
 $\abs{V_{S_{n,m}}} = n(m+1) + 1 = n + 1$, de modo que, tal como se expuso al
@@ -1441,6 +1447,10 @@ si $m\geq1$, y recordando que $k\leq \frac{\abs{V_{S_{n,m}}}}{2}$ debido al Lema
         &= n(m+1) + 1 -1\\
         &\geq 2n > n,
 \end{align*}
+es decir,
+\[
+    \frac{n+1}{2} < \abs{V_{S_{n,m}}} - k,
+\]
 por lo que no es posible utilizar
 \cref{teo:numero-de-policia-estrella-subdivisiones} para calcular el n\'umero
 policiaco de $\t{\abs{V_{S_{n,m}}}-k}{S_{n,m}}$ para cualquier $k\geq k_n$. No
@@ -1464,70 +1474,84 @@ capturar a $R$ (ver \cref{fig:S31}).
         halign=center, raster row skip=1mm]
         \tcbitem
             \tcblower
-                \scalebox{0.55}{
+                \scalebox{1}{
                     \begin{tikzpicture}
                             \Stresuno
-                            \unopBp{0cm}{0}
-                            \unopBp{2.25cm}{90}
-                            \unopB{2.25cm}{90 + (360/3)}
-                            \punto{2.25cm}{90 + (360/3)*2}
+                            \unopBpdos{0cm}{0}
+                            \unopBpdos{1.125cm}{90}
+                            \unopBdos{1.125cm}{90 + (360/3)}
+                            \puntodos{1.125cm}{90 + (360/3)*2}
                     \end{tikzpicture}
                 }
         \tcbitem
             \tcblower
-                \scalebox{0.55}{
+                \scalebox{1}{
                     \begin{tikzpicture}
                             \Stresuno
-                            \punto{0cm}{0}
-                            \unopBp{2.25cm}{90}
-                            \unopB{2.25cm}{90 + (360/3)}
-                            \unopBp{2.25cm}{90 + (360/3)*2}
+                            \puntodos{0cm}{0}
+                            \unopBpdos{1.125cm}{90}
+                            \unopBdos{1.125cm}{90 + (360/3)}
+                            \unopBpdos{1.125cm}{90 + (360/3)*2}
                     \end{tikzpicture}
                 }
+    \end{tcbitemize}
+    \captionsetup{font=footnotesize}
+    \caption{En (a), $R$ escoge una posici\'on sobre el $S_1$ inducido de 
+    manera que sobrevive al menos un turno.}
+    \label{fig:S31}
+\end{figure}
+
+\begin{figure}[ht!]
+    \ContinuedFloat
+    \begin{tcbitemize}[raster columns=2, raster equal height, enhanced,
+        colback=Black!5!white,colframe=Grey!75!black, attach title to upper,
+        phantom={\addtocounter{myrasternum}{1}},
+        title={(\alph{myrasternum})\enspace}, halign lower=center, halign upper
+        = left, lower separated=false, middle=0mm, boxsep=0mm, leftupper=2mm,
+        fonttitle=\bfseries, coltitle=black, raster column skip=1mm,raster
+        halign=center, raster row skip=1mm]
         \tcbitem 
             \tcblower
-                \scalebox{0.55}{
+                \scalebox{1}{
                     \begin{tikzpicture}
                             \Stresuno
-                            \punto{0cm}{0}
-                            \unopB{2.25cm}{90}
-                            \punto{4.5cm}{90}
-                            \unopB{2.25cm}{90 + (360/3)}
-                            \unopBp{2.25cm}{90 + (360/3)*2}
+                            \puntodos{0cm}{0}
+                            \unopBdos{1.125cm}{90}
+                            \puntodos{2.25cm}{90}
+                            \unopBdos{1.125cm}{90 + (360/3)}
+                            \unopBpdos{1.125cm}{90 + (360/3)*2}
                     \end{tikzpicture}
                 }
         \tcbitem
             \tcblower
-                \scalebox{0.55}{
+                \scalebox{1}{
                     \begin{tikzpicture}
                             \Stresuno
-                            \unopBp{0cm}{0}
-                            \unopB{2.25cm}{90}
-                            \punto{4.5cm}{90}
-                            \unopBp{2.25cm}{90 + (360/3)*2}
+                            \unopBpdos{0cm}{0}
+                            \unopBdos{1.125cm}{90}
+                            \puntodos{2.25cm}{90}
+                            \unopBpdos{1.125cm}{90 + (360/3)*2}
                     \end{tikzpicture}
                 }
 
         \tcbitem[raster multicolumn=2]
             \tcblower
-                \scalebox{0.55}{
+                \scalebox{1}{
                     \begin{tikzpicture}
                             \Stresuno
-                            \unopB{0cm}{0}
-                            \unopB{2.25cm}{90}
-                            \punto{4.5cm}{90}
-                            \punto{2.25cm}{90 + (360/3)}
-                            \unopBp{2.25cm}{90 + (360/3)*2}
+                            \unopBdos{0cm}{0}
+                            \unopBdos{1.125cm}{90}
+                            \puntodos{2.25cm}{90}
+                            \puntodos{1.125cm}{90 + (360/3)}
+                            \unopBpdos{1.125cm}{90 + (360/3)*2}
                     \end{tikzpicture}
                 }
     \end{tcbitemize}
-    \captionsetup{font=normalsize}
-    \caption{En (a), $R$ escoge una posici\'on sobre el $S_1$ inducido de 
-    manera que sobrevive al menos un turno. Posterior al movimiento de $C$, $R$
-    mueve una de sus fichas hacia una hoja como en (c), de manera que, sin
-    importar c\'omo se acerque $C$ a $R$, este siempre puede mover hacia el
-    lugar que acaba de desocupar la ficha de $C$ que se acaba de mover.}
-    \label{fig:S31}
+    \captionsetup{font=footnotesize}
+    \caption{Posterior al movimiento de $C$, $R$ mueve una de sus fichas hacia
+    una hoja como en (c), de manera que, sin importar c\'omo se acerque $C$ a
+    $R$, este siempre puede mover hacia el lugar que acaba de desocupar la ficha
+    de $C$ que se acaba de mover.}
 \end{figure}
 
 Como soluci\'on al problema de esta secci\'on, si $k\geq k_n$, acotaremos
@@ -1652,7 +1676,7 @@ emparejamiento de $G$. As\'i pues, pasamos a demostrar el siguiente teorema.
     un turno de capturarle.
     
     As\'i pues, sup\'ongase sin p\'erdida de generalidad que, para cada
-    $i\in\seg{1}{k}$, $R$ tiene su $i$-\'esima ficha en $u_i$ y $c_1$ es un
+    $i\in\seg{1}{k}$, $R$ tiene su $i$-\'esima ficha en $u_i$, y $c_1$ es un
     polic\'ia tal que, para cada $i\in\seg{1}{k-1}$, $c_{1,i}$ est\'a en $u_i$ y
     $c_{1,k}$ est\'a en un v\'ertice adyacente a $u_k$, de modo que $c_1$ est\'a
     a un turno de capturar a $R$. N\'otese que si $c_{1,k}$ est\'a en la
@@ -1685,6 +1709,7 @@ emparejamiento de $G$. As\'i pues, pasamos a demostrar el siguiente teorema.
     en el peor de los casos, $R$ tiene $k + 3 -
     2\left\lceil\frac{k+1}{2}\right\rceil$ movimientos posibles. Se generan dos
     casos:
+
     \begin{enumerate}
         \item Si $k$ es impar, el n\'umero de movimientos posibles es
                 \[
@@ -1701,6 +1726,8 @@ emparejamiento de $G$. As\'i pues, pasamos a demostrar el siguiente teorema.
     \left\lceil\frac{k+1}{2}\right\rceil$.
 
 \end{proof}
+
+\newpage
 
 Si bien el teorema anterior nos da la cota que buscamos para el n\'umero
 polic\'iaco de las gr\'aficas de fichas de las estrellas subdivididas, antes de
@@ -1885,6 +1912,8 @@ estrella subdividida.
     \]
 \end{corolario}
 
+\newpage
+
 \begin{proof}
     Sea $F\subseteq X$ tal que $\abs{F}-\abs{N(F)} =
     \max\l{\abs{I}-\abs{N(I)}\colon I\subseteq X}$. Sup\'ongase sin p\'erdida de
@@ -1918,7 +1947,7 @@ $S=S(m_1,\dots,m_n)$. As\'i pues proponemos el siguiente lema.
 \end{lema}
 
 \begin{proof}
-    Tal como se mencion\'o en la prueba d\cref{lem:maximo}
+    Tal como se mencion\'o en la prueba d\cref{lem:maximo}, tenemos
     \[
         X=\l{i_{2j}\colon 1\leq i \leq n, 0\leq j\leq \left\lfloor 
         \frac{m_i}{2}\right\rfloor}.
@@ -1955,15 +1984,14 @@ paridades de los $m_i$.
 
 \begin{lema}
 \label{lem:num-emp}
-    Sea $n\geq 1$ y, para cada $i\in\seg{1}{n}$, sea $m_i\in \n$. Si $m_i\equiv
-    1 \mod 2$ para toda $i\in\seg{1}{n}$, entonces
+    Sea $n\geq 1$ y, para cada $i\in\seg{1}{n}$, sea $m_i\in \n$. Entonces
     \[
-        \alpha'(S(m_1,\dots,m_n)) = \sum_{i=1}^{n} \frac{m_i + 1}{2}.
-    \]
-    De lo contrario,
-    \[
-        \alpha'(S(m_1,\dots,m_n)) = \sum_{i=1}^{n} \left\lceil
-        \frac{m_i}{2}\right\rceil + 1.
+        \alpha'(S(m_1,\dots,m_n)) = \begin{cases} 
+            \sum_{i=1}^{n} \frac{m_i + 1}{2}, & \text{si} m_i\equiv
+            1 \mod 2 \text{ para toda } i\in\seg{1}{n},\\
+            \sum_{i=1}^{n} \left\lceil\frac{m_i}{2}\right\rceil + 1, & 
+            \text{ en otro caso.}
+        \end{cases}
     \]
 \end{lema}
 
@@ -1979,13 +2007,13 @@ paridades de los $m_i$.
                         \rceil} - 1 \\
                         &= n - 1 + \sum_{i=1}^{n}\paren{\left\lfloor\frac{m_i}
                         {2}\right\rfloor - \left\lceil \frac{m_i}{2} \right
-                        \rceil}
+                        \rceil}.
     \end{align*}
     Adem\'as, para cada $i\in\seg{1}{n}$ se tiene que
     \[
         \left\lfloor \frac{m_i}{2} \right\rfloor - 
         \left\lceil \frac{m_i}{2} \right\rceil = \begin{cases}
-        0, & \text{si } m_i \text{ es par.} \\
+        0, & \text{si } m_i \text{ es par,} \\
         -1, & \text{en otro caso.}
         \end{cases}
     \]
@@ -2061,7 +2089,7 @@ subdivididas podemos acotar el n\'umero policiaco de su gr\'afica de fichas.
 
 \end{proof}
 
-Juntando \cref{teo:cota-inf-emparejamiento} y \cref{lem:todo-acotado} obtenemos
+Combinando \cref{teo:cota-inf-emparejamiento} y \cref{lem:todo-acotado} obtenemos
 el siguiente corolario.
 
 \begin{corolario}
@@ -2107,7 +2135,7 @@ siguiente lema.
 
 El lema anterior implica que, dada $S$ una triada, \cref{cor:k-acotadas} acota
 inferiormente el n\'umero policiaco de $\t{k}{S}$ para cualquier $k\leq
-\left\lfloor \frac{\abs{V_S}}{2}\right\rfloor$ salvo si $S$ tiene todas sus
+\left\lfloor \frac{\abs{V_S}}{2}\right\rfloor$, salvo si $S$ tiene todas sus
 ramas de longitud par y $k=\left\lfloor\frac{\abs{V_S}}{2}\right\rfloor$. Para
 atender este \'ultimo caso, demostramos el siguiente lema respecto a la
 estructura de las gr\'aficas de $k$ fichas de las triadas.
@@ -2138,7 +2166,7 @@ estructura de las gr\'aficas de $k$ fichas de las triadas.
     V_{\t{k}{S}}$ tales que $CD\in E_{\t{k}{S}}$. Si ninguno de los dos
     conjuntos tiene a $x$, se sigue que $f(C)f(D)=CD$, la cual tambi\'en es una
     arista en $\t{k}{S-x}$ por ser esta una subgr\'afica inducida de $\t{k}{S}$.
-    
+
     Sup\'ongase ahora que $x\in C$. Como $CD\in E_{\t{k}{S}}$, sean $c,d\in V_S$
     tales que $C\triangle D = \{c,d\}$ y $cd \in E_S$. Si alguno entre $c$ y $d$
     es $x$, sup\'ongase sin p\'erdida de generalidad que $c=x$, de modo que
@@ -2149,9 +2177,8 @@ estructura de las gr\'aficas de $k$ fichas de las triadas.
         \l{x},
     \]
     concluyendo que la arista $CD$ se colpsa en el v\'ertice $D\in
-    V_{\t{k}{S-x}}$.
-    Finalmente, sup\'ongase que $c\neq x\neq d$, de manera que $x$ est\'a en
-    ambos $C$ y $D$. Si $x_C=x_D$. Entonces 
+    V_{\t{k}{S-x}}$. Finalmente, sup\'ongase que $c\neq x\neq d$, de manera que
+    $x$ est\'a en ambos $C$ y $D$. Si $x_C=x_D$,
     \[
         f(C)\triangle f(D)= (C\cup\l{x_C}\setminus \l{x})\triangle(D\cup\l{x_D}
         \setminus \l{x}) = C\triangle D=\l{c,d},
@@ -2189,6 +2216,7 @@ estructura de las gr\'aficas de $k$ fichas de las triadas.
     \[
         B' = \l{C\in B\colon\  0\in C, \abs{C\cap \l{1_0,2_0}}\geq 1}.
     \]
+
     Se demostrar\'a que $H=\t{k}{S}[V_{\t{k}{S}}\setminus B']$ es un retracto de
     $\t{k}{S}$. En efecto, dado $C\in B'$, sean $s$ y $t$ enteros tales que
     \begin{align*}
@@ -2225,7 +2253,7 @@ estructura de las gr\'aficas de $k$ fichas de las triadas.
                         \end{tikzpicture}
                     }
         \end{tcbitemize}
-        \captionsetup{font=normalsize}
+        \captionsetup{font=footnotesize}
         \caption{En esta y las siguientes figuras se omite la primera rama en
         cada una de las configuraciones, las cuales son tales que tienen una
         ficha en cada una de los v\'ertices de la rama. Los v\'ertices a la
@@ -2234,6 +2262,8 @@ estructura de las gr\'aficas de $k$ fichas de las triadas.
         configuraci\'on $C$ y en (b) se muestra la im\'agen de $C$ bajo $f$.}
         \label{fig:ultimo_vertice}
     \end{figure}
+
+    \newpage
 
     Por otro lado, si todo v\'ertice de la segunda rama est\'a en $C$, por ser
     $k<\abs{V_S}$, existe un v\'ertice de la primera rama que no est\'a en $C$.
@@ -2263,7 +2293,7 @@ estructura de las gr\'aficas de $k$ fichas de las triadas.
                         \end{tikzpicture}
                     }
         \end{tcbitemize}
-        \captionsetup{font=normalsize}
+        \captionsetup{font=footnotesize}
         \caption{En (a) se muestra la
         configuraci\'on $C$ y en (b) se muestra la im\'agen de $C$ bajo $f$.}
         \label{fig:no_ultimo_vertice}
@@ -2273,7 +2303,7 @@ estructura de las gr\'aficas de $k$ fichas de las triadas.
     como en \cref{fig:no_rama_uno}, dependiendo de si $C$ tiene o no todos los
     v\'ertices de la rama $2$.
 
-    \begin{figure}[!htbp]
+    \begin{figure}[h!]
         \begin{tcbitemize}[raster columns=2, raster equal height, enhanced,
             colback=Black!5!white,colframe=Grey!75!black, attach title to upper,
             phantom={\setcounter{myrasternum}{\thetcbrasternum}},
@@ -2295,6 +2325,22 @@ estructura de las gr\'aficas de $k$ fichas de las triadas.
                                \Pathseis
                         \end{tikzpicture}
                     }
+        \end{tcbitemize}
+        \captionsetup{font=footnotesize}
+        \caption{En (a) se muestra la configuraci\'on $C$ y en (b) se muestra la
+        im\'agen de $C$ bajo $f$.}
+        \label{fig:no_rama_uno}
+    \end{figure}
+
+    \begin{figure}[!htbp]
+        \ContinuedFloat
+        \begin{tcbitemize}[raster columns=2, raster equal height, enhanced,
+            colback=Black!5!white,colframe=Grey!75!black, attach title to upper,
+            phantom={\addtocounter{myrasternum}{1}},
+            title={(\alph{myrasternum})\enspace}, halign lower=center, halign upper
+            = left, lower separated=false, middle=0mm, boxsep=0mm, leftupper=2mm,
+            fonttitle=\bfseries, coltitle=black, raster column skip=1mm,raster
+            halign=center, raster row skip=1mm]
             \tcbitem
                 \tcblower
                     \scalebox{1}{
@@ -2310,12 +2356,12 @@ estructura de las gr\'aficas de $k$ fichas de las triadas.
                         \end{tikzpicture}
                     }
         \end{tcbitemize}
-        \captionsetup{font=normalsize}
-        \caption{En (a) se muestra la configuraci\'on $C$ y en (b) se muestra la
-        im\'agen de $C$ bajo $f$. An\'alogamente, si $C$ es como en (c), se
-        muesta $f(C)$ en (d).}
-        \label{fig:no_rama_uno}
+        \captionsetup{font=footnotesize}
+        \caption{An\'alogamente, si $C$ es como en (c), se muesta $f(C)$ en
+        (d).}
     \end{figure}
+
+    \newpage
 
     Para el resto de configuraciones, $C\notin B'$, por lo que se define
     $f(C)=C$. As\'i, por construcci\'on, $f(C)=C$ para cada $C\notin B'$, por lo
@@ -2327,12 +2373,7 @@ estructura de las gr\'aficas de $k$ fichas de las triadas.
     dependiendo de si $t=0$ y si $v\in C$, notando que en todas las ocasiones
     $f(D)$ es adyacente a $f(C)$ en $H$ o $f(C)=f(D)$.
 
-    Si $D$ es adyacente a $C$ y este \'ultimo es como en (a) de
-    \cref{fig:no_ultimo_vertice} o como en (a) o (c) de \cref{fig:no_rama_uno},
-    por razones similares a las expuestas anteriormente, $f(C)=f(D)$ o
-    $f(C)f(D)\in E_H$, por lo que $H$ es un retracto de $\t{k}{S}$.
-
-    \begin{figure}[H]
+    \begin{figure}[ht!]
         \begin{tcbitemize}[raster columns=2, raster equal height=rows, enhanced,
             colback=Black!5!white,colframe=Grey!75!black, attach title to upper,
             phantom={\setcounter{myrasternum}{\thetcbrasternum}},
@@ -2361,19 +2402,41 @@ estructura de las gr\'aficas de $k$ fichas de las triadas.
                         \end{tikzpicture}
                     }
             \tcbitem
-                \tcblower
-                    \scalebox{1}{
-                        \begin{tikzpicture}
-                                \Pathunom
-                        \end{tikzpicture}
-                    }
-            \tcbitem
-                \tcblower
-                    \scalebox{1}{
-                        \begin{tikzpicture}
-                                \Pathunomm
-                        \end{tikzpicture}
-                    }
+                    \tcblower
+                        \scalebox{1}{
+                            \begin{tikzpicture}
+                                    \Pathunom
+                            \end{tikzpicture}
+                        }
+                \tcbitem
+                    \tcblower
+                        \scalebox{1}{
+                            \begin{tikzpicture}
+                                    \Pathunomm
+                            \end{tikzpicture}
+                        }
+        \end{tcbitemize}
+        \captionsetup{font=footnotesize}
+        \caption{En (a), $D$ no tiene a $v$ y tiene a $p$, mientras que $C$
+        tiene a $q$ y no a $p$. Luego, de la regla descrita en
+        \cref{fig:ultimo_vertice} se tiene que $f(D)$ es como se muestra en (b)
+        y $f(C)\triangle f(D)=\l{p,q}\in E_S$. Si $v\in D$, se puede ver como en
+        (c), como en (e) si $t>0$, o como en (g) si $t=0$ (ver continuaci\'on de
+        figura). Si $D$ es como en (c), la regla de correspondencia dada por (b)
+        de \cref{fig:ultimo_vertice} resulta en $f(D)$ como en (d), notando que
+        $f(C)=f(D)$ pues $w$ est\'a en $C$.}
+        \label{fig:ultimo_vertice_adyacente}
+    \end{figure}
+
+    \begin{figure}[ht!]
+        \ContinuedFloat
+        \begin{tcbitemize}[raster columns=2, raster equal height=rows, enhanced,
+            colback=Black!5!white,colframe=Grey!75!black, attach title to upper,
+            phantom={\addtocounter{myrasternum}{1}},
+            title={(\alph{myrasternum})\enspace}, halign lower=center, halign upper
+            = left, lower separated=false, middle=0mm, boxsep=0mm,
+            fonttitle=\bfseries, coltitle=black, raster column skip=1mm,raster
+            halign=center, raster row skip=1mm, left=0mm, right=0mm, leftupper=2mm]
             \tcbitem
                 \tcblower
                     \scalebox{1}{
@@ -2403,19 +2466,18 @@ estructura de las gr\'aficas de $k$ fichas de las triadas.
                         \end{tikzpicture}
                     }
         \end{tcbitemize}
-        \captionsetup{font=normalsize}
-        \caption{En (a), $D$ no tiene a $v$ y tiene a $p$, mientras que $C$
-        tiene a $q$ y no a $p$. Luego, de la regla descrita en
-        \cref{fig:ultimo_vertice} se tiene que $f(D)$ es como se muestra en (b)
-        y $f(C)\triangle f(D)=\l{p,q}\in E_S$. Si $v\in D$, se puede ver como en
-        (c), como en (e) si $t>0$, o como en (g) si $t=0$. En los primeros dos
-        casos, las reglas de correspondencia dada por (b) de
-        \cref{fig:ultimo_vertice} resulta en $f(D)$ como en (d), (f) y (h)
-        respectivamente, notando que en cualquier caso $f(C)=f(D)$ (para $D$
-        como en (c), $w$ est\'a en $C$). Finalmente, para $D$ como en (g),
-        $f(D)=D=f(C)$.}
-        \label{fig:ultimo_vertice_adyacente}
+        \captionsetup{font=footnotesize}
+        \caption{Si $D$ es como en (e), la regla de correspondencia dada por (b)
+        de \cref{fig:ultimo_vertice} resulta en $f(D)$ como (f) de modo que
+        $f(C)=f(D)$. Finalmente, para $D$ como en (g), $f(D)=D=f(C)$.}
     \end{figure}
+    
+    \newpage
+
+    Si $D$ es adyacente a $C$ y este \'ultimo es como en (a) de
+    \cref{fig:no_ultimo_vertice} o como en (a) o (c) de \cref{fig:no_rama_uno},
+    por razones similares a las expuestas anteriormente, $f(C)=f(D)$ o
+    $f(C)f(D)\in E_H$, por lo que $H$ es un retracto de $\t{k}{S}$.
 
     Luego, para cada $C \in B \cap V_H$, si $0 \in C$, debe suceder que ni $1_0$
     ni $2_0$ est\'an en $C$. As\'i $C$ es adyacente en $\t{k}{S}$ a las
@@ -2436,12 +2498,12 @@ estructura de las gr\'aficas de $k$ fichas de las triadas.
     \begin{figure}[!htbp]
         \centering
         \begin{tikzpicture}
-            \node (C) [bola35, label=90:$C$] {};
-            \node (Dp) [bola35, left= of C, label=90:$D$] {};
-            \node (Dbp) [bola35, right= of C, label=90:$E$] {};
-            \node (dp) [bola35, below= of Dp, label=270:$D'$] {};
-            \node (dbp) [bola35, below= of Dbp, label=270:$E'$] {};
-            \node (c) [bola35, below= of C, label=270:$C'$] {};
+            \node (C) [bola2, label=90:$C$] {};
+            \node (Dp) [bola2, left= of C, label=90:$D$] {};
+            \node (Dbp) [bola2, right= of C, label=90:$E$] {};
+            \node (dp) [bola2, below= of Dp, label=270:$D'$] {};
+            \node (dbp) [bola2, below= of Dbp, label=270:$E'$] {};
+            \node (c) [bola2, below= of C, label=270:$C'$] {};
 
             \draw[edge] (Dp) to (C);
             \draw[edge] (Dbp) to (C);
@@ -2452,49 +2514,48 @@ estructura de las gr\'aficas de $k$ fichas de las triadas.
 
             \begin{scope}[shift={(C)}]
                 \triadados
-                \puntodos{1cm}{90}
-                \puntodos{0cm}{0}
+                \puntotres{0.4cm}{90}
+                \puntotres{0cm}{0}
 
             \end{scope}
 
             \begin{scope}[shift={(Dp)}]
                 \triadados
-                \puntodos{1cm}{90}
-                \puntodos{1cm}{210}
+                \puntotres{0.4cm}{90}
+                \puntotres{0.4cm}{210}
                 
             \end{scope}
 
             \begin{scope}[shift={(Dbp)}]
                 \triadados
-                \puntodos{1cm}{90}
-                \puntodos{1cm}{330}
+                \puntotres{0.4cm}{90}
+                \puntotres{0.4cm}{330}
                 
             \end{scope}
 
             \begin{scope}[shift={(dp)}]
                 \triadados
-                \puntodos{0cm}{0}
-                \puntodos{1cm}{210}
+                \puntotres{0cm}{0}
+                \puntotres{0.4cm}{210}
                 
             \end{scope}
 
             \begin{scope}[shift={(dbp)}]
                 \triadados
-                \puntodos{0cm}{0}
-                \puntodos{1cm}{330}
+                \puntotres{0cm}{0}
+                \puntotres{0.4cm}{330}
                 
             \end{scope}
 
             \begin{scope}[shift={(c)}]
                 \triadados
-                \puntodos{1cm}{210}
-                \puntodos{1cm}{330}
+                \puntotres{0.4cm}{210}
+                \puntotres{0.4cm}{330}
                 
             \end{scope}
 
         \end{tikzpicture}
-
-        \captionsetup{font=normalsize}
+        \captionsetup{font=footnotesize}
         \caption{Se muestran una configuraci\'on en $V_H$ con una ficha en $0$
         junto a sus configuraciones adyacentes en $B$, as\'i como la vecindad de
         de dichas configuraciones en el complemento de $B$ (el rengl\'on
@@ -2503,6 +2564,8 @@ estructura de las gr\'aficas de $k$ fichas de las triadas.
         mover distinto de $1_0$.}
         \label{fig:domino}
     \end{figure}
+
+    \newpage
 
     Se afirma que $g$ es un homomorfismo. En efecto, dados $C$ y $D$ adyacentes
     en $H$, se tienen los siguientes casos:
@@ -2528,6 +2591,8 @@ estructura de las gr\'aficas de $k$ fichas de las triadas.
         adyacentes.
     
     \end{enumerate}
+
+    \newpage
 
     Por tanto, $H'=\t{k}{S}[V_{\t{k}{S}}\setminus B]$ es un retracto de $H$ y,
     dado que $H$ es un retracto de $\t{k}{S}$, componiendo las funciones $f$ y
@@ -2589,17 +2654,17 @@ mejorar dicha cota en caso de ser posible.
 
 Para ello, creemos que la estrategia de captura dada en
 \cref{teo:numero-de-policia-estrella-subdivisiones} puede ser de gran ayuda,
-pues el siguiente resultado evidencia que, si $C$ tiene $k$ polic\'ias, este
+pues el siguiente resultado evidenc\'ia que, si $C$ tiene $k$ polic\'ias, este
 eventualmente logra capturar $k$ fichas de $r$ con uno de ellos, notando que
 esto no implica el final del juego pues puede que se est\'e jugando sobre la
 gr\'afica de $n$ fichas de una estrella, con $n>k$.
 
 \begin{proposicion}
 \label{pro:k-captura}
-    Sea $k$ un entero positivo y $S$ una estrella con subdivisiones.
-    Consid\'erese un juego de polic\'ias y ladrones en la gr\'afica de $n$
-    fichas de $S$ con $k \leq n$. Si $C$ tiene al menos $k$ polic\'ias, entonces
-    alg\'un polic\'ia logra capturar $k$ fichas de $r$.
+    Sea $k$ un entero positivo y $S$ una estrella subdividida. Consid\'erese un
+    juego de polic\'ias y ladrones en la gr\'afica de $n$ fichas de $S$ con $k
+    \leq n$. Si $C$ tiene al menos $k$ polic\'ias, entonces alg\'un polic\'ia
+    logra capturar $k$ fichas de $r$.
 \end{proposicion}
 
 \begin{proof}
@@ -2634,6 +2699,8 @@ gr\'afica de $n$ fichas de una estrella, con $n>k$.
     que el objetivo de $c_{i,1}$ es $i\mod n = i$ e $i\mod n \neq j\mod n$ con
     $i,j\in \seg{1}{k}$ distintos.
     
+    \newpage
+
     As\'i, cada que $R$ mueva una ficha $r_i$ con $i>k$, los polic\'ias ignoran
     dicho movimiento y ejecutan su estrategia, de manera que cada polic\'ia se
     acerca a completar una de las capturas con sus $k-1$ fichas no libres o, en
@@ -2675,12 +2742,12 @@ influencia en la estrategia.
 
 Dados los resultados y algoritmos propuestos en la secci\'on anterior, cabe
 preguntarse si es posible utilizar la misma idea tanto para calcular el n\'umero
-policiaco de la gr\'afica de fichas de un \'arbol arbitrario como para dar una
+policiaco de la gr\'afica de fichas de un \'arbol arbitrario, como para dar una
 estrategia ganadora con dicho n\'umero policiaco. Una vez m\'as, separaremos
-nuestra respuesta en funci\'on de un par\'ametro en el \'arbol.
+nuestra respuesta en funci\'on de un par\'ametro del \'arbol.
 
-En \cref{sec:estrellassub} el criterio fue respecto al n\'umero de ramas de la
-estrella con subdivisiones, el cual vimos que cambiaba el n\'umero de polic\'ias
+En \cref{sec:estrellassub}, el criterio fue respecto al n\'umero de ramas de la
+estrella subdividida, el cual vimos que cambiaba el n\'umero de polic\'ias
 necesarios dependiendo de si se ten\'ian al menos tantas ramas como el doble de
 fichas menos uno. El an\'alogo a esta condici\'on para \'arboles es la
 existencia de un v\'ertice cuyo grado sea al menos dos veces el n\'umero de
@@ -2688,78 +2755,108 @@ fichas menos uno; este ser\'a el \'unico caso a explorar en la secci\'on. En
 efecto, si $k$ es un entero positivo, $T$ es un \'arbol y $v$ es un v\'ertice
 tal que $d(v)\geq 2k-1$, entonces $N\c{v}$ induce una estrella con al menos
 $2k-1$ picos. As\'i, en virtud d\cref{cor:cota-inf-arbol}, $k$ es una cota
-inferior para el n\'umero policiaco de $\t{k}{T}$ cuando $\Delta_T\geq 2k-1$.
+inferior para el n\'umero policiaco de $\t{k}{T}$ cuando $\Delta_T\geq 2k-1$ o,
+equivalentemente, $k\leq \frac{\Delta_T + 1}{2}$.
 
 Por \'ultimo, tal como se anticip\'o en \cref{sec:estrellassub}, adjuntamos a
 continuaci\'on el algoritmo de captura para la gr\'afica de $k$ fichas de una
-estrella subdividida con al menos $2k-1$ ramas, el cual afirmamos que tambi\'en
-es un algoritmo de captura para la gr\'afica de $k$ fichas de cualquier \'arbol
-$T$ con $\Delta_T\geq 2k-1$ (ver \cref{alg:captura_arbol1}). As\'i pues,
-procedemos a demostrar el siguiente resultado.
+estrella subdividida con $n$ ramas donde $k\leq \frac{n+1}{2}$, el cual
+afirmamos que tambi\'en es un algoritmo de captura para la gr\'afica de $k$
+fichas de cualquier \'arbol $T$ con $k \leq \frac{\Delta_T+1}{2}$ (ver
+\cref{alg:captura_arbol1}). 
 
 \begin{algorithm}[!htbp]
-    \small
+    \footnotesize
     \SetAlgorithmName{Algoritmo}{}
       \DontPrintSemicolon
+      \LinesNumbered
       \SetKwData{False}{false}\SetKwData{True}{true}
       \SetKwFunction{New}{new}\SetKwFunction{End}{end}\SetKwFunction{Used}{used}
-      \SetKw{Continue}{continue}
       \SetKwInOut{Input}{input}\SetKwInOut{Output}{output}
+      \SetKwBlock{Begin}{while}{}
+      \SetKwProg{Felse}{else}{}{}
+      \SetAlgoLined
     
-      \KwIn{Un entero positivo $k$ y $T$ un \'arbol tal que $\Delta_T \ge 2k-1$,
-      una configuraci\'on inicial para el ladr\'on en un juego de  polic\'ias y
-      ladrones sobre la gr\'afica de $k$ fichas de $T$ junto con un etiquetado
-      de sus fichas.}
-      \KwOut{Una instancia $I(t)$ en la que $C$ captura a $R$ al turno $t$.}
+      \KwIn{Un entero positivo $k$ y $T$ un \'arbol tal que $k \leq
+      \frac{\Delta_T + 1}{2}$, una configuraci\'on inicial para el ladr\'on en
+      un juego de  polic\'ias y ladrones sobre la gr\'afica de $k$ fichas de $T$ 
+      junto con un etiquetado de sus fichas.}
+      \KwOut{Un turno $I(t)$ en el que $C$ captura a $R$.}
       \BlankLine
-      $I(0) \gets$ la instancia en la que $C$ y $R$ se encuentran en su
-      configuraci\'on inicial\;
-      $t\leftarrow 0$\;
-      \While{$C$ no est\'e capturando a $R$ al turno $t$}{
-        \ForEach{$1\leq i\leq k$}{
-            \If{existe $j\ne i$ tal que $c_{i,j}$ no est\'a capturando a $r_j$}{
-                $j \gets$ el m\'inimo \'indice tal que $c_{i,j}$ no est\'a 
-                capturando a $r_j$\;
-                $v_{i,j} \gets$ el segundo v\'ertice en la
-                $c_{i,j}(t)r_j(t)$-trayectoria\;
-                \If{existe $s$ tal que $c_{i,s}(t) = v_{i,j}$}{
-                    \If{$s=i$ y $v_{i,j}=r_j(t)$}{
-                        $c_{i}(t+1) \gets \paren{c_i(t)\setminus
-                        \l{\paren{c_{i,j},c_{i,j}(t)},\paren{c_{i,s},c_{i,s}(t)}}} \cup
-                        \l{\paren{c_{i,j},c_{i,s}(t)},\paren{c_{i,s},c_{i,j}(t)}}$\;
-                    }\Else{
-                        $c_{i}(t+1) \gets \textsc{Desobstrucci\'on}
-                        \paren{k,T,I(t),c_{i,s},c_{i,j}}$\;
+        $I(0) \gets$ la instancia en la que $C$ y $R$ se encuentran en su
+        configuraci\'on inicial\;
+        $t\leftarrow 0$\;
+        \Begin(\textit{$C$ no est\'e capturando a $R$ al turno $I(t)$} \textbf{do}){
+            \SetAlgoVlined \ForEach{$1\leq i\leq k$}{
+                \uIf{existe $j\ne i$ tal que $c_{i,j}$ no est\'a capturando a $r_j$}{
+                    $j \gets$ el m\'inimo \'indice tal que $c_{i,j}$ no est\'a 
+                    capturando a $r_j$\;
+                    $v_{i,j} \gets$ el segundo v\'ertice en la
+                    $c_{i,j}(t)r_j(t)$-trayectoria\;
+                    \uIf{existe $s$ tal que $c_{i,s}(t) = v_{i,j}$}{
+                        \uIf{$s=i$ y $v_{i,j}=r_j(t)$}{
+                            $c_{i}(t+1) \gets \paren{c_i(t)\setminus
+                            \l{\paren{c_{i,j},c_{i,j}(t)},\paren{c_{i,s},c_{i,s}(t)}}} \cup
+                            \l{\paren{c_{i,j},c_{i,s}(t)},\paren{c_{i,s},c_{i,j}(t)}}$\;
+                        }\SetAlgoVlined \Else{
+                            $c_{i}(t+1) \gets \textsc{Desobstrucci\'on}
+                            \paren{k,T,I(t),c_{i,s},c_{i,j}}$\;
+                        }
+                    }\SetAlgoVlined \Else{
+                        $c_i(t+1) \gets (c_i(t) \setminus \{(c_{i,j},c_{i,j}(t))\})
+                        \cup \{ (c_{i,j},v_{i,j}) \}$\;
                     }
-                }\Else{
-                    $c_i(t+1) \gets (c_i(t) \setminus \{(c_{i,j},c_{i,j}(t))\})
-                    \cup \{ (c_{i,j},v_{i,j}) \}$\;
-                }
-            }\Else{
-                $v_{i,i} \gets$ el segundo v\'ertice en la
-                $c_{i,i}(t)r_i(t)$-trayectoria\;
-                \If{existe $s$ tal que $c_{i,s}(t) = v_{i,i}$}{
-                    $c_{i}(t+1) \gets \textsc{Desobstrucci\'on}
-                    \paren{k,T,I(t),c_{i,s},c_{i,i}}$ \;
-                }\Else{
-                    $c_i(t+1) \gets (c_i(t) \setminus \{(c_{i,i},c_{i,i}(t))\})
-                    \cup \{ (c_{i,i},v_{i,i}) \}$\;
+                }\SetAlgoVlined \Else{
+                    $v_{i,i} \gets$ el segundo v\'ertice en la
+                    $c_{i,i}(t)r_i(t)$-trayectoria\;
+                    \uIf{existe $s$ tal que $c_{i,s}(t) = v_{i,i}$}{
+                        $c_{i}(t+1) \gets \textsc{Desobstrucci\'on}
+                        \paren{k,T,I(t),c_{i,s},c_{i,i}}$ \;
+                    }\SetAlgoVlined \Else{
+                        $c_i(t+1) \gets (c_i(t) \setminus \{(c_{i,i},c_{i,i}(t))\})
+                        \cup \{ (c_{i,i},v_{i,i}) \}$\;
+                    }
                 }
             }
+        
         }
-        $t \leftarrow t+1$\;
-        $I(t) \gets r(t-1) \cup \bigcup_{i=1}^k c_i(t)$\;
-        \If{$C$ est\'a capturando a $R$ al turno $t$}{
-            \Continue\;
-        }\Else{
-            $I(t) \gets (I(t) \setminus r(t-1)) \cup r(t)$\;
-        }
-      }
-      {\Return $I(t)$}
       \caption{\textsc{Captura \'Arbol 1}}
       \label{alg:captura_arbol1}
     \DecMargin{1em}
 \end{algorithm}
+
+\begin{algorithm}[!htbp]
+    \footnotesize
+    \SetKw{Continue}{continue}
+    \setcounter{AlgoLine}{19}
+    \LinesNumberedHidden
+    \SetAlgoVlined
+    \SetKwBlock{Begin}{}{end}
+    \Begin{
+        \ShowLn
+        $t \leftarrow t+1$\;
+        \ShowLn
+        $I(t) \gets r(t-1) \cup \bigcup_{i=1}^k c_i(t)$\;
+        \ShowLn
+        \If{$C$ est\'a capturando a $R$}{
+            \ShowLn
+            \Continue\;
+        }
+        \ShowLn
+        \Else{
+            \ShowLn
+            $I(t) \gets (I(t) \setminus r(t-1)) \cup r(t)$\;
+        }
+    }
+    \ShowLn
+    {\Return $I(t)$}
+    \DecMargin{1em}
+\end{algorithm}
+
+\newpage
+
+As\'i pues, procedemos a demostrar el siguiente
+resultado.
 
 \begin{teorema}
 \label{teo:captura-arbol}
@@ -2841,7 +2938,7 @@ procedemos a demostrar el siguiente resultado.
     Lo anterior implica que, eventualmente, todos los polic\'ias de $C$ tienen
     bajo asedio a $R$. Finalmente, llegamos al caso en el que $m = k$ en la
     descripci\'on de los p\'arrafos anteriores, y se puede repetir una vez m\'as
-    la estrategia para preservar el asedio de todos y que al menos un polic\'ia
+    la estrategia para preservar el asedio de todos, y que al menos un polic\'ia
     logre acercar su ficha libre hacia su objetivo. Por tanto, despu\'es de un
     n\'umero finito de turnos, $R$ se ve obligado a pasar con al menos un
     polic\'ia a un turno de capturarle, por lo que $C$ captura a $R$.
@@ -2855,7 +2952,7 @@ d\cref{teo:captura-arbol} y d\cref{cor:cota-inf-arbol}.
     \label{cor:arbol}
         Sea $k$ un entero con $1 \le k \le
         \left\lfloor\frac{\abs{V_T}}{2}\right\rfloor$. Si $T$ es un \'arbol tal
-        que $\Delta_T\geq 2k-1$, entonces $c\paren{\t{k}{T}} = k$.
+        que $k\leq \frac{\Delta_T + 1}{2}$, entonces $c\paren{\t{k}{T}} = k$.
 \end{corolario}
 
 Finalmente, adjuntamos el desarrollo de una partida en la que $C$ sigue la
@@ -2872,8 +2969,7 @@ bajo asedio d\'ebil a $r$ y, si hubiera alguna ficha $c_{i,j}$ con $i\neq j$ que
 no capturase a su objetivo, entonces en los siguientes turnos se ejecutar\'ia el
 c\'odigo dentro del \ttt{if} de la l\'inea $5$.
 
-
-\begin{figure}[!htbp]
+\begin{figure}[ht!]
     \begin{tcbitemize}[raster columns=2, raster equal height, enhanced,
         colback=Black!5!white,colframe=Grey!75!black, attach title to upper,
         phantom={\setcounter{myrasternum}{\thetcbrasternum}},
@@ -2884,62 +2980,59 @@ c\'odigo dentro del \ttt{if} de la l\'inea $5$.
         
         \tcbitem
             \tcblower
-                \scalebox{0.67}{
+                \scalebox{1}{
                     \begin{tikzpicture}
                         \arbol
                         \tresp{0cm}{0}
-                        \trest{2.25cm}{90 + (360/5)*2}
-                        \tresc{2.25cm}{90 + (360/5)*3}
+                        \trest{1.05cm}{90 + (360/5)*2}
+                        \tresc{1.05cm}{90 + (360/5)*3}
 
                         \begin{scope}[shift={(1_0)}]
-                            \cuadro{2.25cm}{157.5}
+                            \cuadro{1.05cm}{157.5}
                         \end{scope}
 
                         \begin{scope}[shift={(3_00)}]
-                            \tri{2.25cm}{247.5}
+                            \tri{1.05cm}{180}
                         \end{scope}
 
                         \begin{scope}[shift={(5_0)}]
-                            \punto{2.25cm}{45}
+                            \punto{1.05cm}{45}
                         \end{scope}
                     \end{tikzpicture}
                 }
         \tcbitem
             \tcblower
-                \scalebox{0.67}{
+                \scalebox{1}{
                     \begin{tikzpicture}
                         \arbol
-                        \unopGunopR{2.25cm}{90}
-                        \unopBunotGunotR{2.25cm}{90 + (360/5)*2}
+                        \unopGunopR{1.05cm}{90}
+                        \unopBunotGunotR{1.05cm}{90 + (360/5)*2}
                         \unocB{0cm}{0}
-                        \unocGunocR{2.25cm}{90 + (360/5)*3}
+                        \unocGunocR{1.05cm}{90 + (360/5)*3}
 
                         \begin{scope}[shift={(1_0)}]
-                            \cuadro{2.25cm}{157.5}
+                            \cuadro{1.05cm}{157.5}
                         \end{scope}
 
                         \begin{scope}[shift={(3_00)}]
                             \unotB{0cm}{0}
-                            \tri{2.25cm}{247.5}
+                            \tri{1.05cm}{180}
                         \end{scope}
 
                         \begin{scope}[shift={(5_0)}]
-                            \punto{2.25cm}{45}
+                            \punto{1.05cm}{45}
                         \end{scope}
                     \end{tikzpicture}
                 }
     \end{tcbitemize}
-    \captionsetup{font=normalsize}
-    \caption{Las escenas impares muestran una instancia de la partida, seguida
-    de la instancia posterior al movimiento de $C$ y previa al movimiento de $R$
-    (en (1) $R$ acaba de escoger su posici\'on inicial). Por otro lado, las
-    escenas pares muestran el movimiento de $C$, de manera que la sucesi\'on de
-    movimientos de la partida se corresponde con la enumeraci\'on de las
-    escenas. En cada paso $C$ utiliza la estrategia inducida por
-    \cref{alg:captura_arbol1}. Se recuerda que los polic\'ias $1$, $2$ y $3$
-    reciben los colores azul, verde y rojo, respectivamente, mientras que, para
-    cada uno de ellos (incluido el ladr\'on), el punto, el tri\'angulo y el
-    cuadrado representan su primera, segunda y tercera ficha, respectivamente.}
+    \captionsetup{font=footnotesize}
+    \caption{Las escenas impares muestran un turno de la partida posterior al
+    movimiento de $R$ (en (1) $R$ acaba de escoger su posici\'on inicial). Las
+    escenas pares muestran el movimiento de $C$. En cada turno $C$ utiliza la
+    estrategia dada por \cref{alg:captura_arbol1}. Se recuerda que los
+    polic\'ias $1$, $2$ y $3$ reciben los colores azul, verde y rojo,
+    respectivamente, mientras que el punto, el tri\'angulo y el cuadrado
+    representan su primera, segunda y tercera ficha, respectivamente.}
     \label{fig:partida2}
 \end{figure}
 
@@ -2954,89 +3047,89 @@ c\'odigo dentro del \ttt{if} de la l\'inea $5$.
         
         \tcbitem
             \tcblower
-                \scalebox{0.67}{ 
+                \scalebox{1}{ 
                     \begin{tikzpicture}
                         \arbol
-                        \unopGunopR{2.25cm}{90}
-                        \unopBunotGunotR{2.25cm}{90 + (360/5)*2}
+                        \unopGunopR{1.05cm}{90}
+                        \unopBunotGunotR{1.05cm}{90 + (360/5)*2}
                         \unocB{0cm}{0}
-                        \unocGunocR{2.25cm}{90 + (360/5)*3}
+                        \unocGunocR{1.05cm}{90 + (360/5)*3}
 
                         \begin{scope}[shift={(1_0)}]
-                            \cuadro{2.25cm}{157.5}
+                            \cuadro{1.05cm}{157.5}
                         \end{scope}
 
                         \begin{scope}[shift={(3_00)}]
                             \unotB{0cm}{0}
-                            \tri{2.25cm}{247.5}
+                            \tri{1.05cm}{180}
                         \end{scope}
 
                         \begin{scope}[shift={(5_0)}]
-                            \punto{2.25cm}{45}
+                            \punto{1.05cm}{45}
                         \end{scope}
                     \end{tikzpicture}
                 }
         \tcbitem
             \tcblower
-                \scalebox{0.67}{
+                \scalebox{1}{
                     \begin{tikzpicture}
                         \arbol
-                        \unopBunotGunotR{2.25cm}{90 + (360/5)*2}
+                        \unopBunotGunotR{1.05cm}{90 + (360/5)*2}
                         \unocB{0cm}{0}
-                        \unocGunocR{2.25cm}{90 + (360/5)*3}
+                        \unocGunocR{1.05cm}{90 + (360/5)*3}
 
                         \begin{scope}[shift={(1_0)}]
-                            \cuadro{2.25cm}{157.5}
+                            \cuadro{1.05cm}{157.5}
                         \end{scope}
 
                         \begin{scope}[shift={(3_00)}]
-                            \unotBt{2.25cm}{247.5}
+                            \unotBt{1.05cm}{180}
                         \end{scope}
 
                         \begin{scope}[shift={(5_0)}]
-                            \unopGunopRp{2.25cm}{45}
+                            \unopGunopRp{1.05cm}{45}
                         \end{scope}
                     \end{tikzpicture}
                 }
         \tcbitem
             \tcblower
-                \scalebox{0.67}{
+                \scalebox{1}{
                     \begin{tikzpicture}
                         \arbol
-                        \unopBunotGunotR{2.25cm}{90 + (360/5)*2}
+                        \unopBunotGunotR{1.05cm}{90 + (360/5)*2}
                         \unocB{0cm}{0}
-                        \unocGunocR{2.25cm}{90 + (360/5)*3}
-                        \punto{2.25cm}{90}
+                        \unocGunocR{1.05cm}{90 + (360/5)*3}
+                        \punto{1.05cm}{90}
 
                         \begin{scope}[shift={(1_0)}]
-                            \cuadro{2.25cm}{157.5}
+                            \cuadro{1.05cm}{157.5}
                         \end{scope}
 
                         \begin{scope}[shift={(3_00)}]
-                            \unotBt{2.25cm}{247.5}
+                            \unotBt{1.05cm}{180}
                         \end{scope}
 
                         \begin{scope}[shift={(5_0)}]
-                            \unopGunopR{2.25cm}{45}
+                            \unopGunopR{1.05cm}{45}
                         \end{scope}
                     \end{tikzpicture}
                 }
         \tcbitem
             \tcblower
-                \scalebox{0.67}{
+                \scalebox{1}{
                     \begin{tikzpicture}
                         \arbol
-                        \unopBunotGunotR{2.25cm}{90 + (360/5)*2}
-                        \unocB{2.25cm}{90 + (360/5)}
-                        \unocGunocR{2.25cm}{90 + (360/5)*3}
-                        \unopGunopRp{2.25cm}{90}
+                        \unopBunotGunotR{1.05cm}{90 + (360/5)*2}
+                        \unocB{1.05cm}{90 + (360/5)}
+                        \unocGunocR{1.05cm}{90 + (360/5)*3}
+                        \unopGunopRp{1.05cm}{90}
 
                         \begin{scope}[shift={(1_0)}]
-                            \cuadro{2.25cm}{157.5}
+                            \cuadro{1.05cm}{157.5}
                         \end{scope}
 
                         \begin{scope}[shift={(3_00)}]
-                            \unotBt{2.25cm}{247.5}
+                            \unotBt{1.05cm}{180}
                         \end{scope}
 
                         \begin{scope}[shift={(5_0)}]
@@ -3044,8 +3137,54 @@ c\'odigo dentro del \ttt{if} de la l\'inea $5$.
                         \end{scope}
                     \end{tikzpicture}
                 }
+        \tcbitem
+                \tcblower
+                    \scalebox{1}{
+                        \begin{tikzpicture}
+                            \arbol
+                            \unopBunotGunotR{1.05cm}{90 + (360/5)*2}
+                            \unocB{1.05cm}{90 + (360/5)}
+                            \unocGunocR{1.05cm}{90 + (360/5)*3}
+                            \unopGunopR{1.05cm}{90}
+                            \punto{0cm}{0}
+    
+                            \begin{scope}[shift={(1_0)}]
+                                \cuadro{1.05cm}{157.5}
+                            \end{scope}
+    
+                            \begin{scope}[shift={(3_00)}]
+                                \unotBt{1.05cm}{180}
+                            \end{scope}
+    
+                            \begin{scope}[shift={(5_0)}]
+    
+                            \end{scope}
+                        \end{tikzpicture}
+                    }
+        \tcbitem
+                    \tcblower
+                        \scalebox{1}{
+                            \begin{tikzpicture}
+                                \arbol
+                                \unopBunotGunotR{1.05cm}{90 + (360/5)*2}
+                                \unocGunocR{1.05cm}{90 + (360/5)*3}
+                                \unopGunopRp{0cm}{0}
+        
+                                \begin{scope}[shift={(1_0)}]
+                                    \unocBc{1.05cm}{157.5}
+                                \end{scope}
+        
+                                \begin{scope}[shift={(3_00)}]
+                                    \unotBt{1.05cm}{180}
+                                \end{scope}
+        
+                                \begin{scope}[shift={(5_0)}]
+        
+                                \end{scope}
+                            \end{tikzpicture}
+                        }
     \end{tcbitemize}
-    \captionsetup{font=small}
+    \captionsetup{font=footnotesize}
 \end{figure}
 
 \begin{figure}[!htbp]
@@ -3060,66 +3199,20 @@ c\'odigo dentro del \ttt{if} de la l\'inea $5$.
         
         \tcbitem
             \tcblower
-                \scalebox{0.67}{
+                \scalebox{1}{
                     \begin{tikzpicture}
                         \arbol
-                        \unopBunotGunotR{2.25cm}{90 + (360/5)*2}
-                        \unocB{2.25cm}{90 + (360/5)}
-                        \unocGunocR{2.25cm}{90 + (360/5)*3}
-                        \unopGunopR{2.25cm}{90}
-                        \punto{0cm}{0}
-
-                        \begin{scope}[shift={(1_0)}]
-                            \cuadro{2.25cm}{157.5}
-                        \end{scope}
-
-                        \begin{scope}[shift={(3_00)}]
-                            \unotBt{2.25cm}{247.5}
-                        \end{scope}
-
-                        \begin{scope}[shift={(5_0)}]
-
-                        \end{scope}
-                    \end{tikzpicture}
-                }
-        \tcbitem
-            \tcblower
-                \scalebox{0.67}{
-                    \begin{tikzpicture}
-                        \arbol
-                        \unopBunotGunotR{2.25cm}{90 + (360/5)*2}
-                        \unocGunocR{2.25cm}{90 + (360/5)*3}
-                        \unopGunopRp{0cm}{0}
-
-                        \begin{scope}[shift={(1_0)}]
-                            \unocBc{2.25cm}{157.5}
-                        \end{scope}
-
-                        \begin{scope}[shift={(3_00)}]
-                            \unotBt{2.25cm}{247.5}
-                        \end{scope}
-
-                        \begin{scope}[shift={(5_0)}]
-
-                        \end{scope}
-                    \end{tikzpicture}
-                }
-        \tcbitem
-            \tcblower
-                \scalebox{0.67}{
-                    \begin{tikzpicture}
-                        \arbol
-                        \unopBunotGunotR{2.25cm}{90 + (360/5)*2}
-                        \unocGunocR{2.25cm}{90 + (360/5)*3}
+                        \unopBunotGunotR{1.05cm}{90 + (360/5)*2}
+                        \unocGunocR{1.05cm}{90 + (360/5)*3}
                         \unopGunopR{0cm}{0}
-                        \punto{2.25cm}{90 + (360/5)*4}
+                        \punto{1.05cm}{90 + (360/5)*4}
 
                         \begin{scope}[shift={(1_0)}]
-                            \unocBc{2.25cm}{157.5}
+                            \unocBc{1.05cm}{157.5}
                         \end{scope}
 
                         \begin{scope}[shift={(3_00)}]
-                            \unotBt{2.25cm}{247.5}
+                            \unotBt{1.05cm}{180}
                         \end{scope}
 
                         \begin{scope}[shift={(5_0)}]
@@ -3129,20 +3222,20 @@ c\'odigo dentro del \ttt{if} de la l\'inea $5$.
                 }
         \tcbitem
             \tcblower
-                \scalebox{0.67}{
+                \scalebox{1}{
                     \begin{tikzpicture}
                         \arbol
-                        \unotGunotR{2.25cm}{90 + (360/5)*2}
-                        \unocGunocR{2.25cm}{90 + (360/5)*3}
-                        \unopGunopRp{2.25cm}{90 + (360/5)*4}
+                        \unotGunotR{1.05cm}{90 + (360/5)*2}
+                        \unocGunocR{1.05cm}{90 + (360/5)*3}
+                        \unopGunopRp{1.05cm}{90 + (360/5)*4}
                         \unopB{0cm}{0}
 
                         \begin{scope}[shift={(1_0)}]
-                            \unocBc{2.25cm}{157.5}
+                            \unocBc{1.05cm}{157.5}
                         \end{scope}
 
                         \begin{scope}[shift={(3_00)}]
-                            \unotBt{2.25cm}{247.5}
+                            \unotBt{1.05cm}{180}
                         \end{scope}
 
                         \begin{scope}[shift={(5_0)}]
@@ -3150,35 +3243,22 @@ c\'odigo dentro del \ttt{if} de la l\'inea $5$.
                         \end{scope}
                     \end{tikzpicture}
                 }
-    \end{tcbitemize}
-\end{figure}
-
-\begin{figure}[!htbp]
-    \ContinuedFloat
-    \begin{tcbitemize}[raster columns=2, raster equal height, enhanced,
-        colback=Black!5!white,colframe=Grey!75!black, attach title to upper,
-        phantom={\addtocounter{myrasternum}{1}},
-        title={(\arabic{myrasternum})\enspace}, halign lower=center, halign upper
-        = left, lower separated=false, middle=0mm, boxsep=0mm, leftupper=2mm, left=2mm,
-        right=2mm, fonttitle=\bfseries, coltitle=black, raster column skip=1mm,raster
-        halign=center, raster row skip=1mm]
-
         \tcbitem
             \tcblower
-                \scalebox{0.67}{
+                \scalebox{1}{
                     \begin{tikzpicture}
                         \arbol
-                        \unotGunotR{2.25cm}{90 + (360/5)*2}
-                        \unocGunocR{2.25cm}{90 + (360/5)*3}
-                        \unopGunopRp{2.25cm}{90 + (360/5)*4}
+                        \unotGunotR{1.05cm}{90 + (360/5)*2}
+                        \unocGunocR{1.05cm}{90 + (360/5)*3}
+                        \unopGunopRp{1.05cm}{90 + (360/5)*4}
                         \unopB{0cm}{0}
 
                         \begin{scope}[shift={(1_0)}]
-                            \unocBc{2.25cm}{157.5}
+                            \unocBc{1.05cm}{157.5}
                         \end{scope}
 
                         \begin{scope}[shift={(3_00)}]
-                            \unotB{2.25cm}{247.5}
+                            \unotB{1.05cm}{180}
                             \tri{0cm}{0}
                         \end{scope}
 
@@ -3189,16 +3269,16 @@ c\'odigo dentro del \ttt{if} de la l\'inea $5$.
                 }
         \tcbitem
             \tcblower
-                \scalebox{0.67}{
+                \scalebox{1}{
                     \begin{tikzpicture}
                         \arbol
-                        \unotG{2.25cm}{90 + (360/5)*2}
-                        \unocR{2.25cm}{90 + (360/5)*3}
-                        \unopGunopRp{2.25cm}{90 + (360/5)*4}
+                        \unotG{1.05cm}{90 + (360/5)*2}
+                        \unocR{1.05cm}{90 + (360/5)*3}
+                        \unopGunopRp{1.05cm}{90 + (360/5)*4}
                         \unopBunocGunotR{0cm}{0}
 
                         \begin{scope}[shift={(1_0)}]
-                            \unocBc{2.25cm}{157.5}
+                            \unocBc{1.05cm}{157.5}
                         \end{scope}
 
                         \begin{scope}[shift={(3_00)}]
@@ -3212,16 +3292,16 @@ c\'odigo dentro del \ttt{if} de la l\'inea $5$.
                 }
         \tcbitem
             \tcblower
-                \scalebox{0.67}{
+                \scalebox{1}{
                     \begin{tikzpicture}
                         \arbol
-                        \unotG{2.25cm}{90 + (360/5)*2}
-                        \unocRt{2.25cm}{90 + (360/5)*3}
-                        \unopGunopRp{2.25cm}{90 + (360/5)*4}
+                        \unotG{1.05cm}{90 + (360/5)*2}
+                        \unocRt{1.05cm}{90 + (360/5)*3}
+                        \unopGunopRp{1.05cm}{90 + (360/5)*4}
                         \unopBunocGunotR{0cm}{0}
 
                         \begin{scope}[shift={(1_0)}]
-                            \unocBc{2.25cm}{157.5}
+                            \unocBc{1.05cm}{157.5}
                         \end{scope}
 
                         \begin{scope}[shift={(3_00)}]
@@ -3235,17 +3315,17 @@ c\'odigo dentro del \ttt{if} de la l\'inea $5$.
                 }
         \tcbitem
             \tcblower
-                \scalebox{0.67}{
+                \scalebox{1}{
                     \begin{tikzpicture}
                         \arbol
-                        \unotG{2.25cm}{90 + (360/5)*2}
-                        \unotBunotRt{2.25cm}{90 + (360/5)*3}
-                        \unopGunopRp{2.25cm}{90 + (360/5)*4}
+                        \unotG{1.05cm}{90 + (360/5)*2}
+                        \unotBunotRt{1.05cm}{90 + (360/5)*3}
+                        \unopGunopRp{1.05cm}{90 + (360/5)*4}
                         \unopBunocR{0cm}{0}
-                        \unocG{2.25cm}{90 + (360/5)}
+                        \unocG{1.05cm}{90 + (360/5)}
 
                         \begin{scope}[shift={(1_0)}]
-                            \unocBc{2.25cm}{157.5}
+                            \unocBc{1.05cm}{157.5}
                         \end{scope}
 
                         \begin{scope}[shift={(3_00)}]
@@ -3272,17 +3352,17 @@ c\'odigo dentro del \ttt{if} de la l\'inea $5$.
 
         \tcbitem
             \tcblower
-                \scalebox{0.67}{
+                \scalebox{1}{
                     \begin{tikzpicture}
                         \arbol
-                        \unotG{2.25cm}{90 + (360/5)*2}
-                        \unotBunotR{2.25cm}{90 + (360/5)*3}
-                        \unopGunopRp{2.25cm}{90 + (360/5)*4}
+                        \unotG{1.05cm}{90 + (360/5)*2}
+                        \unotBunotR{1.05cm}{90 + (360/5)*3}
+                        \unopGunopRp{1.05cm}{90 + (360/5)*4}
                         \unopBunocRt{0cm}{0}
-                        \unocG{2.25cm}{90 + (360/5)}
+                        \unocG{1.05cm}{90 + (360/5)}
 
                         \begin{scope}[shift={(1_0)}]
-                            \unocBc{2.25cm}{157.5}
+                            \unocBc{1.05cm}{157.5}
                         \end{scope}
 
                         \begin{scope}[shift={(3_00)}]
@@ -3296,16 +3376,16 @@ c\'odigo dentro del \ttt{if} de la l\'inea $5$.
                 }
         \tcbitem
             \tcblower
-                \scalebox{0.67}{
+                \scalebox{1}{
                     \begin{tikzpicture}
                         \arbol
-                        \unotG{2.25cm}{90 + (360/5)*2}
-                        \unopBunocR{2.25cm}{90 + (360/5)*3}
-                        \unopGunopRp{2.25cm}{90 + (360/5)*4}
+                        \unotG{1.05cm}{90 + (360/5)*2}
+                        \unopBunocR{1.05cm}{90 + (360/5)*3}
+                        \unopGunopRp{1.05cm}{90 + (360/5)*4}
                         \unotBunotRt{0cm}{0}
 
                         \begin{scope}[shift={(1_0)}]
-                            \unocBunocGc{2.25cm}{157.5}
+                            \unocBunocGc{1.05cm}{157.5}
                         \end{scope}
 
                         \begin{scope}[shift={(3_00)}]
@@ -3319,17 +3399,17 @@ c\'odigo dentro del \ttt{if} de la l\'inea $5$.
                 }
         \tcbitem
             \tcblower
-                \scalebox{0.67}{
+                \scalebox{1}{
                     \begin{tikzpicture}
                         \arbol
-                        \unotG{2.25cm}{90 + (360/5)*2}
-                        \unopBunocR{2.25cm}{90 + (360/5)*3}
-                        \unopGunopR{2.25cm}{90 + (360/5)*4}
-                        \punto{4.5cm}{90 + (360/5)*4}
+                        \unotG{1.05cm}{90 + (360/5)*2}
+                        \unopBunocR{1.05cm}{90 + (360/5)*3}
+                        \unopGunopR{1.05cm}{90 + (360/5)*4}
+                        \punto{2.175cm}{90 + (360/5)*4}
                         \unotBunotRt{0cm}{0}
 
                         \begin{scope}[shift={(1_0)}]
-                            \unocBunocGc{2.25cm}{157.5}
+                            \unocBunocGc{1.05cm}{157.5}
                         \end{scope}
 
                         \begin{scope}[shift={(3_00)}]
@@ -3343,17 +3423,17 @@ c\'odigo dentro del \ttt{if} de la l\'inea $5$.
                 }
         \tcbitem
             \tcblower
-                \scalebox{0.67}{
+                \scalebox{1}{
                     \begin{tikzpicture}
                         \arbol
-                        \unotG{2.25cm}{90 + (360/5)*2}
-                        \unotBunocR{2.25cm}{90 + (360/5)*3}
-                        \unopB{2.25cm}{90 + (360/5)*4}
-                        \unopGunopRp{4.5cm}{90 + (360/5)*4}
+                        \unotG{1.05cm}{90 + (360/5)*2}
+                        \unotBunocR{1.05cm}{90 + (360/5)*3}
+                        \unopB{1.05cm}{90 + (360/5)*4}
+                        \unopGunopRp{2.175cm}{90 + (360/5)*4}
                         \unotRt{0cm}{0}
 
                         \begin{scope}[shift={(1_0)}]
-                            \unocBunocGc{2.25cm}{157.5}
+                            \unocBunocGc{1.05cm}{157.5}
                         \end{scope}
 
                         \begin{scope}[shift={(3_00)}]
@@ -3365,11 +3445,62 @@ c\'odigo dentro del \ttt{if} de la l\'inea $5$.
                         \end{scope}
                     \end{tikzpicture}
                 }
+        \tcbitem
+                \tcblower
+                    \scalebox{1}{
+                        \begin{tikzpicture}
+                            \arbol
+                            \unotG{1.05cm}{90 + (360/5)*2}
+                            \unotBunocR{1.05cm}{90 + (360/5)*3}
+                            \unopB{1.05cm}{90 + (360/5)*4}
+                            \unopGunopRp{2.175cm}{90 + (360/5)*4}
+                            \unotRt{0cm}{0}
+                            \cuadro{1.05cm}{90 + (360/5)}
+    
+                            \begin{scope}[shift={(1_0)}]
+                                \unocBunocG{1.05cm}{157.5}
+                            \end{scope}
+    
+                            \begin{scope}[shift={(3_00)}]
+                                
+                            \end{scope}
+    
+                            \begin{scope}[shift={(5_0)}]
+    
+                            \end{scope}
+                        \end{tikzpicture}
+                    }
+            \tcbitem
+                \tcblower
+                    \scalebox{1}{
+                        \begin{tikzpicture}
+                            \arbol
+                            \unotG{1.05cm}{90 + (360/5)*2}
+                            \unotR{1.05cm}{90 + (360/5)*3}
+                            \unopB{1.05cm}{90 + (360/5)*4}
+                            \unopGunopRp{2.175cm}{90 + (360/5)*4}
+                            \unotBt{0cm}{0}
+                            \unocGunocRc{1.05cm}{90 + (360/5)}
+    
+                            \begin{scope}[shift={(1_0)}]
+                                \unocB{1.05cm}{157.5}
+                            \end{scope}
+    
+                            \begin{scope}[shift={(3_00)}]
+                                
+                            \end{scope}
+    
+                            \begin{scope}[shift={(5_0)}]
+    
+                            \end{scope}
+                        \end{tikzpicture}
+                    }
     \end{tcbitemize}
     \captionsetup{font=footnotesize}
     \caption{En (17), $R$ acaba de mover $r_1$ y $c_1$ tiene bajo asedio a $r$,
     pero $c_{1,1}$ est\'a obstruida. Por tanto, la l\'inea 18
-    d\cref{alg:captura_arbol1} se ejecuta para poner a $r$ bajo asedio d\'ebil.}
+    d\cref{alg:captura_arbol1} se ejecuta para poner a $r$ bajo asedio d\'ebil.
+    Al igual que $c_1$ en (18), $c_3$ realiza el mismo movimiento en (20).}
 \end{figure}
 
 \begin{figure}[!htbp]
@@ -3384,69 +3515,19 @@ c\'odigo dentro del \ttt{if} de la l\'inea $5$.
 
         \tcbitem
             \tcblower
-                \scalebox{0.67}{
+                \scalebox{1}{
                     \begin{tikzpicture}
                         \arbol
-                        \unotG{2.25cm}{90 + (360/5)*2}
-                        \unotBunocR{2.25cm}{90 + (360/5)*3}
-                        \unopB{2.25cm}{90 + (360/5)*4}
-                        \unopGunopRp{4.5cm}{90 + (360/5)*4}
-                        \unotRt{0cm}{0}
-                        \cuadro{2.25cm}{90 + (360/5)}
-
-                        \begin{scope}[shift={(1_0)}]
-                            \unocBunocG{2.25cm}{157.5}
-                        \end{scope}
-
-                        \begin{scope}[shift={(3_00)}]
-                            
-                        \end{scope}
-
-                        \begin{scope}[shift={(5_0)}]
-
-                        \end{scope}
-                    \end{tikzpicture}
-                }
-        \tcbitem
-            \tcblower
-                \scalebox{0.67}{
-                    \begin{tikzpicture}
-                        \arbol
-                        \unotG{2.25cm}{90 + (360/5)*2}
-                        \unotR{2.25cm}{90 + (360/5)*3}
-                        \unopB{2.25cm}{90 + (360/5)*4}
-                        \unopGunopRp{4.5cm}{90 + (360/5)*4}
-                        \unotBt{0cm}{0}
-                        \unocGunocRc{2.25cm}{90 + (360/5)}
-
-                        \begin{scope}[shift={(1_0)}]
-                            \unocB{2.25cm}{157.5}
-                        \end{scope}
-
-                        \begin{scope}[shift={(3_00)}]
-                            
-                        \end{scope}
-
-                        \begin{scope}[shift={(5_0)}]
-
-                        \end{scope}
-                    \end{tikzpicture}
-                }
-        \tcbitem
-            \tcblower
-                \scalebox{0.67}{
-                    \begin{tikzpicture}
-                        \arbol
-                        \unotG{2.25cm}{90 + (360/5)*2}
-                        \unotR{2.25cm}{90 + (360/5)*3}
-                        \unopB{2.25cm}{90 + (360/5)*4}
-                        \unopGunopRp{4.5cm}{90 + (360/5)*4}
+                        \unotG{1.05cm}{90 + (360/5)*2}
+                        \unotR{1.05cm}{90 + (360/5)*3}
+                        \unopB{1.05cm}{90 + (360/5)*4}
+                        \unopGunopRp{2.175cm}{90 + (360/5)*4}
                         \unotB{0cm}{0}
-                        \tri{2.25cm}{90}
-                        \unocGunocRc{2.25cm}{90 + (360/5)}
+                        \tri{1.05cm}{90}
+                        \unocGunocRc{1.05cm}{90 + (360/5)}
 
                         \begin{scope}[shift={(1_0)}]
-                            \unocB{2.25cm}{157.5}
+                            \unocB{1.05cm}{157.5}
                         \end{scope}
 
                         \begin{scope}[shift={(3_00)}]
@@ -3460,17 +3541,17 @@ c\'odigo dentro del \ttt{if} de la l\'inea $5$.
                 }
         \tcbitem
             \tcblower
-                \scalebox{0.67}{
+                \scalebox{1}{
                     \begin{tikzpicture}
                         \arbol
                         \unotGunotR{0cm}{0}
-                        \unopB{2.25cm}{90 + (360/5)*4}
-                        \unopGunopRp{4.5cm}{90 + (360/5)*4}
-                        \unotBt{2.25cm}{90}
-                        \unocGunocRc{2.25cm}{90 + (360/5)}
+                        \unopB{1.05cm}{90 + (360/5)*4}
+                        \unopGunopRp{2.175cm}{90 + (360/5)*4}
+                        \unotBt{1.05cm}{90}
+                        \unocGunocRc{1.05cm}{90 + (360/5)}
 
                         \begin{scope}[shift={(1_0)}]
-                            \unocB{2.25cm}{157.5}
+                            \unocB{1.05cm}{157.5}
                         \end{scope}
 
                         \begin{scope}[shift={(3_00)}]
@@ -3479,119 +3560,104 @@ c\'odigo dentro del \ttt{if} de la l\'inea $5$.
 
                         \begin{scope}[shift={(5_0)}]
 
-                        \end{scope}
-                    \end{tikzpicture}
-                }
-    \end{tcbitemize}
-\captionsetup{font=small}
-\caption{Al igual que $c_1$ en (18), $c_3$ realiza el mismo movimiento en (20).}
-\end{figure}
-
-\begin{figure}[!htbp]
-    \ContinuedFloat
-    \begin{tcbitemize}[raster columns=2, raster equal height, enhanced,
-        colback=Black!5!white,colframe=Grey!75!black, attach title to upper,
-        phantom={\addtocounter{myrasternum}{1}},
-        title={(\arabic{myrasternum})\enspace}, halign lower=center, halign upper
-        = left, lower separated=false, middle=0mm, boxsep=0mm, leftupper=2mm, left=2mm,
-        right=2mm, fonttitle=\bfseries, coltitle=black, raster column skip=1mm,raster
-        halign=center, raster row skip=1mm]
-
-        \tcbitem
-            \tcblower
-                \scalebox{0.67}{
-                    \begin{tikzpicture}
-                        \arbol
-                        \unotGunotR{0cm}{0}
-                        \unopB{2.25cm}{90 + (360/5)*4}
-                        \unopGunopRp{4.5cm}{90 + (360/5)*4}
-                        \unotB{2.25cm}{90}
-                        \unocGunocRc{2.25cm}{90 + (360/5)}
-
-                        \begin{scope}[shift={(1_0)}]
-                            \unocB{2.25cm}{157.5}
-                        \end{scope}
-
-                        \begin{scope}[shift={(3_00)}]
-                            
-                        \end{scope}
-
-                        \begin{scope}[shift={(5_0)}]
-                            \tri{2.25cm}{135}
                         \end{scope}
                     \end{tikzpicture}
                 }
         \tcbitem
-            \tcblower
-                \scalebox{0.67}{
-                    \begin{tikzpicture}
-                        \arbol
-                        \unotGunotR{2.25cm}{90}
-                        \unopB{2.25cm}{90 + (360/5)*4}
-                        \unopGunopRp{4.5cm}{90 + (360/5)*4}
-                        \unocGunocRc{2.25cm}{90 + (360/5)}
-
-                        \begin{scope}[shift={(1_0)}]
-                            \unocB{2.25cm}{157.5}
-                        \end{scope}
-
-                        \begin{scope}[shift={(3_00)}]
-                            
-                        \end{scope}
-
-                        \begin{scope}[shift={(5_0)}]
-                            \unotBt{2.25cm}{135}
-                        \end{scope}
-                    \end{tikzpicture}
-                }
-        \tcbitem
-            \tcblower
-                \scalebox{0.67}{
-                    \begin{tikzpicture}
-                        \arbol
-                        \unotGunotR{2.25cm}{90}
-                        \unopB{2.25cm}{90 + (360/5)*4}
-                        \unopGunopRp{4.5cm}{90 + (360/5)*4}
-                        \unocGunocR{2.25cm}{90 + (360/5)}
-                        \cuadro{0cm}{0}
-
-                        \begin{scope}[shift={(1_0)}]
-                            \unocB{2.25cm}{157.5}
-                        \end{scope}
-
-                        \begin{scope}[shift={(3_00)}]
-                            
-                        \end{scope}
-
-                        \begin{scope}[shift={(5_0)}]
-                            \unotBt{2.25cm}{135}
-                        \end{scope}
-                    \end{tikzpicture}
-                }
-        \tcbitem
-            \tcblower
-                \scalebox{0.67}{
-                    \begin{tikzpicture}
-                        \arbol
-                        \unotG{2.25cm}{90}
-                        \unopB{2.25cm}{90 + (360/5)*4}
-                        \unopGunopRp{4.5cm}{90 + (360/5)*4}
-                        \unocBunocR{2.25cm}{90 + (360/5)}
-                        \unocGc{0cm}{0}
-
-                        \begin{scope}[shift={(1_0)}]
-                            
-                        \end{scope}
-
-                        \begin{scope}[shift={(3_00)}]
-                            
-                        \end{scope}
-
-                        \begin{scope}[shift={(5_0)}]
-                            \unotBunotRt{2.25cm}{135}
-                        \end{scope}
-                    \end{tikzpicture}
-                }
+                \tcblower
+                    \scalebox{1}{
+                        \begin{tikzpicture}
+                            \arbol
+                            \unotGunotR{0cm}{0}
+                            \unopB{1.05cm}{90 + (360/5)*4}
+                            \unopGunopRp{2.175cm}{90 + (360/5)*4}
+                            \unotB{1.05cm}{90}
+                            \unocGunocRc{1.05cm}{90 + (360/5)}
+    
+                            \begin{scope}[shift={(1_0)}]
+                                \unocB{1.05cm}{157.5}
+                            \end{scope}
+    
+                            \begin{scope}[shift={(3_00)}]
+                                
+                            \end{scope}
+    
+                            \begin{scope}[shift={(5_0)}]
+                                \tri{1.05cm}{135}
+                            \end{scope}
+                        \end{tikzpicture}
+                    }
+            \tcbitem
+                \tcblower
+                    \scalebox{1}{
+                        \begin{tikzpicture}
+                            \arbol
+                            \unotGunotR{1.05cm}{90}
+                            \unopB{1.05cm}{90 + (360/5)*4}
+                            \unopGunopRp{2.175cm}{90 + (360/5)*4}
+                            \unocGunocRc{1.05cm}{90 + (360/5)}
+    
+                            \begin{scope}[shift={(1_0)}]
+                                \unocB{1.05cm}{157.5}
+                            \end{scope}
+    
+                            \begin{scope}[shift={(3_00)}]
+                                
+                            \end{scope}
+    
+                            \begin{scope}[shift={(5_0)}]
+                                \unotBt{1.05cm}{135}
+                            \end{scope}
+                        \end{tikzpicture}
+                    }
+            \tcbitem
+                \tcblower
+                    \scalebox{1}{
+                        \begin{tikzpicture}
+                            \arbol
+                            \unotGunotR{1.05cm}{90}
+                            \unopB{1.05cm}{90 + (360/5)*4}
+                            \unopGunopRp{2.175cm}{90 + (360/5)*4}
+                            \unocGunocR{1.05cm}{90 + (360/5)}
+                            \cuadro{0cm}{0}
+    
+                            \begin{scope}[shift={(1_0)}]
+                                \unocB{1.05cm}{157.5}
+                            \end{scope}
+    
+                            \begin{scope}[shift={(3_00)}]
+                                
+                            \end{scope}
+    
+                            \begin{scope}[shift={(5_0)}]
+                                \unotBt{1.05cm}{135}
+                            \end{scope}
+                        \end{tikzpicture}
+                    }
+            \tcbitem
+                \tcblower
+                    \scalebox{1}{
+                        \begin{tikzpicture}
+                            \arbol
+                            \unotG{1.05cm}{90}
+                            \unopB{1.05cm}{90 + (360/5)*4}
+                            \unopGunopRp{2.175cm}{90 + (360/5)*4}
+                            \unocBunocR{1.05cm}{90 + (360/5)}
+                            \unocGc{0cm}{0}
+    
+                            \begin{scope}[shift={(1_0)}]
+                                
+                            \end{scope}
+    
+                            \begin{scope}[shift={(3_00)}]
+                                
+                            \end{scope}
+    
+                            \begin{scope}[shift={(5_0)}]
+                                \unotBunotRt{1.05cm}{135}
+                            \end{scope}
+                        \end{tikzpicture}
+                    }
     \end{tcbitemize}
 \end{figure}
 
@@ -3607,15 +3673,15 @@ c\'odigo dentro del \ttt{if} de la l\'inea $5$.
 
         \tcbitem
             \tcblower
-                \scalebox{0.67}{
+                \scalebox{1}{
                     \begin{tikzpicture}
                         \arbol
-                        \unotG{2.25cm}{90}
-                        \unopB{2.25cm}{90 + (360/5)*4}
-                        \unopGunopRp{4.5cm}{90 + (360/5)*4}
-                        \unocBunocR{2.25cm}{90 + (360/5)}
+                        \unotG{1.05cm}{90}
+                        \unopB{1.05cm}{90 + (360/5)*4}
+                        \unopGunopRp{2.175cm}{90 + (360/5)*4}
+                        \unocBunocR{1.05cm}{90 + (360/5)}
                         \unocG{0cm}{0}
-                        \cuadro{2.25cm}{90 + (360/5)*3}
+                        \cuadro{1.05cm}{90 + (360/5)*3}
 
                         \begin{scope}[shift={(1_0)}]
                             
@@ -3626,20 +3692,20 @@ c\'odigo dentro del \ttt{if} de la l\'inea $5$.
                         \end{scope}
 
                         \begin{scope}[shift={(5_0)}]
-                            \unotBunotRt{2.25cm}{135}
+                            \unotBunotRt{1.05cm}{135}
                         \end{scope}
                     \end{tikzpicture}
                 }
         \tcbitem
             \tcblower
-                \scalebox{0.67}{
+                \scalebox{1}{
                     \begin{tikzpicture}
                         \arbol
-                        \unotG{2.25cm}{90}
-                        \unopB{2.25cm}{90 + (360/5)*4}
-                        \unopGunopRp{4.5cm}{90 + (360/5)*4}
+                        \unotG{1.05cm}{90}
+                        \unopB{1.05cm}{90 + (360/5)*4}
+                        \unopGunopRp{2.175cm}{90 + (360/5)*4}
                         \unocBunocR{0cm}{0}
-                        \unocGc{2.25cm}{90 + (360/5)*3}
+                        \unocGc{1.05cm}{90 + (360/5)*3}
 
                         \begin{scope}[shift={(1_0)}]
                             
@@ -3650,20 +3716,20 @@ c\'odigo dentro del \ttt{if} de la l\'inea $5$.
                         \end{scope}
 
                         \begin{scope}[shift={(5_0)}]
-                            \unotBunotRt{2.25cm}{135}
+                            \unotBunotRt{1.05cm}{135}
                         \end{scope}
                     \end{tikzpicture}
                 }
         \tcbitem
             \tcblower
-                \scalebox{0.67}{
+                \scalebox{1}{
                     \begin{tikzpicture}
                         \arbol
-                        \unotG{2.25cm}{90}
-                        \unopB{2.25cm}{90 + (360/5)*4}
-                        \unopGunopRp{4.5cm}{90 + (360/5)*4}
+                        \unotG{1.05cm}{90}
+                        \unopB{1.05cm}{90 + (360/5)*4}
+                        \unopGunopRp{2.175cm}{90 + (360/5)*4}
                         \unocBunocR{0cm}{0}
-                        \unocG{2.25cm}{90 + (360/5)*3}
+                        \unocG{1.05cm}{90 + (360/5)*3}
 
                         \begin{scope}[shift={(1_0)}]
                             
@@ -3674,19 +3740,19 @@ c\'odigo dentro del \ttt{if} de la l\'inea $5$.
                         \end{scope}
 
                         \begin{scope}[shift={(5_0)}]
-                            \unotBunotRt{2.25cm}{135}
+                            \unotBunotRt{1.05cm}{135}
                         \end{scope}
                     \end{tikzpicture}
                 }
         \tcbitem
             \tcblower
-                \scalebox{0.67}{
+                \scalebox{1}{
                     \begin{tikzpicture}
                         \arbol
-                        \unotG{2.25cm}{90}
-                        \unopB{2.25cm}{90 + (360/5)*4}
-                        \unopGunopRp{4.5cm}{90 + (360/5)*4}
-                        \unocBunocR{2.25cm}{90 + (360/5)*3}
+                        \unotG{1.05cm}{90}
+                        \unopB{1.05cm}{90 + (360/5)*4}
+                        \unopGunopRp{2.175cm}{90 + (360/5)*4}
+                        \unocBunocR{1.05cm}{90 + (360/5)*3}
 
                         \begin{scope}[shift={(1_0)}]
                             
@@ -3697,117 +3763,60 @@ c\'odigo dentro del \ttt{if} de la l\'inea $5$.
                         \end{scope}
 
                         \begin{scope}[shift={(5_0)}]
-                            \unotBunotRt{2.25cm}{135}
-                        \end{scope}
-                    \end{tikzpicture}
-                }
-    \end{tcbitemize}
-\end{figure}
-
-\begin{figure}[!htbp]
-    \ContinuedFloat
-    \begin{tcbitemize}[raster columns=2, raster equal height, enhanced,
-        colback=Black!5!white,colframe=Grey!75!black, attach title to upper,
-        phantom={\addtocounter{myrasternum}{1}},
-        title={(\arabic{myrasternum})\enspace}, halign lower=center, halign upper
-        = left, lower separated=false, middle=0mm, boxsep=0mm, leftupper=2mm, left=2mm,
-        right=2mm, fonttitle=\bfseries, coltitle=black, raster column skip=1mm,raster
-        halign=center, raster row skip=1mm]
-        
-        \tcbitem
-            \tcblower
-                \scalebox{0.67}{
-                    \begin{tikzpicture}
-                        \arbol
-                        \unotG{2.25cm}{90}
-                        \unopB{2.25cm}{90 + (360/5)*4}
-                        \unopGunopRp{4.5cm}{90 + (360/5)*4}
-                        \unocBunocR{2.25cm}{90 + (360/5)*3}
-
-                        \begin{scope}[shift={(1_0)}]
-                            
-                        \end{scope}
-
-                        \begin{scope}[shift={(3_00)}]
-                            \unocG{0cm}{0}
-                            \cuadro{2.25cm}{292.5}
-                        \end{scope}
-
-                        \begin{scope}[shift={(5_0)}]
-                            \unotBunotRt{2.25cm}{135}
+                            \unotBunotRt{1.05cm}{135}
                         \end{scope}
                     \end{tikzpicture}
                 }
         \tcbitem
-            \tcblower
-                \scalebox{0.67}{
-                    \begin{tikzpicture}
-                        \arbol
-                        \unotG{2.25cm}{90}
-                        \unopB{2.25cm}{90 + (360/5)*4}
-                        \unopGunopRp{4.5cm}{90 + (360/5)*4}
-
-                        \begin{scope}[shift={(1_0)}]
-                            
-                        \end{scope}
-
-                        \begin{scope}[shift={(3_00)}]
-                            \unocBunocR{0cm}{0}
-                            \unocGc{2.25cm}{292.5}
-                        \end{scope}
-
-                        \begin{scope}[shift={(5_0)}]
-                            \unotBunotRt{2.25cm}{135}
-                        \end{scope}
-                    \end{tikzpicture}
-                }
-        \tcbitem
-            \tcblower
-                \scalebox{0.67}{
-                    \begin{tikzpicture}
-                        \arbol
-                        \unotG{2.25cm}{90}
-                        \unopB{2.25cm}{90 + (360/5)*4}
-                        \unopGunopRp{4.5cm}{90 + (360/5)*4}
-
-                        \begin{scope}[shift={(1_0)}]
-                            
-                        \end{scope}
-
-                        \begin{scope}[shift={(3_00)}]
-                            \unocBunocR{0cm}{0}
-                            \unocGc{2.25cm}{292.5}
-                        \end{scope}
-
-                        \begin{scope}[shift={(5_0)}]
-                            \unotBunotRt{2.25cm}{135}
-                        \end{scope}
-                    \end{tikzpicture}
-                }
-        \tcbitem
-            \tcblower
-                \scalebox{0.67}{
-                    \begin{tikzpicture}
-                        \arbol
-                        \unopB{2.25cm}{90 + (360/5)*4}
-                        \unopGunopRp{4.5cm}{90 + (360/5)*4}
-
-                        \begin{scope}[shift={(1_0)}]
-                            
-                        \end{scope}
-
-                        \begin{scope}[shift={(3_00)}]
-                            \trescc{2.25cm}{292.5}
-                        \end{scope}
-
-                        \begin{scope}[shift={(5_0)}]
-                            \trestt{2.25cm}{135}
-                        \end{scope}
-                    \end{tikzpicture}
-                }
+                \tcblower
+                    \scalebox{1}{
+                        \begin{tikzpicture}
+                            \arbol
+                            \unotG{1.05cm}{90}
+                            \unopB{1.05cm}{90 + (360/5)*4}
+                            \unopGunopRp{2.175cm}{90 + (360/5)*4}
+                            \unocBunocR{1.05cm}{90 + (360/5)*3}
+    
+                            \begin{scope}[shift={(1_0)}]
+                                
+                            \end{scope}
+    
+                            \begin{scope}[shift={(3_00)}]
+                                \unocG{0cm}{0}
+                                \cuadro{1.05cm}{0}
+                            \end{scope}
+    
+                            \begin{scope}[shift={(5_0)}]
+                                \unotBunotRt{1.05cm}{135}
+                            \end{scope}
+                        \end{tikzpicture}
+                    }
+            \tcbitem
+                \tcblower
+                    \scalebox{1}{
+                        \begin{tikzpicture}
+                            \arbol
+                            \unotG{1.05cm}{90}
+                            \unopB{1.05cm}{90 + (360/5)*4}
+                            \unopGunopRp{2.175cm}{90 + (360/5)*4}
+    
+                            \begin{scope}[shift={(1_0)}]
+                                
+                            \end{scope}
+    
+                            \begin{scope}[shift={(3_00)}]
+                                \unocBunocR{0cm}{0}
+                                \unocGc{1.05cm}{0}
+                            \end{scope}
+    
+                            \begin{scope}[shift={(5_0)}]
+                                \unotBunotRt{1.05cm}{135}
+                            \end{scope}
+                        \end{tikzpicture}
+                    }
     \end{tcbitemize}
     \captionsetup{font=footnotesize}
-    \caption{En (32), $R$ tiene dos movimientos que no le hacen perder. No
-    obstante, al siguiente turno, $c_1$ terminar\'ia por capturar, por lo que
-    $R$ pasa como en (33). En (34), $c_2$ y $c_3$ capturan a $r$.}
+    \caption{En (32), $R$ tiene un \'unico movimiento que no le hace perder. No
+    obstante, de hacerlo, al siguiente turno $c_1$ terminar\'ia por capturar,
+    por lo que $R$ pasa y al siguiente turno captura $c_2$ o $c_3$.}
 \end{figure}

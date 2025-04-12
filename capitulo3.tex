@@ -10,11 +10,12 @@ un \'arbol, cambiamos nuestro enfoque a la gr\'afica de Petersen, $P$ (ver
 
 \begin{figure}[!htbp]
     \centering
-    \scalebox{0.75}{
         \begin{tikzpicture}
-            \petersen
+            \scalebox{0.7}{
+                \petersen
+            }
         \end{tikzpicture}
-    }
+    \captionsetup{font=footnotesize}
     \caption{Gr\'afica de Petersen $P$.}
     \label{fig:petersen-grafica}
 \end{figure}
@@ -32,7 +33,7 @@ policiaco de la gr\'afica de Petersen. Enunciamos el siguiente lema.
     v\'ertices tienen grado $3$ y ning\'un lazo. Por tanto, para cualquier
     $S\subseteq V_P$ tal que $S=\l{x,y}$ con $x$ y $y$ distintos,
     \[
-        \abs{N(S)} \leq d_P(x) + d_P(y) = 6 \leq 10
+        \abs{N(S)} \leq d_P(x) + d_P(y) = 6 \leq 10.
     \]
     As\'i, existe un v\'ertice distinto de $x$ y de $y$ que no es adyacente a
     ninguno de los dos, por lo que $\gamma(P)>2$. Por otro lado, se muestra en
@@ -41,14 +42,15 @@ policiaco de la gr\'afica de Petersen. Enunciamos el siguiente lema.
 
     \begin{figure}[!htbp]
         \centering
-        \scalebox{0.75}{
-            \begin{tikzpicture}
-                \petersen
-                \node (1) [bola2, fill=red]  at ({(360/5)*0 + 90}:5){};
-                \node (2) [bola2, fill=red]  at ({(360/5)*2 + 90}:2.5){};
-                \node (3) [bola2, fill=red]  at ({(360/5)*3 + 90}:2.5){};
-            \end{tikzpicture}
-        }
+            \scalebox{0.7}{
+                \begin{tikzpicture}
+                    \petersen
+                    \node (1) [bola34, fill=Crimson]  at ({(360/5)*0 + 90}:2.25){};
+                    \node (2) [bola34, fill=Crimson]  at ({(360/5)*2 + 90}:1.125){};
+                    \node (3) [bola34, fill=Crimson]  at ({(360/5)*3 + 90}:1.125){};
+                \end{tikzpicture}
+            }
+        \captionsetup{font=footnotesize}
         \caption{Los v\'ertices en rojo forman un conjunto dominante.}
         \label{fig:petersen-dominante}
     \end{figure}
@@ -72,22 +74,23 @@ Luego, tiene lugar el siguiente teorema.
 \begin{proof}
     En virtud d\cref{cor:cotasup-petersen1}, basta demostrar que $R$ tiene una
     estrategia de escape en un juego de polic\'ias y ladrones sobre $P$ contra
-    dos polic\'ias. V\'ease que por lo mencionado en
-    \cref{pro:dominante-petersen}, para cualquier par de v\'ertices de $P$ existe
+    dos polic\'ias. V\'ease que, por lo mencionado en
+    \cref{pro:dominante-petersen}, para cualquier par de v\'ertices de $P$, existe
     al menos un v\'ertice a distancia al menos $2$, por lo que $R$ puede escoger
     su posici\'on inicial y sobrevive al primer turno de $C$.
+
+    \newpage
     
     Posterior al turno de $C$, si ning\'un polic\'ia se encuentra a un turno de
     capturar a $r$, $R$ pasa. De lo contrario, sup\'ongase sin p\'erdida de
     generalidad que solo $c_1$ est\'a a un turno de capturarle, de modo que $r$
-    tiene a lo m\'as dos posibles movimientos. N\'otese que $N_P(c_1(t))\cap
-    N_P(r(t))$ es de cardinalidad uno ya que de lo contrario habr\'ia un ciclo
+    tiene a lo m\'as dos posibles movimientos. N\'otese que
+    $\abs{N_P(c_1(t))\cap N_P(r(t))}=1$ ya que de lo contrario habr\'ia un ciclo
     de longitud $3$ en $P$, pero la longitud m\'inima de un ciclo en $P$ es $5$.
     As\'i, $c_1$ no restringe ninguno de los otros dos movimientos para $r$.
-    Similarmente, $N_P(c_2(t))\cap N_P(r(t))$ no puede ser de cardinalidad $2$
-    pues de lo contrario, $P$ tendr\'ia un ciclo de longitud $4$. As\'i, $r$
-    tendr\'ia al menos un v\'ertice al cual moverse para sobrevivir al siguiente
-    turno de $C$.
+    Similarmente, $\abs{N_P(c_2(t))\cap N_P(r(t))}\neq 2$ pues, de lo contrario,
+    $P$ tendr\'ia un ciclo de longitud $4$. As\'i, $r$ tendr\'ia al menos un
+    v\'ertice al cual moverse para sobrevivir al siguiente turno de $C$.
 
     Finalmente, si dos polic\'ias est\'an a un turno de capturar a $r$, por lo
     dicho anteriormente se tiene que ninguno de ellos es adyacente a un vecino
@@ -98,13 +101,13 @@ Luego, tiene lugar el siguiente teorema.
 \end{proof}
 
 Cambiando nuestra atenci\'on a la gr\'afica de $2$ fichas de Petersen,
-observemos que de \cref{pro:dominante-petersen} se tiene que la distancia
+observemos que, de \cref{pro:dominante-petersen}, se tiene que la distancia
 m\'axima entre dos v\'ertices de $P$ es $2$. Una observaci\'on \'util acerca de
 $P$ que se deduce de \cref{fig:petersen-dominante} es que cualesquiera dos de
 sus v\'ertices est\'an a lo m\'as a distancia $2$. Adem\'as, dado que $P$ no
-tiene ciclos de longitud $4$, sucede que para cualesquiera dos v\'ertices no
-adyacentes, $u$ y $v$, existe una \'unica $uv$-trayectoria de longitud $2$.
-As\'i, proponemos la siguiente cota superior.
+tiene ciclos de longitud $4$, para cualesquiera dos v\'ertices no adyacentes,
+$u$ y $v$, existe una \'unica $uv$-trayectoria de longitud $2$. As\'i,
+proponemos la siguiente cota superior.
 
 % \begin{lema}
 % \label{lem:bound}
@@ -634,27 +637,26 @@ As\'i, proponemos la siguiente cota superior.
         \item La captura de $R$.
     \end{enumerate}
 
-    Para la primera etapa, como $\gamma(P)=3$, existe $S\subseteq V_P$ de
-    cardinalidad $3$ tal que este es un conjunto dominante de $P$. Luego, $C$
-    puede escoger su configuraci\'on inicial de manera que, para cada dos
-    v\'ertices $x$ y $y$ en $S$, existe $i\in\seg{1}{4}$ tal que $c_i$ tiene sus
-    fichas en $x$ y $y$ (v\'ease (a) en \cref{fig:initial}). Se afirma que, en
-    su primer turno despu\'es de escoger su configuraci\'on inicial, $c_{1,1}$ y
-    $c_{2,2}$ pueden capturar a $r_1$ y $r_2$ respectivamente. Esto se puede ver
-    en (b) de \cref{fig:initial} pues en cada v\'ertice hay al menos dos
-    colores, de modo que si $c_{1,1}$ y $c_{2,2}$ no estuvieran a distancia $1$
-    de sus objetivos, estos solo intercambiar\'ian sus colores (y sus formas en
-    caso de ser necesario). Por otro lado, $c_{3,1}$ y $c_{4,2}$ se mueven para
-    capturar $r_1$ y $r_2$ respectivamente. As\'i, si $c_3$ tuviera alguna de
-    sus fichas a distancia $1$ de $r_1$, este reetiqueta en caso de ser
-    necesario para que $c_{3,1}$ capture a $r_1$ en el mismo turno (y lo mismo
-    sucede para $c_{4,2}$). No obstante, para cada $i\in\seg{1}{4}$, hay un
-    v\'ertice de $S$ en el que no hay ninguna ficha de $c_i$, de modo que
-    $c_{3,1}$ y $c_{4,2}$ puede que no capturen a sus objetivos en el primer
-    turno de $C$. A pesar de ello, dado que la distancia entre cada par de
-    v\'ertices de $P$ es a lo m\'as $2$, en el peor de los casos ambos $c_{3,1}$
-    y $c_{4,2}$ se encuentran a distancia $1$ de sus respectivos objetivos
-    (v\'ease (b) en \cref{fig:initial}).
+    Para la primera etapa, como $\gamma(P)=3$, existe un conjunto dominante
+    $S\subseteq V_P$, con $ \abs{S}=3$. Luego, $C$ puede escoger su
+    configuraci\'on inicial de manera que, para cada dos v\'ertices $x$ y $y$ en
+    $S$, existe $i\in\seg{1}{4}$ tal que $c_i$ tiene sus fichas en $x$ y $y$
+    (v\'ease (a) en \cref{fig:initial}). En su primer turno despu\'es de escoger
+    su configuraci\'on inicial, $c_{1,1}$ y $c_{2,2}$ pueden capturar a $r_1$ y
+    $r_2$ respectivamente. Esto se puede ver en (b) de \cref{fig:initial} pues
+    en cada v\'ertice hay al menos dos colores, de modo que si $c_{1,1}$ y
+    $c_{2,2}$ no estuvieran a distancia $1$ de sus objetivos, estos solo
+    intercambiar\'ian sus colores (y sus formas en caso de ser necesario). Por
+    otro lado, $c_{3,1}$ y $c_{4,2}$ se mueven para capturar $r_1$ y $r_2$
+    respectivamente. As\'i, si $c_3$ tuviera alguna de sus fichas a distancia
+    $1$ de $r_1$, este reetiqueta en caso de ser necesario para que $c_{3,1}$
+    capture a $r_1$ en el mismo turno (y lo mismo sucede para $c_{4,2}$). No
+    obstante, para cada $i\in\seg{1}{4}$, hay un v\'ertice de $S$ en el que no
+    hay ninguna ficha de $c_i$, de modo que $c_{3,1}$ y $c_{4,2}$ puede que no
+    capturen a sus objetivos en el primer turno de $C$. A pesar de ello, dado
+    que la distancia entre cada par de v\'ertices de $P$ es a lo m\'as $2$, en
+    el peor de los casos ambos $c_{3,1}$ y $c_{4,2}$ se encuentran a distancia
+    $1$ de sus respectivos objetivos (v\'ease (b) en \cref{fig:initial}).
 
     \begin{figure}[!htbp]
         \begin{tcbitemize}[raster columns=2, raster equal height, enhanced,
@@ -667,26 +669,26 @@ As\'i, proponemos la siguiente cota superior.
 
             \tcbitem
                 \tcblower
-                    \scalebox{0.4}{
+                    \scalebox{0.7}{
                         \begin{tikzpicture}
                                 \petersen
-                                \unopBunopYunotR{5cm}{90 + (360/5)*2}
-                                \unotBunotYunopG{2.5cm}{90 + (360/5)*4}
-                                \unotGunopR{2.5cm}{90}
+                                \unopBunopYunotR{2.25cm}{90 + (360/5)*2}
+                                \unotBunotYunopG{1.125cm}{90 + (360/5)*4}
+                                \unotGunopRdos{1.125cm}{90}
                         \end{tikzpicture}
                     }
             
             \tcbitem
                 \tcblower
-                    \scalebox{0.4}{
+                    \scalebox{0.7}{
                         \begin{tikzpicture}
                             \petersen
-                            \unopBp{5cm}{90 + (360/5)*3}
-                            \unopR{2.5cm}{90 + (360/5)*3}
-                            \unotGt{5cm}{90}
-                            \unotY{5cm}{90 + (360/5)*4}
-                            \unotBunopG{2.5cm}{90 + (360/5)*4}
-                            \unotRunopY{5cm}{90 + (360/5)*2}
+                            \unopBpdos{2.25cm}{90 + (360/5)*3}
+                            \unopRdos{1.125cm}{90 + (360/5)*3}
+                            \unotGtdos{2.25cm}{90}
+                            \unotY{2.25cm}{90 + (360/5)*4}
+                            \unotBunopGdos{1.125cm}{90 + (360/5)*4}
+                            \unotRunopY{2.25cm}{90 + (360/5)*2}
                         \end{tikzpicture}
                     }
             \end{tcbitemize}
@@ -737,58 +739,58 @@ As\'i, proponemos la siguiente cota superior.
 
             \tcbitem
                 \tcblower
-                    \scalebox{0.4}{
+                    \scalebox{0.7}{
                         \begin{tikzpicture}
                                 \petersendos
-                                \unotGunotYt{5cm}{90 + (360/5)}
-                                \unopBp{2.5cm}{90 + (360/5)*4}
-                                \unopR{5cm}{90 + (360/5)*4}
-                                \unotRunopY{5cm}{90 + (360/5)*2}
-                                \unopG{5cm}{90}
-                                \unotB{2.5cm}{90 + (360/5)}
+                                \unotGunotYt{2.25cm}{90 + (360/5)}
+                                \unopBpdos{1.125cm}{90 + (360/5)*4}
+                                \unopRdos{2.25cm}{90 + (360/5)*4}
+                                \unotRunopY{2.25cm}{90 + (360/5)*2}
+                                \unopGdos{2.25cm}{90}
+                                \unotBdos{1.125cm}{90 + (360/5)}
 
                         \end{tikzpicture}
                     }
             
             \tcbitem
                 \tcblower
-                    \scalebox{0.4}{
+                    \scalebox{0.7}{
                         \begin{tikzpicture}
                             \petersendos
-                            \unotGunotYt{5cm}{90 + (360/5)}
-                            \unopBp{2.5cm}{90 + (360/5)}
-                            \unotBunopR{2.5cm}{90 + (360/5)*4}
-                            \unotRunopY{5cm}{90 + (360/5)*2}
-                            \unopG{5cm}{90}
+                            \unotGunotYt{2.25cm}{90 + (360/5)}
+                            \unopBpdos{1.125cm}{90 + (360/5)}
+                            \unotBunopRdos{1.125cm}{90 + (360/5)*4}
+                            \unotRunopY{2.25cm}{90 + (360/5)*2}
+                            \unopGdos{2.25cm}{90}
                             
                         \end{tikzpicture}
                     }
             \tcbitem
                 \tcblower
-                    \scalebox{0.4}{
+                    \scalebox{0.7}{
                         \begin{tikzpicture}
                             \petersendos
-                            \unotGunotYt{5cm}{90 + (360/5)}
-                            \unopBp{2.5cm}{90 + (360/5)*3}
-                            \unotB{2.5cm}{90 + (360/5)*4}
-                            \unopR{2.5cm}{90 + (360/5)}
-                            \unotRunopY{5cm}{90 + (360/5)*2}
-                            \unopG{5cm}{90}
+                            \unotGunotYt{2.25cm}{90 + (360/5)}
+                            \unopBpdos{1.125cm}{90 + (360/5)*3}
+                            \unotBdos{1.125cm}{90 + (360/5)*4}
+                            \unopRdos{1.125cm}{90 + (360/5)}
+                            \unotRunopY{2.25cm}{90 + (360/5)*2}
+                            \unopGdos{2.25cm}{90}
                             
                         \end{tikzpicture}
                     }
             
                 \tcbitem
                     \tcblower
-                        \scalebox{0.4}{
+                        \scalebox{0.7}{
                             \begin{tikzpicture}
                                 \petersendos
-                                \unotGunotYt{5cm}{90 + (360/5)}
-                                \unopBp{2.5cm}{90}
-                                \unotB{2.5cm}{90 + (360/5)*4}
-                                \unopR{2.5cm}{90 + (360/5)*3}
-                                \unotRunopY{5cm}{90 + (360/5)*2}
-                                \unopG{5cm}{90}
+                                \unotGunotYt{2.25cm}{90 + (360/5)}
+                                \unopBpdos{1.125cm}{90}
+                                \unotBdos{1.125cm}{90 + (360/5)*4}
+                                \unopRdos{1.125cm}{90 + (360/5)*3}
+                                \unotRunopY{2.25cm}{90 + (360/5)*2}
+                                \unopGdos{2.25cm}{90}
                                 
                             \end{tikzpicture}
                         }
@@ -807,19 +809,19 @@ As\'i, proponemos la siguiente cota superior.
     recapturan a $r_1$ si $R$ lo mueve. De la misma manera, $c_{2,2}$ y
     $c_{4,2}$ recapturan cada que $R$ mueva $r_2$. Sup\'ongase que $r_1$ y $r_2$
     no est\'an en v\'ertices adyacentes. Sean $r_1(t)=a$, $r_2(t)=b$,
-    $N_P(a)=\l{u_1,v,u_2}$ y $N_P(b)=\l{w_1,v,w_2}$, notando que la intersecci\'on
-    de ambos conjuntos es $\l{v}$ pues entre cualesquiera dos v\'ertices no
-    adyacentes existe una \'unica trayctoria de longitud $2$. Sin p\'erdida de
-    generalidad, sup\'ongase que la \'ulitma ficha movida por $R$ es $r_1$.
-    Luego, $c_1$ y $c_3$ usan su movimiento para recapturar tal como se dijo al
-    inicio del p\'arrafo. En tanto, sin p\'erdida de generalidad, $c_{2,1}$ y
-    $c_{4,1}$ se mueven hacia un v\'ertice adyacente a $u_1$ y $u_2$
+    $N_P(a)=\l{u_1,v,u_2}$ y $N_P(b)=\l{w_1,v,w_2}$, notando que la
+    intersecci\'on de ambos conjuntos es $\l{v}$ pues entre cualesquiera dos
+    v\'ertices no adyacentes existe una \'unica trayectoria de longitud $2$. Sin
+    p\'erdida de generalidad, sup\'ongase que la \'ulitma ficha movida por $R$
+    es $r_1$. Luego, $c_1$ y $c_3$ usan su movimiento para recapturar tal como
+    se dijo al inicio del p\'arrafo. En tanto, sin p\'erdida de generalidad,
+    $c_{2,1}$ y $c_{4,1}$ se mueven hacia un v\'ertice adyacente a $u_1$ y $u_2$
     respectivamente. N\'otese que esto es posible pues, desde cualquier
     v\'ertice en el que $c_{2,1}$ y $c_{4,1}$ pudieran estar, $C$ puede mover
     uno hacia la vecindad de $u_1$ y el otro a la vecindad de $u_2$ (v\'ease
     \cref{fig:guarding0}).
 
-    \begin{figure}[!htbp]
+    \begin{figure}[ht!]
         \begin{tcbitemize}[raster columns=2, raster equal height, enhanced,
             colback=Black!5!white,colframe=Grey!75!black, attach title to upper,
             phantom={\setcounter{myrasternum}{\thetcbrasternum}},
@@ -831,35 +833,35 @@ As\'i, proponemos la siguiente cota superior.
 
             \tcbitem
                 \tcblower
-                    \scalebox{0.4}{
+                    \scalebox{0.7}{
                         \begin{tikzpicture}
                             \petersentres
-                            \unopBunopRp{2.5cm}{90 + (360/5)*2}
-                            \unotGunotYt{5cm}{90 + (360/5)}
+                            \unopBunopRpdos{1.125cm}{90 + (360/5)*2}
+                            \unotGunotYt{2.25cm}{90 + (360/5)}
 
                         \end{tikzpicture}
                     }
             
             \tcbitem
                 \tcblower
-                    \scalebox{0.4}{
+                    \scalebox{0.7}{
                         \begin{tikzpicture}
                             \petersencuatro
-                            \unopBunopRp{2.5cm}{90 + (360/5)*2}
-                            \unotGunotYt{5cm}{90 + (360/5)}
-                            \unopGunopY{5cm}{90 + (360/5)*3}
+                            \unopBunopRpdos{1.125cm}{90 + (360/5)*2}
+                            \unotGunotYt{2.25cm}{90 + (360/5)}
+                            \unopGunopY{2.25cm}{90 + (360/5)*3}
                             
                         \end{tikzpicture}
                     }
             \tcbitem[raster multicolumn=2]
                 \tcblower
-                    \scalebox{0.4}{
+                    \scalebox{0.7}{
                         \begin{tikzpicture}
                             \petersen
-                            \unopBunopRp{2.5cm}{90 + (360/5)*2}
-                            \unotGunotYt{5cm}{90 + (360/5)}
-                            \unopG{2.5cm}{90 + (360/5)*3}
-                            \unopY{5cm}{90 + (360/5)*4}
+                            \unopBunopRpdos{1.125cm}{90 + (360/5)*2}
+                            \unotGunotYt{2.25cm}{90 + (360/5)}
+                            \unopGdos{1.125cm}{90 + (360/5)*3}
+                            \unopY{2.25cm}{90 + (360/5)*4}
                             
                         \end{tikzpicture}
                     }
@@ -880,6 +882,8 @@ As\'i, proponemos la siguiente cota superior.
         \label{fig:guarding0}
     \end{figure}
 
+    \newpage
+
     Obs\'ervese que $r_1$ no se puede mover ni a $u_1$ ni a $u_2$ pues ello
     llevar\'ia que $R$ pierda al siguiente turno. As\'i, $R$ pasa o mueve $r_2$.
     En el primer caso, ambos $c_{2,1}$ y $c_{4,1}$ avanzan a $u_1$ y $u_2$
@@ -899,7 +903,7 @@ As\'i, proponemos la siguiente cota superior.
         $w_1$, de manera que $R$ no puede mantener sus fichas en v\'ertices no
         adyacentes (v\'ease \cref{fig:guarding}).
     
-        \begin{figure}[H]
+        \begin{figure}[ht!]
             \begin{tcbitemize}[raster columns=2, raster equal height, enhanced,
                 colback=Black!5!white,colframe=Grey!75!black, attach title to upper,
                 phantom={\setcounter{myrasternum}{\thetcbrasternum}},
@@ -911,58 +915,58 @@ As\'i, proponemos la siguiente cota superior.
     
                 \tcbitem
                     \tcblower
-                        \scalebox{0.4}{
+                        \scalebox{0.7}{
                             \begin{tikzpicture}
                                 \petersencinco
-                                \unopBunopRp{2.5cm}{90 + (360/5)*2}
-                                \unotGunotY{5cm}{90 + (360/5)}
-                                \unopGt{5cm}{90}
-                                \unotB{2.5cm}{90 + (360/5)*4}
-                                \unotR{2.5cm}{90 + (360/5)*3}
-                                \unopY{5cm}{90 + (360/5)*4}
+                                \unopBunopRpdos{1.125cm}{90 + (360/5)*2}
+                                \unotGunotY{2.25cm}{90 + (360/5)}
+                                \unopGtdos{2.25cm}{90}
+                                \unotBdos{1.125cm}{90 + (360/5)*4}
+                                \unotRdos{1.125cm}{90 + (360/5)*3}
+                                \unopY{2.25cm}{90 + (360/5)*4}
     
                             \end{tikzpicture}
                         }
                 
                 \tcbitem
                     \tcblower
-                        \scalebox{0.4}{
+                        \scalebox{0.7}{
                             \begin{tikzpicture}
                                 \petersen
-                                \unopBunopRp{2.5cm}{90 + (360/5)*2}
-                                \unopG{5cm}{90 + (360/5)}
-                                \unotGunotYt{5cm}{90}
-                                \unotB{2.5cm}{90 + (360/5)*4}
-                                \unotR{2.5cm}{90 + (360/5)}
-                                \unopY{5cm}{90 + (360/5)*4}
+                                \unopBunopRpdos{1.125cm}{90 + (360/5)*2}
+                                \unopGdos{2.25cm}{90 + (360/5)}
+                                \unotGunotYt{2.25cm}{90}
+                                \unotBdos{1.125cm}{90 + (360/5)*4}
+                                \unotRdos{1.125cm}{90 + (360/5)}
+                                \unopY{2.25cm}{90 + (360/5)*4}
                                 
                             \end{tikzpicture}
                     }
                 \tcbitem
                     \tcblower
-                        \scalebox{0.4}{
+                        \scalebox{0.7}{
                             \begin{tikzpicture}
                                 \petersensiete
-                                \unopBunopRp{2.5cm}{90 + (360/5)*2}
-                                \unopG{5cm}{90 + (360/5)}
-                                \unotGunotYt{5cm}{90}
-                                \unotB{2.5cm}{90 + (360/5)*4}
-                                \unotR{2.5cm}{90 + (360/5)*1}
-                                \unopY{5cm}{90 + (360/5)*4}
+                                \unopBunopRpdos{1.125cm}{90 + (360/5)*2}
+                                \unopGdos{2.25cm}{90 + (360/5)}
+                                \unotGunotYt{2.25cm}{90}
+                                \unotBdos{1.125cm}{90 + (360/5)*4}
+                                \unotRdos{1.125cm}{90 + (360/5)*1}
+                                \unopY{2.25cm}{90 + (360/5)*4}
                                 
                             \end{tikzpicture}
                         }
                 \tcbitem
                     \tcblower
-                        \scalebox{0.4}{
+                        \scalebox{0.7}{
                             \begin{tikzpicture}
                                 \petersen
-                                \unopBunopRp{2.5cm}{90 + (360/5)*2}
-                                \unopG{5cm}{90 + (360/5)*2}
-                                \unotGunotYt{5cm}{90}
-                                \unotB{5cm}{90 + (360/5)*4}
-                                \unotR{5cm}{90 + (360/5)*1}
-                                \unopY{2.5cm}{90 + (360/5)*4}
+                                \unopBunopRpdos{1.125cm}{90 + (360/5)*2}
+                                \unopGdos{2.25cm}{90 + (360/5)*2}
+                                \unotGunotYt{2.25cm}{90}
+                                \unotBdos{2.25cm}{90 + (360/5)*4}
+                                \unotRdos{2.25cm}{90 + (360/5)*1}
+                                \unopY{1.125cm}{90 + (360/5)*4}
                                 
                             \end{tikzpicture}
                         }
@@ -995,7 +999,9 @@ As\'i, proponemos la siguiente cota superior.
             mientras que $c_{4,1}$ se posiciona en la vecindad $a$ (ver (d) y
             (e) \cref{fig:guarding1}).
 
-            \begin{figure}[H]
+            \newpage
+
+            \begin{figure}[ht!]
                 \begin{tcbitemize}[raster columns=2, raster equal height, enhanced,
                     colback=Black!5!white,colframe=Grey!75!black, attach title to upper,
                     phantom={\setcounter{myrasternum}{\thetcbrasternum}},
@@ -1007,71 +1013,71 @@ As\'i, proponemos la siguiente cota superior.
     
                     \tcbitem
                         \tcblower
-                            \scalebox{0.4}{
+                            \scalebox{0.7}{
                                 \begin{tikzpicture}
-                                    \petersen
-                                    \unopBunopRp{2.5cm}{90 + (360/5)*2}
-                                    \unotGunotY{5cm}{90 + (360/5)}
-                                    \tri{5cm}{90}
-                                    \unotBunotR{5cm}{90 + (360/5)*2}
-                                    \unopG{2.5cm}{90 + (360/5)*3}
-                                    \unopY{5cm}{90 + (360/5)*4}
+                                    \petersencero
+                                    \unopBunopRpdos{1.125cm}{90 + (360/5)*2}
+                                    \unotGunotY{2.25cm}{90 + (360/5)}
+                                    \tridos{2.25cm}{90}
+                                    \unotBunotRdos{2.25cm}{90 + (360/5)*2}
+                                    \unopGdos{1.125cm}{90 + (360/5)*3}
+                                    \unopY{2.25cm}{90 + (360/5)*4}
     
                                 \end{tikzpicture}
                             }
                     
                     \tcbitem
                         \tcblower
-                            \scalebox{0.4}{
+                            \scalebox{0.7}{
                                 \begin{tikzpicture}
                                     \petersenseis
-                                    \unopBunopRp{2.5cm}{90 + (360/5)*2}
-                                    \unotGunotYt{5cm}{90}
-                                    \unotBunotR{5cm}{90 + (360/5)*2}
-                                    \unopG{2.5cm}{90 + (360/5)*3}
-                                    \unopY{5cm}{90 + (360/5)*4}
+                                    \unopBunopRpdos{1.125cm}{90 + (360/5)*2}
+                                    \unotGunotYt{2.25cm}{90}
+                                    \unotBunotRdos{2.25cm}{90 + (360/5)*2}
+                                    \unopGdos{1.125cm}{90 + (360/5)*3}
+                                    \unopY{2.25cm}{90 + (360/5)*4}
                                     
                                 \end{tikzpicture}
                             }
                     \tcbitem
                         \tcblower
-                            \scalebox{0.4}{
+                            \scalebox{0.7}{
                                 \begin{tikzpicture}
                                     \petersen
-                                    \unopBunopRp{2.5cm}{90 + (360/5)*2}
-                                    \unotGunotYt{5cm}{90}
-                                    \unotR{5cm}{90 + (360/5)*3}
-                                    \unotB{5cm}{90 + (360/5)}
-                                    \unopG{2.5cm}{90 + (360/5)*3}
-                                    \unopY{5cm}{90 + (360/5)*4}
+                                    \unopBunopRpdos{1.125cm}{90 + (360/5)*2}
+                                    \unotGunotYt{2.25cm}{90}
+                                    \unotRdos{2.25cm}{90 + (360/5)*3}
+                                    \unotBdos{2.25cm}{90 + (360/5)}
+                                    \unopGdos{1.125cm}{90 + (360/5)*3}
+                                    \unopY{2.25cm}{90 + (360/5)*4}
                                     
                                 \end{tikzpicture}
                             }
                     \tcbitem
                         \tcblower
-                            \scalebox{0.4}{
+                            \scalebox{0.7}{
                                 \begin{tikzpicture}
                                     \petersen
-                                    \unopBunopR{2.5cm}{90 + (360/5)*2}
-                                    \punto{5cm}{90 + (360/5)*2}
-                                    \unotGunotYt{5cm}{90}
-                                    \unotR{5cm}{90 + (360/5)*3}
-                                    \unotB{5cm}{90 + (360/5)}
-                                    \unopG{2.5cm}{90 + (360/5)*3}
-                                    \unopY{5cm}{90 + (360/5)*4}
+                                    \unopBunopRdos{1.125cm}{90 + (360/5)*2}
+                                    \puntodos{2.25cm}{90 + (360/5)*2}
+                                    \unotGunotYt{2.25cm}{90}
+                                    \unotRdos{2.25cm}{90 + (360/5)*3}
+                                    \unotBdos{2.25cm}{90 + (360/5)}
+                                    \unopGdos{1.125cm}{90 + (360/5)*3}
+                                    \unopY{2.25cm}{90 + (360/5)*4}
                                     
                                 \end{tikzpicture}
                             }
                     \tcbitem[raster multicolumn=2]
                         \tcblower
-                            \scalebox{0.4}{
+                            \scalebox{0.7}{
                                 \begin{tikzpicture}
                                     \petersen
-                                    \unopBunopRp{5cm}{90 + (360/5)*2}
-                                    \unotGunotYt{5cm}{90}
-                                    \unopGunotR{5cm}{90 + (360/5)*3}
-                                    \unotB{5cm}{90 + (360/5)}
-                                    \unopY{2.5cm}{90 + (360/5)*4}
+                                    \unopBunopRpdos{2.25cm}{90 + (360/5)*2}
+                                    \unotGunotYt{2.25cm}{90}
+                                    \unopGunotRdos{2.25cm}{90 + (360/5)*3}
+                                    \unotBdos{2.25cm}{90 + (360/5)}
+                                    \unopY{1.125cm}{90 + (360/5)*4}
                                     
                                 \end{tikzpicture}
                             }
@@ -1089,18 +1095,16 @@ As\'i, proponemos la siguiente cota superior.
                 \label{fig:guarding1}
             \end{figure}
 
-            Luego, $R$ est\'a obligado a mover $r_2$ a $u_1$. Como $c_{3,2}$
-            est\'a en $u_2$ o en $x$, este puede moverse para estar en la
-            vecindad $z$. En tanto, $c_{2,2}$ y $c_{4,2}$ recapturan a $r_2$
-            (v\'ease \cref{fig:guarding62}). Por tanto, $R$ no puede mover $r_2$
-            a $z$ pues este pierde en a lo m\'as un turno, por lo que se ve
-            obligado a mover $r_1$ a $b$ (v\'ease (c) en \cref{fig:guarding62}).
-            N\'otese que $c_1$ se encuentra obstru\'ido al recapturar con
-            $c_{1,1}$, por lo que este caso se reduce al 1, de modo que $R$ se
-            ve obligado a poner sus fichas en v\'ertices adyacentes posterior al
-            turno de $C$.
+            Luego, $r_2$ debe moverse a $u_1$. Como $c_{3,2}$ est\'a en $u_2$ o
+            en $x$, este puede moverse para estar en la vecindad $z$. En tanto,
+            $c_{2,2}$ y $c_{4,2}$ recapturan a $r_2$ (v\'ease
+            \cref{fig:guarding62}). As\'i, $r_2$ no puede moverse a $z$ pues $R$
+            pierde en a lo m\'as un turno, por lo que se ve obligado a mover
+            $r_1$ a $b$ (v\'ease (c) en \cref{fig:guarding62}). N\'otese que
+            $c_{1,1}$ se encuentra obstru\'ido al recapturar, por lo que este
+            caso se reduce al 1.
 
-            \begin{figure}[H]
+            \begin{figure}[ht!]
                 \begin{tcbitemize}[raster columns=2, raster equal height, enhanced,
                     colback=Black!5!white,colframe=Grey!75!black, attach title to upper,
                     phantom={\setcounter{myrasternum}{\thetcbrasternum}},
@@ -1112,43 +1116,43 @@ As\'i, proponemos la siguiente cota superior.
         
                     \tcbitem
                         \tcblower
-                            \scalebox{0.4}{
+                            \scalebox{0.7}{
                                 \begin{tikzpicture}
-                                    \petersen
-                                    \unopBunopRp{5cm}{90 + (360/5)*2}
-                                    \unotGunotY{5cm}{90}
-                                    \tri{2.5cm}{90}
-                                    \unotRunopY{2.5cm}{90 + (360/5)*4}
-                                    \unotB{5cm}{90 + (360/5)}
-                                    \unopG{5cm}{90 + (360/5)*3}
+                                    \petersencero
+                                    \unopBunopRpdos{2.25cm}{90 + (360/5)*2}
+                                    \unotGunotY{2.25cm}{90}
+                                    \tridos{1.125cm}{90}
+                                    \unotRunopY{1.125cm}{90 + (360/5)*4}
+                                    \unotBdos{2.25cm}{90 + (360/5)}
+                                    \unopGdos{2.25cm}{90 + (360/5)*3}
                                     
                                 \end{tikzpicture}
                             }
                     \tcbitem
                         \tcblower
-                            \scalebox{0.4}{
+                            \scalebox{0.7}{
                                 \begin{tikzpicture}
                                     \petersen
-                                    \unopBunopRp{5cm}{90 + (360/5)*2}
-                                    \unotGunotYt{2.5cm}{90}
-                                    \unopY{2.5cm}{90 + (360/5)*4}
-                                    \unotR{2.5cm}{90+ (360/5)*1}
-                                    \unotB{5cm}{90 + (360/5)}
-                                    \unopG{5cm}{90 + (360/5)*3}
+                                    \unopBunopRpdos{2.25cm}{90 + (360/5)*2}
+                                    \unotGunotYt{1.125cm}{90}
+                                    \unopY{1.125cm}{90 + (360/5)*4}
+                                    \unotRdos{1.125cm}{90+ (360/5)*1}
+                                    \unotBdos{2.25cm}{90 + (360/5)}
+                                    \unopGdos{2.25cm}{90 + (360/5)*3}
                                     
                                 \end{tikzpicture}
                             }
                     \tcbitem[raster multicolumn=2]
                         \tcblower
-                            \scalebox{0.4}{
+                            \scalebox{0.7}{
                                 \begin{tikzpicture}
                                     \petersen
-                                    \unopBunopR{5cm}{90 + (360/5)*2}
-                                    \unotGunotYt{2.5cm}{90}
-                                    \unopY{2.5cm}{90 + (360/5)*4}
-                                    \unotR{2.5cm}{90+ (360/5)*1}
-                                    \unotBp{5cm}{90 + (360/5)}
-                                    \unopG{5cm}{90 + (360/5)*3}
+                                    \unopBunopRdos{2.25cm}{90 + (360/5)*2}
+                                    \unotGunotYt{1.125cm}{90}
+                                    \unopY{1.125cm}{90 + (360/5)*4}
+                                    \unotRdos{1.125cm}{90+ (360/5)*1}
+                                    \unotBpdos{2.25cm}{90 + (360/5)}
+                                    \unopGdos{2.25cm}{90 + (360/5)*3}
                                     
                                 \end{tikzpicture}
                             }
@@ -1165,10 +1169,9 @@ As\'i, proponemos la siguiente cota superior.
             $w_2$ y el otro est\'a en la vecindad de $y$, sup\'ongase sin
             p\'erdida de generalidad que $c_{1,2}$ est\'a en la vecindad de
             $w_2$. As\'i, $c_{1,2}$ se mueve a $w_2$ y $c_{3,2}$ se mueve a $y$,
-            obligando nuevamente a que $R$ mueva $r_1$ a $v$ (v\'ease
-            \cref{fig:guarding2}). Al igual que en el subcaso anterior, $C$
-            mueve como en (e) de \cref{fig:guarding2}, obligando a que $R$ mueva
-            $r_2$ a $u_1$.
+            obligando el movimiento de $r_1$ a $v$ (v\'ease
+            \cref{fig:guarding2}). De aqu\'i, $C$ mueve como en (e) de
+            \cref{fig:guarding2}, obligando a que $R$ mueva $r_2$ a $u_1$.
 
             \begin{figure}[H]
                 \begin{tcbitemize}[raster columns=2, raster equal height, enhanced,
@@ -1182,72 +1185,31 @@ As\'i, proponemos la siguiente cota superior.
     
                     \tcbitem
                         \tcblower
-                            \scalebox{0.4}{
+                            \scalebox{0.7}{
                                 \begin{tikzpicture}
-                                    \petersen
-                                    \unopBunopRp{2.5cm}{90 + (360/5)*2}
-                                    \unotGunotY{5cm}{90 + (360/5)}
-                                    \tri{5cm}{90}
-                                    \unotB{2.5cm}{90 + (360/5)*4}
-                                    \unotR{5cm}{90 + (360/5)*3}
-                                    \unopG{2.5cm}{90 + (360/5)*3}
-                                    \unopY{5cm}{90 + (360/5)*4}
+                                    \petersencero
+                                    \unopBunopRpdos{1.125cm}{90 + (360/5)*2}
+                                    \unotGunotY{2.25cm}{90 + (360/5)}
+                                    \tridos{2.25cm}{90}
+                                    \unotBdos{1.125cm}{90 + (360/5)*4}
+                                    \unotRdos{2.25cm}{90 + (360/5)*3}
+                                    \unopGdos{1.125cm}{90 + (360/5)*3}
+                                    \unopY{2.25cm}{90 + (360/5)*4}
     
                                 \end{tikzpicture}
                             }
                     
                     \tcbitem
                         \tcblower
-                            \scalebox{0.4}{
+                            \scalebox{0.7}{
                                 \begin{tikzpicture}
                                     \petersenseisdos
-                                    \unopBunopRp{2.5cm}{90 + (360/5)*2}
-                                    \unotGunotYt{5cm}{90}
-                                    \unotB{2.5cm}{90 + (360/5)*4}
-                                    \unotR{5cm}{90 + (360/5)*3}
-                                    \unopG{2.5cm}{90 + (360/5)*3}
-                                    \unopY{5cm}{90 + (360/5)*4}
-                                    
-                                \end{tikzpicture}
-                            }
-                    \tcbitem
-                        \tcblower
-                            \scalebox{0.4}{
-                                \begin{tikzpicture}
-                                    \petersen
-                                    \unopBunopRp{2.5cm}{90 + (360/5)*2}
-                                    \unotGunotYt{5cm}{90}
-                                    \unotB{2.5cm}{90 + (360/5)}
-                                    \unopG{2.5cm}{90 + (360/5)*3}
-                                    \unotRunopY{5cm}{90 + (360/5)*4}
-                                    
-                                \end{tikzpicture}
-                            }
-                    \tcbitem
-                        \tcblower
-                            \scalebox{0.4}{
-                                \begin{tikzpicture}
-                                    \petersen
-                                    \unopBunopR{2.5cm}{90 + (360/5)*2}
-                                    \punto{5cm}{90 + (360/5)*2}
-                                    \unotGunotYt{5cm}{90}
-                                    \unotB{2.5cm}{90 + (360/5)}
-                                    \unopG{2.5cm}{90 + (360/5)*3}
-                                    \unotRunopY{5cm}{90 + (360/5)*4}
-                                    
-                                \end{tikzpicture}
-                            }
-                    \tcbitem[raster multicolumn=2]
-                        \tcblower
-                            \scalebox{0.4}{
-                                \begin{tikzpicture}
-                                    \petersen
-                                    \unopBunopRp{5cm}{90 + (360/5)*2}
-                                    \unotGunotYt{5cm}{90}
-                                    \unotB{2.5cm}{90 + (360/5)}
-                                    \unopG{5cm}{90 + (360/5)*3}
-                                    \unopY{2.5cm}{90 + (360/5)*4}
-                                    \unotR{5cm}{90 + (360/5)*4}
+                                    \unopBunopRpdos{1.125cm}{90 + (360/5)*2}
+                                    \unotGunotYt{2.25cm}{90}
+                                    \unotBdos{1.125cm}{90 + (360/5)*4}
+                                    \unotRdos{2.25cm}{90 + (360/5)*3}
+                                    \unopGdos{1.125cm}{90 + (360/5)*3}
+                                    \unopY{2.25cm}{90 + (360/5)*4}
                                     
                                 \end{tikzpicture}
                             }
@@ -1255,23 +1217,79 @@ As\'i, proponemos la siguiente cota superior.
                 \captionsetup{font=footnotesize}
                 \caption{Al igual que en el subcaso anterior, $c_2$ y $c_4$
                 recapturan como en (b), mientras que $c_{1,2}$ y $c_{3,2}$ se
-                mueven como en (c) para obligar el movimiento de $r_1$ a $v$,
-                ignorando los casos en los que alguno entre $c_{3,2}$ y
-                $c_{1,2}$ est\'en en los v\'ertices negros sombreados o en $y$
-                pues estos ya se cubrieron. En (d), $R$ mueve $r_1$ a $v$, por
-                lo que $C$ mueve sus polic\'ias como en (e).}
+                mueven como en (c) (ver continuaci\'on de figura) para obligar
+                el movimiento de $r_1$ a $v$.}
                 \label{fig:guarding2}
             \end{figure}
 
-            Una vez m\'as, $R$ mueve $r_2$ a $u_1$. Nuevamente $c_{2,2}$ y
-            $c_{4,2}$ recapturan, mientras que $c_{1,2}$ se mueve a $z$ y
-            $c_{3,1}$ se mueve a $u_2$ (v\'ease \cref{fig:guarding5}). Sin
-            importar si $R$ mueve $r_2$ de regreso a $w_1$ (como en (c) de
-            \cref{fig:guarding5}) o mueve $r_1$ a $b$ (como en (e)), $C$ mueve
-            como en (d) o en (f) respectivamente para forzar a $R$ a juntar las
-            fichas $r_1$ y $r_2$.
+            \newpage
 
-            \begin{figure}[H]
+            \begin{figure}[ht!]
+                \ContinuedFloat
+                \begin{tcbitemize}[raster columns=2, raster equal height, enhanced,
+                    colback=Black!5!white,colframe=Grey!75!black, attach title to upper,
+                    phantom={\addtocounter{myrasternum}{1}},
+                    title={(\alph{myrasternum})\enspace}, halign lower=center, halign
+                    upper = left, lower separated=false, middle=0mm, boxsep=0mm,
+                    leftupper=2mm, left=2mm, right=2mm, fonttitle=\bfseries,
+                    coltitle=black, raster column skip=1mm,raster halign=center, raster
+                    row skip=1mm]
+    
+                    \tcbitem
+                        \tcblower
+                            \scalebox{0.7}{
+                                \begin{tikzpicture}
+                                    \petersen
+                                    \unopBunopRpdos{1.125cm}{90 + (360/5)*2}
+                                    \unotGunotYt{2.25cm}{90}
+                                    \unotBdos{1.125cm}{90 + (360/5)}
+                                    \unopGdos{1.125cm}{90 + (360/5)*3}
+                                    \unotRunopY{2.25cm}{90 + (360/5)*4}
+                                    
+                                \end{tikzpicture}
+                            }
+                    \tcbitem
+                        \tcblower
+                            \scalebox{0.7}{
+                                \begin{tikzpicture}
+                                    \petersen
+                                    \unopBunopRdos{1.125cm}{90 + (360/5)*2}
+                                    \puntodos{2.25cm}{90 + (360/5)*2}
+                                    \unotGunotYt{2.25cm}{90}
+                                    \unotBdos{1.125cm}{90 + (360/5)}
+                                    \unopGdos{1.125cm}{90 + (360/5)*3}
+                                    \unotRunopY{2.25cm}{90 + (360/5)*4}
+                                    
+                                \end{tikzpicture}
+                            }
+                    \tcbitem[raster multicolumn=2]
+                        \tcblower
+                            \scalebox{0.7}{
+                                \begin{tikzpicture}
+                                    \petersen
+                                    \unopBunopRpdos{2.25cm}{90 + (360/5)*2}
+                                    \unotGunotYt{2.25cm}{90}
+                                    \unotBdos{1.125cm}{90 + (360/5)}
+                                    \unopGdos{2.25cm}{90 + (360/5)*3}
+                                    \unopY{1.125cm}{90 + (360/5)*4}
+                                    \unotRdos{2.25cm}{90 + (360/5)*4}
+                                    
+                                \end{tikzpicture}
+                            }
+                \end{tcbitemize}
+                \captionsetup{font=footnotesize}
+                \caption{En (d), $R$ mueve $r_1$ a $v$, por lo que $C$ mueve sus
+                polic\'ias como en (e).}
+            \end{figure}
+
+            Una vez m\'as, $R$ mueve $r_2$ a $u_1$ y $c_{2,2}$ y $c_{4,2}$
+            recapturan, mientras que $c_{1,2}$ se mueve a $z$ y $c_{3,1}$ a
+            $u_2$. Sin importar si $R$ mueve $r_2$ de regreso a $w_1$ (como en
+            (c) de \cref{fig:guarding5}) o mueve $r_1$ a $b$ (como en (e)), $C$
+            mueve como en (d) o en (f) respectivamente para forzar a $R$ a
+            juntar las fichas $r_1$ y $r_2$.
+
+            \begin{figure}[ht!]
                 \begin{tcbitemize}[raster columns=2, raster equal height, enhanced,
                     colback=Black!5!white,colframe=Grey!75!black, attach title to upper,
                     phantom={\setcounter{myrasternum}{\thetcbrasternum}},
@@ -1283,95 +1301,113 @@ As\'i, proponemos la siguiente cota superior.
         
                     \tcbitem
                         \tcblower
-                            \scalebox{0.4}{
+                            \scalebox{0.7}{
                                 \begin{tikzpicture}
-                                    \petersen
-                                    \unopBunopRp{5cm}{90 + (360/5)*2}
-                                    \unotGunotY{5cm}{90}
-                                    \tri{2.5cm}{90}
-                                    \unotB{2.5cm}{90 + (360/5)}
-                                    \unopG{5cm}{90 + (360/5)*3}
-                                    \unotR{5cm}{90 + (360/5)*4}
-                                    \unopY{2.5cm}{90 + (360/5)*4}
+                                    \petersencero
+                                    \unopBunopRpdos{2.25cm}{90 + (360/5)*2}
+                                    \unotGunotY{2.25cm}{90}
+                                    \tridos{1.125cm}{90}
+                                    \unotBdos{1.125cm}{90 + (360/5)}
+                                    \unopGdos{2.25cm}{90 + (360/5)*3}
+                                    \unotRdos{2.25cm}{90 + (360/5)*4}
+                                    \unopY{1.125cm}{90 + (360/5)*4}
                                     
                                 \end{tikzpicture}
                             }
                     \tcbitem
                         \tcblower
-                            \scalebox{0.4}{
+                            \scalebox{0.7}{
                                 \begin{tikzpicture}
                                     \petersen
-                                    \unopBunopRp{5cm}{90 + (360/5)*2}
-                                    \unotGunotYt{2.5cm}{90}
-                                    \unotB{2.5cm}{90 + (360/5)*3}
-                                    \unopG{5cm}{90 + (360/5)*3}
-                                    \unotRunopY{2.5cm}{90 + (360/5)*4}
+                                    \unopBunopRpdos{2.25cm}{90 + (360/5)*2}
+                                    \unotGunotYt{1.125cm}{90}
+                                    \unotBdos{1.125cm}{90 + (360/5)*3}
+                                    \unopGdos{2.25cm}{90 + (360/5)*3}
+                                    \unotRunopY{1.125cm}{90 + (360/5)*4}
+                                    
+                                \end{tikzpicture}
+                            }
+                \end{tcbitemize}
+                \captionsetup{font=footnotesize}
+                \caption{Si $R$ mueve $r_2$ a $u_1$ como en (a), $C$ mueve a sus
+                polic\'ias como en (b).}
+                \label{fig:guarding5}
+            \end{figure}
+
+            \newpage
+
+            \begin{figure}[ht!]
+                \ContinuedFloat
+                \begin{tcbitemize}[raster columns=2, raster equal height, enhanced,
+                    colback=Black!5!white,colframe=Grey!75!black, attach title to upper,
+                    phantom={\addtocounter{myrasternum}{1}},
+                    title={(\alph{myrasternum})\enspace}, halign lower=center, halign
+                    upper = left, lower separated=false, middle=0mm, boxsep=0mm,
+                    leftupper=2mm, left=2mm, right=2mm, fonttitle=\bfseries,
+                    coltitle=black, raster column skip=1mm,raster halign=center, raster
+                    row skip=1mm]
+        
+                    \tcbitem
+                        \tcblower
+                            \scalebox{0.7}{
+                                \begin{tikzpicture}
+                                    \petersen
+                                    \unopBunopRpdos{2.25cm}{90 + (360/5)*2}
+                                    \tridos{2.25cm}{90}
+                                    \unotGunotY{1.125cm}{90}
+                                    \unotBdos{1.125cm}{90 + (360/5)*3}
+                                    \unopGdos{2.25cm}{90 + (360/5)*3}
+                                    \unotRunopY{1.125cm}{90 + (360/5)*4}
                                     
                                 \end{tikzpicture}
                             }
                     \tcbitem
                         \tcblower
-                            \scalebox{0.4}{
+                            \scalebox{0.7}{
                                 \begin{tikzpicture}
                                     \petersen
-                                    \unopBunopRp{5cm}{90 + (360/5)*2}
-                                    \tri{5cm}{90}
-                                    \unotGunotY{2.5cm}{90}
-                                    \unotB{2.5cm}{90 + (360/5)*3}
-                                    \unopG{5cm}{90 + (360/5)*3}
-                                    \unotRunopY{2.5cm}{90 + (360/5)*4}
+                                    \unopBunopRpdos{2.25cm}{90 + (360/5)*2}
+                                    \unotGunotYt{2.25cm}{90}
+                                    \unotBdos{1.125cm}{90}
+                                    \unopGdos{2.25cm}{90 + (360/5)*3}
+                                    \unopY{1.125cm}{90 + (360/5)*4}
+                                    \unotRdos{2.25cm}{90 + (360/5)*4}
                                     
                                 \end{tikzpicture}
                             }
                     \tcbitem
                         \tcblower
-                            \scalebox{0.4}{
+                            \scalebox{0.7}{
                                 \begin{tikzpicture}
                                     \petersen
-                                    \unopBunopRp{5cm}{90 + (360/5)*2}
-                                    \unotGunotYt{5cm}{90}
-                                    \unotB{2.5cm}{90}
-                                    \unopG{5cm}{90 + (360/5)*3}
-                                    \unopY{2.5cm}{90 + (360/5)*4}
-                                    \unotR{5cm}{90 + (360/5)*4}
-                                    
-                                \end{tikzpicture}
-                            }
-                    \tcbitem
-                        \tcblower
-                            \scalebox{0.4}{
-                                \begin{tikzpicture}
-                                    \petersen
-                                    \unopBunopR{5cm}{90 + (360/5)*2}
-                                    \punto{5cm}{90 + (360/5)}
-                                    \unotGunotYt{2.5cm}{90}
-                                    \unotB{2.5cm}{90 + (360/5)*3}
-                                    \unopG{5cm}{90 + (360/5)*3}
-                                    \unotRunopY{2.5cm}{90 + (360/5)*4}
+                                    \unopBunopRdos{2.25cm}{90 + (360/5)*2}
+                                    \puntodos{2.25cm}{90 + (360/5)}
+                                    \unotGunotYt{1.125cm}{90}
+                                    \unotBdos{1.125cm}{90 + (360/5)*3}
+                                    \unopGdos{2.25cm}{90 + (360/5)*3}
+                                    \unotRunopY{1.125cm}{90 + (360/5)*4}
                                     
                                 \end{tikzpicture}
                             }
                     \tcbitem
                             \tcblower
-                                \scalebox{0.4}{
+                                \scalebox{0.7}{
                                     \begin{tikzpicture}
                                         \petersen
-                                        \unopBunopRp{5cm}{90 + (360/5)}
-                                        \unotGunotYt{2.5cm}{90}
-                                        \unotB{2.5cm}{90 + (360/5)*3}
-                                        \unopG{5cm}{90 + (360/5)*2}
-                                        \unotR{2.5cm}{90 + (360/5)*4}
-                                        \unopY{2.5cm}{90 + (360/5)}
+                                        \unopBunopRpdos{2.25cm}{90 + (360/5)}
+                                        \unotGunotYt{1.125cm}{90}
+                                        \unotBdos{1.125cm}{90 + (360/5)*3}
+                                        \unopGdos{2.25cm}{90 + (360/5)*2}
+                                        \unotRdos{1.125cm}{90 + (360/5)*4}
+                                        \unopY{1.125cm}{90 + (360/5)}
                                         
                                     \end{tikzpicture}
                                 }
                 \end{tcbitemize}
                 \captionsetup{font=footnotesize}
-                \caption{Si $R$ mueve $r_2$ a $u_1$ como en (a), $C$ mueve a sus
-                polic\'ias como en (b). Independientemente de lo que haga $R$ en
-                su siguiente turno (moverse como en (c) o en (e)), $C$ forza que
-                $R$ junte las fichas $r_1$ y $r_2$ al siguiente turno.}
-                \label{fig:guarding5}
+                \caption{Independientemente de lo que haga $R$ en su siguiente
+                turno (moverse como en (c) o en (e)), $C$ forza que $R$ junte
+                las fichas $r_1$ y $r_2$ al siguiente turno.}
             \end{figure}
 
             \item Si los anteriores casos no suceden, $c_{1,2}$ y $c_{3,2}$
@@ -1379,7 +1415,7 @@ As\'i, proponemos la siguiente cota superior.
             este caso, $C$ mueve las fichas de manera que $c_{1,2}$ termina en
             $z$ y $c_{3,2}$ est\'a en $x$.
 
-            \begin{figure}[H]
+            \begin{figure}[ht!]
                 \begin{tcbitemize}[raster columns=2, raster equal height, enhanced,
                     colback=Black!5!white,colframe=Grey!75!black, attach title to upper,
                     phantom={\setcounter{myrasternum}{\thetcbrasternum}},
@@ -1391,50 +1427,67 @@ As\'i, proponemos la siguiente cota superior.
     
                     \tcbitem
                         \tcblower
-                            \scalebox{0.4}{
+                            \scalebox{0.7}{
                                 \begin{tikzpicture}
-                                    \petersen
-                                    \unopBunopRp{2.5cm}{90 + (360/5)*2}
-                                    \unotGunotY{5cm}{90 + (360/5)}
-                                    \tri{5cm}{90}
-                                    \unotBunotR{5cm}{90 + (360/5)*3}
-                                    \unopG{2.5cm}{90 + (360/5)*3}
-                                    \unopY{5cm}{90 + (360/5)*4}
+                                    \petersencero
+                                    \unopBunopRpdos{1.125cm}{90 + (360/5)*2}
+                                    \unotGunotY{2.25cm}{90 + (360/5)}
+                                    \tridos{2.25cm}{90}
+                                    \unotBunotRdos{2.25cm}{90 + (360/5)*3}
+                                    \unopGdos{1.125cm}{90 + (360/5)*3}
+                                    \unopY{2.25cm}{90 + (360/5)*4}
     
                                 \end{tikzpicture}
                             }
                     
                     \tcbitem
                         \tcblower
-                            \scalebox{0.4}{
+                            \scalebox{0.7}{
                                 \begin{tikzpicture}
                                     \petersenocho
-                                    \unopBunopRp{2.5cm}{90 + (360/5)*2}
-                                    \unotGunotYt{5cm}{90}
-                                    \unotBunotR{5cm}{90 + (360/5)*3}
-                                    \unopG{2.5cm}{90 + (360/5)*3}
-                                    \unopY{5cm}{90 + (360/5)*4}
-                                    
-                                \end{tikzpicture}
-                            }
-                    \tcbitem[raster multicolumn=2]
-                        \tcblower
-                            \scalebox{0.4}{
-                                \begin{tikzpicture}
-                                    \petersen
-                                    \unopBunopRp{2.5cm}{90 + (360/5)*2}
-                                    \unotGunotYt{5cm}{90}
-                                    \unotBunopG{2.5cm}{90 + (360/5)*3}
-                                    \unopY{5cm}{90 + (360/5)*4}
-                                    \unotR{5cm}{90 + (360/5)*3}
+                                    \unopBunopRpdos{1.125cm}{90 + (360/5)*2}
+                                    \unotGunotYt{2.25cm}{90}
+                                    \unotBunotRdos{2.25cm}{90 + (360/5)*3}
+                                    \unopGdos{1.125cm}{90 + (360/5)*3}
+                                    \unopY{2.25cm}{90 + (360/5)*4}
                                     
                                 \end{tikzpicture}
                             }
                 \end{tcbitemize}
                 \captionsetup{font=footnotesize}
-                \caption{Una vez m\'as, $c_2$ y $c_4$ recapturan como en (b),
-                mientras que $c_{1,2}$ se posiciona en $z$ y $c_{3,2}$ en $x$.}
+                \caption{Una vez m\'as, $c_2$ y $c_4$ recapturan como en (b).}
                 \label{fig:guarding3}
+            \end{figure}
+
+            \newpage
+
+            \begin{figure}[ht!]
+                \ContinuedFloat
+                \begin{tcbitemize}[raster columns=2, raster equal height, enhanced,
+                    colback=Black!5!white,colframe=Grey!75!black, attach title to upper,
+                    phantom={\addtocounter{myrasternum}{1}},
+                    title={(\alph{myrasternum})\enspace}, halign lower=center, halign
+                    upper = left, lower separated=false, middle=0mm, boxsep=0mm,
+                    leftupper=2mm, left=2mm, right=2mm, fonttitle=\bfseries,
+                    coltitle=black, raster column skip=1mm,raster halign=center, raster
+                    row skip=1mm]
+                    \tcbitem[raster multicolumn=2]
+                        \tcblower
+                            \scalebox{0.7}{
+                                \begin{tikzpicture}
+                                    \petersen
+                                    \unopBunopRpdos{1.125cm}{90 + (360/5)*2}
+                                    \unotGunotYt{2.25cm}{90}
+                                    \unotBunopGdos{1.125cm}{90 + (360/5)*3}
+                                    \unopY{2.25cm}{90 + (360/5)*4}
+                                    \unotRdos{2.25cm}{90 + (360/5)*3}
+                                    
+                                \end{tikzpicture}
+                            }
+                \end{tcbitemize}
+                \captionsetup{font=footnotesize}
+                \caption{En tanto, $c_{1,2}$ se posiciona en $z$ y $c_{3,2}$ en
+                $x$.}
             \end{figure}
 
             Si $R$ pasa, la posici\'on en (c) de \cref{fig:guarding3} es una
@@ -1449,7 +1502,7 @@ As\'i, proponemos la siguiente cota superior.
             la vecindad de $b$), por lo que $R$ eventualmente posiciona $r_1$ y
             $r_2$ en v\'ertices adyacentes.
 
-            \begin{figure}[H]
+            \begin{figure}[ht!]
                 \begin{tcbitemize}[raster columns=2, raster equal height, enhanced,
                     colback=Black!5!white,colframe=Grey!75!black, attach title to upper,
                     phantom={\setcounter{myrasternum}{\thetcbrasternum}},
@@ -1461,29 +1514,29 @@ As\'i, proponemos la siguiente cota superior.
 
                 \tcbitem
                     \tcblower
-                        \scalebox{0.4}{
+                        \scalebox{0.7}{
                             \begin{tikzpicture}
-                                \petersen
-                                \unopBunopRp{2.5cm}{90 + (360/5)*2}
-                                \unotGunotY{5cm}{90}
-                                \tri{5cm}{90 + (360/5)}
-                                \unotBunopG{2.5cm}{90 + (360/5)*3}
-                                \unopY{5cm}{90 + (360/5)*4}
-                                \unotR{5cm}{90 + (360/5)*3}
+                                \petersencero
+                                \unopBunopRpdos{1.125cm}{90 + (360/5)*2}
+                                \unotGunotY{2.25cm}{90}
+                                \tridos{2.25cm}{90 + (360/5)}
+                                \unotBunopGdos{1.125cm}{90 + (360/5)*3}
+                                \unopY{2.25cm}{90 + (360/5)*4}
+                                \unotRdos{2.25cm}{90 + (360/5)*3}
                                 
                             \end{tikzpicture}
                         }
                 \tcbitem
                     \tcblower
-                        \scalebox{0.4}{
+                        \scalebox{0.7}{
                             \begin{tikzpicture}
                                 \petersen
-                                \unopBunopRp{2.5cm}{90 + (360/5)*2}
-                                \unotGunotYt{5cm}{90 + (360/5)}
-                                \unopG{2.5cm}{90 + (360/5)*3}
-                                \unotB{2.5cm}{90 + (360/5)}
-                                \unopY{5cm}{90 + (360/5)*4}
-                                \unotR{5cm}{90 + (360/5)*3}
+                                \unopBunopRpdos{1.125cm}{90 + (360/5)*2}
+                                \unotGunotYt{2.25cm}{90 + (360/5)}
+                                \unopGdos{1.125cm}{90 + (360/5)*3}
+                                \unotBdos{1.125cm}{90 + (360/5)}
+                                \unopY{2.25cm}{90 + (360/5)*4}
+                                \unotRdos{2.25cm}{90 + (360/5)*3}
                                 
                             \end{tikzpicture}
                         }
@@ -1499,8 +1552,10 @@ As\'i, proponemos la siguiente cota superior.
             Finalmente, si $R$ mueve $r_1$ a $v$, $C$ mueve como en (b) de
             \cref{fig:guarding4}, obligando a $R$ a que ponga $r_1$ y $r_2$ en
             v\'ertices adyacentes.
+
+            \newpage
             
-            \begin{figure}[H]
+            \begin{figure}[ht!]
                 \begin{tcbitemize}[raster columns=2, raster equal height, enhanced,
                     colback=Black!5!white,colframe=Grey!75!black, attach title to upper,
                     phantom={\setcounter{myrasternum}{\thetcbrasternum}},
@@ -1512,29 +1567,29 @@ As\'i, proponemos la siguiente cota superior.
         
                     \tcbitem
                         \tcblower
-                            \scalebox{0.4}{
+                            \scalebox{0.7}{
                                 \begin{tikzpicture}
-                                    \petersen
-                                    \unopBunopR{2.5cm}{90 + (360/5)*2}
-                                    \punto{5cm}{90 + (360/5)*2}
-                                    \unotGunotYt{5cm}{90}
-                                    \unotBunopG{2.5cm}{90 + (360/5)*3}
-                                    \unopY{5cm}{90 + (360/5)*4}
-                                    \unotR{5cm}{90 + (360/5)*3}
+                                    \petersencero
+                                    \unopBunopRdos{1.125cm}{90 + (360/5)*2}
+                                    \puntodos{2.25cm}{90 + (360/5)*2}
+                                    \unotGunotYt{2.25cm}{90}
+                                    \unotBunopGdos{1.125cm}{90 + (360/5)*3}
+                                    \unopY{2.25cm}{90 + (360/5)*4}
+                                    \unotRdos{2.25cm}{90 + (360/5)*3}
                                     
                                 \end{tikzpicture}
                             }
                     
                     \tcbitem
                         \tcblower
-                            \scalebox{0.4}{
+                            \scalebox{0.7}{
                                 \begin{tikzpicture}
                                     \petersen
-                                    \unopBunopRp{5cm}{90 + (360/5)*2}
-                                    \unotGunotYt{5cm}{90}
-                                    \unotB{2.5cm}{90 + (360/5)*3}
-                                    \unopGunotR{5cm}{90 + (360/5)*3}
-                                    \unopY{2.5cm}{90 + (360/5)*4}
+                                    \unopBunopRpdos{2.25cm}{90 + (360/5)*2}
+                                    \unotGunotYt{2.25cm}{90}
+                                    \unotBdos{1.125cm}{90 + (360/5)*3}
+                                    \unopGunotRdos{2.25cm}{90 + (360/5)*3}
+                                    \unopY{1.125cm}{90 + (360/5)*4}
                                     
                                 \end{tikzpicture}
                             }
@@ -1547,9 +1602,6 @@ As\'i, proponemos la siguiente cota superior.
             \end{figure}
 
         \end{enumerate}
-        
-       
-
         
     \end{enumerate}
 
@@ -1581,59 +1633,72 @@ As\'i, proponemos la siguiente cota superior.
                 row skip=1mm]
                 \tcbitem
                     \tcblower
-                        \scalebox{0.4}{
+                        \scalebox{0.7}{
                             \begin{tikzpicture}
                                 \petersennueve
-                                \punto{5cm}{90 + (360/5)}
-                                \unopBunopR{5cm}{90 + (360/5)*2}
-                                \unotGunotYt{5cm}{90}
+                                \puntodos{2.25cm}{90 + (360/5)}
+                                \unopBunopRdos{2.25cm}{90 + (360/5)*2}
+                                \unotGunotYt{2.25cm}{90}
                                 
                             \end{tikzpicture}
                         }
                 
                 \tcbitem
                     \tcblower
-                        \scalebox{0.4}{
+                        \scalebox{0.7}{
                             \begin{tikzpicture}
                                 \petersendiez
-                                \punto{5cm}{90 + (360/5)}
-                                \unopBunopR{5cm}{90 + (360/5)*2}
-                                \unotGunotYt{5cm}{90}
-                                \unopG{2.5cm}{90 + (360/5)*2}
-                                \unopY{2.5cm}{90 + (360/5)*3}
-                            \end{tikzpicture}
-                        }
-                
-                \tcbitem[raster multicolumn=2]
-                    \tcblower
-                        \scalebox{0.4}{
-                            \begin{tikzpicture}
-                                \petersen
-                                \punto{5cm}{90 + (360/5)}
-                                \unopBunopR{5cm}{90 + (360/5)*2}
-                                \unotGunotYt{5cm}{90}
-                                \unotB{2.5cm}{90 + (360/5)*4}
-                                \unopG{2.5cm}{90 + (360/5)*2}
-                                \unotRunopY{2.5cm}{90 + (360/5)*3}
+                                \puntodos{2.25cm}{90 + (360/5)}
+                                \unopBunopRdos{2.25cm}{90 + (360/5)*2}
+                                \unotGunotYt{2.25cm}{90}
+                                \unopGdos{1.125cm}{90 + (360/5)*2}
+                                \unopY{1.125cm}{90 + (360/5)*3}
                             \end{tikzpicture}
                         }
             \end{tcbitemize}
             \captionsetup{font=footnotesize}
-            \caption{En (a), $C$ busca poner, sin p\'erdida de generalidad, a
-            $c_{2,1}$ y $c_{4,1}$ en un v\'ertice azul sombreado y en un
-            v\'ertice sombreado verde. Si alguno de ellos estuviera en los
-            v\'ertices negros sombreados, en el v\'ertice azul no sombreado, o
-            en el v\'ertice verde no sombreado, se sigue que $C$ captura a $R$
-            en a lo m\'as un turn, o est\'a en una configuraci\'on ilegal, o
-            est\'a en el siguiente caso. Por otra parte el resto de v\'ertices
-            es tal que tiene al menos un v\'ertice verde sombreado y uno azul
-            sombreado en su vecindad cerrada. Por tanto, siempre se pueden
-            colocar $c_{2,1}$ y $c_{4,1}$ de manera que estos impiden que $r_1$
-            se mueva los v\'ertices verde o azul sin sombrear. An\'alogamente,
-            en (b) se mueven $c_{1,2}$ y $c_{3,2}$ a un v\'ertice azul y uno
-            verde respectivamente. As\'i, $C$ termina su turno como se muestra
-            en (c).}
+            \caption{En (a), $C$ busca poner a $c_{2,1}$ y $c_{4,1}$ en un
+            v\'ertice azul sombreado y en un v\'ertice verde sombreado. Si
+            alguno estuviera en los v\'ertices negros sombreados, en $v$, o en
+            $w_2$, se sigue que $C$ captura a $R$ en a lo m\'as un turno, o
+            est\'a en una configuraci\'on ilegal. El resto de v\'ertices tienen
+            al menos un v\'ertice verde sombreado y uno azul sombreado en su
+            vecindad cerrada. Por tanto, se pueden colocar $c_{2,1}$ y $c_{4,1}$
+            de manera que estos impiden el movimeinto de $r_1$. An\'alogamente,
+            $c_{1,2}$ y $c_{3,2}$ se mueven a un v\'ertice azul y uno verde (de
+            los mostrados en (b)) respectivamente.}
             \label{fig:guarding7}
+        \end{figure}
+
+        \newpage
+        
+        \begin{figure}[ht!]
+            \ContinuedFloat
+            \begin{tcbitemize}[raster columns=2, raster equal height, enhanced,
+                colback=Black!5!white,colframe=Grey!75!black, attach title to upper,
+                phantom={\addtocounter{myrasternum}{1}},
+                title={(\alph{myrasternum})\enspace}, halign lower=center, halign
+                upper = left, lower separated=false, middle=0mm, boxsep=0mm,
+                leftupper=2mm, left=2mm, right=2mm, fonttitle=\bfseries,
+                coltitle=black, raster column skip=1mm,raster halign=center, raster
+                row skip=1mm]
+                
+                \tcbitem[raster multicolumn=2]
+                    \tcblower
+                        \scalebox{0.7}{
+                            \begin{tikzpicture}
+                                \petersen
+                                \puntodos{2.25cm}{90 + (360/5)}
+                                \unopBunopRdos{2.25cm}{90 + (360/5)*2}
+                                \unotGunotYt{2.25cm}{90}
+                                \unotBdos{1.125cm}{90 + (360/5)*4}
+                                \unopGdos{1.125cm}{90 + (360/5)*2}
+                                \unotRunopY{1.125cm}{90 + (360/5)*3}
+                            \end{tikzpicture}
+                        }
+            \end{tcbitemize}
+            \captionsetup{font=footnotesize}
+            \caption{As\'i, $C$ termina su turno como se muestra en (c).}
         \end{figure}
     
         Si $R$ pasa como en (a) de \cref{fig:captura1}, $C$ mueve como en (b) para
@@ -1642,7 +1707,7 @@ As\'i, proponemos la siguiente cota superior.
         $r_2$ como en (c), el otro caso es an\'alogo. En ese caso, $C$ mueve como en
         (d), capturando a $R$ en su siguiente turno.
     
-        \begin{figure}[H]
+        \begin{figure}[ht!]
             \begin{tcbitemize}[raster columns=2, raster equal height, enhanced,
                 colback=Black!5!white,colframe=Grey!75!black, attach title to upper,
                 phantom={\setcounter{myrasternum}{\thetcbrasternum}},
@@ -1654,59 +1719,59 @@ As\'i, proponemos la siguiente cota superior.
                 
                 \tcbitem
                     \tcblower
-                        \scalebox{0.4}{
+                        \scalebox{0.70}{
                             \begin{tikzpicture}
-                                \petersen
-                                \punto{5cm}{90 + (360/5)}
-                                \unopBunopR{5cm}{90 + (360/5)*2}
-                                \unotGunotYt{5cm}{90}
-                                \unotB{2.5cm}{90 + (360/5)*4}
-                                \unopG{2.5cm}{90 + (360/5)*2}
-                                \unotRunopY{2.5cm}{90 + (360/5)*3}
+                                \petersencero
+                                \puntodos{2.25cm}{90 + (360/5)}
+                                \unopBunopRdos{2.25cm}{90 + (360/5)*2}
+                                \unotGunotYt{2.25cm}{90}
+                                \unotBdos{1.125cm}{90 + (360/5)*4}
+                                \unopGdos{1.125cm}{90 + (360/5)*2}
+                                \unotRunopY{1.125cm}{90 + (360/5)*3}
                             \end{tikzpicture}
                         }
                 
                 \tcbitem
                     \tcblower
-                        \scalebox{0.4}{
+                        \scalebox{0.70}{
                             \begin{tikzpicture}
                                 \petersen
-                                \unopBunopRp{5cm}{90 + (360/5)}
-                                \unotGunotYt{5cm}{90}
-                                \unotB{2.5cm}{90 + (360/5)*4}
-                                \unopG{5cm}{90 + (360/5)*2}
-                                \unotR{2.5cm}{90 + (360/5)*3}
-                                \unopY{2.5cm}{90 + (360/5)*1}
+                                \unopBunopRpdos{2.25cm}{90 + (360/5)}
+                                \unotGunotYt{2.25cm}{90}
+                                \unotBdos{1.125cm}{90 + (360/5)*4}
+                                \unopGdos{2.25cm}{90 + (360/5)*2}
+                                \unotRdos{1.125cm}{90 + (360/5)*3}
+                                \unopY{1.125cm}{90 + (360/5)*1}
                             \end{tikzpicture}
                         }
     
                 \tcbitem
                     \tcblower
-                        \scalebox{0.4}{
+                        \scalebox{0.70}{
                             \begin{tikzpicture}
                                 \petersen
-                                \punto{5cm}{90 + (360/5)}
-                                \unopBunopR{5cm}{90 + (360/5)*2}
-                                \unotGunotY{5cm}{90}
-                                \tri{2.5cm}{90}
-                                \unotB{2.5cm}{90 + (360/5)*4}
-                                \unopG{2.5cm}{90 + (360/5)*2}
-                                \unotRunopY{2.5cm}{90 + (360/5)*3}
+                                \puntodos{2.25cm}{90 + (360/5)}
+                                \unopBunopRdos{2.25cm}{90 + (360/5)*2}
+                                \unotGunotY{2.25cm}{90}
+                                \tridos{1.125cm}{90}
+                                \unotBdos{1.125cm}{90 + (360/5)*4}
+                                \unopGdos{1.125cm}{90 + (360/5)*2}
+                                \unotRunopY{1.125cm}{90 + (360/5)*3}
                             \end{tikzpicture}
                         }
     
                 \tcbitem
                     \tcblower
-                        \scalebox{0.4}{
+                        \scalebox{0.70}{
                             \begin{tikzpicture}
                                 \petersen
-                                \unopBp{5cm}{90 + (360/5)}
-                                \unopR{5cm}{90 + (360/5)*2}
-                                \unotGunotY{5cm}{90}
-                                \unopGt{2.5cm}{90}
-                                \unotB{2.5cm}{90 + (360/5)*4}
-                                \unotR{2.5cm}{90 + (360/5)*3}
-                                \unopY{2.5cm}{90 + (360/5)*1}
+                                \unopBpdos{2.25cm}{90 + (360/5)}
+                                \unopRdos{2.25cm}{90 + (360/5)*2}
+                                \unotGunotY{2.25cm}{90}
+                                \unopGtdos{1.125cm}{90}
+                                \unotBdos{1.125cm}{90 + (360/5)*4}
+                                \unotRdos{1.125cm}{90 + (360/5)*3}
+                                \unopY{1.125cm}{90 + (360/5)*1}
                             \end{tikzpicture}
                         }
             \end{tcbitemize}
@@ -1725,7 +1790,7 @@ As\'i, proponemos la siguiente cota superior.
         turno para obligar a $R$ a pasar y capturarle en a lo m\'as dos turnos
         (v\'ease (b) en \cref{fig:guarding8}).
 
-        \begin{figure}[H]
+        \begin{figure}[ht!]
             \begin{tcbitemize}[raster columns=2, raster equal height, enhanced,
                 colback=Black!5!white,colframe=Grey!75!black, attach title to upper,
                 phantom={\setcounter{myrasternum}{\thetcbrasternum}},
@@ -1736,53 +1801,51 @@ As\'i, proponemos la siguiente cota superior.
                 row skip=1mm]
                 \tcbitem
                     \tcblower
-                        \scalebox{0.4}{
+                        \scalebox{0.70}{
                             \begin{tikzpicture}
                                 \petersenonce
-                                \unotBp{5cm}{90 + (360/5)}
-                                \unopBunopR{5cm}{90 + (360/5)*2}
-                                \unotGunotYt{5cm}{90}
-                                \unopG{2.5cm}{90 + (360/5)*2}
-                                \unopY{2.5cm}{90 + (360/5)*3}
-                                \unotR{5cm}{90 + (360/5)*4}
+                                \unotBpdos{2.25cm}{90 + (360/5)}
+                                \unopBunopRdos{2.25cm}{90 + (360/5)*2}
+                                \unotGunotYt{2.25cm}{90}
+                                \unopGdos{1.125cm}{90 + (360/5)*2}
+                                \unopY{1.125cm}{90 + (360/5)*3}
+                                \unotRdos{2.25cm}{90 + (360/5)*4}
                                 
                             \end{tikzpicture}
                         }
                 
                 \tcbitem
                     \tcblower
-                        \scalebox{0.4}{
+                        \scalebox{0.70}{
                             \begin{tikzpicture}
                                 \petersen
-                                \unopBp{5cm}{90 + (360/5)}
-                                \unotBunopR{5cm}{90 + (360/5)*2}
-                                \unotGunotYt{5cm}{90}
-                                \unopG{2.5cm}{90 + (360/5)*2}
-                                \unopY{2.5cm}{90 + (360/5)*3}
-                                \unotR{5cm}{90 + (360/5)*4}
+                                \unopBpdos{2.25cm}{90 + (360/5)}
+                                \unotBunopRdos{2.25cm}{90 + (360/5)*2}
+                                \unotGunotYt{2.25cm}{90}
+                                \unopGdos{1.125cm}{90 + (360/5)*2}
+                                \unopY{1.125cm}{90 + (360/5)*3}
+                                \unotRdos{2.25cm}{90 + (360/5)*4}
                             \end{tikzpicture}
                         }
-                
                 \tcbitem[raster multicolumn=2]
                     \tcblower
-                        \scalebox{0.4}{
+                        \scalebox{0.7}{
                             \begin{tikzpicture}
                                 \petersen
-                                \unopBp{5cm}{90 + (360/5)}
-                                \unopR{5cm}{90 + (360/5)*2}
-                                \unotGunotYt{5cm}{90}
-                                \unotBunopG{2.5cm}{90 + (360/5)*2}
-                                \unopY{2.5cm}{90 + (360/5)*3}
-                                \unotR{5cm}{90 + (360/5)*4}
+                                \unopBpdos{2.25cm}{90 + (360/5)}
+                                \unopRdos{2.25cm}{90 + (360/5)*2}
+                                \unotGunotYt{2.25cm}{90}
+                                \unotBunopGdos{1.125cm}{90 + (360/5)*2}
+                                \unopY{1.125cm}{90 + (360/5)*3}
+                                \unotRdos{2.25cm}{90 + (360/5)*4}
                             \end{tikzpicture}
                         }
             \end{tcbitemize}
             \captionsetup{font=footnotesize}
             \caption{En (a), $c_1$ se encuentra obstru\'ido, por lo que
-            reetiqueta sus fichas como en (b) y mueve como en (c), mientras que
-            $c_{3,2}$ se asegura de estar en un v\'ertice adyacente a $y$
-            (reetiquetando en caso de que $c_2$ tambi\'en estuviera
-            obstru\'ida).}
+            reetiqueta sus fichas como en (b). Luego, $C$ mueve como en (c), mientras que $c_{3,2}$ se
+            asegura de estar en un v\'ertice adyacente a $y$ (reetiquetando en
+            caso de que $c_2$ tambi\'en estuviera obstru\'ida).}
             \label{fig:guarding8}
         \end{figure}
 
@@ -1791,10 +1854,12 @@ As\'i, proponemos la siguiente cota superior.
         an\'alogo. En este caso, $C$ mueve $c_{3,2}$ a $z$ como en (b) de
         \cref{fig:guarding9}. Si $R$ pasa en este momento, se tiene una
         situaci\'on an\'aloga a la del caso $1$, por lo que $R$ debe mover $r_2$
-        a $y$. Luego, $C$ mueve como en (d) de \cref{fig:guarding9}, obligando a
-        $R$ a pasar y, dos turnos despu\'es, ser capturado.
+        a $y$. Luego, $C$ mueve como en (d) de \cref{fig:guarding9} para obligar
+        a $R$ a pasar y capturar en a lo m\'as dos turnos.
 
-        \begin{figure}[H]
+        \newpage
+
+        \begin{figure}[ht!]
             \begin{tcbitemize}[raster columns=2, raster equal height, enhanced,
                 colback=Black!5!white,colframe=Grey!75!black, attach title to upper,
                 phantom={\setcounter{myrasternum}{\thetcbrasternum}},
@@ -1805,62 +1870,62 @@ As\'i, proponemos la siguiente cota superior.
                 row skip=1mm]
                 \tcbitem
                     \tcblower
-                        \scalebox{0.4}{
+                        \scalebox{0.7}{
                             \begin{tikzpicture}
                                 \petersendiez
-                                \punto{5cm}{90 + (360/5)}
-                                \unopBunopR{5cm}{90 + (360/5)*2}
-                                \unotGunotYt{5cm}{90}
-                                \unopG{2.5cm}{90 + (360/5)*2}
-                                \unopY{2.5cm}{90 + (360/5)*3}
-                                \unotBunotR{2.5cm}{90}
+                                \puntodos{2.25cm}{90 + (360/5)}
+                                \unopBunopRdos{2.25cm}{90 + (360/5)*2}
+                                \unotGunotYt{2.25cm}{90}
+                                \unopGdos{1.125cm}{90 + (360/5)*2}
+                                \unopY{1.125cm}{90 + (360/5)*3}
+                                \unotBunotRdos{1.125cm}{90}
                                 
                             \end{tikzpicture}
                         }
                 
                 \tcbitem
                     \tcblower
-                        \scalebox{0.4}{
+                        \scalebox{0.7}{
                             \begin{tikzpicture}
                                 \petersen
-                                \punto{5cm}{90 + (360/5)}
-                                \unopBunopR{5cm}{90 + (360/5)*2}
-                                \unotGunotYt{5cm}{90}
-                                \unopG{2.5cm}{90 + (360/5)*2}
-                                \unotRunopY{2.5cm}{90 + (360/5)*3}
-                                \unotB{2.5cm}{90}
+                                \puntodos{2.25cm}{90 + (360/5)}
+                                \unopBunopRdos{2.25cm}{90 + (360/5)*2}
+                                \unotGunotYt{2.25cm}{90}
+                                \unopGdos{1.125cm}{90 + (360/5)*2}
+                                \unotRunopY{1.125cm}{90 + (360/5)*3}
+                                \unotBdos{1.125cm}{90}
                                 
                             \end{tikzpicture}
                         }
                 
                 \tcbitem
                     \tcblower
-                        \scalebox{0.4}{
+                        \scalebox{0.7}{
                             \begin{tikzpicture}
                                 \petersen
-                                \punto{5cm}{90 + (360/5)}
-                                \unopBunopR{5cm}{90 + (360/5)*2}
-                                \unotGunotY{5cm}{90}
-                                \tri{5cm}{90 + (360/5)*4}
-                                \unopG{2.5cm}{90 + (360/5)*2}
-                                \unotRunopY{2.5cm}{90 + (360/5)*3}
-                                \unotB{2.5cm}{90}
+                                \puntodos{2.25cm}{90 + (360/5)}
+                                \unopBunopRdos{2.25cm}{90 + (360/5)*2}
+                                \unotGunotY{2.25cm}{90}
+                                \tridos{2.25cm}{90 + (360/5)*4}
+                                \unopGdos{1.125cm}{90 + (360/5)*2}
+                                \unotRunopY{1.125cm}{90 + (360/5)*3}
+                                \unotBdos{1.125cm}{90}
                                 
                             \end{tikzpicture}
                         }
                 
                 \tcbitem
                     \tcblower
-                        \scalebox{0.4}{
+                        \scalebox{0.7}{
                             \begin{tikzpicture}
                                 \petersen
-                                \punto{5cm}{90 + (360/5)}
-                                \unopBunopR{5cm}{90 + (360/5)*2}
-                                \unotBunotG{5cm}{90}
-                                \unotYt{5cm}{90 + (360/5)*4}
-                                \unopG{2.5cm}{90 + (360/5)*4}
-                                \unopY{2.5cm}{90 + (360/5)*3}
-                                \unotR{5cm}{90 + (360/5)*3}
+                                \puntodos{2.25cm}{90 + (360/5)}
+                                \unopBunopRdos{2.25cm}{90 + (360/5)*2}
+                                \unotBunotGdos{2.25cm}{90}
+                                \unotYt{2.25cm}{90 + (360/5)*4}
+                                \unopGdos{1.125cm}{90 + (360/5)*4}
+                                \unopY{1.125cm}{90 + (360/5)*3}
+                                \unotRdos{2.25cm}{90 + (360/5)*3}
                                 
                             \end{tikzpicture}
                         }

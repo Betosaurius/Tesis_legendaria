@@ -83,7 +83,7 @@
 
 
 % Algoritmos
-\usepackage[ruled,vlined,linesnumbered,commentsnumbered]{algorithm2e}
+\usepackage[ruled,vlined,linesnumbered,commentsnumbered, linesnumberedhidden]{algorithm2e}
 
 %\usepackage[all]{xy}
 
@@ -102,27 +102,37 @@
 \tikzstyle{vertex2}=[circle, draw, minimum size=12pt,
                     line width=0.75pt, inner sep=0pt,
                     outer sep=0pt]
-\tikzstyle{punto}=[circle, draw, minimum size=11pt,
+\tikzstyle{punto}=[circle, draw, minimum size=5.89275pt,
                     line width=0.75pt, inner sep=0pt,
                     outer sep=0pt]
-\tikzstyle{punto2}=[circle, draw, minimum size=7pt,
+\tikzstyle{punto2}=[circle, draw, minimum size=5.89275pt,
                     line width=0.75pt, inner sep=0pt,
                     outer sep=0pt]
-\tikzstyle{tri}=  [regular polygon, regular polygon sides = 3, draw, minimum size=11pt,
+\tikzstyle{punto3}=[circle, draw, minimum size=2.8pt,
                     line width=0.75pt, inner sep=0pt,
                     outer sep=0pt]
-\tikzstyle{cuadro}=[regular polygon, regular polygon sides = 4, draw, minimum size=11pt,
+\tikzstyle{tri}=  [regular polygon, regular polygon sides = 3, draw, minimum size=5.89275pt,
+                    line width=0.75pt, inner sep=0pt,
+                    outer sep=0pt]
+\tikzstyle{tri2}=  [regular polygon, regular polygon sides = 3, draw, minimum size=5.89275pt,
+                    line width=0.75pt, inner sep=0pt,
+                    outer sep=0pt]
+\tikzstyle{cuadro}=[regular polygon, regular polygon sides = 4, draw, minimum size=5.89275pt,
+                    line width=0.75pt, inner sep=0pt,
+                    outer sep=0pt]
+\tikzstyle{cuadro2}=[regular polygon, regular polygon sides = 4, draw, minimum size=5.89275pt,
                     line width=0.75pt, inner sep=0pt,
                     outer sep=0pt]
 \tikzstyle{bola}=[draw, circle, minimum size=1cm, line width=0.75pt,
                   inner sep=0pt, outer sep=0pt]
 \tikzstyle{bola1}=[draw, circle, minimum size=0.5cm, line width=0.75pt,
                   inner sep=0pt, outer sep=0pt]
+\tikzstyle{bola11}=[draw, circle, minimum size=0.2cm, line width=0.75pt,
+                  inner sep=0pt, outer sep=0pt]
 \tikzstyle{bola2}=[draw, circle, minimum size=1.4cm, line width=0.75pt,
                   inner sep=0pt, outer sep=0pt]
-\tikzstyle{bola35}=[draw, circle, minimum size=3cm, line width=0.75pt,
+\tikzstyle{bola34}=[draw, circle, minimum size=0.75cm, line width=0.75pt,
                   inner sep=0pt, outer sep=0pt]
-
 \usepackage[most]{tcolorbox}
 \tcbuselibrary{breakable}
 
@@ -224,9 +234,9 @@
 
 %%%%% estrella
 \newcommand{\estrella}{%
-\node (0) [bola2] at (0,0) {};
+\node (0) [bola34] at (0,0) {};
 \foreach \i in {1,...,5}
-\node (\i) [bola2] at ({90+(360/5)*\i}:2.25) {};
+\node (\i) [bola34] at ({90+(360/5)*\i}:1.275) {};
 
 \foreach \i in {1,...,5}
 \draw[edge] (\i) to (0);
@@ -244,15 +254,26 @@
 \end{scope}
 }
 
+\newcommand{\triadatres}[2]{%
+\begin{scope}[style/.expanded=\polarshift{#1}{#2}]
+  \node (0) [bola11] at (0,0) {};
+  \foreach \i in {1,...,3}
+  \node (\i) [bola11] at ({90+(360/3)*\i}:0.4) {};
+  
+  \foreach \i in {1,...,3}
+  \draw[edge] (\i) to (0);
+\end{scope}
+}
+
 \newcommand{\triadados}{
-  \node (0) [bola1] at (0,0) {};
+  \node (0) [bola11] at (0,0) {};
   \foreach \i in {1,...,3}{
-  \node (\i) [bola1] at ({90+(360/3)*\i}:1) {};
+  \node (\i) [bola11] at ({90+(360/3)*\i}:0.4) {};
   }
 
-  \node (4) at ({90+(360/3)*1}:1.75) {};
-  \node (5) at ({90+(360/3)*2}:1.75) {};
-  \node (6) at ({90+(360/3)*3}:1.75) {};
+  \node (4) at ({90+(360/3)*1}:0.9) {};
+  \node (5) at ({90+(360/3)*2}:0.9) {};
+  \node (6) at ({90+(360/3)*3}:0.9) {};
   
   
   \foreach \i in {1,...,3}
@@ -264,12 +285,12 @@
 }
 
 \newcommand{\Stresuno}{%
-\node (0) [bola2] at (0,0){};
+\node (0) [bola34] at (0,0){};
 \foreach \i in {1,...,3}{
-    \node (\i_0) [bola2] at ({90+(360/3)*\i}:2.25){};
+    \node (\i_0) [bola34] at ({90+(360/3)*\i}:1.125){};
     \draw [edge] (\i_0) to (0);
     \foreach \j in {1}{
-        \node (\i_\j) [bola2] at ({90+(360/3)*\i}:4.5){};
+        \node (\i_\j) [bola34] at ({90+(360/3)*\i}:2.25){};
         \draw [edge] (\i_0) to (\i_\j);
     }
 }
@@ -599,9 +620,9 @@
 \newcommand{\petersen}{%
 
 \foreach \i in {0,...,4}
-  \node (\i) [bola2]  at ({(360/5)*\i + 90}:5){};
+  \node (\i) [bola34]  at ({(360/5)*\i + 90}:2.25){};
 \foreach \i in {5,...,9}
-  \node (\i) [bola2] at ({(360/5)*\i + 90}:2.5){};
+  \node (\i) [bola34] at ({(360/5)*\i + 90}:1.125){};
 
 \foreach \i in {0,...,4}
   \draw [edge] let \n1={int(mod(\i+1,5))} in (\i) to (\n1);
@@ -639,13 +660,13 @@
 \newcommand{\petersendos}{%
 
 \foreach \i in {1,...,3}
-  \node (\i) [bola2]  at ({(360/5)*\i + 90}:5){};
+  \node (\i) [bola34]  at ({(360/5)*\i + 90}:2.25){};
 \foreach \i in {0,4}
-  \node (\i) [bola2, malva, line width=2pt]  at ({(360/5)*\i + 90}:5){};
+  \node (\i) [bola34, malva, line width=2pt]  at ({(360/5)*\i + 90}:2.25){};
 \foreach \i in {7}
-  \node (\i) [bola2] at ({(360/5)*\i + 90}:2.5){};
+  \node (\i) [bola34] at ({(360/5)*\i + 90}:1.125){};
 \foreach \i in {5,6,8,9}
-  \node (\i) [bola2, malva, line width=2pt] at ({(360/5)*\i + 90}:2.5){};
+  \node (\i) [bola34, malva, line width=2pt] at ({(360/5)*\i + 90}:1.125){};
 
 \foreach \i in {0,...,3}
   \draw [edge] let \n1={int(mod(\i+1,5))} in (\i) to (\n1);
@@ -666,30 +687,64 @@
 \newcommand{\petersentres}{%
 
 \foreach \i in {1}
-  \node (\i) [bola2, line width=2pt, pattern=north east lines]  at ({(360/5)*\i
-  + 90}:5){};
+  \node (\i) [bola34, label=180: $b$, line width=2pt, pattern=north east lines]  at ({(360/5)*\i
+  + 90}:2.25){};
 \foreach \i in {3}
-  \node (\i) [bola2]  at ({(360/5)*\i + 90}:5){};
+  \node (\i) [bola34, label=0: $x$]  at ({(360/5)*\i + 90}:2.25){};
 \foreach \i in {2}
-  \node (\i) [bola2, line width=2pt, pattern=north east lines, label=180:\Large $v$]  at ({(360/5)*\i + 90}:5){};
+  \node (\i) [bola34, line width=2pt, pattern=north east lines, label=180: $v$]  at ({(360/5)*\i + 90}:2.25){};
 \foreach \i in {7}
-  \node (\i) [bola2, line width=2pt, pattern=north east lines] at ({(360/5)*\i + 90}:2.5){};
+  \node (\i) [bola34, label=180: $a$, line width=2pt, pattern=north east lines] at ({(360/5)*\i + 90}:1.125){};
 \foreach \i in {0}
-  \node (\i) [bola2, Navy, line width=2pt, pattern=crosshatch, pattern
-  color= Navy] at ({(360/5)*\i + 90}:5){};
+  \node (\i) [bola34, label=0: $w_1$, Navy, line width=2pt, pattern=crosshatch, pattern
+  color= Navy] at ({(360/5)*\i + 90}:2.25){};
 \foreach \i in {8}
-  \node (\i) [bola2, Navy, line width=2pt, pattern=crosshatch, pattern
-  color= Navy] at ({(360/5)*\i + 90}:2.5){};
+  \node (\i) [bola34, label=0: $z$, Navy, line width=2pt, pattern=crosshatch, pattern
+  color= Navy] at ({(360/5)*\i + 90}:1.125){};
 \foreach \i in {6}
-  \node (\i) [bola2, SeaGreen, line width=2pt, pattern=crosshatch, pattern
-  color= SeaGreen] at ({(360/5)*\i + 90}:2.5){};
+  \node (\i) [bola34, label=270: $w_2$, SeaGreen, line width=2pt, pattern=crosshatch, pattern
+  color= SeaGreen] at ({(360/5)*\i + 90}:1.125){};
 \foreach \i in {4}
-  \node (\i) [bola2, SeaGreen, line width=2pt, pattern=crosshatch, pattern
-  color= SeaGreen] at ({(360/5)*\i + 90}:5){};
+  \node (\i) [bola34, label=0: $y$, SeaGreen, line width=2pt, pattern=crosshatch, pattern
+  color= SeaGreen] at ({(360/5)*\i + 90}:2.25){};
 \foreach \i in {5}
-  \node (\i) [bola2, Navy, line width=2pt] at ({(360/5)*\i + 90}:2.5){\Large $u_1$};
+  \node (\i) [bola34, Navy, line width=2pt] at ({(360/5)*\i + 90}:1.125){ $u_1$};
 \foreach \i in {9}
-  \node (\i) [bola2, SeaGreen, line width=2pt] at ({(360/5)*\i + 90}:2.5){\Large $u_2$};
+  \node (\i) [bola34, SeaGreen, line width=2pt] at ({(360/5)*\i + 90}:1.125){ $u_2$};
+
+\foreach \i in {0,...,4}
+  \draw [edge] let \n1={int(mod(\i+1,5))} in (\i) to (\n1);
+
+\foreach \i in {5,...,9}
+  \draw [edge] let \n1={int(mod(\i+2,5)+5)} in (\i) to (\n1);
+
+\foreach \i in {0,...,4}
+  \draw [edge] let \n1={int(\i+5)} in (\i) to (\n1);
+}
+
+\newcommand{\petersencero}{%
+
+\foreach \i in {1}
+  \node (\i) [bola34, label=180: $b$]   at ({(360/5)*\i
+  + 90}:2.25){};
+\foreach \i in {3}
+  \node (\i) [bola34, label=0: $x$]     at ({(360/5)*\i + 90}:2.25){};
+\foreach \i in {2}
+  \node (\i) [bola34, label=180: $v$]   at ({(360/5)*\i + 90}:2.25){};
+\foreach \i in {7}
+  \node (\i) [bola34, label=180: $a$]   at ({(360/5)*\i + 90}:1.125){};
+\foreach \i in {0}
+  \node (\i) [bola34, label=0: $w_1$]   at ({(360/5)*\i + 90}:2.25){};
+\foreach \i in {8}
+  \node (\i) [bola34, label=0: $z$]     at ({(360/5)*\i + 90}:1.125){};
+\foreach \i in {6}
+  \node (\i) [bola34, label=270: $w_2$] at ({(360/5)*\i + 90}:1.125){};
+\foreach \i in {4}
+  \node (\i) [bola34, label=0: $y$]     at ({(360/5)*\i + 90}:2.25){};
+\foreach \i in {5}
+  \node (\i) [bola34, label=180: $u_1$] at ({(360/5)*\i + 90}:1.125){};
+\foreach \i in {9}
+  \node (\i) [bola34, label=90: $u_2$]  at ({(360/5)*\i + 90}:1.125){};
 
 \foreach \i in {0,...,4}
   \draw [edge] let \n1={int(mod(\i+1,5))} in (\i) to (\n1);
@@ -704,15 +759,15 @@
 \newcommand{\petersencuatro}{%
 
 \foreach \i in {0,...,3}
-  \node (\i) [bola2]  at ({(360/5)*\i + 90}:5){};
+  \node (\i) [bola34]  at ({(360/5)*\i + 90}:2.25){};
 \foreach \i in {5,6,7,9}
-  \node (\i) [bola2]  at ({(360/5)*\i + 90}:2.5){};
+  \node (\i) [bola34]  at ({(360/5)*\i + 90}:1.125){};
 \foreach \i in {8}
-  \node (\i) [bola2, Navy, line width=2pt, pattern=crosshatch, pattern
-  color= Navy] at ({(360/5)*\i + 90}:2.5){};
+  \node (\i) [bola34, Navy, line width=2pt, pattern=crosshatch, pattern
+  color= Navy] at ({(360/5)*\i + 90}:1.125){};
 \foreach \i in {4}
-  \node (\i) [bola2, SeaGreen, line width=2pt, pattern=crosshatch, pattern
-  color= SeaGreen] at ({(360/5)*\i + 90}:5){};
+  \node (\i) [bola34, SeaGreen, line width=2pt, pattern=crosshatch, pattern
+  color= SeaGreen] at ({(360/5)*\i + 90}:2.25){};
 
 \foreach \i in {0,...,4}
   \draw [edge] let \n1={int(mod(\i+1,5))} in (\i) to (\n1);
@@ -727,30 +782,30 @@
 \newcommand{\petersencinco}{%
 
 \foreach \i in {0}
-  \node (\i) [bola2, label=0:\Large $w_1$, pattern=north east lines, line width=2pt]  at ({(360/5)*\i + 90}:5){};
+  \node (\i) [bola34, label=0: $w_1$, pattern=north east lines, line width=2pt]  at ({(360/5)*\i + 90}:2.25){};
 \foreach \i in {7}
-  \node (\i) [bola2, pattern=north east lines, line width=2pt]  at ({(360/5)*\i
-  + 90}:2.5){};
+  \node (\i) [bola34, label=180: $a$, pattern=north east lines, line width=2pt]  at ({(360/5)*\i
+  + 90}:1.125){};
 \foreach \i in {8}
-  \node (\i) [bola2]  at ({(360/5)*\i + 90}:2.5){};
+  \node (\i) [bola34, label=0: $z$]  at ({(360/5)*\i + 90}:1.125){};
 \foreach \i in {5}
-  \node (\i) [bola2, pattern=north east lines, line width=2pt, label=180:\Large $u_1$]  at ({(360/5)*\i + 90}:2.5){};
+  \node (\i) [bola34, pattern=north east lines, line width=2pt, label=180: $u_1$]  at ({(360/5)*\i + 90}:1.125){};
 \foreach \i in {1}
-  \node (\i) [bola2, Navy, line width=2pt, label=180:\Large $b$] at ({(360/5)*\i + 90}:5){};
+  \node (\i) [bola34, Navy, line width=2pt, label=180: $b$] at ({(360/5)*\i + 90}:2.25){};
 \foreach \i in {6}
-  \node (\i) [bola2, Navy, line width=2pt, pattern=crosshatch, pattern
-  color= Navy] at ({(360/5)*\i + 90}:2.5){};
+  \node (\i) [bola34, label=270: $w_2$, Navy, line width=2pt, pattern=crosshatch, pattern
+  color= Navy] at ({(360/5)*\i + 90}:1.125){};
 \foreach \i in {2}
-  \node (\i) [bola2, Navy, line width=2pt, pattern=crosshatch, pattern
-  color= Navy] at ({(360/5)*\i + 90}:5){};
+  \node (\i) [bola34, label=180: $v$, Navy, line width=2pt, pattern=crosshatch, pattern
+  color= Navy] at ({(360/5)*\i + 90}:2.25){};
 \foreach \i in {4}
-  \node (\i) [bola2, SeaGreen, line width=2pt, label=0:\Large $y$] at ({(360/5)*\i + 90}:5){};
+  \node (\i) [bola34, SeaGreen, line width=2pt, label=0: $y$] at ({(360/5)*\i + 90}:2.25){};
 \foreach \i in {3}
-  \node (\i) [bola2, SeaGreen, line width=2pt, pattern=crosshatch, pattern
-  color= SeaGreen] at ({(360/5)*\i + 90}:5){};
+  \node (\i) [bola34, label=0: $x$, SeaGreen, line width=2pt, pattern=crosshatch, pattern
+  color= SeaGreen] at ({(360/5)*\i + 90}:2.25){};
 \foreach \i in {9}
-  \node (\i) [bola2, SeaGreen, line width=2pt, pattern=crosshatch, pattern
-  color= SeaGreen] at ({(360/5)*\i + 90}:2.5){};
+  \node (\i) [bola34, label=90: $u_2$, SeaGreen, line width=2pt, pattern=crosshatch, pattern
+  color= SeaGreen] at ({(360/5)*\i + 90}:1.125){};
 
 \foreach \i in {0,...,4}
   \draw [edge] let \n1={int(mod(\i+1,5))} in (\i) to (\n1);
@@ -765,29 +820,29 @@
 \newcommand{\petersenseis}{%
 
 \foreach \i in {0}
-  \node (\i) [bola2, pattern=north east lines, line width=2pt]  at ({(360/5)*\i
-  + 90}:5){};
+  \node (\i) [bola34, pattern=north east lines, line width=2pt]  at ({(360/5)*\i
+  + 90}:2.25){};
 \foreach \i in {1}
-  \node (\i) [bola2, pattern=north east lines, line width=2pt, label=180:\Large 
-  $b$]  at ({(360/5)*\i + 90}:5){};
+  \node (\i) [bola34, pattern=north east lines, line width=2pt, label=180: 
+  $b$]  at ({(360/5)*\i + 90}:2.25){};
 \foreach \i in {2}
-  \node (\i) [bola2, label=180:\Large $v$]  at ({(360/5)*\i + 90}:5){};
+  \node (\i) [bola34, label=180: $v$]  at ({(360/5)*\i + 90}:2.25){};
 \foreach \i in {6}
-  \node (\i) [bola2]  at ({(360/5)*\i + 90}:2.5){\Large $w_2$};
+  \node (\i) [bola34]  at ({(360/5)*\i + 90}:1.125){ $w_2$};
 \foreach \i in {7}
-  \node (\i) [bola2, pattern=north east lines, line width=2pt, label=180:\Large $a$]  at ({(360/5)*\i + 90}:2.5){};
+  \node (\i) [bola34, pattern=north east lines, line width=2pt, label=180: $a$]  at ({(360/5)*\i + 90}:1.125){};
 \foreach \i in {5}
-  \node (\i) [bola2, pattern=north east lines, line width=2pt, label=180:\Large $u_1$] at ({(360/5)*\i + 90}:2.5){};
+  \node (\i) [bola34, pattern=north east lines, line width=2pt, label=180: $u_1$] at ({(360/5)*\i + 90}:1.125){};
 \foreach \i in {8}
-  \node (\i) [bola2, label=0:\Large $z$] at ({(360/5)*\i + 90}:2.5){};
+  \node (\i) [bola34, label=0: $z$] at ({(360/5)*\i + 90}:1.125){};
 \foreach \i in {4}
-  \node (\i) [bola2, SeaGreen, line width=2pt, label=0:\Large $y$] at ({(360/5)*\i + 90}:5){};
+  \node (\i) [bola34, SeaGreen, line width=2pt, label=0: $y$] at ({(360/5)*\i + 90}:2.25){};
 \foreach \i in {3}
-  \node (\i) [bola2, SeaGreen, line width=2pt, pattern=crosshatch, pattern
-  color= SeaGreen, label=0:\Large $x$] at ({(360/5)*\i + 90}:5){};
+  \node (\i) [bola34, SeaGreen, line width=2pt, pattern=crosshatch, pattern
+  color= SeaGreen, label=0: $x$] at ({(360/5)*\i + 90}:2.25){};
 \foreach \i in {9}
-  \node (\i) [bola2, SeaGreen, line width=2pt, pattern=crosshatch, pattern
-  color= SeaGreen, label=90:\Large $u_2$] at ({(360/5)*\i + 90}:2.5){};
+  \node (\i) [bola34, SeaGreen, line width=2pt, pattern=crosshatch, pattern
+  color= SeaGreen, label=90: $u_2$] at ({(360/5)*\i + 90}:1.125){};
 
 \foreach \i in {0,...,4}
   \draw [edge] let \n1={int(mod(\i+1,5))} in (\i) to (\n1);
@@ -802,29 +857,29 @@
 \newcommand{\petersenseisdos}{%
 
 \foreach \i in {0}
-  \node (\i) [bola2, pattern=north east lines, line width=2pt]  at ({(360/5)*\i
-  + 90}:5){};
+  \node (\i) [bola34, pattern=north east lines, line width=2pt]  at ({(360/5)*\i
+  + 90}:2.25){};
 \foreach \i in {1}
-  \node (\i) [bola2, pattern=north east lines, line width=2pt, label=180:\Large 
-  $b$]  at ({(360/5)*\i + 90}:5){};
+  \node (\i) [bola34, pattern=north east lines, line width=2pt, label=180: 
+  $b$]  at ({(360/5)*\i + 90}:2.25){};
 \foreach \i in {2}
-  \node (\i) [bola2, label=180:\Large $v$, pattern=north east lines, line width=2pt]  at ({(360/5)*\i + 90}:5){};
+  \node (\i) [bola34, label=180: $v$, pattern=north east lines, line width=2pt]  at ({(360/5)*\i + 90}:2.25){};
 \foreach \i in {6}
-  \node (\i) [bola2, pattern=north east lines, line width=2pt, label=270:\Large $w_2$]  at ({(360/5)*\i + 90}:2.5){};
+  \node (\i) [bola34, pattern=north east lines, line width=2pt, label=270: $w_2$]  at ({(360/5)*\i + 90}:1.125){};
 \foreach \i in {7}
-  \node (\i) [bola2, pattern=north east lines, line width=2pt]  at ({(360/5)*\i + 90}:2.5){};
+  \node (\i) [bola34, pattern=north east lines, line width=2pt]  at ({(360/5)*\i + 90}:1.125){};
 \foreach \i in {5}
-  \node (\i) [bola2, pattern=north east lines, line width=2pt, label=180:\Large $u_1$] at ({(360/5)*\i + 90}:2.5){};
+  \node (\i) [bola34, pattern=north east lines, line width=2pt, label=180: $u_1$] at ({(360/5)*\i + 90}:1.125){};
 \foreach \i in {8}
-  \node (\i) [bola2, label=0:\Large $z$] at ({(360/5)*\i + 90}:2.5){};
+  \node (\i) [bola34, label=0: $z$] at ({(360/5)*\i + 90}:1.125){};
 \foreach \i in {4}
-  \node (\i) [bola2, SeaGreen, line width=2pt, label=0:\Large $y$] at ({(360/5)*\i + 90}:5){};
+  \node (\i) [bola34, SeaGreen, line width=2pt, label=0: $y$] at ({(360/5)*\i + 90}:2.25){};
 \foreach \i in {3}
-  \node (\i) [bola2, SeaGreen, line width=2pt, pattern=crosshatch, pattern
-  color= SeaGreen] at ({(360/5)*\i + 90}:5){};
+  \node (\i) [bola34, SeaGreen, line width=2pt, pattern=crosshatch, pattern
+  color= SeaGreen] at ({(360/5)*\i + 90}:2.25){};
 \foreach \i in {9}
-  \node (\i) [bola2, SeaGreen, line width=2pt, pattern=crosshatch, pattern
-  color= SeaGreen, label=90:\Large $u_2$] at ({(360/5)*\i + 90}:2.5){};
+  \node (\i) [bola34, SeaGreen, line width=2pt, pattern=crosshatch, pattern
+  color= SeaGreen, label=90: $u_2$] at ({(360/5)*\i + 90}:1.125){};
 
 \foreach \i in {0,...,4}
   \draw [edge] let \n1={int(mod(\i+1,5))} in (\i) to (\n1);
@@ -839,28 +894,28 @@
 \newcommand{\petersenocho}{%
 
 \foreach \i in {0}
-  \node (\i) [bola2, pattern=north east lines, line width=2pt]  at ({(360/5)*\i
-  + 90}:5){};
+  \node (\i) [bola34, pattern=north east lines, line width=2pt]  at ({(360/5)*\i
+  + 90}:2.25){};
 \foreach \i in {1}
-  \node (\i) [bola2, pattern=north east lines, line width=2pt, label=180:\Large 
-  $b$]  at ({(360/5)*\i + 90}:5){};
+  \node (\i) [bola34, pattern=north east lines, line width=2pt, label=180: 
+  $b$]  at ({(360/5)*\i + 90}:2.25){};
 \foreach \i in {2}
-  \node (\i) [bola2, label=180:\Large $v$, pattern=north east lines, line width=2pt]  at ({(360/5)*\i + 90}:5){};
+  \node (\i) [bola34, label=180: $v$, pattern=north east lines, line width=2pt]  at ({(360/5)*\i + 90}:2.25){};
 \foreach \i in {6}
-  \node (\i) [bola2, pattern=north east lines, line width=2pt, label=270:\Large $w_2$]  at ({(360/5)*\i + 90}:2.5){};
+  \node (\i) [bola34, pattern=north east lines, line width=2pt, label=270: $w_2$]  at ({(360/5)*\i + 90}:1.125){};
 \foreach \i in {7}
-  \node (\i) [bola2, pattern=north east lines, line width=2pt]  at ({(360/5)*\i + 90}:2.5){};
+  \node (\i) [bola34, pattern=north east lines, line width=2pt]  at ({(360/5)*\i + 90}:1.125){};
 \foreach \i in {5}
-  \node (\i) [bola2, pattern=north east lines, line width=2pt, label=180:\Large $u_1$] at ({(360/5)*\i + 90}:2.5){};
+  \node (\i) [bola34, pattern=north east lines, line width=2pt, label=180: $u_1$] at ({(360/5)*\i + 90}:1.125){};
 \foreach \i in {8}
-  \node (\i) [bola2, label=0:\Large $z$] at ({(360/5)*\i + 90}:2.5){};
+  \node (\i) [bola34, label=0: $z$] at ({(360/5)*\i + 90}:1.125){};
 \foreach \i in {4}
-  \node (\i) [bola2, SeaGreen, line width=2pt, label=0:\Large $y$] at ({(360/5)*\i + 90}:5){};
+  \node (\i) [bola34, SeaGreen, line width=2pt, label=0: $y$] at ({(360/5)*\i + 90}:2.25){};
 \foreach \i in {3}
-  \node (\i) [bola2, SeaGreen, line width=2pt, pattern=crosshatch, pattern
-  color= SeaGreen, label=0:\Large $x$] at ({(360/5)*\i + 90}:5){};
+  \node (\i) [bola34, SeaGreen, line width=2pt, pattern=crosshatch, pattern
+  color= SeaGreen, label=0: $x$] at ({(360/5)*\i + 90}:2.25){};
 \foreach \i in {9}
-  \node (\i) [bola2, line width=2pt, pattern=north east lines, label=90:\Large $u_2$] at ({(360/5)*\i + 90}:2.5){};
+  \node (\i) [bola34, line width=2pt, pattern=north east lines, label=90: $u_2$] at ({(360/5)*\i + 90}:1.125){};
 
 \foreach \i in {0,...,4}
   \draw [edge] let \n1={int(mod(\i+1,5))} in (\i) to (\n1);
@@ -875,19 +930,19 @@
 \newcommand{\petersensiete}{%
 
 \foreach \i in {0,3}
-  \node (\i) [bola2]  at ({(360/5)*\i + 90}:5){};
+  \node (\i) [bola34]  at ({(360/5)*\i + 90}:2.25){};
 \foreach \i in {1}
-  \node (\i) [bola2, Navy, line width=2pt, pattern=crosshatch, pattern
-  color= Navy]  at ({(360/5)*\i + 90}:5){};
+  \node (\i) [bola34, Navy, line width=2pt, pattern=crosshatch, pattern
+  color= Navy]  at ({(360/5)*\i + 90}:2.25){};
 \foreach \i in {4}
-  \node (\i) [bola2, SeaGreen, line width=2pt, pattern=crosshatch, pattern
-  color= SeaGreen]  at ({(360/5)*\i + 90}:5){};
+  \node (\i) [bola34, SeaGreen, line width=2pt, pattern=crosshatch, pattern
+  color= SeaGreen]  at ({(360/5)*\i + 90}:2.25){};
 \foreach \i in {9}
-  \node (\i) [bola2, SeaGreen, line width=2pt]  at ({(360/5)*\i + 90}:2.5){};
+  \node (\i) [bola34, SeaGreen, line width=2pt]  at ({(360/5)*\i + 90}:1.125){};
 \foreach \i in {2}
-  \node (\i) [bola2, Navy, line width=2pt]  at ({(360/5)*\i + 90}:5){};
+  \node (\i) [bola34, Navy, line width=2pt]  at ({(360/5)*\i + 90}:2.25){};
 \foreach \i in {5,...,8}
-  \node (\i) [bola2] at ({(360/5)*\i + 90}:2.5){};
+  \node (\i) [bola34] at ({(360/5)*\i + 90}:1.125){};
 
 \foreach \i in {0,...,4}
   \draw [edge] let \n1={int(mod(\i+1,5))} in (\i) to (\n1);
@@ -902,31 +957,31 @@
 \newcommand{\petersennueve}{%
 
 \foreach \i in {0}
-  \node (\i) [bola2, pattern=north east lines, line width=2pt]  at ({(360/5)*\i
-  + 90}:5){};
+  \node (\i) [bola34, label=0: $w_1$,  pattern=north east lines, line width=2pt]  at ({(360/5)*\i
+  + 90}:2.25){};
 \foreach \i in {1}
-  \node (\i) [bola2, pattern=north east lines, line width=2pt]  at ({(360/5)*\i 
-  + 90}:5){};
+  \node (\i) [bola34, label=180: $b$, pattern=north east lines, line width=2pt]  at ({(360/5)*\i 
+  + 90}:2.25){};
 \foreach \i in {2}
-  \node (\i) [bola2, line width=2pt, Navy]  at ({(360/5)*\i + 90}:5){};
+  \node (\i) [bola34, label=180: $v$, line width=2pt, Navy]  at ({(360/5)*\i + 90}:2.25){};
 \foreach \i in {6}
-  \node (\i) [bola2, SeaGreen, line width=2pt]  at ({(360/5)*\i + 90}:2.5){};
+  \node (\i) [bola34, label=270: $w_2$, SeaGreen, line width=2pt]  at ({(360/5)*\i + 90}:1.125){};
 \foreach \i in {7}
-  \node (\i) [bola2, Navy, pattern=crosshatch, line width=2pt, pattern 
-  color= Navy] at ({(360/5)*\i + 90}:2.5){};
+  \node (\i) [bola34, label=180: $a$, Navy, pattern=crosshatch, line width=2pt, pattern 
+  color= Navy] at ({(360/5)*\i + 90}:1.125){};
 \foreach \i in {5}
-  \node (\i) [bola2] at ({(360/5)*\i + 90}:2.5){};
+  \node (\i) [bola34, label=180: $u_1$] at ({(360/5)*\i + 90}:1.125){};
 \foreach \i in {8}
-  \node (\i) [bola2, SeaGreen, line width=2pt, pattern=crosshatch, pattern
-  color=SeaGreen] at ({(360/5)*\i + 90}:2.5){};
+  \node (\i) [bola34, label=0: $z$, SeaGreen, line width=2pt, pattern=crosshatch, pattern
+  color=SeaGreen] at ({(360/5)*\i + 90}:1.125){};
 \foreach \i in {4}
-  \node (\i) [bola2] at ({(360/5)*\i + 90}:5){};
+  \node (\i) [bola34, label=0: $y$] at ({(360/5)*\i + 90}:2.25){};
 \foreach \i in {3}
-  \node (\i) [bola2, Navy, line width=2pt, pattern=crosshatch, pattern
-  color= Navy] at ({(360/5)*\i + 90}:5){};
+  \node (\i) [bola34, label=0: $x$, Navy, line width=2pt, pattern=crosshatch, pattern
+  color= Navy] at ({(360/5)*\i + 90}:2.25){};
 \foreach \i in {9}
-  \node (\i) [bola2, SeaGreen, line width=2pt, pattern=crosshatch, pattern
-  color= SeaGreen] at ({(360/5)*\i + 90}:2.5){};
+  \node (\i) [bola34, label=90: $u_2$, SeaGreen, line width=2pt, pattern=crosshatch, pattern
+  color= SeaGreen] at ({(360/5)*\i + 90}:1.125){};
 
 \foreach \i in {0,...,4}
   \draw [edge] let \n1={int(mod(\i+1,5))} in (\i) to (\n1);
@@ -941,31 +996,31 @@
 \newcommand{\petersendiez}{%
 
 \foreach \i in {0}
-  \node (\i) [bola2, pattern=north east lines, line width=2pt]  at ({(360/5)*\i
-  + 90}:5){};
+  \node (\i) [bola34, label=0: $w_1$, pattern=north east lines, line width=2pt]  at ({(360/5)*\i
+  + 90}:2.25){};
 \foreach \i in {1}
-  \node (\i) [bola2, pattern=north east lines, line width=2pt]  at ({(360/5)*\i 
-  + 90}:5){};
+  \node (\i) [bola34, label=180: $b$, pattern=north east lines, line width=2pt]  at ({(360/5)*\i 
+  + 90}:2.25){};
 \foreach \i in {2}
-  \node (\i) [bola2]  at ({(360/5)*\i + 90}:5){};
+  \node (\i) [bola34, label=180: $v$]  at ({(360/5)*\i + 90}:2.25){};
 \foreach \i in {6}
-  \node (\i) [bola2]  at ({(360/5)*\i + 90}:2.5){};
+  \node (\i) [bola34, label=270: $w_2$]  at ({(360/5)*\i + 90}:1.125){};
 \foreach \i in {7}
-  \node (\i) [bola2, SeaGreen, pattern=crosshatch, line width=2pt, pattern 
-  color= SeaGreen] at ({(360/5)*\i + 90}:2.5){};
+  \node (\i) [bola34, label=180: $a$, SeaGreen, pattern=crosshatch, line width=2pt, pattern 
+  color= SeaGreen] at ({(360/5)*\i + 90}:1.125){};
 \foreach \i in {5}
-  \node (\i) [bola2, line width=2pt, SeaGreen] at ({(360/5)*\i + 90}:2.5){};
+  \node (\i) [bola34, label=180: $u_1$, line width=2pt, SeaGreen] at ({(360/5)*\i + 90}:1.125){};
 \foreach \i in {8}
-  \node (\i) [bola2, SeaGreen, line width=2pt, pattern=crosshatch, pattern
-  color=SeaGreen] at ({(360/5)*\i + 90}:2.5){};
+  \node (\i) [bola34, label=0: $z$, SeaGreen, line width=2pt, pattern=crosshatch, pattern
+  color=SeaGreen] at ({(360/5)*\i + 90}:1.125){};
 \foreach \i in {4}
-  \node (\i) [bola2, line width=2pt, Navy] at ({(360/5)*\i + 90}:5){};
+  \node (\i) [bola34, label=0: $y$, line width=2pt, Navy] at ({(360/5)*\i + 90}:2.25){};
 \foreach \i in {3}
-  \node (\i) [bola2, Navy, line width=2pt, pattern=crosshatch, pattern
-  color= Navy] at ({(360/5)*\i + 90}:5){};
+  \node (\i) [bola34, label=0: $x$, Navy, line width=2pt, pattern=crosshatch, pattern
+  color= Navy] at ({(360/5)*\i + 90}:2.25){};
 \foreach \i in {9}
-  \node (\i) [bola2, Navy, line width=2pt, pattern=crosshatch, pattern
-  color= Navy] at ({(360/5)*\i + 90}:2.5){};
+  \node (\i) [bola34, label=90: $u_2$, Navy, line width=2pt, pattern=crosshatch, pattern
+  color= Navy] at ({(360/5)*\i + 90}:1.125){};
 
 \foreach \i in {0,...,4}
   \draw [edge] let \n1={int(mod(\i+1,5))} in (\i) to (\n1);
@@ -980,31 +1035,31 @@
 \newcommand{\petersenonce}{%
 
 \foreach \i in {0}
-  \node (\i) [bola2, pattern=north east lines, line width=2pt]  at ({(360/5)*\i
-  + 90}:5){};
+  \node (\i) [bola34, label=0: $w_1$, pattern=north east lines, line width=2pt]  at ({(360/5)*\i
+  + 90}:2.25){};
 \foreach \i in {1}
-  \node (\i) [bola2, label=180:\Large $b$]  at ({(360/5)*\i 
-  + 90}:5){};
+  \node (\i) [bola34, label=180: $b$]  at ({(360/5)*\i 
+  + 90}:2.25){};
 \foreach \i in {2}
-  \node (\i) [bola2, label=180:\Large $v$]  at ({(360/5)*\i + 90}:5){};
+  \node (\i) [bola34, label=180: $v$]  at ({(360/5)*\i + 90}:2.25){};
 \foreach \i in {6}
-  \node (\i) [bola2]  at ({(360/5)*\i + 90}:2.5){};
+  \node (\i) [bola34, label=270: $w_2$]  at ({(360/5)*\i + 90}:1.125){};
 \foreach \i in {7}
-  \node (\i) [bola2, SeaGreen, pattern=crosshatch, line width=2pt, pattern 
-  color= SeaGreen] at ({(360/5)*\i + 90}:2.5){};
+  \node (\i) [bola34, label=180: $a$, SeaGreen, pattern=crosshatch, line width=2pt, pattern 
+  color= SeaGreen] at ({(360/5)*\i + 90}:1.125){};
 \foreach \i in {5}
-  \node (\i) [bola2, line width=2pt, SeaGreen] at ({(360/5)*\i + 90}:2.5){};
+  \node (\i) [bola34, label=180: $u_1$, line width=2pt, SeaGreen] at ({(360/5)*\i + 90}:1.125){};
 \foreach \i in {8}
-  \node (\i) [bola2, SeaGreen, line width=2pt, pattern=crosshatch, pattern
-  color=SeaGreen] at ({(360/5)*\i + 90}:2.5){};
+  \node (\i) [bola34, label=0: $z$, SeaGreen, line width=2pt, pattern=crosshatch, pattern
+  color=SeaGreen] at ({(360/5)*\i + 90}:1.125){};
 \foreach \i in {4}
-  \node (\i) [bola2, line width=2pt, Navy] at ({(360/5)*\i + 90}:5){};
+  \node (\i) [bola34, label=0: $y$, line width=2pt, Navy] at ({(360/5)*\i + 90}:2.25){};
 \foreach \i in {3}
-  \node (\i) [bola2, Navy, line width=2pt, pattern=crosshatch, pattern
-  color= Navy] at ({(360/5)*\i + 90}:5){};
+  \node (\i) [bola34, label=0: $x$, Navy, line width=2pt, pattern=crosshatch, pattern
+  color= Navy] at ({(360/5)*\i + 90}:2.25){};
 \foreach \i in {9}
-  \node (\i) [bola2, Navy, line width=2pt, pattern=crosshatch, pattern
-  color= Navy] at ({(360/5)*\i + 90}:2.5){};
+  \node (\i) [bola34, label=90: $u_2$, Navy, line width=2pt, pattern=crosshatch, pattern
+  color= Navy] at ({(360/5)*\i + 90}:1.125){};
 
 \foreach \i in {0,...,4}
   \draw [edge] let \n1={int(mod(\i+1,5))} in (\i) to (\n1);
@@ -1026,14 +1081,14 @@
 }
 
 \newcommand{\estrellasubdiv}{%
-\node (0) [bola] at (0,0){};
+\node (0) [bola34] at (0,0){};
 \foreach \i in {1,...,5}{
-    \node (\i_0) [bola] at ({90+(360/5)*\i}:1.5){};
+    \node (\i_0) [bola34] at ({90+(360/5)*\i}:1.125){};
     \foreach \j in {1}{
-        \node (\i_\j) [bola] at ({90+(360/5)*\i}:\j+2){};
+        \node (\i_\j) [bola34] at ({90+(360/5)*\i}:\j+1.5){};
     }
     \foreach \j in {2}{
-        \node (\i_\j) [bola] at ({90+(360/5)*\i}:\j+2.5){};
+        \node (\i_\j) [bola34] at ({90+(360/5)*\i}:\j+1.875){};
     }
 }
 
@@ -1045,9 +1100,9 @@
 }
 
 \newcommand{\arbol}{%
-\node (0) [bola2] at (0,0){};
+\node (0) [bola34] at (0,0){};
 \foreach \i in {1,...,5}{
-  \node (\i_0) [bola2] at ({90+(360/5)*\i}:2.25){};
+  \node (\i_0) [bola34] at ({90+(360/5)*\i}:1.05){};
 }
 
 \foreach \i in {1,...,5}{
@@ -1056,29 +1111,29 @@
 
 \foreach \i in {0,...,2}{
   \begin{scope}[shift={(5_0)}]
-    \node (5_0\i) [bola2] at ({45+(90/2)*\i}:2.25){};
+    \node (5_0\i) [bola34] at ({45+(90/2)*\i}:1.05){};
     \draw [edge] (5_0\i) to (5_0);
   \end{scope}
 }
 
 \foreach \i in {0,...,1}{
   \begin{scope}[shift={(1_0)}]
-    \node (1_0\i) [bola2] at ({157.5+45*\i}:2.25){};
+    \node (1_0\i) [bola34] at ({157.5+45*\i}:1.05){};
     \draw [edge] (1_0\i) to (1_0);
   \end{scope}
 }
 
-\node (4_00) [bola2] at ({90+(360/5)*4}:4.5){};
+\node (4_00) [bola34] at ({90+(360/5)*4}:2.175){};
 \draw [edge] (4_00) to (4_0);
 
 \begin{scope}[shift={(3_0)}]
-  \node (3_00) [bola2] at (0,-2.25){};
+  \node (3_00) [bola34] at (0,-1.05){};
   \draw [edge] (3_00) to (3_0);
 \end{scope}
 
 \begin{scope}[shift={(3_00)}]
   \foreach \i in {0,1}{
-    \node (3_00\i) [bola2] at ({247.5 + (45)*\i}:2.25){};
+    \node (3_00\i) [bola34] at ({180 + (180)*\i}:1.05){};
     \draw [edge] (3_00\i) to (3_00);
   }
 \end{scope}
@@ -1187,962 +1242,1105 @@
 }
 
 %%%%% vértices sin ficha de R misma figura
-\newcommand{\tresc}[2]{%
-\begin{scope}[style/.expanded=\polarshift{#1}{#2}]
-  \node (CG) [cuadro,fill=verdeOscuro] at (90:0.4) {};
-  \node (CB) [cuadro,fill=blue] at ({90 + (360/3)*1}:0.4) {};
-  \node (CR) [cuadro,fill=red] at ({90 + (360/3)*2}:0.4) {};
+\newcommand{\tresc}[3][0.214275]{%
+\begin{scope}[style/.expanded=\polarshift{#2}{#3}]
+  \node (CG) [cuadro,fill=verdeOscuro] at (90:#1) {};
+  \node (CB) [cuadro,fill=blue] at ({90 + (360/3)*1}:#1) {};
+  \node (CR) [cuadro,fill=red] at ({90 + (360/3)*2}:#1) {};
 \end{scope}
 }
 
-\newcommand{\tresp}[2]{%
-\begin{scope}[style/.expanded=\polarshift{#1}{#2}]
-  \node (PG) [punto,fill=verdeOscuro] at (90:0.4) {};
-  \node (PB) [punto,fill=blue] at ({90 + (360/3)*1}:0.4) {};
-  \node (PR) [punto,fill=red] at ({90 + (360/3)*2}:0.4) {};
+\newcommand{\tresp}[3][0.214275]{%
+\begin{scope}[style/.expanded=\polarshift{#2}{#3}]
+  \node (PG) [punto,fill=verdeOscuro] at (90:#1) {};
+  \node (PB) [punto,fill=blue] at ({90 + (360/3)*1}:#1) {};
+  \node (PR) [punto,fill=red] at ({90 + (360/3)*2}:#1) {};
 \end{scope}
 }
 
-\newcommand{\trest}[2]{%
-\begin{scope}[style/.expanded=\polarshift{#1}{#2}]
-  \node (TG) [tri,fill=verdeOscuro] at (90:0.4) {};
-  \node (TB) [tri,fill=blue] at ({90 + (360/3)*1}:0.4) {};
-  \node (TR) [tri,fill=red] at ({90 + (360/3)*2}:0.4) {};
+\newcommand{\trest}[3][0.214275]{%
+\begin{scope}[style/.expanded=\polarshift{#2}{#3}]
+  \node (TG) [tri,fill=verdeOscuro] at (90:#1) {};
+  \node (TB) [tri,fill=blue] at ({90 + (360/3)*1}:#1) {};
+  \node (TR) [tri,fill=red] at ({90 + (360/3)*2}:#1) {};
 \end{scope}
 }
 
-\newcommand{\doscRG}[2]{%
-\begin{scope}[style/.expanded=\polarshift{#1}{#2}]
-  \node (CG) [cuadro,fill=verdeOscuro] at (90:0.4) {};
-  \node (CR) [cuadro,fill=red] at ({90 + (360/2)*1}:0.4) {};
+\newcommand{\doscRG}[3][0.214275]{%
+\begin{scope}[style/.expanded=\polarshift{#2}{#3}]
+  \node (CG) [cuadro,fill=verdeOscuro] at (90:#1) {};
+  \node (CR) [cuadro,fill=red] at ({90 + (360/2)*1}:#1) {};
 \end{scope}
 }
 
-\newcommand{\doscRB}[2]{%
-\begin{scope}[style/.expanded=\polarshift{#1}{#2}]
-  \node (CB) [cuadro,fill=blue] at (90:0.4) {};
-  \node (CR) [cuadro,fill=red] at ({90 + (360/2)*1}:0.4) {};
+\newcommand{\doscRB}[3][0.214275]{%
+\begin{scope}[style/.expanded=\polarshift{#2}{#3}]
+  \node (CB) [cuadro,fill=blue] at (90:#1) {};
+  \node (CR) [cuadro,fill=red] at ({90 + (360/2)*1}:#1) {};
 \end{scope}
 }
 
-\newcommand{\doscBG}[2]{%
-\begin{scope}[style/.expanded=\polarshift{#1}{#2}]
-  \node (CG) [cuadro,fill=verdeOscuro] at (90:0.4) {};
-  \node (CB) [cuadro,fill=blue] at ({90 + (360/2)*1}:0.4) {};
+\newcommand{\doscBG}[3][0.214275]{%
+\begin{scope}[style/.expanded=\polarshift{#2}{#3}]
+  \node (CG) [cuadro,fill=verdeOscuro] at (90:#1) {};
+  \node (CB) [cuadro,fill=blue] at ({90 + (360/2)*1}:#1) {};
 \end{scope}
 }
 
-\newcommand{\dospRG}[2]{%
-\begin{scope}[style/.expanded=\polarshift{#1}{#2}]
-  \node (PG) [punto,fill=verdeOscuro] at (90:0.4) {};
-  \node (PR) [punto,fill=red] at ({90 + (360/2)*1}:0.4) {};
+\newcommand{\dospRG}[3][0.214275]{%
+\begin{scope}[style/.expanded=\polarshift{#2}{#3}]
+  \node (PG) [punto,fill=verdeOscuro] at (90:#1) {};
+  \node (PR) [punto,fill=red] at ({90 + (360/2)*1}:#1) {};
 \end{scope}
 }
 
-\newcommand{\dospRB}[2]{%
-\begin{scope}[style/.expanded=\polarshift{#1}{#2}]
-  \node (PB) [punto,fill=blue] at (90:0.4) {};
-  \node (PR) [punto,fill=red] at ({90 + (360/2)*1}:0.4) {};
+\newcommand{\dospRB}[3][0.214275]{%
+\begin{scope}[style/.expanded=\polarshift{#2}{#3}]
+  \node (PB) [punto,fill=blue] at (90:#1) {};
+  \node (PR) [punto,fill=red] at ({90 + (360/2)*1}:#1) {};
 \end{scope}
 }
 
-\newcommand{\dospBG}[2]{%
-\begin{scope}[style/.expanded=\polarshift{#1}{#2}]
-  \node (PG) [punto,fill=verdeOscuro] at (90:0.4) {};
-  \node (PB) [punto,fill=blue] at ({90 + (360/2)*1}:0.4) {};
+\newcommand{\dospBG}[3][0.214275]{%
+\begin{scope}[style/.expanded=\polarshift{#2}{#3}]
+  \node (PG) [punto,fill=verdeOscuro] at (90:#1) {};
+  \node (PB) [punto,fill=blue] at ({90 + (360/2)*1}:#1) {};
 \end{scope}
 }
 
-\newcommand{\dostRG}[2]{%
-\begin{scope}[style/.expanded=\polarshift{#1}{#2}]
-  \node (TG) [tri,fill=verdeOscuro] at (90:0.4) {};
-  \node (TR) [tri,fill=red] at ({90 + (360/2)*1}:0.4) {};
+\newcommand{\dostRG}[3][0.214275]{%
+\begin{scope}[style/.expanded=\polarshift{#2}{#3}]
+  \node (TG) [tri,fill=verdeOscuro] at (90:#1) {};
+  \node (TR) [tri,fill=red] at ({90 + (360/2)*1}:#1) {};
 \end{scope}
 }
 
-\newcommand{\dostRB}[2]{%
-\begin{scope}[style/.expanded=\polarshift{#1}{#2}]
-  \node (TB) [tri,fill=blue] at (90:0.4) {};
-  \node (TR) [tri,fill=red] at ({90 + (360/2)*1}:0.4) {};
+\newcommand{\dostRB}[3][0.214275]{%
+\begin{scope}[style/.expanded=\polarshift{#2}{#3}]
+  \node (TB) [tri,fill=blue] at (90:#1) {};
+  \node (TR) [tri,fill=red] at ({90 + (360/2)*1}:#1) {};
 \end{scope}
 }
 
-\newcommand{\dostBG}[2]{%
-\begin{scope}[style/.expanded=\polarshift{#1}{#2}]
-  \node (TG) [tri,fill=verdeOscuro] at (90:0.4) {};
-  \node (TB) [tri,fill=blue] at ({90 + (360/2)*1}:0.4) {};
+\newcommand{\dostBG}[3][0.214275]{%
+\begin{scope}[style/.expanded=\polarshift{#2}{#3}]
+  \node (TG) [tri,fill=verdeOscuro] at (90:#1) {};
+  \node (TB) [tri,fill=blue] at ({90 + (360/2)*1}:#1) {};
 \end{scope}
 }
 
-\newcommand{\unocR}[2]{%
-\begin{scope}[style/.expanded=\polarshift{#1}{#2}]
+\newcommand{\unocR}[3][0.214275]{%
+\begin{scope}[style/.expanded=\polarshift{#2}{#3}]
   \node (CR) [cuadro,fill=red] at (0,0) {};
 \end{scope}
 }
 
-\newcommand{\unocB}[2]{%
-\begin{scope}[style/.expanded=\polarshift{#1}{#2}]
+\newcommand{\unocB}[3][0.214275]{%
+\begin{scope}[style/.expanded=\polarshift{#2}{#3}]
   \node (CB) [cuadro,fill=blue] at (0,0) {};
 \end{scope}
 }
 
-\newcommand{\unocG}[2]{%
-\begin{scope}[style/.expanded=\polarshift{#1}{#2}]
+\newcommand{\unocG}[3][0.214275]{%
+\begin{scope}[style/.expanded=\polarshift{#2}{#3}]
   \node (CG) [cuadro,fill=verdeOscuro] at (0,0) {};
 \end{scope}
 }
 
-\newcommand{\unopR}[2]{%
-\begin{scope}[style/.expanded=\polarshift{#1}{#2}]
+\newcommand{\unopR}[3][0.214275]{%
+\begin{scope}[style/.expanded=\polarshift{#2}{#3}]
   \node (PR) [punto,fill=red] at (0,0) {};
 \end{scope}
 }
 
-\newcommand{\unopB}[2]{%
-\begin{scope}[style/.expanded=\polarshift{#1}{#2}]
+\newcommand{\unopRdos}[3][0.214275]{%
+\begin{scope}[style/.expanded=\polarshift{#2}{#3}]
+  \node (PR) [punto2,fill=red] at (0,0) {};
+\end{scope}
+}
+
+\newcommand{\unopB}[3][0.214275]{%
+\begin{scope}[style/.expanded=\polarshift{#2}{#3}]
   \node (PB) [punto,fill=blue] at (0,0) {};
 \end{scope}
 }
 
-\newcommand{\unopG}[2]{%
-\begin{scope}[style/.expanded=\polarshift{#1}{#2}]
+\newcommand{\unopBdos}[3][0.214275]{%
+\begin{scope}[style/.expanded=\polarshift{#2}{#3}]
+  \node (PB) [punto2,fill=blue] at (0,0) {};
+\end{scope}
+}
+
+\newcommand{\unopG}[3][0.214275]{%
+\begin{scope}[style/.expanded=\polarshift{#2}{#3}]
   \node (PG) [punto,fill=verdeOscuro] at (0,0) {};
 \end{scope}
 }
 
-\newcommand{\unotR}[2]{%
-\begin{scope}[style/.expanded=\polarshift{#1}{#2}]
+\newcommand{\unopGdos}[3][0.214275]{%
+\begin{scope}[style/.expanded=\polarshift{#2}{#3}]
+  \node (PG) [punto2,fill=verdeOscuro] at (0,0) {};
+\end{scope}
+}
+
+\newcommand{\unotR}[3][0.214275]{%
+\begin{scope}[style/.expanded=\polarshift{#2}{#3}]
   \node (TR) [tri,fill=red] at (0,0) {};
 \end{scope}
 }
 
-\newcommand{\unotB}[2]{%
-\begin{scope}[style/.expanded=\polarshift{#1}{#2}]
+\newcommand{\unotRdos}[3][0.214275]{%
+\begin{scope}[style/.expanded=\polarshift{#2}{#3}]
+  \node (TR) [tri2,fill=red] at (0,0) {};
+\end{scope}
+}
+
+\newcommand{\unotB}[3][0.214275]{%
+\begin{scope}[style/.expanded=\polarshift{#2}{#3}]
   \node (TB) [tri,fill=blue] at (0,0) {};
 \end{scope}
 }
 
-\newcommand{\unotG}[2]{%
-\begin{scope}[style/.expanded=\polarshift{#1}{#2}]
+\newcommand{\unotBdos}[3][0.214275]{%
+\begin{scope}[style/.expanded=\polarshift{#2}{#3}]
+  \node (TB) [tri2,fill=blue] at (0,0) {};
+\end{scope}
+}
+
+\newcommand{\unotG}[3][0.214275]{%
+\begin{scope}[style/.expanded=\polarshift{#2}{#3}]
   \node (TG) [tri,fill=verdeOscuro] at (0,0) {};
 \end{scope}
 }
 
 %%%% Vértices sin ficha de R distinta figura
 
-\newcommand{\unopBdost}[2]{%
-\begin{scope}[style/.expanded=\polarshift{#1}{#2}]
-  \node (TG) [tri,fill=verdeOscuro] at (90:0.4) {};
-  \node (PB) [punto,fill=blue] at ({90 + (360/3)*1}:0.4) {};
-  \node (TR) [tri,fill=red] at ({90 + (360/3)*2}:0.4) {};
+\newcommand{\unopBdost}[3][0.214275]{%
+\begin{scope}[style/.expanded=\polarshift{#2}{#3}]
+  \node (TG) [tri,fill=verdeOscuro] at (90:#1) {};
+  \node (PB) [punto,fill=blue] at ({90 + (360/3)*1}:#1) {};
+  \node (TR) [tri,fill=red] at ({90 + (360/3)*2}:#1) {};
 \end{scope}
 }
 
-\newcommand{\unocBdosp}[2]{%
-\begin{scope}[style/.expanded=\polarshift{#1}{#2}]
-  \node (PG) [punto,fill=verdeOscuro] at (90:0.4) {};
-  \node (CB) [cuadro,fill=blue] at ({90 + (360/3)*1}:0.4) {};
-  \node (PR) [punto,fill=red] at ({90 + (360/3)*2}:0.4) {};
+\newcommand{\unocBdosp}[3][0.214275]{%
+\begin{scope}[style/.expanded=\polarshift{#2}{#3}]
+  \node (PG) [punto,fill=verdeOscuro] at (90:#1) {};
+  \node (CB) [cuadro,fill=blue] at ({90 + (360/3)*1}:#1) {};
+  \node (PR) [punto,fill=red] at ({90 + (360/3)*2}:#1) {};
 \end{scope}
 }
 
-\newcommand{\unopBunotGc}[2]{%
-\begin{scope}[style/.expanded=\polarshift{#1}{#2}]
-  \node (TG) [tri,fill=verdeOscuro] at (90:0.4) {};
-  \node (PB) [punto,fill=blue] at ({90 + (360/3)*1}:0.4) {};
-  \node (CR) [cuadro,fill=red] at ({90 + (360/3)*2}:0.4) {};
+\newcommand{\unopBunotGc}[3][0.214275]{%
+\begin{scope}[style/.expanded=\polarshift{#2}{#3}]
+  \node (TG) [tri,fill=verdeOscuro] at (90:#1) {};
+  \node (PB) [punto,fill=blue] at ({90 + (360/3)*1}:#1) {};
+  \node (CR) [cuadro,fill=red] at ({90 + (360/3)*2}:#1) {};
 \end{scope}
 }
 
-\newcommand{\unopBunotG}[2]{%
-\begin{scope}[style/.expanded=\polarshift{#1}{#2}]
-  \node (TG) [tri,fill=verdeOscuro] at (90:0.4) {};
-  \node (PB) [punto,fill=blue] at ({90 + (360/2)*1}:0.4) {};
+\newcommand{\unopBunotG}[3][0.214275]{%
+\begin{scope}[style/.expanded=\polarshift{#2}{#3}]
+  \node (TG) [tri,fill=verdeOscuro] at (90:#1) {};
+  \node (PB) [punto,fill=blue] at ({90 + (360/2)*1}:#1) {};
 \end{scope}
 }
 
-\newcommand{\unopBunocRp}[2]{%
-\begin{scope}[style/.expanded=\polarshift{#1}{#2}]
-  \node (PB) [punto,fill=blue] at (90:0.4) {};
-  \node (CR) [cuadro,fill=red] at ({90 + (360/3)*1}:0.4) {};
-  \node (Pr) [punto,fill=black] at ({90 + (360/3)*2}:0.4) {};
+\newcommand{\unopBunocRp}[3][0.214275]{%
+\begin{scope}[style/.expanded=\polarshift{#2}{#3}]
+  \node (PB) [punto,fill=blue] at (90:#1) {};
+  \node (CR) [cuadro,fill=red] at ({90 + (360/3)*1}:#1) {};
+  \node (Pr) [punto,fill=black] at ({90 + (360/3)*2}:#1) {};
 \end{scope}
 }
 
 %%%% Vértices con ficha de R
 
-\newcommand{\trescc}[2]{%
-\begin{scope}[style/.expanded=\polarshift{#1}{#2}]
-  \node (CG) [cuadro,fill=verdeOscuro] at (90:0.4) {};
-  \node (CB) [cuadro,fill=blue] at ({90 + (360/4)*1}:0.4) {};
-  \node (CR) [cuadro,fill=red] at ({90 + (360/4)*2}:0.4) {};
-  \node (Cr) [cuadro,fill=black] at ({90 + (360/4)*3}:0.4) {};
+\newcommand{\trescc}[3][0.214275]{%
+\begin{scope}[style/.expanded=\polarshift{#2}{#3}]
+  \node (CG) [cuadro,fill=verdeOscuro] at (90:#1) {};
+  \node (CB) [cuadro,fill=blue] at ({90 + (360/4)*1}:#1) {};
+  \node (CR) [cuadro,fill=red] at ({90 + (360/4)*2}:#1) {};
+  \node (Cr) [cuadro,fill=black] at ({90 + (360/4)*3}:#1) {};
 \end{scope}
 }
 
-\newcommand{\trescp}[2]{%
-\begin{scope}[style/.expanded=\polarshift{#1}{#2}]
-  \node (CG) [cuadro,fill=verdeOscuro] at (90:0.4) {};
-  \node (CB) [cuadro,fill=blue] at ({90 + (360/4)*1}:0.4) {};
-  \node (CR) [cuadro,fill=red] at ({90 + (360/4)*2}:0.4) {};
-  \node (Pr) [punto,fill=black] at ({90 + (360/4)*3}:0.4) {};
+\newcommand{\trescp}[3][0.214275]{%
+\begin{scope}[style/.expanded=\polarshift{#2}{#3}]
+  \node (CG) [cuadro,fill=verdeOscuro] at (90:#1) {};
+  \node (CB) [cuadro,fill=blue] at ({90 + (360/4)*1}:#1) {};
+  \node (CR) [cuadro,fill=red] at ({90 + (360/4)*2}:#1) {};
+  \node (Pr) [punto,fill=black] at ({90 + (360/4)*3}:#1) {};
 \end{scope}
 }
 
-\newcommand{\tresct}[2]{%
-\begin{scope}[style/.expanded=\polarshift{#1}{#2}]
-  \node (CG) [cuadro,fill=verdeOscuro] at (90:0.4) {};
-  \node (CB) [cuadro,fill=blue] at ({90 + (360/4)*1}:0.4) {};
-  \node (CR) [cuadro,fill=red] at ({90 + (360/4)*2}:0.4) {};
-  \node (Tr) [tri,fill=black] at ({90 + (360/4)*3}:0.4) {};
+\newcommand{\tresct}[3][0.214275]{%
+\begin{scope}[style/.expanded=\polarshift{#2}{#3}]
+  \node (CG) [cuadro,fill=verdeOscuro] at (90:#1) {};
+  \node (CB) [cuadro,fill=blue] at ({90 + (360/4)*1}:#1) {};
+  \node (CR) [cuadro,fill=red] at ({90 + (360/4)*2}:#1) {};
+  \node (Tr) [tri,fill=black] at ({90 + (360/4)*3}:#1) {};
 \end{scope}
 }
 
-\newcommand{\trespc}[2]{%
-\begin{scope}[style/.expanded=\polarshift{#1}{#2}]
-  \node (PG) [punto,fill=verdeOscuro] at (90:0.4) {};
-  \node (PB) [punto,fill=blue] at ({90 + (360/4)*1}:0.4) {};
-  \node (PR) [punto,fill=red] at ({90 + (360/4)*2}:0.4) {};
-  \node (Cr) [cuadro,fill=black] at ({90 + (360/4)*3}:0.4) {};
+\newcommand{\trespc}[3][0.214275]{%
+\begin{scope}[style/.expanded=\polarshift{#2}{#3}]
+  \node (PG) [punto,fill=verdeOscuro] at (90:#1) {};
+  \node (PB) [punto,fill=blue] at ({90 + (360/4)*1}:#1) {};
+  \node (PR) [punto,fill=red] at ({90 + (360/4)*2}:#1) {};
+  \node (Cr) [cuadro,fill=black] at ({90 + (360/4)*3}:#1) {};
 \end{scope}
 }
 
-\newcommand{\trespp}[2]{%
-\begin{scope}[style/.expanded=\polarshift{#1}{#2}]
-  \node (PG) [punto,fill=verdeOscuro] at (90:0.4) {};
-  \node (PB) [punto,fill=blue] at ({90 + (360/4)*1}:0.4) {};
-  \node (PR) [punto,fill=red] at ({90 + (360/4)*2}:0.4) {};
-  \node (Pr) [punto,fill=black] at ({90 + (360/4)*3}:0.4) {};
+\newcommand{\trespp}[3][0.214275]{%
+\begin{scope}[style/.expanded=\polarshift{#2}{#3}]
+  \node (PG) [punto,fill=verdeOscuro] at (90:#1) {};
+  \node (PB) [punto,fill=blue] at ({90 + (360/4)*1}:#1) {};
+  \node (PR) [punto,fill=red] at ({90 + (360/4)*2}:#1) {};
+  \node (Pr) [punto,fill=black] at ({90 + (360/4)*3}:#1) {};
 \end{scope}
 }
 
-\newcommand{\trespt}[2]{%
-\begin{scope}[style/.expanded=\polarshift{#1}{#2}]
-  \node (PG) [punto,fill=verdeOscuro] at (90:0.4) {};
-  \node (PB) [punto,fill=blue] at ({90 + (360/4)*1}:0.4) {};
-  \node (PR) [punto,fill=red] at ({90 + (360/4)*2}:0.4) {};
-  \node (Tr) [tri,fill=black] at ({90 + (360/4)*3}:0.4) {};
+\newcommand{\trespt}[3][0.214275]{%
+\begin{scope}[style/.expanded=\polarshift{#2}{#3}]
+  \node (PG) [punto,fill=verdeOscuro] at (90:#1) {};
+  \node (PB) [punto,fill=blue] at ({90 + (360/4)*1}:#1) {};
+  \node (PR) [punto,fill=red] at ({90 + (360/4)*2}:#1) {};
+  \node (Tr) [tri,fill=black] at ({90 + (360/4)*3}:#1) {};
 \end{scope}
 }
 
-\newcommand{\trestc}[2]{%
-\begin{scope}[style/.expanded=\polarshift{#1}{#2}]
-  \node (TG) [tri,fill=verdeOscuro] at (90:0.4) {};
-  \node (TB) [tri,fill=blue] at ({90 + (360/4)*1}:0.4) {};
-  \node (TR) [tri,fill=red] at ({90 + (360/4)*2}:0.4) {};
-  \node (Cr) [cuadro,fill=black] at ({90 + (360/4)*3}:0.4) {};
+\newcommand{\trestc}[3][0.214275]{%
+\begin{scope}[style/.expanded=\polarshift{#2}{#3}]
+  \node (TG) [tri,fill=verdeOscuro] at (90:#1) {};
+  \node (TB) [tri,fill=blue] at ({90 + (360/4)*1}:#1) {};
+  \node (TR) [tri,fill=red] at ({90 + (360/4)*2}:#1) {};
+  \node (Cr) [cuadro,fill=black] at ({90 + (360/4)*3}:#1) {};
 \end{scope}
 }
 
-\newcommand{\trestp}[2]{%
-\begin{scope}[style/.expanded=\polarshift{#1}{#2}]
-  \node (TG) [tri,fill=verdeOscuro] at (90:0.4) {};
-  \node (TB) [tri,fill=blue] at ({90 + (360/4)*1}:0.4) {};
-  \node (TR) [tri,fill=red] at ({90 + (360/4)*2}:0.4) {};
-  \node (Pr) [punto,fill=black] at ({90 + (360/4)*3}:0.4) {};
+\newcommand{\trestp}[3][0.214275]{%
+\begin{scope}[style/.expanded=\polarshift{#2}{#3}]
+  \node (TG) [tri,fill=verdeOscuro] at (90:#1) {};
+  \node (TB) [tri,fill=blue] at ({90 + (360/4)*1}:#1) {};
+  \node (TR) [tri,fill=red] at ({90 + (360/4)*2}:#1) {};
+  \node (Pr) [punto,fill=black] at ({90 + (360/4)*3}:#1) {};
 \end{scope}
 }
 
-\newcommand{\trestt}[2]{%
-\begin{scope}[style/.expanded=\polarshift{#1}{#2}]
-  \node (TG) [tri,fill=verdeOscuro] at (90:0.4) {};
-  \node (TB) [tri,fill=blue] at ({90 + (360/4)*1}:0.4) {};
-  \node (TR) [tri,fill=red] at ({90 + (360/4)*2}:0.4) {};
-  \node (Tr) [tri,fill=black] at ({90 + (360/4)*3}:0.4) {};
+\newcommand{\trestt}[3][0.214275]{%
+\begin{scope}[style/.expanded=\polarshift{#2}{#3}]
+  \node (TG) [tri,fill=verdeOscuro] at (90:#1) {};
+  \node (TB) [tri,fill=blue] at ({90 + (360/4)*1}:#1) {};
+  \node (TR) [tri,fill=red] at ({90 + (360/4)*2}:#1) {};
+  \node (Tr) [tri,fill=black] at ({90 + (360/4)*3}:#1) {};
 \end{scope}
 }
 
-\newcommand{\doscRGc}[2]{%
-\begin{scope}[style/.expanded=\polarshift{#1}{#2}]
-  \node (CG) [cuadro,fill=verdeOscuro] at (90:0.4) {};
-  \node (CR) [cuadro,fill=red] at ({90 + (360/3)*1}:0.4) {};
-  \node (Cr) [cuadro,fill=black] at ({90 + (360/3)*2}:0.4) {};
+\newcommand{\doscRGc}[3][0.214275]{%
+\begin{scope}[style/.expanded=\polarshift{#2}{#3}]
+  \node (CG) [cuadro,fill=verdeOscuro] at (90:#1) {};
+  \node (CR) [cuadro,fill=red] at ({90 + (360/3)*1}:#1) {};
+  \node (Cr) [cuadro,fill=black] at ({90 + (360/3)*2}:#1) {};
 \end{scope}
 }
 
-\newcommand{\doscRGp}[2]{%
-\begin{scope}[style/.expanded=\polarshift{#1}{#2}]
-  \node (CG) [cuadro,fill=verdeOscuro] at (90:0.4) {};
-  \node (CR) [cuadro,fill=red] at ({90 + (360/3)*1}:0.4) {};
-  \node (Pr) [punto,fill=black] at ({90 + (360/3)*2}:0.4) {};
+\newcommand{\doscRGp}[3][0.214275]{%
+\begin{scope}[style/.expanded=\polarshift{#2}{#3}]
+  \node (CG) [cuadro,fill=verdeOscuro] at (90:#1) {};
+  \node (CR) [cuadro,fill=red] at ({90 + (360/3)*1}:#1) {};
+  \node (Pr) [punto,fill=black] at ({90 + (360/3)*2}:#1) {};
 \end{scope}
 }
 
-\newcommand{\doscRGt}[2]{%
-\begin{scope}[style/.expanded=\polarshift{#1}{#2}]
-  \node (CG) [cuadro,fill=verdeOscuro] at (90:0.4) {};
-  \node (CR) [cuadro,fill=red] at ({90 + (360/3)*1}:0.4) {};
-  \node (Tr) [tri,fill=black] at ({90 + (360/3)*2}:0.4) {};
+\newcommand{\doscRGt}[3][0.214275]{%
+\begin{scope}[style/.expanded=\polarshift{#2}{#3}]
+  \node (CG) [cuadro,fill=verdeOscuro] at (90:#1) {};
+  \node (CR) [cuadro,fill=red] at ({90 + (360/3)*1}:#1) {};
+  \node (Tr) [tri,fill=black] at ({90 + (360/3)*2}:#1) {};
 \end{scope}
 }
 
-\newcommand{\doscRBc}[2]{%
-\begin{scope}[style/.expanded=\polarshift{#1}{#2}]
-  \node (CB) [cuadro,fill=blue] at (90:0.4) {};
-  \node (CR) [cuadro,fill=red] at ({90 + (360/3)*1}:0.4) {};
-  \node (Cr) [cuadro,fill=black] at ({90 + (360/3)*2}:0.4) {};
+\newcommand{\doscRBc}[3][0.214275]{%
+\begin{scope}[style/.expanded=\polarshift{#2}{#3}]
+  \node (CB) [cuadro,fill=blue] at (90:#1) {};
+  \node (CR) [cuadro,fill=red] at ({90 + (360/3)*1}:#1) {};
+  \node (Cr) [cuadro,fill=black] at ({90 + (360/3)*2}:#1) {};
 \end{scope}
 }
 
-\newcommand{\doscRBp}[2]{%
-\begin{scope}[style/.expanded=\polarshift{#1}{#2}]
-  \node (CB) [cuadro,fill=blue] at (90:0.4) {};
-  \node (CR) [cuadro,fill=red] at ({90 + (360/3)*1}:0.4) {};
-  \node (Pr) [punto,fill=black] at ({90 + (360/3)*2}:0.4) {};
+\newcommand{\doscRBp}[3][0.214275]{%
+\begin{scope}[style/.expanded=\polarshift{#2}{#3}]
+  \node (CB) [cuadro,fill=blue] at (90:#1) {};
+  \node (CR) [cuadro,fill=red] at ({90 + (360/3)*1}:#1) {};
+  \node (Pr) [punto,fill=black] at ({90 + (360/3)*2}:#1) {};
 \end{scope}
 }
 
-\newcommand{\doscRBt}[2]{%
-\begin{scope}[style/.expanded=\polarshift{#1}{#2}]
-  \node (CB) [cuadro,fill=blue] at (90:0.4) {};
-  \node (CR) [cuadro,fill=red] at ({90 + (360/3)*1}:0.4) {};
-  \node (Tr) [tri,fill=black] at ({90 + (360/3)*2}:0.4) {};
+\newcommand{\doscRBt}[3][0.214275]{%
+\begin{scope}[style/.expanded=\polarshift{#2}{#3}]
+  \node (CB) [cuadro,fill=blue] at (90:#1) {};
+  \node (CR) [cuadro,fill=red] at ({90 + (360/3)*1}:#1) {};
+  \node (Tr) [tri,fill=black] at ({90 + (360/3)*2}:#1) {};
 \end{scope}
 }
 
-\newcommand{\doscBGc}[2]{%
-\begin{scope}[style/.expanded=\polarshift{#1}{#2}]
-  \node (CG) [cuadro,fill=verdeOscuro] at (90:0.4) {};
-  \node (CB) [cuadro,fill=blue] at ({90 + (360/3)*1}:0.4) {};
-  \node (Cr) [cuadro,fill=black] at ({90 + (360/3)*2}:0.4) {};
+\newcommand{\doscBGc}[3][0.214275]{%
+\begin{scope}[style/.expanded=\polarshift{#2}{#3}]
+  \node (CG) [cuadro,fill=verdeOscuro] at (90:#1) {};
+  \node (CB) [cuadro,fill=blue] at ({90 + (360/3)*1}:#1) {};
+  \node (Cr) [cuadro,fill=black] at ({90 + (360/3)*2}:#1) {};
 \end{scope}
 }
 
-\newcommand{\doscBGp}[2]{%
-\begin{scope}[style/.expanded=\polarshift{#1}{#2}]
-  \node (CG) [cuadro,fill=verdeOscuro] at (90:0.4) {};
-  \node (CB) [cuadro,fill=blue] at ({90 + (360/3)*1}:0.4) {};
-  \node (Pr) [punto,fill=black] at ({90 + (360/3)*2}:0.4) {};
+\newcommand{\doscBGp}[3][0.214275]{%
+\begin{scope}[style/.expanded=\polarshift{#2}{#3}]
+  \node (CG) [cuadro,fill=verdeOscuro] at (90:#1) {};
+  \node (CB) [cuadro,fill=blue] at ({90 + (360/3)*1}:#1) {};
+  \node (Pr) [punto,fill=black] at ({90 + (360/3)*2}:#1) {};
 \end{scope}
 }
 
-\newcommand{\doscBGt}[2]{%
-\begin{scope}[style/.expanded=\polarshift{#1}{#2}]
-  \node (CG) [cuadro,fill=verdeOscuro] at (90:0.4) {};
-  \node (CB) [cuadro,fill=blue] at ({90 + (360/3)*1}:0.4) {};
-  \node (Tr) [tri,fill=black] at ({90 + (360/3)*2}:0.4) {};
+\newcommand{\doscBGt}[3][0.214275]{%
+\begin{scope}[style/.expanded=\polarshift{#2}{#3}]
+  \node (CG) [cuadro,fill=verdeOscuro] at (90:#1) {};
+  \node (CB) [cuadro,fill=blue] at ({90 + (360/3)*1}:#1) {};
+  \node (Tr) [tri,fill=black] at ({90 + (360/3)*2}:#1) {};
 \end{scope}
 }
 
-\newcommand{\dospRGc}[2]{%
-\begin{scope}[style/.expanded=\polarshift{#1}{#2}]
-  \node (PG) [punto,fill=verdeOscuro] at (90:0.4) {};
-  \node (PR) [punto,fill=red] at ({90 + (360/3)*1}:0.4) {};
-  \node (Cr) [cuadro,fill=black] at ({90 + (360/3)*2}:0.4) {};
+\newcommand{\dospRGc}[3][0.214275]{%
+\begin{scope}[style/.expanded=\polarshift{#2}{#3}]
+  \node (PG) [punto,fill=verdeOscuro] at (90:#1) {};
+  \node (PR) [punto,fill=red] at ({90 + (360/3)*1}:#1) {};
+  \node (Cr) [cuadro,fill=black] at ({90 + (360/3)*2}:#1) {};
 \end{scope}
 }
 
-\newcommand{\dospRGp}[2]{%
-\begin{scope}[style/.expanded=\polarshift{#1}{#2}]
-  \node (PG) [punto,fill=verdeOscuro] at (90:0.4) {};
-  \node (PR) [punto,fill=red] at ({90 + (360/3)*1}:0.4) {};
-  \node (Pr) [punto,fill=black] at ({90 + (360/3)*2}:0.4) {};
+\newcommand{\dospRGp}[3][0.214275]{%
+\begin{scope}[style/.expanded=\polarshift{#2}{#3}]
+  \node (PG) [punto,fill=verdeOscuro] at (90:#1) {};
+  \node (PR) [punto,fill=red] at ({90 + (360/3)*1}:#1) {};
+  \node (Pr) [punto,fill=black] at ({90 + (360/3)*2}:#1) {};
 \end{scope}
 }
 
-\newcommand{\dospRGt}[2]{%
-\begin{scope}[style/.expanded=\polarshift{#1}{#2}]
-  \node (PG) [punto,fill=verdeOscuro] at (90:0.4) {};
-  \node (PR) [punto,fill=red] at ({90 + (360/3)*1}:0.4) {};
-  \node (Tr) [tri,fill=black] at ({90 + (360/3)*2}:0.4) {};
+\newcommand{\dospRGt}[3][0.214275]{%
+\begin{scope}[style/.expanded=\polarshift{#2}{#3}]
+  \node (PG) [punto,fill=verdeOscuro] at (90:#1) {};
+  \node (PR) [punto,fill=red] at ({90 + (360/3)*1}:#1) {};
+  \node (Tr) [tri,fill=black] at ({90 + (360/3)*2}:#1) {};
 \end{scope}
 }
 
-\newcommand{\dospRBc}[2]{%
-\begin{scope}[style/.expanded=\polarshift{#1}{#2}]
-  \node (PB) [punto,fill=blue] at (90:0.4) {};
-  \node (PR) [punto,fill=red] at ({90 + (360/3)*1}:0.4) {};
-  \node (Cr) [cuadro,fill=black] at ({90 + (360/3)*2}:0.4) {};
+\newcommand{\dospRBc}[3][0.214275]{%
+\begin{scope}[style/.expanded=\polarshift{#2}{#3}]
+  \node (PB) [punto,fill=blue] at (90:#1) {};
+  \node (PR) [punto,fill=red] at ({90 + (360/3)*1}:#1) {};
+  \node (Cr) [cuadro,fill=black] at ({90 + (360/3)*2}:#1) {};
 \end{scope}
 }
 
-\newcommand{\dospRBp}[2]{%
-\begin{scope}[style/.expanded=\polarshift{#1}{#2}]
-  \node (PB) [punto,fill=blue] at (90:0.4) {};
-  \node (PR) [punto,fill=red] at ({90 + (360/3)*1}:0.4) {};
-  \node (Pr) [punto,fill=black] at ({90 + (360/3)*2}:0.4) {};
+\newcommand{\dospRBp}[3][0.214275]{%
+\begin{scope}[style/.expanded=\polarshift{#2}{#3}]
+  \node (PB) [punto,fill=blue] at (90:#1) {};
+  \node (PR) [punto,fill=red] at ({90 + (360/3)*1}:#1) {};
+  \node (Pr) [punto,fill=black] at ({90 + (360/3)*2}:#1) {};
 \end{scope}
 }
 
-\newcommand{\dospRBt}[2]{%
-\begin{scope}[style/.expanded=\polarshift{#1}{#2}]
-  \node (PB) [punto,fill=blue] at (90:0.4) {};
-  \node (PR) [punto,fill=red] at ({90 + (360/3)*1}:0.4) {};
-  \node (Tr) [tri,fill=black] at ({90 + (360/3)*2}:0.4) {};
+\newcommand{\dospRBt}[3][0.214275]{%
+\begin{scope}[style/.expanded=\polarshift{#2}{#3}]
+  \node (PB) [punto,fill=blue] at (90:#1) {};
+  \node (PR) [punto,fill=red] at ({90 + (360/3)*1}:#1) {};
+  \node (Tr) [tri,fill=black] at ({90 + (360/3)*2}:#1) {};
 \end{scope}
 }
 
-\newcommand{\dospBGc}[2]{%
-\begin{scope}[style/.expanded=\polarshift{#1}{#2}]
-  \node (PG) [punto,fill=verdeOscuro] at (90:0.4) {};
-  \node (PB) [punto,fill=blue] at ({90 + (360/3)*1}:0.4) {};
-  \node (Cr) [cuadro,fill=black] at ({90 + (360/3)*2}:0.4) {};
+\newcommand{\dospBGc}[3][0.214275]{%
+\begin{scope}[style/.expanded=\polarshift{#2}{#3}]
+  \node (PG) [punto,fill=verdeOscuro] at (90:#1) {};
+  \node (PB) [punto,fill=blue] at ({90 + (360/3)*1}:#1) {};
+  \node (Cr) [cuadro,fill=black] at ({90 + (360/3)*2}:#1) {};
 \end{scope}
 }
 
-\newcommand{\dospBGp}[2]{%
-\begin{scope}[style/.expanded=\polarshift{#1}{#2}]
-  \node (PG) [punto,fill=verdeOscuro] at (90:0.4) {};
-  \node (PB) [punto,fill=blue] at ({90 + (360/3)*1}:0.4) {};
-  \node (Pr) [punto,fill=black] at ({90 + (360/3)*2}:0.4) {};
+\newcommand{\dospBGp}[3][0.214275]{%
+\begin{scope}[style/.expanded=\polarshift{#2}{#3}]
+  \node (PG) [punto,fill=verdeOscuro] at (90:#1) {};
+  \node (PB) [punto,fill=blue] at ({90 + (360/3)*1}:#1) {};
+  \node (Pr) [punto,fill=black] at ({90 + (360/3)*2}:#1) {};
 \end{scope}
 }
 
-\newcommand{\dospBGt}[2]{%
-\begin{scope}[style/.expanded=\polarshift{#1}{#2}]
-  \node (PG) [punto,fill=verdeOscuro] at (90:0.4) {};
-  \node (PB) [punto,fill=blue] at ({90 + (360/3)*1}:0.4) {};
-  \node (Tr) [tri,fill=black] at ({90 + (360/3)*2}:0.4) {};
+\newcommand{\dospBGt}[3][0.214275]{%
+\begin{scope}[style/.expanded=\polarshift{#2}{#3}]
+  \node (PG) [punto,fill=verdeOscuro] at (90:#1) {};
+  \node (PB) [punto,fill=blue] at ({90 + (360/3)*1}:#1) {};
+  \node (Tr) [tri,fill=black] at ({90 + (360/3)*2}:#1) {};
 \end{scope}
 }
 
-\newcommand{\dostRGc}[2]{%
-\begin{scope}[style/.expanded=\polarshift{#1}{#2}]
-  \node (TG) [tri,fill=verdeOscuro] at (90:0.4) {};
-  \node (TR) [tri,fill=red] at ({90 + (360/3)*1}:0.4) {};
-  \node (Cr) [cuadro,fill=black] at ({90 + (360/3)*2}:0.4) {};
+\newcommand{\dostRGc}[3][0.214275]{%
+\begin{scope}[style/.expanded=\polarshift{#2}{#3}]
+  \node (TG) [tri,fill=verdeOscuro] at (90:#1) {};
+  \node (TR) [tri,fill=red] at ({90 + (360/3)*1}:#1) {};
+  \node (Cr) [cuadro,fill=black] at ({90 + (360/3)*2}:#1) {};
 \end{scope}
 }
 
-\newcommand{\dostRGp}[2]{%
-\begin{scope}[style/.expanded=\polarshift{#1}{#2}]
-  \node (TG) [tri,fill=verdeOscuro] at (90:0.4) {};
-  \node (TR) [tri,fill=red] at ({90 + (360/3)*1}:0.4) {};
-  \node (Pr) [punto,fill=black] at ({90 + (360/3)*2}:0.4) {};
+\newcommand{\dostRGp}[3][0.214275]{%
+\begin{scope}[style/.expanded=\polarshift{#2}{#3}]
+  \node (TG) [tri,fill=verdeOscuro] at (90:#1) {};
+  \node (TR) [tri,fill=red] at ({90 + (360/3)*1}:#1) {};
+  \node (Pr) [punto,fill=black] at ({90 + (360/3)*2}:#1) {};
 \end{scope}
 }
 
-\newcommand{\dostRGt}[2]{%
-\begin{scope}[style/.expanded=\polarshift{#1}{#2}]
-  \node (TG) [tri,fill=verdeOscuro] at (90:0.4) {};
-  \node (TR) [tri,fill=red] at ({90 + (360/3)*1}:0.4) {};
-  \node (Tr) [tri,fill=black] at ({90 + (360/3)*2}:0.4) {};
+\newcommand{\dostRGt}[3][0.214275]{%
+\begin{scope}[style/.expanded=\polarshift{#2}{#3}]
+  \node (TG) [tri,fill=verdeOscuro] at (90:#1) {};
+  \node (TR) [tri,fill=red] at ({90 + (360/3)*1}:#1) {};
+  \node (Tr) [tri,fill=black] at ({90 + (360/3)*2}:#1) {};
 \end{scope}
 }
 
-\newcommand{\dostRBc}[2]{%
-\begin{scope}[style/.expanded=\polarshift{#1}{#2}]
-  \node (TB) [tri,fill=blue] at (90:0.4) {};
-  \node (TR) [tri,fill=red] at ({90 + (360/3)*1}:0.4) {};
-  \node (Cr) [cuadro,fill=black] at ({90 + (360/3)*2}:0.4) {};
+\newcommand{\dostRBc}[3][0.214275]{%
+\begin{scope}[style/.expanded=\polarshift{#2}{#3}]
+  \node (TB) [tri,fill=blue] at (90:#1) {};
+  \node (TR) [tri,fill=red] at ({90 + (360/3)*1}:#1) {};
+  \node (Cr) [cuadro,fill=black] at ({90 + (360/3)*2}:#1) {};
 \end{scope}
 }
 
-\newcommand{\dostRBp}[2]{%
-\begin{scope}[style/.expanded=\polarshift{#1}{#2}]
-  \node (TB) [tri,fill=blue] at (90:0.4) {};
-  \node (TR) [tri,fill=red] at ({90 + (360/3)*1}:0.4) {};
-  \node (Pr) [punto,fill=black] at ({90 + (360/3)*2}:0.4) {};
+\newcommand{\dostRBp}[3][0.214275]{%
+\begin{scope}[style/.expanded=\polarshift{#2}{#3}]
+  \node (TB) [tri,fill=blue] at (90:#1) {};
+  \node (TR) [tri,fill=red] at ({90 + (360/3)*1}:#1) {};
+  \node (Pr) [punto,fill=black] at ({90 + (360/3)*2}:#1) {};
 \end{scope}
 }
 
-\newcommand{\dostRBt}[2]{%
-\begin{scope}[style/.expanded=\polarshift{#1}{#2}]
-  \node (TB) [tri,fill=blue] at (90:0.4) {};
-  \node (TR) [tri,fill=red] at ({90 + (360/3)*1}:0.4) {};
-  \node (Tr) [tri,fill=black] at ({90 + (360/3)*2}:0.4) {};
+\newcommand{\dostRBt}[3][0.214275]{%
+\begin{scope}[style/.expanded=\polarshift{#2}{#3}]
+  \node (TB) [tri,fill=blue] at (90:#1) {};
+  \node (TR) [tri,fill=red] at ({90 + (360/3)*1}:#1) {};
+  \node (Tr) [tri,fill=black] at ({90 + (360/3)*2}:#1) {};
 \end{scope}
 }
 
-\newcommand{\dostBGc}[2]{%
-\begin{scope}[style/.expanded=\polarshift{#1}{#2}]
-  \node (TG) [tri,fill=verdeOscuro] at (90:0.4) {};
-  \node (TB) [tri,fill=blue] at ({90 + (360/3)*1}:0.4) {};
-  \node (Cr) [cuadro,fill=black] at ({90 + (360/3)*2}:0.4) {};
+\newcommand{\dostBGc}[3][0.214275]{%
+\begin{scope}[style/.expanded=\polarshift{#2}{#3}]
+  \node (TG) [tri,fill=verdeOscuro] at (90:#1) {};
+  \node (TB) [tri,fill=blue] at ({90 + (360/3)*1}:#1) {};
+  \node (Cr) [cuadro,fill=black] at ({90 + (360/3)*2}:#1) {};
 \end{scope}
 }
 
-\newcommand{\dostBGp}[2]{%
-\begin{scope}[style/.expanded=\polarshift{#1}{#2}]
-  \node (TG) [tri,fill=verdeOscuro] at (90:0.4) {};
-  \node (TB) [tri,fill=blue] at ({90 + (360/3)*1}:0.4) {};
-  \node (Pr) [punto,fill=black] at ({90 + (360/3)*2}:0.4) {};
+\newcommand{\dostBGp}[3][0.214275]{%
+\begin{scope}[style/.expanded=\polarshift{#2}{#3}]
+  \node (TG) [tri,fill=verdeOscuro] at (90:#1) {};
+  \node (TB) [tri,fill=blue] at ({90 + (360/3)*1}:#1) {};
+  \node (Pr) [punto,fill=black] at ({90 + (360/3)*2}:#1) {};
 \end{scope}
 }
 
-\newcommand{\dostBGt}[2]{%
-\begin{scope}[style/.expanded=\polarshift{#1}{#2}]
-  \node (TG) [tri,fill=verdeOscuro] at (90:0.4) {};
-  \node (TB) [tri,fill=blue] at ({90 + (360/3)*1}:0.4) {};
-  \node (Tr) [tri,fill=black] at ({90 + (360/3)*2}:0.4) {};
+\newcommand{\dostBGt}[3][0.214275]{%
+\begin{scope}[style/.expanded=\polarshift{#2}{#3}]
+  \node (TG) [tri,fill=verdeOscuro] at (90:#1) {};
+  \node (TB) [tri,fill=blue] at ({90 + (360/3)*1}:#1) {};
+  \node (Tr) [tri,fill=black] at ({90 + (360/3)*2}:#1) {};
 \end{scope}
 }
 
-\newcommand{\unocRc}[2]{%
-\begin{scope}[style/.expanded=\polarshift{#1}{#2}]
-  \node (CR) [cuadro,fill=red] at (90:0.4) {};
-  \node (Cr) [cuadro,fill=black] at ({90 + (360/2)*1}:0.4) {};
+\newcommand{\unocRc}[3][0.214275]{%
+\begin{scope}[style/.expanded=\polarshift{#2}{#3}]
+  \node (CR) [cuadro,fill=red] at (90:#1) {};
+  \node (Cr) [cuadro,fill=black] at ({90 + (360/2)*1}:#1) {};
 \end{scope}
 }
 
-\newcommand{\unocRp}[2]{%
-\begin{scope}[style/.expanded=\polarshift{#1}{#2}]
-  \node (CR) [cuadro,fill=red] at (90:0.4) {};
-  \node (Pr) [punto,fill=black] at ({90 + (360/2)*1}:0.4) {};
+\newcommand{\unocRp}[3][0.214275]{%
+\begin{scope}[style/.expanded=\polarshift{#2}{#3}]
+  \node (CR) [cuadro,fill=red] at (90:#1) {};
+  \node (Pr) [punto,fill=black] at ({90 + (360/2)*1}:#1) {};
 \end{scope}
 }
 
-\newcommand{\unocRt}[2]{%
-\begin{scope}[style/.expanded=\polarshift{#1}{#2}]
-  \node (CR) [cuadro,fill=red] at (90:0.4) {};
-  \node (Tr) [tri,fill=black] at ({90 + (360/2)*1}:0.4) {};
+\newcommand{\unocRt}[3][0.214275]{%
+\begin{scope}[style/.expanded=\polarshift{#2}{#3}]
+  \node (CR) [cuadro,fill=red] at (90:#1) {};
+  \node (Tr) [tri,fill=black] at ({90 + (360/2)*1}:#1) {};
 \end{scope}
 }
 
-\newcommand{\unocBc}[3][0.4]{%
+\newcommand{\unocBc}[3][0.214275]{%
 \begin{scope}[style/.expanded=\polarshift{#2}{#3}]
   \node (CB) [cuadro,fill=blue] at (90:#1) {};
   \node (Cr) [cuadro,fill=black] at ({90 + (360/2)*1}:#1) {};
 \end{scope}
 }
 
-\newcommand{\unocBp}[3][0.4]{%
+\newcommand{\unocBp}[3][0.214275]{%
 \begin{scope}[style/.expanded=\polarshift{#2}{#3}]
   \node (CB) [cuadro,fill=blue] at (90:#1) {};
   \node (Pr) [punto,fill=black] at ({90 + (360/2)*1}:#1) {};
 \end{scope}
 }
 
-\newcommand{\unocBt}[3][0.4]{%
+\newcommand{\unocBt}[3][0.214275]{%
 \begin{scope}[style/.expanded=\polarshift{#2}{#3}]
   \node (CB) [cuadro,fill=blue] at (90:#1) {};
   \node (Tr) [tri,fill=black] at ({90 + (360/2)*1}:#1) {};
 \end{scope}
 }
 
-\newcommand{\unocGc}[2]{%
-\begin{scope}[style/.expanded=\polarshift{#1}{#2}]
-  \node (CG) [cuadro,fill=verdeOscuro] at (90:0.4) {};
-  \node (Cr) [cuadro,fill=black] at ({90 + (360/2)*1}:0.4) {};
+\newcommand{\unocGc}[3][0.214275]{%
+\begin{scope}[style/.expanded=\polarshift{#2}{#3}]
+  \node (CG) [cuadro,fill=verdeOscuro] at (90:#1) {};
+  \node (Cr) [cuadro,fill=black] at ({90 + (360/2)*1}:#1) {};
 \end{scope}
 }
 
-\newcommand{\unocGp}[2]{%
-\begin{scope}[style/.expanded=\polarshift{#1}{#2}]
-  \node (CG) [cuadro,fill=verdeOscuro] at (90:0.4) {};
-  \node (Pr) [punto,fill=black] at ({90 + (360/2)*1}:0.4) {};
+\newcommand{\unocGp}[3][0.214275]{%
+\begin{scope}[style/.expanded=\polarshift{#2}{#3}]
+  \node (CG) [cuadro,fill=verdeOscuro] at (90:#1) {};
+  \node (Pr) [punto,fill=black] at ({90 + (360/2)*1}:#1) {};
 \end{scope}
 }
 
-\newcommand{\unocGt}[2]{%
-\begin{scope}[style/.expanded=\polarshift{#1}{#2}]
-  \node (CG) [cuadro,fill=verdeOscuro] at (90:0.4) {};
-  \node (Tr) [tri,fill=black] at ({90 + (360/2)*1}:0.4) {};
+\newcommand{\unocGt}[3][0.214275]{%
+\begin{scope}[style/.expanded=\polarshift{#2}{#3}]
+  \node (CG) [cuadro,fill=verdeOscuro] at (90:#1) {};
+  \node (Tr) [tri,fill=black] at ({90 + (360/2)*1}:#1) {};
 \end{scope}
 }
 
-\newcommand{\unopRc}[2]{%
-\begin{scope}[style/.expanded=\polarshift{#1}{#2}]
-  \node (PR) [punto,fill=red] at (90:0.4) {};
-  \node (Cr) [cuadro,fill=black] at ({90 + (360/2)*1}:0.4) {};
+\newcommand{\unopRc}[3][0.214275]{%
+\begin{scope}[style/.expanded=\polarshift{#2}{#3}]
+  \node (PR) [punto,fill=red] at (90:#1) {};
+  \node (Cr) [cuadro,fill=black] at ({90 + (360/2)*1}:#1) {};
 \end{scope}
 }
 
-\newcommand{\unopRp}[2]{%
-\begin{scope}[style/.expanded=\polarshift{#1}{#2}]
-  \node (PR) [punto,fill=red] at (90:0.4) {};
-  \node (Pr) [punto,fill=black] at ({90 + (360/2)*1}:0.4) {};
+\newcommand{\unopRp}[3][0.214275]{%
+\begin{scope}[style/.expanded=\polarshift{#2}{#3}]
+  \node (PR) [punto,fill=red] at (90:#1) {};
+  \node (Pr) [punto,fill=black] at ({90 + (360/2)*1}:#1) {};
 \end{scope}
 }
 
-\newcommand{\unopRt}[2]{%
-\begin{scope}[style/.expanded=\polarshift{#1}{#2}]
-  \node (PR) [punto,fill=red] at (90:0.4) {};
-  \node (Tr) [tri,fill=black] at ({90 + (360/2)*1}:0.4) {};
+\newcommand{\unopRt}[3][0.214275]{%
+\begin{scope}[style/.expanded=\polarshift{#2}{#3}]
+  \node (PR) [punto,fill=red] at (90:#1) {};
+  \node (Tr) [tri,fill=black] at ({90 + (360/2)*1}:#1) {};
 \end{scope}
 }
 
-\newcommand{\unopBc}[3][0.4]{%
+\newcommand{\unopBc}[3][0.214275]{%
 \begin{scope}[style/.expanded=\polarshift{#2}{#3}]
   \node (PB) [punto,fill=blue] at (90:#1) {};
   \node (Cr) [cuadro,fill=black] at ({90 + (360/2)*1}:#1) {};
 \end{scope}
 }
 
-\newcommand{\unopBp}[3][0.4]{%
+\newcommand{\unopBp}[3][0.214275]{%
 \begin{scope}[style/.expanded=\polarshift{#2}{#3}]
   \node (PB) [punto,fill=blue] at (90:#1) {};
   \node (Pr) [punto,fill=black] at ({90 + (360/2)*1}:#1) {};
 \end{scope}
 }
 
-\newcommand{\unopBt}[3][0.4]{%
+\newcommand{\unopBpdos}[3][0.214275]{%
+\begin{scope}[style/.expanded=\polarshift{#2}{#3}]
+  \node (PB) [punto2,fill=blue] at (90:#1) {};
+  \node (Pr) [punto2,fill=black] at ({90 + (360/2)*1}:#1) {};
+\end{scope}
+}
+
+\newcommand{\unopBt}[3][0.214275]{%
 \begin{scope}[style/.expanded=\polarshift{#2}{#3}]
   \node (PB) [punto,fill=blue] at (90:#1) {};
   \node (Tr) [tri,fill=black] at ({90 + (360/2)*1}:#1) {};
 \end{scope}
 }
 
-\newcommand{\unopGc}[2]{%
-\begin{scope}[style/.expanded=\polarshift{#1}{#2}]
-  \node (PG) [punto,fill=verdeOscuro] at (90:0.4) {};
-  \node (Cr) [cuadro,fill=black] at ({90 + (360/2)*1}:0.4) {};
+\newcommand{\unopGc}[3][0.214275]{%
+\begin{scope}[style/.expanded=\polarshift{#2}{#3}]
+  \node (PG) [punto,fill=verdeOscuro] at (90:#1) {};
+  \node (Cr) [cuadro,fill=black] at ({90 + (360/2)*1}:#1) {};
 \end{scope}
 }
 
-\newcommand{\unopGp}[2]{%
-\begin{scope}[style/.expanded=\polarshift{#1}{#2}]
-  \node (PG) [punto,fill=verdeOscuro] at (90:0.4) {};
-  \node (Pr) [punto,fill=black] at ({90 + (360/2)*1}:0.4) {};
+\newcommand{\unopGp}[3][0.214275]{%
+\begin{scope}[style/.expanded=\polarshift{#2}{#3}]
+  \node (PG) [punto,fill=verdeOscuro] at (90:#1) {};
+  \node (Pr) [punto,fill=black] at ({90 + (360/2)*1}:#1) {};
 \end{scope}
 }
 
-\newcommand{\unopGt}[2]{%
-\begin{scope}[style/.expanded=\polarshift{#1}{#2}]
-  \node (PG) [punto,fill=verdeOscuro] at (90:0.4) {};
-  \node (Tr) [tri,fill=black] at ({90 + (360/2)*1}:0.4) {};
+\newcommand{\unopGt}[3][0.214275]{%
+\begin{scope}[style/.expanded=\polarshift{#2}{#3}]
+  \node (PG) [punto,fill=verdeOscuro] at (90:#1) {};
+  \node (Tr) [tri,fill=black] at ({90 + (360/2)*1}:#1) {};
 \end{scope}
 }
 
-\newcommand{\unotRc}[2]{%
-\begin{scope}[style/.expanded=\polarshift{#1}{#2}]
-  \node (TR) [tri,fill=red] at (90:0.4) {};
-  \node (Cr) [cuadro,fill=black] at ({90 + (360/2)*1}:0.4) {};
+\newcommand{\unopGtdos}[3][0.214275]{%
+\begin{scope}[style/.expanded=\polarshift{#2}{#3}]
+  \node (PG) [punto2,fill=verdeOscuro] at (90:#1) {};
+  \node (Tr) [tri2,fill=black] at ({90 + (360/2)*1}:#1) {};
 \end{scope}
 }
 
-\newcommand{\unotRp}[2]{%
-\begin{scope}[style/.expanded=\polarshift{#1}{#2}]
-  \node (TR) [tri,fill=red] at (90:0.4) {};
-  \node (Pr) [punto,fill=black] at ({90 + (360/2)*1}:0.4) {};
+\newcommand{\unotRc}[3][0.214275]{%
+\begin{scope}[style/.expanded=\polarshift{#2}{#3}]
+  \node (TR) [tri,fill=red] at (90:#1) {};
+  \node (Cr) [cuadro,fill=black] at ({90 + (360/2)*1}:#1) {};
 \end{scope}
 }
 
-\newcommand{\unotRt}[2]{%
-\begin{scope}[style/.expanded=\polarshift{#1}{#2}]
-  \node (TR) [tri,fill=red] at (90:0.4) {};
-  \node (Tr) [tri,fill=black] at ({90 + (360/2)*1}:0.4) {};
+\newcommand{\unotRp}[3][0.214275]{%
+\begin{scope}[style/.expanded=\polarshift{#2}{#3}]
+  \node (TR) [tri,fill=red] at (90:#1) {};
+  \node (Pr) [punto,fill=black] at ({90 + (360/2)*1}:#1) {};
 \end{scope}
 }
 
-\newcommand{\unotYt}[2]{%
-\begin{scope}[style/.expanded=\polarshift{#1}{#2}]
-  \node (TY) [tri,fill=yellow] at (90:0.4) {};
-  \node (Tr) [tri,fill=black] at ({90 + (360/2)*1}:0.4) {};
+\newcommand{\unotRt}[3][0.214275]{%
+\begin{scope}[style/.expanded=\polarshift{#2}{#3}]
+  \node (TR) [tri,fill=red] at (90:#1) {};
+  \node (Tr) [tri,fill=black] at ({90 + (360/2)*1}:#1) {};
 \end{scope}
 }
 
-\newcommand{\unotBc}[3][0.4]{%
+\newcommand{\unotYt}[3][0.214275]{%
+\begin{scope}[style/.expanded=\polarshift{#2}{#3}]
+  \node (TY) [tri2,fill=yellow] at (90:#1) {};
+  \node (Tr) [tri2,fill=black] at ({90 + (360/2)*1}:#1) {};
+\end{scope}
+}
+
+\newcommand{\unotBc}[3][0.214275]{%
 \begin{scope}[style/.expanded=\polarshift{#2}{#3}]
   \node (TB) [tri,fill=blue] at (90:#1) {};
   \node (Cr) [cuadro,fill=black] at ({90 + (360/2)*1}:#1) {};
 \end{scope}
 }
 
-\newcommand{\unotBp}[3][0.4]{%
+\newcommand{\unotBp}[3][0.214275]{%
 \begin{scope}[style/.expanded=\polarshift{#2}{#3}]
   \node (TB) [tri,fill=blue] at (90:#1) {};
   \node (Pr) [punto,fill=black] at ({90 + (360/2)*1}:#1) {};
 \end{scope}
 }
 
-\newcommand{\unotBt}[3][0.4]{%
+\newcommand{\unotBpdos}[3][0.214275]{%
+\begin{scope}[style/.expanded=\polarshift{#2}{#3}]
+  \node (TB) [tri2,fill=blue] at (90:#1) {};
+  \node (Pr) [punto2,fill=black] at ({90 + (360/2)*1}:#1) {};
+\end{scope}
+}
+
+\newcommand{\unotBt}[3][0.214275]{%
 \begin{scope}[style/.expanded=\polarshift{#2}{#3}]
   \node (TB) [tri,fill=blue] at (90:#1) {};
   \node (Tr) [tri,fill=black] at ({90 + (360/2)*1}:#1) {};
 \end{scope}
 }
 
-\newcommand{\unotGc}[2]{%
-\begin{scope}[style/.expanded=\polarshift{#1}{#2}]
-  \node (TG) [tri,fill=verdeOscuro] at (90:0.4) {};
-  \node (Cr) [cuadro,fill=black] at ({90 + (360/2)*1}:0.4) {};
+\newcommand{\unotGc}[3][0.214275]{%
+\begin{scope}[style/.expanded=\polarshift{#2}{#3}]
+  \node (TG) [tri,fill=verdeOscuro] at (90:#1) {};
+  \node (Cr) [cuadro,fill=black] at ({90 + (360/2)*1}:#1) {};
 \end{scope}
 }
 
-\newcommand{\unotGp}[2]{%
-\begin{scope}[style/.expanded=\polarshift{#1}{#2}]
-  \node (TG) [tri,fill=verdeOscuro] at (90:0.4) {};
-  \node (Pr) [punto,fill=black] at ({90 + (360/2)*1}:0.4) {};
+\newcommand{\unotGp}[3][0.214275]{%
+\begin{scope}[style/.expanded=\polarshift{#2}{#3}]
+  \node (TG) [tri,fill=verdeOscuro] at (90:#1) {};
+  \node (Pr) [punto,fill=black] at ({90 + (360/2)*1}:#1) {};
 \end{scope}
 }
 
-\newcommand{\unotGt}[2]{%
-\begin{scope}[style/.expanded=\polarshift{#1}{#2}]
-  \node (TG) [tri,fill=verdeOscuro] at (90:0.4) {};
-  \node (Tr) [tri,fill=black] at ({90 + (360/2)*1}:0.4) {};
+\newcommand{\unotGt}[3][0.214275]{%
+\begin{scope}[style/.expanded=\polarshift{#2}{#3}]
+  \node (TG) [tri,fill=verdeOscuro] at (90:#1) {};
+  \node (Tr) [tri,fill=black] at ({90 + (360/2)*1}:#1) {};
 \end{scope}
 }
 
-\newcommand{\tri}[2]{%
-\begin{scope}[style/.expanded=\polarshift{#1}{#2}]
+\newcommand{\unotGtdos}[3][0.214275]{%
+\begin{scope}[style/.expanded=\polarshift{#2}{#3}]
+  \node (TG) [tri2,fill=verdeOscuro] at (90:#1) {};
+  \node (Tr) [tri2,fill=black] at ({90 + (360/2)*1}:#1) {};
+\end{scope}
+}
+
+\newcommand{\tri}[3][0.214275]{%
+\begin{scope}[style/.expanded=\polarshift{#2}{#3}]
   \node (Tr) [tri,fill=black] at (0,0) {};
 \end{scope}
 }
 
-\newcommand{\punto}[2]{%
-\begin{scope}[style/.expanded=\polarshift{#1}{#2}]
+\newcommand{\tridos}[3][0.214275]{%
+\begin{scope}[style/.expanded=\polarshift{#2}{#3}]
+  \node (Tr) [tri2,fill=black] at (0,0) {};
+\end{scope}
+}
+
+\newcommand{\punto}[3][0.214275]{%
+\begin{scope}[style/.expanded=\polarshift{#2}{#3}]
   \node (Pr) [punto,fill=black] at (0,0) {};
 \end{scope}
 }
 
-\newcommand{\puntodos}[2]{%
-\begin{scope}[style/.expanded=\polarshift{#1}{#2}]
+\newcommand{\puntodos}[3][0.214275]{%
+\begin{scope}[style/.expanded=\polarshift{#2}{#3}]
   \node (Pr) [punto2,fill=black] at (0,0) {};
 \end{scope}
 }
 
-\newcommand{\cuadro}[2]{%
-\begin{scope}[style/.expanded=\polarshift{#1}{#2}]
+\newcommand{\puntotres}[3][0.214275]{%
+\begin{scope}[style/.expanded=\polarshift{#2}{#3}]
+  \node (Pr) [punto3,fill=black] at (0,0) {};
+\end{scope}
+}
+
+\newcommand{\cuadro}[3][0.214275]{%
+\begin{scope}[style/.expanded=\polarshift{#2}{#3}]
   \node (Cr) [cuadro,fill=black] at (0,0) {};
 \end{scope}
 }
 
-\newcommand{\unocBdospp}[2]{%
-\begin{scope}[style/.expanded=\polarshift{#1}{#2}]
-  \node (PG) [punto,fill=verdeOscuro] at (90:0.4) {};
-  \node (CB) [cuadro,fill=blue] at ({90 + (360/4)*1}:0.4) {};
-  \node (PR) [punto,fill=red] at ({90 + (360/4)*2}:0.4) {};
-  \node (Pr) [punto,fill=black] at ({90 + (360/4)*3}:0.4) {};
+\newcommand{\unocBdospp}[3][0.214275]{%
+\begin{scope}[style/.expanded=\polarshift{#2}{#3}]
+  \node (PG) [punto,fill=verdeOscuro] at (90:#1) {};
+  \node (CB) [cuadro,fill=blue] at ({90 + (360/4)*1}:#1) {};
+  \node (PR) [punto,fill=red] at ({90 + (360/4)*2}:#1) {};
+  \node (Pr) [punto,fill=black] at ({90 + (360/4)*3}:#1) {};
 \end{scope}
 }
 
-\newcommand{\unopBunopYunotR}[2]{%
-\begin{scope}[style/.expanded=\polarshift{#1}{#2}]
-  \node (PY) [punto,fill=yellow] at ({90 + (360/3)*2}:0.4) {};
-  \node (PB) [punto,fill=blue] at ({90}:0.4) {};
-  \node (TR) [tri,fill=red] at ({90 + (360/3)*1}:0.4) {};
+\newcommand{\unopBunopYunotR}[3][0.214275]{%
+\begin{scope}[style/.expanded=\polarshift{#2}{#3}]
+  \node (PY) [punto2,fill=yellow] at ({90 + (360/3)*2}:#1) {};
+  \node (PB) [punto2,fill=blue] at ({90}:#1) {};
+  \node (TR) [tri2,fill=red] at ({90 + (360/3)*1}:#1) {};
 \end{scope}
 }
 
-\newcommand{\unotBunotYunopG}[2]{%
-\begin{scope}[style/.expanded=\polarshift{#1}{#2}]
-  \node (TY) [tri,fill=yellow] at ({90 + (360/3)*2}:0.4) {};
-  \node (TB) [tri,fill=blue] at ({90}:0.4) {};
-  \node (PG) [punto,fill=verdeOscuro] at ({90 + (360/3)*1}:0.4) {};
+\newcommand{\unopBunopYunotRdos}[3][0.214275]{%
+\begin{scope}[style/.expanded=\polarshift{#2}{#3}]
+  \node (PY) [punto2,fill=yellow] at ({90 + (360/3)*2}:0.214275) {};
+  \node (PB) [punto2,fill=blue] at ({90}:0.214275) {};
+  \node (TR) [tri2,fill=red] at ({90 + (360/3)*1}:0.214275) {};
 \end{scope}
 }
 
-\newcommand{\unotGunopR}[2]{%
-\begin{scope}[style/.expanded=\polarshift{#1}{#2}]
-  \node (PR) [punto,fill=red] at ({90 + 180}:0.4) {};
-  \node (TG) [tri,fill=verdeOscuro] at ({90}:0.4) {};
+\newcommand{\unotBunotYunopGdos}[3][0.214275]{%
+\begin{scope}[style/.expanded=\polarshift{#2}{#3}]
+  \node (TY) [tri2,fill=yellow] at ({90 + (360/3)*2}:0.214275) {};
+  \node (TB) [tri2,fill=blue] at ({90}:0.214275) {};
+  \node (PG) [punto2,fill=verdeOscuro] at ({90 + (360/3)*1}:0.214275) {};
 \end{scope}
 }
 
-\newcommand{\unotY}[2]{%
-\begin{scope}[style/.expanded=\polarshift{#1}{#2}]
-  \node (TY) [tri,fill=yellow] at (0,0) {};
+\newcommand{\unotBunotYunopG}[3][0.214275]{%
+\begin{scope}[style/.expanded=\polarshift{#2}{#3}]
+  \node (TY) [tri2,fill=yellow] at ({90 + (360/3)*2}:#1) {};
+  \node (TB) [tri2,fill=blue] at ({90}:#1) {};
+  \node (PG) [punto2,fill=verdeOscuro] at ({90 + (360/3)*1}:#1) {};
 \end{scope}
 }
 
-\newcommand{\unotBunopG}[2]{%
-\begin{scope}[style/.expanded=\polarshift{#1}{#2}]
-  \node (TB) [tri,fill=blue] at ({90}:0.4) {};
-  \node (PG) [punto,fill=verdeOscuro] at ({90 + (360/2)*1}:0.4) {};
+\newcommand{\unotGunopRdos}[3][0.214275]{%
+\begin{scope}[style/.expanded=\polarshift{#2}{#3}]
+  \node (PR) [punto2,fill=red] at ({90 + 180}:0.214275) {};
+  \node (TG) [tri2,fill=verdeOscuro] at ({90}:0.214275) {};
 \end{scope}
 }
 
-\newcommand{\unotRunopY}[2]{%
-\begin{scope}[style/.expanded=\polarshift{#1}{#2}]
-  \node (PY) [punto,fill=yellow] at ({90 + (360/2)*1}:0.4) {};
-  \node (TR) [tri,fill=red] at ({90}:0.4) {};
+\newcommand{\unotGunopR}[3][0.214275]{%
+\begin{scope}[style/.expanded=\polarshift{#2}{#3}]
+  \node (PR) [punto,fill=red] at ({90 + 180}:#1) {};
+  \node (TG) [tri,fill=verdeOscuro] at ({90}:#1) {};
 \end{scope}
 }
 
-\newcommand{\unotGunotYt}[2]{%
-\begin{scope}[style/.expanded=\polarshift{#1}{#2}]
-  \node (TY) [tri,fill=yellow] at ({90 + (360/3)*1}:0.4) {};
-  \node (TG) [tri,fill=verdeOscuro] at ({90}:0.4) {};
-  \node (t)  [tri, fill=black] at ({90 + (360/3)*2}:0.4) {};
+\newcommand{\unotY}[3][0.214275]{%
+\begin{scope}[style/.expanded=\polarshift{#2}{#3}]
+  \node (TY) [tri2,fill=yellow] at (0,0) {};
 \end{scope}
 }
 
-\newcommand{\unotGunotY}[2]{%
-\begin{scope}[style/.expanded=\polarshift{#1}{#2}]
-  \node (TY) [tri,fill=yellow] at ({90 + (360/2)*1}:0.4) {};
-  \node (TG) [tri,fill=verdeOscuro] at ({90}:0.4) {};
+\newcommand{\unotBunopG}[3][0.214275]{%
+\begin{scope}[style/.expanded=\polarshift{#2}{#3}]
+  \node (TB) [tri,fill=blue] at ({90}:#1) {};
+  \node (PG) [punto,fill=verdeOscuro] at ({90 + (360/2)*1}:#1) {};
 \end{scope}
 }
 
-\newcommand{\unotBunopR}[2]{%
-\begin{scope}[style/.expanded=\polarshift{#1}{#2}]
-  \node (PR) [punto,fill=red] at ({90 + (360/2)*1}:0.4) {};
-  \node (TB) [tri,fill=blue] at ({90}:0.4) {};
+\newcommand{\unotBunopGdos}[3][0.214275]{%
+\begin{scope}[style/.expanded=\polarshift{#2}{#3}]
+  \node (TB) [tri2,fill=blue] at ({90}:#1) {};
+  \node (PG) [punto2,fill=verdeOscuro] at ({90 + (360/2)*1}:#1) {};
 \end{scope}
 }
 
-\newcommand{\unopBunopRp}[2]{%
-\begin{scope}[style/.expanded=\polarshift{#1}{#2}]
-  \node (PR) [punto,fill=red] at ({90 + (360/3)*1}:0.4) {};
-  \node (PB) [punto,fill=blue] at ({90}:0.4) {};
-  \node (p) [punto,fill=black] at ({90 + (360/3)*2}:0.4) {};
+\newcommand{\unotRunopY}[3][0.214275]{%
+\begin{scope}[style/.expanded=\polarshift{#2}{#3}]
+  \node (PY) [punto2,fill=yellow] at ({90 + (360/2)*1}:#1) {};
+  \node (TR) [tri2,fill=red] at ({90}:#1) {};
 \end{scope}
 }
 
-\newcommand{\unopBunopRt}[2]{%
-\begin{scope}[style/.expanded=\polarshift{#1}{#2}]
-  \node (PR) [punto,fill=red] at ({90 + (360/3)*1}:0.4) {};
-  \node (PB) [punto,fill=blue] at ({90}:0.4) {};
-  \node (T) [tri,fill=black] at ({90 + (360/3)*2}:0.4) {};
+\newcommand{\unotGunotYt}[3][0.214275]{%
+\begin{scope}[style/.expanded=\polarshift{#2}{#3}]
+  \node (TY) [tri2,fill=yellow] at ({90 + (360/3)*1}:#1) {};
+  \node (TG) [tri2,fill=verdeOscuro] at ({90}:#1) {};
+  \node (t)  [tri2, fill=black] at ({90 + (360/3)*2}:#1) {};
 \end{scope}
 }
 
-\newcommand{\unopBunopR}[2]{%
-\begin{scope}[style/.expanded=\polarshift{#1}{#2}]
-  \node (PR) [punto,fill=red] at ({90 + (360/2)*1}:0.4) {};
-  \node (PB) [punto,fill=blue] at ({90}:0.4) {};
+\newcommand{\unotGunotY}[3][0.214275]{%
+\begin{scope}[style/.expanded=\polarshift{#2}{#3}]
+  \node (TY) [tri2,fill=yellow] at ({90 + (360/2)*1}:#1) {};
+  \node (TG) [tri2,fill=verdeOscuro] at ({90}:#1) {};
 \end{scope}
 }
 
-\newcommand{\unopY}[2]{%
-\begin{scope}[style/.expanded=\polarshift{#1}{#2}]
-  \node (PY) [punto,fill=yellow] at (0,0) {};
+\newcommand{\unotBunopR}[3][0.214275]{%
+\begin{scope}[style/.expanded=\polarshift{#2}{#3}]
+  \node (PR) [punto,fill=red] at ({90 + (360/2)*1}:#1) {};
+  \node (TB) [tri,fill=blue] at ({90}:#1) {};
 \end{scope}
 }
 
-\newcommand{\unopGunopY}[2]{%
-\begin{scope}[style/.expanded=\polarshift{#1}{#2}]
-  \node (PY) [punto,fill=yellow] at ({90 + (360/2)*1}:0.4) {};
-  \node (PG) [punto,fill=verdeOscuro] at ({90}:0.4) {};
+\newcommand{\unotBunopRdos}[3][0.214275]{%
+\begin{scope}[style/.expanded=\polarshift{#2}{#3}]
+  \node (PR) [punto2,fill=red] at ({90 + (360/2)*1}:#1) {};
+  \node (TB) [tri2,fill=blue] at ({90}:#1) {};
 \end{scope}
 }
 
-\newcommand{\unopGunotR}[2]{%
-\begin{scope}[style/.expanded=\polarshift{#1}{#2}]
-  \node (TR) [tri,fill=red] at ({90 + (360/2)*1}:0.4) {};
-  \node (PG) [punto,fill=verdeOscuro] at ({90}:0.4) {};
+\newcommand{\unopBunopRp}[3][0.214275]{%
+\begin{scope}[style/.expanded=\polarshift{#2}{#3}]
+  \node (PR) [punto,fill=red] at ({90 + (360/3)*1}:#1) {};
+  \node (PB) [punto,fill=blue] at ({90}:#1) {};
+  \node (p) [punto,fill=black] at ({90 + (360/3)*2}:#1) {};
 \end{scope}
 }
 
-\newcommand{\unotBunotR}[2]{%
-\begin{scope}[style/.expanded=\polarshift{#1}{#2}]
-  \node (TR) [tri,fill=red] at ({90 + (360/2)*1}:0.4) {};
-  \node (TB) [tri,fill=blue] at ({90}:0.4) {};
+\newcommand{\unopBunopRpdos}[3][0.214275]{%
+\begin{scope}[style/.expanded=\polarshift{#2}{#3}]
+  \node (PR) [punto2,fill=red] at ({90 + (360/3)*1}:#1) {};
+  \node (PB) [punto2,fill=blue] at ({90}:#1) {};
+  \node (p) [punto2,fill=black] at ({90 + (360/3)*2}:#1) {};
 \end{scope}
 }
 
-\newcommand{\unotBunotG}[2]{%
-\begin{scope}[style/.expanded=\polarshift{#1}{#2}]
-  \node (TG) [tri,fill=verdeOscuro] at ({90 + (360/2)*1}:0.4) {};
-  \node (TB) [tri,fill=blue] at ({90}:0.4) {};
+\newcommand{\unopBunopRt}[3][0.214275]{%
+\begin{scope}[style/.expanded=\polarshift{#2}{#3}]
+  \node (PR) [punto,fill=red] at ({90 + (360/3)*1}:#1) {};
+  \node (PB) [punto,fill=blue] at ({90}:#1) {};
+  \node (T) [tri,fill=black] at ({90 + (360/3)*2}:#1) {};
 \end{scope}
 }
 
-\newcommand{\unotBunopY}[2]{%
-\begin{scope}[style/.expanded=\polarshift{#1}{#2}]
-  \node (PY) [punto,fill=yellow] at ({90 + (360/2)*1}:0.4) {};
-  \node (TB) [tri,fill=blue] at ({90}:0.4) {};
+\newcommand{\unopBunopR}[3][0.214275]{%
+\begin{scope}[style/.expanded=\polarshift{#2}{#3}]
+  \node (PR) [punto,fill=red] at ({90 + (360/2)*1}:#1) {};
+  \node (PB) [punto,fill=blue] at ({90}:#1) {};
 \end{scope}
 }
 
-\newcommand{\unopBunopG}[2]{%
-\begin{scope}[style/.expanded=\polarshift{#1}{#2}]
-  \node (PG) [punto,fill=verdeOscuro] at ({90 + (360/2)*1}:0.4) {};
-  \node (PB) [punto,fill=blue] at ({90}:0.4) {};
+\newcommand{\unopBunopRdos}[3][0.214275]{%
+\begin{scope}[style/.expanded=\polarshift{#2}{#3}]
+  \node (PR) [punto2,fill=red] at ({90 + (360/2)*1}:#1) {};
+  \node (PB) [punto2,fill=blue] at ({90}:#1) {};
 \end{scope}
 }
 
-\newcommand{\unopGunopR}[2]{%
-\begin{scope}[style/.expanded=\polarshift{#1}{#2}]
-  \node (PR) [punto,fill=red] at ({90 + (360/2)*1}:0.4) {};
-  \node (PG) [punto,fill=verdeOscuro] at ({90}:0.4) {};
+\newcommand{\unopY}[3][0.214275]{%
+\begin{scope}[style/.expanded=\polarshift{#2}{#3}]
+  \node (PY) [punto2,fill=yellow] at (0,0) {};
 \end{scope}
 }
 
-\newcommand{\unopGunopRp}[2]{%
-\begin{scope}[style/.expanded=\polarshift{#1}{#2}]
-  \node (PR) [punto,fill=red] at ({90 + (360/3)*1}:0.4) {};
-  \node (PG) [punto,fill=verdeOscuro] at ({90}:0.4) {};
-  \node (p) [punto,fill=black] at ({90 + (360/3)*2}:0.4) {};
+\newcommand{\unopGunopY}[3][0.214275]{%
+\begin{scope}[style/.expanded=\polarshift{#2}{#3}]
+  \node (PY) [punto2,fill=yellow] at ({90 + (360/2)*1}:#1) {};
+  \node (PG) [punto2,fill=verdeOscuro] at ({90}:#1) {};
 \end{scope}
 }
 
-\newcommand{\unopBunotGunotR}[2]{%
-\begin{scope}[style/.expanded=\polarshift{#1}{#2}]
-  \node (TG) [tri,fill=verdeOscuro] at (90:0.4) {};
-  \node (PB) [punto,fill=blue] at ({90 + (360/3)*1}:0.4) {};
-  \node (TR) [tri,fill=red] at ({90 + (360/3)*2}:0.4) {};
+\newcommand{\unopGunotR}[3][0.214275]{%
+\begin{scope}[style/.expanded=\polarshift{#2}{#3}]
+  \node (TR) [tri,fill=red] at ({90 + (360/2)*1}:#1) {};
+  \node (PG) [punto,fill=verdeOscuro] at ({90}:#1) {};
 \end{scope}
 }
 
-\newcommand{\unocGunocR}[2]{%
-\begin{scope}[style/.expanded=\polarshift{#1}{#2}]
-  \node (CR) [cuadro,fill=red] at ({90 + (360/2)*1}:0.4) {};
-  \node (CG) [cuadro,fill=verdeOscuro] at ({90}:0.4) {};
+\newcommand{\unopGunotRdos}[3][0.214275]{%
+\begin{scope}[style/.expanded=\polarshift{#2}{#3}]
+  \node (TR) [tri2,fill=red] at ({90 + (360/2)*1}:#1) {};
+  \node (PG) [punto2,fill=verdeOscuro] at ({90}:#1) {};
 \end{scope}
 }
 
-\newcommand{\unotGunotR}[2]{%
-\begin{scope}[style/.expanded=\polarshift{#1}{#2}]
-  \node (TR) [tri,fill=red] at ({90 + (360/2)*1}:0.4) {};
-  \node (TG) [tri,fill=verdeOscuro] at ({90}:0.4) {};
+\newcommand{\unotBunotR}[3][0.214275]{%
+\begin{scope}[style/.expanded=\polarshift{#2}{#3}]
+  \node (TR) [tri,fill=red] at ({90 + (360/2)*1}:#1) {};
+  \node (TB) [tri,fill=blue] at ({90}:#1) {};
 \end{scope}
 }
 
-\newcommand{\unopBunocGunotR}[2]{%
-\begin{scope}[style/.expanded=\polarshift{#1}{#2}]
-  \node (CG) [cuadro,fill=verdeOscuro] at (90:0.4) {};
-  \node (PB) [punto,fill=blue] at ({90 + (360/3)*1}:0.4) {};
-  \node (TR) [tri,fill=red] at ({90 + (360/3)*2}:0.4) {};
+\newcommand{\unotBunotRdos}[3][0.214275]{%
+\begin{scope}[style/.expanded=\polarshift{#2}{#3}]
+  \node (TR) [tri2,fill=red] at ({90 + (360/2)*1}:#1) {};
+  \node (TB) [tri2,fill=blue] at ({90}:#1) {};
 \end{scope}
 }
 
-\newcommand{\unopBunocR}[2]{%
-\begin{scope}[style/.expanded=\polarshift{#1}{#2}]
-  \node (CR) [cuadro,fill=red] at ({90 + (360/2)*1}:0.4) {};
-  \node (PB) [punto,fill=blue] at ({90}:0.4) {};
+\newcommand{\unotBunotG}[3][0.214275]{%
+\begin{scope}[style/.expanded=\polarshift{#2}{#3}]
+  \node (TG) [tri,fill=verdeOscuro] at ({90 + (360/2)*1}:#1) {};
+  \node (TB) [tri,fill=blue] at ({90}:#1) {};
 \end{scope}
 }
 
-\newcommand{\unotBunotRt}[2]{%
-\begin{scope}[style/.expanded=\polarshift{#1}{#2}]
-  \node (TR) [tri,fill=red] at ({90 + (360/3)*1}:0.4) {};
-  \node (TB) [tri,fill=blue] at ({90}:0.4) {};
-  \node (Tr) [tri,fill=black] at ({90 + (360/3)*2}:0.4) {};
+\newcommand{\unotBunotGdos}[3][0.214175]{%
+\begin{scope}[style/.expanded=\polarshift{#2}{#3}]
+  \node (TG) [tri2,fill=verdeOscuro] at ({90 + (360/2)*1}:#1) {};
+  \node (TB) [tri2,fill=blue] at ({90}:#1) {};
 \end{scope}
 }
 
-\newcommand{\unotBunotRp}[2]{%
-\begin{scope}[style/.expanded=\polarshift{#1}{#2}]
-  \node (TR) [tri,fill=red] at ({90 + (360/3)*1}:0.4) {};
-  \node (TB) [tri,fill=blue] at ({90}:0.4) {};
-  \node (Pr) [punto,fill=black] at ({90 + (360/3)*2}:0.4) {};
+\newcommand{\unotBunopY}[3][0.214275]{%
+\begin{scope}[style/.expanded=\polarshift{#2}{#3}]
+  \node (PY) [punto2,fill=yellow] at ({90 + (360/2)*1}:#1) {};
+  \node (TB) [tri2,fill=blue] at ({90}:#1) {};
 \end{scope}
 }
 
-\newcommand{\unopBunocRt}[2]{%
-\begin{scope}[style/.expanded=\polarshift{#1}{#2}]
-  \node (PB) [punto,fill=blue] at (90:0.4) {};
-  \node (CR) [cuadro,fill=red] at ({90 + (360/3)*1}:0.4) {};
-  \node (Tr) [tri,fill=black] at ({90 + (360/3)*2}:0.4) {};
+\newcommand{\unopBunopG}[3][0.214275]{%
+\begin{scope}[style/.expanded=\polarshift{#2}{#3}]
+  \node (PG) [punto,fill=verdeOscuro] at ({90 + (360/2)*1}:#1) {};
+  \node (PB) [punto,fill=blue] at ({90}:#1) {};
 \end{scope}
 }
 
-\newcommand{\unocBunocGc}[2]{%
-\begin{scope}[style/.expanded=\polarshift{#1}{#2}]
-  \node (CB) [cuadro,fill=blue] at (90:0.4) {};
-  \node (CG) [cuadro,fill=verdeOscuro] at ({90 + (360/3)*1}:0.4) {};
-  \node (Cr) [cuadro,fill=black] at ({90 + (360/3)*2}:0.4) {};
+\newcommand{\unopGunopR}[3][0.214275]{%
+\begin{scope}[style/.expanded=\polarshift{#2}{#3}]
+  \node (PR) [punto,fill=red] at ({90 + (360/2)*1}:#1) {};
+  \node (PG) [punto,fill=verdeOscuro] at ({90}:#1) {};
 \end{scope}
 }
 
-\newcommand{\unotBunocR}[2]{%
-\begin{scope}[style/.expanded=\polarshift{#1}{#2}]
-  \node (CR) [cuadro,fill=red] at ({90 + (360/2)*1}:0.4) {};
-  \node (TB) [tri,fill=blue] at ({90}:0.4) {};
+\newcommand{\unopGunopRp}[3][0.214275]{%
+\begin{scope}[style/.expanded=\polarshift{#2}{#3}]
+  \node (PR) [punto,fill=red] at ({90 + (360/3)*1}:#1) {};
+  \node (PG) [punto,fill=verdeOscuro] at ({90}:#1) {};
+  \node (p) [punto,fill=black] at ({90 + (360/3)*2}:#1) {};
 \end{scope}
 }
 
-\newcommand{\unocBunocG}[2]{%
-\begin{scope}[style/.expanded=\polarshift{#1}{#2}]
-  \node (CG) [cuadro,fill=verdeOscuro] at ({90 + (360/2)*1}:0.4) {};
-  \node (CB) [cuadro,fill=blue] at ({90}:0.4) {};
+\newcommand{\unopBunotGunotR}[3][0.214275]{%
+\begin{scope}[style/.expanded=\polarshift{#2}{#3}]
+  \node (TG) [tri,fill=verdeOscuro] at (90:#1) {};
+  \node (PB) [punto,fill=blue] at ({90 + (360/3)*1}:#1) {};
+  \node (TR) [tri,fill=red] at ({90 + (360/3)*2}:#1) {};
 \end{scope}
 }
 
-\newcommand{\unocGunocRc}[2]{%
-\begin{scope}[style/.expanded=\polarshift{#1}{#2}]
-  \node (CR) [cuadro,fill=red] at ({90 + (360/3)*1}:0.4) {};
-  \node (CG) [cuadro,fill=verdeOscuro] at ({90}:0.4) {};
-  \node (Cr) [cuadro, fill=black] at ({90 + (360/3)*2}:0.4) {};
+\newcommand{\unocGunocR}[3][0.214275]{%
+\begin{scope}[style/.expanded=\polarshift{#2}{#3}]
+  \node (CR) [cuadro,fill=red] at ({90 + (360/2)*1}:#1) {};
+  \node (CG) [cuadro,fill=verdeOscuro] at ({90}:#1) {};
 \end{scope}
 }
 
-\newcommand{\unocBunocR}[2]{%
-\begin{scope}[style/.expanded=\polarshift{#1}{#2}]
-  \node (CR) [cuadro,fill=red] at ({90 + (360/2)*1}:0.4) {};
-  \node (CB) [cuadro,fill=blue] at ({90}:0.4) {};
+\newcommand{\unotGunotR}[3][0.214275]{%
+\begin{scope}[style/.expanded=\polarshift{#2}{#3}]
+  \node (TR) [tri,fill=red] at ({90 + (360/2)*1}:#1) {};
+  \node (TG) [tri,fill=verdeOscuro] at ({90}:#1) {};
+\end{scope}
+}
+
+\newcommand{\unopBunocGunotR}[3][0.214275]{%
+\begin{scope}[style/.expanded=\polarshift{#2}{#3}]
+  \node (CG) [cuadro,fill=verdeOscuro] at (90:#1) {};
+  \node (PB) [punto,fill=blue] at ({90 + (360/3)*1}:#1) {};
+  \node (TR) [tri,fill=red] at ({90 + (360/3)*2}:#1) {};
+\end{scope}
+}
+
+\newcommand{\unopBunocR}[3][0.214275]{%
+\begin{scope}[style/.expanded=\polarshift{#2}{#3}]
+  \node (CR) [cuadro,fill=red] at ({90 + (360/2)*1}:#1) {};
+  \node (PB) [punto,fill=blue] at ({90}:#1) {};
+\end{scope}
+}
+
+\newcommand{\unotBunotRt}[3][0.214275]{%
+\begin{scope}[style/.expanded=\polarshift{#2}{#3}]
+  \node (TR) [tri,fill=red] at ({90 + (360/3)*1}:#1) {};
+  \node (TB) [tri,fill=blue] at ({90}:#1) {};
+  \node (Tr) [tri,fill=black] at ({90 + (360/3)*2}:#1) {};
+\end{scope}
+}
+
+\newcommand{\unotBunotRp}[3][0.214275]{%
+\begin{scope}[style/.expanded=\polarshift{#2}{#3}]
+  \node (TR) [tri,fill=red] at ({90 + (360/3)*1}:#1) {};
+  \node (TB) [tri,fill=blue] at ({90}:#1) {};
+  \node (Pr) [punto,fill=black] at ({90 + (360/3)*2}:#1) {};
+\end{scope}
+}
+
+\newcommand{\unopBunocRt}[3][0.214275]{%
+\begin{scope}[style/.expanded=\polarshift{#2}{#3}]
+  \node (PB) [punto,fill=blue] at (90:#1) {};
+  \node (CR) [cuadro,fill=red] at ({90 + (360/3)*1}:#1) {};
+  \node (Tr) [tri,fill=black] at ({90 + (360/3)*2}:#1) {};
+\end{scope}
+}
+
+\newcommand{\unocBunocGc}[3][0.214275]{%
+\begin{scope}[style/.expanded=\polarshift{#2}{#3}]
+  \node (CB) [cuadro,fill=blue] at (90:#1) {};
+  \node (CG) [cuadro,fill=verdeOscuro] at ({90 + (360/3)*1}:#1) {};
+  \node (Cr) [cuadro,fill=black] at ({90 + (360/3)*2}:#1) {};
+\end{scope}
+}
+
+\newcommand{\unotBunocR}[3][0.214275]{%
+\begin{scope}[style/.expanded=\polarshift{#2}{#3}]
+  \node (CR) [cuadro,fill=red] at ({90 + (360/2)*1}:#1) {};
+  \node (TB) [tri,fill=blue] at ({90}:#1) {};
+\end{scope}
+}
+
+\newcommand{\unocBunocG}[3][0.214275]{%
+\begin{scope}[style/.expanded=\polarshift{#2}{#3}]
+  \node (CG) [cuadro,fill=verdeOscuro] at ({90 + (360/2)*1}:#1) {};
+  \node (CB) [cuadro,fill=blue] at ({90}:#1) {};
+\end{scope}
+}
+
+\newcommand{\unocGunocRc}[3][0.214275]{%
+\begin{scope}[style/.expanded=\polarshift{#2}{#3}]
+  \node (CR) [cuadro,fill=red] at ({90 + (360/3)*1}:#1) {};
+  \node (CG) [cuadro,fill=verdeOscuro] at ({90}:#1) {};
+  \node (Cr) [cuadro, fill=black] at ({90 + (360/3)*2}:#1) {};
+\end{scope}
+}
+
+\newcommand{\unocBunocR}[3][0.214275]{%
+\begin{scope}[style/.expanded=\polarshift{#2}{#3}]
+  \node (CR) [cuadro,fill=red] at ({90 + (360/2)*1}:#1) {};
+  \node (CB) [cuadro,fill=blue] at ({90}:#1) {};
 \end{scope}
 }
 
@@ -2184,6 +2382,7 @@
 \backmatter
 
 \printindex
+\listoffigures
 \include{bibliografia}
 
 \end{document}
