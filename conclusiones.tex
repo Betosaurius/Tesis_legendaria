@@ -1,0 +1,97 @@
+\chapter{Conclusi\'on}
+\label{cap:conc}
+
+Recopilando los resultados relevantes en la tesis, logramos determinar el
+n\'umero policiaco de las gr\'aficas de $k$ fichas de cualquier estrella $S_n$.
+Si bien este \'ultimo es el resultado principal de la primera secci\'on de
+resultados, no podemos dejar a un lado la utilidad del algoritmo de
+desobstrucci\'on, el cual nos facilit\'o la descripci\'on de una estrategia
+ganadora para $C$ con exactamente $c(\t{k}{S_n})$ polic\'ias. As\'imismo,
+destacamos el descubrimiento de una estrategia ganadora para $R$ si $C$ tiene
+menos de $c(\t{k}{S_n})$ polic\'ias.
+
+Por otro lado, una ligera modificaci\'on en la mencionada estrategia ganadora
+para $C$ nos permiti\'o determinar una cota superior para el n\'umero policiaco
+de la gr\'afica de $k$ fichas de cualquier \'arbol. Adem\'as, nuestra estrategia
+de sombras evidenci\'o que dicha cota es justa cuando los \'arboles tiene grado
+m\'aximo al menos el doble del n\'umero de fichas.
+
+Para el resto de gr\'aficas de fichas de \'arboles con grado m\'aximo bajo,
+logramos utilizar la cota inferior para estrellas de grado bajo subdivididas,
+esto siempre y cuando el n\'umero de fichas sea menor al n\'umero de
+emparejamiento de la estrella subdividida. M\'as a\'un, si la estrella
+subdividida tiene a lo m\'as dos ramas de longitud par, esta cota cubre todos
+los posibles valores de $k$. Particularmente para las triadas, se obtuvo una
+cota inferior para todas las posibles $k$ sin importar la paridad de la longitud
+de sus ramas. Dicha cota inferior tambi\'en induce una estrategia de escape para
+$R$ en funci\'on de otros algoritmos, como uno que construye emparejamientos
+m\'aximos dada una gr\'afica.
+
+Finalmente, revisamos el caso particular de la gr\'afica de Petersen, en la que
+logramos acotar el n\'umero policiaco de $\t{2}{P}$ al dar una estrategia
+ganadora para $C$ con $4$ polic\'ias.
+
+M\'as all\'a de las cotas dadas para el n\'umero policiaco en los distintos
+casos de estudio, confiamos en que el dise\~no de estrategias nos ayude a
+comprender los problemas que quedan sin soluci\'on en este trabajo. La
+intuci\'on que nos dejan las estrategias desarrolladas nos llevan conjeturar lo
+siguiente.
+
+\begin{conjetura}
+    Sean $n$ y $k$ enteros positivos tales que $k\geq 2$ y $\frac{n+1}{2}<k$.
+    Adem\'as, si $m\geq1$ es un entero positivo suficientemente grande para que
+    $k\leq \left\lfloor\frac{\abs{V_{S_{n,m}}}}{2}\right\rfloor$, se tiene que
+    \[
+        c\paren{\t{k}{S_{n,m}}} = \left\lceil \frac{k + 1 + \left \lfloor \frac{n-1}{2}
+        \right \rfloor}{2} \right \rceil.
+    \]
+\end{conjetura}
+
+\begin{conjetura}
+    Si $P$ denota la gr\'afica de Petersen, entonces $c(\t{2}{P})=4$.
+\end{conjetura}
+
+En particular para la primera conjetura, esta concuerda con nuestras
+exploraciones obtenidas en gr\'aficas de fichas de triadas, mientras que para
+trayectorias, esta fue probada por Bruno Amezcua en su tesis de licenciatura.
+
+Por otro lado, creemos que la demostraci\'on dada para
+\cref{lem:retracto_triada}
+puede extenderse para demostrar la siguiente conjetura.
+
+\begin{conjetura}
+    Si $T$ es un \'arbol no trivial, $x$ es una de sus hojas, y $k<\abs{V_T}$,
+    entonces $\t{k}{T-x}$ es un retracto de $\t{k}{T}$.
+\end{conjetura}
+
+Dicho resultado no se tiene como corolario directo del lema mencionado en caso
+de que existan v\'ertices de grado al menos $4$. No obstante, la evidencia
+obtenida de los ejemplos sugiere que esto es verdad incluso para dichos casos,
+por lo que podr\'iamos tener una mejor comprensi\'on de la estructura de las
+gr\'aficas de fichas de \'arboles.
+
+A manera de resumen, se presenta una tabla con las cotas encontradas para el
+n\'umero policiaco de gr\'aficas de fichas de \'arboles, haciendo \'enfasis en
+que para cada resultado se obtuvo una estrategia de escape o una de captura.
+
+\begin{table}[H]
+    \centering
+    \resizebox{\textwidth}{!}{%
+    \begin{tabular}{|c|ccccc|}
+    \hline
+    \rowcolor[HTML]{9B9B9B} 
+    {\color[HTML]{333333} }                                                                                                                                           & \multicolumn{1}{c|}{\cellcolor[HTML]{9B9B9B}{\color[HTML]{333333} $S_n$}} & \multicolumn{1}{c|}{\cellcolor[HTML]{9B9B9B}{\color[HTML]{333333} \begin{tabular}[c]{@{}c@{}}$T$,\\ ($k_n =\left\lfloor\frac{\Delta_T + 3}{2}\right\rfloor$)\end{tabular}}} & \multicolumn{1}{c|}{\cellcolor[HTML]{9B9B9B}{\color[HTML]{333333} \begin{tabular}[c]{@{}c@{}}$S(m_1,\dots,m_n)$,\\ $\abs{\l{m_i \colon \ m_i \text{ es par}}} \leq 2$\end{tabular}}} & \multicolumn{1}{c|}{\cellcolor[HTML]{9B9B9B}{\color[HTML]{333333} \begin{tabular}[c]{@{}c@{}}$S(m_1,\dots,m_n)$,\\ $\abs{\l{m_i \colon \ m_i \text{ es par}}} >2$\end{tabular}}} & {\color[HTML]{333333} \begin{tabular}[c]{@{}c@{}}$S(m_1,\dots,m_3)$,\\ $m_i$ es par para toda $i$\end{tabular}} \\ \hline
+    \rowcolor[HTML]{EFEFEF} 
+    {\color[HTML]{000000} \begin{tabular}[c]{@{}c@{}}\phantom{M}\\ $k < k_n$\\ \phantom{M}\end{tabular}}                            & \multicolumn{5}{c|}{\cellcolor[HTML]{EFEFEF}{\color[HTML]{000000} $k$}}                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             \\ \hline
+    \rowcolor[HTML]{FFFFFF} 
+    {\color[HTML]{333333} \begin{tabular}[c]{@{}c@{}}\phantom{M}\\ $k_n \leq k \leq \alpha '$\\ \phantom{M}\end{tabular}}           & \multicolumn{1}{c|}{\cellcolor[HTML]{FFFFFF}{\color[HTML]{333333} N/A}}   & \multicolumn{4}{c|}{\cellcolor[HTML]{FFFFFF}{\color[HTML]{333333} $\left\lfloor \frac{k+1}{2}\right \rfloor \leq$, $\leq k$}}                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           \\ \hline
+    \rowcolor[HTML]{EFEFEF} 
+    {\color[HTML]{333333} \begin{tabular}[c]{@{}c@{}}\phantom{M}\\ $\alpha' < k \leq \frac{\abs{V}}{2}$\\ \phantom{M}\end{tabular}} & \multicolumn{1}{c|}{\cellcolor[HTML]{EFEFEF}{\color[HTML]{333333} N/A}}   & \multicolumn{1}{c|}{\cellcolor[HTML]{EFEFEF}{\color[HTML]{333333} $\leq k$}}                                                                                                & \multicolumn{1}{c|}{\cellcolor[HTML]{EFEFEF}{\color[HTML]{333333} N/A}}                                                                                                              & \multicolumn{1}{c|}{\cellcolor[HTML]{EFEFEF}{\color[HTML]{333333} $\leq k$}}                                                                                                     & {\color[HTML]{333333} $\left\lfloor \frac{k}{2}\right \rfloor \leq$, $\leq k$}                                  \\ \hline
+    \end{tabular}%
+    }
+    \captionsetup{font=footnotesize}
+    \captionof{table}{En cada cuadrante de la tabla se muestran el n\'umero
+    policiaco (o las cotas obtenidas separadas por comas) de la gr\'afica de $k$
+    fichas asociada a la gr\'afica en la columna dada, clasificadas por
+    renglones seg\'un el intervalo en el que se encuentre $k$.}
+\end{table}
